@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MyOrderDetailFooterView" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="397"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VOU-EG-Hu8">
+                    <rect key="frame" x="24" y="8" width="366" height="381"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Self Collection @ Bendemeer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNU-1Z-rnD">
+                            <rect key="frame" x="16" y="16" width="334" height="22"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                            <color key="textColor" name="TheamBlue"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blk 429 Tampines st 41 #02-505 222429" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIM-vU-36h">
+                            <rect key="frame" x="16" y="54" width="334" height="19.5"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                            <color key="textColor" name="Black333"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Items" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhL-Nv-ZPc">
+                            <rect key="frame" x="16" y="97.5" width="69" height="19.5"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                            <color key="textColor" name="Black333"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Total" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gji-rU-sMz">
+                            <rect key="frame" x="16" y="137" width="59" height="19.5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="19.5" id="yLe-Xs-0t2"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                            <color key="textColor" name="Black333"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery Fee" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AJ-La-Cpg">
+                            <rect key="frame" x="16" y="216" width="79.5" height="19.5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="19.5" id="Bhg-rA-xeR"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                            <color key="textColor" name="Black333"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total (Inclusive of GST $0.00)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enK-5z-Epc">
+                            <rect key="frame" x="16" y="255.5" width="215" height="22"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                            <color key="textColor" name="Black333"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05j-VL-FC4">
+                            <rect key="frame" x="341.5" y="97.5" width="8.5" height="19.5"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                            <color key="textColor" name="Black333"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QjC-NK-wl0">
+                            <rect key="frame" x="313.5" y="137" width="36.5" height="19.5"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                            <color key="textColor" name="Black333"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Duv-eU-l83">
+                            <rect key="frame" x="313.5" y="216" width="36.5" height="19.5"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                            <color key="textColor" name="Black333"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YG-RF-irH">
+                            <rect key="frame" x="306.5" y="255.5" width="43.5" height="22"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                            <color key="textColor" name="Black333"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Points earned 48)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7O-CW-EQT">
+                            <rect key="frame" x="234.5" y="292.5" width="115.5" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="LFY-Mx-ifD"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                            <color key="textColor" name="Black333"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNd-YF-tSW">
+                            <rect key="frame" x="16" y="176.5" width="57" height="19.5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="19.5" id="LE7-1A-BlM"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                            <color key="textColor" name="Black333"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Jr-bf-F5e">
+                            <rect key="frame" x="313.5" y="176.5" width="36.5" height="19.5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="19.5" id="GJE-Sg-BR5"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                            <color key="textColor" name="Black333"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.98039215690000003" green="0.95294117649999999" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="y7O-CW-EQT" secondAttribute="trailing" constant="16" id="2pE-od-pHy"/>
+                        <constraint firstItem="Gji-rU-sMz" firstAttribute="leading" secondItem="VOU-EG-Hu8" secondAttribute="leading" constant="16" id="2rh-TE-YEo"/>
+                        <constraint firstItem="3YG-RF-irH" firstAttribute="centerY" secondItem="enK-5z-Epc" secondAttribute="centerY" id="4SA-ch-YGw"/>
+                        <constraint firstItem="dNU-1Z-rnD" firstAttribute="top" secondItem="VOU-EG-Hu8" secondAttribute="top" constant="16" id="8Yf-ah-B0m"/>
+                        <constraint firstItem="gIM-vU-36h" firstAttribute="leading" secondItem="VOU-EG-Hu8" secondAttribute="leading" constant="16" id="91m-Nh-bTv"/>
+                        <constraint firstItem="Duv-eU-l83" firstAttribute="centerY" secondItem="4AJ-La-Cpg" secondAttribute="centerY" id="9YO-Ep-olX"/>
+                        <constraint firstAttribute="trailing" secondItem="dNU-1Z-rnD" secondAttribute="trailing" constant="16" id="ATP-xl-AKg"/>
+                        <constraint firstItem="dNU-1Z-rnD" firstAttribute="leading" secondItem="VOU-EG-Hu8" secondAttribute="leading" constant="16" id="AdH-FS-42b"/>
+                        <constraint firstAttribute="trailing" secondItem="3YG-RF-irH" secondAttribute="trailing" constant="16" id="DMa-gU-XgP"/>
+                        <constraint firstAttribute="trailing" secondItem="Duv-eU-l83" secondAttribute="trailing" constant="16" id="DOf-Jl-6zp"/>
+                        <constraint firstItem="enK-5z-Epc" firstAttribute="top" secondItem="4AJ-La-Cpg" secondAttribute="bottom" constant="20" id="Eub-3v-8w5"/>
+                        <constraint firstAttribute="trailing" secondItem="gIM-vU-36h" secondAttribute="trailing" constant="16" id="TLG-uk-Gw4"/>
+                        <constraint firstItem="05j-VL-FC4" firstAttribute="centerY" secondItem="YhL-Nv-ZPc" secondAttribute="centerY" id="Z8t-Up-QaU"/>
+                        <constraint firstItem="4AJ-La-Cpg" firstAttribute="leading" secondItem="VOU-EG-Hu8" secondAttribute="leading" constant="16" id="epZ-15-wfI"/>
+                        <constraint firstItem="enK-5z-Epc" firstAttribute="leading" secondItem="VOU-EG-Hu8" secondAttribute="leading" constant="16" id="jgt-im-aa9"/>
+                        <constraint firstItem="QjC-NK-wl0" firstAttribute="centerY" secondItem="Gji-rU-sMz" secondAttribute="centerY" id="kMf-By-y8R"/>
+                        <constraint firstItem="8Jr-bf-F5e" firstAttribute="centerY" secondItem="ZNd-YF-tSW" secondAttribute="centerY" id="lUY-mK-Zp4"/>
+                        <constraint firstItem="8Jr-bf-F5e" firstAttribute="trailing" secondItem="QjC-NK-wl0" secondAttribute="trailing" id="lcq-UX-EvG"/>
+                        <constraint firstItem="QjC-NK-wl0" firstAttribute="trailing" secondItem="05j-VL-FC4" secondAttribute="trailing" id="lto-99-qTx"/>
+                        <constraint firstItem="ZNd-YF-tSW" firstAttribute="leading" secondItem="Gji-rU-sMz" secondAttribute="leading" id="n31-Vl-731"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="y7O-CW-EQT" secondAttribute="bottom" constant="15" id="sH0-jy-nrb"/>
+                        <constraint firstAttribute="trailing" secondItem="05j-VL-FC4" secondAttribute="trailing" constant="16" id="sgk-uJ-LdG"/>
+                        <constraint firstItem="YhL-Nv-ZPc" firstAttribute="leading" secondItem="VOU-EG-Hu8" secondAttribute="leading" constant="16" id="vBA-79-U1E"/>
+                        <constraint firstItem="Gji-rU-sMz" firstAttribute="top" secondItem="YhL-Nv-ZPc" secondAttribute="bottom" constant="20" id="w4t-nQ-ivD"/>
+                        <constraint firstItem="4AJ-La-Cpg" firstAttribute="top" secondItem="ZNd-YF-tSW" secondAttribute="bottom" constant="20" id="wTd-ej-LUd"/>
+                        <constraint firstItem="ZNd-YF-tSW" firstAttribute="top" secondItem="Gji-rU-sMz" secondAttribute="bottom" constant="20" id="wlf-yE-zsy"/>
+                        <constraint firstItem="YhL-Nv-ZPc" firstAttribute="top" secondItem="gIM-vU-36h" secondAttribute="bottom" constant="24" id="ya6-Ac-kXv"/>
+                        <constraint firstItem="y7O-CW-EQT" firstAttribute="top" secondItem="3YG-RF-irH" secondAttribute="bottom" constant="15" id="zNE-dL-UKl"/>
+                        <constraint firstItem="gIM-vU-36h" firstAttribute="top" secondItem="dNU-1Z-rnD" secondAttribute="bottom" constant="16" id="zs7-g6-E4Q"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VOU-EG-Hu8" secondAttribute="trailing" constant="24" id="0iG-RB-IIW"/>
+                <constraint firstItem="VOU-EG-Hu8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="E4C-mG-ZbS"/>
+                <constraint firstItem="VOU-EG-Hu8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="iHc-pl-aeM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="VOU-EG-Hu8" secondAttribute="bottom" constant="8" id="yBA-sO-6J0"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addressLabel" destination="gIM-vU-36h" id="0ne-m2-5rc"/>
+                <outlet property="deliveryFeeLabel" destination="Duv-eU-l83" id="sXb-3w-jZQ"/>
+                <outlet property="deliveryFeeTypeLabel" destination="4AJ-La-Cpg" id="cRY-6e-Kef"/>
+                <outlet property="deliveryType" destination="dNU-1Z-rnD" id="bmI-dv-5GY"/>
+                <outlet property="discountLabel" destination="8Jr-bf-F5e" id="4bB-Wl-PFb"/>
+                <outlet property="pointsLabel" destination="y7O-CW-EQT" id="wwf-A6-7fG"/>
+                <outlet property="subTotalPriceLabel" destination="QjC-NK-wl0" id="ncv-sw-1Mh"/>
+                <outlet property="totalHeaderLabel" destination="enK-5z-Epc" id="nVb-9f-bOC"/>
+                <outlet property="totalItemsLabel" destination="05j-VL-FC4" id="EDD-Ub-DgS"/>
+                <outlet property="totalPriceLabel" destination="3YG-RF-irH" id="RAJ-4m-IeA"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="-97.433035714285708"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="Black333">
+            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TheamBlue">
+            <color red="0.078000001609325409" green="0.3529999852180481" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

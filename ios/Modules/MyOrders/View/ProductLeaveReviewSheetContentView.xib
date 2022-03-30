@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProductLeaveReviewSheetContentView" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leave a Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EgC-8r-6Bo">
+                    <rect key="frame" x="143" y="24" width="128" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="6bD-Nx-97b"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
+                    <color key="textColor" name="TheamBlue"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVF-9u-Xpj" customClass="LoadingButton" customModule="CCTIOS" customModuleProvider="target">
+                    <rect key="frame" x="24" y="788" width="366" height="44"/>
+                    <color key="backgroundColor" name="TheamRed"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="n8y-ns-DN6"/>
+                    </constraints>
+                    <state key="normal" title="Submit">
+                        <color key="titleColor" name="White"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="22"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="submitButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="c0P-P4-Fcc"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uH9-hp-H9Q">
+                    <rect key="frame" x="0.0" y="68" width="414" height="704"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="EgC-8r-6Bo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="24" id="5Lx-dw-8s1"/>
+                <constraint firstItem="EgC-8r-6Bo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="DVq-nf-SqY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uH9-hp-H9Q" secondAttribute="trailing" id="JnE-qb-gqB"/>
+                <constraint firstItem="iVF-9u-Xpj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="THd-ct-8BX"/>
+                <constraint firstItem="iVF-9u-Xpj" firstAttribute="top" secondItem="uH9-hp-H9Q" secondAttribute="bottom" constant="16" id="Z40-LH-1a2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="iVF-9u-Xpj" secondAttribute="trailing" constant="24" id="hGV-6o-hfR"/>
+                <constraint firstItem="uH9-hp-H9Q" firstAttribute="top" secondItem="EgC-8r-6Bo" secondAttribute="bottom" constant="16" id="kcL-aO-p06"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="iVF-9u-Xpj" secondAttribute="bottom" constant="30" id="qga-f3-cit"/>
+                <constraint firstItem="uH9-hp-H9Q" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="vb9-xt-Z3u"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="submitButton" destination="iVF-9u-Xpj" id="y1b-au-UpO"/>
+                <outlet property="tableView" destination="uH9-hp-H9Q" id="z41-Nd-kJ0"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="43"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="TheamBlue">
+            <color red="0.078000001609325409" green="0.3529999852180481" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TheamRed">
+            <color red="0.76899999380111694" green="0.27799999713897705" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

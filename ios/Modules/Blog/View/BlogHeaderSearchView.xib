@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BlogHeaderSearchView" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="457" height="127"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hF-mK-tPk">
+                    <rect key="frame" x="16" y="30" width="52" height="33"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
+                    <color key="textColor" name="TheamBlue"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ues-bx-yzy">
+                    <rect key="frame" x="16" y="73" width="425" height="40"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vse-Z0-MNz">
+                            <rect key="frame" x="16" y="0.0" width="393" height="40"/>
+                            <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Lyf-Pl-QD9"/>
+                        <constraint firstAttribute="bottom" secondItem="Vse-Z0-MNz" secondAttribute="bottom" id="YWj-cl-Zhp"/>
+                        <constraint firstItem="Vse-Z0-MNz" firstAttribute="leading" secondItem="ues-bx-yzy" secondAttribute="leading" constant="16" id="lZN-yi-fzq"/>
+                        <constraint firstItem="Vse-Z0-MNz" firstAttribute="top" secondItem="ues-bx-yzy" secondAttribute="top" id="ypF-cE-e8a"/>
+                        <constraint firstAttribute="trailing" secondItem="Vse-Z0-MNz" secondAttribute="trailing" constant="16" id="zOb-PG-hlR"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hqf-7c-qr5">
+                    <rect key="frame" x="409" y="30.5" width="32" height="32"/>
+                    <color key="backgroundColor" red="0.98039215686274506" green="0.95294117647058818" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="sMA-Na-H0l"/>
+                        <constraint firstAttribute="height" constant="32" id="xC6-nm-zcP"/>
+                    </constraints>
+                    <state key="normal" image="blog_board_edit"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="editButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="mCB-tc-H0K"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="0hF-mK-tPk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="1Iy-3N-PYl"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Hqf-7c-qr5" secondAttribute="trailing" constant="16" id="7Pg-Zx-hD4"/>
+                <constraint firstItem="ues-bx-yzy" firstAttribute="top" secondItem="0hF-mK-tPk" secondAttribute="bottom" constant="10" id="BEZ-iM-kSg"/>
+                <constraint firstItem="Hqf-7c-qr5" firstAttribute="centerY" secondItem="0hF-mK-tPk" secondAttribute="centerY" id="Cli-R2-o70"/>
+                <constraint firstItem="ues-bx-yzy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="NPH-BS-N4g"/>
+                <constraint firstAttribute="trailing" secondItem="ues-bx-yzy" secondAttribute="trailing" constant="16" id="moR-kV-Qx2"/>
+                <constraint firstItem="0hF-mK-tPk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="y8M-ps-f0Q"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="editButton" destination="Hqf-7c-qr5" id="XiY-O4-y0c"/>
+                <outlet property="serchTF" destination="Vse-Z0-MNz" id="YcQ-0R-gmL"/>
+                <outlet property="titleLabel" destination="0hF-mK-tPk" id="o5S-Yz-JfX"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="170"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="blog_board_edit" width="12" height="12"/>
+        <namedColor name="TheamBlue">
+            <color red="0.078000001609325409" green="0.3529999852180481" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

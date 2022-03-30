@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BlogSaveToBoardSheetView" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="461" height="335"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save to a Board" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMz-SF-vYx">
+                    <rect key="frame" x="165" y="24" width="131" height="25"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
+                    <color key="textColor" name="TheamColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                            <real key="value" value="28"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Czh-62-ytf">
+                    <rect key="frame" x="32" y="81" width="397" height="107"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJm-DV-LyZ">
+                            <rect key="frame" x="0.0" y="0.0" width="397" height="1"/>
+                            <color key="backgroundColor" name="Placeholder"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="DZY-xv-XGn"/>
+                            </constraints>
+                        </view>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8E2-dt-PaJ">
+                            <rect key="frame" x="0.0" y="1" width="397" height="106"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="separatorColor" name="Placeholder"/>
+                            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <connections>
+                                <outlet property="dataSource" destination="iN0-l3-epB" id="5Mm-gf-OMw"/>
+                                <outlet property="delegate" destination="iN0-l3-epB" id="l5D-qG-MFD"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="107" id="C7v-fC-t9S"/>
+                        <constraint firstItem="8E2-dt-PaJ" firstAttribute="leading" secondItem="Czh-62-ytf" secondAttribute="leading" id="Hmn-Dw-Vao"/>
+                        <constraint firstItem="bJm-DV-LyZ" firstAttribute="top" secondItem="Czh-62-ytf" secondAttribute="top" id="KN4-Bu-Pb2"/>
+                        <constraint firstAttribute="trailing" secondItem="8E2-dt-PaJ" secondAttribute="trailing" id="SK4-OA-wBu"/>
+                        <constraint firstAttribute="bottom" secondItem="8E2-dt-PaJ" secondAttribute="bottom" id="Y0d-iw-Hry"/>
+                        <constraint firstItem="bJm-DV-LyZ" firstAttribute="leading" secondItem="Czh-62-ytf" secondAttribute="leading" id="YiS-7z-D9H"/>
+                        <constraint firstAttribute="trailing" secondItem="bJm-DV-LyZ" secondAttribute="trailing" id="j9B-2D-ofO"/>
+                        <constraint firstItem="8E2-dt-PaJ" firstAttribute="top" secondItem="Czh-62-ytf" secondAttribute="top" constant="1" id="vHe-wo-tGL"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vch-Qv-yhB" customClass="LoadingButton" customModule="CCTIOS" customModuleProvider="target">
+                    <rect key="frame" x="24" y="208" width="413" height="44"/>
+                    <color key="backgroundColor" name="TheamRed"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Cmf-Cx-IwM"/>
+                    </constraints>
+                    <state key="normal" title="Create Board">
+                        <color key="titleColor" name="White"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="22"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="createBoardButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Rnc-aY-hf9"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Czh-62-ytf" firstAttribute="top" secondItem="eMz-SF-vYx" secondAttribute="bottom" constant="32" id="3bM-vd-4pq"/>
+                <constraint firstItem="eMz-SF-vYx" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="C5C-uv-n9Q"/>
+                <constraint firstItem="vch-Qv-yhB" firstAttribute="top" secondItem="Czh-62-ytf" secondAttribute="bottom" constant="20" id="IPa-my-TjH"/>
+                <constraint firstItem="Czh-62-ytf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="Mzu-2l-uQK"/>
+                <constraint firstItem="eMz-SF-vYx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="24" id="NsL-70-RB2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vch-Qv-yhB" secondAttribute="trailing" constant="24" id="b02-WP-nek"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Czh-62-ytf" secondAttribute="trailing" constant="32" id="hjB-ns-bF5"/>
+                <constraint firstItem="vch-Qv-yhB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="pFs-7L-649"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="tableView" destination="8E2-dt-PaJ" id="JFP-96-IiF"/>
+                <outlet property="tableViewHCons" destination="C7v-fC-t9S" id="fE3-A4-7r6"/>
+            </connections>
+            <point key="canvasLocation" x="-5.0724637681159424" y="199.88839285714286"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="Placeholder">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TheamColor">
+            <color red="0.078000001609325409" green="0.3529999852180481" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TheamRed">
+            <color red="0.76862745098039209" green="0.27843137254901962" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

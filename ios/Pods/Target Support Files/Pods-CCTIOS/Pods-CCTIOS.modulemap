@@ -1,0 +1,6 @@
+module Pods_CCTIOS {
+  umbrella header "Pods-CCTIOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

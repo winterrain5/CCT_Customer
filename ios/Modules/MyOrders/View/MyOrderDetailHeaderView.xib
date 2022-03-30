@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="HAP-HF-a5Z" customClass="MyOrderDetailHeaderView" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="382"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ttj-cy-Vnp">
+                    <rect key="frame" x="24" y="108" width="366" height="266"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Order" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptq-gO-6WF">
+                            <rect key="frame" x="16" y="16" width="334" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="R4m-Hc-s8j"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                            <color key="textColor" name="TheamBlue"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Items" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCg-oy-JRZ">
+                            <rect key="frame" x="16" y="64" width="78" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="XeJ-vL-Xun"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                            <color key="textColor" name="TheamBlue"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7fl-PI-FUR">
+                            <rect key="frame" x="0.0" y="104" width="366" height="146"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.98039215690000003" green="0.95294117649999999" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="ptq-gO-6WF" firstAttribute="top" secondItem="Ttj-cy-Vnp" secondAttribute="top" constant="16" id="Abu-fV-bH2"/>
+                        <constraint firstItem="7fl-PI-FUR" firstAttribute="leading" secondItem="Ttj-cy-Vnp" secondAttribute="leading" id="Dhk-Cv-dFM"/>
+                        <constraint firstAttribute="trailing" secondItem="ptq-gO-6WF" secondAttribute="trailing" constant="16" id="G2G-jX-kH4"/>
+                        <constraint firstItem="ptq-gO-6WF" firstAttribute="leading" secondItem="Ttj-cy-Vnp" secondAttribute="leading" constant="16" id="GcL-Vm-HLK"/>
+                        <constraint firstAttribute="bottom" secondItem="7fl-PI-FUR" secondAttribute="bottom" constant="16" id="H8c-M1-ULG"/>
+                        <constraint firstAttribute="trailing" secondItem="7fl-PI-FUR" secondAttribute="trailing" id="diW-pF-zVx"/>
+                        <constraint firstItem="7fl-PI-FUR" firstAttribute="top" secondItem="DCg-oy-JRZ" secondAttribute="bottom" constant="16" id="g8f-Ie-y1E"/>
+                        <constraint firstItem="DCg-oy-JRZ" firstAttribute="leading" secondItem="Ttj-cy-Vnp" secondAttribute="leading" constant="16" id="qJA-ih-q7c"/>
+                        <constraint firstItem="DCg-oy-JRZ" firstAttribute="top" secondItem="ptq-gO-6WF" secondAttribute="bottom" constant="24" id="qf3-lf-T7X"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Progress" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxB-al-sTm">
+                    <rect key="frame" x="166.5" y="24" width="81" height="26"/>
+                    <color key="backgroundColor" name="TheamBlue"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="81" id="HzU-lb-qgK"/>
+                        <constraint firstAttribute="height" constant="26" id="Ukg-x8-15E"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="12"/>
+                    <color key="textColor" name="White"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="13"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5b-33-l9b">
+                    <rect key="frame" x="118" y="54" width="178" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="YYy-Bc-o1d"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
+                    <color key="textColor" name="TheamBlue"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="2Cu-Gk-WIf"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Ttj-cy-Vnp" firstAttribute="top" secondItem="HAP-HF-a5Z" secondAttribute="top" constant="108" id="0BJ-RA-u07"/>
+                <constraint firstItem="2Cu-Gk-WIf" firstAttribute="bottom" secondItem="Ttj-cy-Vnp" secondAttribute="bottom" constant="8" id="A7r-NV-o12"/>
+                <constraint firstItem="t5b-33-l9b" firstAttribute="top" secondItem="ZxB-al-sTm" secondAttribute="bottom" constant="4" id="VB4-A4-Jsv"/>
+                <constraint firstItem="ZxB-al-sTm" firstAttribute="top" secondItem="HAP-HF-a5Z" secondAttribute="top" constant="24" id="aza-c8-son"/>
+                <constraint firstItem="Ttj-cy-Vnp" firstAttribute="leading" secondItem="2Cu-Gk-WIf" secondAttribute="leading" constant="24" id="hBd-Qi-fhA"/>
+                <constraint firstItem="t5b-33-l9b" firstAttribute="centerX" secondItem="HAP-HF-a5Z" secondAttribute="centerX" id="kyw-W1-lLu"/>
+                <constraint firstItem="ZxB-al-sTm" firstAttribute="centerX" secondItem="HAP-HF-a5Z" secondAttribute="centerX" id="l0W-0W-CMf"/>
+                <constraint firstItem="2Cu-Gk-WIf" firstAttribute="trailing" secondItem="Ttj-cy-Vnp" secondAttribute="trailing" constant="24" id="pts-cN-GSL"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="dateLabel" destination="ptq-gO-6WF" id="ggJ-A2-4TR"/>
+                <outlet property="statusLabel" destination="ZxB-al-sTm" id="pDp-V6-x0L"/>
+                <outlet property="tableView" destination="7fl-PI-FUR" id="Zu6-fF-kSh"/>
+            </connections>
+            <point key="canvasLocation" x="-20.289855072463769" y="-102.45535714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="TheamBlue">
+            <color red="0.078000001609325409" green="0.3529999852180481" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

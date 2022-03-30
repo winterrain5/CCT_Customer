@@ -1,0 +1,6 @@
+module DDGScreenShot {
+  umbrella header "DDGScreenShot-umbrella.h"
+
+  export *
+  module * { export * }
+}

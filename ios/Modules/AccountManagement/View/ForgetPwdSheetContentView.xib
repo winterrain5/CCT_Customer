@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="CCJ-uT-6Qv" customClass="ForgetPwdSheetContentView" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="461" height="558"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sFF-xI-qqC">
+                    <rect key="frame" x="32" y="179" width="397" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="HaB-12-Nvm"/>
+                    </constraints>
+                    <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
+                </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OA1-es-NWs">
+                    <rect key="frame" x="32" y="214" width="397" height="1"/>
+                    <color key="backgroundColor" name="Placeholder"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="xk9-ok-Ugi"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pP-Rm-9my">
+                    <rect key="frame" x="138" y="24" width="185" height="33"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
+                    <color key="textColor" name="TheamBlue"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                            <real key="value" value="28"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWK-ik-5G5" customClass="LoadingButton" customModule="CCTIOS" customModuleProvider="target">
+                    <rect key="frame" x="238.5" y="247" width="190.5" height="44"/>
+                    <color key="backgroundColor" name="TheamRed"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="2CC-ER-N1a"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
+                    <state key="normal" title="Reset">
+                        <color key="titleColor" name="White"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="22"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="confirmButtonAction:" destination="CCJ-uT-6Qv" eventType="touchUpInside" id="PqX-Uw-DFx"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email and we’ll send you a link to reset your password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sC-NI-S4Z">
+                    <rect key="frame" x="32" y="89" width="397" height="44"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                    <color key="textColor" name="Black333"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                            <real key="value" value="28"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQs-al-P0w">
+                    <rect key="frame" x="32" y="157" width="34" height="18"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="13"/>
+                    <color key="textColor" name="Black333"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                            <real key="value" value="28"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9x-De-bxQ" customClass="LoadingButton" customModule="CCTIOS" customModuleProvider="target">
+                    <rect key="frame" x="32" y="247" width="190.5" height="44"/>
+                    <color key="backgroundColor" name="Line"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="zlG-0r-FRQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleColor" name="Black333"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="22"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="concelButtonAction:" destination="CCJ-uT-6Qv" eventType="touchUpInside" id="618-xp-t7j"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="svo-U0-yIs"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="OA1-es-NWs" firstAttribute="top" secondItem="sFF-xI-qqC" secondAttribute="bottom" constant="7" id="2df-Je-Tbr"/>
+                <constraint firstItem="TWK-ik-5G5" firstAttribute="leading" secondItem="w9x-De-bxQ" secondAttribute="trailing" constant="16" id="871-fZ-mdl"/>
+                <constraint firstAttribute="trailing" secondItem="OA1-es-NWs" secondAttribute="trailing" constant="32" id="8NF-9Q-5KE"/>
+                <constraint firstAttribute="trailing" secondItem="0sC-NI-S4Z" secondAttribute="trailing" constant="32" id="BUp-YN-LUA"/>
+                <constraint firstItem="sFF-xI-qqC" firstAttribute="leading" secondItem="svo-U0-yIs" secondAttribute="leading" constant="32" id="Bb4-NO-mTe"/>
+                <constraint firstItem="TWK-ik-5G5" firstAttribute="width" secondItem="w9x-De-bxQ" secondAttribute="width" id="FYC-zZ-Ow5"/>
+                <constraint firstItem="w9x-De-bxQ" firstAttribute="top" secondItem="TWK-ik-5G5" secondAttribute="top" id="Gea-yL-f3F"/>
+                <constraint firstItem="XQs-al-P0w" firstAttribute="top" secondItem="0sC-NI-S4Z" secondAttribute="bottom" constant="24" id="HQq-f6-iri"/>
+                <constraint firstItem="sFF-xI-qqC" firstAttribute="top" secondItem="XQs-al-P0w" secondAttribute="bottom" constant="4" id="IFh-eH-rQU"/>
+                <constraint firstItem="w9x-De-bxQ" firstAttribute="leading" secondItem="svo-U0-yIs" secondAttribute="leading" constant="32" id="Jwp-HE-48D"/>
+                <constraint firstItem="XQs-al-P0w" firstAttribute="leading" secondItem="CCJ-uT-6Qv" secondAttribute="leading" constant="32" id="KU0-6G-y6X"/>
+                <constraint firstItem="TWK-ik-5G5" firstAttribute="top" secondItem="OA1-es-NWs" secondAttribute="bottom" constant="32" id="Nm6-4Q-8vT"/>
+                <constraint firstItem="svo-U0-yIs" firstAttribute="trailing" secondItem="sFF-xI-qqC" secondAttribute="trailing" constant="32" id="PjY-b3-7it"/>
+                <constraint firstItem="svo-U0-yIs" firstAttribute="trailing" secondItem="TWK-ik-5G5" secondAttribute="trailing" constant="32" id="Tzf-O1-oY3"/>
+                <constraint firstItem="0sC-NI-S4Z" firstAttribute="top" secondItem="9pP-Rm-9my" secondAttribute="bottom" constant="32" id="dwH-xm-9Ka"/>
+                <constraint firstItem="OA1-es-NWs" firstAttribute="leading" secondItem="CCJ-uT-6Qv" secondAttribute="leading" constant="32" id="fxB-0L-J6b"/>
+                <constraint firstItem="9pP-Rm-9my" firstAttribute="top" secondItem="CCJ-uT-6Qv" secondAttribute="top" constant="24" id="opc-87-2OC"/>
+                <constraint firstItem="0sC-NI-S4Z" firstAttribute="leading" secondItem="svo-U0-yIs" secondAttribute="leading" constant="32" id="sae-fs-jmG"/>
+                <constraint firstItem="9pP-Rm-9my" firstAttribute="centerX" secondItem="CCJ-uT-6Qv" secondAttribute="centerX" id="v8U-AI-Pxj"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="confirmButton" destination="TWK-ik-5G5" id="o2T-N1-peS"/>
+                <outlet property="emailTf" destination="sFF-xI-qqC" id="tZu-Mx-eD8"/>
+            </connections>
+            <point key="canvasLocation" x="-554.34782608695662" y="183.48214285714286"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="Black333">
+            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Line">
+            <color red="0.87800002098083496" green="0.87800002098083496" blue="0.87800002098083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Placeholder">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TheamBlue">
+            <color red="0.078000001609325409" green="0.3529999852180481" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TheamRed">
+            <color red="0.76899999380111694" green="0.27799999713897705" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

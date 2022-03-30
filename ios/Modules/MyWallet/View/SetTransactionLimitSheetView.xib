@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SetTransactionLimitSheetView" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Transaction Limit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fvs-sS-c2T">
+                    <rect key="frame" x="121.5" y="24" width="171" height="25"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
+                    <color key="textColor" name="TheamBlue"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcY-Ml-F1W">
+                    <rect key="frame" x="26" y="81" width="94" height="24"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                    <state key="normal" title="  No Limit" image="edit_profile_radio_not_fill">
+                        <color key="titleColor" name="Black"/>
+                    </state>
+                    <state key="selected" image="edit_profile_radio_fill"/>
+                    <connections>
+                        <action selector="limitTypeButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="u1B-dx-rI4"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlO-fP-ctV">
+                    <rect key="frame" x="26" y="137" width="130" height="24"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                    <state key="normal" title="  Limit Amount" image="edit_profile_radio_not_fill">
+                        <color key="titleColor" name="Black"/>
+                    </state>
+                    <state key="selected" image="edit_profile_radio_fill"/>
+                    <connections>
+                        <action selector="limitTypeButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="3ZZ-98-eq8"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the amount you want to limit user’s per transaction" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOh-MY-w9D">
+                    <rect key="frame" x="56" y="169" width="334" height="16.5"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                    <color key="textColor" name="gray82"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$300.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adx-HZ-j4b">
+                    <rect key="frame" x="24" y="209.5" width="366" height="68"/>
+                    <color key="backgroundColor" name="grayf2"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="68" id="Jps-nj-0kw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="32"/>
+                    <color key="textColor" name="TheamBlue"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="Phd-WB-pU3">
+                    <rect key="frame" x="24" y="301.5" width="366" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilE-Dd-9RR">
+                            <rect key="frame" x="0.0" y="0.0" width="82" height="44"/>
+                            <color key="backgroundColor" name="grayf2"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                            <state key="normal" title="$300">
+                                <color key="titleColor" name="Black"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="limitAmoutButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="0ha-Ti-91F"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1c-K3-QMo">
+                            <rect key="frame" x="95" y="0.0" width="81.5" height="44"/>
+                            <color key="backgroundColor" name="grayf2"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                            <state key="normal" title="$500">
+                                <color key="titleColor" name="Black"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="limitAmoutButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="S0b-Zi-nIf"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtQ-FJ-lbW">
+                            <rect key="frame" x="189.5" y="0.0" width="82" height="44"/>
+                            <color key="backgroundColor" name="grayf2"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                            <state key="normal" title="$700">
+                                <color key="titleColor" name="Black"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="limitAmoutButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="fXY-of-Im8"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZ2-H7-Kgr">
+                            <rect key="frame" x="284.5" y="0.0" width="81.5" height="44"/>
+                            <color key="backgroundColor" name="grayf2"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                            <state key="normal" title="$1000">
+                                <color key="titleColor" name="Black"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="limitAmoutButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="4YQ-RV-Vb7"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="K1c-K3-QMo" firstAttribute="width" secondItem="ilE-Dd-9RR" secondAttribute="width" id="3Rn-19-mF0"/>
+                        <constraint firstItem="VtQ-FJ-lbW" firstAttribute="width" secondItem="ilE-Dd-9RR" secondAttribute="width" id="4FH-yW-Rng"/>
+                        <constraint firstItem="GZ2-H7-Kgr" firstAttribute="width" secondItem="ilE-Dd-9RR" secondAttribute="width" id="B8Q-3P-pYm"/>
+                        <constraint firstAttribute="height" constant="44" id="BZ0-XV-8cx"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2A-kr-47B" customClass="LoadingButton" customModule="CCTIOS" customModuleProvider="target">
+                    <rect key="frame" x="24" y="385.5" width="366" height="44"/>
+                    <color key="backgroundColor" red="0.76862745099999996" green="0.2784313725" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Laa-eH-Qyz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
+                    <state key="normal" title="Done">
+                        <color key="titleColor" name="White"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="22"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="doneButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="H7E-jz-21t"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vlO-fP-ctV" firstAttribute="top" secondItem="pcY-Ml-F1W" secondAttribute="bottom" constant="32" id="2YS-iL-xXa"/>
+                <constraint firstItem="X2A-kr-47B" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="3EL-rD-Q0E"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="aOh-MY-w9D" secondAttribute="trailing" constant="24" id="3yb-k4-8p1"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="X2A-kr-47B" secondAttribute="trailing" constant="24" id="5Xq-8w-JGk"/>
+                <constraint firstItem="Fvs-sS-c2T" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5Z1-JN-bPf"/>
+                <constraint firstItem="aOh-MY-w9D" firstAttribute="top" secondItem="vlO-fP-ctV" secondAttribute="bottom" constant="8" id="6sh-1M-8kD"/>
+                <constraint firstItem="X2A-kr-47B" firstAttribute="top" secondItem="Phd-WB-pU3" secondAttribute="bottom" constant="40" id="91d-iZ-3gA"/>
+                <constraint firstItem="aOh-MY-w9D" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="56" id="Bh2-tu-GrN"/>
+                <constraint firstItem="pcY-Ml-F1W" firstAttribute="top" secondItem="Fvs-sS-c2T" secondAttribute="bottom" constant="32" id="Dng-LU-dHN"/>
+                <constraint firstItem="Phd-WB-pU3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="Hh3-P0-K9Y"/>
+                <constraint firstItem="pcY-Ml-F1W" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="26" id="IHf-u8-jVp"/>
+                <constraint firstItem="adx-HZ-j4b" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="Qu1-iz-Zz7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Phd-WB-pU3" secondAttribute="trailing" constant="24" id="Tbh-K0-0uA"/>
+                <constraint firstItem="Phd-WB-pU3" firstAttribute="top" secondItem="adx-HZ-j4b" secondAttribute="bottom" constant="24" id="XOe-UH-jPx"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="adx-HZ-j4b" secondAttribute="trailing" constant="24" id="k2c-pf-V7a"/>
+                <constraint firstItem="vlO-fP-ctV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="26" id="lL6-X5-tm9"/>
+                <constraint firstItem="Fvs-sS-c2T" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="24" id="rWQ-85-3Pf"/>
+                <constraint firstItem="adx-HZ-j4b" firstAttribute="top" secondItem="aOh-MY-w9D" secondAttribute="bottom" constant="24" id="yTe-AK-Frz"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="limit10Button" destination="GZ2-H7-Kgr" id="7Yw-Qf-sa8"/>
+                <outlet property="limit3Button" destination="ilE-Dd-9RR" id="BE6-KM-Yyo"/>
+                <outlet property="limit5Button" destination="K1c-K3-QMo" id="xB5-GY-zzq"/>
+                <outlet property="limit7Button" destination="VtQ-FJ-lbW" id="nH7-oG-C13"/>
+                <outlet property="limitAmountButton" destination="vlO-fP-ctV" id="ulz-xj-FUU"/>
+                <outlet property="limitAmountLabel" destination="adx-HZ-j4b" id="cRb-jl-gYB"/>
+                <outlet property="noLimitButton" destination="pcY-Ml-F1W" id="Xxr-dq-Y3G"/>
+            </connections>
+            <point key="canvasLocation" x="31.884057971014496" y="39.508928571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="edit_profile_radio_fill" width="24" height="24"/>
+        <image name="edit_profile_radio_not_fill" width="24" height="24"/>
+        <namedColor name="Black">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TheamBlue">
+            <color red="0.078000001609325409" green="0.3529999852180481" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray82">
+            <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayf2">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

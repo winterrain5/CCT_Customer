@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MadamPartumDetailFooterView" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What Our Customers Are Saying" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqL-aW-O0o">
+                    <rect key="frame" x="24" y="60" width="366" height="98.5"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="36"/>
+                    <color key="textColor" red="0.43529411759999997" green="0.1176470588" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                            <real key="value" value="44"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjf-jg-QuY">
+                    <rect key="frame" x="0.0" y="182.5" width="414" height="633.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ULT-QL-srz">
+                    <rect key="frame" x="146" y="836" width="122" height="28"/>
+                </pageControl>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="0.98039215690000003" green="0.95294117649999999" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="cjf-jg-QuY" firstAttribute="top" secondItem="dqL-aW-O0o" secondAttribute="bottom" constant="24" id="Fix-7v-sPo"/>
+                <constraint firstItem="cjf-jg-QuY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="IA5-9t-w0B"/>
+                <constraint firstItem="dqL-aW-O0o" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="OIw-BG-cfZ"/>
+                <constraint firstItem="ULT-QL-srz" firstAttribute="top" secondItem="cjf-jg-QuY" secondAttribute="bottom" constant="20" id="SP5-yN-F1x"/>
+                <constraint firstAttribute="bottom" secondItem="ULT-QL-srz" secondAttribute="bottom" constant="32" id="XhA-X0-1VH"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dqL-aW-O0o" secondAttribute="trailing" constant="24" id="hRq-6X-Gws"/>
+                <constraint firstItem="ULT-QL-srz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="mHm-6s-r5q"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cjf-jg-QuY" secondAttribute="trailing" id="pNZ-AY-Tr3"/>
+                <constraint firstItem="dqL-aW-O0o" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="wpg-nu-TOr"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="clvContainer" destination="cjf-jg-QuY" id="bVf-gB-jFD"/>
+                <outlet property="pageControl" destination="ULT-QL-srz" id="1R5-PE-N5O"/>
+            </connections>
+            <point key="canvasLocation" x="62" y="62"/>
+        </view>
+    </objects>
+</document>

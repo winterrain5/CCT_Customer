@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="KGk-i7-Jjw" customClass="WalletPaymentMethodCell" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="358" height="72"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="358" height="72"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet_paymethod_check" translatesAutoresizingMaskIntoConstraints="NO" id="lvD-wq-pBm">
+                        <rect key="frame" x="16" y="24" width="24" height="24"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4E-H2-sjk">
+                        <rect key="frame" x="86.5" y="25" width="41" height="22"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                        <color key="textColor" name="Black333"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transaction_payment_other" translatesAutoresizingMaskIntoConstraints="NO" id="8O1-7k-XuN">
+                        <rect key="frame" x="52" y="24" width="24.5" height="24"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6S-Ow-fwE">
+                        <rect key="frame" x="302" y="0.0" width="40" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="W48-P9-f7t"/>
+                        </constraints>
+                        <state key="normal" image="wallet_paymethod_delete"/>
+                        <connections>
+                            <action selector="deleteAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eEz-BF-HvA"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="lvD-wq-pBm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Hd6-Sc-OTn"/>
+                    <constraint firstItem="q4E-H2-sjk" firstAttribute="leading" secondItem="8O1-7k-XuN" secondAttribute="trailing" constant="10" id="NzM-uN-PC4"/>
+                    <constraint firstItem="lvD-wq-pBm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="T94-92-gnA"/>
+                    <constraint firstAttribute="trailing" secondItem="J6S-Ow-fwE" secondAttribute="trailing" constant="16" id="U0k-12-7mx"/>
+                    <constraint firstAttribute="bottom" secondItem="J6S-Ow-fwE" secondAttribute="bottom" id="gbx-wD-PwF"/>
+                    <constraint firstItem="8O1-7k-XuN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="k0E-Zp-4vW"/>
+                    <constraint firstItem="q4E-H2-sjk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kNM-YQ-6dR"/>
+                    <constraint firstItem="8O1-7k-XuN" firstAttribute="leading" secondItem="lvD-wq-pBm" secondAttribute="trailing" constant="12" id="mL3-jY-Uvy"/>
+                    <constraint firstItem="J6S-Ow-fwE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="nhW-yh-sXB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="checkImageView" destination="lvD-wq-pBm" id="DrK-EK-yQm"/>
+                <outlet property="nameLabel" destination="q4E-H2-sjk" id="hKN-og-yPo"/>
+            </connections>
+            <point key="canvasLocation" x="491.304347826087" y="95.758928571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="transaction_payment_other" width="24.5" height="24"/>
+        <image name="wallet_paymethod_check" width="24" height="24"/>
+        <image name="wallet_paymethod_delete" width="24" height="24"/>
+        <namedColor name="Black333">
+            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

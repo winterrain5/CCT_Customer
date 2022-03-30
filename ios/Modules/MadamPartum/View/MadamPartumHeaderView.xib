@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MadamPartumHeaderView" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="354"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yof-5d-92E">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="257"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qsI-Kk-HrJ" customClass="CHIPageControlJaloro" customModule="CHIPageControl">
+                            <rect key="frame" x="24" y="223" width="366" height="4"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="4" id="NSV-zT-23Z"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="numberOfPages">
+                                    <integer key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="currentPageTintColor">
+                                    <color key="value" name="TheamPink"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                    <real key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="inactiveTransparency">
+                                    <real key="value" value="0.20000000000000001"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="elementWidth">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="elementHeight">
+                                    <real key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" name="Placeholder"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="qsI-Kk-HrJ" secondAttribute="trailing" constant="24" id="1Je-vE-F5X"/>
+                        <constraint firstAttribute="bottom" secondItem="qsI-Kk-HrJ" secondAttribute="bottom" constant="30" id="26A-7S-w91"/>
+                        <constraint firstItem="qsI-Kk-HrJ" firstAttribute="leading" secondItem="Yof-5d-92E" secondAttribute="leading" constant="24" id="3Ac-bB-i2M"/>
+                        <constraint firstAttribute="height" constant="257" id="XB1-dZ-jbM"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ln0-7l-3Qn">
+                    <rect key="frame" x="24" y="290" width="366" height="44"/>
+                    <color key="backgroundColor" name="TheamPink"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="HHH-wA-Uwh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
+                    <state key="normal" title="+ Book Appointment">
+                        <color key="titleColor" name="White"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="22"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="bookAppointmentButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="VvD-wi-td3"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="ln0-7l-3Qn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="485-Px-kwp"/>
+                <constraint firstItem="ln0-7l-3Qn" firstAttribute="top" secondItem="Yof-5d-92E" secondAttribute="bottom" constant="33" id="FE7-Ta-sNP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Yof-5d-92E" secondAttribute="trailing" id="Sbm-cs-UAG"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ln0-7l-3Qn" secondAttribute="trailing" constant="24" id="etp-Vo-B3P"/>
+                <constraint firstItem="Yof-5d-92E" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mB4-wl-FU4"/>
+                <constraint firstItem="Yof-5d-92E" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="mOs-JO-UWC"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bannerContentView" destination="Yof-5d-92E" id="GVw-M4-YH6"/>
+                <outlet property="pageControl" destination="qsI-Kk-HrJ" id="uHB-AS-DTw"/>
+            </connections>
+            <point key="canvasLocation" x="52" y="-170"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="Placeholder">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TheamPink">
+            <color red="0.93300002813339233" green="0.56099998950958252" blue="0.48199999332427979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

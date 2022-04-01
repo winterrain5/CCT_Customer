@@ -32,6 +32,7 @@ class APIHost:NSObject {
   var URL_API_UUID:String = "http://cctuat.performsoftware.biz/index.php?r=user-manager/change-find-pwd-status&amp;uuid="
 
 //
+
 //  var URL_API_HOST:String = "http://10.1.3.90:8081/tisp/index.php?r="
 //  var URL_API_IMAGE:String = "http://10.1.3.90:8081/tcm"
 //  var URL_BLOG_SHARE:String = "http://10.1.3.90:8081/tcm/index.php?r=blog-view/index&id="

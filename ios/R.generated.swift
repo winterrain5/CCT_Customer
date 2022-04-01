@@ -379,19 +379,27 @@ struct R: Rswift.Validatable {
 
   /// This `R.entitlements` struct is generated, and contains static references to 1 properties.
   struct entitlements {
-    static let apsEnvironment = infoPlistString(path: [], key: "aps-environment") ?? "production"
+    static let apsEnvironment = infoPlistString(path: [], key: "aps-environment") ?? "development"
 
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 1 files.
+  /// This `R.file` struct is generated, and contains static references to 2 files.
   struct file {
-    /// Resource file `bundle`.
-    static let bundle = Rswift.FileResource(bundle: R.hostingBundle, name: "bundle", pathExtension: "")
+    /// Resource file `assets`.
+    static let assets = Rswift.FileResource(bundle: R.hostingBundle, name: "assets", pathExtension: "")
+    /// Resource file `main.jsbundle`.
+    static let mainJsbundle = Rswift.FileResource(bundle: R.hostingBundle, name: "main", pathExtension: "jsbundle")
 
-    /// `bundle.url(forResource: "bundle", withExtension: "")`
-    static func bundle(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.bundle
+    /// `bundle.url(forResource: "assets", withExtension: "")`
+    static func assets(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.assets
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "main", withExtension: "jsbundle")`
+    static func mainJsbundle(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.mainJsbundle
       return fileResource.bundle.url(forResource: fileResource)
     }
 

@@ -195,7 +195,6 @@ export default class CardDetailsActivity extends Component {
               userBean:json.data,
             });
 
-            DeviceStorage.save('UserBean',json.data);
         }
 
     });

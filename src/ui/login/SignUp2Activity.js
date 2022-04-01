@@ -159,56 +159,6 @@ setSecondInterval(){
 
 
 
-onChangeText(code,text){
-
-    if (text != undefined && text.length == 1) {
-      // 写
-      if (code == 'code1') {
-          this.refs['code2'].focus();
-      }else if (code == 'code2') {
-          this.refs['code3'].focus();
-      }else if (code == 'code3') {
-          this.refs['code4'].focus();
-      }
-    }else {
-      // 删
-      if (code == 'code2') {
-          this.refs['code1'].focus();
-      }else if (code == 'code3') {
-          this.refs['code2'].focus();
-      }else if (code == 'code4') {
-          this.refs['code3'].focus();
-      }
-    }
-
-      var new_code;
-
-      if (code == 'code1') {
-         
-         new_code = text + this.state.code2 + this.state.code3 + this.state.code4 ; 
-      }else if (code == 'code2') {
-         
-         new_code = this.state.code1 + text + this.state.code3 + this.state.code4 ; 
-      }else if (code == 'code3') {
-
-        new_code = this.state.code1 + this.state.code2 + text + this.state.code4 ; 
-          
-      }else if (code == 'code4') {
-
-        new_code = this.state.code1 + this.state.code2 + this.state.code3 + text ; 
-      }
-
-
-
-    if (new_code == this.state.code || new_code == '1024') {
-
-        this.toSignUp2_1Activity();
-
-    }
-
-
-} 
-
 
 toSignUp2_1Activity(){
 
@@ -585,14 +535,16 @@ sendSmsForMobile(){
             code4:str_number,
           });
 
-          // var  new_code = this.state.code1 + this.state.code2 + this.state.code3 + str_number ; 
+          var  new_code = this.state.code1 + this.state.code2 + this.state.code3 + str_number ; 
 
 
-          // if (new_code == this.state.code || new_code == '1024') {
+          if (new_code == this.state.code || new_code == '1024') {
 
-          //    this.toSignUp2_1Activity();
+             this.toSignUp2_1Activity();
 
-          // }
+          }else {
+            toastShort('Verification code error');
+          }
 
 
         }
@@ -601,29 +553,7 @@ sendSmsForMobile(){
   }
 
 
-  clickNext(){
-
-    if (this.state.code1 &&  this.state.code2 && this.state.code3 && this.state.code4 ) {
-
-      var  new_code = this.state.code1 + this.state.code2 + this.state.code3 + this.state.code4  ; 
-
-       if (new_code == this.state.code || new_code == '1024') {
-
-             this.toSignUp2_1Activity();
-
-      }else {
-
-         toastShort('Verification code error');
-      }
-
-
-    }
-
-
-  }
-
-
-
+  
 
 render() {
 
@@ -787,35 +717,12 @@ render() {
 
                           </TouchableOpacity>
 
-                        
 
 
                       </View>
 
                       
-
                   </View>
-
-
-
-                  <View style = {styles.next_view}>
-
-                    <TouchableOpacity style = {[styles.next_layout,{backgroundColor:(this.state.code1 &&  this.state.code2 && this.state.code3 && this.state.code4) ? '#C44729' : '#BDBDBD'}]}  
-                        activeOpacity = {(this.state.code1 &&  this.state.code2 && this.state.code3 && this.state.code4) ? 0.8 : 1}
-                        onPress={this.clickNext.bind(this)}>
-
-
-                      <Text style = {styles.next_text}>Confirm</Text>
-
-                    </TouchableOpacity>
-
-
-
-                  </View>
-
-
-
-
 
 
                </View>

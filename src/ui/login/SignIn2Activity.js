@@ -506,7 +506,18 @@ export default class SignIn2Activity extends Component {
           this.setState({
             code4:str_number,
           });
-          return;
+          
+          var  new_code = this.state.code1 + this.state.code2 + this.state.code3 + str_number ; 
+
+
+          if (new_code == this.state.code || new_code == '1024') {
+
+             this.loginUserDate();
+
+          }else {
+            toastShort('Verification code error');
+          }
+
         }
 
 
@@ -515,10 +526,6 @@ export default class SignIn2Activity extends Component {
 
 
   }
-
-
-
-
 
 
   // 通过user_id 获取 client_id
@@ -753,6 +760,15 @@ sendSmsForMobile(){
    this.showOTPPopup();
  } 
 
+ clickTerms(){
+  NativeModules.NativeBridge.showTermsConditionsView();
+}
+
+clickPrivacyPolicy() {
+  NativeModules.NativeBridge.showPrivacyPolicyView();
+}
+
+
 
 
 render() {
@@ -885,20 +901,53 @@ render() {
 
 
 
-                  <View style = {styles.next_view}>
-
-                    <TouchableOpacity style = {[styles.next_layout,{backgroundColor:(this.state.code1 &&  this.state.code2 && this.state.code3 && this.state.code4) ? '#C44729' : '#BDBDBD'}]}  
-                        activeOpacity = {(this.state.code1 &&  this.state.code2 && this.state.code3 && this.state.code4) ? 0.8 : 1}
-                        onPress={this.clickNext.bind(this)}>
+                  <View style = {[styles.bg,{backgroundColor:'#FFFFFF'}]}/>
 
 
-                      <Text style = {styles.next_text}>Confirm</Text>
+                   <View style = {styles.view_foot}>
 
-                    </TouchableOpacity>
+                      <Text style = {styles.text_foot_content}>By registering with us, you are agreeing to our</Text>
+
+
+                      <TouchableOpacity   
+                          style = {styles.toach_title}
+                          activeOpacity = {0.8}
+                          onPress={this.clickTerms.bind(this)}>
+
+
+                          <Text style = {styles.text_foot_title}>Terms of Service and conditions</Text>
 
 
 
+                      </TouchableOpacity>
+
+
+
+                      <View style = {styles.view_foot2}>
+
+                          <Text style = {styles.text_foot_content}>View our </Text>
+
+
+
+                           <TouchableOpacity   
+                          
+                              activeOpacity = {0.8}
+                              onPress={this.clickPrivacyPolicy.bind(this)}>
+
+
+                            <Text style = {styles.text_foot_title}>Privacy Policy</Text>
+
+
+
+                          </TouchableOpacity>
+
+
+
+                      </View>
+
+                      
                   </View>
+
 
 
                   

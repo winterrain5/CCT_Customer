@@ -210,7 +210,8 @@ class SettingViewController: BaseTableController {
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    UITableView.automaticDimension
+    if indexPath.row == 0 { return 0 }
+    return UITableView.automaticDimension
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

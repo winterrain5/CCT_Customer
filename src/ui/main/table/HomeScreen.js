@@ -701,7 +701,7 @@ export default class HomeScreen extends Component {
 
 
        // 所有博客
-      // this.getAllBlogs(user_bean);
+      this.getAllBlogs(user_bean);
 
 
     });

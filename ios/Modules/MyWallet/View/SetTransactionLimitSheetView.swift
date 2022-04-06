@@ -108,10 +108,15 @@ class SetTransactionLimitSheetView: UIView {
     isNoLimit = sender.tag == 0
     
     limitTypeSelectButton = sender
+   
+    if sender.isSelected {
+      limitAmoutButtonAction(limit3Button)
+    }
+    
   }
   @IBAction func doneButton(_ sender: LoadingButton) {
     
-    let params = SOAPParams(action: .Voucher, path: .setCardFriendLimit)
+    let params = SOAPParams(action: .Voucher, path: API.setCardFriendLimit)
     params.set(key: "id", value: cardUserModel.id ?? "")
     var transLimit:Int = -1
     if !isNoLimit {

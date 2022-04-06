@@ -67,7 +67,7 @@ class ShopFilterContentView: UIView,TTGTextTagCollectionViewDelegate,RangeSlider
     params.set(key: "showProCount", value: "false")
     
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decode([ProductCategoryModel].self, from: data) {
+      if let models = DecodeManager.decodeByCodable([ProductCategoryModel].self, from: data) {
         self.productCategorys = models
         models.forEach { model in
           self.addTags(model.name ?? "", self.categoryTagView)

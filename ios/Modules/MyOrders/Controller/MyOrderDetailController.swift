@@ -87,7 +87,7 @@ class MyOrderDetailController: BaseViewController {
       params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
       
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decode(SystemConfigModel.self, from: data) {
+        if let model = DecodeManager.decodeByCodable(SystemConfigModel.self, from: data) {
           resolver.fulfill(model.leave_review_points?.string ?? "")
         }else {
           resolver.reject(APIError.requestError(code: -1, message: "Decode SystemConfigModel Failed"))
@@ -111,7 +111,7 @@ class MyOrderDetailController: BaseViewController {
       params.set(key: "orderId", value: orderModel.id ?? "")
       
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decode(MyOrderDetailModel.self, from: data) {
+        if let model = DecodeManager.decodeByHandJSON(MyOrderDetailModel.self, from: data) {
           resolver.fulfill(model)
         }else {
           resolver.reject(APIError.requestError(code: -1, message: "Decode MyOrderDetailModel Failed"))

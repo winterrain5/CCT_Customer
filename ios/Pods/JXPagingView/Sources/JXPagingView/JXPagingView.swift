@@ -121,9 +121,9 @@ open class JXPagingView: UIView {
         if #available(iOS 11.0, *) {
             mainTableView.contentInsetAdjustmentBehavior = .never
         }
-//        if #available(iOS 15.0, *) {
-//            mainTableView.sectionHeaderTopPadding = 0
-//        }
+        if #available(iOS 15.0, *) {
+            mainTableView.sectionHeaderTopPadding = 0
+        }
         addSubview(mainTableView)
     }
 

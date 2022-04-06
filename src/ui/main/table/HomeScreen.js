@@ -701,7 +701,7 @@ export default class HomeScreen extends Component {
 
 
        // 所有博客
-      this.getAllBlogs(user_bean);
+      // this.getAllBlogs(user_bean);
 
 
     });
@@ -923,9 +923,9 @@ export default class HomeScreen extends Component {
     var temporary = this;
 
     WebserviceUtil.getQueryDataResponse('blog','getAllBlogsResponse',data, function(json) {
-
+        
         if (json && json.success == 1 && json.data) {
-            
+          console.error(json.data);
             var blogs = [];
             var blog_chien = [];
 

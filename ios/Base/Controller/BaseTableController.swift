@@ -59,6 +59,10 @@ class BaseTableController: BaseViewController,DataLoadable {
     //
     tableView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: kBottomsafeAreaMargin + 20, right: 0)
     
+    if #available(iOS 15.0, *) {
+      tableView?.sectionHeaderTopPadding = 0
+    }
+    
     view.addSubview(tableView!)
     
     tableView?.contentInsetAdjustmentBehavior = .never

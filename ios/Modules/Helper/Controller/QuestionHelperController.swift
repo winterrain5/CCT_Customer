@@ -52,7 +52,7 @@ class QuestionHelperController: BaseTableController {
     let params = SOAPParams(action: .HelpManager, path: .getAllSubjects)
     params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
     NetworkManager().request(params: params) { data in
-      guard let models = DecodeManager.decode([QuestionSubjectModel].self, from: data) else {
+      guard let models = DecodeManager.decodeByCodable([QuestionSubjectModel].self, from: data) else {
         return
       }
     
@@ -98,7 +98,7 @@ class QuestionHelperController: BaseTableController {
   }
   
   func updateData(_ data:Data) {
-    guard let models = DecodeManager.decode([QuestionAnswerModel].self, from: data) else {
+    guard let models = DecodeManager.decodeByCodable([QuestionAnswerModel].self, from: data) else {
       return
     }
     models.forEach { model in

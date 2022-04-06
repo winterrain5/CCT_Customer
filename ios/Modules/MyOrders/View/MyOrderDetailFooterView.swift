@@ -43,7 +43,7 @@ class MyOrderDetailFooterView: UIView {
         
         discount += (item.new_recharge_discount?.float() ?? 0)
         
-        discount += (item.reward_discount?.float() ?? 0)
+        discount += (item.reward_discount?.float ?? 0)
         
         let paid_amount = item.paid_amount?.float() ?? 0
         let rate = item.rate?.float() ?? 0

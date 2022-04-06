@@ -136,7 +136,7 @@ class SettingViewController: BaseTableController {
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       
       NetworkManager().request(params: params) { data in
-        guard let model = DecodeManager.decode(SettingContentModel.self, from: data) else {
+        guard let model = DecodeManager.decodeByCodable(SettingContentModel.self, from: data) else {
           resolver.reject(APIError.requestError(code: -1, message: "decode SettingContentModel failed"))
           return
         }
@@ -151,7 +151,7 @@ class SettingViewController: BaseTableController {
     Promise.init { resolver in
       let params = SOAPParams(action: .Blog, path: API.getBlogCategories)
       NetworkManager().request(params: params) { data in
-        guard let models = DecodeManager.decode([BlogCategoryModel].self, from: data) else {
+        guard let models = DecodeManager.decodeByCodable([BlogCategoryModel].self, from: data) else {
           resolver.reject(APIError.requestError(code: -1, message: "decode BlogCategoryModel failed"))
           return
         }

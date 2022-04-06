@@ -59,7 +59,7 @@ class WalletPaymentMethodController: BaseTableController {
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decode([WalletPaymentMethodModel].self, from: data),let methods = models.first?.method_lines {
+      if let models = DecodeManager.decodeByCodable([WalletPaymentMethodModel].self, from: data),let methods = models.first?.method_lines {
         self.cardModel = models.first
         
         if methods.count != 0 {

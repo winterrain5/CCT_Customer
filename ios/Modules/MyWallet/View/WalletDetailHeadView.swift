@@ -14,15 +14,26 @@ class WalletDetailHeadView: UIView {
   @IBOutlet weak var privilegesLabel: UILabel!
   let card = WalletCardView.loadViewFromNib()
   var updateHeightHandler:((CGFloat)->())?
-  var models:[CardPrivilegesModel] = [] {
+  var model:CardDiscountDetailModel! {
     didSet {
       let str = NSMutableAttributedString(string: "")
-      models.forEach { model in
-        let attr = NSMutableAttributedString(string: "· \(model.discount_percent ?? "")% off \(model.sale_category_title ?? "")\n")
-        attr.addAttribute(.font, value: UIFont(.AvenirNextDemiBold,16), range: NSRange(location: 0, length: 1))
-        attr.addAttribute(.font, value: UIFont(.AvenirNextRegular,14), range: NSRange(location: 1, length: attr.string.count - 1))
-        str.append(attr)
-      }
+      
+      let attr1 = NSMutableAttributedString(string: "· \(model.r_discount1 ?? "")\n")
+      attr1.addAttribute(.font, value: UIFont(.AvenirNextDemiBold,16), range: NSRange(location: 0, length: 1))
+      attr1.addAttribute(.font, value: UIFont(.AvenirNextRegular,14), range: NSRange(location: 1, length: attr1.string.count - 1))
+      str.append(attr1)
+      
+      let attr2 = NSMutableAttributedString(string: "· \(model.r_discount2 ?? "")\n")
+      attr2.addAttribute(.font, value: UIFont(.AvenirNextDemiBold,16), range: NSRange(location: 0, length: 1))
+      attr2.addAttribute(.font, value: UIFont(.AvenirNextRegular,14), range: NSRange(location: 1, length: attr2.string.count - 1))
+      str.append(attr2)
+      
+      let attr3 = NSMutableAttributedString(string: "· \(model.r_discount3 ?? "")\n")
+      attr3.addAttribute(.font, value: UIFont(.AvenirNextDemiBold,16), range: NSRange(location: 0, length: 1))
+      attr3.addAttribute(.font, value: UIFont(.AvenirNextRegular,14), range: NSRange(location: 1, length: attr3.string.count - 1))
+      
+      str.append(attr3)
+      
       privilegesLabel.attributedText = str
       updateHeightHandler?(privilegesLabel.requiredHeight + 295)
       hideSkeleton()

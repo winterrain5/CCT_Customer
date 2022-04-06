@@ -29,7 +29,7 @@ class TransactionDetailFooterView: UIView {
         
         discount += (item.new_recharge_discount?.float() ?? 0)
         
-        discount += (item.reward_discount?.float() ?? 0)
+        discount += (item.reward_discount?.float ?? 0)
         
         let paid_amount = item.paid_amount?.float() ?? 0
         let rate = item.rate?.float() ?? 0
@@ -204,7 +204,7 @@ class TransactionDetailFooterPaymentMethodView: UIView {
     button.titleForNormal = "MasterCard 1234 - $48.00"
     button.titleLabel?.font = UIFont(.AvenirNextRegular,16)
     button.titleColorForNormal = R.color.black333()
-    button.imageForNormal = R.image.transaction_payment_other()
+    button.imageForNormal = R.image.transaction_payment_master()
   }
   var model:(title:String,money:String)? {
     didSet {

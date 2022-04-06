@@ -17,3 +17,13 @@ class CardPrivilegesModel: Codable {
   var discount_percent: String?
   
 }
+
+class CardDiscountDetailModel: Codable {
+  var r_discount2: String?
+  var id: Int?
+  var level: Int?
+  var r_discount1: String?
+  var is_delete: String?
+  var r_discount3: String?
+  var create_time: String?
+}

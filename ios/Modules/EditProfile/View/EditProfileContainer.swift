@@ -76,7 +76,7 @@ class EditProfileContainer: UIView,UITextFieldDelegate {
     let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
-      if let model = DecodeManager.decode(UserModel.self, from: data) {
+      if let model = DecodeManager.decodeByCodable(UserModel.self, from: data) {
         self.userModel = model
         Defaults.shared.set(model, for: .userModel)
       }

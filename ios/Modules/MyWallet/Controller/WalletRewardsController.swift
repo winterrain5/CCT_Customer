@@ -16,6 +16,11 @@ class WalletRewardsController: WalletBaseController {
   override func viewDidLoad() {
       super.viewDidLoad()
 
+ 
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     getClienGifts()
     getClientValidRewards()
   }
@@ -27,7 +32,7 @@ class WalletRewardsController: WalletBaseController {
     params.set(key: "isDiscount", value: "1")
     params.set(key: "exceed", value: "0")
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decode([WalletCouponsModel].self, from: data) {
+      if let models = DecodeManager.decodeByCodable([WalletCouponsModel].self, from: data) {
         self.coupons = models
         self.tableView?.reloadData()
       }
@@ -42,7 +47,7 @@ class WalletRewardsController: WalletBaseController {
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "isValid", value: "1")
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decode([WalletVouchersModel].self, from: data) {
+      if let models = DecodeManager.decodeByCodable([WalletVouchersModel].self, from: data) {
         self.vouchers = models
         self.tableView?.reloadData()
       }
@@ -75,7 +80,6 @@ class WalletRewardsController: WalletBaseController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if indexPath.row == 0 {
       let cell = tableView.dequeueReusableCell(withClass: WalletVouchersCell.self)
-      
       cell.vouchers = vouchers
       return cell
     }else {

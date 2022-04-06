@@ -35,7 +35,7 @@ class FillInEnquiryFormContentView: UIView,UITextFieldDelegate {
       let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decode(UserModel.self, from: data) {
+        if let model = DecodeManager.decodeByCodable(UserModel.self, from: data) {
           Defaults.shared.set(model, for: .userModel)
           self.nameTf.text = "\(model.first_name ?? "") \(model.last_name ?? "")"
           self.mailTf.text = model.email
@@ -126,7 +126,7 @@ class FillInEnquiryFormContentView: UIView,UITextFieldDelegate {
       params.set(key: "columns", value: "receive_specific_email")
       
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decode(SystemConfigModel.self, from: data) {
+        if let model = DecodeManager.decodeByCodable(SystemConfigModel.self, from: data) {
           resolver.fulfill(model.receive_specific_email ?? "")
         }else {
           resolver.reject(APIError.requestError(code: -1, message: "Decode SystemConfigModel Failed"))

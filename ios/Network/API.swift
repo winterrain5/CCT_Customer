@@ -133,12 +133,13 @@ enum API:String {
   case getClientValidRewards = "getClientValidRewards"
   
   case getNewCardDiscountsByLevel = "getNewCardDiscountsByLevel"
+  case getCardDiscountDetails = "getCardDiscountDetails"
   /// 获取充值卡的所有的好友
   case getCardFriends = "getCardFriends"
   /// 朋友的卡
   case getFriendsCard = "getFriendsCard"
   /// 获取朋友使用充值卡消费的记录
-  case getSalesByFriendUsedCard = "getSalesByFriendUsedCard"
+  case getFriendUsedCard = "getFriendUsedCard"
   /// 删除充值卡可使用的朋友
   case deleteCardFriend = "deleteCardFriend"
   /// 设置充值好友的限额
@@ -173,6 +174,13 @@ enum API:String {
   case newCreateAppointment = "newCreateAppointment";
   // 朋友使用推荐
   case friendUseReferral = "friendUseReferral";
+  // 保存用户支付密码
+  case saveTpd = "saveTpd"
+  // 获取用户支付密码
+  case getClientPayPd = "getClientPayPd"
+  
+  
+  
   // 物品购物车推送
   case itemsInCart = "itemsInCart";
   // 
@@ -189,6 +197,7 @@ enum API:String {
   case upgradedTierLevel = "upgradedTierLevel";
   //充值推送
   case topupNote = "topupNote";
+  
 }
 
 enum Action:String {
@@ -217,4 +226,5 @@ enum Action:String {
   case PaymentMethod = "payment-method"
   case Employee = "employee"
   case StripePayment = "stripe-payment"
+  case CardDiscountContent = "card-discount-content"
 }

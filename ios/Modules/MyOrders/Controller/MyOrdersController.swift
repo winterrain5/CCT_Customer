@@ -44,7 +44,7 @@ class MyOrdersController: BaseTableController {
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decode([MyOrderModel].self, from: data) {
+      if let models = DecodeManager.decodeByCodable([MyOrderModel].self, from: data) {
         self.dataArray = models
       }
       if self.dataArray.count == 0 {

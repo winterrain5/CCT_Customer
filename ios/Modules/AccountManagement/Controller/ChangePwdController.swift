@@ -45,7 +45,7 @@ class ChangePwdController: BaseViewController {
     let parmas = SOAPParams(action: .Client, path: .getTClientPartInfo)
     parmas.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: parmas) { data in
-      if let model = DecodeManager.decode(UserModel.self, from: data) {
+      if let model = DecodeManager.decodeByCodable(UserModel.self, from: data) {
         self.receiveEmail = model.email ?? ""
       }
     } errorHandler: { e in
@@ -144,7 +144,7 @@ class ChangePwdController: BaseViewController {
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       params.set(key: "uuid", value: self.uuid)
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decode(FindPwdStatusModel.self, from: data) {
+        if let model = DecodeManager.decodeByCodable(FindPwdStatusModel.self, from: data) {
           if model.status == "2" {
             resolver.fulfill_()
           }else {
@@ -165,7 +165,7 @@ class ChangePwdController: BaseViewController {
       let params = SOAPParams(action: .SystemConfig, path: .getTSystemConfig)
       params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decode(SystemConfigModel.self, from: data) {
+        if let model = DecodeManager.decodeByCodable(SystemConfigModel.self, from: data) {
           resolver.fulfill(model.send_specific_email ?? "")
         }else {
           resolver.reject(APIError.requestError(code: -1, message: "Decode SystemConfigModel Failed"))

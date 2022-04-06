@@ -42,7 +42,7 @@ class WalletDetailController: BaseTableController {
     let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
-      if let model = DecodeManager.decode(UserModel.self, from: data) {
+      if let model = DecodeManager.decodeByCodable(UserModel.self, from: data) {
         
         self.headerView.card.model = model
         self.getNewCardDiscountsByLevel(model.new_recharge_card_level ?? "0")
@@ -66,13 +66,15 @@ class WalletDetailController: BaseTableController {
   }
   
   func getNewCardDiscountsByLevel(_ level:String) {
-    let params = SOAPParams(action: .VipDefinition, path: .getNewCardDiscountsByLevel)
-    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
-    params.set(key: "cardLevel", value: level)
+    let l = (level == "0") ? "1" : level
+   
+    let params = SOAPParams(action: .CardDiscountContent, path: .getCardDiscountDetails)
+
+    params.set(key: "levelId", value: l)
     
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decode([CardPrivilegesModel].self, from: data) {
-        self.headerView.models = models
+      if let model = DecodeManager.decodeByCodable(CardDiscountDetailModel.self, from: data) {
+        self.headerView.model = model
       }
     } errorHandler: { e in
       
@@ -86,7 +88,7 @@ class WalletDetailController: BaseTableController {
       let params = SOAPParams(action: .Voucher, path: .getFriendsCard)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       NetworkManager().request(params: params) { data in
-        if let models = DecodeManager.decode([CardOwnerModel].self, from: data) {
+        if let models = DecodeManager.decodeByCodable([CardOwnerModel].self, from: data) {
           models.forEach({ $0.isFriendCard = true })
           resolver.fulfill(models)
         }else {
@@ -104,7 +106,7 @@ class WalletDetailController: BaseTableController {
       let params = SOAPParams(action: .Voucher, path: .getCardFriends)
       params.set(key: "ownerId", value: Defaults.shared.get(for: .clientId) ?? "")
       NetworkManager().request(params: params) { data in
-        if let models = DecodeManager.decode([CardOwnerModel].self, from: data) {
+        if let models = DecodeManager.decodeByCodable([CardOwnerModel].self, from: data) {
           models.forEach({ $0.isFriendCard = false })
           resolver.fulfill(models)
         }else {
@@ -157,6 +159,16 @@ class WalletDetailController: BaseTableController {
       let model = models?[indexPath.row]
       if model?.isFriendCard ?? false {
         cell.type = .Owner
+        cell.removeHandler = { [weak self] model in
+          AlertView.show(title: "", message: "Are you sure want to remove this item", leftButtonTitle: "Cancel", rightButtonTitle: "Yes", messageAlignment: .center) {
+            
+          } rightHandler: {
+            self?.deleteCardFriend(model.id ?? "",model.card_owner_id ?? "")
+          } dismissHandler: {
+            
+          }
+
+        }
       }else {
         cell.type = .User
       }
@@ -164,6 +176,39 @@ class WalletDetailController: BaseTableController {
     }
     
     return cell
+  }
+  
+  func deleteCardFriend(_ id:String,_ friendId:String) {
+    Toast.showLoading()
+    
+    let params = SOAPParams(action: .Voucher, path: .deleteCardFriend)
+    params.set(key: "id", value: id)
+    
+    let logData = SOAPDictionary()
+    logData.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+    params.set(key: "logData", value: logData.result,type: .map(1))
+    
+    NetworkManager().request(params: params) { data in
+      self.deleteUserFromWallet(friendId)
+    } errorHandler: { e in
+      Toast.showError(withStatus: "Removed Failed")
+    }
+
+    
+  }
+  
+  func deleteUserFromWallet(_ friendId:String) {
+    let params = SOAPParams(action: .Notifications, path: .deleteUserFromWallet)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "friendId", value: friendId)
+    
+    NetworkManager().request(params: params) { data in
+      self.loadNewData()
+      Toast.showSuccess(withStatus: "Removed Successfully")
+    } errorHandler: { e in
+      Toast.showSuccess(withStatus: "Removed Successfully")
+    }
+
   }
   
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

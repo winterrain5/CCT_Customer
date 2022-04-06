@@ -24,7 +24,7 @@ class ReferFriendContainer: UIView {
       let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decode(UserModel.self, from: data) {
+        if let model = DecodeManager.decodeByCodable(UserModel.self, from: data) {
           self.referCodeLabel.text = model.referral_code
           self.referCode = model.referral_code ?? ""
         }else {

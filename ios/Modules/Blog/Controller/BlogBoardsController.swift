@@ -37,7 +37,7 @@ class BlogBoardsController: BaseCollectionController,UICollectionViewDelegateFlo
     let params = SOAPParams(action: .Blog, path: API.getClientBoards)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
-      guard let models = DecodeManager.decode([BlogBoardModel].self, from: data) else {
+      guard let models = DecodeManager.decodeByCodable([BlogBoardModel].self, from: data) else {
         return
       }
       self.dataArray.append(contentsOf: models)

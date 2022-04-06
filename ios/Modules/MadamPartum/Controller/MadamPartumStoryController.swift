@@ -27,7 +27,7 @@ class MadamPartumStoryController: BaseTableController {
     let params = SOAPParams(action: .Company, path: .getAwards)
     params.set(key: "cctMP", value: 2)
     NetworkManager().request(params: params) { data in
-      guard let models = DecodeManager.decode([AwardsModel].self, from: data) else {
+      guard let models = DecodeManager.decodeByCodable([AwardsModel].self, from: data) else {
         self.endRefresh(.NoData)
         return
       }
@@ -43,7 +43,7 @@ class MadamPartumStoryController: BaseTableController {
     let params = SOAPParams(action: .Sale, path: .getLastClientReviews)
     params.set(key: "limit", value: 3)
     NetworkManager().request(params: params) { data in
-      guard let models = DecodeManager.decode([ClientReviewModel].self, from: data) else {
+      guard let models = DecodeManager.decodeByCodable([ClientReviewModel].self, from: data) else {
         return
       }
       self.footerView.models = models

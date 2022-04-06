@@ -18,6 +18,7 @@ class WalletDetailCardUserOrOwenrCell: UITableViewCell {
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var phoneLabel: UILabel!
   @IBOutlet weak var arrowImageView: UIImageView!
+  var removeHandler:((CardOwnerModel)->())?
   var type:CardBelongType = .User {
     didSet {
       if type == .Owner {
@@ -36,6 +37,9 @@ class WalletDetailCardUserOrOwenrCell: UITableViewCell {
     }
   }
   @IBAction func removeAction(_ sender: Any) {
+    
+    removeHandler?(model!)
+    
   }
   override func awakeFromNib() {
         super.awakeFromNib()

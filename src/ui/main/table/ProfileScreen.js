@@ -220,14 +220,14 @@ export default class ProfileScreen extends Component {
   }
 
   clickWallet(type){
-    const { navigation } = this.props;
+    // const { navigation } = this.props;
    
-    if (navigation) {
-      navigation.navigate('MyWalletActivity',{
-        'page': type
-      });
-    }
-    // nativeBridge.openNativeVc("MyWalletController",null);
+    // if (navigation) {
+    //   navigation.navigate('MyWalletActivity',{
+    //     'page': type
+    //   });
+    // }
+    nativeBridge.openNativeVc("MyWalletController",null);
 
   }
 

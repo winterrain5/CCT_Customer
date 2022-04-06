@@ -13,9 +13,11 @@ class WalletTransactionCell: UITableViewCell {
   @IBOutlet weak var productNameLabel: UILabel!
   @IBOutlet weak var priceLabel: UILabel!
   
+  @IBOutlet weak var pointsLabel: UILabel!
+  
   var model:WalletTranscationModel! {
     didSet {
-      invoiceNoLabel.text = model.invoice_no
+      invoiceNoLabel.text = "#" + (model.invoice_no ?? "")
       
       if model.product_category != "9" {
         productNameLabel.text = model.first_product_name
@@ -24,6 +26,20 @@ class WalletTransactionCell: UITableViewCell {
       }
       
       priceLabel.text = ((model.total?.float() ?? 0) + (model.freight?.float() ?? 0)).string.formatMoney().dolar
+      
+      pointsLabel.isHidden = true
+    }
+  }
+  
+  var transcation:FriendUseTransActions! {
+    didSet {
+      
+      invoiceNoLabel.text = transcation.name
+      priceLabel.text = transcation.paid_amount?.formatMoney().dolar
+      
+      pointsLabel.isHidden = true
+      productNameLabel.isHidden  = true
+      
     }
   }
   override func awakeFromNib() {

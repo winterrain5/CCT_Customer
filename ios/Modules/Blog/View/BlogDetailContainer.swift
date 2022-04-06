@@ -127,7 +127,7 @@ class BlogDetailContainer: UIView,WKNavigationDelegate{
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
       Toast.dismiss()
-      guard let boards = DecodeManager.decode([BlogBoardModel].self, from: data) else {
+      guard let boards = DecodeManager.decodeByCodable([BlogBoardModel].self, from: data) else {
         return
       }
       let saveBoardView = BlogSaveToBoardSheetView.loadViewFromNib()

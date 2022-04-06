@@ -26,7 +26,7 @@ class OurServicesViewController: BaseCollectionController,UICollectionViewDelega
     params.set(key: "limit", value: kPageSize)
     NetworkManager().request(params: params) { data in
 
-      guard let models = DecodeManager.decode([OurServicesByCategoryModel].self, from: data) else {
+      guard let models = DecodeManager.decodeByCodable([OurServicesByCategoryModel].self, from: data) else {
         print("解析失败")
         self.endRefresh()
         return

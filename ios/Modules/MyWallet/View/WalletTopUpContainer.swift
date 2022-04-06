@@ -24,7 +24,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
   var staffModel:BusinessManModel?
   var voucherModel:NetGiftVoucherModel?
   var orderID:String?
-  var orderDetailModel:MyOrderDetailModel?
+  var orderDetailModel:TopUpOrderDetailModel?
   var clientSecret:String?
   var pointPresentMultiple:String = "1"
   var amount:[String] = ["100.00","200.00","500.00","1000.00","2000.00","2500.00"]
@@ -32,13 +32,19 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
   let dateYMD = Date().string(withFormat: "yyyy-MM-dd")
   var topUpAmount:String {
     get {
-      amountTf.text?.trimmed ?? ""
+      (amountTf.text?.trimmed ?? "").removingPrefix("$")
     }
   }
   override func awakeFromNib() {
     super.awakeFromNib()
     amountTf.delegate = self
     amountTf.keyboardType = .numberPad
+    
+    if  Defaults.shared.get(for: .payMethodLine)  != nil {
+      doneButton.backgroundColor = R.color.theamRed()
+      doneButton.isEnabled = true
+    }
+    
     
     getAllTax()
     getBusiness()
@@ -88,8 +94,11 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       Toast.showError(withStatus: "Please choose a recharge card")
       return
     }
-    CardDigitPinView.showView(pin: "") { pin in
+    let oldPin = Defaults.shared.get(for: .userModel)?.pay_password ?? ""
+    CardDigitPinView.showView(pin: oldPin) { newPin in
       firstly {
+        self.savePayPassword(newPin, oldPin)
+      }.then {
         self.saveNewGiftVoucher()
       }.then {
         self.checkoutTOrder()
@@ -117,7 +126,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
     params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
     
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decode([TaxesModel].self, from: data) {
+      if let models = DecodeManager.decodeByCodable([TaxesModel].self, from: data) {
         self.taxModel = models.first
       }else {
         let taxModel = TaxesModel()
@@ -135,10 +144,32 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
     let params = SOAPParams(action: .Employee, path: .getBusiness,isNeedToast: false)
     
     NetworkManager().request(params: params) { data in
-      if let model = DecodeManager.decode(BusinessManModel.self, from: data) {
+      if let model = DecodeManager.decodeByCodable(BusinessManModel.self, from: data) {
         self.staffModel = model
       }
     } errorHandler: { e in
+      
+    }
+  }
+  
+  func savePayPassword(_ new:String,_ old:String) -> Promise<Void> {
+    Promise.init { resolver in
+      if new == old {
+        resolver.fulfill_()
+        return
+      }
+      let params = SOAPParams(action: .Client, path: .saveTpd)
+      params.set(key: "pd", value: new)
+      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+      NetworkManager().request(params: params) { data in
+        if let user = Defaults.shared.get(for: .userModel) {
+          user.pay_password = new
+          Defaults.shared.set(user, for: .userModel)
+        }
+        resolver.fulfill_()
+      } errorHandler: { e in
+        resolver.reject(e.asAPIError)
+      }
       
     }
   }
@@ -165,19 +196,21 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       data.set(key: "is_delet", value: "0")
       
       mapParams.set(key: "data", value: data.result,type: .map(1))
+#if DEBUG
+      Toast.showLoading(withStatus: mapParams.path)
+#endif
       
-      Toast.showLoading(withStatus: "SaveNewGiftVoucher")
       NetworkManager().request(params: mapParams) { data in
-        if let model = DecodeManager.decode(NetGiftVoucherModel.self, from: data) {
+        if let model = DecodeManager.decodeByCodable(NetGiftVoucherModel.self, from: data) {
           self.voucherModel = model
           resolver.fulfill_()
         }else {
           resolver.reject(APIError.requestError(code: -1, message: "Decode NetGiftVoucherModel Failed"))
         }
       } errorHandler: { e in
-        resolver.reject(e)
+        resolver.reject(e.asAPIError)
       }
-
+      
     }
   }
   
@@ -202,7 +235,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       clientInfo.set(key: "id", value: Defaults.shared.get(for: .clientId) ?? "")
       clientInfo.set(key: "pay_password", value: Defaults.shared.get(for: .userModel)?.pay_password ?? "")
       clientInfo.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
-      data.set(key: "Client_Info", value: clientInfo.result,type: .map(1))
+      data.set(key: "Client_Info", value: clientInfo.result, keyType: .string, valueType: .map(1))
       
       let orderInfo = SOAPDictionary()
       orderInfo.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
@@ -219,7 +252,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       orderInfo.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
       orderInfo.set(key: "is_delete", value: "0")
       orderInfo.set(key: "is_from_app", value: "1")
-      data.set(key: "Order_Info", value: orderInfo.result, type: .map(1))
+      data.set(key: "Order_Info", value: orderInfo.result, keyType: .string, valueType: .map(1))
       
       let orderLines = SOAPDictionary()
       let orderLine0 = SOAPDictionary()
@@ -259,27 +292,28 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       orderLineItem.set(key: "is_delete", value: "0")
       orderLineItem.set(key: "delivery_time", value: dateHMS)
       orderLineItem.set(key: "delivery_location_id", value: Defaults.shared.get(for: .companyId) ?? "97")
-      orderLine0.set(key: "data", value: orderLineItem.result, type: .map(1))
+      orderLine0.set(key: "data", value: orderLineItem.result, keyType: .string, valueType: .map(1))
       
       let vouchers = SOAPDictionary()
-      let voucherItem = SOAPDictionary()
+      let vouchers_0 = SOAPDictionary()
       
-      voucherItem.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
+      vouchers_0.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
       let uuid = UUID(uuidString: Date().second.string)?.uuidString ?? ""
-      voucherItem.set(key: "voucher_code", value: "1" + uuid.md5)
-      voucherItem.set(key: "voucher_manual_code", value: uuid)
-      voucherItem.set(key: "create_date", value: dateHMS)
-      voucherItem.set(key: "voucher_type", value: 5)
-      voucherItem.set(key: "voucher_id", value: voucherModel?.id ?? "")
-      voucherItem.set(key: "present_value", value: 0)
-      voucherItem.set(key: "present_balance", value: 0)
-      vouchers.set(key: "0", value: voucherItem.result, type: .map(1))
+      vouchers_0.set(key: "voucher_code", value: "1" + uuid.md5)
+      vouchers_0.set(key: "voucher_manual_code", value: uuid)
+      vouchers_0.set(key: "create_date", value: dateHMS)
+      vouchers_0.set(key: "voucher_type", value: 5)
+      vouchers_0.set(key: "voucher_id", value: voucherModel?.id ?? "")
+      vouchers_0.set(key: "present_value", value: 0)
+      vouchers_0.set(key: "present_balance", value: 0)
       
-      orderLine0.set(key: "vouchers", value: vouchers.result, type: .map(1))
+      vouchers.set(key: "0", value: vouchers_0.result, keyType: .string, valueType: .map(1))
       
-      orderLines.set(key: "0", value: orderLine0.result, type: .map(1))
+      orderLine0.set(key: "vouchers", value: vouchers.result, keyType: .string, valueType: .map(1))
       
-      data.set(key: "Order_Lines", value: orderLines.result, type: .map(1))
+      orderLines.set(key: "0", value: orderLine0.result, keyType: .string, valueType: .map(1))
+      
+      data.set(key: "Order_Lines", value: orderLines.result, keyType: .string, valueType: .map(1))
       
       mapParams.set(key: "data", value: data.result, type: .map(1))
       
@@ -287,7 +321,10 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       logData.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
       mapParams.set(key: "logData", value: logData.result, type: .map(2))
       
+#if DEBUG
       Toast.showLoading(withStatus: mapParams.path)
+#endif
+      
       NetworkManager().request(params: mapParams) { data in
         if let id = JSON.init(from: data)?.rawString() {
           self.orderID = id
@@ -296,9 +333,9 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
           resolver.reject(APIError.requestError(code: -1, message: "Get OrderID Failed"))
         }
       } errorHandler: { e in
-        resolver.reject(e)
+        resolver.reject(e.asAPIError)
       }
-
+      
     }
   }
   
@@ -306,16 +343,18 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
     Promise.init { resolver in
       let params = SOAPParams(action: .Sale, path: .getCheckoutDetails)
       params.set(key: "orderId", value: self.orderID ?? "")
+#if DEBUG
       Toast.showLoading(withStatus: params.path)
+#endif
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decode(MyOrderDetailModel.self, from: data) {
+        if let model = DecodeManager.decodeByCodable(TopUpOrderDetailModel.self, from: data) {
           self.orderDetailModel = model
           resolver.fulfill_()
         }else {
           resolver.reject(APIError.requestError(code: -1, message: "Decode MyOrderDetailModel Failed"))
         }
       } errorHandler: { e in
-        resolver.reject(e)
+        resolver.reject(e.asAPIError)
       }
     }
   }
@@ -324,9 +363,11 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
     Promise.init { resolver in
       let params = SOAPParams(action: .Sale, path: .getClientVipLevel)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+#if DEBUG
       Toast.showLoading(withStatus: params.path)
+#endif
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decode(ClientVipLevelModel.self, from: data) {
+        if let model = DecodeManager.decodeByCodable(ClientVipLevelModel.self, from: data) {
           self.pointPresentMultiple = model.point_present_multiple ?? "1"
           resolver.fulfill_()
         }else {
@@ -335,7 +376,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       } errorHandler: { e in
         resolver.fulfill_()
       }
-
+      
     }
   }
   
@@ -350,7 +391,9 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       data.set(key: "orderId", value: self.orderID ?? "")
       
       params.set(key: "data", value: data.result,type: .map(1))
+#if DEBUG
       Toast.showLoading(withStatus: params.path)
+#endif
       NetworkManager().request(params: params) { data in
         if let secret = JSON.init(from: data)?["clientSecret"].stringValue,!secret.isEmpty {
           self.clientSecret = secret
@@ -361,7 +404,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       } errorHandler: { e in
         resolver.reject(APIError.requestError(code: -1, message: "Credit card payment failed"))
       }
-
+      
     }
   }
   
@@ -379,9 +422,11 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       
       let intent = STPPaymentIntentParams(clientSecret: self.clientSecret ?? "")
       intent.paymentMethodParams = params
-      Toast.showLoading(withStatus: "ConfirmPayment")
+      
+#if DEBUG
+      Toast.showLoading(withStatus: "Stripe SDK ConfirmPayment")
+#endif
       STPAPIClient().confirmPaymentIntent(with: intent) { result, e in
-        Toast.dismiss()
         if e != nil {
           resolver.reject(APIError.requestError(code: -1, message: "Credit card payment failed"))
           return
@@ -429,12 +474,12 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       orderInfo.set(key: "status", value: 1)
       orderInfo.set(key: "is_from_app", value: 1)
       
-      data.set(key: "Order_Info", value: orderInfo.result,type: .map(1))
+      data.set(key: "Order_Info", value: orderInfo.result,keyType: .string,valueType: .map(1))
       
       let orderLines = SOAPDictionary()
       let orderLines0 = SOAPDictionary()
       let orderLinesItem = SOAPDictionary()
-     
+      
       orderLinesItem.set(key: "id", value: orderDetailModel?.Order_Line_Info?.first?.id ?? "")
       orderLinesItem.set(key: "salesmen_id", value: staffModel?.id ?? "")
       orderLinesItem.set(key: "has_paid", value: 1)
@@ -444,10 +489,10 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       orderLinesItem.set(key: "pay_by_service", value: 0)
       orderLinesItem.set(key: "new_recharge_discount", value: 0)
       
-      orderLines0.set(key: "data", value: orderLinesItem.result,type: .map(1))
-      orderLines.set(key: "0", value: orderLines0.result,type: .map(1))
+      orderLines0.set(key: "data", value: orderLinesItem.result,keyType: .string,valueType: .map(1))
+      orderLines.set(key: "0", value: orderLines0.result,keyType: .string,valueType: .map(1))
       
-      data.set(key: "Order_Lines", value: orderLines.result,type: .map(1))
+      data.set(key: "Order_Lines", value: orderLines.result,keyType: .string,valueType: .map(1))
       
       let payMethods = SOAPDictionary()
       let payMethods0 = SOAPDictionary()
@@ -456,28 +501,29 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       payMethods0.set(key: "pay_method_card_id", value: Defaults.shared.get(for: .payMethodLine)?.id ?? "")
       payMethods0.set(key: "paid_amount", value: topUpAmount)
       payMethods0.set(key: "real_paid_amount", value: topUpAmount)
-             
-      payMethods.set(key: "0", value: payMethods0.result,type: .map(1))
       
-      data.set(key: "payMethods", value: payMethods.result,type: .map(1))
+      payMethods.set(key: "0", value: payMethods0.result,keyType: .string,valueType: .map(1))
+      
+      data.set(key: "payMethods", value: payMethods.result,keyType: .string,valueType: .map(1))
       
       let bookingTimesData = SOAPDictionary()
-      data.set(key: "bookingTimesData", value: bookingTimesData.result, type: .map(1))
-           
+      data.set(key: "bookingTimesData", value: bookingTimesData.result, keyType: .string,valueType: .map(1))
+      
       mapParams.set(key: "data", value: data.result, type: .map(1))
       
       let logData = SOAPDictionary()
       logData.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
       mapParams.set(key: "logData", value: logData.result, type: .map(2))
       
+#if DEBUG
       Toast.showLoading(withStatus: mapParams.path)
+#endif
       NetworkManager().request(params: mapParams) { data in
-        Toast.showSuccess(withStatus: "Top Up Success")
         resolver.fulfill_()
       } errorHandler: { e in
         resolver.reject(APIError.requestError(code: -1, message: "Top Up Failed"))
       }
-
+      
       
     }
   }
@@ -511,11 +557,13 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     NetworkManager().request(params: params) { data in
-      if let newModel = DecodeManager.decode(UserModel.self, from: data),let oldModel = Defaults.shared.get(for: .userModel),newModel.new_recharge_card_level != oldModel.new_recharge_card_level {
+      if let newModel = DecodeManager.decodeByCodable(UserModel.self, from: data),let oldModel = Defaults.shared.get(for: .userModel),newModel.new_recharge_card_level != oldModel.new_recharge_card_level {
         self.getNewCardDiscountsByLevel(newModel)
+      }else {
+        self.popBack()
       }
     } errorHandler: { e in
-      
+      self.popBack()
     }
   }
   
@@ -524,16 +572,33 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
     params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
     params.set(key: "cardLevel", value: model.new_recharge_card_level ?? "")
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decode([CardDiscountModel].self, from: data) {
-        
+      if let models = DecodeManager.decodeByCodable([CardDiscountModel].self, from: data) {
+        self.upgradedTierLevel(user: model, discount: models.first?.discount_percent ?? "")
       }
     } errorHandler: { e in
-      
+      self.popBack()
     }
-
     
   }
-
+  
+  func upgradedTierLevel(user:UserModel,discount:String) {
+    let params = SOAPParams(action: .Notifications, path: .upgradedTierLevel)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "level", value: user.new_recharge_card_level ?? "")
+    params.set(key: "discount", value: discount)
+    NetworkManager().request(params: params) { data in
+      self.popBack()
+    } errorHandler: { e in
+      self.popBack()
+    }
+    
+  }
+  
+  func popBack() {
+    Toast.showSuccess(withStatus: "Top Up Success")
+    UIViewController.getTopVC()?.navigationController?.popViewController()
+  }
+  
   @IBAction func selectPaymethodAction(_ sender: Any) {
     let vc = WalletPaymentMethodController()
     UIViewController.getTopVC()?.navigationController?.pushViewController(vc)

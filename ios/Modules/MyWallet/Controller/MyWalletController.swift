@@ -18,7 +18,7 @@ class MyWalletController: BaseViewController {
   
   lazy var headerVc = WalletCardController()
   
-  var tableHeaderViewHeight: Int = 282
+  var tableHeaderViewHeight: Int = 264
   var headerInSectionHeight: Int = 40
   
   lazy var titleDataSource: JXSegmentedTitleDataSource = {
@@ -79,7 +79,6 @@ class MyWalletController: BaseViewController {
     paggingView.mainTableView.panGestureRecognizer.require(toFail: self.navigationController!.interactivePopGestureRecognizer!)
     
   }
-  
   
 }
 

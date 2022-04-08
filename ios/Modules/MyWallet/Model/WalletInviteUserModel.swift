@@ -7,7 +7,8 @@
 
 import UIKit
 
-class WalletInviteUserModel {
+class UserContactModel {
+  var id:String = ""
   var name:String
   var phone:String
   var isAdd:Bool = false

@@ -39,7 +39,7 @@ class TransactionDetailController: BaseTableController {
     params.set(key: "orderId", value: transactionModel.id ?? "")
     
     NetworkManager().request(params: params) { data in
-      if let model = DecodeManager.decodeByHandJSON(MyOrderDetailModel.self, from: data) {
+      if let model = DecodeManager.decodeObjectByHandJSON(MyOrderDetailModel.self, from: data) {
         self.detailModel = model
         self.headerView.model = model
         self.footerView.model = model

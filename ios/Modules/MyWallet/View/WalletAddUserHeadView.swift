@@ -29,4 +29,7 @@ class WalletAddUserHeadView: UIView,UITextFieldDelegate {
     return true
   }
   
+//  func textFieldDidBeginEditing(_ textField: UITextField) {
+//    self.endEditHandler?(textField.text ?? "")
+//  }
 }

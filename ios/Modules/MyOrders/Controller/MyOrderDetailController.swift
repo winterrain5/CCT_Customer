@@ -111,7 +111,7 @@ class MyOrderDetailController: BaseViewController {
       params.set(key: "orderId", value: orderModel.id ?? "")
       
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decodeByHandJSON(MyOrderDetailModel.self, from: data) {
+        if let model = DecodeManager.decodeObjectByHandJSON(MyOrderDetailModel.self, from: data) {
           resolver.fulfill(model)
         }else {
           resolver.reject(APIError.requestError(code: -1, message: "Decode MyOrderDetailModel Failed"))

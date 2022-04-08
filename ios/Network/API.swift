@@ -168,17 +168,14 @@ enum API:String {
   case createInstance = "createInstance"
   /// 修改订单状态
   case payTOrder = "payTOrder"
-  //注册推送
-  case welcomeNote = "welcomeNote";
-  //先建预约推送
-  case newCreateAppointment = "newCreateAppointment";
-  // 朋友使用推荐
+  /// 朋友使用推荐
   case friendUseReferral = "friendUseReferral";
-  // 保存用户支付密码
+  /// 保存用户支付密码
   case saveTpd = "saveTpd"
-  // 获取用户支付密码
+  /// 获取用户支付密码
   case getClientPayPd = "getClientPayPd"
-  
+  /// 通过手机号获取一组用户信息
+  case matchPhone = "matchPhone"
   
   
   // 物品购物车推送
@@ -197,7 +194,10 @@ enum API:String {
   case upgradedTierLevel = "upgradedTierLevel";
   //充值推送
   case topupNote = "topupNote";
-  
+  //注册推送
+  case welcomeNote = "welcomeNote";
+  //先建预约推送
+  case newCreateAppointment = "newCreateAppointment";
 }
 
 enum Action:String {

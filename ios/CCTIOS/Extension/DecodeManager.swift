@@ -17,12 +17,12 @@ class DecodeManager {
   
   static func decodeObjectByHandJSON<T:HandyJSON>(_ type:T.Type,from data:Data) -> T? {
     let jsonString = JSON.init(from: data)?.rawString()
-    return type.deserialize(from: jsonString)
+    return T.deserialize(from: jsonString)
   }
   
-//  static func decodeArrayByHandJSON<T:HandyJSON>(_ type:T.Type,from data:Data) -> [T]? {
-//    let jsonArray = JSON.init(from: data)?.arrayObject
-//    return Array<T>.deserialize(from: jsonArray)
-//  }
+  static func decodeArrayByHandJSON<T:HandyJSON>(_ type:T.Type,from data:Data) -> [T]? {
+    let jsonArray = JSON.init(from: data)?.arrayObject
+    return Array<T>.deserialize(from: jsonArray) as? [T]
+  }
 
 }

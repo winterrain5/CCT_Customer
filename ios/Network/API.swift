@@ -68,8 +68,12 @@ enum API:String {
   case getTreatmentPlanData = "getTreatmentPlanData"
   
   case getNewFeaturedProducts = "getNewFeaturedProducts"
+  case getRecentViewedProduct = "getRecentViewedProduct"
+  case getLikeProduct = "getLikeProduct"
   case saveLikeProduct = "saveLikeProduct"
   case deleteLikeProduct = "deleteLikeProduct"
+  case getProductsByFilters = "getProductsByFilters"
+  case searchSourcesByPages = "searchSourcesByPages"
   //// 获取所有分店地址
   case getAllMp = "getAllMp"
   case getTLocations = "getTLocations"

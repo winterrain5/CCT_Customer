@@ -9,6 +9,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import SkeletonView
 class BaseTableController: BaseViewController,DataLoadable {
   
   var dataArray: [Any] = []
@@ -168,6 +169,17 @@ class BaseTableController: BaseViewController,DataLoadable {
     }
   }
   
+  func showSkeleton() {
+      if isFirstLoad {
+          self.view.showSkeleton()
+      }
+  }
+  
+  func hideSkeleton() {
+      self.view.hideSkeleton()
+  }
+  
+  
   func cellAnimation(_ cell:UITableViewCell) {
     if isFirstLoad { return }
     cell.transform = CGAffineTransform.init(translationX: 0, y: 20)
@@ -180,8 +192,14 @@ class BaseTableController: BaseViewController,DataLoadable {
 }
 
 
-extension  BaseTableController : UITableViewDelegate,UITableViewDataSource {
+extension  BaseTableController : UITableViewDelegate,SkeletonTableViewDataSource {
+  func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      return 10
+  }
   
+  func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+      return self.cellIdentifier
+  }
   
   func numberOfSections(in tableView: UITableView) -> Int {
     return 1

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OrderLineInfo :BaseModel, Codable {
+class OrderLineInfo :BaseModel {
   var rate: String?
   var return_amount: String?
   var id: String?
@@ -82,7 +82,7 @@ class OrderLineInfo :BaseModel, Codable {
 
 }
 
-class PayVoucherInfo :BaseModel, Codable {
+class PayVoucherInfo :BaseModel {
   var is_freight: String?
   var sale_order_line_id: String?
   var is_present: String?
@@ -95,7 +95,7 @@ class PayVoucherInfo :BaseModel, Codable {
   
 }
 
-class PayGiftInfo :BaseModel, Codable {
+class PayGiftInfo :BaseModel {
   var client_gift_id:String?
   var create_date:String?
   var id:String?
@@ -106,7 +106,7 @@ class PayGiftInfo :BaseModel, Codable {
 
 }
 
-class PaymethodInfo :BaseModel, Codable {
+class PaymethodInfo :BaseModel {
   var pay_method_line_id: String?
   var id: String?
   var real_paid_amount: String?
@@ -115,7 +115,7 @@ class PaymethodInfo :BaseModel, Codable {
   
 }
 
-class OrderInfo :BaseModel, Codable {
+class OrderInfo :BaseModel {
   var id: String?
   var exchange_rate: String?
   var comment_id: String?
@@ -191,12 +191,12 @@ class OrderInfo :BaseModel, Codable {
   
 }
 
-class VoucherInfo: BaseModel, Codable {
+class VoucherInfo: BaseModel {
   var id:String?
   var voucher_code:String?
 }
 
-class MyOrderDetailModel: BaseModel, Codable {
+class MyOrderDetailModel: BaseModel {
   var Order_Line_Info: [OrderLineInfo]?
   var PayVoucher_Info: [PayVoucherInfo]?
   var PayGift_Info: [PayGiftInfo]?

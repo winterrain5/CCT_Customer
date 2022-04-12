@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="epW-bZ-HBz" customClass="ShopHeaderView" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="446"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcx-nG-Dbw">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="257"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Psv-wW-gp3" customClass="CHIPageControlJaloro" customModule="CHIPageControl">
+                            <rect key="frame" x="24" y="223" width="366" height="4"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="4" id="6pR-9g-cpz"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="numberOfPages">
+                                    <integer key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="currentPageTintColor">
+                                    <color key="value" name="TheamPink"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                    <real key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="inactiveTransparency">
+                                    <real key="value" value="0.20000000000000001"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="elementWidth">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="elementHeight">
+                                    <real key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" name="Placeholder"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Psv-wW-gp3" secondAttribute="bottom" constant="30" id="M7F-gj-fJL"/>
+                        <constraint firstAttribute="trailing" secondItem="Psv-wW-gp3" secondAttribute="trailing" constant="24" id="S1J-SZ-7e0"/>
+                        <constraint firstItem="Psv-wW-gp3" firstAttribute="leading" secondItem="fcx-nG-Dbw" secondAttribute="leading" constant="24" id="T9d-EY-VAe"/>
+                        <constraint firstAttribute="height" constant="257" id="ebU-lt-dw6"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xu-ok-LfZ">
+                    <rect key="frame" x="24" y="287" width="175" height="129"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="shop_cct"/>
+                    <connections>
+                        <action selector="cctButtonAction:" destination="epW-bZ-HBz" eventType="touchUpInside" id="yzh-6X-iDq"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRH-WM-n92">
+                    <rect key="frame" x="215" y="287" width="175" height="129"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="shop_mp"/>
+                    <connections>
+                        <action selector="mpButtonAction:" destination="epW-bZ-HBz" eventType="touchUpInside" id="pb4-It-TBM"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="Dtz-s5-J8a"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fcx-nG-Dbw" firstAttribute="top" secondItem="epW-bZ-HBz" secondAttribute="top" id="1Bg-F4-ust"/>
+                <constraint firstItem="Dtz-s5-J8a" firstAttribute="trailing" secondItem="fcx-nG-Dbw" secondAttribute="trailing" id="9rz-X0-nlY"/>
+                <constraint firstItem="zRH-WM-n92" firstAttribute="leading" secondItem="8xu-ok-LfZ" secondAttribute="trailing" constant="16" id="JHg-Yi-12K"/>
+                <constraint firstItem="Dtz-s5-J8a" firstAttribute="trailing" secondItem="zRH-WM-n92" secondAttribute="trailing" constant="24" id="PMX-6J-8Qo"/>
+                <constraint firstItem="8xu-ok-LfZ" firstAttribute="width" secondItem="zRH-WM-n92" secondAttribute="width" id="SJ0-MM-GqM"/>
+                <constraint firstItem="8xu-ok-LfZ" firstAttribute="top" secondItem="fcx-nG-Dbw" secondAttribute="bottom" constant="30" id="VQJ-mh-BMR"/>
+                <constraint firstItem="zRH-WM-n92" firstAttribute="top" secondItem="fcx-nG-Dbw" secondAttribute="bottom" constant="30" id="gAq-JS-lUH"/>
+                <constraint firstItem="8xu-ok-LfZ" firstAttribute="leading" secondItem="epW-bZ-HBz" secondAttribute="leading" constant="24" id="tvo-0d-idf"/>
+                <constraint firstItem="fcx-nG-Dbw" firstAttribute="leading" secondItem="Dtz-s5-J8a" secondAttribute="leading" id="z7b-nD-PJn"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bannerContentView" destination="fcx-nG-Dbw" id="xfQ-7A-9rX"/>
+                <outlet property="cctButton" destination="8xu-ok-LfZ" id="5XU-F9-L0A"/>
+                <outlet property="mpButton" destination="zRH-WM-n92" id="0ky-1U-1kn"/>
+                <outlet property="pageControl" destination="Psv-wW-gp3" id="Xkx-qX-VIi"/>
+            </connections>
+            <point key="canvasLocation" x="50.724637681159422" y="-139.28571428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="shop_cct" width="155" height="115"/>
+        <image name="shop_mp" width="155" height="115"/>
+        <namedColor name="Placeholder">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TheamPink">
+            <color red="0.93300002813339233" green="0.56099998950958252" blue="0.48199999332427979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -21,7 +21,10 @@ class DecodeManager {
   }
   
   static func decodeArrayByHandJSON<T:HandyJSON>(_ type:T.Type,from data:Data) -> [T]? {
-    let jsonArray = JSON.init(from: data)?.arrayObject
+    var jsonArray = JSON.init(from: data)?.arrayObject
+    if jsonArray == nil {
+      jsonArray = JSON.init(from: data)?["data"].arrayObject
+    }
     return Array<T>.deserialize(from: jsonArray) as? [T]
   }
 

@@ -9,7 +9,7 @@ import UIKit
 
 class MadamPartumProductCell: MadamPartumCell {
   private var selectProductId:String = ""
-  var datas:[FeatureProductModel] = [] {
+  var datas:[ShopProductModel] = [] {
     didSet {
       collectionView.reloadData()
       pageControl.numberOfPages = datas.count / 2
@@ -22,14 +22,14 @@ class MadamPartumProductCell: MadamPartumCell {
    
     super.configSubViews()
     
-    self.collectionView.register(nibWithCellClass: MadamPartumProductItemCell.self)
+    self.collectionView.register(nibWithCellClass: ShopProductItemCell.self)
     self.typeLabel.text = "Products"
     self.viewButton.titleForNormal = "View Shop"
     self.viewButton.isHidden = false
   }
   
   override func viewButtonAction() {
-    let vc = RNBridgeViewController(RNPageName: "ShopActivity", RNProperty: [:])
+    let vc = ShopViewController()
     UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
   }
   
@@ -38,13 +38,13 @@ class MadamPartumProductCell: MadamPartumCell {
   }
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withClass: MadamPartumProductItemCell.self, for: indexPath)
+    let cell = collectionView.dequeueReusableCell(withClass: ShopProductItemCell.self, for: indexPath)
     if datas.count > 0 {
       cell.model = datas[indexPath.row]
     }
     cell.likeHandler = { [weak self] model in
-      self?.selectProductId = model.id!
-      if model.isLike ?? false {
+      self?.selectProductId = model.id
+      if model.isLike {
         self?.deleteLikeProduct(model)
       }else {
         self?.saveLikeProduct(model)
@@ -53,10 +53,10 @@ class MadamPartumProductCell: MadamPartumCell {
     return cell
   }
   
-  func saveLikeProduct(_ model:FeatureProductModel) {
+  func saveLikeProduct(_ model:ShopProductModel) {
     let params = SOAPParams(action: .Product, path: .saveLikeProduct)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
-    params.set(key: "productId", value: model.id ?? "")
+    params.set(key: "productId", value: model.id)
     
     NetworkManager().request(params: params) { data in
       self.updateCellIsLikeStatus(true)
@@ -66,10 +66,10 @@ class MadamPartumProductCell: MadamPartumCell {
 
   }
   
-  func deleteLikeProduct(_ model:FeatureProductModel) {
+  func deleteLikeProduct(_ model:ShopProductModel) {
     let params = SOAPParams(action: .Product, path: .deleteLikeProduct)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
-    params.set(key: "productId", value: model.id ?? "")
+    params.set(key: "productId", value: model.id)
     
     NetworkManager().request(params: params) { data in
       self.updateCellIsLikeStatus(false)
@@ -90,7 +90,7 @@ class MadamPartumProductCell: MadamPartumCell {
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let model = datas[indexPath.item]
-    let vc = RNBridgeViewController(RNPageName: "ShopProductDetailActivity", RNProperty: ["product_id":model.id ?? ""])
+    let vc = RNBridgeViewController(RNPageName: "ShopProductDetailActivity", RNProperty: ["product_id":model.id])
     UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
   }
 }

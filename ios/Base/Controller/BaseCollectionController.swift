@@ -45,7 +45,7 @@ class BaseCollectionController: BaseViewController,DataLoadable {
     
     collectionView?.emptyDataSetSource = self
     collectionView?.emptyDataSetDelegate = self
-    
+  
     view.addSubview(collectionView!)
     
     if #available(iOS 11.0, *) {
@@ -64,7 +64,7 @@ class BaseCollectionController: BaseViewController,DataLoadable {
     return UICollectionViewFlowLayout()
   }
   
-  func registRefreshHeader(colorStyle:RefreshColorStyle) {
+  func registRefreshHeader(colorStyle:RefreshColorStyle = .gray) {
     let header = RefreshAnimationHeader{ [weak self] in
       self?.loadNewData()
     }
@@ -91,15 +91,7 @@ class BaseCollectionController: BaseViewController,DataLoadable {
     isFirstLoad = false
     
   }
-  
-  func reloadEmptyDataSet(emptyString: String,
-                          emptyImage:String) {
-    shouldDisplayEmptyDataView = self.dataArray.count > 0 ? false : true
-    self.emptyDataType = self.dataArray.count > 0 ? .Success : .NoData
-    self.emptyNoDataImage = emptyImage
-    self.emptyNoDataString = emptyString
-    collectionView?.reloadEmptyDataSet()
-  }
+
   
   func loadNewData() {
     page=1
@@ -137,6 +129,14 @@ class BaseCollectionController: BaseViewController,DataLoadable {
     endHeaderFooterRefresh(count)
   }
   
+  func endRefresh(_ count: Int,
+                  emptyString: String = EmptyStatus.Message.NoData.rawValue) {
+    shouldDisplayEmptyDataView = self.dataArray.count > 0 ? false : true
+    self.emptyDataType = self.dataArray.count > 0 ? .Success : .NoData
+    self.emptyNoDataString = emptyString
+    reloadData()
+    endHeaderFooterRefresh(count)
+  }
   
   func endRefresh() {
     shouldDisplayEmptyDataView = false

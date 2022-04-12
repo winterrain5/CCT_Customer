@@ -7,6 +7,6 @@
 
 import UIKit
 import HandyJSON
-class BaseModel: HandyJSON {
+class BaseModel: HandyJSON,Codable {
   required init() {}
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MatchPhoneModel:BaseModel, Codable {
+class MatchPhoneModel:BaseModel {
   var id:String?
   var phone:String?
 }

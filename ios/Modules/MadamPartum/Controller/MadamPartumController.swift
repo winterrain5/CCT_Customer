@@ -12,7 +12,7 @@ class MadamPartumController: BaseTableController {
   var headerView = MadamPartumHeaderView.loadViewFromNib()
   var footerView = MadamPartumFooterView.loadViewFromNib()
   var blogs:[BlogModel] = []
-  var products:[FeatureProductModel] = []
+  var products:[ShopProductModel] = []
   var services:[OurServicesByCategoryModel] = []
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -61,7 +61,7 @@ class MadamPartumController: BaseTableController {
     }
   }
   
-  func getNewFeaturedProducts() -> Promise<[FeatureProductModel]> {
+  func getNewFeaturedProducts() -> Promise<[ShopProductModel]> {
     Promise.init { resolver in
       let params = SOAPParams(action: .Product, path: API.getNewFeaturedProducts)
       params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
@@ -74,7 +74,7 @@ class MadamPartumController: BaseTableController {
               
       
       NetworkManager().request(params: params) { data in
-        guard let models = DecodeManager.decodeByCodable([FeatureProductModel].self, from: data) else {
+        guard let models = DecodeManager.decodeArrayByHandJSON(ShopProductModel.self, from: data) else {
           resolver.reject(APIError.requestError(code: -1, message: "decode failed"))
           return
         }

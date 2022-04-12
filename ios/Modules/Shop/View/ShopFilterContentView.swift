@@ -28,7 +28,26 @@ class ShopFilterContentView: UIView,TTGTextTagCollectionViewDelegate,RangeSlider
   
   var updateHeightHandler:((CGFloat)->())?
   
-  var result:[String:Any] = [:]
+  var result = CCTShopFilterRequestModel() {
+    didSet {
+      if result.orderBy == "DESC" {
+        filterTagView.updateTag(at: 0, selected: true)
+        filterSelectedIndex = 0
+      }
+      
+      if result.orderBy == "ASC" {
+        filterTagView.updateTag(at: 1, selected: true)
+        filterSelectedIndex = 1
+      }
+    
+      let range = (result.price_low,result.price_high)
+      if let index = prices.firstIndex(where: { ($0.0 == range.0) && ($0.1 == range.1) })?.uInt {
+        priceTagView.updateTag(at: index, selected: true)
+        priceSelectedIndex = index
+      }
+      
+    }
+  }
   var productCategorys:[ProductCategoryModel] = []
   
   override func awakeFromNib() {
@@ -75,6 +94,12 @@ class ShopFilterContentView: UIView,TTGTextTagCollectionViewDelegate,RangeSlider
         let categoryHeight = self.categoryTagView.contentSize.height
         self.categoryTagViewHCons.constant = categoryHeight + 6
         self.updateHeightHandler?(categoryHeight + 6 + 430)
+        
+        self.result.categoryId.forEach { e in
+          let index = models.firstIndex(where: { $0.id?.string == e })?.uInt ?? 0
+          self.categoryTagView.updateTag(at: index, selected: true)
+          
+        }
       }
     } errorHandler: { e in
       
@@ -110,6 +135,7 @@ class ShopFilterContentView: UIView,TTGTextTagCollectionViewDelegate,RangeSlider
     tagView.verticalSpacing = 8
     tagView.contentInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
     tagView.addTag(tag)
+  
   }
   
   
@@ -118,24 +144,16 @@ class ShopFilterContentView: UIView,TTGTextTagCollectionViewDelegate,RangeSlider
       filterTagView.updateTag(at: filterSelectedIndex, selected: false)
       filterTagView.updateTag(at: index, selected: true)
       filterSelectedIndex = index
-      result["filter"] = index
+      result.orderBy = index == 0 ? "DESC" : "ASC"
       
     }
     
     if textTagCollectionView == categoryTagView {
       let id = self.productCategorys[Int(index)].id?.string ?? ""
       if tag.selected {
-        if var category = result["category"] as? [String] {
-          category.append(id)
-          result["category"] = category
-        }else {
-          result["category"] = [id]
-        }
+        result.categoryId.append(id)
       }else {
-        if var category = result["category"] as? [String] {
-          category.removeAll(id)
-          result["category"] = category
-        }
+        result.categoryId = result.categoryId.removeAll(id)
       }
     }
    
@@ -155,7 +173,8 @@ class ShopFilterContentView: UIView,TTGTextTagCollectionViewDelegate,RangeSlider
       rangSlider.upperValue = max.double() ?? 0
       rangSlider.lowerValue = min.double() ?? 0
       
-      result["range"] = "\(min)-\(max)"
+      result.price_low = min
+      result.price_high = max
       
     }
     
@@ -167,7 +186,10 @@ class ShopFilterContentView: UIView,TTGTextTagCollectionViewDelegate,RangeSlider
     minValueLabel.text = "$" + min
     maxValueLabel.text = "$" + max
     
-    result["range"] = "\(min)-\(max)"
+    result.price_low = min
+    result.price_high = max
   }
   
 }
+
+

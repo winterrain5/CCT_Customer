@@ -1721,7 +1721,7 @@ clickWalt(){
 
 
 
-                   <TouchableOpacity   
+                   {/* <TouchableOpacity   
                       activeOpacity = {0.8}
                       onPress={this.clickSymptomChecker.bind(this)}>
 
@@ -1745,7 +1745,7 @@ clickWalt(){
                         </View>
 
 
-                  </TouchableOpacity>      
+                  </TouchableOpacity>       */}
 
                    
                    <TouchableOpacity   

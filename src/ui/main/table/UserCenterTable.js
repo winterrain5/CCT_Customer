@@ -199,14 +199,14 @@ export default class UserCenterTable extends Component {
                  </TouchableOpacity>      
 
 
-
+{/* 
                   <TouchableOpacity  
 	             	activeOpacity = {0.8}
                     onPress={this.clickItem.bind(this,'Symptom Checker')}>
                     <View style = {styles.view_item}>
                     	<Text style = {styles.text_item_name}>Symptom Checker</Text>
                     </View>
-                 </TouchableOpacity>      
+                 </TouchableOpacity>       */}
 
 
 

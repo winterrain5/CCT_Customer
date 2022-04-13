@@ -379,7 +379,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.entitlements` struct is generated, and contains static references to 1 properties.
   struct entitlements {
-    static let apsEnvironment = infoPlistString(path: [], key: "aps-environment") ?? "development"
+    static let apsEnvironment = infoPlistString(path: [], key: "aps-environment") ?? "production"
 
     fileprivate init() {}
   }

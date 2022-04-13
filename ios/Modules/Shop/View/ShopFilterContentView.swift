@@ -86,17 +86,17 @@ class ShopFilterContentView: UIView,TTGTextTagCollectionViewDelegate,RangeSlider
     params.set(key: "showProCount", value: "false")
     
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decodeByCodable([ProductCategoryModel].self, from: data) {
+      if let models = DecodeManager.decodeArrayByHandJSON(ProductCategoryModel.self, from: data) {
         self.productCategorys = models
         models.forEach { model in
-          self.addTags(model.name ?? "", self.categoryTagView)
+          self.addTags(model.name, self.categoryTagView)
         }
         let categoryHeight = self.categoryTagView.contentSize.height
         self.categoryTagViewHCons.constant = categoryHeight + 6
         self.updateHeightHandler?(categoryHeight + 6 + 430)
         
-        self.result.categoryId.forEach { e in
-          let index = models.firstIndex(where: { $0.id?.string == e })?.uInt ?? 0
+        self.result.category.forEach { e in
+          let index = models.firstIndex(where: { $0.id == e.id })?.uInt ?? 0
           self.categoryTagView.updateTag(at: index, selected: true)
           
         }
@@ -149,11 +149,11 @@ class ShopFilterContentView: UIView,TTGTextTagCollectionViewDelegate,RangeSlider
     }
     
     if textTagCollectionView == categoryTagView {
-      let id = self.productCategorys[Int(index)].id?.string ?? ""
       if tag.selected {
-        result.categoryId.append(id)
+        result.category.append(self.productCategorys[Int(index)])
       }else {
-        result.categoryId = result.categoryId.removeAll(id)
+        
+        result.category.removeAll(where: { $0.id == self.productCategorys[Int(index)].id })
       }
     }
    
@@ -175,7 +175,7 @@ class ShopFilterContentView: UIView,TTGTextTagCollectionViewDelegate,RangeSlider
       
       result.price_low = min
       result.price_high = max
-      
+      result.range = "$\(min) - \(max)"
     }
     
   }
@@ -188,6 +188,7 @@ class ShopFilterContentView: UIView,TTGTextTagCollectionViewDelegate,RangeSlider
     
     result.price_low = min
     result.price_high = max
+    result.range = "$\(min) - \(max)"
   }
   
 }

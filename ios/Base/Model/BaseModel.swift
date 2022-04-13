@@ -7,6 +7,6 @@
 
 import UIKit
 import HandyJSON
-class BaseModel: HandyJSON,Codable {
-  required init() {}
+class BaseModel:NSObject,HandyJSON,Codable {
+  required override init() {}
 }

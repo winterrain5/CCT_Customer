@@ -30,18 +30,29 @@
                         <action selector="filterButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="xL6-i0-wph"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDo-Rk-adW" customClass="TTGTextTagCollectionView">
+                    <rect key="frame" x="118" y="97" width="296" height="28"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="02v-vI-xC5"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="pkn-9E-QDG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4JK-V1-xPN"/>
+                <constraint firstItem="YDo-Rk-adW" firstAttribute="centerY" secondItem="vQ7-Zp-k90" secondAttribute="centerY" id="4xF-jc-boz"/>
                 <constraint firstItem="vQ7-Zp-k90" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="5Ab-Qt-d9Q"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YDo-Rk-adW" secondAttribute="trailing" id="ayF-MT-wW7"/>
                 <constraint firstItem="vQ7-Zp-k90" firstAttribute="top" secondItem="pkn-9E-QDG" secondAttribute="bottom" constant="4" id="oQ2-XC-6nS"/>
+                <constraint firstItem="YDo-Rk-adW" firstAttribute="leading" secondItem="vQ7-Zp-k90" secondAttribute="trailing" constant="8" id="pa4-ke-cQI"/>
                 <constraint firstItem="pkn-9E-QDG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="qt0-oW-0Vk"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pkn-9E-QDG" secondAttribute="trailing" id="zQc-Bb-g0r"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="filterTagView" destination="YDo-Rk-adW" id="mDs-46-NVu"/>
                 <outlet property="searchView" destination="pkn-9E-QDG" id="RYs-QJ-WQW"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="206.91964285714286"/>

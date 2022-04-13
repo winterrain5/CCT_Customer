@@ -54,7 +54,8 @@ class CCTShopController: BaseCollectionController,UICollectionViewDelegateFlowLa
     
     let data = SOAPDictionary()
     data.set(key: "isCctMap", value: isCctMap)
-    data.set(key: "categoryId", value: requestModel.categoryId.joined(separator: ","))
+    let categoryId = requestModel.category.map({ $0.id })
+    data.set(key: "categoryId", value: categoryId.joined(separator: ","))
     data.set(key: "price_low", value: requestModel.price_low)
     data.set(key: "price_high", value: requestModel.price_high)
     data.set(key: "orderBy", value: requestModel.orderBy)
@@ -198,16 +199,26 @@ class CCTShopController: BaseCollectionController,UICollectionViewDelegateFlowLa
       }
       if kind == UICollectionView.elementKindSectionFooter {
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CCTShopFooterView.className, for: indexPath)
-        (view as! CCTShopFooterView).filterHandler = { [weak self] in
+        let footerView = (view as! CCTShopFooterView)
+        footerView.filterHandler = { [weak self] in
           guard let `self` = self else { return }
           
-          ShopFilterView.show(lastSelect:self.requestModel) { result in
+          ShopFilterView.show(lastSelect:self.requestModel) { [weak self] result in
+            guard let `self` = self else { return }
             self.isFilter = true
             self.requestModel = result
+            footerView.result = result
             self.loadNewData()
           }
+          
         }
-        (view as! CCTShopFooterView).searchView.searchDidEndHandler = {
+        footerView.updateFilterHandler = { [weak self] result in
+          guard let `self` = self else { return }
+          self.isFilter = true
+          self.requestModel = result
+          self.loadNewData()
+        }
+        footerView.searchView.searchDidEndHandler = {
           [weak self] text in
           self?.isFilter = false
           self?.searchValue = text
@@ -235,9 +246,10 @@ class CCTShopNoneView: UICollectionReusableView {
   
 }
 
-class CCTShopFilterRequestModel:BaseModel {
+@objcMembers class CCTShopFilterRequestModel:BaseModel {
   var price_high = ""
   var price_low = ""
-  var categoryId:[String] = []
+  var category:[ProductCategoryModel] = []
   var orderBy = ""
+  var range:String = ""
 }

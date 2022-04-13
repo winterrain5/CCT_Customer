@@ -8,22 +8,22 @@
 import UIKit
 
 
-class SubNodes :Codable {
+class SubNodes :BaseModel {
   
 }
 
-class ProductCategoryModel :Codable {
-  var id: Int?
-  var company_id: Int?
-  var can_sell: Int?
-  var create_uid: Int?
+@objcMembers class ProductCategoryModel :BaseModel {
+  var id: String = ""
+  var company_id: String = ""
+  var can_sell: String = ""
+  var create_uid: String = ""
   var subNodes: [SubNodes]?
-  var is_show: Int?
-  var is_delete: Int?
-  var productCount: String?
-  var pid: Int?
-  var sort: Int?
-  var create_time: String?
-  var name: String?
+  var is_show: String = ""
+  var is_delete: String = ""
+  var productCount: String = ""
+  var pid: String = ""
+  var sort: String = ""
+  var create_time: String = ""
+  var name: String = ""
   
 }

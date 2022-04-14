@@ -180,6 +180,12 @@ class CCTShopController: BaseCollectionController,UICollectionViewDelegateFlowLa
     return cell
   }
   
+  override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let model = dataArray[indexPath.item] as! ShopProductModel
+    let vc = ShopDetailController(productId: model.id)
+    self.navigationController?.pushViewController(vc)
+  }
+  
   func updateCellIsLikeStatus(_ model:ShopProductModel) {
     guard let index = (self.dataArray as! [ShopProductModel]).firstIndex(where: { $0.id == model.id }) else {
       return
@@ -228,6 +234,9 @@ class CCTShopController: BaseCollectionController,UICollectionViewDelegateFlowLa
       }
     }
     return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withClass: CCTShopNoneView.self, for: indexPath)
+    
+   
+    
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

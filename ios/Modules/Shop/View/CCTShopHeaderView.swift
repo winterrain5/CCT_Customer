@@ -83,8 +83,8 @@ class CCTShopHeaderView: UICollectionReusableView,FSPagerViewDelegate,FSPagerVie
   func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
     pagerView.deselectItem(at: index, animated: false)
     let model = datas[index]
-    
-//    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    let vc = ShopDetailController(productId: model.id)
+    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
   }
 
   func pagerView(_ pagerView: FSPagerView, willDisplay cell: FSPagerViewCell, forItemAt index: Int) {

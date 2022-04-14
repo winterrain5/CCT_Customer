@@ -8,7 +8,7 @@
 import UIKit
 import JXPagingView
 import PromiseKit
-class WalletRewardsController: WalletBaseController {
+class WalletRewardsController: BasePagingTableController {
 
   var coupons:[WalletCouponsModel] = []
   var vouchers:[WalletVouchersModel] = []

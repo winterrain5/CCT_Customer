@@ -26,6 +26,8 @@ class MadamPartumDetailFooterCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
       rateContainer.selectStarUnit = .custom
+      rateContainer.hightLightImage = R.image.madam_partum_star()
+      rateContainer.defaultImage = R.image.madam_partum_un_star()
     }
 
 }

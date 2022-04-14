@@ -23,11 +23,6 @@ class ShopViewController: BaseTableController {
     
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    refreshData()
-  }
-  
   @objc func shopHertBarItemAction() {
     let vc = ShopLikeProductController()
     self.navigationController?.pushViewController(vc)
@@ -38,6 +33,13 @@ class ShopViewController: BaseTableController {
     self.navigationController?.pushViewController(vc)
   }
   
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    refreshData()
+  }
+  
+ 
   override func refreshData() {
     when(fulfilled: getNewFeaturedProducts(),getRecentViewedProducts(),getBannerProducts()).done { _ in
       self.headerView.datas = self.bannerProducts
@@ -66,7 +68,7 @@ class ShopViewController: BaseTableController {
           resolver.reject(APIError.requestError(code: -1, message: "Decode ShopProductModel Failed"))
         }
       } errorHandler: { e in
-        resolver.reject(e.asAPIError)
+        resolver.reject(APIError.requestError(code: -1, message: e.localizedDescription))
       }
     }
   }
@@ -85,7 +87,7 @@ class ShopViewController: BaseTableController {
           resolver.reject(APIError.requestError(code: -1, message: "Decode ShopProductModel Failed"))
         }
       } errorHandler: { e in
-        resolver.reject(e.asAPIError)
+        resolver.reject(APIError.requestError(code: -1, message: e.localizedDescription))
       }
     }
   }
@@ -107,7 +109,7 @@ class ShopViewController: BaseTableController {
           resolver.reject(APIError.requestError(code: -1, message: "Decode ShopProductModel Failed"))
         }
       } errorHandler: { e in
-        resolver.reject(e.asAPIError)
+        resolver.reject(APIError.requestError(code: -1, message: e.localizedDescription))
       }
 
     }

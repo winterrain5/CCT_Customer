@@ -130,11 +130,3 @@ extension MyWalletController:JXPagingViewDelegate {
 extension JXPagingListContainerView: JXSegmentedViewListContainer {}
 
 
-
-
-
-extension BaseViewController: JXSegmentedListContainerViewListDelegate {
-  func listView() -> UIView {
-    return view
-  }
-}

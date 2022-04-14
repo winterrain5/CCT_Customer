@@ -11,6 +11,7 @@ import CHIPageControl
 enum ShopDataType {
   case RecentlyViewed
   case NewProducts
+  case Other
 }
 class ShopCollectionCell: UITableViewCell,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource {
   var typeLabel = UILabel().then { label in
@@ -55,8 +56,15 @@ class ShopCollectionCell: UITableViewCell,UICollectionViewDelegateFlowLayout,UIC
       
       if dataType == .NewProducts {
         self.typeLabel.text = "New Products"
-      }else {
+        viewButton.isHidden = false
+      }
+      if dataType == .RecentlyViewed {
         self.typeLabel.text = "Recently Viewed"
+        viewButton.isHidden = false
+      }
+      if dataType == .Other {
+        self.typeLabel.text = "Other Products"
+        viewButton.isHidden = true
       }
       
     }
@@ -64,7 +72,7 @@ class ShopCollectionCell: UITableViewCell,UICollectionViewDelegateFlowLayout,UIC
   var datas:[ShopProductModel] = [] {
     didSet {
       collectionView.reloadData()
-      pageControl.numberOfPages = datas.count / 2
+      pageControl.numberOfPages = (datas.count / 2) + ( datas.count % 2 == 0 ? 0 : 1 )
     }
   }
 
@@ -148,15 +156,17 @@ class ShopCollectionCell: UITableViewCell,UICollectionViewDelegateFlowLayout,UIC
   
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
+    let id = self.datas[indexPath.item].id
+    let vc = ShopDetailController(productId: id)
+    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
   }
   
   func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
     if scrollView.contentOffset.x == 0 {
       pageControl.set(progress: 0, animated: true)
     }else {
-      let page = floor((scrollView.contentSize.width / scrollView.contentOffset.x))
-      pageControl.set(progress: page.int - 1, animated: true)
+      let page = (scrollView.contentOffset.x / 336).int + ((scrollView.contentOffset.x.int % 336 == 0)  ? 0 : 1)
+      pageControl.set(progress: page, animated: true)
     }
    
   }

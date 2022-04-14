@@ -7,7 +7,8 @@
 
 import UIKit
 import JXPagingView
-class WalletBaseController: BaseTableController {
+import JXSegmentedView
+class BasePagingTableController: BaseTableController {
 
   var listViewDidScrollCallback: ((UIScrollView) -> ())?
 
@@ -24,7 +25,7 @@ class WalletBaseController: BaseTableController {
 
 }
 
-extension WalletBaseController: JXPagingViewListViewDelegate {
+extension BasePagingTableController: JXPagingViewListViewDelegate {
     override func listView() -> UIView {
         return view
     }
@@ -40,4 +41,10 @@ extension WalletBaseController: JXPagingViewListViewDelegate {
 }
 
 
+
+extension BaseViewController: JXSegmentedListContainerViewListDelegate {
+  func listView() -> UIView {
+    return view
+  }
+}
 

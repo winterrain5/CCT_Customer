@@ -14,14 +14,26 @@ class ShopCartCell: UITableViewCell {
   
   @IBOutlet weak var stepperView: ShopStepperView!
   @IBOutlet weak var priceLabel: UILabel!
-  var updateCellIsLikeStatus:((ShopProductModel)->())?
-  var model:ShopProductModel! {
+  var updateProductCountHandler:(()->())?
+  var model:Product! {
     didSet {
       productNameLabel.text = model.alias.isEmpty ? model.name : model.alias
       productImageView.yy_setImage(with: model.picture.asURL, options: .setImageWithFadeAnimation)
       priceLabel.text = model.sell_price.formatMoney().dolar
-      
-      
+      stepperView.count = model.count
     }
+  }
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    stepperView.valueDidChangeHandler = { [weak self] count in
+      guard let `self` = self else { return }
+      self.model.count = count
+      self.updateProductCountHandler?()
+    }
+  }
+  
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    
   }
 }

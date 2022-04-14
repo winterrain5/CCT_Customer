@@ -8,7 +8,7 @@
 import UIKit
 
 import JXPagingView
-class WalletTransactionsController: WalletBaseController {
+class WalletTransactionsController: BasePagingTableController {
   
   
   override func viewDidLoad() {

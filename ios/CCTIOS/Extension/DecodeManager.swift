@@ -17,6 +17,10 @@ class DecodeManager {
   
   static func decodeObjectByHandJSON<T:HandyJSON>(_ type:T.Type,from data:Data) -> T? {
     let jsonString = JSON.init(from: data)?.rawString()
+    if jsonString == nil {
+      let jsonDict = JSON.init(from: data)?.rawValue as? NSDictionary
+      return T.deserialize(from: jsonDict)
+    }
     return T.deserialize(from: jsonString)
   }
   

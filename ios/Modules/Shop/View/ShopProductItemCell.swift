@@ -31,6 +31,8 @@ class ShopProductItemCell: UICollectionViewCell {
     starContentView.selectStarUnit = .custom
     starContentView.hightLightImage = R.image.madam_partum_star()
     starContentView.defaultImage = R.image.madam_partum_un_star()
+    
+    titleLabel.lineBreakMode = .byTruncatingTail
   }
   
   override func layoutSubviews() {

@@ -168,7 +168,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
         }
         resolver.fulfill_()
       } errorHandler: { e in
-        resolver.reject(e.asAPIError)
+        resolver.reject(APIError.requestError(code: -1, message: e.localizedDescription))
       }
       
     }
@@ -208,7 +208,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
           resolver.reject(APIError.requestError(code: -1, message: "Decode NetGiftVoucherModel Failed"))
         }
       } errorHandler: { e in
-        resolver.reject(e.asAPIError)
+        resolver.reject(APIError.requestError(code: -1, message: e.localizedDescription))
       }
       
     }
@@ -333,7 +333,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
           resolver.reject(APIError.requestError(code: -1, message: "Get OrderID Failed"))
         }
       } errorHandler: { e in
-        resolver.reject(e.asAPIError)
+        resolver.reject(APIError.requestError(code: -1, message: e.localizedDescription))
       }
       
     }
@@ -354,7 +354,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
           resolver.reject(APIError.requestError(code: -1, message: "Decode MyOrderDetailModel Failed"))
         }
       } errorHandler: { e in
-        resolver.reject(e.asAPIError)
+        resolver.reject(APIError.requestError(code: -1, message: e.localizedDescription))
       }
     }
   }

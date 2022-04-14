@@ -27,6 +27,12 @@ class ShopStepperView: UIView {
     label.textAlignment = .center
   }
   private var value:Int = 1
+  var count:Int = 1 {
+    didSet {
+      self.value = count
+      updateValue()
+    }
+  }
   var valueDidChangeHandler:((Int)->())?
   override init(frame: CGRect) {
     super.init(frame: frame)

@@ -74,6 +74,11 @@ enum API:String {
   case deleteLikeProduct = "deleteLikeProduct"
   case getProductsByFilters = "getProductsByFilters"
   case searchSourcesByPages = "searchSourcesByPages"
+  /// 获取商品详情
+  case getProductsDetails = "getProductsDetails"
+  case saveRecentViewedProduct = "saveRecentViewedProduct"
+  case getRecommendProducts = "getRecommendProducts"
+  case getProductsReviews = "getProductsReviews"
   //// 获取所有分店地址
   case getAllMp = "getAllMp"
   case getTLocations = "getTLocations"

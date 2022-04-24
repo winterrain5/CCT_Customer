@@ -460,7 +460,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       orderInfo.set(key: "remark", value: "")
       
       var presentPoints = topUpAmount.float() ?? 0
-      if let birthDay = Defaults.shared.get(for: .userModel)?.birthday?.date(withFormat: "yyyy-MM-dd") {
+      if let birthDay = Defaults.shared.get(for: .userModel)?.birthday.date(withFormat: "yyyy-MM-dd") {
         if birthDay.isInCurrentMonth && birthDay.isInToday {
           presentPoints *= 2
         }
@@ -557,7 +557,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     NetworkManager().request(params: params) { data in
-      if let newModel = DecodeManager.decodeByCodable(UserModel.self, from: data),let oldModel = Defaults.shared.get(for: .userModel),newModel.new_recharge_card_level != oldModel.new_recharge_card_level {
+      if let newModel = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data),let oldModel = Defaults.shared.get(for: .userModel),newModel.new_recharge_card_level != oldModel.new_recharge_card_level {
         self.getNewCardDiscountsByLevel(newModel)
       }else {
         self.popBack()
@@ -570,7 +570,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
   func getNewCardDiscountsByLevel(_ model:UserModel) {
     let params = SOAPParams(action: .VipDefinition, path: .getNewCardDiscountsByLevel,isNeedToast: false)
     params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
-    params.set(key: "cardLevel", value: model.new_recharge_card_level ?? "")
+    params.set(key: "cardLevel", value: model.new_recharge_card_level)
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeByCodable([CardDiscountModel].self, from: data) {
         self.upgradedTierLevel(user: model, discount: models.first?.discount_percent ?? "")
@@ -584,7 +584,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
   func upgradedTierLevel(user:UserModel,discount:String) {
     let params = SOAPParams(action: .Notifications, path: .upgradedTierLevel)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
-    params.set(key: "level", value: user.new_recharge_card_level ?? "")
+    params.set(key: "level", value: user.new_recharge_card_level)
     params.set(key: "discount", value: discount)
     NetworkManager().request(params: params) { data in
       self.popBack()

@@ -38,7 +38,7 @@ class WalletCardController: BaseViewController {
     let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
-      if let model = DecodeManager.decodeByCodable(UserModel.self, from: data) {
+      if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
         
         self.container.model = model
       }else {

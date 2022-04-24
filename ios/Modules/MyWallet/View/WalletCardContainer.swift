@@ -17,7 +17,7 @@ class WalletCardContainer: UIView {
     didSet {
       guard let userModel = model else { return }
    
-      let point = userModel.points?.split(separator: ".").first ?? "0"
+      let point = userModel.points.split(separator: ".").first ?? "0"
       pointsLabel.text = String(point)
       card.model = model
       

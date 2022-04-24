@@ -10,16 +10,15 @@ import UIKit
 class WalletPaymentMethodController: BaseTableController {
   var cardModel:WalletPaymentMethodModel?
   var selectIndex:IndexPath?
-  var headView = UIView().then { view in
-    view.backgroundColor = .white
-    
-    let label = UILabel()
+  lazy var headLabel = UILabel().then { label in
     label.text = "Payment Method"
     label.textColor = R.color.theamBlue()
     label.font = UIFont(.AvenirNextDemiBold,18)
-    
-    view.addSubview(label)
-    label.snp.makeConstraints { make in
+  }
+  lazy var headView = UIView().then { view in
+    view.backgroundColor = .white
+    view.addSubview(headLabel)
+    headLabel.snp.makeConstraints { make in
       make.left.equalToSuperview().offset(24)
       make.top.equalToSuperview().offset(24)
     }
@@ -71,6 +70,7 @@ class WalletPaymentMethodController: BaseTableController {
               }
             }
           }
+          
           self.dataArray = methods
           self.addHeadFootView()
         }else {
@@ -173,7 +173,7 @@ class WalletPaymentMethodController: BaseTableController {
       data.set(key: "name_on_card", value: result.name)
       data.set(key: "card_number", value: result.number)
       data.set(key: "expiry_date", value: result.date)
-      data.set(key: "authorisation_code", value: self.cardModel?.method_lines?.first?.authorisation_code ?? "")
+      data.set(key: "authorisation_code", value: result.cvv)
       data.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
                         
       params.set(key: "data", value: data.result,type: .map(1))
@@ -209,6 +209,12 @@ class WalletPaymentMethodController: BaseTableController {
       params.set(key: "id", value: model.id ?? "")
       Toast.showLoading()
       NetworkManager().request(params: params) { data in
+        if let savedMethod = Defaults.shared.get(for: .payMethodLine) {
+          if savedMethod.id == model.id {
+            Defaults.shared.clear(.payMethodLine)
+            Defaults.shared.clear(.payMethodId)
+          }
+        }
         self.loadNewData()
         Toast.showSuccess(withStatus: "Delete Success")
       } errorHandler: { e in

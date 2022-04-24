@@ -9,19 +9,17 @@ import UIKit
 import PromiseKit
 class ShopCartController: BaseTableController {
   lazy var bottomSheetHeight:CGFloat = 74 + kBottomsafeAreaMargin
+  lazy var checkoutBtn = LoadingButton().then { btn in
+    btn.backgroundColor = R.color.theamRed()
+    btn.cornerRadius = 22
+    btn.titleForNormal = "Check Out"
+    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.addTarget(self, action: #selector(checkoutAction), for: .touchUpInside)
+  }
   lazy var bottomView = UIView().then { view in
     view.backgroundColor = .clear
-    
-    var btn = UIButton().then { btn in
-      btn.backgroundColor = R.color.theamRed()
-      btn.cornerRadius = 22
-      btn.titleForNormal = "Check Out"
-      btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
-      btn.addTarget(self, action: #selector(checkoutAction), for: .touchUpInside)
-    }
-    
-    view.addSubview(btn)
-    btn.snp.makeConstraints { make in
+    view.addSubview(checkoutBtn)
+    checkoutBtn.snp.makeConstraints { make in
       make.left.right.equalToSuperview().inset(24)
       make.height.equalTo(44)
       make.top.equalToSuperview().offset(16)
@@ -33,7 +31,6 @@ class ShopCartController: BaseTableController {
   private var showType = 0
   private var taxModel:TaxesModel!
   private var staffModel:BusinessManModel?
-  private var orderID = ""
   let dateHMS = Date().string(withFormat: "yyyy-MM-dd HH:mm:ss")
   let dateYMD = Date().string(withFormat: "yyyy-MM-dd")
   convenience init(showType:Int,products:[Product] = []) {
@@ -112,7 +109,18 @@ class ShopCartController: BaseTableController {
 
 
   @objc func checkoutAction() {
-    
+    checkoutBtn.startAnimation()
+    firstly{
+      getAllTaxes()
+    }.then {
+      self.getBusiness()
+    }.then {
+      self.checkoutTOrder()
+    }.done {
+      self.checkoutBtn.stopAnimation()
+    }.catch { e in
+      Toast.showError(withStatus: e.asAPIError.errorInfo().message)
+    }
   }
   
   func getAllTaxes() -> Promise<Void>{
@@ -247,13 +255,10 @@ class ShopCartController: BaseTableController {
       logData.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
       mapParams.set(key: "logData", value: logData.result, type: .map(2))
       
-#if DEBUG
-      Toast.showLoading(withStatus: mapParams.path)
-#endif
-      
       NetworkManager().request(params: mapParams) { data in
         if let id = JSON.init(from: data)?.rawString() {
-          self.orderID = id
+          let vc = ShopCheckOutController(orderId: id, products: self.dataArray as! [Product])
+          self.navigationController?.pushViewController(vc)
           resolver.fulfill_()
         }else {
           resolver.reject(APIError.requestError(code: -1, message: "Failed to generate order"))

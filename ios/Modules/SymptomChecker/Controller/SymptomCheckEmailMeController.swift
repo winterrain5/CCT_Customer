@@ -58,7 +58,7 @@ class SymptomCheckEmailMeController: BaseTableController {
     let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
-      if let model = DecodeManager.decodeByCodable(UserModel.self, from: data) {
+      if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
         self.userModel = model
       }
     } errorHandler: { e in
@@ -162,9 +162,9 @@ class SymptomCheckEmailMeController: BaseTableController {
       let params = SOAPParams(action: .Sms, path: .sendSmsForEmail)
       
       let content = SOAPDictionary()
-      let name = (userModel.first_name ?? "") + (userModel.last_name ?? "")
-      content.set(key: "title", value: "[Chien Chi Tow] " + name + " (\(userModel.mobile ?? "")) " + "Analysis Report")
-      content.set(key: "email", value: userModel.email ?? "")
+      let name = (userModel.first_name) + (userModel.last_name )
+      content.set(key: "title", value: "[Chien Chi Tow] " + name + " (\(userModel.mobile)) " + "Analysis Report")
+      content.set(key: "email", value: userModel.email)
       let message = "<p><img src=\"data:image/png;base64," + base64Image + "\" style=\"max-width:100%;\"/><br/></p>";
       content.set(key: "message", value: message.replacingOccurrences(of: "&", with: "&amp;").replacingOccurrences(of: "<", with: "&lt;").replacingOccurrences(of: ">", with: "&gt;"))
   

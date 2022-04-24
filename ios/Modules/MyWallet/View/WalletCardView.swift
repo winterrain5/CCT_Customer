@@ -26,15 +26,15 @@ class WalletCardView: UIView {
       guard let userModel = model else { return }
       
       // 是否第一次充值 ： 首次购买新充值卡状态; 0没有购买过,1购买充值卡未达银卡,2购买充值卡达到银卡及以上
-      let first_recharge_card_status = userModel.first_recharge_card_status?.int ?? 0
+      let first_recharge_card_status = userModel.first_recharge_card_status.int ?? 0
       // 购买过充值卡用户的消费额度
 //      let consumption = userModel.consumption ?? ""
       
-      let active_amount = userModel.active_amount?.float() ?? 0
-      let keep = userModel.keep?.string.formatMoney().dolar ?? "$0" // 保级金额
-      let upgrade = userModel.upgrade?.string.formatMoney().dolar ?? "$0" // 下一级金额
-      let level = userModel.new_recharge_card_level?.int ?? 0
-      let cardExpireDate = userModel.new_recharge_card_period?.date(withFormat: "yyyy-MM-dd")?.string(withFormat: "dd MMM yyyy")
+      let active_amount = userModel.active_amount.float() ?? 0
+      let keep = userModel.keep.string.formatMoney().dolar // 保级金额
+      let upgrade = userModel.upgrade.string.formatMoney().dolar// 下一级金额
+      let level = userModel.new_recharge_card_level.int ?? 0
+      let cardExpireDate = userModel.new_recharge_card_period.date(withFormat: "yyyy-MM-dd")?.string(withFormat: "dd MMM yyyy")
       levelLabel.text = userModel.new_recharge_card_level_text
       descRightCons.constant = 112
       if level == 0 || level == 1 { // basesic

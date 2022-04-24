@@ -11,7 +11,7 @@ class SymptomCheckTreatmentPlanController: BaseTableController {
   private var headerView = SymptomCheckPlanHeaderView.loadViewFromNib()
   private var reportId:String = ""
   private var model:SymptomCheckPlanModel?
-  private var footerView = UIView().then { view in
+  private lazy var footerView = UIView().then { view in
     view.backgroundColor = .white
     
     let btn = UIButton()

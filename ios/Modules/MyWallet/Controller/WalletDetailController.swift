@@ -42,10 +42,10 @@ class WalletDetailController: BaseTableController {
     let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
-      if let model = DecodeManager.decodeByCodable(UserModel.self, from: data) {
+      if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
         
         self.headerView.card.model = model
-        self.getNewCardDiscountsByLevel(model.new_recharge_card_level ?? "0")
+        self.getNewCardDiscountsByLevel(model.new_recharge_card_level)
       }else {
         Toast.showError(withStatus: "decode UserModel Failed")
       }

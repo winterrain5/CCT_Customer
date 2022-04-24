@@ -45,8 +45,8 @@ class ChangePwdController: BaseViewController {
     let parmas = SOAPParams(action: .Client, path: .getTClientPartInfo)
     parmas.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: parmas) { data in
-      if let model = DecodeManager.decodeByCodable(UserModel.self, from: data) {
-        self.receiveEmail = model.email ?? ""
+      if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
+        self.receiveEmail = model.email
       }
     } errorHandler: { e in
       

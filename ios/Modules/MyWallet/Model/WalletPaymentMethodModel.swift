@@ -7,16 +7,20 @@
 
 import UIKit
 
-class MethodLines :Codable {
+class MethodLines :BaseModel,Codable {
   var card_number: String?
   var id: String?
   var authorisation_code: String?
   var name_on_card: String?
   var expiry_date: String?
   var isSelected:Bool?
+  //
+  var amount: String = ""
+  /// 0 自己的余额 1 自己的信用卡 2 朋友的卡
+  var type:Int = 1
 }
 
-class WalletPaymentMethodModel :Codable {
+class WalletPaymentMethodModel :BaseModel,Codable {
   var method_type: String?
   var id: String?
   var company_id: String?
@@ -24,5 +28,4 @@ class WalletPaymentMethodModel :Codable {
   var create_uid: String?
   var method_lines: [MethodLines]?
   var payment_method: String?
-  
 }

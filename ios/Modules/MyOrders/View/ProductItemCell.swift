@@ -25,6 +25,16 @@ class ProductItemCell: UITableViewCell {
       layoutIfNeeded()
     }
   }
+  var product:Product! {
+    didSet {
+      productImageView.yy_setImage(with: product.picture.asURL, options: .setImageWithFadeAnimation)
+      numLabel.text = product.count.string + " x"
+      nameLabel.text = product.alias.isEmpty ? product.name : product.alias
+      priceLabel.text = product.sell_price.formatMoney().dolar
+      priceWCons.constant = priceLabel.sizeThatFits(CGSize(width: CGFloat.infinity, height: 20)).width
+      layoutIfNeeded()
+    }
+  }
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

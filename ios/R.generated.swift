@@ -105,7 +105,7 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 15 colors.
+  /// This `R.color` struct is generated, and contains static references to 16 colors.
   struct color {
     /// Color `Black333`.
     static let black333 = Rswift.ColorResource(bundle: R.hostingBundle, name: "Black333")
@@ -133,6 +133,8 @@ struct R: Rswift.Validatable {
     static let white = Rswift.ColorResource(bundle: R.hostingBundle, name: "White")
     /// Color `gray82`.
     static let gray82 = Rswift.ColorResource(bundle: R.hostingBundle, name: "gray82")
+    /// Color `grayBD`.
+    static let grayBD = Rswift.ColorResource(bundle: R.hostingBundle, name: "grayBD")
     /// Color `grayE0`.
     static let grayE0 = Rswift.ColorResource(bundle: R.hostingBundle, name: "grayE0")
     /// Color `grayf2`.
@@ -256,6 +258,15 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "grayBD", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func grayBD(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.grayBD, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIColor(named: "grayE0", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
@@ -374,6 +385,14 @@ struct R: Rswift.Validatable {
     @available(watchOSApplicationExtension 4.0, *)
     static func gray82(_: Void = ()) -> UIKit.UIColor? {
       return UIKit.UIColor(named: R.color.gray82.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "grayBD", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func grayBD(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.grayBD.name)
     }
     #endif
 
@@ -1079,7 +1098,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 92 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 93 nibs.
   struct nib {
     /// Nib `AccountEditSheetContentView`.
     static let accountEditSheetContentView = _R.nib._AccountEditSheetContentView()
@@ -1199,6 +1218,8 @@ struct R: Rswift.Validatable {
     static let shopCartFooterView = _R.nib._ShopCartFooterView()
     /// Nib `ShopCheckOutFooterView`.
     static let shopCheckOutFooterView = _R.nib._ShopCheckOutFooterView()
+    /// Nib `ShopCollectionMethodSheetView`.
+    static let shopCollectionMethodSheetView = _R.nib._ShopCollectionMethodSheetView()
     /// Nib `ShopDetailAboutHeadView`.
     static let shopDetailAboutHeadView = _R.nib._ShopDetailAboutHeadView()
     /// Nib `ShopDetailHeadContainer`.
@@ -1739,6 +1760,14 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ShopCollectionMethodSheetView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.shopCollectionMethodSheetView) instead")
+    static func shopCollectionMethodSheetView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.shopCollectionMethodSheetView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "ShopDetailAboutHeadView", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.shopDetailAboutHeadView) instead")
     static func shopDetailAboutHeadView(_: Void = ()) -> UIKit.UINib {
@@ -2236,6 +2265,10 @@ struct R: Rswift.Validatable {
 
     static func shopCheckOutFooterView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopCheckOutFooterView? {
       return R.nib.shopCheckOutFooterView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopCheckOutFooterView
+    }
+
+    static func shopCollectionMethodSheetView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopCollectionMethodSheetView? {
+      return R.nib.shopCollectionMethodSheetView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopCollectionMethodSheetView
     }
 
     static func shopDetailAboutHeadView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopDetailAboutHeadView? {
@@ -3304,6 +3337,17 @@ struct _R: Rswift.Validatable {
           if UIKit.UIColor(named: "gray82", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'gray82' is used in nib 'ShopCheckOutFooterView', but couldn't be loaded.") }
           if UIKit.UIColor(named: "grayE0", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'grayE0' is used in nib 'ShopCheckOutFooterView', but couldn't be loaded.") }
         }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _ShopCollectionMethodSheetView: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "ShopCollectionMethodSheetView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopCollectionMethodSheetView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopCollectionMethodSheetView
       }
 
       fileprivate init() {}

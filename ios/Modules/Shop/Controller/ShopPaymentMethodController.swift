@@ -44,7 +44,7 @@ class ShopPaymentMethodController: BaseTableController {
     btn.addTarget(self, action: #selector(addCardAction), for: .touchUpInside)
     
   }
-  var selectCompleteHandler:((MethodLines)->())?
+  var selectCompleteHandler:((MethodLines,WalletPaymentMethodModel)->())?
   override func viewDidLoad() {
     super.viewDidLoad()
     self.navigation.item.title = "Payment Method"
@@ -71,7 +71,12 @@ class ShopPaymentMethodController: BaseTableController {
   }
   
   func getUserLevel() -> Promise<Void> {
+    
     Promise.init { resolver in
+      if let _ = Defaults.shared.get(for: .userModel) {
+        resolver.fulfill_()
+        return
+      }
       let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       NetworkManager().request(params: params) { data in
@@ -137,7 +142,9 @@ class ShopPaymentMethodController: BaseTableController {
             let model = MethodLines()
             model.name_on_card = e.first_name?.appending(e.last_name ?? "")
             model.amount = e.new_card_amount?.string ?? "0"
-            model.type = 2
+            model.type = 1
+            model.trans_limit = e.trans_limit ?? "0"
+            model.card_owner_id = e.card_owner_id ?? ""
             self.dataArray.append(model)
           }
           resolver.fulfill_()
@@ -161,7 +168,7 @@ class ShopPaymentMethodController: BaseTableController {
       NetworkManager().request(params: params) { data in
         if let models = DecodeManager.decodeArrayByHandJSON(WalletPaymentMethodModel.self, from: data),let methods = models.first?.method_lines {
           self.cardModel = models.first
-          
+          methods.forEach({ $0.type = 2 })
           self.dataArray.append(contentsOf: methods)
             
           resolver.fulfill_()
@@ -282,10 +289,13 @@ class ShopPaymentMethodController: BaseTableController {
   }
   
   @objc func doneAction() {
-    let model = self.dataArray[selectIndex.row] as! MethodLines
-    selectCompleteHandler?(model)
-    self.navigationController?.popViewController()
-    
+    if let card = cardModel {
+      let model = self.dataArray[selectIndex.row] as! MethodLines
+      selectCompleteHandler?(model,card)
+      self.navigationController?.popViewController()
+    }else {
+      Toast.showMessage("Error")
+    }
   }
   
   func delete(_ model:MethodLines){

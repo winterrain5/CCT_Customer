@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OrderLineInfo :BaseModel {
+class OrderLineInfo :BaseModel,Codable {
   var rate: String?
   var return_amount: String?
   var id: String?
@@ -29,7 +29,7 @@ class OrderLineInfo :BaseModel {
   var qty: String?
   var referrer_first_name: String?
   var has_leaved_review: Int?
-  var reward_discount: Int?
+  var reward_discount: String?
   var discount_amount1: String?
   var create_time: String?
   var doctor_first_name: String?

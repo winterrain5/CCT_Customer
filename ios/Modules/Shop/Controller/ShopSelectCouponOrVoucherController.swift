@@ -39,7 +39,7 @@ class ShopSelectCouponOrVoucherController: BaseTableController {
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeByCodable([WalletCouponsModel].self, from: data) {
         self.dataArray = models
-        self.tableView?.reloadData()
+        self.endRefresh(models.count,emptyString: "No Coupons")
       }
     } errorHandler: { e in
       
@@ -54,7 +54,7 @@ class ShopSelectCouponOrVoucherController: BaseTableController {
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeByCodable([WalletVouchersModel].self, from: data) {
         self.dataArray = models
-        self.tableView?.reloadData()
+        self.endRefresh(models.count,emptyString: "No Vouchers")
       }
     } errorHandler: { e in
       

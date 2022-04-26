@@ -71,6 +71,8 @@ class ShopCartController: BaseTableController {
     tableView?.separatorColor = R.color.line()
     tableView?.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     
+    tableView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomSheetHeight, right: 0)
+    
     tableView?.tableFooterView = footerView
     footerView.size = CGSize(width: kScreenWidth, height: 138)
     
@@ -119,6 +121,7 @@ class ShopCartController: BaseTableController {
     }.done {
       self.checkoutBtn.stopAnimation()
     }.catch { e in
+      self.checkoutBtn.stopAnimation()
       Toast.showError(withStatus: e.asAPIError.errorInfo().message)
     }
   }

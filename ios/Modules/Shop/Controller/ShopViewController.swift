@@ -98,7 +98,7 @@ class ShopViewController: BaseTableController {
       params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "")
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       params.set(key: "isFeatured", value: 1)
-      params.set(key: "isNew", value: 0)
+      params.set(key: "isNew", value: "false")
       params.set(key: "isOnline", value: 1)
       params.set(key: "limit", value: 4)
       NetworkManager().request(params: params) { data in

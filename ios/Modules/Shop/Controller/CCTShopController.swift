@@ -24,7 +24,7 @@ class CCTShopController: BaseCollectionController,UICollectionViewDelegateFlowLa
     super.viewDidLoad()
     
     if isCCT {
-      isCctMap = "0"
+      isCctMap = "1"
       self.barAppearance(tintColor: .white, barBackgroundColor: R.color.theamBlue()!, image: R.image.return_left())
     }else {
       isCctMap = "2"
@@ -113,7 +113,7 @@ class CCTShopController: BaseCollectionController,UICollectionViewDelegateFlowLa
     params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "")
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "isFeatured", value: 1)
-    params.set(key: "isNew", value: 0)
+    params.set(key: "isNew", value: "false")
     params.set(key: "isOnline", value: 1)
     params.set(key: "isCctMap", value: isCctMap)
     params.set(key: "limit", value: 4)

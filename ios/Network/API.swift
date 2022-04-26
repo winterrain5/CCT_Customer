@@ -79,6 +79,7 @@ enum API:String {
   case saveRecentViewedProduct = "saveRecentViewedProduct"
   case getRecommendProducts = "getRecommendProducts"
   case getProductsReviews = "getProductsReviews"
+  case getCanSendProductLocations = "getCanSendProductLocations"
   //// 获取所有分店地址
   case getAllMp = "getAllMp"
   case getTLocations = "getTLocations"
@@ -140,6 +141,7 @@ enum API:String {
   case getClientGifts = "getClientGifts"
   /// wallet coupons
   case getClientValidRewards = "getClientValidRewards"
+  case getValidNewVouchers = "getValidNewVouchers"
   
   case getNewCardDiscountsByLevel = "getNewCardDiscountsByLevel"
   case getCardDiscountDetails = "getCardDiscountDetails"

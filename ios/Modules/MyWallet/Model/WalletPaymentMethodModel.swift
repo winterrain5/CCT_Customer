@@ -13,11 +13,15 @@ class MethodLines :BaseModel,Codable {
   var authorisation_code: String?
   var name_on_card: String?
   var expiry_date: String?
+  
+  // 本地字段
   var isSelected:Bool?
   //
   var amount: String = ""
-  /// 0 自己的余额 1 自己的信用卡 2 朋友的卡
+  /// 0：会员卡， 1 朋友的卡，2 自己的信用卡
   var type:Int = 1
+  var trans_limit:String = "0"
+  var card_owner_id:String = ""
 }
 
 class WalletPaymentMethodModel :BaseModel,Codable {

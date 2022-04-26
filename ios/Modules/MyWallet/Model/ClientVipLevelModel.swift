@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ClientVipLevelModel: Codable {
+class ClientVipLevelModel: BaseModel,Codable {
   var accumulated_amount:String?
   var create_time:String?
   var create_uid:String?

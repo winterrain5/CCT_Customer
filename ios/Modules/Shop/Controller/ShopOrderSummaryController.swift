@@ -1,49 +1,52 @@
 //
-//  MyOrderDetailController.swift
+//  ShopOrderSummaryController.swift
 //  CCTIOS
 //
-//  Created by Derrick on 2022/2/17.
+//  Created by Derrick on 2022/4/26.
 //
 
 import UIKit
 import PromiseKit
+class ShopOrderSummaryController: BaseViewController {
 
-class MyOrderDetailController: BaseViewController {
-  
   private var scrollView = UIScrollView()
-  private var statusView = MyOrderStatusView()
+  private var textLabel = UILabel().then { label in
+    label.textColor = R.color.theamBlue()
+    label.font = UIFont(.AvenirNextDemiBold,24)
+    label.text = "Your order has been confirmed!"
+    label.textAlignment = .center
+    label.numberOfLines = 2
+  }
   private var headerView = MyOrderDetailHeaderView.loadViewFromNib()
   private var footerView = MyOrderDetailFooterView.loadViewFromNib()
-  private var helpButton = UIButton().then { btn in
+  private var returnButton = UIButton().then { btn in
     btn.cornerRadius = 22
     btn.backgroundColor = R.color.theamRed()
     btn.titleColorForNormal = .white
     btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
-    btn.titleForNormal = "Need Help?"
+    btn.titleForNormal = "Return to Shop"
   }
-  private var status:Int = 0
-  private var orderModel:MyOrderModel!
-  convenience init(status:Int,orderModel:MyOrderModel) {
+  private var id = ""
+  convenience init(id:String) {
     self.init()
-    self.status = status
-    self.orderModel = orderModel
+    self.id = id
+    
   }
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.navigation.item.title = "My Orders"
+    self.navigation.item.title = "Order Summary"
     
     self.view.addSubview(scrollView)
     scrollView.frame = CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
     scrollView.contentSize = CGSize(width: kScreenWidth, height: 0)
     
-    scrollView.addSubview(statusView)
-    statusView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 111)
-    statusView.status = status
-    self.scrollView.contentSize.height += 111
+    scrollView.addSubview(textLabel)
+    textLabel.frame = CGRect(x: 16, y: 0, width: kScreenWidth - 32, height: 114)
+    self.scrollView.contentSize.height += 114
     
     scrollView.addSubview(headerView)
-    headerView.status = status
-    headerView.frame = CGRect(x: 0, y: statusView.frame.maxY, width: kScreenWidth, height: 0)
+    headerView.status = 1
+    headerView.frame = CGRect(x: 0, y: textLabel.frame.maxY, width: kScreenWidth, height: 0)
     headerView.updateHeightHandler = { [weak self] height in
       self?.headerView.height = height
       self?.scrollView.contentSize.height += height
@@ -57,9 +60,9 @@ class MyOrderDetailController: BaseViewController {
       self?.scrollView.contentSize.height += height
     }
     
-    self.view.addSubview(helpButton)
-    helpButton.addTarget(self, action: #selector(helpButtonAction), for: .touchUpInside)
-    helpButton.snp.makeConstraints { make in
+    self.view.addSubview(returnButton)
+    (returnButton).addTarget(self, action: #selector(returnButtonAction), for: .touchUpInside)
+    (returnButton).snp.makeConstraints { make in
       make.left.right.equalToSuperview().inset(32)
       make.height.equalTo(44)
       make.bottom.equalToSuperview().inset(40 + kBottomsafeAreaMargin)
@@ -68,6 +71,14 @@ class MyOrderDetailController: BaseViewController {
     scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 84 + kBottomsafeAreaMargin, right: 0)
     
     NotificationCenter.default.addObserver(self, selector: #selector(reviewComplte), name: NSNotification.Name.reviewOrderComplete, object: nil)
+    
+    
+    addLeftBarButtonItem()
+    leftButtonDidClick = { [weak self] in
+      self?.returnButtonAction()
+    }
+    
+    interactivePopGestureRecognizerEnable = false
     
     refreshData()
   }
@@ -107,14 +118,9 @@ class MyOrderDetailController: BaseViewController {
   
   func getOrderDetail() -> Promise<MyOrderDetailModel> {
     Promise.init { resolver in
-      var path:API!
-      if orderModel.type == "5" {
-        path = .getHistoryCheckoutDetails
-      }else {
-        path = .getHistoryOrderDetails
-      }
-      let params = SOAPParams(action: .Sale, path: path)
-      params.set(key: "orderId", value: orderModel.id ?? "")
+     
+      let params = SOAPParams(action: .Sale, path: .getHistoryOrderDetails)
+      params.set(key: "orderId", value: id)
       
       NetworkManager().request(params: params) { data in
         if let model = DecodeManager.decodeObjectByHandJSON(MyOrderDetailModel.self, from: data) {
@@ -128,11 +134,15 @@ class MyOrderDetailController: BaseViewController {
     }
   }
   
-  @objc func helpButtonAction() {
-    let vc = QuestionHelperController()
-    self.navigationController?.pushViewController(vc)
+  @objc func returnButtonAction() {
+    self.navigationController?.viewControllers.forEach({ vc in
+      if vc is ShopViewController {
+        self.navigationController?.popToViewController(vc, animated: true)
+      }
+    })
   }
-  
-  
-  
+    
+
+ 
+
 }

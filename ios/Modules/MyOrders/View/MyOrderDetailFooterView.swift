@@ -33,9 +33,9 @@ class MyOrderDetailFooterView: UIView {
       var sub_total:Float = 0.0;
       var total = 0;
       var discount:Float = 0;
-      var gst:Float = 0.00;
+      var gst:Float = 0.0;
       var freight:Float = 0.0;
-      var show_total:Float = 0.00;
+      var show_total:Float = 0.0;
       
       model.Order_Line_Info?.forEach({ item in
         
@@ -43,7 +43,7 @@ class MyOrderDetailFooterView: UIView {
         
         discount += (item.new_recharge_discount?.float() ?? 0)
         
-        discount += (item.reward_discount?.float ?? 0)
+        discount += (item.reward_discount?.float() ?? 0)
         
         let paid_amount = item.paid_amount?.float() ?? 0
         let rate = item.rate?.float() ?? 0
@@ -92,13 +92,13 @@ class MyOrderDetailFooterView: UIView {
       addressLabel.text = address
       
       totalItemsLabel.text = total.string
-      subTotalPriceLabel.text = sub_total.string.dolar
-      discountLabel.text = discount > 0 ? ("-" + discount.string.dolar) : "$0.00"
+      subTotalPriceLabel.text = sub_total.string.formatMoney().dolar
+      discountLabel.text = discount > 0 ? ("-" + discount.string.formatMoney().dolar) : "$0.00"
       deliveryFeeTypeLabel.text = feeTypeHead
-      deliveryFeeLabel.text = freight.string.dolar
+      deliveryFeeLabel.text = freight.string.formatMoney().dolar
       
-      totalHeaderLabel.text = gst > 0 ? "Total(Inclusive of GST \(gst.string.dolar))" : "Total"
-      totalPriceLabel.text = show_total.string.dolar
+      totalHeaderLabel.text = gst > 0 ? "Total(Inclusive of GST \(gst.string.formatMoney().dolar))" : "Total"
+      totalPriceLabel.text = show_total.string.formatMoney().dolar
       
       pointsLabel.text = "(Points earned \(model.Order_Info?.present_points ?? ""))"
       

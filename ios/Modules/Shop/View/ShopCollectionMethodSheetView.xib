@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ShopCollectionMethodSheetView" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="469"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection Method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpc-Zb-7Kj">
+                    <rect key="frame" x="129.5" y="24" width="155" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="lk2-dd-p4p"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
+                    <color key="textColor" red="0.078431372550000003" green="0.35294117650000001" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zPS-mg-sY3">
+                    <rect key="frame" x="40" y="84" width="334" height="245"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="u2D-r4-GoJ"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="mfy-oE-Q5A"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZT-U9-84Z">
+                    <rect key="frame" x="24" y="385" width="366" height="44"/>
+                    <color key="backgroundColor" red="0.76862745099999996" green="0.2784313725" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="1N8-2A-7Fp"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Select">
+                        <fontDescription key="titleFontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
+                        <color key="baseForegroundColor" name="White"/>
+                    </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="22"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="selectButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="cI0-N2-Mon"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="zPS-mg-sY3" firstAttribute="top" secondItem="Qpc-Zb-7Kj" secondAttribute="bottom" constant="32" id="2Ge-kn-bY4"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zPS-mg-sY3" secondAttribute="trailing" constant="40" id="5EW-MC-6hA"/>
+                <constraint firstItem="Qpc-Zb-7Kj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="24" id="PSI-5k-GBt"/>
+                <constraint firstItem="zPS-mg-sY3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="Qsa-mZ-nvr"/>
+                <constraint firstItem="Qpc-Zb-7Kj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Usf-HF-Rjr"/>
+                <constraint firstItem="UZT-U9-84Z" firstAttribute="top" secondItem="zPS-mg-sY3" secondAttribute="bottom" constant="56" id="Xcv-BT-9vv"/>
+                <constraint firstItem="UZT-U9-84Z" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="bn2-52-TbE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="UZT-U9-84Z" secondAttribute="trailing" constant="24" id="rgH-Xg-BPz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="UZT-U9-84Z" secondAttribute="bottom" constant="40" id="w2a-69-6LT"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="tableView" destination="zPS-mg-sY3" id="ToR-P4-qLC"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="200.55803571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

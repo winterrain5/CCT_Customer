@@ -23,13 +23,13 @@ class WalletPaymentMethodCell: UITableViewCell {
         typeImgView.image = R.image.payment_card()
       }
       
-      if model.type == 1 { // 自己的卡
+      if model.type == 2 { // 自己的卡
         amountLabel.isHidden = true
         deleteButton.isHidden = false
         typeImgView.image = R.image.transaction_payment_other()
       }
       
-      if model.type == 2 { // 朋友的卡
+      if model.type == 1 { // 朋友的卡
         amountLabel.isHidden = false
         deleteButton.isHidden = true
         amountLabel.text = model.amount.formatMoney().dolar

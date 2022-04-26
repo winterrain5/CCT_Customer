@@ -30,6 +30,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
   var amount:[String] = ["100.00","200.00","500.00","1000.00","2000.00","2500.00"]
   let dateHMS = Date().string(withFormat: "yyyy-MM-dd HH:mm:ss")
   let dateYMD = Date().string(withFormat: "yyyy-MM-dd")
+  var payPd = ""
   var topUpAmount:String {
     get {
       (amountTf.text?.trimmed ?? "").removingPrefix("$")
@@ -94,11 +95,10 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       Toast.showError(withStatus: "Please choose a recharge card")
       return
     }
-    let oldPin = Defaults.shared.get(for: .userModel)?.pay_password ?? ""
-    CardDigitPinView.showView(pin: oldPin) { newPin in
+    let pin = Defaults.shared.get(for: .userModel)?.pay_password ?? ""
+    CardDigitPinView.showView(pin: pin) { newPin in
+      self.payPd = newPin
       firstly {
-        self.savePayPassword(newPin, oldPin)
-      }.then {
         self.saveNewGiftVoucher()
       }.then {
         self.checkoutTOrder()
@@ -148,28 +148,6 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
         self.staffModel = model
       }
     } errorHandler: { e in
-      
-    }
-  }
-  
-  func savePayPassword(_ new:String,_ old:String) -> Promise<Void> {
-    Promise.init { resolver in
-      if new == old {
-        resolver.fulfill_()
-        return
-      }
-      let params = SOAPParams(action: .Client, path: .saveTpd)
-      params.set(key: "pd", value: new)
-      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
-      NetworkManager().request(params: params) { data in
-        if let user = Defaults.shared.get(for: .userModel) {
-          user.pay_password = new
-          Defaults.shared.set(user, for: .userModel)
-        }
-        resolver.fulfill_()
-      } errorHandler: { e in
-        resolver.reject(APIError.requestError(code: -1, message: e.localizedDescription))
-      }
       
     }
   }
@@ -233,7 +211,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       
       let clientInfo = SOAPDictionary()
       clientInfo.set(key: "id", value: Defaults.shared.get(for: .clientId) ?? "")
-      clientInfo.set(key: "pay_password", value: Defaults.shared.get(for: .userModel)?.pay_password ?? "")
+      clientInfo.set(key: "pay_password", value: self.payPd)
       clientInfo.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
       data.set(key: "Client_Info", value: clientInfo.result, keyType: .string, valueType: .map(1))
       

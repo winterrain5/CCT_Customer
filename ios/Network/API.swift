@@ -68,8 +68,18 @@ enum API:String {
   case getTreatmentPlanData = "getTreatmentPlanData"
   
   case getNewFeaturedProducts = "getNewFeaturedProducts"
+  case getRecentViewedProduct = "getRecentViewedProduct"
+  case getLikeProduct = "getLikeProduct"
   case saveLikeProduct = "saveLikeProduct"
   case deleteLikeProduct = "deleteLikeProduct"
+  case getProductsByFilters = "getProductsByFilters"
+  case searchSourcesByPages = "searchSourcesByPages"
+  /// 获取商品详情
+  case getProductsDetails = "getProductsDetails"
+  case saveRecentViewedProduct = "saveRecentViewedProduct"
+  case getRecommendProducts = "getRecommendProducts"
+  case getProductsReviews = "getProductsReviews"
+  case getCanSendProductLocations = "getCanSendProductLocations"
   //// 获取所有分店地址
   case getAllMp = "getAllMp"
   case getTLocations = "getTLocations"
@@ -131,14 +141,16 @@ enum API:String {
   case getClientGifts = "getClientGifts"
   /// wallet coupons
   case getClientValidRewards = "getClientValidRewards"
+  case getValidNewVouchers = "getValidNewVouchers"
   
   case getNewCardDiscountsByLevel = "getNewCardDiscountsByLevel"
+  case getCardDiscountDetails = "getCardDiscountDetails"
   /// 获取充值卡的所有的好友
   case getCardFriends = "getCardFriends"
   /// 朋友的卡
   case getFriendsCard = "getFriendsCard"
   /// 获取朋友使用充值卡消费的记录
-  case getSalesByFriendUsedCard = "getSalesByFriendUsedCard"
+  case getFriendUsedCard = "getFriendUsedCard"
   /// 删除充值卡可使用的朋友
   case deleteCardFriend = "deleteCardFriend"
   /// 设置充值好友的限额
@@ -167,12 +179,16 @@ enum API:String {
   case createInstance = "createInstance"
   /// 修改订单状态
   case payTOrder = "payTOrder"
-  //注册推送
-  case welcomeNote = "welcomeNote";
-  //先建预约推送
-  case newCreateAppointment = "newCreateAppointment";
-  // 朋友使用推荐
+  /// 朋友使用推荐
   case friendUseReferral = "friendUseReferral";
+  /// 保存用户支付密码
+  case saveTpd = "saveTpd"
+  /// 获取用户支付密码
+  case getClientPayPd = "getClientPayPd"
+  /// 通过手机号获取一组用户信息
+  case matchPhone = "matchPhone"
+  
+  
   // 物品购物车推送
   case itemsInCart = "itemsInCart";
   // 
@@ -189,6 +205,10 @@ enum API:String {
   case upgradedTierLevel = "upgradedTierLevel";
   //充值推送
   case topupNote = "topupNote";
+  //注册推送
+  case welcomeNote = "welcomeNote";
+  //先建预约推送
+  case newCreateAppointment = "newCreateAppointment";
 }
 
 enum Action:String {
@@ -217,4 +237,5 @@ enum Action:String {
   case PaymentMethod = "payment-method"
   case Employee = "employee"
   case StripePayment = "stripe-payment"
+  case CardDiscountContent = "card-discount-content"
 }

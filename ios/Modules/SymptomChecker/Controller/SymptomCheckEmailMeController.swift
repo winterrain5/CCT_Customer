@@ -58,7 +58,7 @@ class SymptomCheckEmailMeController: BaseTableController {
     let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
-      if let model = DecodeManager.decode(UserModel.self, from: data) {
+      if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
         self.userModel = model
       }
     } errorHandler: { e in
@@ -88,7 +88,7 @@ class SymptomCheckEmailMeController: BaseTableController {
       let id = result.filter({ $0.key == 2 }).first?.value.first?.id ?? ""
       params.set(key: "id", value: id)
       NetworkManager().request(params: params) { data in
-        guard let model = DecodeManager.decode(SymptomCheckQ1ResultModel.self, from: data) else {
+        guard let model = DecodeManager.decodeByCodable(SymptomCheckQ1ResultModel.self, from: data) else {
           resolver.reject(APIError.requestError(code: -1, message: "Decode Failed"))
           return
         }
@@ -114,7 +114,7 @@ class SymptomCheckEmailMeController: BaseTableController {
       params.set(key: "qaIds3", value: qaIds3.result, type: .map(1))
       
       NetworkManager().request(params: params) { data in
-        guard let models = DecodeManager.decode([SymptomCheckQ23ResultModel].self, from: data) else {
+        guard let models = DecodeManager.decodeByCodable([SymptomCheckQ23ResultModel].self, from: data) else {
           resolver.reject(APIError.requestError(code: -1, message: "Decode Failed"))
           return
         }
@@ -145,7 +145,7 @@ class SymptomCheckEmailMeController: BaseTableController {
       params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
       params.set(key: "columns", value: "receive_specific_email")
       NetworkManager().request(params: params) { data in
-        guard let model = DecodeManager.decode(SystemConfigModel.self, from: data) else {
+        guard let model = DecodeManager.decodeByCodable(SystemConfigModel.self, from: data) else {
           resolver.reject(APIError.requestError(code: -1, message: "Decode SystemConfigModel failed"))
           return
         }
@@ -162,9 +162,9 @@ class SymptomCheckEmailMeController: BaseTableController {
       let params = SOAPParams(action: .Sms, path: .sendSmsForEmail)
       
       let content = SOAPDictionary()
-      let name = (userModel.first_name ?? "") + (userModel.last_name ?? "")
-      content.set(key: "title", value: "[Chien Chi Tow] " + name + " (\(userModel.mobile ?? "")) " + "Analysis Report")
-      content.set(key: "email", value: userModel.email ?? "")
+      let name = (userModel.first_name) + (userModel.last_name )
+      content.set(key: "title", value: "[Chien Chi Tow] " + name + " (\(userModel.mobile)) " + "Analysis Report")
+      content.set(key: "email", value: userModel.email)
       let message = "<p><img src=\"data:image/png;base64," + base64Image + "\" style=\"max-width:100%;\"/><br/></p>";
       content.set(key: "message", value: message.replacingOccurrences(of: "&", with: "&amp;").replacingOccurrences(of: "<", with: "&lt;").replacingOccurrences(of: ">", with: "&gt;"))
   

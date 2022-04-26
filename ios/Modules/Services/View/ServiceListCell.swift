@@ -44,7 +44,7 @@ class ServiceListCell: UICollectionViewCell {
       if let minPrice = model.service_duration?.min_price?.formatMoney().dolar,
       let maxPrice = model.service_duration?.max_price?.formatMoney().dolar,
       let minDuration = model.service_duration?.min_duration,
-      let maxDuration = model.service_duration?.max_duration  {
+      let _ = model.service_duration?.max_duration  {
         onlyPriceView.isHidden = false
         priceTimeView.isHidden = false
         descTopCons.constant = 34

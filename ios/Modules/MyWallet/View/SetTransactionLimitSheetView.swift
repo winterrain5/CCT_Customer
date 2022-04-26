@@ -91,9 +91,6 @@ class SetTransactionLimitSheetView: UIView {
         sel.titleColorForNormal = .black
       }
       
-    }else {
-      sender.backgroundColor = R.color.grayf2()
-      sender.titleColorForNormal = .black
     }
     
     limitAmountLabel.text = "$" + amount[sender.tag]
@@ -108,10 +105,11 @@ class SetTransactionLimitSheetView: UIView {
     isNoLimit = sender.tag == 0
     
     limitTypeSelectButton = sender
+    
   }
   @IBAction func doneButton(_ sender: LoadingButton) {
     
-    let params = SOAPParams(action: .Voucher, path: .setCardFriendLimit)
+    let params = SOAPParams(action: .Voucher, path: API.setCardFriendLimit)
     params.set(key: "id", value: cardUserModel.id ?? "")
     var transLimit:Int = -1
     if !isNoLimit {

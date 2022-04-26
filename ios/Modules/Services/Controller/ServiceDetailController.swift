@@ -96,7 +96,7 @@ class ServiceDetailController: BaseViewController {
       let params = SOAPParams(action: .Service, path: .getBriefDataBySvrId)
       params.set(key: "serviceId", value: serviceId)
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decode(ServiceDetailBrifeModel.self, from: data) {
+        if let model = DecodeManager.decodeByCodable(ServiceDetailBrifeModel.self, from: data) {
           self.headView.model = model
           self.priceView.durations = model.durations
           self.helpView.helps = model.briefHelpItems ?? []
@@ -119,7 +119,7 @@ class ServiceDetailController: BaseViewController {
       params.set(key: "planId", value: planId)
       
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decode(ServiceDetailTreatPlanModel.self, from: data) {
+        if let model = DecodeManager.decodeByCodable(ServiceDetailTreatPlanModel.self, from: data) {
           self.footerView.isHidden = false
           self.footerView.plan = model.treatPlanData
           resolver.fulfill_()

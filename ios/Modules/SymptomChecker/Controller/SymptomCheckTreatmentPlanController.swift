@@ -11,7 +11,7 @@ class SymptomCheckTreatmentPlanController: BaseTableController {
   private var headerView = SymptomCheckPlanHeaderView.loadViewFromNib()
   private var reportId:String = ""
   private var model:SymptomCheckPlanModel?
-  private var footerView = UIView().then { view in
+  private lazy var footerView = UIView().then { view in
     view.backgroundColor = .white
     
     let btn = UIButton()
@@ -60,7 +60,7 @@ class SymptomCheckTreatmentPlanController: BaseTableController {
     let params = SOAPParams(action: .SymptomCheck, path: .getTreatmentPlanData)
     params.set(key: "reportId", value: reportId)
     NetworkManager().request(params: params) { data in
-      guard let model = DecodeManager.decode([SymptomCheckPlanModel].self, from: data) else {
+      guard let model = DecodeManager.decodeByCodable([SymptomCheckPlanModel].self, from: data) else {
         return
       }
       self.model = model.first

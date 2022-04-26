@@ -109,9 +109,7 @@ RCT_EXPORT_METHOD(removeLocalData) {
 
 RCT_EXPORT_METHOD(showFilterView:(BOOL)isNew callback:(RCTResponseSenderBlock)callback) {
   dispatch_sync(dispatch_get_main_queue(), ^{
-    [ShopFilterView show:isNew complete:^(NSString *result) {
-      callback(@[[NSNull null],result]);
-    }];
+   
   });
 }
 

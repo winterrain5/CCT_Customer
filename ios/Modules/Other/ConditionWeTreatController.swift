@@ -9,7 +9,7 @@ import UIKit
 import WebKit
 class ConditionWeTreatController: BaseViewController,WKNavigationDelegate {
   private var webView: WebView!
-  private var footerView = UIView().then { view in
+  private lazy var footerView = UIView().then { view in
     view.backgroundColor = .white
     
     let btn = UIButton()

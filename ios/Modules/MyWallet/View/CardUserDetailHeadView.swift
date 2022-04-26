@@ -26,21 +26,29 @@ class CardUserDetailHeadView: UIView {
     
    @IBAction func deleteButtonAction(_ sender: Any) {
     
-    let params = SOAPParams(action: .Voucher, path: .deleteCardFriend)
-    params.set(key: "id", value: cardUserModel?.id ?? "")
+     AlertView.show(title: "Are you sure you want to remove this user?", message: "", leftButtonTitle: "Cancel", rightButtonTitle: "Confirm", messageAlignment: .center) {
+       
+     } rightHandler: {
+       let params = SOAPParams(action: .Voucher, path: .deleteCardFriend)
+       params.set(key: "id", value: self.cardUserModel?.id ?? "")
+       
+       let log = SOAPDictionary()
+       log.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+       params.set(key: "logData", value: log.result, type: .map(1))
+       
+       Toast.showLoading()
+       NetworkManager().request(params: params) { data in
+         
+         self.deleteUserFromWalletNotification()
+         
+       } errorHandler: { e in
+         UIViewController.getTopVC()?.navigationController?.popViewController()
+       }
+     } dismissHandler: {
+       
+     }
+
     
-    let log = SOAPDictionary()
-    log.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
-    params.set(key: "logData", value: log.result, type: .map(1))
-    
-    Toast.showLoading()
-    NetworkManager().request(params: params) { data in
-      
-      self.deleteUserFromWalletNotification()
-      
-    } errorHandler: { e in
-      UIViewController.getTopVC()?.navigationController?.popViewController()
-    }
 
    }
   

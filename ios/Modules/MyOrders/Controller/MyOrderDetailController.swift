@@ -11,6 +11,7 @@ import PromiseKit
 class MyOrderDetailController: BaseViewController {
   
   private var scrollView = UIScrollView()
+  private var statusView = MyOrderStatusView()
   private var headerView = MyOrderDetailHeaderView.loadViewFromNib()
   private var footerView = MyOrderDetailFooterView.loadViewFromNib()
   private var helpButton = UIButton().then { btn in
@@ -35,9 +36,14 @@ class MyOrderDetailController: BaseViewController {
     scrollView.frame = CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
     scrollView.contentSize = CGSize(width: kScreenWidth, height: 0)
     
+    scrollView.addSubview(statusView)
+    statusView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 111)
+    statusView.status = status
+    self.scrollView.contentSize.height += 111
+    
     scrollView.addSubview(headerView)
     headerView.status = status
-    headerView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 0)
+    headerView.frame = CGRect(x: 0, y: statusView.frame.maxY, width: kScreenWidth, height: 0)
     headerView.updateHeightHandler = { [weak self] height in
       self?.headerView.height = height
       self?.scrollView.contentSize.height += height
@@ -87,7 +93,7 @@ class MyOrderDetailController: BaseViewController {
       params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
       
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decode(SystemConfigModel.self, from: data) {
+        if let model = DecodeManager.decodeByCodable(SystemConfigModel.self, from: data) {
           resolver.fulfill(model.leave_review_points?.string ?? "")
         }else {
           resolver.reject(APIError.requestError(code: -1, message: "Decode SystemConfigModel Failed"))
@@ -111,7 +117,7 @@ class MyOrderDetailController: BaseViewController {
       params.set(key: "orderId", value: orderModel.id ?? "")
       
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decode(MyOrderDetailModel.self, from: data) {
+        if let model = DecodeManager.decodeObjectByHandJSON(MyOrderDetailModel.self, from: data) {
           resolver.fulfill(model)
         }else {
           resolver.reject(APIError.requestError(code: -1, message: "Decode MyOrderDetailModel Failed"))

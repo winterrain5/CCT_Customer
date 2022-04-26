@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -112,7 +112,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are $1800 away from getting upgraded to Platinum for greater benefits.  " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOa-mn-X1F">
-                                    <rect key="frame" x="24" y="69" width="230.5" height="33"/>
+                                    <rect key="frame" x="24" y="69" width="230" height="49.5"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                     <color key="textColor" name="gray82"/>
                                     <nil key="highlightedColor"/>
@@ -124,9 +124,9 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="NjM-xn-hik" firstAttribute="top" secondItem="GFf-7R-9zH" secondAttribute="bottom" constant="12" id="1bg-B7-D9I"/>
-                                <constraint firstItem="GFf-7R-9zH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hOa-mn-X1F" secondAttribute="trailing" constant="6" id="AbA-yU-P0w"/>
                                 <constraint firstAttribute="trailing" secondItem="5R7-vP-OIR" secondAttribute="trailing" constant="24" id="CLt-gG-sSi"/>
                                 <constraint firstAttribute="trailing" secondItem="NjM-xn-hik" secondAttribute="trailing" constant="24" id="CYz-UQ-YHj"/>
+                                <constraint firstAttribute="trailing" secondItem="hOa-mn-X1F" secondAttribute="trailing" constant="112" id="Css-zq-ueV"/>
                                 <constraint firstAttribute="trailing" secondItem="vqm-uf-Csr" secondAttribute="trailing" constant="24" id="CxD-MV-JX1"/>
                                 <constraint firstItem="rjk-Gd-ayP" firstAttribute="centerY" secondItem="b5P-kO-iLu" secondAttribute="centerY" id="LVD-Dr-lJf"/>
                                 <constraint firstItem="YEh-sh-tPv" firstAttribute="leading" secondItem="e8i-w7-eTz" secondAttribute="leading" constant="24" id="W4a-l0-K6o"/>
@@ -186,6 +186,7 @@
                 <outlet property="cardOwnerNameLabel" destination="04e-SU-eQc" id="YYV-5Z-03d"/>
                 <outlet property="cardOwnerTitleLabel" destination="NjM-xn-hik" id="MFx-UY-cTd"/>
                 <outlet property="descLabel" destination="hOa-mn-X1F" id="0n7-c7-Fxq"/>
+                <outlet property="descRightCons" destination="Css-zq-ueV" id="htx-rY-uYm"/>
                 <outlet property="expireDateLabel" destination="GFf-7R-9zH" id="PbQ-iM-jIk"/>
                 <outlet property="expireTitleLabel" destination="vqm-uf-Csr" id="bMb-Oy-IGW"/>
                 <outlet property="gradientView" destination="7mq-A0-Ftm" id="9wk-Fc-CP1"/>

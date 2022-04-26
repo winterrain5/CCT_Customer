@@ -18,7 +18,7 @@ class MyWalletController: BaseViewController {
   
   lazy var headerVc = WalletCardController()
   
-  var tableHeaderViewHeight: Int = 282
+  var tableHeaderViewHeight: Int = 264
   var headerInSectionHeight: Int = 40
   
   lazy var titleDataSource: JXSegmentedTitleDataSource = {
@@ -80,7 +80,6 @@ class MyWalletController: BaseViewController {
     
   }
   
-  
 }
 
 extension MyWalletController:JXPagingMainTableViewGestureDelegate {
@@ -131,11 +130,3 @@ extension MyWalletController:JXPagingViewDelegate {
 extension JXPagingListContainerView: JXSegmentedViewListContainer {}
 
 
-
-
-
-extension BaseViewController: JXSegmentedListContainerViewListDelegate {
-  func listView() -> UIView {
-    return view
-  }
-}

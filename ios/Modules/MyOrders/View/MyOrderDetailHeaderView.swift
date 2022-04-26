@@ -10,7 +10,6 @@ import UIKit
 class MyOrderDetailHeaderView: UIView,UITableViewDelegate,UITableViewDataSource {
 
   @IBOutlet weak var dateLabel: UILabel!
-  @IBOutlet weak var statusLabel: UILabel!
   @IBOutlet weak var tableView: UITableView!
   var cellHeight:CGFloat = 0
   var updateHeightHandler:((CGFloat)->())?
@@ -19,7 +18,8 @@ class MyOrderDetailHeaderView: UIView,UITableViewDelegate,UITableViewDataSource 
       guard let model = model else {
         return
       }
-      
+      let dateStr = "Date of Order ".appending(model.Order_Info?.invoice_date?.date(withFormat: "yyyy-MM-dd")?.string(withFormat: "dd MMM yyyy,EEE") ?? "")
+      dateLabel.text = dateStr
       tableView.reloadData()
       var shouldLeaveReview:Bool = false
       model.Order_Line_Info?.forEach({ info in
@@ -30,28 +30,12 @@ class MyOrderDetailHeaderView: UIView,UITableViewDelegate,UITableViewDataSource 
       }else {
         cellHeight = 92
       }
-      let total:CGFloat = 236.cgFloat + (model.Order_Line_Info?.count ?? 0).cgFloat * cellHeight
+      let total:CGFloat = 125.cgFloat + (model.Order_Line_Info?.count ?? 0).cgFloat * cellHeight
       updateHeightHandler?(total)
     }
   }
   var leaveReviewPoints:String = ""
-  var status:Int = 0 {
-    didSet {
-      
-      if status == 0 {
-        statusLabel.text = "In Progress"
-        statusLabel.backgroundColor = R.color.theamBlue()
-      }
-      if status == 1 {
-        statusLabel.text = "Completed"
-        statusLabel.backgroundColor = UIColor(hexString: "#38B46C")
-      }
-      if status == 2 {
-        statusLabel.text = "Cancelled"
-        statusLabel.backgroundColor = UIColor(hexString: "#E0E0E0")
-      }
-    }
-  }
+  var status:Int = 0
   
   override func awakeFromNib() {
     super.awakeFromNib()

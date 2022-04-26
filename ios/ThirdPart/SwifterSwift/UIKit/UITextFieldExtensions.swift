@@ -50,14 +50,14 @@ public extension UITextField {
                 autocorrectionType = .no
                 autocapitalizationType = .none
                 isSecureTextEntry = false
-                placeholder = "Email Address"
+        
 
             case .password:
                 keyboardType = .asciiCapable
                 autocorrectionType = .no
                 autocapitalizationType = .none
                 isSecureTextEntry = true
-                placeholder = "Password"
+                
 
             case .generic:
                 isSecureTextEntry = false

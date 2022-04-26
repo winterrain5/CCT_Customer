@@ -60,10 +60,14 @@ class BaseViewController: UIViewController {
   
   
   @objc func backAction() {
-    if let nav = self.navigationController {
-      nav.popViewController(animated: true)
+    if let click = leftButtonDidClick {
+      click()
     }else {
-      self.dismiss(animated: true, completion: nil)
+      if let nav = self.navigationController {
+        nav.popViewController(animated: true)
+      }else {
+        self.dismiss(animated: true, completion: nil)
+      }
     }
   }
   

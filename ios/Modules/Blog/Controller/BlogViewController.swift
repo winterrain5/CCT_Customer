@@ -85,7 +85,7 @@ class BlogViewController: BaseTableController {
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       
       NetworkManager().request(params: params) { data in
-        guard let models = DecodeManager.decode([BlogModel].self, from: data) else {
+        guard let models = DecodeManager.decodeByCodable([BlogModel].self, from: data) else {
           self.endRefresh(.DecodeError)
           return
         }
@@ -105,7 +105,7 @@ class BlogViewController: BaseTableController {
   func getCategories() {
     let params = SOAPParams(action: .Blog, path: API.getBlogCategories)
     NetworkManager().request(params: params) { data in
-      guard let models = DecodeManager.decode([BlogCategoryModel].self, from: data) else {
+      guard let models = DecodeManager.decodeByCodable([BlogCategoryModel].self, from: data) else {
         return
       }
       let featured = BlogCategoryModel()
@@ -126,7 +126,7 @@ class BlogViewController: BaseTableController {
     return Promise.init { resolver in
       let params = SOAPParams(action: .Blog, path: API.getFilters)
       NetworkManager().request(params: params) { data in
-        guard let models = DecodeManager.decode([BlogFilterLabel].self, from: data) else {
+        guard let models = DecodeManager.decodeByCodable([BlogFilterLabel].self, from: data) else {
           resolver.fulfill([])
           return
         }
@@ -177,7 +177,7 @@ class BlogViewController: BaseTableController {
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
       Toast.dismiss()
-      guard let boards = DecodeManager.decode([BlogBoardModel].self, from: data) else {
+      guard let boards = DecodeManager.decodeByCodable([BlogBoardModel].self, from: data) else {
         return
       }
       let saveBoardView = BlogSaveToBoardSheetView.loadViewFromNib()

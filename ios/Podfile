@@ -24,7 +24,8 @@ target 'CCTIOS' do
   pod 'mob_pushsdk'
   pod 'JXSegmentedView'
   pod 'JXPagingView/Paging'
-  
+  pod 'HandyJSON', '~> 5.0.2'
+  pod 'LGButton'
   
 #  pod 'SwifterSwift'
   

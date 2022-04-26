@@ -51,7 +51,7 @@ class SymptomCheckReportListView: UIView ,UITableViewDelegate,UITableViewDataSou
     params.set(key: "start", value: 0)
     params.set(key: "length", value: 1000)
     NetworkManager().request(params: params) { data in
-      guard let models = DecodeManager.decode([SymptomCheckReportModel].self, from: data) else {
+      guard let models = DecodeManager.decodeByCodable([SymptomCheckReportModel].self, from: data) else {
         return
       }
       self.shouldDisplay = models.count == 0

@@ -32,7 +32,7 @@ class BlogBookmarksController: BaseTableController {
     let params = SOAPParams(action: .Blog, path: API.getClientBoardBlogs)
     params.set(key: "boardId", value: boardModel?.id ?? "")
     NetworkManager().request(params: params) { data in
-      guard let models = DecodeManager.decode([BlogBookmarkedModel].self, from: data) else {
+      guard let models = DecodeManager.decodeByCodable([BlogBookmarkedModel].self, from: data) else {
         self.endRefresh(.DecodeError)
         return
       }
@@ -72,7 +72,7 @@ class BlogBookmarksController: BaseTableController {
     params.set(key: "boardId", value: boardModel?.id ?? "")
     params.set(key: "searchKey", value: name)
     NetworkManager().request(params: params) { data in
-      guard let models = DecodeManager.decode([BlogBoardModel].self, from: data) else {
+      guard let models = DecodeManager.decodeByCodable([BlogBoardModel].self, from: data) else {
         return
       }
       self.dataArray = models

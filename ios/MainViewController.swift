@@ -9,6 +9,7 @@ import UIKit
 import Stripe
 import DKLogger
 import IQKeyboardManagerSwift
+import LGButton
 class MainViewController: BaseViewController {
   lazy var createBoardView = BlogCreateBoardSheetView()
   var blogId:String = ""
@@ -63,9 +64,9 @@ class MainViewController: BaseViewController {
     params.set(key: "clientId", value: obj)
     Defaults.shared.set(obj, for: .clientId)
     NetworkManager().request(params: params) { data in
-      if let model = DecodeManager.decode(UserModel.self, from: data) {
+      if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
         Defaults.shared.set(model, for: .userModel)
-        self.setPushAlias(id: model.id ?? "")
+        self.setPushAlias(id: model.id)
       }
     } errorHandler: { e in
       
@@ -224,7 +225,7 @@ class MainViewController: BaseViewController {
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
       Toast.dismiss()
-      guard let boards = DecodeManager.decode([BlogBoardModel].self, from: data) else {
+      guard let boards = DecodeManager.decodeByCodable([BlogBoardModel].self, from: data) else {
         return
       }
       let saveBoardView = BlogSaveToBoardSheetView.loadViewFromNib()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CardPrivilegesModel: Codable {
+class CardPrivilegesModel: BaseModel,Codable {
   var id: String?
   var sale_category_title: String?
   var service_category: String?
@@ -16,4 +16,14 @@ class CardPrivilegesModel: Codable {
   var recharge_card_level: String?
   var discount_percent: String?
   
+}
+
+class CardDiscountDetailModel: BaseModel,Codable {
+  var r_discount2: String?
+  var id: Int?
+  var level: Int?
+  var r_discount1: String?
+  var is_delete: String?
+  var r_discount3: String?
+  var create_time: String?
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CardOwnerModel: Codable {
+class CardOwnerModel: BaseModel,Codable {
   
   var mobile: String?
   var friend_id: String?
@@ -18,7 +18,7 @@ class CardOwnerModel: Codable {
   var first_name: String?
   
   
-  var description: String?
+  var desc: String?
   var exceed_value: String?
   var expired_time: String?
   var create_date: String?
@@ -30,10 +30,12 @@ class CardOwnerModel: Codable {
   var nominal_value: String?
   var name: String?
   
-  
+  var new_card_amount:Int?
   
   /// 是否是朋友的卡
   var isFriendCard:Bool?
+  
+  
   
 }
 

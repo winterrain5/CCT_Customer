@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CCTShopFooterView" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="136"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkn-9E-QDG" customClass="ShopSearchView" customModule="CCTIOS" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="88" id="SgC-CG-f0L"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQ7-Zp-k90">
+                    <rect key="frame" x="20" y="92" width="90" height="38"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="shop_filter" title=""/>
+                    <connections>
+                        <action selector="filterButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="xL6-i0-wph"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDo-Rk-adW" customClass="TTGTextTagCollectionView">
+                    <rect key="frame" x="118" y="97" width="296" height="28"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="02v-vI-xC5"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="pkn-9E-QDG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4JK-V1-xPN"/>
+                <constraint firstItem="YDo-Rk-adW" firstAttribute="centerY" secondItem="vQ7-Zp-k90" secondAttribute="centerY" id="4xF-jc-boz"/>
+                <constraint firstItem="vQ7-Zp-k90" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="5Ab-Qt-d9Q"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YDo-Rk-adW" secondAttribute="trailing" id="ayF-MT-wW7"/>
+                <constraint firstItem="vQ7-Zp-k90" firstAttribute="top" secondItem="pkn-9E-QDG" secondAttribute="bottom" constant="4" id="oQ2-XC-6nS"/>
+                <constraint firstItem="YDo-Rk-adW" firstAttribute="leading" secondItem="vQ7-Zp-k90" secondAttribute="trailing" constant="8" id="pa4-ke-cQI"/>
+                <constraint firstItem="pkn-9E-QDG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="qt0-oW-0Vk"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pkn-9E-QDG" secondAttribute="trailing" id="zQc-Bb-g0r"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="filterTagView" destination="YDo-Rk-adW" id="mDs-46-NVu"/>
+                <outlet property="searchView" destination="pkn-9E-QDG" id="RYs-QJ-WQW"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="206.91964285714286"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="shop_filter" width="66" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SystemConfigModel: Codable {
+class SystemConfigModel: BaseModel,Codable {
   
   var business_start_time: Int?
   var auto_annual_days: String?
@@ -81,5 +81,6 @@ class SystemConfigModel: Codable {
   var max_annual_leave_days: String?
   var ot_pay_account: String?
   var send_delay_time: String?
+  
   
 }

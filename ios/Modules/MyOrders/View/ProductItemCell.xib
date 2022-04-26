@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fuv-6d-nUp">
-                        <rect key="frame" x="16" y="16" width="83" height="60"/>
+                        <rect key="frame" x="16" y="20.5" width="83" height="60"/>
                         <color key="backgroundColor" name="Placeholder"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="Hjg-Gp-jnO"/>
@@ -32,7 +32,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 x" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phD-mt-J5h">
-                        <rect key="frame" x="115" y="24" width="20" height="21"/>
+                        <rect key="frame" x="115" y="20.5" width="20" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="wbz-Tn-g3e"/>
                             <constraint firstAttribute="height" constant="21" id="xcS-lW-Qof"/>
@@ -47,7 +47,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="1000" text="Ruby Bird's Nest 150ml Ruby Bird's Nest 150ml" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBh-LA-d1d">
-                        <rect key="frame" x="143" y="24" width="190.5" height="38.5"/>
+                        <rect key="frame" x="143" y="20.5" width="190.5" height="38.5"/>
                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
                         <color key="textColor" name="Black333"/>
                         <nil key="highlightedColor"/>
@@ -58,7 +58,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="$40.15" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAP-64-dQX">
-                        <rect key="frame" x="341.5" y="24.5" width="44.5" height="20"/>
+                        <rect key="frame" x="341.5" y="21" width="44.5" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="44.5" id="0Nm-oH-feq"/>
                             <constraint firstAttribute="height" constant="20" id="4c2-U0-iDx"/>
@@ -76,13 +76,13 @@
                 <color key="backgroundColor" red="0.98039215690000003" green="0.95294117649999999" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="XAP-64-dQX" firstAttribute="centerY" secondItem="phD-mt-J5h" secondAttribute="centerY" id="2tz-hb-LR1"/>
-                    <constraint firstItem="phD-mt-J5h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="5b5-lQ-zgu"/>
+                    <constraint firstItem="Fuv-6d-nUp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="3QF-yJ-p6b"/>
+                    <constraint firstItem="phD-mt-J5h" firstAttribute="top" secondItem="Fuv-6d-nUp" secondAttribute="top" id="ERy-Ze-KXJ"/>
                     <constraint firstItem="XAP-64-dQX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GBh-LA-d1d" secondAttribute="trailing" constant="8" id="IsU-iN-Hnd"/>
                     <constraint firstItem="GBh-LA-d1d" firstAttribute="top" secondItem="phD-mt-J5h" secondAttribute="top" id="JZN-QG-A5Y"/>
                     <constraint firstItem="Fuv-6d-nUp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="NmW-bi-U24"/>
                     <constraint firstAttribute="trailing" secondItem="XAP-64-dQX" secondAttribute="trailing" constant="16" id="Rfy-Kz-QK7"/>
                     <constraint firstItem="GBh-LA-d1d" firstAttribute="leading" secondItem="phD-mt-J5h" secondAttribute="trailing" constant="8" id="Txb-Sk-sBi"/>
-                    <constraint firstItem="Fuv-6d-nUp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="lH8-2k-4Aa"/>
                     <constraint firstItem="phD-mt-J5h" firstAttribute="leading" secondItem="Fuv-6d-nUp" secondAttribute="trailing" constant="16" id="x3N-LX-o6m"/>
                 </constraints>
             </tableViewCellContentView>

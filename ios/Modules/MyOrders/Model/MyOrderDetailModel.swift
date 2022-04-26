@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OrderLineInfo :Codable {
+class OrderLineInfo :BaseModel,Codable {
   var rate: String?
   var return_amount: String?
   var id: String?
@@ -45,7 +45,7 @@ class OrderLineInfo :Codable {
   var price: String?
   var product_id: String?
   var referrer: String?
-  var disc2: String?
+  var disc2: Int?
   var designation_code: String?
   var staff_id2: String?
   var doctor_last_name: String?
@@ -57,7 +57,7 @@ class OrderLineInfo :Codable {
   var has_delivered: String?
   var discount: String?
   var discount_type: Int?
-  var disc: String?
+  var disc: Int?
   var new_recharge_discount: String?
   var sale_employee_first_name: String?
   var leave_review_points:String?
@@ -73,9 +73,16 @@ class OrderLineInfo :Codable {
       return discount > 0 ? (nameHeight + 64) : (nameHeight + 32)
     }
   }
+  
+  var recharge_discount_sort: Int?
+  var retail_price: String?
+  var voucher_pay_code: String?
+  var product_category_tag: String?
+  
+
 }
 
-class PayVoucherInfo :Codable {
+class PayVoucherInfo :BaseModel {
   var is_freight: String?
   var sale_order_line_id: String?
   var is_present: String?
@@ -88,7 +95,7 @@ class PayVoucherInfo :Codable {
   
 }
 
-class PayGiftInfo :Codable {
+class PayGiftInfo :BaseModel {
   var client_gift_id:String?
   var create_date:String?
   var id:String?
@@ -96,9 +103,10 @@ class PayGiftInfo :Codable {
   var paid_amount:String?
   var sale_order_id:String?
   var sale_order_line_id:String?
+
 }
 
-class PaymethodInfo :Codable {
+class PaymethodInfo :BaseModel {
   var pay_method_line_id: String?
   var id: String?
   var real_paid_amount: String?
@@ -107,7 +115,7 @@ class PaymethodInfo :Codable {
   
 }
 
-class OrderInfo :Codable {
+class OrderInfo :BaseModel {
   var id: String?
   var exchange_rate: String?
   var comment_id: String?
@@ -180,13 +188,20 @@ class OrderInfo :Codable {
   var quote_number: String?
   var invoice_no: String?
   var due_date: String?
+  
 }
 
-class MyOrderDetailModel: Codable {
+class VoucherInfo: BaseModel {
+  var id:String?
+  var voucher_code:String?
+}
+
+class MyOrderDetailModel: BaseModel {
   var Order_Line_Info: [OrderLineInfo]?
   var PayVoucher_Info: [PayVoucherInfo]?
   var PayGift_Info: [PayGiftInfo]?
   var Paymethod_Info: [PaymethodInfo]?
+  var Voucher_Info:[VoucherInfo]?
   var Order_Info: OrderInfo?
   
 }

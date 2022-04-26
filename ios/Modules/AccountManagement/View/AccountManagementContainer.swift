@@ -14,10 +14,10 @@ class AccountManagementContainer: UIView {
   @IBOutlet weak var idNoLabel: UILabel!
   var model:UserModel! {
     didSet {
-      phoneNumberLabel.text = "+65 " + (model.phone ?? "")
+      phoneNumberLabel.text = "+65 " + (model.phone)
       emailLabel.text = model.email
       
-      var cardNo = model.card_number ?? ""
+      var cardNo = model.card_number
       if cardNo.count < 5 { return }
       let startIndex =  cardNo.startIndex
       let endIndex = cardNo.index(startIndex, offsetBy: 4)

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="256" id="KGk-i7-Jjw" customClass="ShopSelectCouponOrVoucherCell" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="462" height="256"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="462" height="256"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I8T-S3-vcx">
+                        <rect key="frame" x="16" y="24" width="160" height="120"/>
+                        <color key="backgroundColor" name="Placeholder"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="I8T-S3-vcx" secondAttribute="height" multiplier="16:12" id="a8v-rB-2mn"/>
+                            <constraint firstAttribute="height" constant="120" id="pp4-ax-tTf"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$5 Chien Chi Tow Voucher" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smL-6C-OCY">
+                        <rect key="frame" x="196" y="32" width="250" height="19.5"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
+                        <color key="textColor" name="Black333"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take $5 off your purchse with this voucher." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAZ-pT-BSE">
+                        <rect key="frame" x="196" y="60.5" width="230" height="33"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                        <color key="textColor" name="Black333"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expires on 30 Dec 2020, Wed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xk-Dd-TQR">
+                        <rect key="frame" x="196" y="102.5" width="230" height="16.5"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                        <color key="textColor" name="gray82"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0d-UG-ZQ8">
+                        <rect key="frame" x="24" y="168" width="414" height="44"/>
+                        <color key="backgroundColor" red="0.76862745099999996" green="0.2784313725" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="U7b-6P-271"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Use Now">
+                            <color key="baseForegroundColor" name="White"/>
+                        </buttonConfiguration>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="22"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="userNowAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UBr-PK-YFF"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="a0d-UG-ZQ8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="3WL-5v-cZI"/>
+                    <constraint firstAttribute="trailing" secondItem="smL-6C-OCY" secondAttribute="trailing" constant="16" id="8RD-Y8-7kx"/>
+                    <constraint firstItem="smL-6C-OCY" firstAttribute="leading" secondItem="I8T-S3-vcx" secondAttribute="trailing" constant="20" id="Hmo-xB-4NW"/>
+                    <constraint firstItem="vAZ-pT-BSE" firstAttribute="top" secondItem="smL-6C-OCY" secondAttribute="bottom" constant="9" id="J5R-aF-2hz"/>
+                    <constraint firstItem="vAZ-pT-BSE" firstAttribute="leading" secondItem="I8T-S3-vcx" secondAttribute="trailing" constant="20" id="PlE-Lh-13A"/>
+                    <constraint firstItem="smL-6C-OCY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="32" id="Ug2-tK-91X"/>
+                    <constraint firstItem="4Xk-Dd-TQR" firstAttribute="leading" secondItem="I8T-S3-vcx" secondAttribute="trailing" constant="20" id="ZwJ-zt-7ci"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="vAZ-pT-BSE" secondAttribute="trailing" constant="16" id="gyl-wy-I1o"/>
+                    <constraint firstItem="I8T-S3-vcx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="oxF-vt-7Cf"/>
+                    <constraint firstItem="a0d-UG-ZQ8" firstAttribute="top" secondItem="I8T-S3-vcx" secondAttribute="bottom" constant="24" id="qhW-Sk-5Dc"/>
+                    <constraint firstItem="I8T-S3-vcx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="vvc-wf-1gq"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="4Xk-Dd-TQR" secondAttribute="trailing" constant="16" id="xow-Ud-EDf"/>
+                    <constraint firstItem="4Xk-Dd-TQR" firstAttribute="top" secondItem="vAZ-pT-BSE" secondAttribute="bottom" constant="9" id="ygI-Wg-vJq"/>
+                    <constraint firstAttribute="trailing" secondItem="a0d-UG-ZQ8" secondAttribute="trailing" constant="24" id="zm1-o0-Srm"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLabel" destination="4Xk-Dd-TQR" id="VtU-KS-1Ri"/>
+                <outlet property="descLabel" destination="vAZ-pT-BSE" id="KRw-HO-TC0"/>
+                <outlet property="imgView" destination="I8T-S3-vcx" id="6h1-BM-cDJ"/>
+                <outlet property="nameLabel" destination="smL-6C-OCY" id="YMM-ZF-fxl"/>
+            </connections>
+            <point key="canvasLocation" x="240.57971014492756" y="150.66964285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="Black333">
+            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Placeholder">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray82">
+            <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

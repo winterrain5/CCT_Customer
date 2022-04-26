@@ -12,7 +12,7 @@ class MadamPartumController: BaseTableController {
   var headerView = MadamPartumHeaderView.loadViewFromNib()
   var footerView = MadamPartumFooterView.loadViewFromNib()
   var blogs:[BlogModel] = []
-  var products:[FeatureProductModel] = []
+  var products:[ShopProductModel] = []
   var services:[OurServicesByCategoryModel] = []
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -49,7 +49,7 @@ class MadamPartumController: BaseTableController {
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       
       NetworkManager().request(params: params) { data in
-        guard let models = DecodeManager.decode([BlogModel].self, from: data) else {
+        guard let models = DecodeManager.decodeByCodable([BlogModel].self, from: data) else {
           resolver.reject(APIError.requestError(code: -1, message: "decode failed"))
           return
         }
@@ -61,7 +61,7 @@ class MadamPartumController: BaseTableController {
     }
   }
   
-  func getNewFeaturedProducts() -> Promise<[FeatureProductModel]> {
+  func getNewFeaturedProducts() -> Promise<[ShopProductModel]> {
     Promise.init { resolver in
       let params = SOAPParams(action: .Product, path: API.getNewFeaturedProducts)
       params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
@@ -74,7 +74,7 @@ class MadamPartumController: BaseTableController {
               
       
       NetworkManager().request(params: params) { data in
-        guard let models = DecodeManager.decode([FeatureProductModel].self, from: data) else {
+        guard let models = DecodeManager.decodeArrayByHandJSON(ShopProductModel.self, from: data) else {
           resolver.reject(APIError.requestError(code: -1, message: "decode failed"))
           return
         }
@@ -93,7 +93,7 @@ class MadamPartumController: BaseTableController {
       params.set(key: "limit", value: 4)
       NetworkManager().request(params: params) { data in
 
-        guard let models = DecodeManager.decode([OurServicesByCategoryModel].self, from: data) else {
+        guard let models = DecodeManager.decodeByCodable([OurServicesByCategoryModel].self, from: data) else {
           print("解析失败")
           resolver.reject(APIError.requestError(code: -1, message: "decode failed"))
           return
@@ -109,7 +109,7 @@ class MadamPartumController: BaseTableController {
   func getAllMP() {
     let params = SOAPParams(action: .Company, path: .getAllMp)
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decode([MadamPartumLocationModel].self, from: data) {
+      if let models = DecodeManager.decodeByCodable([MadamPartumLocationModel].self, from: data) {
         self.footerView.datas = models
       }
     } errorHandler: { e in

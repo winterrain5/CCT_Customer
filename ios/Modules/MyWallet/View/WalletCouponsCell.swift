@@ -18,7 +18,7 @@ class WalletCouponsCell: UITableViewCell,UICollectionViewDelegate,UICollectionVi
   
   var shouldDisplay:Bool = false
   var emptyString:NSMutableAttributedString = {
-    let str = "You have no new Vouchers"
+    let str = "You have no new Coupons"
     let attr = NSMutableAttributedString(string: str)
     attr.addAttribute(.font, value: UIFont(.AvenirNextRegular,16), range: NSRange(location: 0, length: str.count))
     return attr

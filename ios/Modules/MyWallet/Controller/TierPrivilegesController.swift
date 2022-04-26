@@ -23,19 +23,28 @@ class TierPrivilegesController: BaseTableController {
   }
   
   func getNewCardDiscountsByLevel(_ level:Int) {
-    let params = SOAPParams(action: .VipDefinition, path: .getNewCardDiscountsByLevel)
-    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
-    params.set(key: "cardLevel", value: level.string)
+    let params = SOAPParams(action: .CardDiscountContent, path: .getCardDiscountDetails)
+    params.set(key: "levelId", value: level.string)
     
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decode([CardPrivilegesModel].self, from: data) {
+      if let model = DecodeManager.decodeByCodable(CardDiscountDetailModel.self, from: data) {
         let privileges = NSMutableAttributedString(string: "")
-        models.forEach { model in
-          let attr = NSMutableAttributedString(string: "· \(model.discount_percent ?? "")% off \(model.sale_category_title ?? "")\n")
-          attr.addAttribute(.font, value: UIFont(.AvenirNextDemiBold,16), range: NSRange(location: 0, length: 1))
-          attr.addAttribute(.font, value: UIFont(.AvenirNextRegular,14), range: NSRange(location: 1, length: attr.string.count - 1))
-          privileges.append(attr)
-        }
+        
+        let attr1 = NSMutableAttributedString(string: "· \(model.r_discount1 ?? "")\n")
+        attr1.addAttribute(.font, value: UIFont(.AvenirNextDemiBold,16), range: NSRange(location: 0, length: 1))
+        attr1.addAttribute(.font, value: UIFont(.AvenirNextRegular,14), range: NSRange(location: 1, length: attr1.string.count - 1))
+        privileges.append(attr1)
+        
+        let attr2 = NSMutableAttributedString(string: "· \(model.r_discount2 ?? "")\n")
+        attr2.addAttribute(.font, value: UIFont(.AvenirNextDemiBold,16), range: NSRange(location: 0, length: 1))
+        attr2.addAttribute(.font, value: UIFont(.AvenirNextRegular,14), range: NSRange(location: 1, length: attr2.string.count - 1))
+        privileges.append(attr2)
+        
+        let attr3 = NSMutableAttributedString(string: "· \(model.r_discount3 ?? "")\n")
+        attr3.addAttribute(.font, value: UIFont(.AvenirNextDemiBold,16), range: NSRange(location: 0, length: 1))
+        attr3.addAttribute(.font, value: UIFont(.AvenirNextRegular,14), range: NSRange(location: 1, length: attr3.string.count - 1))
+        privileges.append(attr3)
+        
         
         let constraintRect = CGSize(width: kScreenWidth - 88, height: CGFloat.greatestFiniteMagnitude)
         let boundingBox = privileges.boundingRect(with: constraintRect, options: NSStringDrawingOptions.usesLineFragmentOrigin, context: nil)

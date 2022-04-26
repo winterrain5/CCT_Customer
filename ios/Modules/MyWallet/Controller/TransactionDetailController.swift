@@ -25,16 +25,6 @@ class TransactionDetailController: BaseTableController {
   }
   
   override func refreshData() {
-//    let params = SOAPParams(action: .SystemConfig, path: .getTSystemConfig)
-//    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
-//
-//    NetworkManager().request(params: params) { data in
-//      if let model = DecodeManager.decode(SystemConfigModel.self, from: data) {
-//
-//      }
-//    } errorHandler: { e in
-//
-//    }
     
     if transactionModel.type == "5" {
       getOrderDetails(url: .getHistoryCheckoutDetails)
@@ -49,11 +39,13 @@ class TransactionDetailController: BaseTableController {
     params.set(key: "orderId", value: transactionModel.id ?? "")
     
     NetworkManager().request(params: params) { data in
-      if let model = DecodeManager.decode(MyOrderDetailModel.self, from: data) {
+      if let model = DecodeManager.decodeObjectByHandJSON(MyOrderDetailModel.self, from: data) {
         self.detailModel = model
         self.headerView.model = model
         self.footerView.model = model
         self.tableView?.reloadData()
+      }else {
+        Toast.showError(withStatus: "Decode MyOrderDetailModel Failed")
       }
     } errorHandler: { e in
       
@@ -118,7 +110,7 @@ class TransactionDetailHeaderView: UIView {
   }
   var model:MyOrderDetailModel? {
     didSet {
-      invoiceLabel.text = model?.Order_Info?.invoice_no
+      invoiceLabel.text = "#" + (model?.Order_Info?.invoice_no ?? "")
       dateLabel.text = model?.Order_Info?.date?.date(withFormat: "yyyy-MM-dd")?.string(withFormat: "dd MMM yyyy,EEEE")
       hideSkeleton()
     }

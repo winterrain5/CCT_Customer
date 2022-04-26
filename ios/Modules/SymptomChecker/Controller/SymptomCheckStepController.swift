@@ -49,7 +49,7 @@ class SymptomCheckStepController: BaseTableController {
     params.set(key: "questionCategory", value: category)
     Toast.showLoading()
     NetworkManager().request(params: params) { data in
-      guard let models = DecodeManager.decode([SymptomCheckStepModel].self, from: data) else {
+      guard let models = DecodeManager.decodeByCodable([SymptomCheckStepModel].self, from: data) else {
         return
       }
       models.forEach({ $0.isSelected = false })

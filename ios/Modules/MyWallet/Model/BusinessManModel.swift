@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BusinessManModel: Codable {
+class BusinessManModel: BaseModel,Codable {
   var id: String?
   var first_name: String?
   var last_name: String?

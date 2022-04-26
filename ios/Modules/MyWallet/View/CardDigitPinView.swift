@@ -106,7 +106,7 @@ class CardDigitPinContentView: UIView {
     btn.contentHorizontalAlignment = .right
     btn.contentVerticalAlignment = .top
   }
-  private var confirmButton = UIButton().then { btn in
+  private var confirmButton = LoadingButton().then { btn in
     btn.titleForNormal = "Confirm"
     btn.backgroundColor = R.color.line()
     btn.cornerRadius = 22
@@ -237,8 +237,30 @@ class CardDigitPinContentView: UIView {
   }
  
   @objc func confirmAction() {
-    self.confirmHandler?(self.pin)
+    if type == .config {
+      self.saveUserPayPd()
+    }else {
+      self.confirmHandler?(self.pin)
+    }
+    
   }
+  
+  func saveUserPayPd() {
+    
+    confirmButton.startAnimation()
+    let params = SOAPParams(action: .Client, path: .saveTpd)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "pd", value: self.pin)
+    NetworkManager().request(params: params) { data in
+      self.confirmHandler?(self.pin)
+      self.confirmButton.stopAnimation()
+    } errorHandler: { e in
+      self.confirmButton.stopAnimation()
+      Toast.showError(withStatus: "Failed to save payment password")
+    }
+
+  }
+  
   
   @objc func closeButtonAction() {
     closeHandler?()

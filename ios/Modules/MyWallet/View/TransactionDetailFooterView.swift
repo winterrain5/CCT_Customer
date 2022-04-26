@@ -204,7 +204,7 @@ class TransactionDetailFooterPaymentMethodView: UIView {
     button.titleForNormal = "MasterCard 1234 - $48.00"
     button.titleLabel?.font = UIFont(.AvenirNextRegular,16)
     button.titleColorForNormal = R.color.black333()
-    button.imageForNormal = R.image.transaction_payment_other()
+    button.imageForNormal = R.image.transaction_payment_master()
   }
   var model:(title:String,money:String)? {
     didSet {

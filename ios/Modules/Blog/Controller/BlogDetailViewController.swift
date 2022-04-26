@@ -40,7 +40,7 @@ class BlogDetailViewController: BaseViewController {
     let params = SOAPParams(action: .Blog, path: API.getBlogDetails)
     params.set(key: "id", value: self.blogId)
     NetworkManager().request(params: params) { data in
-      if let model = DecodeManager.decode(BlogDetailModel.self, from: data) {
+      if let model = DecodeManager.decodeByCodable(BlogDetailModel.self, from: data) {
         model.has_booked = self.hasBook
         self.contentView.model = model
       }

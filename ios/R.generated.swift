@@ -105,7 +105,7 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 14 colors.
+  /// This `R.color` struct is generated, and contains static references to 16 colors.
   struct color {
     /// Color `Black333`.
     static let black333 = Rswift.ColorResource(bundle: R.hostingBundle, name: "Black333")
@@ -133,6 +133,10 @@ struct R: Rswift.Validatable {
     static let white = Rswift.ColorResource(bundle: R.hostingBundle, name: "White")
     /// Color `gray82`.
     static let gray82 = Rswift.ColorResource(bundle: R.hostingBundle, name: "gray82")
+    /// Color `grayBD`.
+    static let grayBD = Rswift.ColorResource(bundle: R.hostingBundle, name: "grayBD")
+    /// Color `grayE0`.
+    static let grayE0 = Rswift.ColorResource(bundle: R.hostingBundle, name: "grayE0")
     /// Color `grayf2`.
     static let grayf2 = Rswift.ColorResource(bundle: R.hostingBundle, name: "grayf2")
 
@@ -254,6 +258,24 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "grayBD", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func grayBD(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.grayBD, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "grayE0", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func grayE0(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.grayE0, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIColor(named: "grayf2", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
@@ -367,6 +389,22 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(watchOS)
+    /// `UIColor(named: "grayBD", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func grayBD(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.grayBD.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "grayE0", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func grayE0(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.grayE0.name)
+    }
+    #endif
+
+    #if os(watchOS)
     /// `UIColor(named: "grayf2", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
     static func grayf2(_: Void = ()) -> UIKit.UIColor? {
@@ -406,7 +444,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 62 images.
+  /// This `R.image` struct is generated, and contains static references to 72 images.
   struct image {
     /// Image `account_arrow_right`.
     static let account_arrow_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "account_arrow_right")
@@ -478,6 +516,8 @@ struct R: Rswift.Validatable {
     static let madam_partum_top = Rswift.ImageResource(bundle: R.hostingBundle, name: "madam_partum_top")
     /// Image `madam_partum_un_star`.
     static let madam_partum_un_star = Rswift.ImageResource(bundle: R.hostingBundle, name: "madam_partum_un_star")
+    /// Image `payment_card`.
+    static let payment_card = Rswift.ImageResource(bundle: R.hostingBundle, name: "payment_card")
     /// Image `question_help_arrow_down`.
     static let question_help_arrow_down = Rswift.ImageResource(bundle: R.hostingBundle, name: "question_help_arrow_down")
     /// Image `refer_friend_code_background`.
@@ -500,6 +540,24 @@ struct R: Rswift.Validatable {
     static let service_cell_timer = Rswift.ImageResource(bundle: R.hostingBundle, name: "service_cell_timer")
     /// Image `service_detail_timer`.
     static let service_detail_timer = Rswift.ImageResource(bundle: R.hostingBundle, name: "service_detail_timer")
+    /// Image `shop_arrow_down`.
+    static let shop_arrow_down = Rswift.ImageResource(bundle: R.hostingBundle, name: "shop_arrow_down")
+    /// Image `shop_arrow_right`.
+    static let shop_arrow_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "shop_arrow_right")
+    /// Image `shop_cct`.
+    static let shop_cct = Rswift.ImageResource(bundle: R.hostingBundle, name: "shop_cct")
+    /// Image `shop_decrease`.
+    static let shop_decrease = Rswift.ImageResource(bundle: R.hostingBundle, name: "shop_decrease")
+    /// Image `shop_filter`.
+    static let shop_filter = Rswift.ImageResource(bundle: R.hostingBundle, name: "shop_filter")
+    /// Image `shop_increase`.
+    static let shop_increase = Rswift.ImageResource(bundle: R.hostingBundle, name: "shop_increase")
+    /// Image `shop_mp`.
+    static let shop_mp = Rswift.ImageResource(bundle: R.hostingBundle, name: "shop_mp")
+    /// Image `shop_nav_basket`.
+    static let shop_nav_basket = Rswift.ImageResource(bundle: R.hostingBundle, name: "shop_nav_basket")
+    /// Image `shop_nav_heart`.
+    static let shop_nav_heart = Rswift.ImageResource(bundle: R.hostingBundle, name: "shop_nav_heart")
     /// Image `symptom_check_box_select`.
     static let symptom_check_box_select = Rswift.ImageResource(bundle: R.hostingBundle, name: "symptom_check_box_select")
     /// Image `symptom_check_box_unselect`.
@@ -779,6 +837,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "payment_card", bundle: ..., traitCollection: ...)`
+    static func payment_card(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.payment_card, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "question_help_arrow_down", bundle: ..., traitCollection: ...)`
     static func question_help_arrow_down(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.question_help_arrow_down, compatibleWith: traitCollection)
@@ -852,6 +917,69 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "service_detail_timer", bundle: ..., traitCollection: ...)`
     static func service_detail_timer(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.service_detail_timer, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "shop_arrow_down", bundle: ..., traitCollection: ...)`
+    static func shop_arrow_down(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.shop_arrow_down, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "shop_arrow_right", bundle: ..., traitCollection: ...)`
+    static func shop_arrow_right(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.shop_arrow_right, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "shop_cct", bundle: ..., traitCollection: ...)`
+    static func shop_cct(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.shop_cct, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "shop_decrease", bundle: ..., traitCollection: ...)`
+    static func shop_decrease(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.shop_decrease, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "shop_filter", bundle: ..., traitCollection: ...)`
+    static func shop_filter(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.shop_filter, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "shop_increase", bundle: ..., traitCollection: ...)`
+    static func shop_increase(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.shop_increase, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "shop_mp", bundle: ..., traitCollection: ...)`
+    static func shop_mp(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.shop_mp, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "shop_nav_basket", bundle: ..., traitCollection: ...)`
+    static func shop_nav_basket(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.shop_nav_basket, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "shop_nav_heart", bundle: ..., traitCollection: ...)`
+    static func shop_nav_heart(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.shop_nav_heart, compatibleWith: traitCollection)
     }
     #endif
 
@@ -970,7 +1098,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 81 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 93 nibs.
   struct nib {
     /// Nib `AccountEditSheetContentView`.
     static let accountEditSheetContentView = _R.nib._AccountEditSheetContentView()
@@ -1000,6 +1128,10 @@ struct R: Rswift.Validatable {
     static let blogSaveToBoardSheetView = _R.nib._BlogSaveToBoardSheetView()
     /// Nib `BolgItemHorizontalLayoutCell`.
     static let bolgItemHorizontalLayoutCell = _R.nib._BolgItemHorizontalLayoutCell()
+    /// Nib `CCTShopFooterView`.
+    static let cctShopFooterView = _R.nib._CCTShopFooterView()
+    /// Nib `CCTShopHeaderView`.
+    static let cctShopHeaderView = _R.nib._CCTShopHeaderView()
     /// Nib `CardUserDetailHeadView`.
     static let cardUserDetailHeadView = _R.nib._CardUserDetailHeadView()
     /// Nib `ChangePwdContainer`.
@@ -1036,8 +1168,6 @@ struct R: Rswift.Validatable {
     static let madamPartumLocationCell = _R.nib._MadamPartumLocationCell()
     /// Nib `MadamPartumNewsItemCell`.
     static let madamPartumNewsItemCell = _R.nib._MadamPartumNewsItemCell()
-    /// Nib `MadamPartumProductItemCell`.
-    static let madamPartumProductItemCell = _R.nib._MadamPartumProductItemCell()
     /// Nib `MyOrderDetailFooterView`.
     static let myOrderDetailFooterView = _R.nib._MyOrderDetailFooterView()
     /// Nib `MyOrderDetailHeaderView`.
@@ -1082,8 +1212,30 @@ struct R: Rswift.Validatable {
     static let setTransactionLimitSheetView = _R.nib._SetTransactionLimitSheetView()
     /// Nib `SettingCell`.
     static let settingCell = _R.nib._SettingCell()
+    /// Nib `ShopCartCell`.
+    static let shopCartCell = _R.nib._ShopCartCell()
+    /// Nib `ShopCartFooterView`.
+    static let shopCartFooterView = _R.nib._ShopCartFooterView()
+    /// Nib `ShopCheckOutFooterView`.
+    static let shopCheckOutFooterView = _R.nib._ShopCheckOutFooterView()
+    /// Nib `ShopCollectionMethodSheetView`.
+    static let shopCollectionMethodSheetView = _R.nib._ShopCollectionMethodSheetView()
+    /// Nib `ShopDetailAboutHeadView`.
+    static let shopDetailAboutHeadView = _R.nib._ShopDetailAboutHeadView()
+    /// Nib `ShopDetailHeadContainer`.
+    static let shopDetailHeadContainer = _R.nib._ShopDetailHeadContainer()
     /// Nib `ShopFilterContentView`.
     static let shopFilterContentView = _R.nib._ShopFilterContentView()
+    /// Nib `ShopHeaderView`.
+    static let shopHeaderView = _R.nib._ShopHeaderView()
+    /// Nib `ShopLikeProductCell`.
+    static let shopLikeProductCell = _R.nib._ShopLikeProductCell()
+    /// Nib `ShopProductItemCell`.
+    static let shopProductItemCell = _R.nib._ShopProductItemCell()
+    /// Nib `ShopProductReviewCell`.
+    static let shopProductReviewCell = _R.nib._ShopProductReviewCell()
+    /// Nib `ShopSelectCouponOrVoucherCell`.
+    static let shopSelectCouponOrVoucherCell = _R.nib._ShopSelectCouponOrVoucherCell()
     /// Nib `SymptomCheckBeginContainer`.
     static let symptomCheckBeginContainer = _R.nib._SymptomCheckBeginContainer()
     /// Nib `SymptomCheckDetailCell`.
@@ -1248,6 +1400,22 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "CCTShopFooterView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.cctShopFooterView) instead")
+    static func cctShopFooterView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.cctShopFooterView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "CCTShopHeaderView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.cctShopHeaderView) instead")
+    static func cctShopHeaderView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.cctShopHeaderView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "CardUserDetailHeadView", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.cardUserDetailHeadView) instead")
     static func cardUserDetailHeadView(_: Void = ()) -> UIKit.UINib {
@@ -1388,14 +1556,6 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.madamPartumNewsItemCell) instead")
     static func madamPartumNewsItemCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.madamPartumNewsItemCell)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "MadamPartumProductItemCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.madamPartumProductItemCell) instead")
-    static func madamPartumProductItemCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.madamPartumProductItemCell)
     }
     #endif
 
@@ -1576,10 +1736,98 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ShopCartCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.shopCartCell) instead")
+    static func shopCartCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.shopCartCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ShopCartFooterView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.shopCartFooterView) instead")
+    static func shopCartFooterView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.shopCartFooterView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ShopCheckOutFooterView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.shopCheckOutFooterView) instead")
+    static func shopCheckOutFooterView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.shopCheckOutFooterView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ShopCollectionMethodSheetView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.shopCollectionMethodSheetView) instead")
+    static func shopCollectionMethodSheetView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.shopCollectionMethodSheetView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ShopDetailAboutHeadView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.shopDetailAboutHeadView) instead")
+    static func shopDetailAboutHeadView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.shopDetailAboutHeadView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ShopDetailHeadContainer", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.shopDetailHeadContainer) instead")
+    static func shopDetailHeadContainer(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.shopDetailHeadContainer)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "ShopFilterContentView", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.shopFilterContentView) instead")
     static func shopFilterContentView(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.shopFilterContentView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ShopHeaderView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.shopHeaderView) instead")
+    static func shopHeaderView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.shopHeaderView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ShopLikeProductCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.shopLikeProductCell) instead")
+    static func shopLikeProductCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.shopLikeProductCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ShopProductItemCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.shopProductItemCell) instead")
+    static func shopProductItemCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.shopProductItemCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ShopProductReviewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.shopProductReviewCell) instead")
+    static func shopProductReviewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.shopProductReviewCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ShopSelectCouponOrVoucherCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.shopSelectCouponOrVoucherCell) instead")
+    static func shopSelectCouponOrVoucherCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.shopSelectCouponOrVoucherCell)
     }
     #endif
 
@@ -1843,6 +2091,14 @@ struct R: Rswift.Validatable {
       return R.nib.cardUserDetailHeadView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CardUserDetailHeadView
     }
 
+    static func cctShopFooterView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CCTShopFooterView? {
+      return R.nib.cctShopFooterView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CCTShopFooterView
+    }
+
+    static func cctShopHeaderView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CCTShopHeaderView? {
+      return R.nib.cctShopHeaderView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CCTShopHeaderView
+    }
+
     static func changePwdContainer(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ChangePwdContainer? {
       return R.nib.changePwdContainer.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ChangePwdContainer
     }
@@ -1909,10 +2165,6 @@ struct R: Rswift.Validatable {
 
     static func madamPartumNewsItemCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MadamPartumNewsItemCell? {
       return R.nib.madamPartumNewsItemCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MadamPartumNewsItemCell
-    }
-
-    static func madamPartumProductItemCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MadamPartumProductItemCell? {
-      return R.nib.madamPartumProductItemCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MadamPartumProductItemCell
     }
 
     static func myOrderDetailFooterView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MyOrderDetailFooterView? {
@@ -2003,8 +2255,52 @@ struct R: Rswift.Validatable {
       return R.nib.settingCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SettingCell
     }
 
+    static func shopCartCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopCartCell? {
+      return R.nib.shopCartCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopCartCell
+    }
+
+    static func shopCartFooterView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopCartFooterView? {
+      return R.nib.shopCartFooterView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopCartFooterView
+    }
+
+    static func shopCheckOutFooterView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopCheckOutFooterView? {
+      return R.nib.shopCheckOutFooterView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopCheckOutFooterView
+    }
+
+    static func shopCollectionMethodSheetView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopCollectionMethodSheetView? {
+      return R.nib.shopCollectionMethodSheetView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopCollectionMethodSheetView
+    }
+
+    static func shopDetailAboutHeadView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopDetailAboutHeadView? {
+      return R.nib.shopDetailAboutHeadView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopDetailAboutHeadView
+    }
+
+    static func shopDetailHeadContainer(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopDetailHeadContainer? {
+      return R.nib.shopDetailHeadContainer.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopDetailHeadContainer
+    }
+
     static func shopFilterContentView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopFilterContentView? {
       return R.nib.shopFilterContentView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopFilterContentView
+    }
+
+    static func shopHeaderView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopHeaderView? {
+      return R.nib.shopHeaderView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopHeaderView
+    }
+
+    static func shopLikeProductCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopLikeProductCell? {
+      return R.nib.shopLikeProductCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopLikeProductCell
+    }
+
+    static func shopProductItemCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopProductItemCell? {
+      return R.nib.shopProductItemCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopProductItemCell
+    }
+
+    static func shopProductReviewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopProductReviewCell? {
+      return R.nib.shopProductReviewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopProductReviewCell
+    }
+
+    static func shopSelectCouponOrVoucherCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopSelectCouponOrVoucherCell? {
+      return R.nib.shopSelectCouponOrVoucherCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopSelectCouponOrVoucherCell
     }
 
     static func symptomCheckBeginContainer(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SymptomCheckBeginContainer? {
@@ -2142,6 +2438,7 @@ struct _R: Rswift.Validatable {
       try _BlogHeaderSearchView.validate()
       try _BlogItemVerticalLayoutCell.validate()
       try _BolgItemHorizontalLayoutCell.validate()
+      try _CCTShopFooterView.validate()
       try _CardUserDetailHeadView.validate()
       try _ContactUsListCell.validate()
       try _DataProtectionHeadView.validate()
@@ -2151,12 +2448,16 @@ struct _R: Rswift.Validatable {
       try _MadamPartumDetailHeaderView.validate()
       try _MadamPartumLocationCell.validate()
       try _MadamPartumNewsItemCell.validate()
-      try _MadamPartumProductItemCell.validate()
       try _ReferFriendContainer.validate()
       try _SelectTypeOfServiceSheetView.validate()
       try _ServiceListCell.validate()
       try _SetTransactionLimitSheetView.validate()
       try _SettingCell.validate()
+      try _ShopCheckOutFooterView.validate()
+      try _ShopHeaderView.validate()
+      try _ShopLikeProductCell.validate()
+      try _ShopProductItemCell.validate()
+      try _ShopProductReviewCell.validate()
       try _SymptomCheckBeginContainer.validate()
       try _SymptomCheckLetGoContainer.validate()
       try _SymptomCheckNextContainer.validate()
@@ -2380,6 +2681,34 @@ struct _R: Rswift.Validatable {
           if UIKit.UIColor(named: "Placeholder", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Placeholder' is used in nib 'BolgItemHorizontalLayoutCell', but couldn't be loaded.") }
           if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'BolgItemHorizontalLayoutCell', but couldn't be loaded.") }
         }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _CCTShopFooterView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "CCTShopFooterView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CCTShopFooterView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CCTShopFooterView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "shop_filter", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'shop_filter' is used in nib 'CCTShopFooterView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _CCTShopHeaderView: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "CCTShopHeaderView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CCTShopHeaderView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CCTShopHeaderView
       }
 
       fileprivate init() {}
@@ -2677,26 +3006,6 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    struct _MadamPartumProductItemCell: Rswift.NibResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let name = "MadamPartumProductItemCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MadamPartumProductItemCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MadamPartumProductItemCell
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "madam_partum_heart", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'madam_partum_heart' is used in nib 'MadamPartumProductItemCell', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'MadamPartumProductItemCell', but couldn't be loaded.") }
-          if UIKit.UIColor(named: "Placeholder", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Placeholder' is used in nib 'MadamPartumProductItemCell', but couldn't be loaded.") }
-          if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'MadamPartumProductItemCell', but couldn't be loaded.") }
-        }
-      }
-
-      fileprivate init() {}
-    }
-
     struct _MyOrderDetailFooterView: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "MyOrderDetailFooterView"
@@ -2988,12 +3297,179 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
+    struct _ShopCartCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "ShopCartCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopCartCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopCartCell
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _ShopCartFooterView: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "ShopCartFooterView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopCartFooterView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopCartFooterView
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _ShopCheckOutFooterView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "ShopCheckOutFooterView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopCheckOutFooterView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopCheckOutFooterView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "shop_arrow_down", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'shop_arrow_down' is used in nib 'ShopCheckOutFooterView', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "shop_arrow_right", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'shop_arrow_right' is used in nib 'ShopCheckOutFooterView', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "transaction_payment_other", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'transaction_payment_other' is used in nib 'ShopCheckOutFooterView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'ShopCheckOutFooterView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'ShopCheckOutFooterView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "gray82", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'gray82' is used in nib 'ShopCheckOutFooterView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "grayE0", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'grayE0' is used in nib 'ShopCheckOutFooterView', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _ShopCollectionMethodSheetView: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "ShopCollectionMethodSheetView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopCollectionMethodSheetView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopCollectionMethodSheetView
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _ShopDetailAboutHeadView: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "ShopDetailAboutHeadView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopDetailAboutHeadView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopDetailAboutHeadView
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _ShopDetailHeadContainer: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "ShopDetailHeadContainer"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopDetailHeadContainer? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopDetailHeadContainer
+      }
+
+      fileprivate init() {}
+    }
+
     struct _ShopFilterContentView: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "ShopFilterContentView"
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopFilterContentView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopFilterContentView
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _ShopHeaderView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "ShopHeaderView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopHeaderView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopHeaderView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "shop_cct", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'shop_cct' is used in nib 'ShopHeaderView', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "shop_mp", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'shop_mp' is used in nib 'ShopHeaderView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "Placeholder", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Placeholder' is used in nib 'ShopHeaderView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamPink", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamPink' is used in nib 'ShopHeaderView', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _ShopLikeProductCell: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "ShopLikeProductCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopLikeProductCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopLikeProductCell
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "madam_partum_heart", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'madam_partum_heart' is used in nib 'ShopLikeProductCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'ShopLikeProductCell', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "Placeholder", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Placeholder' is used in nib 'ShopLikeProductCell', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'ShopLikeProductCell', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _ShopProductItemCell: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "ShopProductItemCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopProductItemCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopProductItemCell
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "madam_partum_heart", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'madam_partum_heart' is used in nib 'ShopProductItemCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'ShopProductItemCell', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "Placeholder", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Placeholder' is used in nib 'ShopProductItemCell', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'ShopProductItemCell', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _ShopProductReviewCell: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "ShopProductReviewCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopProductReviewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopProductReviewCell
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "madam_partum_star", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'madam_partum_star' is used in nib 'ShopProductReviewCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'ShopProductReviewCell', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _ShopSelectCouponOrVoucherCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "ShopSelectCouponOrVoucherCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ShopSelectCouponOrVoucherCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ShopSelectCouponOrVoucherCell
       }
 
       fileprivate init() {}
@@ -3305,6 +3781,7 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "wallet_paymethod_delete", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'wallet_paymethod_delete' is used in nib 'WalletPaymentMethodCell', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'WalletPaymentMethodCell', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "gray82", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'gray82' is used in nib 'WalletPaymentMethodCell', but couldn't be loaded.") }
         }
       }
 

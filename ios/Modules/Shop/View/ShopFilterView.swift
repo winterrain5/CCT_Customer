@@ -12,7 +12,7 @@ class ShopFilterView: UIView {
   static let shared = ShopFilterView()
   var contentView = ShopFilterContentView.loadViewFromNib()
   var scrollView = UIScrollView()
-  var selectCompleteHandler:((String)->())?
+  var selectCompleteHandler:((CCTShopFilterRequestModel)->())?
   lazy var updateButton = UIButton().then { btn in
     btn.titleForNormal = "Update"
     btn.titleColorForNormal = .white
@@ -56,19 +56,15 @@ class ShopFilterView: UIView {
   
   @objc func updateButtonAction() {
     EntryKit.dismiss()
-    selectCompleteHandler?(contentView.result.jsonString() ?? "")
-    print(contentView.result.jsonString() ?? "")
+    selectCompleteHandler?(contentView.result)
+    print(contentView.result.toJSONString() ?? "")
   }
   
-  static func show(_ isNew:Bool,complete: @escaping (String)->()) {
-    var view:ShopFilterView!
-    if isNew {
-      view = ShopFilterView()
-    }else {
-      view = ShopFilterView.shared
-    }
-    view.selectCompleteHandler = complete
+  static func show(lastSelect:CCTShopFilterRequestModel,complete: @escaping (CCTShopFilterRequestModel)->()) {
     
+    let view = ShopFilterView()
+    view.selectCompleteHandler = complete
+    view.contentView.result = lastSelect
     let size = CGSize(width: kScreenWidth, height: kScreenHeight * 0.8)
     EntryKit.display(view: view, size: size, style: .sheet)
 

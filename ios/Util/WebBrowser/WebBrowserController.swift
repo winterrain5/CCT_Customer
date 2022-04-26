@@ -37,7 +37,7 @@ class WebBrowserController: BaseViewController,WKUIDelegate, WKNavigationDelegat
     button.addTarget(self, action: #selector(closeItemAction), for: .touchUpInside)
     return button
   }()
-  private  var backBtn: UIButton = {
+  private lazy var backBtn: UIButton = {
     let button = UIButton(type: .custom)
     button.frame = CGRect(x: 0, y: 0, width: 28, height: 44)
     button.setImage(R.image.return_left(), for: .normal)

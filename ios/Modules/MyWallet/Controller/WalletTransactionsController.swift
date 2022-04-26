@@ -8,11 +8,16 @@
 import UIKit
 
 import JXPagingView
-class WalletTransactionsController: WalletBaseController {
+class WalletTransactionsController: BasePagingTableController {
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
+  
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     refreshData()
   }
   
@@ -25,7 +30,7 @@ class WalletTransactionsController: WalletBaseController {
     params.set(key: "length", value: kPageSize)
     
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decode([WalletTranscationModel].self, from: data)  {
+      if let models = DecodeManager.decodeByCodable([WalletTranscationModel].self, from: data)  {
         self.dataArray.append(contentsOf: models)
         self.endRefresh(models.count,emptyString: "Your have no Transactions")
       } else {
@@ -46,6 +51,7 @@ class WalletTransactionsController: WalletBaseController {
     tableView?.separatorStyle = .singleLine
     tableView?.separatorColor = R.color.line()
     tableView?.separatorInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
+    tableView?.contentInset = .zero
     registRefreshFooter()
   }
   

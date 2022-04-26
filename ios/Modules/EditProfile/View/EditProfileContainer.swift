@@ -45,16 +45,16 @@ class EditProfileContainer: UIView,UITextFieldDelegate {
       unitNumTf.text = model.unit_num
       cityTf.text = model.unit_num
       
-      editModel.firstName = model.first_name ?? ""
-      editModel.lastName = model.last_name ?? ""
-      editModel.gender = model.gender ?? ""
-      editModel.postCode = model.post_code ?? ""
-      editModel.streetName = model.street_name ?? ""
-      editModel.buildingNum = model.building_block_num ?? ""
-      editModel.unitNum = model.unit_num ?? ""
-      editModel.city = model.city ?? ""
-      editModel.isCustomer = model.cct_or_mp ?? ""
-      editModel.birthday = model.birthday ?? ""
+      editModel.firstName = model.first_name
+      editModel.lastName = model.last_name
+      editModel.gender = model.gender
+      editModel.postCode = model.post_code
+      editModel.streetName = model.street_name
+      editModel.buildingNum = model.building_block_num
+      editModel.unitNum = model.unit_num
+      editModel.city = model.city
+      editModel.isCustomer = model.cct_or_mp
+      editModel.birthday = model.birthday 
     }
   }
   
@@ -76,7 +76,7 @@ class EditProfileContainer: UIView,UITextFieldDelegate {
     let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
-      if let model = DecodeManager.decode(UserModel.self, from: data) {
+      if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
         self.userModel = model
         Defaults.shared.set(model, for: .userModel)
       }

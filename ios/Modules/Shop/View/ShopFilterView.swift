@@ -13,6 +13,7 @@ class ShopFilterView: UIView {
   var contentView = ShopFilterContentView.loadViewFromNib()
   var scrollView = UIScrollView()
   var selectCompleteHandler:((CCTShopFilterRequestModel)->())?
+  var selectCompleteStringHandler:((String)->())?
   lazy var updateButton = UIButton().then { btn in
     btn.titleForNormal = "Update"
     btn.titleColorForNormal = .white
@@ -57,7 +58,13 @@ class ShopFilterView: UIView {
   @objc func updateButtonAction() {
     EntryKit.dismiss()
     selectCompleteHandler?(contentView.result)
+    var dict:[String:Any] = [:]
+    dict["range"] = contentView.result.price_low + "-" + contentView.result.price_high
+    dict["filter"] = contentView.result.orderBy == "DESC" ? "1" : "0"
+    dict["category"] = contentView.result.category.map({ $0.id })
+    selectCompleteStringHandler?(dict.jsonString() ?? "")
     print(contentView.result.toJSONString() ?? "")
+    print(dict.jsonString() ?? "")
   }
   
   static func show(lastSelect:CCTShopFilterRequestModel,complete: @escaping (CCTShopFilterRequestModel)->()) {
@@ -65,6 +72,15 @@ class ShopFilterView: UIView {
     let view = ShopFilterView()
     view.selectCompleteHandler = complete
     view.contentView.result = lastSelect
+    let size = CGSize(width: kScreenWidth, height: kScreenHeight * 0.8)
+    EntryKit.display(view: view, size: size, style: .sheet)
+
+  }
+  
+  static func show(isNew:Bool,complete: @escaping (String)->()) {
+    
+    let view = ShopFilterView()
+    view.selectCompleteStringHandler = complete
     let size = CGSize(width: kScreenWidth, height: kScreenHeight * 0.8)
     EntryKit.display(view: view, size: size, style: .sheet)
 

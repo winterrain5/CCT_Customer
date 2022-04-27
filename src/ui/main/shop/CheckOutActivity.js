@@ -2339,7 +2339,7 @@ payTOeder(valid_new_vouchers){
     '<item><key i:type="d:string">saleman_id</key><value i:type="d:string">'+ this.state.business_id +'</value></item>'+
     '<item><key i:type="d:string">date</key><value i:type="d:string">'+ DateUtil.formatDateTime1() +'</value></item>'+
     '<item><key i:type="d:string">is_from_app</key><value i:type="d:string">1</value></item>'+
-    '<item><key i:type="d:string">collection_method</key><value i:type="d:string">'+ (this.state.selected_location.id == '-1' ? '1' : '2') +'</value></item>'+
+    '<item><key i:type="d:string">collection_method</key><value i:type="d:string">'+ (this.state.selected_location.id == '-1' ? '2' : '1') +'</value></item>'+
     '</value></item>' +
     '<item><key i:type="d:string">bookingTimesData</key><value i:type="n1:Map" /></item>'+
     '</data>'+

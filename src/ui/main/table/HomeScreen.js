@@ -1068,8 +1068,13 @@ export default class HomeScreen extends Component {
 
 
   clickShop(){
-
-    NativeModules.NativeBridge.openNativeVc("ShopViewController",null);
+    const { navigation } = this.props;
+    
+    if (navigation) {
+      navigation.navigate('ShopActivity');
+     
+    }
+    // NativeModules.NativeBridge.openNativeVc("ShopViewController",null);
   }
 
 

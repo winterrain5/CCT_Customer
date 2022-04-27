@@ -259,6 +259,7 @@ class CCTShopNoneView: UICollectionReusableView {
   var price_high = ""
   var price_low = ""
   var category:[ProductCategoryModel] = []
+  /// "DESC" "ASC"
   var orderBy = ""
   var range:String = ""
 }

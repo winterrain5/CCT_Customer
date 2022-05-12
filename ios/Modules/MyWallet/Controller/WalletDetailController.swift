@@ -137,7 +137,7 @@ class WalletDetailController: BaseTableController {
   }
   
   override func numberOfSections(in tableView: UITableView) -> Int {
-    return 2
+    return self.dataArray.count
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

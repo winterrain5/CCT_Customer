@@ -187,6 +187,14 @@ enum API:String {
   case getClientPayPd = "getClientPayPd"
   /// 通过手机号获取一组用户信息
   case matchPhone = "matchPhone"
+  case getQueryData = "getQueryData"
+  case getParentCompanyBySysName = "getParentCompanyBySysName"
+  case getNotices = "getNotices"
+  case getAllCategories = "getAllCategories"
+  case getClientCategory = "getClientCategory"
+  case unDoNotices = "unDoNotices"
+  case deleteNotices = "deleteNotices"
+  case saveClientCategories = "saveClientCategories"
   
   
   // 物品购物车推送
@@ -238,4 +246,12 @@ enum Action:String {
   case Employee = "employee"
   case StripePayment = "stripe-payment"
   case CardDiscountContent = "card-discount-content"
+  case Query = "query"
+}
+
+struct WebUrl {
+  static let services = "http://info.chienchitow.com/services/"
+  static let conditionsWeTreat = "http://info.chienchitow.com/condition-we-treat/"
+  static let ourStory = "http://info.chienchitow.com/about-us/"
+
 }

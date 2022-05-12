@@ -20,12 +20,13 @@ class BaseViewController: UIViewController {
       navigationController?.interactivePopGestureRecognizer?.isEnabled = interactivePopGestureRecognizerEnable
     }
   }
-  
- 
-  
+
   override var canBecomeFirstResponder: Bool {
     return true
   }
+  
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -76,9 +77,16 @@ class BaseViewController: UIViewController {
     self.view.endEditing(true)
   }
   
-  func barAppearance(tintColor:UIColor = .white,barBackgroundColor:UIColor = R.color.theamBlue()!,image:UIImage? = UIImage(named: "return_left"),backButtonTitle:String = "") {
+  
+  /// 设置NavBar外观
+  /// - Parameters:
+  ///   - tintColor: 文字颜色
+  ///   - barBackgroundColor: 背景色
+  ///   - image: 返回按钮图片
+  ///   - backButtonTitle: 返回按钮文字
+  func barAppearance(tintColor:UIColor = .white,barBackgroundColor:UIColor = R.color.theamBlue()!,image:UIImage? = UIImage(named: "return_left"),backButtonTitle:String? = nil) {
     addLeftBarButtonItem(image)
-    self.leftButton.titleForNormal = " \(backButtonTitle)"
+    self.leftButton.titleForNormal = " \(backButtonTitle ?? "")"
     self.leftButton.titleColorForNormal = tintColor
     self.leftButton.titleLabel?.font = UIFont(.AvenirNextDemiBold,16)
     self.navigation.bar.tintColor = tintColor

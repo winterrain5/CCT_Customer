@@ -9,7 +9,7 @@ import UIKit
 import Stripe
 import DKLogger
 import IQKeyboardManagerSwift
-import LGButton
+import Haptica
 class MainViewController: BaseViewController {
   lazy var createBoardView = BlogCreateBoardSheetView()
   var blogId:String = ""

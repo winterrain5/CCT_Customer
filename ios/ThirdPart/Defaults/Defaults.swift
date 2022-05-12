@@ -24,6 +24,7 @@
 
 import Foundation
 
+@objcMembers
 public class DefaultsKey {}
 
 /// Represents a `Key` with an associated generic value type conforming to the
@@ -42,6 +43,8 @@ public final class Key<ValueType: Codable>: DefaultsKey {
 /// - Warning
 /// These should not be used to store sensitive information that could compromise
 /// the application or the user's security and privacy.
+
+@objcMembers
 public final class Defaults {
   
   private var userDefaults: UserDefaults

@@ -25,7 +25,9 @@ target 'CCTIOS' do
   pod 'JXSegmentedView'
   pod 'JXPagingView/Paging'
   pod 'HandyJSON', '~> 5.0.2'
-  pod 'LGButton'
+  pod "Haptica"
+  pod 'SideMenuSwift'
+  pod 'SwipeCellKit'
   
 #  pod 'SwifterSwift'
   

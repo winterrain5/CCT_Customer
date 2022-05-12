@@ -15,3 +15,4 @@
 #import "ReactRootViewManager.h"
 #import <CRBoxInputView.h>
 #import <MobPush/MobPush.h>
+#import "AppDelegate.h"

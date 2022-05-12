@@ -1,6 +1,6 @@
 #import <React/RCTBridgeDelegate.h>
 #import <UIKit/UIKit.h>
-#import "CCTIOS-Swift.h"
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, RCTBridgeDelegate>
 

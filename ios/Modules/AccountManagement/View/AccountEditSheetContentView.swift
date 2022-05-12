@@ -9,6 +9,7 @@ import UIKit
 import IQKeyboardManagerSwift
 
 enum EditInfoType {
+  case Login
   case phone
   case email
   case pwd

@@ -12,14 +12,27 @@ class NotificationUndoView: UIView {
   var remaingCount = 5
   var undoHandler:(()->())?
   var timer:Timer!
-  var countLabel = UILabel()
-  var undButton = UIButton()
+  var countLabel = UILabel().then { label in
+    label.textColor = .white
+    label.font = UIFont(.AvenirNextRegular,16)
+    label.text = "0 Delete"
+  }
+  var undoButton = UIButton().then { btn in
+    btn.titleForNormal = "Undo"
+    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,16)
+  }
+  var deleteCount:Int = 0 {
+    didSet {
+      countLabel.text = "\(deleteCount) Delete"
+    }
+  }
   override init(frame: CGRect) {
     super.init(frame: frame)
     backgroundColor = R.color.theamRed()
-   
+    addSubview(countLabel)
+    addSubview(undoButton)
+    undoButton.addTarget(self, action: #selector(undoAction), for: .touchUpInside)
     timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(startCount), userInfo: nil, repeats: true)
-    addSubview(remaingCountIndicator)
   }
   
   required init?(coder: NSCoder) {
@@ -29,7 +42,19 @@ class NotificationUndoView: UIView {
   
   override func layoutSubviews() {
     super.layoutSubviews()
+    countLabel.snp.makeConstraints { make in
+      make.centerY.equalToSuperview()
+      make.left.equalToSuperview().offset(16)
+    }
     
+    undoButton.snp.makeConstraints { make in
+      make.centerY.equalToSuperview()
+      make.right.equalToSuperview().offset(-16)
+    }
+  }
+  
+  @objc func undoAction() {
+    undoHandler?()
   }
   
   @objc func startCount() {
@@ -37,6 +62,7 @@ class NotificationUndoView: UIView {
       if timer != nil {
         timer.invalidate()
         timer = nil
+        dismiss()
       }
       return
     }
@@ -52,10 +78,11 @@ class NotificationUndoView: UIView {
 
   }
 
-  static func show(_ undoCount:Int,_ undoHandler:@escaping ()->()) {
+  static func show(count:Int,_ undoHandler:@escaping ()->()) {
     let undoView = NotificationUndoView()
     undoView.undoHandler = undoHandler
-    undoView.dismiss()
+    undoView.deleteCount = count
+    
     
     let window = UIApplication.shared.keyWindow
     window?.addSubview(undoView)

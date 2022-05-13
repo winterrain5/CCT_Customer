@@ -14,7 +14,7 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
   var filterIds:[String] = []
   var isAllowSelect = false
   var selectModels:[NotificationModel] = []
-  
+  var undoParams = SOAPDictionary()
   
   init() {
     super.init(nibName: nil, bundle: nil)
@@ -120,12 +120,29 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
     selectModels.enumerated().forEach { i,e in
       ids.set(key: i.string, value: e.id)
     }
-    
+    undoParams = ids
     params.set(key: "ids", value: ids.result, type: .map(1))
     Toast.showLoading()
     NetworkManager().request(params: params) { data in
       Toast.showSuccess(withStatus: "Successfully deleted")
+      NotificationUndoView.show(count: self.selectModels.count) { [weak self] in
+        guard let `self` = self else { return }
+        self.undoNotification()
+      }
       self.notAllSelectItemStyle()
+      self.dataArray.removeAll()
+      self.getNotices()
+    } errorHandler: { e in
+      Toast.dismiss()
+    }
+  }
+  
+  func undoNotification() {
+    let params = SOAPParams(action: .Notifications, path: .unDoNotices)
+    params.set(key: "ids", value: undoParams.result, type: .map(1))
+    Toast.showLoading()
+    NetworkManager().request(params: params) { data in
+      Toast.showSuccess(withStatus: "Successfully Undo")
       self.dataArray.removeAll()
       self.getNotices()
     } errorHandler: { e in
@@ -294,10 +311,6 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
   }
   
   @objc func rightItemAction() {
-    NotificationUndoView.show(5) {
-      
-    }
-    return
     
     if isAllowSelect {
       deleteNotification()

@@ -61,7 +61,7 @@ export default class CCTShopActivity extends Component {
        userBean:undefined,
        shop_banner:undefined,
        page:0,
-       isCctMap:0,
+       isCctMap:1,
        shop_data:[],
        products_cart_count:0,
        filter_pamse:undefined,
@@ -216,7 +216,7 @@ export default class CCTShopActivity extends Component {
     '<isFeatured i:type="d:string">1</isFeatured>'+
     '<isCctMap i:type="d:string">' + this.state.isCctMap + '</isCctMap>'+
     '<isOnline i:type="d:string">1</isOnline>'+
-    '<isNew i:type="d:string">0</isNew>'+
+    '<isNew i:type="d:string">false</isNew>'+
     '<limit i:type="d:string">4</limit>'+
     '<clientId i:type="d:string">'+ userBean.id +'</clientId>'+
     '</n0:getNewFeaturedProducts></v:Body></v:Envelope>';
@@ -823,10 +823,10 @@ export default class CCTShopActivity extends Component {
          <StatusBar barStyle="light-content" backgroundColor='#FFFFFF' translucent={false} />
 
 
-          <SafeAreaView style = {[styles.afearea,{backgroundColor:this.state.isCctMap == 0 ? '#145A7C' : '#EE8F7B'}]} >
+          <SafeAreaView style = {[styles.afearea,{backgroundColor:this.state.isCctMap == 1 ? '#145A7C' : '#EE8F7B'}]} >
 
 
-            <View style = {[styles.header,{backgroundColor:this.state.isCctMap == 0 ? '#145A7C' : '#EE8F7B'}]}>
+            <View style = {[styles.header,{backgroundColor:this.state.isCctMap == 1 ? '#145A7C' : '#EE8F7B'}]}>
 
 
                <View style = {styles.view_car_like}>
@@ -903,7 +903,7 @@ export default class CCTShopActivity extends Component {
               <View style = {{width:'100%'}}>
 
 
-                <Text style = {[styles.text_cct_title,{color:this.state.isCctMap == 0 ? '#145A7C' : '#EE8F7B'}]}>{this.state.isCctMap == 0 ? 'Chien Chi Tow' : 'Madam Partum'}</Text>
+                <Text style = {[styles.text_cct_title,{color:this.state.isCctMap == 1 ? '#145A7C' : '#EE8F7B'}]}>{this.state.isCctMap == 0 ? 'Chien Chi Tow' : 'Madam Partum'}</Text>
 
 
                 <View style = {styles.view_banner}>

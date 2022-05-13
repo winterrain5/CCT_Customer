@@ -194,7 +194,7 @@ export default class ShopActivity extends Component {
     '<companyId i:type="d:string">'+ this.state.head_company_id +'</companyId>'+
     '<isFeatured i:type="d:string">1</isFeatured>'+
     '<isOnline i:type="d:string">1</isOnline>'+
-    '<isNew i:type="d:string">0</isNew>'+
+    '<isNew i:type="d:string">false</isNew>'+
     '<limit i:type="d:string">4</limit>'+
     '<clientId i:type="d:string">'+ userBean.id +'</clientId>'+
     '</n0:getNewFeaturedProducts></v:Body></v:Envelope>';
@@ -382,7 +382,7 @@ export default class ShopActivity extends Component {
    
       if (navigation) {
         navigation.navigate('CCTShopActivity',{
-          'isCctMap':0
+          'isCctMap':1
         });
       }
     }

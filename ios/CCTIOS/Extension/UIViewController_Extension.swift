@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SideMenuSwift
+import UIKit
 extension UIViewController {
     // MARK: - 查找顶层控制器、
     // 获取顶层控制器 根据window
@@ -65,5 +67,26 @@ extension UIViewController {
         }
     }
     
+  
+  static func getTopVc() -> UIViewController? {
+    let VC = (self.getTopVC() as? SideMenuController)?.contentViewController
+    
+    if let presentVC = VC?.presentedViewController {
+        //modal出来的 控制器
+        return getTopVC(withCurrentVC: presentVC)
+    }else if let tabVC = VC as? UITabBarController {
+        // tabBar 的跟控制器
+        if let selectVC = tabVC.selectedViewController {
+            return getTopVC(withCurrentVC: selectVC)
+        }
+        return nil
+    } else if let naiVC = VC as? UINavigationController {
+        // 控制器是 nav
+        return getTopVC(withCurrentVC:naiVC.visibleViewController)
+    } else {
+        // 返回顶控制器
+        return VC
+    }
+  }
  
 }

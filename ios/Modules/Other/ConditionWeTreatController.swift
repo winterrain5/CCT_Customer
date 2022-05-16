@@ -55,7 +55,7 @@ class ConditionWeTreatController: BaseViewController,WKNavigationDelegate {
         AlertView.show(message: "If you delay cancelling more than 3 times, your in app reservation permission will be suspended.")
       }else {
         let vc = RNBridgeViewController(RNPageName: "BookAppointmentActivity", RNProperty: ["select_type":"0"])
-        UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+        UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
       }
     } errorHandler: { e in
       Toast.dismiss()

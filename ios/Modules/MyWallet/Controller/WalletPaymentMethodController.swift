@@ -58,7 +58,7 @@ class WalletPaymentMethodController: BaseTableController {
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decodeByCodable([WalletPaymentMethodModel].self, from: data),let methods = models.first?.method_lines {
+      if let models = DecodeManager.decodeArrayByHandJSON(WalletPaymentMethodModel.self, from: data),let methods = models.first?.method_lines {
         self.cardModel = models.first
         
         if methods.count != 0 {
@@ -135,7 +135,9 @@ class WalletPaymentMethodController: BaseTableController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withClass: WalletPaymentMethodCell.self)
     if self.dataArray.count > 0 {
-      cell.model = self.dataArray[indexPath.row] as? MethodLines
+      let model = self.dataArray[indexPath.row] as? MethodLines
+      model?.type = 2
+      cell.model = model
       cell.deleteHandler = { [weak self] model in
         self?.delete(model)
       }

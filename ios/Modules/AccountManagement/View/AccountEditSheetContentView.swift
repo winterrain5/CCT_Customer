@@ -90,7 +90,7 @@ class AccountEditSheetView: UIView {
   
   func navigateToSendCode(_ source:String) {
     let vc = VerificationCodeController(type: self.contentView.type,source: source)
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
   
   required init?(coder: NSCoder) {

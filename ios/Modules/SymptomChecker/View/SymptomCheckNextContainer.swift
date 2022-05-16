@@ -53,6 +53,6 @@ class SymptomCheckNextContainer: UIView {
   
   @IBAction func beginButtonAction(_ sender: UIButton) {
     let vc = SymptomCheckStepController()
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
 }

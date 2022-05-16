@@ -16,7 +16,7 @@ class SymptomCheckBeginContainer: UIView {
   }
   @IBAction func beginButtonAction(_ sender: Any) {
     let vc = SymptomCheckNextController()
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
   @IBAction func viewReportButtonAction(_ sender: Any) {
     SymptomCheckReportListView.show()

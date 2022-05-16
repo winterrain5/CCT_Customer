@@ -97,7 +97,7 @@ class ShopCollectionCell: UITableViewCell,UICollectionViewDelegateFlowLayout,UIC
   
   @objc func viewButtonAction() {
     let vc = ShopViewAllController(dataType: dataType)
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
   
   required init?(coder: NSCoder) {
@@ -158,7 +158,7 @@ class ShopCollectionCell: UITableViewCell,UICollectionViewDelegateFlowLayout,UIC
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let id = self.datas[indexPath.item].id
     let vc = ShopDetailController(productId: id)
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
   
   func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

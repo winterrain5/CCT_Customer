@@ -22,11 +22,29 @@ class HomeViewController: BaseViewController {
     
     self.barAppearance(tintColor: .white, barBackgroundColor: R.color.theamBlue()!, image: nil, backButtonTitle: nil)
     
-    refreshData()
+    getClientByUserId()
   }
   
   
   func refreshData() {
+    
+  }
+  
+  func getClientByUserId() {
+    let params = SOAPParams(action: .Client, path: .getTClientByUserId)
+    params.set(key: "userId", value: Defaults.shared.get(for: .userId) ?? "")
+    
+    NetworkManager().request(params: params) { data in
+      if let id = try? JSON(data: data)["id"].rawString() {
+        Defaults.shared.set(id, for: .clientId)
+        self.getTClientPartInfo()
+      }
+    } errorHandler: { e in
+      
+    }
+  }
+  
+  func getTClientPartInfo() {
     let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     

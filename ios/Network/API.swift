@@ -61,6 +61,7 @@ enum API:String {
   case savePatientResults  = "savePatientResults";
   
   case getTClientPartInfo = "getTClientPartInfo"
+  case getTClientByUserId = "getTClientByUserId"
   //// 获取公司的发件邮箱地址
   case getTSystemConfig = "getTSystemConfig"
   //// 发送邮件
@@ -195,6 +196,9 @@ enum API:String {
   case unDoNotices = "unDoNotices"
   case deleteNotices = "deleteNotices"
   case saveClientCategories = "saveClientCategories"
+  
+  /// 服务记录
+  case getTSlotHistoryForApp = "getTSlotHistoryForApp"
   
   
   // 物品购物车推送

@@ -139,7 +139,7 @@ class FeedbackFormContainer: UIView,UITextFieldDelegate,TTGTextTagCollectionView
     NetworkManager().request(params: params) { data in
       sender.stopAnimation()
       Toast.showSuccess(withStatus: "Submit Successful")
-      UIViewController.getTopVC()?.navigationController?.popViewController()
+      UIViewController.getTopVc()?.navigationController?.popViewController()
     } errorHandler: { e in
       sender.stopAnimation()
     }

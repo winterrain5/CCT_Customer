@@ -307,7 +307,7 @@ class WalletDetailSectionView:UIView {
   
   @objc func addAction() {
     let vc = WalletAddUserController()
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
   
   override func layoutSubviews() {

@@ -26,9 +26,9 @@ class AccountVerifyPwdSheetView: UIView {
       self.dismiss(complete: {
         if self.type == .pwd {
           let vc = ChangePwdController(type: .Change)
-          UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+          UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
         }else {
-          AccountEditSheetView.show(fromView:( UIViewController.getTopVC()?.view)!, type: self.type)
+          AccountEditSheetView.show(fromView:( UIViewController.getTopVc()?.view)!, type: self.type)
         }
         
       })
@@ -39,7 +39,7 @@ class AccountVerifyPwdSheetView: UIView {
     contentView.forgetPwdHandler = { [weak self] in
       self?.dismiss(complete: {
         let vc = ForgetPwdController()
-        UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+        UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
       })
     }
 

@@ -315,7 +315,7 @@ class ShopCheckOutFooterView: UIView {
   
   @IBAction func selectCouponButtonAction(_ sender: Any) {
     let vc = ShopSelectCouponOrVoucherController(selectType: 0)
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
     vc.selectCouponHandler = { [weak self] model in
       self?.selectCoupon = model
       self?.selectCouponName.text = model.name
@@ -324,7 +324,7 @@ class ShopCheckOutFooterView: UIView {
   }
   @IBAction func selectVoucherButtonAction(_ sender: Any) {
     let vc = ShopSelectCouponOrVoucherController(selectType: 1)
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
     vc.selectVoucherHandler = { [weak self] model in
       self?.selectVoucher = model
       self?.selectVoucherNameLabel.text = model.name
@@ -346,7 +346,7 @@ class ShopCheckOutFooterView: UIView {
   
   @IBAction func payMethodButtonAction(_ sender: Any) {
     let vc = ShopPaymentMethodController()
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
     vc.selectCompleteHandler = {  [weak self] model,card in
       guard let `self` = self else { return }
       self.payMethodCard = card
@@ -945,6 +945,6 @@ class ShopCheckOutFooterView: UIView {
   func toNextVc() {
     Toast.dismiss()
     let vc = ShopOrderSummaryController(id: orderDetail?.Order_Info?.id ?? "")
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
 }

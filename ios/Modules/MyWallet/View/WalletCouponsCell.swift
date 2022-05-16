@@ -67,6 +67,6 @@ class WalletCouponsCell: UITableViewCell,UICollectionViewDelegate,UICollectionVi
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
     let vc = RewardsDetailController(type: .watch,coupon: coupons[indexPath.item])
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
 }

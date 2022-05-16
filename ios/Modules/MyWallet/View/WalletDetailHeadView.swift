@@ -41,7 +41,7 @@ class WalletDetailHeadView: UIView {
   }
   @IBAction func viewTiersButtonAction(_ sender: Any) {
     let vc = TierPrivilegesController()
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
   
   override func awakeFromNib() {

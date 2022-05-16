@@ -22,6 +22,6 @@ class ServiceDetailFooterView: UIView {
 
   @IBAction func planButtonAction(_ sender: Any) {
     let vc = SymptomCheckTreamentPlanWebController()
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
 }

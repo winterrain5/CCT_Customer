@@ -75,7 +75,7 @@ class CardDigitPinView: UIView {
   }
   
   static func showView(pin:String, confirmHandler:@escaping ((String)->())) {
-    let spView = UIViewController.getTopVC()?.view
+    let spView = UIViewController.getTopVc()?.view
     
     let view = CardDigitPinView()
     view.confirmHandler = confirmHandler

@@ -1377,7 +1377,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 97 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 98 nibs.
   struct nib {
     /// Nib `AccountEditSheetContentView`.
     static let accountEditSheetContentView = _R.nib._AccountEditSheetContentView()
@@ -1407,6 +1407,8 @@ struct R: Rswift.Validatable {
     static let blogSaveToBoardSheetView = _R.nib._BlogSaveToBoardSheetView()
     /// Nib `BolgItemHorizontalLayoutCell`.
     static let bolgItemHorizontalLayoutCell = _R.nib._BolgItemHorizontalLayoutCell()
+    /// Nib `BookingCompletedCell`.
+    static let bookingCompletedCell = _R.nib._BookingCompletedCell()
     /// Nib `CCTShopFooterView`.
     static let cctShopFooterView = _R.nib._CCTShopFooterView()
     /// Nib `CCTShopHeaderView`.
@@ -1683,6 +1685,14 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.bolgItemHorizontalLayoutCell) instead")
     static func bolgItemHorizontalLayoutCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.bolgItemHorizontalLayoutCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "BookingCompletedCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.bookingCompletedCell) instead")
+    static func bookingCompletedCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.bookingCompletedCell)
     }
     #endif
 
@@ -2406,6 +2416,10 @@ struct R: Rswift.Validatable {
       return R.nib.bolgItemHorizontalLayoutCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BolgItemHorizontalLayoutCell
     }
 
+    static func bookingCompletedCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> BookingCompletedCell? {
+      return R.nib.bookingCompletedCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BookingCompletedCell
+    }
+
     static func cardUserDetailHeadView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CardUserDetailHeadView? {
       return R.nib.cardUserDetailHeadView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CardUserDetailHeadView
     }
@@ -3018,6 +3032,17 @@ struct _R: Rswift.Validatable {
           if UIKit.UIColor(named: "Placeholder", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Placeholder' is used in nib 'BolgItemHorizontalLayoutCell', but couldn't be loaded.") }
           if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'BolgItemHorizontalLayoutCell', but couldn't be loaded.") }
         }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _BookingCompletedCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "BookingCompletedCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> BookingCompletedCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BookingCompletedCell
       }
 
       fileprivate init() {}

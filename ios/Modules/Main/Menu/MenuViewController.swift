@@ -9,7 +9,7 @@ import UIKit
 import SideMenuSwift
 class MenuViewController: BaseTableController {
   let menuWidth = SideMenuController.preferences.basic.menuWidth
-  let navVc =  UIViewController.getTopVC()?.navigationController
+  let navVc =  UIViewController.getTopVc()?.navigationController
   private var headView = MenuHeadView()
   private var actions:[ProfileActionModel] = [
     ProfileActionModel(title: "Home", sel: "home"),

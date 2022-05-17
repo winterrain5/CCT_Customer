@@ -199,7 +199,7 @@ enum API:String {
   
   /// 服务记录
   case getTSlotHistoryForApp = "getTSlotHistoryForApp"
-  
+  case getTUpcomingAppointments = "getTUpcomingAppointments"
   
   // 物品购物车推送
   case itemsInCart = "itemsInCart";

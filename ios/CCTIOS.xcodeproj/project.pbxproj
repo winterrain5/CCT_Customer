@@ -147,6 +147,9 @@
 		4933AC7127D84DCE005E9FB1 /* CardUserDetailHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4933AC7027D84DCE005E9FB1 /* CardUserDetailHeadView.xib */; };
 		4933AC7327D8790B005E9FB1 /* SetTransactionLimitSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933AC7227D8790B005E9FB1 /* SetTransactionLimitSheetView.swift */; };
 		4933AC7527D87914005E9FB1 /* SetTransactionLimitSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4933AC7427D87913005E9FB1 /* SetTransactionLimitSheetView.xib */; };
+		4936C21C28334A3D009125A1 /* BookingUpComingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4936C21A28334A3D009125A1 /* BookingUpComingCell.swift */; };
+		4936C21D28334A3D009125A1 /* BookingUpComingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4936C21B28334A3D009125A1 /* BookingUpComingCell.xib */; };
+		4936C21F28334ACD009125A1 /* BookingUpComingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4936C21E28334ACD009125A1 /* BookingUpComingModel.swift */; };
 		494743072809774600A8D59C /* ShopPaymentMethodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494743062809774600A8D59C /* ShopPaymentMethodController.swift */; };
 		494DDBCC281524BF0021FE97 /* ShopCollectionMethodSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494DDBCB281524BF0021FE97 /* ShopCollectionMethodSheetView.swift */; };
 		494DDBCE281524CD0021FE97 /* ShopCollectionMethodSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494DDBCD281524CD0021FE97 /* ShopCollectionMethodSheetView.xib */; };
@@ -798,6 +801,9 @@
 		4933AC7027D84DCE005E9FB1 /* CardUserDetailHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardUserDetailHeadView.xib; sourceTree = "<group>"; };
 		4933AC7227D8790B005E9FB1 /* SetTransactionLimitSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTransactionLimitSheetView.swift; sourceTree = "<group>"; };
 		4933AC7427D87913005E9FB1 /* SetTransactionLimitSheetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetTransactionLimitSheetView.xib; sourceTree = "<group>"; };
+		4936C21A28334A3D009125A1 /* BookingUpComingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingUpComingCell.swift; sourceTree = "<group>"; };
+		4936C21B28334A3D009125A1 /* BookingUpComingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingUpComingCell.xib; sourceTree = "<group>"; };
+		4936C21E28334ACD009125A1 /* BookingUpComingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingUpComingModel.swift; sourceTree = "<group>"; };
 		494743062809774600A8D59C /* ShopPaymentMethodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopPaymentMethodController.swift; sourceTree = "<group>"; };
 		494DDBCB281524BF0021FE97 /* ShopCollectionMethodSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionMethodSheetView.swift; sourceTree = "<group>"; };
 		494DDBCD281524CD0021FE97 /* ShopCollectionMethodSheetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopCollectionMethodSheetView.xib; sourceTree = "<group>"; };
@@ -2812,6 +2818,8 @@
 			children = (
 				49F69778282DF7E6009813EA /* BookingCompletedCell.swift */,
 				49F69779282DF7E7009813EA /* BookingCompletedCell.xib */,
+				4936C21A28334A3D009125A1 /* BookingUpComingCell.swift */,
+				4936C21B28334A3D009125A1 /* BookingUpComingCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2820,6 +2828,7 @@
 			isa = PBXGroup;
 			children = (
 				4550946C28324EDE0017C244 /* BookingCompleteModel.swift */,
+				4936C21E28334ACD009125A1 /* BookingUpComingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3087,6 +3096,7 @@
 				492FA1302798160C002F38B3 /* MadamPartumNewsItemCell.xib in Resources */,
 				4996D7B227D5DFD500437265 /* WalletCardView.xib in Resources */,
 				4904C3C7280677C6008FE5A5 /* CCTShopFooterView.xib in Resources */,
+				4936C21D28334A3D009125A1 /* BookingUpComingCell.xib in Resources */,
 				497B354827CF6F7000AE20C4 /* WalletCardContainer.xib in Resources */,
 				49E61D1E278ECFC600B1C136 /* SymptomCheckLetGoContainer.xib in Resources */,
 				49E2C23527D7545700F667B7 /* TierPrivilegesCell.xib in Resources */,
@@ -3483,6 +3493,7 @@
 				49BB3C5D278C334B00AC34A0 /* BlogBoardEditSheetView.swift in Sources */,
 				4998C02E277EF51200A881D5 /* DataExtensions.swift in Sources */,
 				4998C0D02784427F00A881D5 /* ConstraintMultiplierTarget.swift in Sources */,
+				4936C21F28334ACD009125A1 /* BookingUpComingModel.swift in Sources */,
 				4998C0DF2784427F00A881D5 /* UILayoutSupport+Extensions.swift in Sources */,
 				4906C226279A8EA000F7B67F /* MadamPartumAwardsCell.swift in Sources */,
 				49BA628327857CE200B898D5 /* EntryKit.swift in Sources */,
@@ -3550,6 +3561,7 @@
 				49B098B227B393350055B341 /* RangeSliderView.swift in Sources */,
 				4998C0DB2784427F00A881D5 /* ConstraintPriority.swift in Sources */,
 				49E61D20278ED8A800B1C136 /* SymptomCheckDetailController.swift in Sources */,
+				4936C21C28334A3D009125A1 /* BookingUpComingCell.swift in Sources */,
 				49BA62A32788267300B898D5 /* BlogDetailContainer.swift in Sources */,
 				4904C3A7280677A1008FE5A5 /* CCTShopController.swift in Sources */,
 				4998C0ED2784427F00A881D5 /* Debugging.swift in Sources */,

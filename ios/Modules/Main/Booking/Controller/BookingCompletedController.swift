@@ -28,7 +28,9 @@ class BookingCompletedController: BasePagingTableController {
         DecodeManager.decodeObjectByHandJSON(BookingCompleteModel.self, from: $0)
       }) {
         self.dataArray.append(contentsOf: items as [Any])
-        self.endRefresh(items.count,emptyString: "No Data")
+        self.endRefresh(items.count,emptyString: "You have no completed appointments")
+      }else {
+        self.endRefresh(.NoData, emptyString: "You have no completed appointments")
       }
       
       self.view.hideSkeleton()

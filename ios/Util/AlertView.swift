@@ -11,14 +11,14 @@ class AlertView: UIView {
 
   private var titleLabel = UILabel().then { label in
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(.AvenirNextDemiBold,18)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:18)
     label.textAlignment = .center
     label.numberOfLines = 2
     label.lineHeight = 28
   }
   private var messageLabel = UILabel().then { label in
     label.textColor = R.color.black333()
-    label.font = UIFont(.AvenirNextRegular,16)
+    label.font = UIFont(name:.AvenirNextRegular,size:16)
     label.numberOfLines = 0
     label.lineHeight = 24
   }
@@ -26,14 +26,14 @@ class AlertView: UIView {
     btn.cornerRadius = 22
     btn.backgroundColor = UIColor(hexString: "e0e0e0")
     btn.titleColorForNormal = R.color.black333()
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.titleForNormal = "Cancel"
   }
   private var rightButton = UIButton().then { btn in
     btn.cornerRadius = 22
     btn.backgroundColor = R.color.theamRed()
     btn.titleColorForNormal = .white
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.titleForNormal = "Confirm"
   }
   private var messageAlignment:NSTextAlignment = .left {
@@ -145,7 +145,7 @@ class AlertView: UIView {
     view.rightHandler = rightHandler
     view.dismissHandler = dismissHandler
     view.messageAlignment = messageAlignment
-    let titleHeight = title.heightWithConstrainedWidth(width: kScreenWidth - 48, font: UIFont(.AvenirNextDemiBold,18))
+    let titleHeight = title.heightWithConstrainedWidth(width: kScreenWidth - 48, font: UIFont(name: .AvenirNextDemiBold, size:18))
     let messageHeight = view.messageLabel.sizeThatFits(CGSize(width: kScreenWidth - 48, height: .infinity)).height
     
     let extraHeight = 170.cgFloat + kBottomsafeAreaMargin
@@ -159,7 +159,7 @@ class AlertView: UIView {
     view.config(with: title, message: message)
     view.dismissHandler = dismissHandler
     view.messageAlignment = messageAlignment
-    let titleHeight = title.heightWithConstrainedWidth(width: kScreenWidth - 48, font: UIFont(.AvenirNextDemiBold,18))
+    let titleHeight = title.heightWithConstrainedWidth(width: kScreenWidth - 48, font: UIFont(name: .AvenirNextDemiBold, size:18))
     let messageHeight = view.messageLabel.sizeThatFits(CGSize(width: kScreenWidth - 48, height: .infinity)).height
      
     let extraHeight = kBottomsafeAreaMargin + 80

@@ -16,7 +16,7 @@ class QuestionHelperController: BaseTableController {
     btn.cornerRadius = 22
     btn.backgroundColor = R.color.theamBlue()
     btn.titleColorForNormal = .white
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.titleForNormal = "Submit an enquiry"
   }
   override func viewDidLoad() {
@@ -103,7 +103,7 @@ class QuestionHelperController: BaseTableController {
     }
     models.forEach { model in
       model.isExpend = false
-      model.cellHeight = (model.title?.heightWithConstrainedWidth(width: kScreenWidth - 64, font: UIFont(.AvenirNextDemiBold,18)) ?? 0) + 42
+      model.cellHeight = (model.title?.heightWithConstrainedWidth(width: kScreenWidth - 64, font: UIFont(name: .AvenirNextDemiBold, size:18)) ?? 0) + 42
     }
     self.dataArray = models
     self.endRefresh()

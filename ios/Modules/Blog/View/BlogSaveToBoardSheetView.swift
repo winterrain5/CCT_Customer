@@ -62,7 +62,7 @@ class BlogSaveToBoardSheetView: UIView,UITableViewDataSource,UITableViewDelegate
 class BlogBoardCell:UITableViewCell {
   var nameLabel = UILabel().then { label in
     label.textColor = .black
-    label.font = UIFont(.AvenirNextRegular,14)
+    label.font = UIFont(name:.AvenirNextRegular,size:14)
   }
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -20,7 +20,7 @@ class ShopSearchView: UIView,UITextFieldDelegate {
     tf.borderStyle = .none
     tf.placeholder = "Search"
     tf.textColor = .black
-    tf.font = UIFont(.AvenirNextRegular,16)
+    tf.font = UIFont(name:.AvenirNextRegular,size:16)
   }
   
   var searchDidEndHandler:((String)->())?

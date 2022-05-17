@@ -14,12 +14,12 @@ class NotificationUndoView: UIView {
   var timer:Timer!
   var countLabel = UILabel().then { label in
     label.textColor = .white
-    label.font = UIFont(.AvenirNextRegular,16)
+    label.font = UIFont(name:.AvenirNextRegular,size:16)
     label.text = "0 Delete"
   }
   var undoButton = UIButton().then { btn in
     btn.titleForNormal = "Undo"
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,16)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:16)
   }
   var deleteCount:Int = 0 {
     didSet {

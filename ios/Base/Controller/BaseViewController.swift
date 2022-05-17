@@ -88,7 +88,7 @@ class BaseViewController: UIViewController {
     addLeftBarButtonItem(image)
     self.leftButton.titleForNormal = " \(backButtonTitle ?? "")"
     self.leftButton.titleColorForNormal = tintColor
-    self.leftButton.titleLabel?.font = UIFont(.AvenirNextDemiBold,16)
+    self.leftButton.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:16)
     self.navigation.bar.tintColor = tintColor
     self.navigation.bar.barTintColor = barBackgroundColor
   }

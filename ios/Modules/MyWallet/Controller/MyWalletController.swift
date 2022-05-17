@@ -30,8 +30,8 @@ class MyWalletController: BaseViewController {
     dataSource.isSelectedAnimable = true
     dataSource.titleSelectedColor = R.color.theamRed()!
     dataSource.titleNormalColor = .black
-    dataSource.titleSelectedFont = UIFont(.AvenirNextDemiBold,14)
-    dataSource.titleNormalFont = UIFont(.AvenirNextRegular,14)
+    dataSource.titleSelectedFont = UIFont(name: .AvenirNextDemiBold, size:14)
+    dataSource.titleNormalFont = UIFont(name:.AvenirNextRegular,size:14)
     dataSource.isItemSpacingAverageEnabled = true
     return dataSource
   }()

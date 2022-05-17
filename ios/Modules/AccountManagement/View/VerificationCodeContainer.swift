@@ -61,10 +61,10 @@ class VerificationCodeContainer: UIView {
     resendLabel.addGestureRecognizer(tap)
     
     let attr = NSMutableAttributedString(string: "Did not receive it? Resend Code")
-    attr.addAttribute(.font, value: UIFont(.AvenirNextRegular,14), range: NSRange(location: 0, length: 20))
+    attr.addAttribute(.font, value: UIFont(name:.AvenirNextRegular,size:14), range: NSRange(location: 0, length: 20))
     attr.addAttribute(.foregroundColor, value: R.color.black333()!, range: NSRange(location: 0, length: 20))
     
-    attr.addAttribute(.font, value: UIFont(.AvenirNextDemiBold,14), range: NSRange(location: 20, length: 11))
+    attr.addAttribute(.font, value: UIFont(name: .AvenirNextDemiBold, size:14), range: NSRange(location: 20, length: 11))
     attr.addAttribute(.foregroundColor, value: R.color.theamRed()!, range: NSRange(location: 20, length: 11))
     resendLabel.attributedText = attr
     

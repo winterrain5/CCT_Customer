@@ -22,7 +22,7 @@ class BookingCompletedController: BasePagingTableController {
     params.set(key: "start", value: page)
     params.set(key: "length", value: kPageSize)
     NetworkManager().request(params: params) { data in
-      self.endRefresh()
+      
       let dict = try? JSON.init(data: data).dictionaryValue
       if let items = dict?.values.map({ ($0.rawString() ?? "").data(using: .utf8) ?? Data() }).map({
         DecodeManager.decodeObjectByHandJSON(BookingCompleteModel.self, from: $0)

@@ -12,12 +12,12 @@ class WalletTermsConditionsSheetView: UIView {
   private var scrollView = UIScrollView()
   private var titleLabel = UILabel().then { label in
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(.AvenirNextDemiBold,24)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:24)
     label.text = "Terms & Conditions"
   }
   private var contentLabel = UILabel().then { label in
     label.textColor = .black
-    label.font = UIFont(.AvenirNextRegular,16)
+    label.font = UIFont(name:.AvenirNextRegular,size:16)
     label.numberOfLines = 0
     label.text = "For purchase of treatment using CCT Wallet, member will receive FOC consultation with physician.\n\nRedemption of sessions are based on ala carte pricing.\n\nCredits can be used for Chien Chi Tow / Madam Partum label products, pills and medication.\n\nCredit value is inclusive of GST amount\n\nBonus value cannot be used for GST or tax declaration.\n\nPrivilege tiers are tagged to current wallet.\n\nCredits are valid for 1 year from the date of purchase.\n\nCustomer can hold 1 CCT Wallet at any one time\n\nChien Chi Tow will not be held responsible for the misuse of credits due to 1) loss of device, 2) utilisation of credits by nominated user. Members should report to Chien Chi Tow immediately to suspend account from further misuse."
    

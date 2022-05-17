@@ -37,7 +37,7 @@ class ServiceDetailHeaderView: UIView,UITableViewDelegate,UITableViewDataSource 
       self.tableView.reloadData()
     
       let tableH = model?.approaches?.reduce(0, {
-        $0 + (190 + ($1.description?.heightWithConstrainedWidth(width: kScreenWidth - 32, font: UIFont(.AvenirNextRegular,16)) ?? 0))
+        $0 + (190 + ($1.description?.heightWithConstrainedWidth(width: kScreenWidth - 32, font: UIFont(name:.AvenirNextRegular,size:16)) ?? 0))
       }) ?? 0
       self.tableConteHCons.constant = tableH
       let totalH = self.titleLabel.requiredHeight + self.summaryDescLabel.requiredHeight + self.dowhatTitleLabel.requiredHeight + self.dowhatDescLabel.requiredHeight + tableH + 395.cgFloat
@@ -92,7 +92,7 @@ class ServiceDetailHeaderView: UIView,UITableViewDelegate,UITableViewDataSource 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if model?.approaches?.count ?? 0 > 0 {
       let item = model?.approaches?[indexPath.row]
-      return 190 + (item?.description?.heightWithConstrainedWidth(width: kScreenWidth - 32, font: UIFont(.AvenirNextRegular,16)) ?? 0)
+      return 190 + (item?.description?.heightWithConstrainedWidth(width: kScreenWidth - 32, font: UIFont(name:.AvenirNextRegular,size:16)) ?? 0)
     }
     return 0
   }

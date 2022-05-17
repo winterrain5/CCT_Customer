@@ -6,9 +6,10 @@
 //
 
 import UIKit
-
+import SideMenuSwift
 import JXPagingView
 import JXSegmentedView
+
 class BookingViewController: BaseViewController {
   
   var controllers = [BookingUpcomingController(),BookingCompletedController()]
@@ -31,8 +32,8 @@ class BookingViewController: BaseViewController {
     dataSource.isSelectedAnimable = true
     dataSource.titleSelectedColor = R.color.theamRed()!
     dataSource.titleNormalColor = .black
-    dataSource.titleSelectedFont = UIFont(.AvenirNextDemiBold,14)
-    dataSource.titleNormalFont = UIFont(.AvenirNextRegular,14)
+    dataSource.titleSelectedFont = UIFont(name:.AvenirNextDemiBold,size: 14)
+    dataSource.titleNormalFont = UIFont(name: .AvenirNextRegular,size: 14)
     dataSource.isItemSpacingAverageEnabled = true
     return dataSource
   }()
@@ -66,9 +67,11 @@ class BookingViewController: BaseViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+  
     self.barAppearance(tintColor: .white, barBackgroundColor: R.color.theamBlue()!, image: nil, backButtonTitle: nil)
-    
+    self.navigation.item.leftBarButtonItem = UIBarButtonItem(image: R.image.notification_menu(), style: .plain, target: self, action: #selector(leftItemAction))
+    self.navigation.item.rightBarButtonItem = UIBarButtonItem(image: R.image.booking_add(), style: .plain, target: self, action: #selector(rightItemAction))
+    self.navigation.item.title = "Appointment"
     self.addChild(headerVc)
     
     
@@ -95,6 +98,16 @@ class BookingViewController: BaseViewController {
       self.perform(sel)
     }
   }
+  
+  @objc func leftItemAction() {
+   
+    sideMenuController?.revealMenu()
+  }
+  
+  @objc func rightItemAction() {
+    SelectTypeOfServiceSheetView.show()
+  }
+  
 }
 
 extension BookingViewController:JXPagingMainTableViewGestureDelegate {

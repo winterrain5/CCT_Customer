@@ -70,7 +70,7 @@ class ServicesTagView: UIView,UICollectionViewDataSource,UICollectionViewDelegat
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let width = floor(tags[indexPath.item].widthWithConstrainedWidth(height: 24, font: UIFont(.AvenirHeavy,14))) + 12
+    let width = floor(tags[indexPath.item].widthWithConstrainedWidth(height: 24, font: UIFont(name: .AvenirHeavy,size: 14))) + 12
     return CGSize(width: width, height: 24)
   }
   
@@ -79,7 +79,7 @@ class ServicesTagView: UIView,UICollectionViewDataSource,UICollectionViewDelegat
 
 class ServicesTagCell: UICollectionViewCell {
   private var titleLabel = UILabel().then { label in
-    label.font = UIFont(.AvenirHeavy,14)
+    label.font = UIFont(name: .AvenirHeavy,size: 14)
     label.textColor = .black
     label.textAlignment = .center
   }

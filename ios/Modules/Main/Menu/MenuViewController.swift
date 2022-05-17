@@ -58,7 +58,7 @@ class MenuViewController: BaseTableController {
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withClass: UITableViewCell.self)
-    cell.textLabel?.font = UIFont(.AvenirNextRegular,16)
+    cell.textLabel?.font = UIFont(name:.AvenirNextRegular,size:16)
     cell.textLabel?.textColor = .white
     cell.textLabel?.text = actions[indexPath.row].title
     cell.contentView.backgroundColor = .clear
@@ -73,7 +73,10 @@ class MenuViewController: BaseTableController {
     sideMenuController?.hideMenu(animated: true, completion: { [weak self] flag in
       guard let `self` = self else { return }
       let selStr = self.actions[indexPath.row].sel
-      NotificationCenter.default.post(name: .menuDidOpenVc, object: selStr)
+      let sel = NSSelectorFromString(selStr)
+      if self.responds(to: sel) {
+        self.perform(sel)
+      }
     })
    
     
@@ -91,7 +94,7 @@ extension BaseViewController {
   
   @objc func myWallet() {
     let vc = MyWalletController(defautIndex: 0)
-    self.navigationController?.pushViewController(vc)
+    pushToVc(vc)
   }
   
   @objc func appointments() {
@@ -101,68 +104,76 @@ extension BaseViewController {
   
   @objc func services() {
     let vc = WebBrowserController(url: WebUrl.services)
-    self.navigationController?.pushViewController(vc)
+    pushToVc(vc)
   }
  
   @objc func shop() {
     let vc = ShopViewController()
-    self.navigationController?.pushViewController(vc)
+    pushToVc(vc)
   }
   
   @objc func myOrders() {
     let vc = MyOrdersController()
-    self.navigationController?.pushViewController(vc)
+    pushToVc(vc)
   }
   
   @objc func symptomChecker() {
     let vc = SymptomCheckBeginController()
-    self.navigationController?.pushViewController(vc)
+    pushToVc(vc)
   }
   
   @objc func conditionsWeTreat() {
     let vc = WebBrowserController(url: WebUrl.conditionsWeTreat)
-    self.navigationController?.pushViewController(vc)
+    pushToVc(vc)
   }
   
   @objc func blog() {
     let vc = BlogViewController()
-    self.navigationController?.pushViewController(vc)
+    pushToVc(vc)
   }
   
   @objc func madamPartum() {
     let vc = MadamPartumController()
-    self.navigationController?.pushViewController(vc)
+    pushToVc(vc)
   }
   
   @objc func bookmarks() {
     let vc = BlogBoardsController()
-    self.navigationController?.pushViewController(vc)
+    pushToVc(vc)
   }
   
   @objc func referToFriend() {
     let vc = ReferFriendController()
-    self.navigationController?.pushViewController(vc)
+    pushToVc(vc)
   }
   
   @objc func ourStory() {
     let vc = WebBrowserController(url: WebUrl.ourStory)
-    self.navigationController?.pushViewController(vc)
+    pushToVc(vc)
   }
   
   @objc func contactUs() {
     let vc = ContactUsViewController()
-    self.navigationController?.pushViewController(vc)
+    pushToVc(vc)
   }
   
   @objc func frequentlyAskedQuestions() {
     let vc = QuestionHelperController()
-    self.navigationController?.pushViewController(vc)
+    pushToVc(vc)
     
+  }
+  
+  func pushToVc(_ vc:UIViewController) {
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
   }
  
   @objc func editProfile() {
-    let vc = EditProfileViewController()
-    self.navigationController?.pushViewController(vc)
+    sideMenuController?.hideMenu(animated: true, completion: { [weak self] flag in
+      guard let `self` = self else { return }
+      let vc = EditProfileViewController()
+      self.navigationController?.pushViewController(vc)
+    })
+    
   }
   
 }
@@ -170,7 +181,7 @@ extension BaseViewController {
 class MenuHeadView: UIView {
   var nameLabel = UILabel().then { label in
     label.textColor = .white
-    label.font = UIFont(.AvenirNextDemiBold,24)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:24)
   }
   var editButton = UIButton().then { btn in
     btn.imageForNormal = R.image.menu_edit()
@@ -204,7 +215,7 @@ class MenuHeadView: UIView {
   }
   
   @objc func editAction() {
-    editHandler?()
+    NotificationCenter.default.post(name: .menuDidOpenVc, object: "editProfile")
   }
   
   @objc func setUserName(_ noti:Notification) {

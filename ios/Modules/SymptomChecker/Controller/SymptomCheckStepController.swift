@@ -24,14 +24,14 @@ class SymptomCheckStepController: BaseTableController {
     btn.cornerRadius = 22
     btn.backgroundColor = UIColor(hexString: "e0e0e0")
     btn.titleColorForNormal = R.color.black333()
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.titleForNormal = "Back"
   }
   private var nextButton = UIButton().then { btn in
     btn.cornerRadius = 22
     btn.backgroundColor = R.color.theamRed()
     btn.titleColorForNormal = .white
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.titleForNormal = "Next"
     btn.isEnabled = false
   }

@@ -16,7 +16,7 @@ class QuestionSegmentSectionView: UIView,TTGTextTagCollectionViewDelegate {
   }
   private var bottomLabel = UILabel().then { label in
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(.AvenirNextDemiBold,18)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:18)
     label.text = "Top Asked Questions"
   }
   private var selectedIndex:UInt = 0
@@ -48,7 +48,7 @@ class QuestionSegmentSectionView: UIView,TTGTextTagCollectionViewDelegate {
   }
   
   func addTags(_ text:String) {
-    let content = TTGTextTagStringContent(text: text, textFont: UIFont(.AvenirNextRegular,14), textColor: R.color.black333())
+    let content = TTGTextTagStringContent(text: text, textFont: UIFont(name:.AvenirNextRegular,size:14), textColor: R.color.black333())
     let style = TTGTextTagStyle()
     style.backgroundColor = R.color.placeholder()!
     style.cornerRadius = 13
@@ -59,7 +59,7 @@ class QuestionSegmentSectionView: UIView,TTGTextTagCollectionViewDelegate {
     style.borderWidth = 0
     style.shadowColor = .clear
     
-    let selectContent = TTGTextTagStringContent(text: text, textFont: UIFont(.AvenirNextDemiBold,14), textColor: .white)
+    let selectContent = TTGTextTagStringContent(text: text, textFont: UIFont(name: .AvenirNextDemiBold, size:14), textColor: .white)
     let selectedStyle = style.copy() as! TTGTextTagStyle
     selectedStyle.backgroundColor = UIColor(hexString: "#C44729")!
     

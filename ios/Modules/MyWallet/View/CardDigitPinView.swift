@@ -99,7 +99,7 @@ class CardDigitPinContentView: UIView {
   private var titleLabel = UILabel().then { label in
     label.text = "Please setup a 6 digit Pin"
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(.AvenirNextBold,24)
+    label.font = UIFont(name: .AvenirNextBold,size: 24)
   }
   private var closeButton = UIButton().then { btn in
     btn.imageForNormal = R.image.card_set_pin_close()
@@ -110,12 +110,12 @@ class CardDigitPinContentView: UIView {
     btn.titleForNormal = "Confirm"
     btn.backgroundColor = R.color.line()
     btn.cornerRadius = 22
-    btn.titleLabel?.font = UIFont(.AvenirNextBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextBold,size: 14)
   }
   private var messageLabel = UILabel().then { label in
     label.text = "Pin will be use for verification purposes"
     label.textColor = UIColor(hexString: "979797")
-    label.font = UIFont(.AvenirNextRegular,16)
+    label.font = UIFont(name:.AvenirNextRegular,size:16)
   }
   private var inputBox:CRBoxInputView!
   
@@ -160,7 +160,7 @@ class CardDigitPinContentView: UIView {
     property.cellBorderColorSelected = UIColor(hexString: "e0e0e0")!
     property.cornerRadius = 16
     property.securitySymbol = "*"
-    property.cellFont = UIFont(.AvenirNextDemiBold,32)
+    property.cellFont = UIFont(name: .AvenirNextDemiBold, size:32)
     inputBox.customCellProperty = property
     inputBox.loadAndPrepare(withBeginEdit: false)
     inputBox.ifClearAllInBeginEditing = true

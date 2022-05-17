@@ -244,15 +244,15 @@ class WalletAddUserController: BaseTableController {
 class WalletInviteUserCell:UITableViewCell {
   var phoneLabel = UILabel().then { label in
     label.textColor = R.color.gray82()
-    label.font = UIFont(.AvenirNextRegular,14)
+    label.font = UIFont(name:.AvenirNextRegular,size:14)
   }
   var nameLabel = UILabel().then { label in
     label.textColor = R.color.black333()
-    label.font = UIFont(.AvenirNextDemiBold,16)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:16)
   }
   var inviteLabel = UILabel().then { label in
     label.textColor = R.color.theamRed()
-    label.font = UIFont(.AvenirNextDemiBold,14)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:14)
     label.text = "Invite"
   }
   

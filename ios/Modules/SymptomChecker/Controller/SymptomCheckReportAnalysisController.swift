@@ -14,7 +14,7 @@ class SymptomCheckReportAnalysisController: BaseTableController {
     view.backgroundColor = .white
     
     let helpButton = UIButton()
-    helpButton.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    helpButton.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     helpButton.titleForNormal = "How we can help you"
     helpButton.titleColorForNormal = R.color.white()
     helpButton.cornerRadius = 22
@@ -24,7 +24,7 @@ class SymptomCheckReportAnalysisController: BaseTableController {
     view.addSubview(helpButton)
     
     let emailMeButton = UIButton()
-    emailMeButton.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    emailMeButton.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     emailMeButton.titleForNormal = "Email me this report"
     emailMeButton.titleColorForNormal = R.color.theamRed()
     emailMeButton.backgroundColor = R.color.white()

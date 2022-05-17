@@ -69,7 +69,7 @@ class OrderLineInfo :BaseModel,Codable {
   var transactionDetailCellHeight:CGFloat? {
     get {
       let discount = (discount_amount1?.float() ?? 0) + (discount_amount2?.float() ?? 0)
-      let nameHeight = name?.heightWithConstrainedWidth(width: kScreenWidth - 80 - 48, font: UIFont(.AvenirNextDemiBold,14)) ?? 0
+      let nameHeight = name?.heightWithConstrainedWidth(width: kScreenWidth - 80 - 48, font: UIFont(name: .AvenirNextDemiBold, size:14)) ?? 0
       return discount > 0 ? (nameHeight + 64) : (nameHeight + 32)
     }
   }

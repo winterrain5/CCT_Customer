@@ -28,7 +28,6 @@ class SelectTypeOfServiceSheetView: UIView {
         
       } rightHandler: {
        
-//        NotificationCenter.default.post(name: .nativeNotification, object: "TellUsCondition1Activity" ,userInfo: ["type":"OpenRNPage"])
         let vc = RNBridgeViewController(RNPageName: "TellUsCondition1Activity", RNProperty: [:])
         UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
 //

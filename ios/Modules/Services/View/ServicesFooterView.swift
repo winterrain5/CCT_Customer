@@ -57,13 +57,13 @@ class ServicesFooterView: UICollectionReusableView {
   
   func selectedStyle(_ sender:UIButton) {
     sender.backgroundColor = UIColor(hexString: "#C44729")
-    sender.titleLabel?.font = UIFont(.AvenirNextBold, 14)
+    sender.titleLabel?.font = UIFont(name: .AvenirNextBold, size: 14)
     sender.titleColorForNormal = .white
   }
   
   func unselectedStyle(_ sender:UIButton) {
     sender.backgroundColor = UIColor(hexString: "#f2f2f2")
-    sender.titleLabel?.font = UIFont(.AvenirNextRegular, 14)
+    sender.titleLabel?.font = UIFont(name:.AvenirNextRegular,size: 14)
     sender.titleColorForNormal = .black
   }
 

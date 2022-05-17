@@ -13,7 +13,7 @@ class ConditionWeTreatController: BaseViewController,WKNavigationDelegate {
     view.backgroundColor = .white
     
     let btn = UIButton()
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.titleForNormal = "Book an Appointment"
     btn.titleColorForNormal = R.color.white()
     btn.cornerRadius = 22

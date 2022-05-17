@@ -15,12 +15,12 @@ class QuestionFlexibleCell: UITableViewCell {
     view.borderColor = UIColor(hexString: "#E0E0E0")
   }
   var questionLabel = UILabel().then { label in
-    label.font = UIFont(.AvenirNextDemiBold,18)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:18)
     label.textColor = R.color.black333()
     label.numberOfLines = 0
   }
   var answerLabel = UILabel().then { label in
-    label.font = UIFont(.AvenirNextRegular,16)
+    label.font = UIFont(name:.AvenirNextRegular,size:16)
     label.textColor = R.color.black333()
     label.numberOfLines = 0
   }

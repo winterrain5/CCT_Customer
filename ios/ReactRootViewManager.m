@@ -4,6 +4,7 @@
 @interface ReactRootViewManager ()
 // 以 viewName-rootView 的形式保存需预加载的RN界面
 @property (nonatomic, strong) NSMutableDictionary<NSString *, RCTRootView*> * rootViewMap;
+@property (nonatomic, strong) NSURL *url;
 @end
 
 @implementation ReactRootViewManager
@@ -55,7 +56,13 @@
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
-  return ((AppDelegate *)[UIApplication sharedApplication].delegate).url;
+#if DEBUG
+  self.url = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+#else
+  self.url = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+#endif
+  
+  return self.url;
 }
 
 

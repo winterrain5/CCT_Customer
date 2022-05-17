@@ -34,7 +34,7 @@ class WalletTransactionSectionView: UIView {
   var label = UILabel().then { label in
     label.text = "8 Dec 2020"
     label.textColor = .black
-    label.font = UIFont(.AvenirNextDemiBold,13)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:13)
   }
   
   override init(frame: CGRect) {

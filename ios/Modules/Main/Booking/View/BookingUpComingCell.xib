@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="199" id="G97-br-dyJ" customClass="BookingCompletedCell" customModule="CCTIOS" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="199" id="G97-br-dyJ" customClass="BookingUpComingCell" customModule="CCTIOS" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="387" height="199"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G97-br-dyJ" id="bc6-aN-EP8">
@@ -25,16 +25,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCG-5e-M9k">
                                 <rect key="frame" x="4" y="4" width="265" height="44"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="booking_location" translatesAutoresizingMaskIntoConstraints="NO" id="TXm-1w-0fA">
-                                        <rect key="frame" x="12" y="14" width="16" height="16"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ang Mo Kio Outlet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1S3-Ij-aGe">
-                                        <rect key="frame" x="32" y="12" width="123" height="20"/>
+                                        <rect key="frame" x="12" y="12" width="123" height="20"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
-                                        <color key="textColor" name="Black333"/>
+                                        <color key="textColor" name="TheamBlue"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -44,37 +38,95 @@
                                 <color key="backgroundColor" name="TheamYellow"/>
                                 <constraints>
                                     <constraint firstItem="1S3-Ij-aGe" firstAttribute="centerY" secondItem="hCG-5e-M9k" secondAttribute="centerY" id="4uq-Ez-c8U"/>
-                                    <constraint firstItem="TXm-1w-0fA" firstAttribute="centerY" secondItem="hCG-5e-M9k" secondAttribute="centerY" id="Ngl-nC-I3J"/>
-                                    <constraint firstItem="1S3-Ij-aGe" firstAttribute="leading" secondItem="TXm-1w-0fA" secondAttribute="trailing" constant="4" id="XEE-Tf-tCM"/>
+                                    <constraint firstItem="1S3-Ij-aGe" firstAttribute="leading" secondItem="hCG-5e-M9k" secondAttribute="leading" constant="12" id="MvE-r3-kV0"/>
                                     <constraint firstAttribute="height" constant="44" id="rVh-RO-OX7"/>
-                                    <constraint firstItem="TXm-1w-0fA" firstAttribute="leading" secondItem="hCG-5e-M9k" secondAttribute="leading" constant="12" id="yeH-hb-heW"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCn-9k-4aW">
-                                <rect key="frame" x="15" y="64" width="243" height="57.5"/>
-                                <string key="text">Consultation 15 min
-Tuina Massage 30min
-Bamboo Tapping 15 min</string>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
-                                <color key="textColor" name="Black333"/>
-                                <nil key="highlightedColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUC-bQ-qaV">
+                                <rect key="frame" x="16" y="66" width="241" height="16"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="booking_time" translatesAutoresizingMaskIntoConstraints="NO" id="icS-D2-YLh">
+                                        <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:30 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCn-9k-4aW">
+                                        <rect key="frame" x="21" y="-1.5" width="56" height="19.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
+                                        <color key="textColor" name="Black333"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="icS-D2-YLh" firstAttribute="leading" secondItem="cUC-bQ-qaV" secondAttribute="leading" id="4jS-UR-apw"/>
+                                    <constraint firstItem="cCn-9k-4aW" firstAttribute="leading" secondItem="icS-D2-YLh" secondAttribute="trailing" constant="5" id="MFj-TF-5b7"/>
+                                    <constraint firstItem="icS-D2-YLh" firstAttribute="centerY" secondItem="cUC-bQ-qaV" secondAttribute="centerY" id="X4N-CM-qLu"/>
+                                    <constraint firstItem="icS-D2-YLh" firstAttribute="leading" secondItem="cUC-bQ-qaV" secondAttribute="leading" id="YuK-6G-yCg"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cCn-9k-4aW" secondAttribute="trailing" constant="15" id="eZe-QQ-U59"/>
+                                    <constraint firstItem="cCn-9k-4aW" firstAttribute="centerY" secondItem="cUC-bQ-qaV" secondAttribute="centerY" id="uRD-Dc-G9H"/>
+                                    <constraint firstAttribute="height" constant="16" id="xE6-no-CLk"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
-                            </label>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0zy-if-pRe">
+                                <rect key="frame" x="16" y="94" width="241" height="16"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="booking_location" translatesAutoresizingMaskIntoConstraints="NO" id="09P-WP-Aye">
+                                        <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ang Mo Kio Oulet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knU-Ih-BWk">
+                                        <rect key="frame" x="21" y="-2" width="118" height="20"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
+                                        <color key="textColor" name="Black333"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="0vc-MZ-kVd"/>
+                                    <constraint firstItem="09P-WP-Aye" firstAttribute="leading" secondItem="0zy-if-pRe" secondAttribute="leading" id="FQa-Td-jjz"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="knU-Ih-BWk" secondAttribute="trailing" constant="15" id="Ouh-hn-zII"/>
+                                    <constraint firstItem="knU-Ih-BWk" firstAttribute="leading" secondItem="09P-WP-Aye" secondAttribute="trailing" constant="5" id="aoA-aq-sLV"/>
+                                    <constraint firstItem="09P-WP-Aye" firstAttribute="leading" secondItem="0zy-if-pRe" secondAttribute="leading" id="oh3-41-S6V"/>
+                                    <constraint firstItem="09P-WP-Aye" firstAttribute="centerY" secondItem="0zy-if-pRe" secondAttribute="centerY" id="qhi-IJ-Xx9"/>
+                                    <constraint firstItem="knU-Ih-BWk" firstAttribute="centerY" secondItem="0zy-if-pRe" secondAttribute="centerY" id="yiD-DS-PgI"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cCn-9k-4aW" firstAttribute="leading" secondItem="tJX-a3-bJL" secondAttribute="leading" constant="15" id="4T5-jb-buI"/>
+                            <constraint firstItem="cUC-bQ-qaV" firstAttribute="leading" secondItem="tJX-a3-bJL" secondAttribute="leading" constant="16" id="2RO-2x-ir0"/>
                             <constraint firstItem="hCG-5e-M9k" firstAttribute="top" secondItem="tJX-a3-bJL" secondAttribute="top" constant="4" id="4Uf-bK-Vip"/>
-                            <constraint firstAttribute="trailing" secondItem="cCn-9k-4aW" secondAttribute="trailing" constant="15" id="6Su-Kb-ZlW"/>
+                            <constraint firstAttribute="trailing" secondItem="0zy-if-pRe" secondAttribute="trailing" constant="16" id="CNL-PH-ryQ"/>
+                            <constraint firstItem="cUC-bQ-qaV" firstAttribute="top" secondItem="hCG-5e-M9k" secondAttribute="bottom" constant="18" id="FgL-gx-SIB"/>
                             <constraint firstAttribute="trailing" secondItem="hCG-5e-M9k" secondAttribute="trailing" constant="4" id="GPQ-3C-SHR"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cCn-9k-4aW" secondAttribute="bottom" constant="2" id="o7W-4D-7aw"/>
+                            <constraint firstItem="0zy-if-pRe" firstAttribute="top" secondItem="cUC-bQ-qaV" secondAttribute="bottom" constant="12" id="bqC-yk-SMd"/>
+                            <constraint firstItem="0zy-if-pRe" firstAttribute="leading" secondItem="tJX-a3-bJL" secondAttribute="leading" constant="16" id="o71-eb-Tyo"/>
                             <constraint firstItem="hCG-5e-M9k" firstAttribute="leading" secondItem="tJX-a3-bJL" secondAttribute="leading" constant="4" id="pzt-x2-c2t"/>
-                            <constraint firstItem="cCn-9k-4aW" firstAttribute="top" secondItem="hCG-5e-M9k" secondAttribute="bottom" constant="16" id="tTm-pF-bG1"/>
+                            <constraint firstAttribute="trailing" secondItem="cUC-bQ-qaV" secondAttribute="trailing" constant="16" id="veA-fx-CvF"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -89,7 +141,7 @@ Bamboo Tapping 15 min</string>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gqg-D8-WsI">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gqg-D8-WsI">
                         <rect key="frame" x="24" y="53" width="44" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="3ar-PL-CCp"/>
@@ -136,19 +188,24 @@ Bamboo Tapping 15 min</string>
             <connections>
                 <outlet property="dayLabel" destination="Gqg-D8-WsI" id="Lk1-oo-daQ"/>
                 <outlet property="infoContentView" destination="tJX-a3-bJL" id="qIN-yF-Arl"/>
-                <outlet property="itemsLabel" destination="cCn-9k-4aW" id="83H-M9-5zx"/>
-                <outlet property="locationLabel" destination="1S3-Ij-aGe" id="qRz-kH-14Z"/>
+                <outlet property="locationLabel" destination="knU-Ih-BWk" id="s7b-vx-YlK"/>
                 <outlet property="locationView" destination="hCG-5e-M9k" id="VTU-ww-GDy"/>
+                <outlet property="nameLabel" destination="1S3-Ij-aGe" id="CsZ-hK-kik"/>
+                <outlet property="timeLabel" destination="cCn-9k-4aW" id="nad-FO-FXO"/>
                 <outlet property="weeklabel" destination="zwW-G1-fuM" id="WdL-iT-JDK"/>
                 <outlet property="yearMonthLabel" destination="Azi-PQ-Qmt" id="GLM-Cy-jas"/>
             </connections>
-            <point key="canvasLocation" x="-249" y="97"/>
+            <point key="canvasLocation" x="-250.00000000000003" y="96.763392857142847"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="booking_location" width="16" height="16"/>
+        <image name="booking_time" width="16" height="16"/>
         <namedColor name="Black333">
             <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TheamBlue">
+            <color red="0.078000001609325409" green="0.3529999852180481" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TheamYellow">
             <color red="0.98000001907348633" green="0.95300000905990601" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

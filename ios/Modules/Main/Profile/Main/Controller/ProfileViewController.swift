@@ -100,7 +100,7 @@ class ProfileViewController: BaseTableController {
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withClass: UITableViewCell.self)
-    cell.textLabel?.font = UIFont(.AvenirNextRegular,16)
+    cell.textLabel?.font = UIFont(name:.AvenirNextRegular,size:16)
     cell.textLabel?.textColor = .black
     cell.textLabel?.text = actions[indexPath.section][indexPath.row].title
     cell.imageView?.image = actions[indexPath.section][indexPath.row].image
@@ -168,7 +168,7 @@ extension ProfileViewController {
 class ProfileSectionView:UIView {
   var label = UILabel().then { label in
     label.textColor = R.color.gray82()
-    label.font = UIFont(.AvenirNextRegular,12)
+    label.font = UIFont(name:.AvenirNextRegular,size:12)
   }
   
   convenience init(text:String) {

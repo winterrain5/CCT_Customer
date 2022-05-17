@@ -10,7 +10,7 @@ import UIKit
 class SymptomCheckReportListView: UIView ,UITableViewDelegate,UITableViewDataSource {
   private var tableView:UITableView?
   private var headerLabel = UILabel().then { label in
-    label.font = UIFont(.AvenirNextDemiBold,18)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:18)
     label.lineHeight = 24
     label.textColor = R.color.theamBlue()
     label.text = "Previous Analysis Report"

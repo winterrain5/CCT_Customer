@@ -156,12 +156,12 @@ class TransactionDetailFooterView: UIView {
 class TransactionDetailFooterOtherInfoView:UIView {
   var titleLabel = UILabel().then { label in
     label.textColor = R.color.black333()
-    label.font = UIFont(.AvenirNextRegular, 14)
+    label.font = UIFont(name:.AvenirNextRegular,size: 14)
     label.text = "Sub Total"
   }
   var moneyLabel = UILabel().then { label in
     label.textColor = R.color.black333()
-    label.font = UIFont(.AvenirNextDemiBold,16)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:16)
     label.text = "$160"
     label.textAlignment = .right
   }
@@ -202,7 +202,7 @@ class TransactionDetailFooterOtherInfoView:UIView {
 class TransactionDetailFooterPaymentMethodView: UIView {
   var button = UIButton().then { button in
     button.titleForNormal = "MasterCard 1234 - $48.00"
-    button.titleLabel?.font = UIFont(.AvenirNextRegular,16)
+    button.titleLabel?.font = UIFont(name:.AvenirNextRegular,size:16)
     button.titleColorForNormal = R.color.black333()
     button.imageForNormal = R.image.transaction_payment_master()
   }

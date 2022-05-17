@@ -11,14 +11,14 @@ class ShopDetailReviewHeadView: UIView {
   
   var customerNumLabel = UILabel().then { label in
     label.textColor = R.color.black333()
-    label.font = UIFont(.AvenirNextDemiBold,13)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:13)
     label.isSkeletonable = true
     label.lineHeight = 12
     label.textAlignment = .center
   }
   var ratingLabel = UILabel().then { label in
     label.textColor = R.color.black333()
-    label.font = UIFont(.AvenirNextDemiBold,24)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:24)
     label.isSkeletonable = true
     label.lineHeight = 36
     label.textAlignment = .center
@@ -30,7 +30,7 @@ class ShopDetailReviewHeadView: UIView {
   }
   var headLabel = UILabel().then { label in
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(.AvenirNextDemiBold,18)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:18)
     label.isSkeletonable = true
     label.text = "Customer Ratings"
     label.lineHeight = 28

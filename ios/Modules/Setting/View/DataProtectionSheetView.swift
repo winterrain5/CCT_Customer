@@ -11,7 +11,7 @@ class DataProtectionSheetView: UIView,UITableViewDelegate,UITableViewDataSource 
   private var titleLabel = UILabel().then { label in
     label.text = "Data Protection Notice"
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(.AvenirNextDemiBold,24)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:24)
     label.lineHeight = 36
   }
   private var tableView:UITableView?
@@ -195,13 +195,13 @@ class DataProtectionCell: UITableViewCell {
   }
   var contentLabel = UILabel().then { label in
     label.textColor = R.color.black333()
-    label.font = UIFont(.AvenirNextRegular,16)
+    label.font = UIFont(name:.AvenirNextRegular,size:16)
     label.lineHeight = 24
     label.numberOfLines = 0
   }
   var titleLabel = UILabel().then { label in
     label.textColor = R.color.black333()
-    label.font = UIFont(.AvenirNextDemiBold,16)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:16)
     label.lineHeight = 24
     label.numberOfLines = 0
   }
@@ -298,7 +298,7 @@ class DataProtectionSectionMenuView:UIView,UITableViewDelegate,UITableViewDataSo
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withClass: UITableViewCell.self)
     cell.selectionStyle = .none
-    cell.textLabel?.font = UIFont(.AvenirNextDemiBold,16)
+    cell.textLabel?.font = UIFont(name: .AvenirNextDemiBold, size:16)
     cell.textLabel?.numberOfLines = 0
     cell.textLabel?.textColor = R.color.black333()
     cell.textLabel?.text = datas[indexPath.row].title

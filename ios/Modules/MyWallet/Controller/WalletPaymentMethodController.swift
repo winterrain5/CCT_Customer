@@ -13,7 +13,7 @@ class WalletPaymentMethodController: BaseTableController {
   lazy var headLabel = UILabel().then { label in
     label.text = "Payment Method"
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(.AvenirNextDemiBold,18)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:18)
   }
   lazy var headView = UIView().then { view in
     view.backgroundColor = .white
@@ -30,7 +30,7 @@ class WalletPaymentMethodController: BaseTableController {
     btn.titleForNormal = "Done"
     btn.cornerRadius = 22
     btn.titleColorForNormal = .white
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.addTarget(self, action: #selector(doneAction), for: .touchUpInside)
   }
   
@@ -39,7 +39,7 @@ class WalletPaymentMethodController: BaseTableController {
     btn.backgroundColor = .white
     btn.titleForNormal = "Add Card"
     btn.titleColorForNormal = R.color.theamRed()
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.addTarget(self, action: #selector(addCardAction), for: .touchUpInside)
     
   }

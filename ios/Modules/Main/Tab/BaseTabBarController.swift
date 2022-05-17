@@ -77,8 +77,8 @@ class BaseTabBarController: UITabBarController {
   
   func configAppearance() {
     
-    let normalFont: UIFont = UIFont(.AvenirNextRegular,10)
-    let selectFont: UIFont = UIFont(.AvenirNextDemiBold,13)
+    let normalFont: UIFont = UIFont(name:.AvenirNextRegular,size:10)
+    let selectFont: UIFont = UIFont(name: .AvenirNextDemiBold, size:13)
     
     
     let selectAttributes:[NSAttributedString.Key:Any] =  [NSAttributedString.Key.foregroundColor: TabConstants.selectColor as Any,NSAttributedString.Key.font: selectFont]

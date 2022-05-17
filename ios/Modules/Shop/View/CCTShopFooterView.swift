@@ -42,7 +42,7 @@ class CCTShopFooterView: UICollectionReusableView,TTGTextTagCollectionViewDelega
     }
   }
   func addTags(_ text:String, _ exactWidth:CGFloat = 0) {
-    let content = TTGTextTagStringContent(text: text, textFont: UIFont(.AvenirNextRegular,14), textColor: UIColor(hexString: "#bdbdbd")!)
+    let content = TTGTextTagStringContent(text: text, textFont: UIFont(name:.AvenirNextRegular,size:14), textColor: UIColor(hexString: "#bdbdbd")!)
     let style = TTGTextTagStyle()
     style.backgroundColor = .white
     style.cornerRadius = 14

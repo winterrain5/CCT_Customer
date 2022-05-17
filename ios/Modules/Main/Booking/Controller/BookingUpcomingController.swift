@@ -19,21 +19,19 @@ class BookingUpcomingController: BasePagingTableController {
     self.view.showSkeleton()
     let params = SOAPParams(action: .ClientProfile, path: .getTUpcomingAppointments)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
-    params.set(key: "startDateTime", value: Date().tomorrow.string(withFormat: "yyyy-MM-dd"))
+    params.set(key: "startDateTime", value: Date().tomorrow.string(withFormat: "yyyy-MM-dd").appending(" 00:00:00"))
     params.set(key: "wellnessType", value: "")
     params.set(key: "start", value: page)
     params.set(key: "length", value: kPageSize)
     NetworkManager().request(params: params) { data in
-      self.endRefresh()
-      let dict = try? JSON.init(data: data).dictionaryValue
-      if let items = dict?.values.map({ ($0.rawString() ?? "").data(using: .utf8) ?? Data() }).map({
-        DecodeManager.decodeObjectByHandJSON(BookingCompleteModel.self, from: $0)
-      }) {
-        self.dataArray.append(contentsOf: items as [Any])
-        self.endRefresh(items.count,emptyString: "You have no upcoming appointments")
-      }else {
-        self.endRefresh(.NoData, emptyString: "You have no upcoming appointments")
+     
+      if let models = DecodeManager.decodeArrayByHandJSON(BookingUpComingModel.self, from: data) {
+        self.dataArray.append(contentsOf: models)
+        self.endRefresh(models.count,emptyString: "You have no upcoming appointments")
+        self.view.hideSkeleton()
+        return
       }
+      self.endRefresh(.NoData, emptyString: "You have no upcoming appointments")
       self.view.hideSkeleton()
     } errorHandler: { e in
       self.endRefresh(e.asAPIError.emptyDatatype)
@@ -50,8 +48,6 @@ class BookingUpcomingController: BasePagingTableController {
     self.view.isSkeletonable = true
     
     self.tableView?.register(nibWithCellClass: BookingUpComingCell.self)
-    self.tableView?.estimatedRowHeight = 180
-    self.tableView?.rowHeight = UITableView.automaticDimension
     
     self.tableView?.separatorStyle = .singleLine
     self.tableView?.separatorColor = R.color.line()
@@ -62,18 +58,19 @@ class BookingUpcomingController: BasePagingTableController {
     CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - 44 - kNavBarHeight - kTabBarHeight)
   }
   
+  
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return dataArray.count
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    UITableView.automaticDimension
+    160
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withClass: BookingUpComingCell.self)
     if dataArray.count > 0 {
-      cell.model = self.dataArray[indexPath.row]  as? BookingCompleteModel
+      cell.model = self.dataArray[indexPath.row] as? BookingUpComingModel
     }
     return cell
   }

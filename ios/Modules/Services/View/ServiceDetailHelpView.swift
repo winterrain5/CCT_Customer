@@ -72,8 +72,8 @@ class ServiceDetailHelpView: UIView,UITableViewDelegate,UITableViewDataSource  {
   }
   
   func caculateCellHeight(_ item:BriefHelpItems) -> CGFloat{
-    let h1 = (item.description?.heightWithConstrainedWidth(width: kScreenWidth - 119, font: UIFont(.AvenirNextRegular,16)) ?? 0)
-    let h2 = (item.title?.heightWithConstrainedWidth(width: kScreenWidth - 119, font: UIFont(.AvenirHeavy,18)) ?? 0)
+    let h1 = (item.description?.heightWithConstrainedWidth(width: kScreenWidth - 119, font: UIFont(name:.AvenirNextRegular,size:16)) ?? 0)
+    let h2 = (item.title?.heightWithConstrainedWidth(width: kScreenWidth - 119, font: UIFont(name: .AvenirHeavy,size: 18)) ?? 0)
     
     return 30 + h1 + h2
   }

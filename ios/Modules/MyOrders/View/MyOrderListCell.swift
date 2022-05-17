@@ -31,8 +31,8 @@ class MyOrderListCell: UITableViewCell {
   func createProductInfo(_ count:String,_ name:String) -> NSMutableAttributedString {
     let str = "\(count) x " + name + "\n"
     let attr = NSMutableAttributedString(string: str)
-    attr.addAttribute(.font, value: UIFont(.AvenirNextRegular,14), range: NSRange(location: 0, length: str.count - name.count - 1))
-    attr.addAttribute(.font, value: UIFont(.AvenirNextDemiBold,14), range: NSRange(location: str.count - name.count, length: name.count))
+    attr.addAttribute(.font, value: UIFont(name:.AvenirNextRegular,size:14), range: NSRange(location: 0, length: str.count - name.count - 1))
+    attr.addAttribute(.font, value: UIFont(name: .AvenirNextDemiBold, size:14), range: NSRange(location: str.count - name.count, length: name.count))
     return attr
   }
   

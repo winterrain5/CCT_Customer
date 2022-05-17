@@ -388,7 +388,7 @@ extension NotificationViewController:SwipeTableViewCellDelegate {
 class NotificationSectionView: UIView {
   var label = UILabel().then { label in
     label.textColor = .black
-    label.font = UIFont(.AvenirNextRegular,12)
+    label.font = UIFont(name:.AvenirNextRegular,size:12)
   }
   override init(frame: CGRect) {
     super.init(frame: frame)

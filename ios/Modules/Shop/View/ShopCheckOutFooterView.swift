@@ -16,7 +16,7 @@ class ShopCheckOutFooterView: UIView {
     btn.backgroundColor = R.color.theamRed()
     btn.cornerRadius = 22
     btn.titleForNormal = "Place Order"
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.addTarget(self, action: #selector(placeOrderAction), for: .touchUpInside)
   }
   lazy var bottomView = UIView().then { view in

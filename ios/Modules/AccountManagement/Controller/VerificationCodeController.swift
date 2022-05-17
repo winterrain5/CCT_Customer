@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SideMenuSwift
 class VerificationCodeController: BaseViewController {
   private var type:EditInfoType = .phone
   private var source:String = ""
@@ -42,8 +42,10 @@ class VerificationCodeController: BaseViewController {
         }
       
         if self.type == .Login {
+          
           let tab = BaseTabBarController()
-          UIApplication.shared.keyWindow?.rootViewController = tab
+          UIApplication.shared.keyWindow?.rootViewController = SideMenuController(contentViewController: tab, menuViewController: MenuViewController())
+          
         }
       }else {
         Toast.showError(withStatus: "verification code error")

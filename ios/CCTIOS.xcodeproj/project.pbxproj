@@ -13,6 +13,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* CCTIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CCTIOSTests.m */; };
+		4550946D28324EDE0017C244 /* BookingCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4550946C28324EDE0017C244 /* BookingCompleteModel.swift */; };
 		45B2A12F27A1456200E1264E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B2A12E27A1456200E1264E /* MainViewController.swift */; };
 		4902023527D8934800E74415 /* WalletAddUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902023427D8934800E74415 /* WalletAddUserController.swift */; };
 		4902023727D8939E00E74415 /* WalletAddUserHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902023627D8939E00E74415 /* WalletAddUserHeadView.swift */; };
@@ -660,6 +661,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CCTIOS/main.m; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* CCTIOS-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCTIOS-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* CCTIOS-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CCTIOS-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4550946C28324EDE0017C244 /* BookingCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BookingCompleteModel.swift; path = Modules/Main/Booking/Model/BookingCompleteModel.swift; sourceTree = SOURCE_ROOT; };
 		45B2A12E27A1456200E1264E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4902023427D8934800E74415 /* WalletAddUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAddUserController.swift; sourceTree = "<group>"; };
 		4902023627D8939E00E74415 /* WalletAddUserHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAddUserHeadView.swift; sourceTree = "<group>"; };
@@ -766,7 +768,7 @@
 		491EB3E327E023030019D5B9 /* ClientVipLevelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientVipLevelModel.swift; sourceTree = "<group>"; };
 		491EB3E727E06E170019D5B9 /* CardDiscountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDiscountModel.swift; sourceTree = "<group>"; };
 		492D3AF8281B7E060022198A /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
-		492D3AFA281B80FB0022198A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = "../New Group/ProfileViewController.swift"; sourceTree = "<group>"; };
+		492D3AFA281B80FB0022198A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		492D3AFC281B810E0022198A /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		492D3AFE281B81240022198A /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
 		492D3B00281B81330022198A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -2625,7 +2627,6 @@
 				49C1C9AE281BB91200087357 /* Model */,
 				49C1C9AD281BB90C00087357 /* View */,
 				49C1C9AC281BB90700087357 /* Controller */,
-				492D3AFA281B80FB0022198A /* ProfileViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -2633,6 +2634,7 @@
 		49C1C9AC281BB90700087357 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				492D3AFA281B80FB0022198A /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2817,6 +2819,7 @@
 		49F69771282DF33E009813EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4550946C28324EDE0017C244 /* BookingCompleteModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3669,6 +3672,7 @@
 				4902025227DB349600E74415 /* WalletAddCardSheetContentView.swift in Sources */,
 				4998C0902783DF5200A881D5 /* UIFont_Extension.swift in Sources */,
 				496501DC27A0E772004FF3AF /* MadamPartumLocationModel.swift in Sources */,
+				4550946D28324EDE0017C244 /* BookingCompleteModel.swift in Sources */,
 				4904C3D028067865008FE5A5 /* MatchPhoneModel.swift in Sources */,
 				4998C0872783DBF900A881D5 /* OurServicesViewController.swift in Sources */,
 				49FC8EB22791080E00157292 /* SymptomCheckEmailMeController.swift in Sources */,

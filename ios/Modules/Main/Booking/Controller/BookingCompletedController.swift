@@ -16,8 +16,27 @@ class BookingCompletedController: BasePagingTableController {
   }
   
   override func refreshData() {
+    self.view.showSkeleton()
     let params = SOAPParams(action: .ClientProfile, path: .getTSlotHistoryForApp)
-    
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "start", value: page)
+    params.set(key: "length", value: kPageSize)
+    NetworkManager().request(params: params) { data in
+      self.endRefresh()
+      let dict = try? JSON.init(data: data).dictionaryValue
+      if let items = dict?.values.map({ ($0.rawString() ?? "").data(using: .utf8) ?? Data() }).map({
+        DecodeManager.decodeObjectByHandJSON(BookingCompleteModel.self, from: $0)
+      }) {
+        self.dataArray.append(contentsOf: items as [Any])
+        self.endRefresh(items.count,emptyString: "No Data")
+      }
+      
+      self.view.hideSkeleton()
+    } errorHandler: { e in
+      self.endRefresh(e.asAPIError.emptyDatatype)
+      self.view.hideSkeleton()
+    }
+
   }
   
   override func createListView() {
@@ -37,11 +56,11 @@ class BookingCompletedController: BasePagingTableController {
   }
   
   override func listViewFrame() -> CGRect {
-    CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - 100 - kNavBarHeight - kTabBarHeight)
+    CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - 44 - kNavBarHeight - kTabBarHeight)
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 100
+    return dataArray.count
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -50,6 +69,9 @@ class BookingCompletedController: BasePagingTableController {
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withClass: BookingCompletedCell.self)
+    if dataArray.count > 0 {
+      cell.model = self.dataArray[indexPath.row]  as? BookingCompleteModel
+    }
     return cell
   }
 }

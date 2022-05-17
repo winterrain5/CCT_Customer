@@ -53,7 +53,7 @@ class LoginContainer: UIView {
   
   @IBAction func loginAction(_ sender: Any) {
     let vc = EnterAccountController()
-    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
   }
   @IBAction func checkInAction(_ sender: Any) {
   }

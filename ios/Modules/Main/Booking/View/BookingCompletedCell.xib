@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -72,7 +72,7 @@ Bamboo Tapping 15 min</string>
                             <constraint firstItem="g1m-cg-YRz" firstAttribute="top" secondItem="tie-A4-aAb" secondAttribute="top" constant="4" id="6mR-RZ-6Zk"/>
                             <constraint firstAttribute="trailing" secondItem="g1m-cg-YRz" secondAttribute="trailing" constant="4" id="JbR-mN-LUj"/>
                             <constraint firstAttribute="trailing" secondItem="L7z-v5-HTF" secondAttribute="trailing" constant="15" id="WQ2-wp-WMy"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="L7z-v5-HTF" secondAttribute="bottom" constant="16" id="Xk8-h0-kit"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="L7z-v5-HTF" secondAttribute="bottom" constant="2" id="Xk8-h0-kit"/>
                             <constraint firstItem="L7z-v5-HTF" firstAttribute="top" secondItem="g1m-cg-YRz" secondAttribute="bottom" constant="16" id="gqY-Bi-5YM"/>
                             <constraint firstItem="g1m-cg-YRz" firstAttribute="leading" secondItem="tie-A4-aAb" secondAttribute="leading" constant="4" id="zF1-Qa-6xl"/>
                         </constraints>
@@ -81,7 +81,7 @@ Bamboo Tapping 15 min</string>
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dec 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkU-Oq-wdI">
-                        <rect key="frame" x="24" y="16" width="58" height="17"/>
+                        <rect key="frame" x="24" y="20" width="58" height="17"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -90,7 +90,7 @@ Bamboo Tapping 15 min</string>
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkV-Fq-niy">
-                        <rect key="frame" x="24" y="49" width="44" height="44"/>
+                        <rect key="frame" x="24" y="53" width="44" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="gwH-1v-a5Z"/>
                         </constraints>
@@ -102,17 +102,19 @@ Bamboo Tapping 15 min</string>
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FRI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQJ-Ux-dnD">
-                        <rect key="frame" x="37.5" y="93" width="17.5" height="17"/>
+                        <rect key="frame" x="37.5" y="97" width="17.5" height="17"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="YkV-Fq-niy" firstAttribute="leading" secondItem="fkU-Oq-wdI" secondAttribute="leading" id="0xE-fm-ASE"/>
+                    <constraint firstItem="fkU-Oq-wdI" firstAttribute="top" secondItem="g1m-cg-YRz" secondAttribute="top" id="3Y5-AT-RR6"/>
                     <constraint firstItem="qQJ-Ux-dnD" firstAttribute="centerX" secondItem="YkV-Fq-niy" secondAttribute="centerX" id="C8W-tw-msg"/>
                     <constraint firstItem="YkV-Fq-niy" firstAttribute="top" secondItem="fkU-Oq-wdI" secondAttribute="bottom" constant="16" id="Cig-zI-7bw"/>
                     <constraint firstAttribute="trailing" secondItem="tie-A4-aAb" secondAttribute="trailing" constant="24" id="D6G-1g-C9M"/>
@@ -120,7 +122,6 @@ Bamboo Tapping 15 min</string>
                     <constraint firstItem="tie-A4-aAb" firstAttribute="leading" secondItem="fkU-Oq-wdI" secondAttribute="trailing" constant="8" id="JID-qB-gQ8"/>
                     <constraint firstItem="fkU-Oq-wdI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="UZL-Rw-AMO"/>
                     <constraint firstAttribute="bottom" secondItem="tie-A4-aAb" secondAttribute="bottom" constant="16" id="X7p-8d-mKm"/>
-                    <constraint firstItem="fkU-Oq-wdI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="YjT-ub-0qR"/>
                     <constraint firstItem="qQJ-Ux-dnD" firstAttribute="top" secondItem="YkV-Fq-niy" secondAttribute="bottom" id="eTS-Jd-ngB"/>
                     <constraint firstItem="tie-A4-aAb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="90" id="yEx-xC-Q0x"/>
                 </constraints>
@@ -132,7 +133,16 @@ Bamboo Tapping 15 min</string>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="186.23188405797103" y="119.53125"/>
+            <connections>
+                <outlet property="dayLabel" destination="YkV-Fq-niy" id="LzL-Jx-rfb"/>
+                <outlet property="infoContentView" destination="tie-A4-aAb" id="gbz-3g-Jwi"/>
+                <outlet property="itemsLabel" destination="L7z-v5-HTF" id="Oee-Po-jJN"/>
+                <outlet property="locationLabel" destination="7aV-0g-m6v" id="rvR-hz-6u2"/>
+                <outlet property="locationView" destination="g1m-cg-YRz" id="P0y-Qv-Fmy"/>
+                <outlet property="weeklabel" destination="qQJ-Ux-dnD" id="Pfv-J1-Q8M"/>
+                <outlet property="yearMonthLabel" destination="fkU-Oq-wdI" id="SyD-ri-FMs"/>
+            </connections>
+            <point key="canvasLocation" x="-249" y="97"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -73,7 +73,7 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
       self.loginBtn.stopAnimation()
       Defaults.shared.set(userID, for: .userId)
       let vc = VerificationCodeController(type: .Login, source: mobile,otpCode:self.otpCode)
-      UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
+      UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
     } errorHandler: { e in
       self.loginBtn.stopAnimation()
     }

@@ -444,7 +444,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 103 images.
+  /// This `R.image` struct is generated, and contains static references to 107 images.
   struct image {
     /// Image `account_arrow_right`.
     static let account_arrow_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "account_arrow_right")
@@ -470,6 +470,14 @@ struct R: Rswift.Validatable {
     static let blog_share = Rswift.ImageResource(bundle: R.hostingBundle, name: "blog_share")
     /// Image `blog_video_play`.
     static let blog_video_play = Rswift.ImageResource(bundle: R.hostingBundle, name: "blog_video_play")
+    /// Image `booking_check`.
+    static let booking_check = Rswift.ImageResource(bundle: R.hostingBundle, name: "booking_check")
+    /// Image `booking_location`.
+    static let booking_location = Rswift.ImageResource(bundle: R.hostingBundle, name: "booking_location")
+    /// Image `booking_time`.
+    static let booking_time = Rswift.ImageResource(bundle: R.hostingBundle, name: "booking_time")
+    /// Image `booking_user`.
+    static let booking_user = Rswift.ImageResource(bundle: R.hostingBundle, name: "booking_user")
     /// Image `card_cct_icon`.
     static let card_cct_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "card_cct_icon")
     /// Image `card_set_pin_close`.
@@ -734,6 +742,34 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "blog_video_play", bundle: ..., traitCollection: ...)`
     static func blog_video_play(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.blog_video_play, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "booking_check", bundle: ..., traitCollection: ...)`
+    static func booking_check(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.booking_check, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "booking_location", bundle: ..., traitCollection: ...)`
+    static func booking_location(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.booking_location, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "booking_time", bundle: ..., traitCollection: ...)`
+    static func booking_time(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.booking_time, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "booking_user", bundle: ..., traitCollection: ...)`
+    static func booking_user(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.booking_user, compatibleWith: traitCollection)
     }
     #endif
 
@@ -2787,6 +2823,7 @@ struct _R: Rswift.Validatable {
       try _BlogHeaderSearchView.validate()
       try _BlogItemVerticalLayoutCell.validate()
       try _BolgItemHorizontalLayoutCell.validate()
+      try _BookingCompletedCell.validate()
       try _CCTShopFooterView.validate()
       try _CardUserDetailHeadView.validate()
       try _ContactUsListCell.validate()
@@ -3037,12 +3074,20 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    struct _BookingCompletedCell: Rswift.NibResourceType {
+    struct _BookingCompletedCell: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "BookingCompletedCell"
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> BookingCompletedCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BookingCompletedCell
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "booking_location", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_location' is used in nib 'BookingCompletedCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'BookingCompletedCell', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamYellow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamYellow' is used in nib 'BookingCompletedCell', but couldn't be loaded.") }
+        }
       }
 
       fileprivate init() {}

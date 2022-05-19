@@ -84,6 +84,7 @@ enum API:String {
   //// 获取所有分店地址
   case getAllMp = "getAllMp"
   case getTLocations = "getTLocations"
+  case getTCompany = "getTCompany"
   
   /// 获取公司的奖项和证书
   case getAwards = "getAwards"
@@ -200,6 +201,8 @@ enum API:String {
   /// 服务记录
   case getTSlotHistoryForApp = "getTSlotHistoryForApp"
   case getTUpcomingAppointments = "getTUpcomingAppointments"
+  case getClientBookedServices = "getClientBookedServices"
+  case cancelAppointments = "cancelAppointments"
   
   // 物品购物车推送
   case itemsInCart = "itemsInCart";
@@ -251,6 +254,7 @@ enum Action:String {
   case StripePayment = "stripe-payment"
   case CardDiscountContent = "card-discount-content"
   case Query = "query"
+  case BookingOrder = "booking-order"
 }
 
 struct WebUrl {

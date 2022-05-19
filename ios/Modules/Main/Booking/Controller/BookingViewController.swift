@@ -20,7 +20,7 @@ class BookingViewController: BaseViewController {
   
   lazy var headerVc = BookingHeadController()
   
-  var tableHeaderViewHeight: Int = 100
+  var tableHeaderViewHeight: Int = 0
   var headerInSectionHeight: Int = 40
   
   lazy var titleDataSource: JXSegmentedTitleDataSource = {
@@ -91,6 +91,38 @@ class BookingViewController: BaseViewController {
     
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    getClientBookedService()
+  }
+  
+  func getClientBookedService() {
+    let params = SOAPParams(action: .BookingOrder, path: .getClientBookedServices)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "date", value: Date().string(withFormat: "yyyy-MM-dd"))
+    NetworkManager().request(params: params) { data in
+      if let models = DecodeManager.decodeArrayByHandJSON(BookingTodayModel.self, from: data) {
+        if models.count > 0 {
+          if models.count > 1 {
+            self.tableHeaderViewHeight = 317
+          }else {
+            self.tableHeaderViewHeight = 297
+          }
+        }else {
+          self.tableHeaderViewHeight = 0
+        }
+        
+        self.headerVc.models = models
+      }else {
+        self.tableHeaderViewHeight = 0
+      }
+      self.paggingView.reloadData()
+    } errorHandler: { e in
+      self.tableHeaderViewHeight = 0
+    }
+
+  }
+  
   @objc func menuDidClick(_ noti:Notification) {
     let selStr = noti.object as! String
     let sel = NSSelectorFromString(selStr)
@@ -105,9 +137,30 @@ class BookingViewController: BaseViewController {
   }
   
   @objc func rightItemAction() {
-    SelectTypeOfServiceSheetView.show()
+    
+    cancleBooking()
+    
   }
   
+  func cancleBooking() {
+    let params = SOAPParams(action: .Client, path: .getClientCancelCount)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    
+    Toast.showLoading()
+    NetworkManager().request(params: params) { data in
+      Toast.dismiss()
+      let count = JSON.init(from: data)?["cancel_count"].rawString()?.int ?? 0
+      if count > 3 {
+        AlertView.show(message: "If you delay cancelling more than 3 times, your in app reservation permission will be suspended.")
+      }else {
+        SelectTypeOfServiceSheetView.show()
+       
+      }
+     
+    } errorHandler: { e in
+      Toast.dismiss()
+    }
+  }
 }
 
 extension BookingViewController:JXPagingMainTableViewGestureDelegate {

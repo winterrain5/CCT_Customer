@@ -12,11 +12,16 @@ class BookingUpcomingController: BasePagingTableController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    refreshData()
+  }
+
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    loadNewData()
   }
   
   override func refreshData() {
-    self.view.showSkeleton()
+    if isFirstLoad { self.view.showSkeleton() }
     let params = SOAPParams(action: .ClientProfile, path: .getTUpcomingAppointments)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "startDateTime", value: Date().tomorrow.string(withFormat: "yyyy-MM-dd").appending(" 00:00:00"))
@@ -72,8 +77,39 @@ class BookingUpcomingController: BasePagingTableController {
     if dataArray.count > 0 {
       cell.model = self.dataArray[indexPath.row] as? BookingUpComingModel
     }
+    cell.selectionStyle = .none
     return cell
   }
    
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let vc = BookingUpComingDetailController(upcoming: self.dataArray[indexPath.row] as! BookingUpComingModel)
+    self.navigationController?.pushViewController(vc, animated: true)
+  }
 
+  func buttonImage(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> UIImage! {
+    return R.image.booking_button()!
+  }
+  
+  func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
+    cancleBooking()
+  }
+  
+  func cancleBooking() {
+    let params = SOAPParams(action: .Client, path: .getClientCancelCount)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    
+    Toast.showLoading()
+    NetworkManager().request(params: params) { data in
+      Toast.dismiss()
+      let count = JSON.init(from: data)?["cancel_count"].rawString()?.int ?? 0
+      if count > 3 {
+        AlertView.show(message: "If you delay cancelling more than 3 times, your in app reservation permission will be suspended.")
+      }else {
+        SelectTypeOfServiceSheetView.show()
+      }
+     
+    } errorHandler: { e in
+      Toast.dismiss()
+    }
+  }
 }

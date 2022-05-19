@@ -131,6 +131,15 @@ class AlertView: UIView {
     rightButton.titleForNormal = ""
   }
   
+  func config(with title:String,message:NSMutableAttributedString,leftButtonTitle:String,rightButtonTitle:String) {
+    leftButton.isHidden = false
+    rightButton.isHidden = false
+    titleLabel.text = title
+    messageLabel.attributedText = message
+    leftButton.titleForNormal = leftButtonTitle
+    rightButton.titleForNormal = rightButtonTitle
+  }
+  
   static func show(title:String,
                    message:String = "",
                    leftButtonTitle:String = "Cancel",
@@ -179,6 +188,31 @@ class AlertView: UIView {
     let size = CGSize(width: kScreenWidth, height: totalHeight)
     EntryKit.display(view: view, size: size, style: .sheet, backgroundColor: R.color.blackAlpha8()!, touchDismiss: true)
   }
+  
+  static func show(title:String,
+                   message:NSMutableAttributedString ,
+                   leftButtonTitle:String,
+                   rightButtonTitle:String,
+                   messageAlignment:NSTextAlignment,
+                   leftHandler:(()->())? = nil,
+                   rightHandler:(()->())? = nil,
+                   dismissHandler:(()->())? = nil) {
+    let view = AlertView()
+    view.config(with: title, message: message,leftButtonTitle: leftButtonTitle,rightButtonTitle: rightButtonTitle)
+    view.leftHandler = leftHandler
+    view.rightHandler = rightHandler
+    view.dismissHandler = dismissHandler
+    view.messageAlignment = messageAlignment
+    let titleHeight = title.heightWithConstrainedWidth(width: kScreenWidth - 48, font: UIFont(name: .AvenirNextDemiBold, size:18))
+    let messageHeight = view.messageLabel.sizeThatFits(CGSize(width: kScreenWidth - 48, height: .infinity)).height
+    
+    let extraHeight = 170.cgFloat + kBottomsafeAreaMargin
+    let totalHeight = titleHeight + messageHeight + extraHeight
+    let size = CGSize(width: kScreenWidth, height: totalHeight)
+    EntryKit.display(view: view, size: size, style: .sheet, backgroundColor: R.color.blackAlpha8()!, touchDismiss: true)
+  }
+  
+  
   
   static func show(message:NSMutableAttributedString,messageAlignment:NSTextAlignment = .left,dismissHandler:(()->())? = nil) {
     let view = AlertView()

@@ -18,6 +18,8 @@ class BookingUpComingCell: UITableViewCell {
   @IBOutlet weak var weeklabel: UILabel!
   @IBOutlet weak var locationLabel: UILabel!
   @IBOutlet weak var timeLabel: UILabel!
+  @IBOutlet weak var staffView: UIView!
+  @IBOutlet weak var staffNameLabel: UILabel!
   var model:BookingUpComingModel! {
     didSet {
       let date = model.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
@@ -29,7 +31,12 @@ class BookingUpComingCell: UITableViewCell {
       }
       locationLabel.text = model.location_name
       nameLabel.text = model.alias_name
-      
+      if model.staff_is_random == "2" {
+        staffView.isHidden = false
+        staffNameLabel.text = model.employee_first_name + " " + model.employee_last_name
+      }else {
+        staffView.isHidden = true
+      }
     }
   }
   override func awakeFromNib() {

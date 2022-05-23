@@ -23,13 +23,13 @@ class SelectTypeOfServiceSheetView: UIView {
     EntryKit.dismiss {
       AlertView.show(title: "Share more about your condition?", message: "", leftButtonTitle: "Skip", rightButtonTitle: "Yes") {
         
-        let vc = RNBridgeViewController(RNPageName: "BookAppointmentActivity", RNProperty: ["select_type":"0"])
-        UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
+//        let vc = RNBridgeViewController(RNPageName: "BookAppointmentActivity", RNProperty: ["select_type":"0"])
+//        UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
         
       } rightHandler: {
-       
-        let vc = RNBridgeViewController(RNPageName: "TellUsCondition1Activity", RNProperty: [:])
-        UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
+//
+//        let vc = RNBridgeViewController(RNPageName: "TellUsCondition1Activity", RNProperty: [:])
+//        UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
 //
       }
     }

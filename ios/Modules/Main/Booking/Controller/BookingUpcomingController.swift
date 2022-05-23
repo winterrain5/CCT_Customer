@@ -9,15 +9,29 @@ import UIKit
 
 class BookingUpcomingController: BasePagingTableController {
 
+  var todayH:CGFloat = 0
+  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    NotificationCenter.default.addObserver(forName: .bookingTodayLoaded, object: self, queue: .main) { noti  in
+      let todayH = noti.object as? CGFloat ?? 0
+      self.todayH = todayH
+      self.tableView?.reloadEmptyDataSet()
+    }
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    self.refreshData()
   }
 
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    loadNewData()
+    
   }
   
   override func refreshData() {
@@ -69,7 +83,11 @@ class BookingUpcomingController: BasePagingTableController {
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    160
+    if dataArray.count > 0 && dataArray.count >= (indexPath.row + 1) {
+      let model = dataArray[indexPath.row] as! BookingUpComingModel
+      return model.cellHeight
+    }
+    return 180
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,5 +129,9 @@ class BookingUpcomingController: BasePagingTableController {
     } errorHandler: { e in
       Toast.dismiss()
     }
+  }
+  
+  func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
+    return -(kScreenHeight - self.todayH - kNavBarHeight - 180 - kTabBarHeight) * 0.5
   }
 }

@@ -13,6 +13,10 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* CCTIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CCTIOSTests.m */; };
+		454C5B37283B312D001D787C /* BookingServiceFormSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454C5B36283B312D001D787C /* BookingServiceFormSheetView.swift */; };
+		454C5B3C283B77AD001D787C /* BookingServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454C5B3B283B77AD001D787C /* BookingServiceModel.swift */; };
+		454C5B3E283B7E5D001D787C /* BookingDutyDateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454C5B3D283B7E5D001D787C /* BookingDutyDateModel.swift */; };
+		454C5B40283B7F95001D787C /* BookingDateSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454C5B3F283B7F95001D787C /* BookingDateSheetView.swift */; };
 		4550946D28324EDE0017C244 /* BookingCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4550946C28324EDE0017C244 /* BookingCompleteModel.swift */; };
 		4550946F28339DA90017C244 /* BookingUpComingDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4550946E28339DA90017C244 /* BookingUpComingDetailController.swift */; };
 		4550947128339DEA0017C244 /* BookingUpComingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4550947028339DEA0017C244 /* BookingUpComingDetailView.swift */; };
@@ -20,6 +24,10 @@
 		457CBA88283615FE00AE26D8 /* BookingCompleteDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CBA87283615FE00AE26D8 /* BookingCompleteDetailController.swift */; };
 		457CBA8A2836163200AE26D8 /* BookingCompleteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CBA892836163200AE26D8 /* BookingCompleteDetailView.swift */; };
 		457CBA8C2836163E00AE26D8 /* BookingCompleteDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 457CBA8B2836163E00AE26D8 /* BookingCompleteDetailView.xib */; };
+		457CBA932837697E00AE26D8 /* WellnessAppointmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CBA922837697E00AE26D8 /* WellnessAppointmentController.swift */; };
+		457CBA962837773300AE26D8 /* BookingServiceFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CBA952837773300AE26D8 /* BookingServiceFormCell.swift */; };
+		457CBA98283779D500AE26D8 /* BookingServiceFormFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CBA97283779D500AE26D8 /* BookingServiceFormFooterView.swift */; };
+		457CBA9A283779E900AE26D8 /* BookingServiceFormFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 457CBA99283779E900AE26D8 /* BookingServiceFormFooterView.xib */; };
 		45B2A12F27A1456200E1264E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B2A12E27A1456200E1264E /* MainViewController.swift */; };
 		45CE32F42834948E00201726 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F32834948E00201726 /* CompanyModel.swift */; };
 		45CE32F628349C4500201726 /* TodaySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F528349C4500201726 /* TodaySessionView.swift */; };
@@ -675,6 +683,10 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CCTIOS/main.m; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* CCTIOS-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCTIOS-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* CCTIOS-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CCTIOS-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		454C5B36283B312D001D787C /* BookingServiceFormSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingServiceFormSheetView.swift; sourceTree = "<group>"; };
+		454C5B3B283B77AD001D787C /* BookingServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingServiceModel.swift; sourceTree = "<group>"; };
+		454C5B3D283B7E5D001D787C /* BookingDutyDateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDutyDateModel.swift; sourceTree = "<group>"; };
+		454C5B3F283B7F95001D787C /* BookingDateSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDateSheetView.swift; sourceTree = "<group>"; };
 		4550946C28324EDE0017C244 /* BookingCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BookingCompleteModel.swift; path = Modules/Main/Booking/Model/BookingCompleteModel.swift; sourceTree = SOURCE_ROOT; };
 		4550946E28339DA90017C244 /* BookingUpComingDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingUpComingDetailController.swift; sourceTree = "<group>"; };
 		4550947028339DEA0017C244 /* BookingUpComingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingUpComingDetailView.swift; sourceTree = "<group>"; };
@@ -682,6 +694,10 @@
 		457CBA87283615FE00AE26D8 /* BookingCompleteDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingCompleteDetailController.swift; sourceTree = "<group>"; };
 		457CBA892836163200AE26D8 /* BookingCompleteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingCompleteDetailView.swift; sourceTree = "<group>"; };
 		457CBA8B2836163E00AE26D8 /* BookingCompleteDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingCompleteDetailView.xib; sourceTree = "<group>"; };
+		457CBA922837697E00AE26D8 /* WellnessAppointmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessAppointmentController.swift; sourceTree = "<group>"; };
+		457CBA952837773300AE26D8 /* BookingServiceFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingServiceFormCell.swift; sourceTree = "<group>"; };
+		457CBA97283779D500AE26D8 /* BookingServiceFormFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingServiceFormFooterView.swift; sourceTree = "<group>"; };
+		457CBA99283779E900AE26D8 /* BookingServiceFormFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingServiceFormFooterView.xib; sourceTree = "<group>"; };
 		45B2A12E27A1456200E1264E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		45CE32F32834948E00201726 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
 		45CE32F528349C4500201726 /* TodaySessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionView.swift; sourceTree = "<group>"; };
@@ -1405,6 +1421,61 @@
 				FF1AD4863EDBCB20D711EE6C /* libPods-CCTIOS.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		454C5B38283B7190001D787C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				454C5B3B283B77AD001D787C /* BookingServiceModel.swift */,
+				454C5B3D283B7E5D001D787C /* BookingDutyDateModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		457CBA8D2837428200AE26D8 /* SelectService */ = {
+			isa = PBXGroup;
+			children = (
+				454C5B38283B7190001D787C /* Model */,
+				457CBA942837768100AE26D8 /* View */,
+				457CBA90283742B500AE26D8 /* Wellness */,
+				457CBA8F283742AD00AE26D8 /* Treatment */,
+			);
+			path = SelectService;
+			sourceTree = "<group>";
+		};
+		457CBA8F283742AD00AE26D8 /* Treatment */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Treatment;
+			sourceTree = "<group>";
+		};
+		457CBA90283742B500AE26D8 /* Wellness */ = {
+			isa = PBXGroup;
+			children = (
+				457CBA912837436600AE26D8 /* Controller */,
+			);
+			path = Wellness;
+			sourceTree = "<group>";
+		};
+		457CBA912837436600AE26D8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				457CBA922837697E00AE26D8 /* WellnessAppointmentController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		457CBA942837768100AE26D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				457CBA952837773300AE26D8 /* BookingServiceFormCell.swift */,
+				457CBA97283779D500AE26D8 /* BookingServiceFormFooterView.swift */,
+				457CBA99283779E900AE26D8 /* BookingServiceFormFooterView.xib */,
+				454C5B36283B312D001D787C /* BookingServiceFormSheetView.swift */,
+				454C5B3F283B7F95001D787C /* BookingDateSheetView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		45CE32F728349C8600201726 /* TodaySession */ = {
@@ -2717,6 +2788,7 @@
 		49CE76AE281A6E9400A3151D /* Booking */ = {
 			isa = PBXGroup;
 			children = (
+				457CBA8D2837428200AE26D8 /* SelectService */,
 				49F69771282DF33E009813EA /* Model */,
 				49F69770282DF33A009813EA /* View */,
 				49F6976F282DF32D009813EA /* Controller */,
@@ -3127,6 +3199,7 @@
 				497C629327BE38E600127F3F /* MyOrderDetailHeaderView.xib in Resources */,
 				496501E027A0E7E3004FF3AF /* MadamPartumLocationCell.xib in Resources */,
 				498D85A72798F1630044F34F /* MadamPartumHeaderView.xib in Resources */,
+				457CBA9A283779E900AE26D8 /* BookingServiceFormFooterView.xib in Resources */,
 				4902025427DB34A000E74415 /* WalletAddCardSheetContentView.xib in Resources */,
 				4996D79A27D592D200437265 /* WalletVouchersCell.xib in Resources */,
 				49E61D2C278EDA3F00B1C136 /* SymptomCheckDetailHeaderView.xib in Resources */,
@@ -3401,6 +3474,7 @@
 				4998C00A277EF51200A881D5 /* UIStoryboardExtensions.swift in Sources */,
 				4998C001277EF51200A881D5 /* UITableViewExtensions.swift in Sources */,
 				4998C0DC2784427F00A881D5 /* ConstraintInsetTarget.swift in Sources */,
+				454C5B40283B7F95001D787C /* BookingDateSheetView.swift in Sources */,
 				49E61D18278EBF2300B1C136 /* SymptomCheckStepModel.swift in Sources */,
 				4906C221279A5F3300F7B67F /* AwardModel.swift in Sources */,
 				4904C3CC280677D6008FE5A5 /* BaseModel.swift in Sources */,
@@ -3500,6 +3574,7 @@
 				49981EE527CCB7E600D4F7BF /* SettingFilterSheetView.swift in Sources */,
 				4996D79227D1A53700437265 /* TransactionDetailFooterView.swift in Sources */,
 				497B353C27CF646300AE20C4 /* MyWalletController.swift in Sources */,
+				454C5B37283B312D001D787C /* BookingServiceFormSheetView.swift in Sources */,
 				4998C0E82784427F00A881D5 /* ConstraintRelation.swift in Sources */,
 				4998C0E12784427F00A881D5 /* ConstraintLayoutGuide.swift in Sources */,
 				4998C029277EF51200A881D5 /* SCNConeExtensions.swift in Sources */,
@@ -3522,6 +3597,7 @@
 				49FC8EC227914D5200157292 /* SymptomCheckReportListView.swift in Sources */,
 				4978FA9F27C3383700E51DA0 /* ProductLeaveReviewSheetFooterView.swift in Sources */,
 				4998C00C277EF51200A881D5 /* UISegmentedControlExtensions.swift in Sources */,
+				457CBA98283779D500AE26D8 /* BookingServiceFormFooterView.swift in Sources */,
 				49BA627C2785787800B898D5 /* NSObject_Extension.swift in Sources */,
 				4933AC7327D8790B005E9FB1 /* SetTransactionLimitSheetView.swift in Sources */,
 				49BB3C61278D17AD00AC34A0 /* BlogBoardDeleteConfirmSheetView.swift in Sources */,
@@ -3554,6 +3630,7 @@
 				4998C002277EF51200A881D5 /* UIScrollViewExtensions.swift in Sources */,
 				49FC8EAC278FFA5B00157292 /* SymptomCheckWhatNextController.swift in Sources */,
 				4998BFFE277EF51200A881D5 /* CGColorExtensions.swift in Sources */,
+				454C5B3E283B7E5D001D787C /* BookingDutyDateModel.swift in Sources */,
 				4998C046277EF51200A881D5 /* SignedNumericExtensions.swift in Sources */,
 				49DED22927C479E50027F476 /* FeedbackFormContainer.swift in Sources */,
 				4998C0EA2784427F00A881D5 /* ConstraintView+Extensions.swift in Sources */,
@@ -3582,6 +3659,7 @@
 				45B2A12F27A1456200E1264E /* MainViewController.swift in Sources */,
 				4902025027DB2DB300E74415 /* WalletPaymentMethodModel.swift in Sources */,
 				4998BFFF277EF51200A881D5 /* UIBezierPathExtensions.swift in Sources */,
+				454C5B3C283B77AD001D787C /* BookingServiceModel.swift in Sources */,
 				4933AC6B27D848A5005E9FB1 /* WalletTermsConditionsSheetView.swift in Sources */,
 				4998C0992783F07C00A881D5 /* ServicesFooterView.swift in Sources */,
 				49F6977A282DF7E7009813EA /* BookingCompletedCell.swift in Sources */,
@@ -3611,6 +3689,7 @@
 				4936C21C28334A3D009125A1 /* BookingUpComingCell.swift in Sources */,
 				45CE32F628349C4500201726 /* TodaySessionView.swift in Sources */,
 				49BA62A32788267300B898D5 /* BlogDetailContainer.swift in Sources */,
+				457CBA932837697E00AE26D8 /* WellnessAppointmentController.swift in Sources */,
 				4904C3A7280677A1008FE5A5 /* CCTShopController.swift in Sources */,
 				4998C0ED2784427F00A881D5 /* Debugging.swift in Sources */,
 				492FA12F2798160C002F38B3 /* MadamPartumNewsItemCell.swift in Sources */,
@@ -3732,6 +3811,7 @@
 				4998C035277EF51200A881D5 /* NSAttributedStringExtensions.swift in Sources */,
 				4998BF2C277ED20D00A881D5 /* UIViewController+Swizzling.swift in Sources */,
 				4902025227DB349600E74415 /* WalletAddCardSheetContentView.swift in Sources */,
+				457CBA962837773300AE26D8 /* BookingServiceFormCell.swift in Sources */,
 				4998C0902783DF5200A881D5 /* UIFont_Extension.swift in Sources */,
 				496501DC27A0E772004FF3AF /* MadamPartumLocationModel.swift in Sources */,
 				4550946D28324EDE0017C244 /* BookingCompleteModel.swift in Sources */,

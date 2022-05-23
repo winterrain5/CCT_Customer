@@ -74,6 +74,13 @@ class BookingCompletedController: BasePagingTableController {
     if dataArray.count > 0 {
       cell.model = self.dataArray[indexPath.row]  as? BookingCompleteModel
     }
+    cell.selectionStyle = .none
     return cell
   }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let vc = BookingCompleteDetailController(complete: self.dataArray[indexPath.row] as! BookingCompleteModel)
+    self.navigationController?.pushViewController(vc, animated: true)
+  }
+  
 }

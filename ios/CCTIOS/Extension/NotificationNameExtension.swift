@@ -28,4 +28,5 @@ extension Notification.Name {
   static let menuInfoShouldChange = Notification.Name(rawValue: "menuInfoShouldChange")
   
   static let bookingUpcomingLoad = Notification.Name(rawValue: "bookingUpcomingLoad")
+  static let bookingTodayLoaded = Notification.Name(rawValue: "bookingTodayLoaded")
 }

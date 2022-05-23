@@ -74,6 +74,11 @@ class OrderLineInfo :BaseModel,Codable {
     }
   }
   
+  var bookCompleteCellHeight:CGFloat {
+    let nameHeight = name?.heightWithConstrainedWidth(width: kScreenWidth - 160, font: UIFont(name: .AvenirNextDemiBold, size:12)) ?? 0
+    return  nameHeight + 16
+  }
+  
   var recharge_discount_sort: Int?
   var retail_price: String?
   var voucher_pay_code: String?

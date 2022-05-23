@@ -203,6 +203,9 @@ enum API:String {
   case getTUpcomingAppointments = "getTUpcomingAppointments"
   case getClientBookedServices = "getClientBookedServices"
   case cancelAppointments = "cancelAppointments"
+  case getCanOnlineBookingLocations = "getCanOnlineBookingLocations"
+  case getServicesByLocation = "getServicesByLocation"
+  case getDocSchedulesForService = "getDocSchedulesForService"
   
   // 物品购物车推送
   case itemsInCart = "itemsInCart";
@@ -255,6 +258,7 @@ enum Action:String {
   case CardDiscountContent = "card-discount-content"
   case Query = "query"
   case BookingOrder = "booking-order"
+  case Schedule = "schedule"
 }
 
 struct WebUrl {

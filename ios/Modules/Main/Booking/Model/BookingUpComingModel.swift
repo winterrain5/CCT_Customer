@@ -35,5 +35,12 @@ class BookingUpComingModel: BaseModel{
   var rate: String = ""
   var remark: String = ""
   
+  var cellHeight:CGFloat {
+    if staff_is_random == "2" {
+      return 186
+    }else {
+      return 160
+    }
+  }
   
 }

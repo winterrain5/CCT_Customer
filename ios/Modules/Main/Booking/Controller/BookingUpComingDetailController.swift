@@ -16,6 +16,7 @@ class BookingUpComingDetailController: BaseViewController {
   convenience init(upcoming:BookingUpComingModel) {
     self.init()
     self.upcoming = upcoming
+    
   }
   
   convenience init(today:BookingTodayModel) {

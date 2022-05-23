@@ -54,6 +54,7 @@ class BookingViewController: BaseViewController {
     segment.delegate = self
     segment.indicators = [indicator]
     segment.backgroundColor = .clear
+    segment.defaultSelectedIndex = 0
   }
   
   init() {
@@ -77,7 +78,7 @@ class BookingViewController: BaseViewController {
     
     segmentedView.dataSource = titleDataSource
     segmentedView.listContainer = paggingView.listContainerView
-    segmentedView.defaultSelectedIndex = 0
+   
     
     let bottomLayer = CALayer()
     bottomLayer.backgroundColor = R.color.line()?.cgColor
@@ -116,9 +117,11 @@ class BookingViewController: BaseViewController {
       }else {
         self.tableHeaderViewHeight = 0
       }
+      NotificationCenter.default.post(name: NSNotification.Name.bookingTodayLoaded, object: self.tableHeaderViewHeight)
       self.paggingView.reloadData()
     } errorHandler: { e in
       self.tableHeaderViewHeight = 0
+      NotificationCenter.default.post(name: NSNotification.Name.bookingTodayLoaded, object: self.tableHeaderViewHeight)
     }
 
   }

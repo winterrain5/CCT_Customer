@@ -27,6 +27,7 @@ target 'CCTIOS' do
   pod "Haptica"
   pod 'SideMenuSwift'
   pod 'SwipeCellKit'
+  pod 'FSCalendar'
   
 #  pod 'SwifterSwift'
   

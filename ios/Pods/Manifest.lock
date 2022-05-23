@@ -39,6 +39,7 @@ PODS:
     - boost-for-react-native
     - DoubleConversion
     - glog
+  - FSCalendar (2.8.4)
   - glog (0.3.5)
   - HandyJSON (5.0.2)
   - Haptica (3.0.3)
@@ -336,6 +337,7 @@ DEPENDENCIES:
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
+  - FSCalendar
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - HandyJSON (~> 5.0.2)
   - Haptica
@@ -396,6 +398,7 @@ SPEC REPOS:
     - CRBoxInputView
     - DDGScreenShot
     - DKLogger
+    - FSCalendar
     - HandyJSON
     - Haptica
     - IQKeyboardManagerSwift
@@ -505,6 +508,7 @@ SPEC CHECKSUMS:
   FBLazyVector: 3bb422f41b18121b71783a905c10e58606f7dc3e
   FBReactNativeSpec: f2c97f2529dd79c083355182cc158c9f98f4bd6e
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
+  FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   Haptica: 23497230b2d7476621f7860263ae0667279a0a89
@@ -561,6 +565,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 43690a484d31727daa13e289ca2dc49f02f749f3
+PODFILE CHECKSUM: 57a5f55f1698a13d5b69886ef6755a3902c5be36
 
 COCOAPODS: 1.11.2

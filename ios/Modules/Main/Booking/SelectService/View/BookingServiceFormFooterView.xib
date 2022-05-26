@@ -47,8 +47,11 @@
                         <fontDescription key="titleFontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
                         <color key="baseForegroundColor" name="TheamRed"/>
                     </buttonConfiguration>
+                    <connections>
+                        <action selector="helpAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="5J0-Zx-wCo"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrT-bC-bxO">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrT-bC-bxO" customClass="LoadingButton" customModule="CCTIOS" customModuleProvider="target">
                     <rect key="frame" x="24" y="100" width="366" height="44"/>
                     <color key="backgroundColor" name="grayE0"/>
                     <constraints>
@@ -63,6 +66,9 @@
                             <real key="value" value="22"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="confirmAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="gIN-2O-01r"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXs-ya-xeu">
                     <rect key="frame" x="88" y="32" width="238" height="36"/>
@@ -71,6 +77,9 @@
                         <fontDescription key="titleFontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                         <color key="baseForegroundColor" name="Black"/>
                     </buttonConfiguration>
+                    <connections>
+                        <action selector="syncCalendarAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="FkH-dP-Amd"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -91,6 +100,10 @@
                 <constraint firstItem="OrT-bC-bxO" firstAttribute="top" secondItem="GXs-ya-xeu" secondAttribute="bottom" constant="32" id="zkV-Yr-HXv"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="confirmButton" destination="OrT-bC-bxO" id="uvb-ho-uqW"/>
+                <outlet property="footerView" destination="CCU-Xq-aQh" id="GIE-b5-ur3"/>
+            </connections>
             <point key="canvasLocation" x="131.8840579710145" y="267.85714285714283"/>
         </view>
     </objects>

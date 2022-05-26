@@ -135,17 +135,20 @@ class BookingViewController: BaseViewController {
   }
   
   @objc func leftItemAction() {
-   
     sideMenuController?.revealMenu()
   }
   
   @objc func rightItemAction() {
     
-    cancleBooking()
+    BookingDateSheetView.show(dataArray: []) { index in
+      
+    }
+    
+//    getClientCancelCount()
     
   }
   
-  func cancleBooking() {
+  func getClientCancelCount() {
     let params = SOAPParams(action: .Client, path: .getClientCancelCount)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     

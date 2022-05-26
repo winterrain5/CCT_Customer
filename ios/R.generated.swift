@@ -444,7 +444,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 111 images.
+  /// This `R.image` struct is generated, and contains static references to 115 images.
   struct image {
     /// Image `account_arrow_right`.
     static let account_arrow_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "account_arrow_right")
@@ -474,6 +474,10 @@ struct R: Rswift.Validatable {
     static let booking_add = Rswift.ImageResource(bundle: R.hostingBundle, name: "booking_add")
     /// Image `booking_button`.
     static let booking_button = Rswift.ImageResource(bundle: R.hostingBundle, name: "booking_button")
+    /// Image `booking_calendar_left`.
+    static let booking_calendar_left = Rswift.ImageResource(bundle: R.hostingBundle, name: "booking_calendar_left")
+    /// Image `booking_calendar_right`.
+    static let booking_calendar_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "booking_calendar_right")
     /// Image `booking_check`.
     static let booking_check = Rswift.ImageResource(bundle: R.hostingBundle, name: "booking_check")
     /// Image `booking_form_calendar`.
@@ -482,6 +486,10 @@ struct R: Rswift.Validatable {
     static let booking_form_dropdown = Rswift.ImageResource(bundle: R.hostingBundle, name: "booking_form_dropdown")
     /// Image `booking_location`.
     static let booking_location = Rswift.ImageResource(bundle: R.hostingBundle, name: "booking_location")
+    /// Image `booking_session_clendar`.
+    static let booking_session_clendar = Rswift.ImageResource(bundle: R.hostingBundle, name: "booking_session_clendar")
+    /// Image `booking_session_notice`.
+    static let booking_session_notice = Rswift.ImageResource(bundle: R.hostingBundle, name: "booking_session_notice")
     /// Image `booking_time`.
     static let booking_time = Rswift.ImageResource(bundle: R.hostingBundle, name: "booking_time")
     /// Image `booking_user`.
@@ -768,6 +776,20 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "booking_calendar_left", bundle: ..., traitCollection: ...)`
+    static func booking_calendar_left(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.booking_calendar_left, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "booking_calendar_right", bundle: ..., traitCollection: ...)`
+    static func booking_calendar_right(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.booking_calendar_right, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "booking_check", bundle: ..., traitCollection: ...)`
     static func booking_check(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.booking_check, compatibleWith: traitCollection)
@@ -792,6 +814,20 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "booking_location", bundle: ..., traitCollection: ...)`
     static func booking_location(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.booking_location, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "booking_session_clendar", bundle: ..., traitCollection: ...)`
+    static func booking_session_clendar(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.booking_session_clendar, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "booking_session_notice", bundle: ..., traitCollection: ...)`
+    static func booking_session_notice(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.booking_session_notice, compatibleWith: traitCollection)
     }
     #endif
 
@@ -1449,7 +1485,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 103 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 105 nibs.
   struct nib {
     /// Nib `AccountEditSheetContentView`.
     static let accountEditSheetContentView = _R.nib._AccountEditSheetContentView()
@@ -1485,6 +1521,8 @@ struct R: Rswift.Validatable {
     static let bookingCompletedCell = _R.nib._BookingCompletedCell()
     /// Nib `BookingServiceFormFooterView`.
     static let bookingServiceFormFooterView = _R.nib._BookingServiceFormFooterView()
+    /// Nib `BookingServiceHelpSheetView`.
+    static let bookingServiceHelpSheetView = _R.nib._BookingServiceHelpSheetView()
     /// Nib `BookingUpComingCell`.
     static let bookingUpComingCell = _R.nib._BookingUpComingCell()
     /// Nib `BookingUpComingDetailView`.
@@ -1497,6 +1535,8 @@ struct R: Rswift.Validatable {
     static let cardUserDetailHeadView = _R.nib._CardUserDetailHeadView()
     /// Nib `ChangePwdContainer`.
     static let changePwdContainer = _R.nib._ChangePwdContainer()
+    /// Nib `ConfirmSessionContainer`.
+    static let confirmSessionContainer = _R.nib._ConfirmSessionContainer()
     /// Nib `ContactUsListCell`.
     static let contactUsListCell = _R.nib._ContactUsListCell()
     /// Nib `DataProtectionHeadView`.
@@ -1795,6 +1835,14 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "BookingServiceHelpSheetView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.bookingServiceHelpSheetView) instead")
+    static func bookingServiceHelpSheetView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.bookingServiceHelpSheetView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "BookingUpComingCell", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.bookingUpComingCell) instead")
     static func bookingUpComingCell(_: Void = ()) -> UIKit.UINib {
@@ -1839,6 +1887,14 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.changePwdContainer) instead")
     static func changePwdContainer(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.changePwdContainer)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ConfirmSessionContainer", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.confirmSessionContainer) instead")
+    static func confirmSessionContainer(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.confirmSessionContainer)
     }
     #endif
 
@@ -2550,6 +2606,10 @@ struct R: Rswift.Validatable {
       return R.nib.bookingServiceFormFooterView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BookingServiceFormFooterView
     }
 
+    static func bookingServiceHelpSheetView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> BookingServiceHelpSheetView? {
+      return R.nib.bookingServiceHelpSheetView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BookingServiceHelpSheetView
+    }
+
     static func bookingUpComingCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> BookingUpComingCell? {
       return R.nib.bookingUpComingCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BookingUpComingCell
     }
@@ -2572,6 +2632,10 @@ struct R: Rswift.Validatable {
 
     static func changePwdContainer(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ChangePwdContainer? {
       return R.nib.changePwdContainer.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ChangePwdContainer
+    }
+
+    static func confirmSessionContainer(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ConfirmSessionContainer? {
+      return R.nib.confirmSessionContainer.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ConfirmSessionContainer
     }
 
     static func contactUsListCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ContactUsListCell? {
@@ -2936,6 +3000,7 @@ struct _R: Rswift.Validatable {
       try _BookingUpComingDetailView.validate()
       try _CCTShopFooterView.validate()
       try _CardUserDetailHeadView.validate()
+      try _ConfirmSessionContainer.validate()
       try _ContactUsListCell.validate()
       try _DataProtectionHeadView.validate()
       try _EditProfileContainer.validate()
@@ -3251,6 +3316,17 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
+    struct _BookingServiceHelpSheetView: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "BookingServiceHelpSheetView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> BookingServiceHelpSheetView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BookingServiceHelpSheetView
+      }
+
+      fileprivate init() {}
+    }
+
     struct _BookingUpComingCell: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "BookingUpComingCell"
@@ -3354,6 +3430,32 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ChangePwdContainer? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ChangePwdContainer
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _ConfirmSessionContainer: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "ConfirmSessionContainer"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ConfirmSessionContainer? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ConfirmSessionContainer
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "booking_location", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_location' is used in nib 'ConfirmSessionContainer', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "booking_session_clendar", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_session_clendar' is used in nib 'ConfirmSessionContainer', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "booking_session_notice", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_session_notice' is used in nib 'ConfirmSessionContainer', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "booking_time", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_time' is used in nib 'ConfirmSessionContainer', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'ConfirmSessionContainer', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'ConfirmSessionContainer', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamRed", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamRed' is used in nib 'ConfirmSessionContainer', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamYellow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamYellow' is used in nib 'ConfirmSessionContainer', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'ConfirmSessionContainer', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "gray82", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'gray82' is used in nib 'ConfirmSessionContainer', but couldn't be loaded.") }
+        }
       }
 
       fileprivate init() {}

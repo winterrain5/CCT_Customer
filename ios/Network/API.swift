@@ -206,6 +206,13 @@ enum API:String {
   case getCanOnlineBookingLocations = "getCanOnlineBookingLocations"
   case getServicesByLocation = "getServicesByLocation"
   case getDocSchedulesForService = "getDocSchedulesForService"
+  case getBookingTimeSlots = "getBookingTimeSlots"
+  case getDocTimeSlots = "getDocTimeSlots"
+  case checkCanBookService = "checkCanBookService"
+  ///  保存在线预约服务
+  case saveTOnlineBookingData = "saveTData"
+  /// 保存在线预约服务(看诊)
+  case saveDocTData = "saveDocTData"
   
   // 物品购物车推送
   case itemsInCart = "itemsInCart";
@@ -225,7 +232,7 @@ enum API:String {
   case topupNote = "topupNote";
   //注册推送
   case welcomeNote = "welcomeNote";
-  //先建预约推送
+  //预约推送
   case newCreateAppointment = "newCreateAppointment";
 }
 

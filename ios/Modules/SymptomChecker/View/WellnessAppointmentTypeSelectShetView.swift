@@ -16,7 +16,7 @@ class WellnessAppointmentTypeSelectShetView: UIView {
   
   @IBAction func selectDateTimeButtonAction(_ sender: Any) {
     EntryKit.dismiss {
-      let vc = WellnessAppointmentController(type: .DateTime)
+      let vc = BookingAppointmentController(type: .DateTime)
       UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
     }
   }
@@ -24,7 +24,7 @@ class WellnessAppointmentTypeSelectShetView: UIView {
 
   @IBAction func selectATherapistButtonAction(_ sender: Any) {
     EntryKit.dismiss {
-      let vc = WellnessAppointmentController(type: .Therapist)
+      let vc = BookingAppointmentController(type: .Therapist)
       UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
     }
     

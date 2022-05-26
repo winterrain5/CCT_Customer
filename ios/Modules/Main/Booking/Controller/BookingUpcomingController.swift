@@ -109,10 +109,10 @@ class BookingUpcomingController: BasePagingTableController {
   }
   
   func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
-    cancleBooking()
+    getClientCancelCount()
   }
   
-  func cancleBooking() {
+  func getClientCancelCount() {
     let params = SOAPParams(action: .Client, path: .getClientCancelCount)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     

@@ -113,7 +113,7 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
     view.type = type
     view.selectComplete = selectComplete
     
-    let height = (dataArray.count * 44 + 92) > (kScreenHeight - kNavBarHeight).int ? Int((kScreenHeight - kNavBarHeight)) : (dataArray.count * 44 + 92)
+    let height = (dataArray.count * 44 + 92) > (kScreenHeight * 0.7).int ? Int(kScreenHeight * 0.7) : (dataArray.count * 44 + 92)
     let size = CGSize(width: kScreenWidth, height: height.cgFloat + kBottomsafeAreaMargin + 40)
     EntryKit.display(view: view, size: size, style: .sheet)
   }

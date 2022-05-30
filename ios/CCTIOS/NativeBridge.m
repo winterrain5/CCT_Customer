@@ -112,7 +112,6 @@ RCT_EXPORT_METHOD(showFilterView:(BOOL)isNew callback:(RCTResponseSenderBlock)ca
     [ShopFilterView showWithIsNew:isNew complete:^(NSString * result) {
       callback(@[[NSNull null],result]);
     }];
-   
   });
 }
 

@@ -51,9 +51,9 @@ class MadamPartumServiceCell: MadamPartumCell {
 //    let url = "http://info.chienchitow.com/services/" +  (datas[indexPath.item].name?.replacingOccurrences(of: " ", with: "-").lowercased() ?? "")
 //
 //    let vc = WebBrowserController(url: url)
-//    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+//    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
     let vc = ServiceDetailController(serviceId: datas[indexPath.item].id ?? "")
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
 }
 

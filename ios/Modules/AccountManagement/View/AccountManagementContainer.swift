@@ -42,6 +42,6 @@ class AccountManagementContainer: UIView {
   }
   
   func showVerifySheetView(_ type:EditInfoType) {
-    AccountVerifyPwdSheetView.show(fromView: (UIViewController.getTopVC()?.view)!,type: type)
+    AccountVerifyPwdSheetView.show(fromView: (UIViewController.getTopVc()?.view)!,type: type)
   }
 }

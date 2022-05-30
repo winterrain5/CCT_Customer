@@ -14,7 +14,7 @@ class SettingViewController: BaseTableController {
     
     let titleLabel = UILabel()
     titleLabel.text = "Settings"
-    titleLabel.font = UIFont(.AvenirNextDemiBold,24)
+    titleLabel.font = UIFont(name: .AvenirNextDemiBold, size:24)
     titleLabel.textColor = R.color.theamBlue()
     
     view.addSubview(titleLabel)
@@ -35,7 +35,7 @@ class SettingViewController: BaseTableController {
     let majorVersion = infoDictionary["CFBundleShortVersionString"] as? String ?? ""//主程序版本号
     
     versionLabel.text = "Version \(majorVersion)\nChien Chi Tow Healthcare Pte Ltd"
-    versionLabel.font = UIFont(.AvenirNextRegular,14)
+    versionLabel.font = UIFont(name:.AvenirNextRegular,size:14)
     versionLabel.textColor = UIColor(hexString: "828282")
     versionLabel.numberOfLines = 2
     versionLabel.textAlignment = .center

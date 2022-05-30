@@ -9,7 +9,7 @@ import UIKit
 import Stripe
 import DKLogger
 import IQKeyboardManagerSwift
-import LGButton
+import Haptica
 class MainViewController: BaseViewController {
   lazy var createBoardView = BlogCreateBoardSheetView()
   var blogId:String = ""
@@ -153,7 +153,7 @@ class MainViewController: BaseViewController {
     self.navigationController?.popViewController()
   }
   @objc func goBackToRootNativeVc() {
-    UIViewController.getTopVC()?.navigationController?.popToRootViewController(animated: true)
+    UIViewController.getTopVc()?.navigationController?.popToRootViewController(animated: true)
   }
   
   @objc func openWebVc(_ noti:Notification) {

@@ -13,8 +13,8 @@ class DataProtectionModel {
   var content:String
   var rowHeight:CGFloat {
     get {
-      let h1 = title.heightWithConstrainedWidth(width: kScreenWidth - 48, font: UIFont(.AvenirNextDemiBold,16))
-      let h2 = content.heightWithConstrainedWidth(width: kScreenWidth - 48, font: UIFont(.AvenirNextRegular,16))
+      let h1 = title.heightWithConstrainedWidth(width: kScreenWidth - 48, font: UIFont(name: .AvenirNextDemiBold, size:16))
+      let h2 = content.heightWithConstrainedWidth(width: kScreenWidth - 48, font: UIFont(name:.AvenirNextRegular,size:16))
       return h1 + h2 + 64
     }
   }

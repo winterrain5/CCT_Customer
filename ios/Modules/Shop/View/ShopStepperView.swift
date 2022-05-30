@@ -23,7 +23,7 @@ class ShopStepperView: UIView {
   
   lazy var valueLabel = UILabel().then { label in
     label.textColor = R.color.black333()
-    label.font = UIFont(.AvenirNextDemiBold,14)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:14)
     label.textAlignment = .center
   }
   private var value:Int = 1

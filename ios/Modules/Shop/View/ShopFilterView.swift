@@ -19,7 +19,7 @@ class ShopFilterView: UIView {
     btn.titleColorForNormal = .white
     btn.backgroundColor = R.color.theamRed()
     btn.cornerRadius = 22
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.addTarget(self, action: #selector(self.updateButtonAction), for: .touchUpInside)
   }
   

@@ -52,7 +52,7 @@ class ShopSelectCouponOrVoucherCell: UITableViewCell {
     }else {
       useNowHandler?(coupon)
     }
-    UIViewController.getTopVC()?.navigationController?.popViewController()
+    UIViewController.getTopVc()?.navigationController?.popViewController()
   }
   
 }

@@ -14,7 +14,7 @@ class ContactUsViewController: BaseTableController {
     btn.cornerRadius = 22
     btn.backgroundColor = R.color.theamRed()
     btn.titleColorForNormal = .white
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.titleForNormal = "Submit an enquiry"
   }
   private var headerView = UIView().then { view in
@@ -23,7 +23,7 @@ class ContactUsViewController: BaseTableController {
     let label = UILabel()
     label.text = "Contact Us"
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(.AvenirNextDemiBold,24)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:24)
     
     view.addSubview(label)
     label.frame = CGRect(x: 24, y: 32, width: kScreenWidth - 48, height: 36)
@@ -109,7 +109,7 @@ class ContactUsViewController: BaseTableController {
     let model = self.dataArray[indexPath.row] as! ContactUsModel
     model.isExpend!.toggle()
     if model.isExpend! {
-      model.cellHeight = 207 + (model.address?.heightWithConstrainedWidth(width: kScreenWidth - 64, font: UIFont(.AvenirNextRegular,16)) ?? 30)
+      model.cellHeight = 207 + (model.address?.heightWithConstrainedWidth(width: kScreenWidth - 64, font: UIFont(name:.AvenirNextRegular,size:16)) ?? 30)
     }else {
       model.cellHeight = 76
     }

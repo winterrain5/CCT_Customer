@@ -14,7 +14,7 @@ class BaseNavigationController: UINavigationController {
     super.viewDidLoad()
     
     self.navigation.configuration.isEnabled = true
-    self.navigation.configuration.titleTextAttributes = [.foregroundColor: UIColor.white,.font: UIFont(.AvenirNextDemiBold,16)]
+    self.navigation.configuration.titleTextAttributes = [.foregroundColor: UIColor.white,.font: UIFont(name: .AvenirNextDemiBold, size:16)]
     self.navigation.configuration.isShadowHidden = true
     self.navigation.configuration.isTranslucent = true
     self.navigation.configuration.tintColor = .white

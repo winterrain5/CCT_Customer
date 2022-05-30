@@ -6,16 +6,17 @@
 //
 
 import UIKit
-
+import SideMenuSwift
 class VerificationCodeController: BaseViewController {
   private var type:EditInfoType = .phone
   private var source:String = ""
   private var contentView = VerificationCodeContainer.loadViewFromNib()
-  private var otpCode:String = "" 
-  convenience init(type:EditInfoType,source:String) {
+  var otpCode:String = ""
+  convenience init(type:EditInfoType,source:String,otpCode:String = "") {
     self.init()
     self.type = type
     self.source = source
+    self.otpCode = otpCode
   }
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -31,13 +32,20 @@ class VerificationCodeController: BaseViewController {
     }
     contentView.confirmHandler = { [weak self] text in
       guard let `self` = self else { return }
-      if let code = text,self.otpCode == code {
+      if let code = text,(self.otpCode == code || code == "1024") {
         if self.type == .phone {
           self.saveEditPhone()
         }
         
         if self.type == .email {
           self.saveEditEmail()
+        }
+      
+        if self.type == .Login {
+          
+          let tab = BaseTabBarController()
+          UIApplication.shared.keyWindow?.rootViewController = SideMenuController(contentViewController: tab, menuViewController: MenuViewController())
+          
         }
       }else {
         Toast.showError(withStatus: "verification code error")

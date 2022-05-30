@@ -28,7 +28,7 @@ class MadamPartumNewsCell: MadamPartumCell {
   
   override func viewButtonAction() {
     let vc = BlogViewController()
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
   
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -173,7 +173,7 @@ class MadamPartumNewsCell: MadamPartumCell {
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let model = datas[indexPath.item]
     let vc = BlogDetailViewController(blogId: model.id ?? "", hasBook: model.has_booked)
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
   
 }

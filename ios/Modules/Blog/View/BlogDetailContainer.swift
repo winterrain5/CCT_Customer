@@ -78,7 +78,7 @@ class BlogDetailContainer: UIView,WKNavigationDelegate{
   }
   
   func addTags(_ text:String) {
-    let content = TTGTextTagStringContent(text: text, textFont: UIFont(.AvenirNextRegular,12), textColor: UIColor(hexString: "333333"))
+    let content = TTGTextTagStringContent(text: text, textFont: UIFont(name:.AvenirNextRegular,size:12), textColor: UIColor(hexString: "333333"))
     let style = TTGTextTagStyle()
     style.backgroundColor = UIColor(hexString: "#FAF3EB")!
     style.cornerRadius = 13

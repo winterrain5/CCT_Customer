@@ -44,7 +44,7 @@ class ForgetPwdController: BaseViewController {
       let message = line1 + line2 + lien3
       let attr = NSMutableAttributedString(string: message)
       attr.addAttribute(.foregroundColor, value: R.color.theamRed()!, range: NSRange(location: line1.count, length: line2.count))
-      attr.addAttribute(.font, value: UIFont(.AvenirNextDemiBold,14), range: NSRange(location: line1.count, length: line2.count))
+      attr.addAttribute(.font, value: UIFont(name: .AvenirNextDemiBold, size:14), range: NSRange(location: line1.count, length: line2.count))
       
       AlertView.show(message: attr) {
         let vc = ChangePwdController(type: .Reset,receiveEmail: self.recieveEmail,uuid: String(self.uuid))

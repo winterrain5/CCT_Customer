@@ -36,6 +36,8 @@ public extension UINavigationController {
         CATransaction.setCompletionBlock(completion)
         pushViewController(viewController, animated: true)
         CATransaction.commit()
+      
+      
     }
 
     /// SwifterSwift: Make navigation controller's navigation bar transparent.

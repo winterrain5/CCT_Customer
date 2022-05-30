@@ -1,5 +1,4 @@
 
-
 platform :ios, '11.0'
 
 require_relative '../node_modules/react-native/scripts/react_native_pods'
@@ -25,7 +24,10 @@ target 'CCTIOS' do
   pod 'JXSegmentedView'
   pod 'JXPagingView/Paging'
   pod 'HandyJSON', '~> 5.0.2'
-  pod 'LGButton'
+  pod "Haptica"
+  pod 'SideMenuSwift'
+  pod 'SwipeCellKit'
+  pod 'FSCalendar'
   
 #  pod 'SwifterSwift'
   

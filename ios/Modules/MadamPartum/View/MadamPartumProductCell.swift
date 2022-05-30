@@ -30,7 +30,7 @@ class MadamPartumProductCell: MadamPartumCell {
   
   override func viewButtonAction() {
     let vc = ShopViewController()
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
   
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -91,6 +91,6 @@ class MadamPartumProductCell: MadamPartumCell {
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let model = datas[indexPath.item]
     let vc = RNBridgeViewController(RNPageName: "ShopProductDetailActivity", RNProperty: ["product_id":model.id])
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
 }

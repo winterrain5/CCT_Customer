@@ -13,7 +13,7 @@ class SettingFilterSheetView: UIView,UITableViewDelegate,UITableViewDataSource {
   private var titleLabel = UILabel().then { label in
     label.text = "Filter"
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(.AvenirNextDemiBold,16)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:16)
     label.lineHeight = 28
   }
   private var headerLine = UIView().then({ view in
@@ -118,7 +118,7 @@ class SettingFilterCell: UITableViewCell {
   private var titleLabel = UILabel().then { label in
     label.text = "Filter"
     label.textColor = R.color.black()
-    label.font = UIFont(.AvenirNextRegular,14)
+    label.font = UIFont(name:.AvenirNextRegular,size:14)
     label.lineHeight = 20
   }
   private var switchControl = UISwitch().then { view in

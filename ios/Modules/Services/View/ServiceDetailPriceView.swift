@@ -87,13 +87,13 @@ class ServiceDetailPriceView: UIView,UITableViewDelegate,UITableViewDataSource {
 class ServiceDetailPriceCell: UITableViewCell {
   private var priceLabel = UILabel().then { label in
     label.textColor = .white
-    label.font = UIFont(.AvenirHeavy,36)
+    label.font = UIFont(name: .AvenirHeavy,size: 36)
     label.lineHeight = 44
     label.backgroundColor = .clear
   }
   private var durationLabel = UILabel().then { label in
     label.textColor = .white.withAlphaComponent(0.8)
-    label.font = UIFont(.AvenirHeavy,18)
+    label.font = UIFont(name: .AvenirHeavy,size: 18)
     label.lineHeight = 28
     label.backgroundColor = .clear
   }

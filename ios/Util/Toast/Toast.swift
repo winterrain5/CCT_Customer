@@ -62,7 +62,7 @@ class Toast:NSObject {
     }
     SVProgressHUD.setImageViewSize(CGSize(width: 50, height: 47))
     SVProgressHUD.setInfoImage(UIImage(named: imageName)!)
-    SVProgressHUD.setFont(UIFont(.AvenirNextMedium,14))
+    SVProgressHUD.setFont(UIFont(name: .AvenirNextMedium,size: 14))
     SVProgressHUD.setMinimumSize(CGSize(width: 190, height: 130))
     SVProgressHUD.showInfo(withStatus: message)
     

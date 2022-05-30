@@ -70,7 +70,7 @@ class FeedbackFormContainer: UIView,UITextFieldDelegate,TTGTextTagCollectionView
   }
   
   func addTags(_ text:String,_ size:CGSize, _ tagView:TTGTextTagCollectionView? = nil) {
-    let content = TTGTextTagStringContent(text: text, textFont: UIFont(.AvenirNextDemiBold,16), textColor: R.color.black333())
+    let content = TTGTextTagStringContent(text: text, textFont: UIFont(name: .AvenirNextDemiBold, size:16), textColor: R.color.black333())
     let style = TTGTextTagStyle()
     style.backgroundColor = R.color.placeholder()!
     style.cornerRadius = size.width * 0.5
@@ -80,7 +80,7 @@ class FeedbackFormContainer: UIView,UITextFieldDelegate,TTGTextTagCollectionView
     style.borderWidth = 0
     style.shadowColor = .clear
     
-    let selectContent = TTGTextTagStringContent(text: text, textFont: UIFont(.AvenirNextDemiBold,16), textColor: .white)
+    let selectContent = TTGTextTagStringContent(text: text, textFont: UIFont(name: .AvenirNextDemiBold, size:16), textColor: .white)
     let selectedStyle = style.copy() as! TTGTextTagStyle
     selectedStyle.backgroundColor = R.color.theamBlue()!
     
@@ -139,7 +139,7 @@ class FeedbackFormContainer: UIView,UITextFieldDelegate,TTGTextTagCollectionView
     NetworkManager().request(params: params) { data in
       sender.stopAnimation()
       Toast.showSuccess(withStatus: "Submit Successful")
-      UIViewController.getTopVC()?.navigationController?.popViewController()
+      UIViewController.getTopVc()?.navigationController?.popViewController()
     } errorHandler: { e in
       sender.stopAnimation()
     }

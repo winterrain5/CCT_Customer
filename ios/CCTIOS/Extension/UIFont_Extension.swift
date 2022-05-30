@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import UIKit
 enum AvenirNextName:String {
   case AvenirNextRegular = "AvenirNext-Regular"
   case AvenirNextItalic = "AvenirNext-Italic"
@@ -38,7 +38,7 @@ enum AvenirNextName:String {
  "*/
 
 extension UIFont {
-  convenience init(_ name:AvenirNextName,_ size:CGFloat)  {
+  convenience init(name:AvenirNextName,size:CGFloat)  {
     self.init(name: name.rawValue, size: size)!
   }
 }

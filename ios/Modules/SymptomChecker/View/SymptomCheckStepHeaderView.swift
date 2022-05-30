@@ -11,7 +11,7 @@ class SymptomCheckStepHeaderView: UIView {
   private var label = UILabel().then { label in
     label.textColor = .white
     label.lineHeight = 36
-    label.font = UIFont(.AvenirNextDemiBold,24)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:24)
     label.numberOfLines = 0
   }
   var title:String = "" {

@@ -13,7 +13,7 @@ class WalletPaymentMethodController: BaseTableController {
   lazy var headLabel = UILabel().then { label in
     label.text = "Payment Method"
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(.AvenirNextDemiBold,18)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:18)
   }
   lazy var headView = UIView().then { view in
     view.backgroundColor = .white
@@ -30,7 +30,7 @@ class WalletPaymentMethodController: BaseTableController {
     btn.titleForNormal = "Done"
     btn.cornerRadius = 22
     btn.titleColorForNormal = .white
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.addTarget(self, action: #selector(doneAction), for: .touchUpInside)
   }
   
@@ -39,7 +39,7 @@ class WalletPaymentMethodController: BaseTableController {
     btn.backgroundColor = .white
     btn.titleForNormal = "Add Card"
     btn.titleColorForNormal = R.color.theamRed()
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.addTarget(self, action: #selector(addCardAction), for: .touchUpInside)
     
   }
@@ -58,7 +58,7 @@ class WalletPaymentMethodController: BaseTableController {
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decodeByCodable([WalletPaymentMethodModel].self, from: data),let methods = models.first?.method_lines {
+      if let models = DecodeManager.decodeArrayByHandJSON(WalletPaymentMethodModel.self, from: data),let methods = models.first?.method_lines {
         self.cardModel = models.first
         
         if methods.count != 0 {
@@ -135,7 +135,9 @@ class WalletPaymentMethodController: BaseTableController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withClass: WalletPaymentMethodCell.self)
     if self.dataArray.count > 0 {
-      cell.model = self.dataArray[indexPath.row] as? MethodLines
+      let model = self.dataArray[indexPath.row] as? MethodLines
+      model?.type = 2
+      cell.model = model
       cell.deleteHandler = { [weak self] model in
         self?.delete(model)
       }

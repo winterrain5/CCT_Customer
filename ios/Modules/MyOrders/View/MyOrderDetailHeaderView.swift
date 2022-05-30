@@ -96,9 +96,9 @@ class MyOrderDetailHeaderView: UIView,UITableViewDelegate,UITableViewDataSource 
         guard let `self` = self else { return }
         if model.product_category == "2" {
           let vc = FeedbackFormController(bookingTimeId: model.source_id ?? "")
-          UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+          UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
         }else {
-          ProductLeaveReviewSheetView().showView(from: (UIViewController.getTopVC()?.view)!, with: self.model, leaveReviewPoints: self.leaveReviewPoints)
+          ProductLeaveReviewSheetView().showView(from: (UIViewController.getTopVc()?.view)!, with: self.model, leaveReviewPoints: self.leaveReviewPoints)
         }
         
       }

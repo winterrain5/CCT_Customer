@@ -11,14 +11,14 @@ class AlertView: UIView {
 
   private var titleLabel = UILabel().then { label in
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(.AvenirNextDemiBold,18)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:18)
     label.textAlignment = .center
     label.numberOfLines = 2
     label.lineHeight = 28
   }
   private var messageLabel = UILabel().then { label in
     label.textColor = R.color.black333()
-    label.font = UIFont(.AvenirNextRegular,16)
+    label.font = UIFont(name:.AvenirNextRegular,size:16)
     label.numberOfLines = 0
     label.lineHeight = 24
   }
@@ -26,14 +26,14 @@ class AlertView: UIView {
     btn.cornerRadius = 22
     btn.backgroundColor = UIColor(hexString: "e0e0e0")
     btn.titleColorForNormal = R.color.black333()
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.titleForNormal = "Cancel"
   }
   private var rightButton = UIButton().then { btn in
     btn.cornerRadius = 22
     btn.backgroundColor = R.color.theamRed()
     btn.titleColorForNormal = .white
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.titleForNormal = "Confirm"
   }
   private var messageAlignment:NSTextAlignment = .left {
@@ -131,6 +131,15 @@ class AlertView: UIView {
     rightButton.titleForNormal = ""
   }
   
+  func config(with title:String,message:NSMutableAttributedString,leftButtonTitle:String,rightButtonTitle:String) {
+    leftButton.isHidden = false
+    rightButton.isHidden = false
+    titleLabel.text = title
+    messageLabel.attributedText = message
+    leftButton.titleForNormal = leftButtonTitle
+    rightButton.titleForNormal = rightButtonTitle
+  }
+  
   static func show(title:String,
                    message:String = "",
                    leftButtonTitle:String = "Cancel",
@@ -145,7 +154,7 @@ class AlertView: UIView {
     view.rightHandler = rightHandler
     view.dismissHandler = dismissHandler
     view.messageAlignment = messageAlignment
-    let titleHeight = title.heightWithConstrainedWidth(width: kScreenWidth - 48, font: UIFont(.AvenirNextDemiBold,18))
+    let titleHeight = title.heightWithConstrainedWidth(width: kScreenWidth - 48, font: UIFont(name: .AvenirNextDemiBold, size:18))
     let messageHeight = view.messageLabel.sizeThatFits(CGSize(width: kScreenWidth - 48, height: .infinity)).height
     
     let extraHeight = 170.cgFloat + kBottomsafeAreaMargin
@@ -159,7 +168,7 @@ class AlertView: UIView {
     view.config(with: title, message: message)
     view.dismissHandler = dismissHandler
     view.messageAlignment = messageAlignment
-    let titleHeight = title.heightWithConstrainedWidth(width: kScreenWidth - 48, font: UIFont(.AvenirNextDemiBold,18))
+    let titleHeight = title.heightWithConstrainedWidth(width: kScreenWidth - 48, font: UIFont(name: .AvenirNextDemiBold, size:18))
     let messageHeight = view.messageLabel.sizeThatFits(CGSize(width: kScreenWidth - 48, height: .infinity)).height
      
     let extraHeight = kBottomsafeAreaMargin + 80
@@ -179,6 +188,31 @@ class AlertView: UIView {
     let size = CGSize(width: kScreenWidth, height: totalHeight)
     EntryKit.display(view: view, size: size, style: .sheet, backgroundColor: R.color.blackAlpha8()!, touchDismiss: true)
   }
+  
+  static func show(title:String,
+                   message:NSMutableAttributedString ,
+                   leftButtonTitle:String,
+                   rightButtonTitle:String,
+                   messageAlignment:NSTextAlignment,
+                   leftHandler:(()->())? = nil,
+                   rightHandler:(()->())? = nil,
+                   dismissHandler:(()->())? = nil) {
+    let view = AlertView()
+    view.config(with: title, message: message,leftButtonTitle: leftButtonTitle,rightButtonTitle: rightButtonTitle)
+    view.leftHandler = leftHandler
+    view.rightHandler = rightHandler
+    view.dismissHandler = dismissHandler
+    view.messageAlignment = messageAlignment
+    let titleHeight = title.heightWithConstrainedWidth(width: kScreenWidth - 48, font: UIFont(name: .AvenirNextDemiBold, size:18))
+    let messageHeight = view.messageLabel.sizeThatFits(CGSize(width: kScreenWidth - 48, height: .infinity)).height
+    
+    let extraHeight = 170.cgFloat + kBottomsafeAreaMargin
+    let totalHeight = titleHeight + messageHeight + extraHeight
+    let size = CGSize(width: kScreenWidth, height: totalHeight)
+    EntryKit.display(view: view, size: size, style: .sheet, backgroundColor: R.color.blackAlpha8()!, touchDismiss: true)
+  }
+  
+  
   
   static func show(message:NSMutableAttributedString,messageAlignment:NSTextAlignment = .left,dismissHandler:(()->())? = nil) {
     let view = AlertView()

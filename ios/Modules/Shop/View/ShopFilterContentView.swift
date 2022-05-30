@@ -113,7 +113,7 @@ class ShopFilterContentView: UIView,TTGTextTagCollectionViewDelegate,RangeSlider
   }
   
   func addTags(_ text:String,_ tagView:TTGTextTagCollectionView,_ exactWidth:CGFloat = 0) {
-    let content = TTGTextTagStringContent(text: text, textFont: UIFont(.AvenirNextRegular,14), textColor: UIColor(hexString: "#828282")!)
+    let content = TTGTextTagStringContent(text: text, textFont: UIFont(name:.AvenirNextRegular,size:14), textColor: UIColor(hexString: "#828282")!)
     let style = TTGTextTagStyle()
     style.backgroundColor = .white
     style.cornerRadius = 13
@@ -125,7 +125,7 @@ class ShopFilterContentView: UIView,TTGTextTagCollectionViewDelegate,RangeSlider
     style.borderColor = UIColor(hexString: "#828282")!
     style.shadowColor = .clear
     
-    let selectContent = TTGTextTagStringContent(text: text, textFont: UIFont(.AvenirNextDemiBold,14), textColor: .white)
+    let selectContent = TTGTextTagStringContent(text: text, textFont: UIFont(name: .AvenirNextDemiBold, size:14), textColor: .white)
     let selectedStyle = style.copy() as! TTGTextTagStyle
     selectedStyle.backgroundColor = R.color.theamBlue()!
     selectedStyle.borderWidth = 0

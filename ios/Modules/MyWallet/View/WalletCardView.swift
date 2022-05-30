@@ -157,6 +157,6 @@ class WalletCardView: UIView {
   @IBAction func topUpButtonAction(_ sender: Any) {
     
     let vc = WalletTopUpController()
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
 }

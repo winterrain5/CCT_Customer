@@ -42,7 +42,7 @@ class CardUserDetailHeadView: UIView {
          self.deleteUserFromWalletNotification()
          
        } errorHandler: { e in
-         UIViewController.getTopVC()?.navigationController?.popViewController()
+         UIViewController.getTopVc()?.navigationController?.popViewController()
        }
      } dismissHandler: {
        
@@ -61,9 +61,9 @@ class CardUserDetailHeadView: UIView {
 
     NetworkManager().request(params: params) { data in
       Toast.dismiss()
-      UIViewController.getTopVC()?.navigationController?.popViewController()
+      UIViewController.getTopVc()?.navigationController?.popViewController()
     } errorHandler: { e in
-      UIViewController.getTopVC()?.navigationController?.popViewController()
+      UIViewController.getTopVc()?.navigationController?.popViewController()
     }
   }
   

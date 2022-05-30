@@ -98,13 +98,13 @@ class TransactionDetailController: BaseTableController {
 class TransactionDetailHeaderView: UIView {
   var invoiceLabel = UILabel().then { label in
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(.AvenirNextDemiBold,24)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:24)
     label.text = "#INVXXXXXX1"
     label.isSkeletonable = true
   }
   var dateLabel = UILabel().then { label in
     label.textColor = R.color.black333()
-    label.font = UIFont(.AvenirNextRegular,16)
+    label.font = UIFont(name:.AvenirNextRegular,size:16)
     label.text = "15 Dec 2020, Friday"
     label.isSkeletonable = true
   }
@@ -146,24 +146,24 @@ class TransactionDetailHeaderView: UIView {
 class TransactionDetailCell: UITableViewCell {
   var productNameLabel = UILabel().then { label in
     label.textColor = R.color.black333()
-    label.font = UIFont(.AvenirNextDemiBold,14)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:14)
     label.numberOfLines = 0
     label.text = "Wellness Massage (60 min)"
   }
   var priceLabel = UILabel().then { label in
     label.textColor = R.color.black333()
-    label.font = UIFont(.AvenirNextDemiBold,14)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:14)
     label.text = "$180.00"
     label.textAlignment = .right
   }
   var discountHeadLabel = UILabel().then { label in
     label.textColor = R.color.black333()
-    label.font = UIFont(.AvenirNextRegular,14)
+    label.font = UIFont(name:.AvenirNextRegular,size:14)
     label.text = "Discount"
   }
   var discountLabel = UILabel().then { label in
     label.textColor = R.color.black333()
-    label.font = UIFont(.AvenirNextRegular,14)
+    label.font = UIFont(name:.AvenirNextRegular,size:14)
     label.text = "-$180.00"
   }
   

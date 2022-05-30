@@ -13,7 +13,7 @@ class SymptomCheckTreamentPlanWebController: BaseViewController,WKNavigationDele
     view.backgroundColor = .white
     
     let btn = UIButton()
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.titleForNormal = "Book an Appointment"
     btn.titleColorForNormal = R.color.white()
     btn.cornerRadius = 22
@@ -56,7 +56,7 @@ class SymptomCheckTreamentPlanWebController: BaseViewController,WKNavigationDele
         AlertView.show(message: "If you delay cancelling more than 3 times, your in app reservation permission will be suspended.")
       }else {
         let vc = RNBridgeViewController(RNPageName: "BookAppointmentActivity", RNProperty: ["select_type":"0"])
-        UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+        UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
       }
     } errorHandler: { e in
       Toast.dismiss()

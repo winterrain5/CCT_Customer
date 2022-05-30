@@ -16,12 +16,12 @@ enum ShopDataType {
 class ShopCollectionCell: UITableViewCell,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource {
   var typeLabel = UILabel().then { label in
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(.AvenirNextDemiBold,24)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:24)
     label.lineHeight = 36
   }
   var viewButton = UIButton().then { btn in
     btn.titleForNormal = "View All"
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.titleColorForNormal = R.color.theamRed()
   }
   lazy var layout = PagingCollectionViewLayout().then { layout in
@@ -97,7 +97,7 @@ class ShopCollectionCell: UITableViewCell,UICollectionViewDelegateFlowLayout,UIC
   
   @objc func viewButtonAction() {
     let vc = ShopViewAllController(dataType: dataType)
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
   
   required init?(coder: NSCoder) {
@@ -158,7 +158,7 @@ class ShopCollectionCell: UITableViewCell,UICollectionViewDelegateFlowLayout,UIC
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let id = self.datas[indexPath.item].id
     let vc = ShopDetailController(productId: id)
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
   
   func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

@@ -10,7 +10,7 @@ import UIKit
 class FillInEnquiryFromSelectSubjectSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
 
   private var titleLabel = UILabel().then { label in
-    label.font = UIFont(.AvenirNextDemiBold,18)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:18)
     label.textColor = R.color.theamBlue()
     label.text = "Select Subjects"
   }
@@ -94,7 +94,7 @@ class FillInEnquiryFromSelectSubjectSheetView: UIView,UITableViewDataSource,UITa
     let cell = tableView.dequeueReusableCell(withClass: UITableViewCell.self)
     if datas.count > 0 {
       cell.textLabel?.textColor = R.color.black333()
-      cell.textLabel?.font = UIFont(.AvenirNextRegular,16)
+      cell.textLabel?.font = UIFont(name:.AvenirNextRegular,size:16)
       cell.textLabel?.text = datas[indexPath.row].subject
     }
     return cell

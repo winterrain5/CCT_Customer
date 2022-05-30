@@ -43,6 +43,6 @@ class ShareTool {
     let activityViewController:UIActivityViewController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
     activityViewController.excludedActivityTypes = [.postToWeibo,  .addToReadingList, .postToVimeo,.addToReadingList,.saveToCameraRoll,.assignToContact]
 
-    UIViewController.getTopVC()?.present(activityViewController, animated: true, completion: nil)
+    UIViewController.getTopVc()?.present(activityViewController, animated: true, completion: nil)
   }
 }

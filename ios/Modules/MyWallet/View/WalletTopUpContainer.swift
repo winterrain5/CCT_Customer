@@ -574,12 +574,12 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
   
   func popBack() {
     Toast.showSuccess(withStatus: "Top Up Success")
-    UIViewController.getTopVC()?.navigationController?.popViewController()
+    UIViewController.getTopVc()?.navigationController?.popViewController()
   }
   
   @IBAction func selectPaymethodAction(_ sender: Any) {
     let vc = WalletPaymentMethodController()
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
   
   func reloadPaymentMethod() {

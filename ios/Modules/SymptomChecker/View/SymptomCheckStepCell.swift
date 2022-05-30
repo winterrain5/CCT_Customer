@@ -10,7 +10,7 @@ import UIKit
 class SymptomCheckStepCell: UITableViewCell {
 
   private var titleLabel = UILabel().then { label in
-    label.font = UIFont(.AvenirHeavy,16)
+    label.font = UIFont(name: .AvenirHeavy,size: 16)
     label.textAlignment = .center
     label.cornerRadius = 16
     label.text = "Difficulty In Moving"

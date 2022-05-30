@@ -15,7 +15,7 @@ class SymptomCheckEmailMeController: BaseTableController {
     btn.cornerRadius = 22
     btn.backgroundColor = R.color.theamRed()
     btn.titleColorForNormal = .white
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.titleForNormal = "Send"
   }
   init(result:[Int:[SymptomCheckStepModel]] = [:]) {

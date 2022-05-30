@@ -280,11 +280,11 @@ export default class ConfirmBookActivity extends Component {
 
     if (this.state.select_type == 0 ) {
       methodName = 'saveDocTData';
+    }else  if (this.state.select_type == 1) {
+      methodName = 'saveAppRandonData'
     }else {
-      methodName = 'saveTData';
+      methodName = 'saveAppAssignData';
     }
-
-
 
 
     var data = '<v:Envelope xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns:d="http://www.w3.org/2001/XMLSchema" xmlns:c="http://schemas.xmlsoap.org/soap/encoding/" xmlns:v="http://schemas.xmlsoap.org/soap/envelope/"><v:Header /><v:Body><n0:'+ methodName +' id="o0" c:root="1" xmlns:n0="http://terra.systems/"><data i:type="n1:Map" xmlns:n1="http://xml.apache.org/xml-soap">'+
@@ -317,7 +317,7 @@ export default class ConfirmBookActivity extends Component {
     '<item><key i:type="d:string">show_in_pos</key><value i:type="d:string">'+( this.state.select_type == 0 ? '0' : '1') +'</value></item>'+
     '<item><key i:type="d:string">staff_is_random</key><value i:type="d:string">'+ (this.state.select_type == 2 ? '2' : '1')+'</value></item>'+
     '<item><key i:type="d:string">create_uid</key><value i:type="d:string">'+ this.state.userBean.user_id +'</value></item>'+
-    '<item><key i:type="d:string">booking_staff_id</key><value i:type="d:string">'+ this.state.selsected_therapist.employee_id +'</value></item>'+
+    '<item><key i:type="d:string">booking_staff_id</key><value i:type="d:string">'+ (this.state.selsected_therapist != undefined ? this.state.selsected_therapist.employee_id : '') +'</value></item>'+
     '<item><key i:type="d:string">status</key><value i:type="d:string">1</value></item>'+
     '<item><key i:type="d:string">from</key><value i:type="d:string">app booking</value></item>'+
     '<item><key i:type="d:string">remark</key><value i:type="d:string">'+ (this.state.selsected_additional_note ? this.state.selsected_additional_note : '') +'</value></item>'+

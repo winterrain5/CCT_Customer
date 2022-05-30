@@ -11,12 +11,12 @@ class MadamPartumCell: UITableViewCell,UICollectionViewDelegateFlowLayout,UIColl
   var typeLabel = UILabel().then { label in
     label.text = "Service"
     label.textColor = UIColor(hexString: "#6F1E42")
-    label.font = UIFont(.AvenirNextDemiBold,24)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:24)
     label.lineHeight = 36
   }
   var viewButton = UIButton().then { btn in
     btn.titleForNormal = "view blog"
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.titleColorForNormal = R.color.theamRed()
   }
   lazy var layout = PagingCollectionViewLayout().then { layout in

@@ -71,7 +71,7 @@ class MadamPartumHeaderView: UIView,FSPagerViewDelegate,FSPagerViewDataSource {
     pagerView.deselectItem(at: index, animated: false)
     let model = datas[index]
     let vc = BlogDetailViewController(blogId: model.id ?? "", hasBook: model.has_booked)
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
 
   func pagerView(_ pagerView: FSPagerView, willDisplay cell: FSPagerViewCell, forItemAt index: Int) {

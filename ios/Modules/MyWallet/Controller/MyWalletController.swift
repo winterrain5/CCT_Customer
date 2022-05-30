@@ -30,8 +30,8 @@ class MyWalletController: BaseViewController {
     dataSource.isSelectedAnimable = true
     dataSource.titleSelectedColor = R.color.theamRed()!
     dataSource.titleNormalColor = .black
-    dataSource.titleSelectedFont = UIFont(.AvenirNextDemiBold,14)
-    dataSource.titleNormalFont = UIFont(.AvenirNextRegular,14)
+    dataSource.titleSelectedFont = UIFont(name: .AvenirNextDemiBold, size:14)
+    dataSource.titleNormalFont = UIFont(name:.AvenirNextRegular,size:14)
     dataSource.isItemSpacingAverageEnabled = true
     return dataSource
   }()
@@ -48,11 +48,16 @@ class MyWalletController: BaseViewController {
   
   
   lazy var segmentedView = JXSegmentedView().then { (segment) in
-    segment.defaultSelectedIndex = 0
     segment.dataSource = titleDataSource
     segment.delegate = self
     segment.indicators = [indicator]
     segment.backgroundColor = .clear
+  }
+  
+  private var defautIndex = 0
+  convenience init(defautIndex:Int = 0) {
+    self.init()
+    self.defautIndex = defautIndex
   }
   
   override func viewDidLoad() {
@@ -65,6 +70,8 @@ class MyWalletController: BaseViewController {
     
     segmentedView.dataSource = titleDataSource
     segmentedView.listContainer = paggingView.listContainerView
+    segmentedView.defaultSelectedIndex = defautIndex
+    
     let bottomLayer = CALayer()
     bottomLayer.backgroundColor = R.color.line()?.cgColor
     segmentedView.layer.addSublayer(bottomLayer)

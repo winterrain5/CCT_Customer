@@ -7,7 +7,7 @@
 
 import Foundation
 /// 导航栏高度
-let kNavBarHeight: CGFloat = iPhoneX() ? 88 : 64
+let kNavBarHeight: CGFloat = iPhoneX() ? 92 : 64
 /// tab栏高度
 let kTabBarHeight: CGFloat = iPhoneX() ? 83 : 49
 /// 底部安全区域

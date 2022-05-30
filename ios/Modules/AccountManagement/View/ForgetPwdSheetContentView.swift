@@ -44,7 +44,7 @@ class ForgetPwdSheetView: UIView {
       }.done {
         self.dismiss(complete: {
           let vc = ChangePwdController(type: .Reset,receiveEmail: self.recieveEmail,uuid: String(self.uuid))
-          UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+          UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
         })
         self.contentView.confirmButton.stopAnimation()
       }.catch { e in
@@ -202,7 +202,7 @@ class ForgetPwdSheetView: UIView {
   
   static func show() {
     
-    let spView = UIViewController.getTopVC()?.view
+    let spView = UIViewController.getTopVc()?.view
     
     let view = ForgetPwdSheetView()
     view.frame = spView?.bounds ?? .zero

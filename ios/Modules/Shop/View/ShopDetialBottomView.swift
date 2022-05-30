@@ -13,14 +13,14 @@ class ShopDetialBottomView: UIView {
     btn.backgroundColor = R.color.grayE0()
     btn.cornerRadius = 22
     btn.titleForNormal = "Add to Cart"
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.titleColorForNormal = R.color.black333()
   }
   var buyNowButton = UIButton().then { btn in
     btn.backgroundColor = R.color.theamRed()
     btn.cornerRadius = 22
     btn.titleForNormal = "Buy Now"
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
   }
   var addToCartHandler:(()->())!
   var buyNowHandler:(()->())!

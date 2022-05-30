@@ -61,6 +61,7 @@ enum API:String {
   case savePatientResults  = "savePatientResults";
   
   case getTClientPartInfo = "getTClientPartInfo"
+  case getTClientByUserId = "getTClientByUserId"
   //// 获取公司的发件邮箱地址
   case getTSystemConfig = "getTSystemConfig"
   //// 发送邮件
@@ -83,6 +84,7 @@ enum API:String {
   //// 获取所有分店地址
   case getAllMp = "getAllMp"
   case getTLocations = "getTLocations"
+  case getTCompany = "getTCompany"
   
   /// 获取公司的奖项和证书
   case getAwards = "getAwards"
@@ -187,7 +189,38 @@ enum API:String {
   case getClientPayPd = "getClientPayPd"
   /// 通过手机号获取一组用户信息
   case matchPhone = "matchPhone"
+  case getQueryData = "getQueryData"
+  case getParentCompanyBySysName = "getParentCompanyBySysName"
+  case getNotices = "getNotices"
+  case getAllCategories = "getAllCategories"
+  case getClientCategory = "getClientCategory"
+  case unDoNotices = "unDoNotices"
+  case deleteNotices = "deleteNotices"
+  case saveClientCategories = "saveClientCategories"
   
+  /// 服务记录
+  case getTSlotHistoryForApp = "getTSlotHistoryForApp"
+  case getTUpcomingAppointments = "getTUpcomingAppointments"
+  case getClientBookedServices = "getClientBookedServices"
+  case cancelAppointments = "cancelAppointments"
+  case getCanOnlineBookingLocations = "getCanOnlineBookingLocations"
+  case getServicesByLocation = "getServicesByLocation"
+  case getDocSchedulesForService = "getDocSchedulesForService"
+  case getBookingTimeSlots = "getBookingTimeSlots"
+  case getDocTimeSlots = "getDocTimeSlots"
+  case checkCanBookService = "checkCanBookService"
+  ///  保存在线预约服务
+  case saveTOnlineBookingData = "saveTData"
+  /// 保存在线预约服务(看诊)
+  case saveDocTData = "saveDocTData"
+  /// 根据服务的id获取员工信息
+  case getEmployeeForService = "getEmployeeForService"
+  /// Date和Time Slot: 选择某个员工后，根据员工和分店，获取他的排班数据
+  case getEmployeeSchedules = "getEmployeeSchedules"
+  /// 检查这段时间是否已经被其他顾客预约
+  case checkServiceStaff = "checkServiceStaff"
+  /// 选择date之后调用接口获取医师的id和Time Slot
+  case getTreatDoctorSchedules = "getTreatDoctorSchedules"
   
   // 物品购物车推送
   case itemsInCart = "itemsInCart";
@@ -207,7 +240,7 @@ enum API:String {
   case topupNote = "topupNote";
   //注册推送
   case welcomeNote = "welcomeNote";
-  //先建预约推送
+  //预约推送
   case newCreateAppointment = "newCreateAppointment";
 }
 
@@ -238,4 +271,14 @@ enum Action:String {
   case Employee = "employee"
   case StripePayment = "stripe-payment"
   case CardDiscountContent = "card-discount-content"
+  case Query = "query"
+  case BookingOrder = "booking-order"
+  case Schedule = "schedule"
+}
+
+struct WebUrl {
+  static let services = "http://info.chienchitow.com/services/"
+  static let conditionsWeTreat = "http://info.chienchitow.com/condition-we-treat/"
+  static let ourStory = "http://info.chienchitow.com/about-us/"
+
 }

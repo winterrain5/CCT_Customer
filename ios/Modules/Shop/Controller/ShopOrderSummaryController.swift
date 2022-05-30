@@ -12,7 +12,7 @@ class ShopOrderSummaryController: BaseViewController {
   private var scrollView = UIScrollView()
   private var textLabel = UILabel().then { label in
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(.AvenirNextDemiBold,24)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:24)
     label.text = "Your order has been confirmed!"
     label.textAlignment = .center
     label.numberOfLines = 2
@@ -23,7 +23,7 @@ class ShopOrderSummaryController: BaseViewController {
     btn.cornerRadius = 22
     btn.backgroundColor = R.color.theamRed()
     btn.titleColorForNormal = .white
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.titleForNormal = "Return to Shop"
   }
   private var id = ""

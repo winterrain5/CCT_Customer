@@ -16,16 +16,16 @@ class WellnessAppointmentTypeSelectShetView: UIView {
   
   @IBAction func selectDateTimeButtonAction(_ sender: Any) {
     EntryKit.dismiss {
-      let vc = RNBridgeViewController(RNPageName: "BookAppointmentActivity", RNProperty: ["select_type":"1"])
-      UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+      let vc = BookingAppointmentController(type: .DateTime)
+      UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
     }
   }
   
 
   @IBAction func selectATherapistButtonAction(_ sender: Any) {
     EntryKit.dismiss {
-      let vc = RNBridgeViewController(RNPageName: "BookAppointmentActivity", RNProperty: ["select_type":"2"])
-      UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+      let vc = BookingAppointmentController(type: .Therapist)
+      UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
     }
     
   }

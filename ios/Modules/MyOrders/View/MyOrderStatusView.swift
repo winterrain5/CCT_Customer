@@ -12,12 +12,12 @@ class MyOrderStatusView: UIView {
   var statusLabel = UILabel().then { label in
     label.textColor = .white
     label.cornerRadius = 13
-    label.font = UIFont(.AvenirNextDemiBold,12)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:12)
     label.textAlignment = .center
   }
   var textLabel = UILabel().then { label in
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(.AvenirNextDemiBold,24)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:24)
     label.text = "Order Summary"
     label.textAlignment = .center
   }

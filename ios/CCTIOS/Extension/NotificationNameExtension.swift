@@ -23,4 +23,10 @@ extension Notification.Name {
   static let shareBlog = Notification.Name(rawValue: "shareBlog")
   static let removeLocalData = Notification.Name(rawValue: "removeLocalData")
   static let reviewOrderComplete = Notification.Name(rawValue: "reviewOrderComplete")
+  
+  static let menuDidOpenVc = Notification.Name(rawValue: "menuDidOpenVc")
+  static let menuInfoShouldChange = Notification.Name(rawValue: "menuInfoShouldChange")
+  
+  static let bookingUpcomingLoad = Notification.Name(rawValue: "bookingUpcomingLoad")
+  static let bookingTodayLoaded = Notification.Name(rawValue: "bookingTodayLoaded")
 }

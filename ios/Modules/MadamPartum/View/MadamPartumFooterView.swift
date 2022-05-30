@@ -77,13 +77,13 @@ class MadamPartumFooterView: UIView,UITableViewDelegate,UITableViewDataSource {
   
   @IBAction func readMoreButtonAction(_ sender: Any) {
     let vc = MadamPartumStoryController()
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
   
   
   @IBAction func needMoreHelpButtonAction(_ sender: Any) {
     let vc = QuestionHelperController()
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
   
 }

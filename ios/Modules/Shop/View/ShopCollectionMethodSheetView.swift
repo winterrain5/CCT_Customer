@@ -14,7 +14,7 @@ class ShopCollectionMethodSheetView: UIView,UITableViewDelegate,UITableViewDataS
   var emptyString:NSAttributedString = {
     let str = "No Collection Method"
     let attr = NSMutableAttributedString(string: str)
-    attr.addAttribute(.font, value: UIFont(.AvenirNextRegular,16), range: NSRange(location: 0, length: str.count))
+    attr.addAttribute(.font, value: UIFont(name:.AvenirNextRegular,size:16), range: NSRange(location: 0, length: str.count))
     return attr
   }()
   var shouldDisplay = false
@@ -129,7 +129,7 @@ class ShopCollectionMethodCell:UITableViewCell {
     }
   }
   var nameLabel = UILabel().then { label in
-    label.font = UIFont(.AvenirNextDemiBold,16)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:16)
     label.cornerRadius = 16
     label.textAlignment = .center
   }

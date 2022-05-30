@@ -80,8 +80,8 @@ class BlogItemCell: UITableViewCell {
   func setAutherAttribute(_ name:String) {
     let str = "by \(name)"
     let attr = NSMutableAttributedString(string: str)
-    attr.addAttribute(.font, value: UIFont(.AvenirNextRegular,10), range: NSRange(location: 0, length: 2))
-    attr.addAttribute(.font, value: UIFont(.AvenirNextDemiBold,13), range: NSRange(location: 2, length: str.count - 2))
+    attr.addAttribute(.font, value: UIFont(name:.AvenirNextRegular,size:10), range: NSRange(location: 0, length: 2))
+    attr.addAttribute(.font, value: UIFont(name: .AvenirNextDemiBold, size:13), range: NSRange(location: 2, length: str.count - 2))
     blogAutherLabel.attributedText = attr
   }
   
@@ -95,7 +95,7 @@ class BlogItemCell: UITableViewCell {
   }
   
   func addTags(_ text:String) {
-    let content = TTGTextTagStringContent(text: text, textFont: UIFont(.AvenirNextRegular,12), textColor: UIColor(hexString: "333333"))
+    let content = TTGTextTagStringContent(text: text, textFont: UIFont(name:.AvenirNextRegular,size:12), textColor: UIColor(hexString: "333333"))
     let style = TTGTextTagStyle()
     style.backgroundColor = UIColor(hexString: "#FAF3EB")!
     style.cornerRadius = 13

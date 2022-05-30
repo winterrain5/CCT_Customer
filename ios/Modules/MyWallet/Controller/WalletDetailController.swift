@@ -137,7 +137,7 @@ class WalletDetailController: BaseTableController {
   }
   
   override func numberOfSections(in tableView: UITableView) -> Int {
-    return 2
+    return self.dataArray.count
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -260,19 +260,19 @@ class WalletDetailSectionView:UIView {
   var label = UILabel().then { label in
     label.text = "Card Users"
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(.AvenirNextDemiBold,18)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:18)
   }
   lazy var addButton = UIButton().then { btn in
     btn.titleForNormal = "+ Add Users"
     btn.titleColorForNormal = R.color.theamRed()
-    btn.titleLabel?.font = UIFont(.AvenirNextDemiBold,14)
+    btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.contentHorizontalAlignment = .right
     btn.addTarget(self, action: #selector(addAction), for: .touchUpInside)
   }
   var descLabel = UILabel().then { label in
     label.text = "You have not shared your card with your loved ones"
     label.textColor = R.color.black333()
-    label.font = UIFont(.AvenirNextRegular,14)
+    label.font = UIFont(name:.AvenirNextRegular,size:14)
     label.numberOfLines = 0
   }
   var type:CardBelongType = .User {
@@ -307,7 +307,7 @@ class WalletDetailSectionView:UIView {
   
   @objc func addAction() {
     let vc = WalletAddUserController()
-    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
   
   override func layoutSubviews() {
@@ -335,7 +335,7 @@ class WalletDetailFooterView: UIView {
   }
   var label = UILabel().then { label in
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(.AvenirNextDemiBold,18)
+    label.font = UIFont(name: .AvenirNextDemiBold, size:18)
   }
   lazy var arrowButton = UIButton().then { btn in
     btn.contentHorizontalAlignment = .right

@@ -322,9 +322,9 @@ extension BookingAppointmentController {
     Toast.showLoading()
     NetworkManager().request(params: params) { data in
       Toast.dismiss()
-      if let models = DecodeManager.decodeObjectByHandJSON(EmployeeForServiceModel.self, from: data) {
-        
-      }
+//      if let models = DecodeManager.decodeObjectByHandJSON(EmployeeForServiceModel.self, from: data) {
+//        
+//      }
     } errorHandler: { e in
       Toast.dismiss()
     }

@@ -70,7 +70,9 @@ extension UIViewController {
   
   static func getTopVc() -> UIViewController? {
     let VC = (self.getTopVC() as? SideMenuController)?.contentViewController
-    
+    if VC == nil {
+      return getTopVC()
+    }
     if let presentVC = VC?.presentedViewController {
         //modal出来的 控制器
         return getTopVC(withCurrentVC: presentVC)

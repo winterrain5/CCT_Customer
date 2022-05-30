@@ -104,10 +104,10 @@ export default class BookAppointmentActivity extends Component {
       });
 
 
-      if (this.props.select_type && this.props.select_type == 1) {
+      // if (this.props.select_type && this.props.select_type == 1) {
 
-           this.getBusiness();
-      }
+      //      this.getBusiness();
+      // }
 
     }else {
      
@@ -123,10 +123,10 @@ export default class BookAppointmentActivity extends Component {
       });
 
 
-      if (this.props.route.params.select_type && this.props.route.params.select_type == 1) {
+      // if (this.props.route.params.select_type && this.props.route.params.select_type == 1) {
 
-           this.getBusiness();
-      }
+      //      this.getBusiness();
+      // }
     }
 
    
@@ -550,7 +550,13 @@ _therapist_renderItem = (item) => {
           activeOpacity = {0.8}
           onPress = {this.selectedTherapist.bind(this,item)}>
 
-          <Text style = {styles.text_popup_content}>{item.item.employee_name}</Text>
+          <View style = {styles.view_pop_therapist}>
+
+             <Text style = {styles.text_popup_content}>{item.item.employee_name}</Text>
+
+          </View>
+
+         
 
 
           <View style = {styles.view_item_line}/>
@@ -595,13 +601,31 @@ _therapist_renderItem = (item) => {
 
       }else {
 
-        if (this.state.selsected_therapist) {
+        if (this.state.select_type == 1) {
 
-          this.getEmployeeDutyDates();
+            if (this.state.selsected_service != undefined) {
+
+              this.getRandomDutyDates();
+
+            }else {
+
+              toastShort('Please select a service');
+
+            }
+
 
         }else {
-          toastShort('Please select a therapist');
-        }
+
+          if (this.state.selsected_therapist) {
+
+            this.getEmployeeDutyDates();
+
+          }else {
+            toastShort('Please select a therapist');
+          }
+
+
+        }  
 
       }
     }else {
@@ -645,6 +669,47 @@ _therapist_renderItem = (item) => {
 
 
   }
+
+
+  getRandomDutyDates(){
+
+    var data = '<v:Envelope xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns:d="http://www.w3.org/2001/XMLSchema" xmlns:c="http://schemas.xmlsoap.org/soap/encoding/" xmlns:v="http://schemas.xmlsoap.org/soap/envelope/">'+
+    '<v:Header />'+
+    '<v:Body>'+
+    '<n0:getRandomDutyDates id="o0" c:root="1" xmlns:n0="http://terra.systems/">'+
+    '<gender i:type="d:string">'+ this.state.userBean.gender +'</gender>'+
+    '<serviceId i:type="d:string">'+ this.state.selsected_service.id +'</serviceId>'+
+    '<locationId i:type="d:string">'+ this.state.selsected_outlet.id +'</locationId>'+
+    '</n0:getRandomDutyDates></v:Body></v:Envelope>';
+    var temporary = this;
+    Loading.show();
+    nativeBridge.log('getRandomDutyDates');
+    WebserviceUtil.getQueryDataResponse('schedule','getRandomDutyDatesResponse',data, function(json) {
+
+        Loading.hidden();
+
+        if (json && json.success == 1 && json.data && json.data.length > 0) {
+
+              temporary.setState({
+                duty_dates:json.data
+              });
+
+              temporary.showSelectedDatePopup();
+
+        }else {
+          
+           toastShort('There is no right date!');
+
+        }
+
+
+    });      
+
+
+  }
+
+
+
 
 
   getEmployeeDutyDates(){
@@ -1029,20 +1094,23 @@ _therapist_renderItem = (item) => {
 
       if (this.state.selsected_service) {
 
-         if (this.state.selsected_therapist || this.state.select_type == 0) {
+        if (this.state.selsected_date != undefined) {
 
+          if (this.state.select_type == 1) {
 
-            if (this.state.selsected_date) {
+            this.getRandomTimeSlots();
 
-                this.getBookingTimeSlots();
+          }else {
 
-            }else {
-               toastShort('Please select a date');
-            }
+            this.getBookingTimeSlots();
+          }
+
         }else {
-            toastShort('Please select a therapist');
-        }
 
+          toastShort('Please select a date');
+
+        }
+  
       }else {
          toastShort('Please select a service');
       }
@@ -1091,9 +1159,51 @@ _therapist_renderItem = (item) => {
 
     });      
 
+  }
+
+
+  getRandomTimeSlots(){
+
+
+    var data = '<v:Envelope xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns:d="http://www.w3.org/2001/XMLSchema" xmlns:c="http://schemas.xmlsoap.org/soap/encoding/" xmlns:v="http://schemas.xmlsoap.org/soap/envelope/">'+
+    '<v:Header />'+
+    '<v:Body><n0:getRandomTimeSlots id="o0" c:root="1" xmlns:n0="http://terra.systems/">'+
+    '<companyId i:type="d:string">'+ this.state.head_company_id +'</companyId>'+
+    '<gender i:type="d:string">'+this.state.userBean.gender +'</gender>'+
+    '<serviceId i:type="d:string">'+ this.state.selsected_service.id +'</serviceId>'+
+    '<date i:type="d:string">'+this.state.selsected_date +'</date>'+
+    '<locationId i:type="d:string">'+ this.state.selsected_outlet.id +'</locationId>'+
+    '</n0:getRandomTimeSlots></v:Body></v:Envelope>';
+
+    var temporary = this;
+    Loading.show();
+    nativeBridge.log('getRandomTimeSlots');
+    WebserviceUtil.getQueryDataResponse('schedule','getRandomTimeSlotsResponse',data, function(json) {
+
+        Loading.hidden();
+
+        if (json && json.success == 1 && json.data && json.data.length > 0) {
+
+              temporary.setState({
+                time_slots:json.data
+              });
+
+              temporary.showSelectedTimePopup(json.data);
+
+        }else {
+          
+           toastShort('There is no right time!');
+
+        }
+
+
+    });      
+
 
 
   }
+
+
 
 
 clickNoSee(){
@@ -1225,6 +1335,58 @@ selectedTimeSlot(item){
 
   clickConfim(){
 
+
+    if (this.state.selsected_outlet == undefined) {
+      toastShort('Please select a outlet');
+      return;
+    }
+
+
+    if (this.state.selsected_service == undefined) {
+      toastShort('Please select a service');
+      return;
+    }
+
+
+    if (this.state.select_type == 2) {
+
+      if (this.state.selsected_service == undefined) {
+        toastShort('Please select a therapist');
+        return;
+      }
+    }
+
+
+    if (this.state.selsected_date == undefined) {
+      toastShort('Please select a date');
+      return;
+    }
+
+
+    if (this.state.selsected_time_slot == undefined) {
+      toastShort('Please select a time slots');
+      return;
+    }
+
+    Loading.show();
+    if (this.state.select_type == 0) {
+
+      this.checkConsulted();
+
+    }else if (this.state.select_type == 1){
+
+      this.checkRandomBookService();   
+
+    }else {
+
+       this.checkCanBookService();
+
+    }
+
+
+
+
+
     if (this.state.selsected_outlet && this.state.selsected_service && this.state.selsected_therapist && this.state.selsected_date && this.state.selsected_time_slot) {
 
 
@@ -1315,11 +1477,53 @@ selectedTimeSlot(item){
 
         }
 
+    });      
+
+  }
+
+
+  checkRandomBookService(){
+
+
+    var startTime = this.state.selsected_date + ' ' + this.state.selsected_time_slot + ':00';
+
+    var endTime = DateUtil.formatDateTime0(DateUtil.transdate(startTime) + parseInt(this.state.selsected_service.duration) * 60 * 1000);
+
+
+
+    var data = '<v:Envelope xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns:d="http://www.w3.org/2001/XMLSchema" xmlns:c="http://schemas.xmlsoap.org/soap/encoding/" xmlns:v="http://schemas.xmlsoap.org/soap/envelope/">'+
+    '<v:Header />'+
+    '<v:Body>'+
+    '<n0:checkRandomBookService id="o0" c:root="1" xmlns:n0="http://terra.systems/">'+
+    '<startTime i:type="d:string">'+ startTime +'</startTime>'+
+    '<endTime i:type="d:string">'+ endTime +'</endTime>'+
+    '<gender i:type="d:string">2</gender>'+
+    '<serviceId i:type="d:string">'+ this.state.selsected_service.id +'</serviceId>'+
+    '<date i:type="d:string">'+ this.state.selsected_date +'</date>'+
+    '<clientId i:type="d:string">'+ this.state.userBean.id +'</clientId>'+
+    '<locationId i:type="d:string">'+ this.state.selsected_outlet.id +'</locationId>'+
+    '</n0:checkRandomBookService></v:Body></v:Envelope>';
+    var temporary = this;
+  
+    WebserviceUtil.getQueryDataResponse('booking-order','checkRandomBookServiceResponse',data, function(json) {
+
+        Loading.hidden();
+
+        if (json && json.success == 1 && json.data == '0') {
+
+            // 可以进行预约
+            temporary.toConfirmBookActivity();
+        }else {
+          
+            // 无法进行预约
+            temporary.showErrorPopup();
+
+        }
 
     });      
 
-
   }
+
 
 
   showErrorPopup(){
@@ -1548,8 +1752,7 @@ selectedTimeSlot(item){
               contentOffset={{x: 0, y: 0}}>
 
 
-              <Text style = {styles.text_title}>Select by Preferred Slot</Text>
-
+              <Text style = {styles.text_title}>{this.state.select_type == 0 ? 'Register Treatment Appointment' : 'Book Wellness Appointment'}</Text>
 
 
 
@@ -1900,5 +2103,10 @@ const styles = StyleSheet.create({
     color:'#BDBDBD',
     fontWeight:'bold',
      textAlign :'center'
+  },
+  view_pop_therapist:{
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });

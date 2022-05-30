@@ -213,6 +213,14 @@ enum API:String {
   case saveTOnlineBookingData = "saveTData"
   /// 保存在线预约服务(看诊)
   case saveDocTData = "saveDocTData"
+  /// 根据服务的id获取员工信息
+  case getEmployeeForService = "getEmployeeForService"
+  /// Date和Time Slot: 选择某个员工后，根据员工和分店，获取他的排班数据
+  case getEmployeeSchedules = "getEmployeeSchedules"
+  /// 检查这段时间是否已经被其他顾客预约
+  case checkServiceStaff = "checkServiceStaff"
+  /// 选择date之后调用接口获取医师的id和Time Slot
+  case getTreatDoctorSchedules = "getTreatDoctorSchedules"
   
   // 物品购物车推送
   case itemsInCart = "itemsInCart";

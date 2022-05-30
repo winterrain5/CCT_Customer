@@ -313,6 +313,25 @@ extension BookingAppointmentController {
     }
   }
   
+  func getEmployeeForService() {
+    let params = SOAPParams(action: .Schedule, path: .getEmployeeForService)
+    params.set(key: "locationId", value: selectCompany?.id ?? "")
+    params.set(key: "serviceId", value: selectedService?.id ?? "")
+    params.set(key: "gender", value: Defaults.shared.get(for: .userModel)?.gender ?? "")
+    
+    Toast.showLoading()
+    NetworkManager().request(params: params) { data in
+      Toast.dismiss()
+      if let models = DecodeManager.decodeObjectByHandJSON(EmployeeForServiceModel.self, from: data) {
+        
+      }
+    } errorHandler: { e in
+      Toast.dismiss()
+    }
+
+    
+  }
+  
   func getDocSchedulesForService() {
     Toast.showLoading()
     let params = SOAPParams(action: .Schedule, path: .getDocSchedulesForService)

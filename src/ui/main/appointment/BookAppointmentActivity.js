@@ -552,8 +552,8 @@ _therapist_renderItem = (item) => {
 
           <View style = {styles.view_pop_therapist}>
 
-             <Text style = {styles.text_popup_content}>{item.item.employee_name}</Text>
-
+             <Text style = {styles.text_popup_therapist_content}>{item.item.employee_name}</Text>
+            <Text style = { {color:"#C44729"}}> {item.item.gender == 1 ? "(Male)" : "(Female)"} </Text>
           </View>
 
          
@@ -1886,8 +1886,8 @@ selectedTimeSlot(item){
 
               <View style = {styles.next_view}>
 
-                  <TouchableOpacity style = {[styles.next_layout,{backgroundColor: (this.state.selsected_outlet && this.state.selsected_service && this.state.selsected_therapist && this.state.selsected_date && this.state.selsected_time_slot) ? '#C44729' : '#BDBDBD'}]}  
-                      activeOpacity = {(this.state.selsected_outlet && this.state.selsected_service && this.state.selsected_therapist && this.state.selsected_date && this.state.selsected_time_slot) ? 0.8 : 1}
+                  <TouchableOpacity style = {[styles.next_layout,{backgroundColor: (this.state.selsected_outlet && this.state.selsected_service && this.state.selsected_date && this.state.selsected_time_slot) ? '#C44729' : '#BDBDBD'}]}  
+                      activeOpacity = {(this.state.selsected_outlet && this.state.selsected_service  && this.state.selsected_date && this.state.selsected_time_slot) ? 0.8 : 1}
                       onPress={this.clickConfim.bind(this)}>
 
 
@@ -2053,6 +2053,12 @@ const styles = StyleSheet.create({
     fontSize:16,
     color:'#333333'
   },
+  text_popup_therapist_content:{
+    marginTop:16,
+    marginBottom:16,
+    fontSize:16,
+    color:'#333333'
+  },
   view_item_line:{
     backgroundColor: "#E0E0E0",
     width: '100%',
@@ -2106,7 +2112,7 @@ const styles = StyleSheet.create({
   },
   view_pop_therapist:{
     flexDirection: 'row',
-    justifyContent: 'center',
+    width: "100%",
     alignItems: 'center'
   }
 });

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EmployeeForServiceModel: UIView {
+class EmployeeForServiceModel: BaseModel {
   
   var employee_name = ""
   var employee_id = ""

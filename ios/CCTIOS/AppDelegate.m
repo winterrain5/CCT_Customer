@@ -10,8 +10,25 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   
+  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  
+  
   SwiftyFitsize.sharedSwiftyFitsize.referenceW = 375;
   StripeAPI.defaultPublishableKey = [[APIHost alloc] init].STRIPE_PK_LIVE;
+  
+  [self configRootViewForRN:launchOptions];
+  
+//  [ApplicationUtil configRootViewController];
+  
+  
+  [self.window makeKeyAndVisible];
+  
+  [self setupNotification];
+  
+  return YES;
+}
+
+- (void)configRootViewForRN:(NSDictionary *)launchOptions {
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"CCTIOS"
@@ -21,22 +38,10 @@
   UIStoryboard *sb = [UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil];
   UIViewController *vc = [sb instantiateInitialViewController];
   rootView.loadingView = vc.view;
-//
-  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   MainViewController *rootViewController = [[MainViewController alloc] init];
-  
   rootViewController.view = rootView;
-  
   BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:rootViewController];
   self.window.rootViewController = nav;
-//  [ApplicationUtil configRootViewController];
-  
-  
-  [self.window makeKeyAndVisible];
-  
-  [self setupNotification];
-  
-  return YES;
 }
 
 - (void)setupNotification {
@@ -118,7 +123,7 @@
 #else
   self.url = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
-  
+  NSLog(@"source url: %@",self.url);
   return self.url;
 }
 

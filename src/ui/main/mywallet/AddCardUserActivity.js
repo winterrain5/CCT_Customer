@@ -345,12 +345,14 @@ export default class AddCardUserActivity extends Component {
     WebserviceUtil.getQueryDataResponse('notifications','addUserInWalletResponse',data, function(json) {
 
     
-         Loading.hidden();
-         toastShort('Add User Card Successfull');
-         DeviceEventEmitter.emit('user_card','ok');
+      
 
            
-    });      
+    });    
+    
+    Loading.hidden();
+    toastShort('Add User Card Successfull');
+    DeviceEventEmitter.emit('user_card','ok');
 
   }
 

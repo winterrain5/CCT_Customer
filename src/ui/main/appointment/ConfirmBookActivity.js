@@ -404,11 +404,13 @@ export default class ConfirmBookActivity extends Component {
         //Loading.hidden();
         //temporary.showBookSuccess();
 
-        //发送邮箱通知
-        temporary.endSmsForEmail();
+      
 
 
     });      
+
+      //发送邮箱通知
+      temporary.endSmsForEmail();
 
   }
 

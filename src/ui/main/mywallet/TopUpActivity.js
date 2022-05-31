@@ -738,11 +738,11 @@ export default class TopUpActivity extends Component {
     var temporary = this;
     WebserviceUtil.getQueryDataResponse('notifications','topupNoteResponse',data, function(json) {
     
-        temporary.deductionCreditsNote();
+       
         
     });      
     
-
+    temporary.deductionCreditsNote();
   }
 
   deductionCreditsNote(){
@@ -760,9 +760,11 @@ export default class TopUpActivity extends Component {
     WebserviceUtil.getQueryDataResponse('notifications','deductionCreditsNoteResponse',data, function(json) {
     
 
-        temporary.getTClientPartInfo();
+        
         
     });   
+
+    temporary.getTClientPartInfo();
 
   }
 

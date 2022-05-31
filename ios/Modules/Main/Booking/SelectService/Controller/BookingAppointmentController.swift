@@ -75,10 +75,13 @@ class BookingAppointmentController: BaseTableController {
   
   var result:[Int:[SymptomCheckStepModel]] = [:]
   
+  var footerAditonalH:CGFloat = 0
+  
   convenience init(type: ServiceType, result:[Int:[SymptomCheckStepModel]]) {
     self.init()
     self.type = type
     self.result = result
+    footerAditonalH = result.isEmpty ? 0 : 285
   }
   
   convenience init(type: ServiceType) {
@@ -88,7 +91,9 @@ class BookingAppointmentController: BaseTableController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-//    
+    
+    
+    
     self.view.backgroundColor = R.color.theamBlue()
     headView.addSubview(headLabel)
     headLabel.text = type == .DateTime ? "Select By Preferred Slot" : "Select By Preferred Therapist"
@@ -140,13 +145,18 @@ class BookingAppointmentController: BaseTableController {
     
     tableView?.tableFooterView = footView
     footView.footerView.isHidden = true
-    footView.size = CGSize(width: kScreenWidth, height: 200)
+    footView.size = CGSize(width: kScreenWidth, height: 200 + footerAditonalH)
     footView.syncCalendar = { [weak self]  isSelect in
       self?.isSyncCalendar = isSelect
     }
     footView.confirmHandler = { [weak self] sender in
       self?.checkCanBookService(sender: sender)
     }
+    var result:[[SymptomCheckStepModel]] = []
+    self.result.sorted(by: { $0.key < $01.key}).forEach { key,value in
+      result.append(value)
+    }
+    footView.result = result
     
     tableView?.register(cellWithClass: BookingServiceFormCell.self)
   }

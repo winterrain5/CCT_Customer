@@ -73,6 +73,14 @@ class BookingAppointmentController: BaseTableController {
   
   var isSyncCalendar:Bool = true
   
+  var result:[Int:[SymptomCheckStepModel]] = [:]
+  
+  convenience init(type: ServiceType, result:[Int:[SymptomCheckStepModel]]) {
+    self.init()
+    self.type = type
+    self.result = result
+  }
+  
   convenience init(type: ServiceType) {
     self.init()
     self.type = type

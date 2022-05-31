@@ -13,6 +13,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* CCTIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CCTIOSTests.m */; };
+		454576B22845C17B007410E9 /* TellUsCondiitonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454576B12845C17B007410E9 /* TellUsCondiitonController.swift */; };
 		454C5B37283B312D001D787C /* BookingServiceFormSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454C5B36283B312D001D787C /* BookingServiceFormSheetView.swift */; };
 		454C5B3C283B77AD001D787C /* BookingServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454C5B3B283B77AD001D787C /* BookingServiceModel.swift */; };
 		454C5B3E283B7E5D001D787C /* BookingDutyDateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454C5B3D283B7E5D001D787C /* BookingDutyDateModel.swift */; };
@@ -689,6 +690,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CCTIOS/main.m; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* CCTIOS-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCTIOS-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* CCTIOS-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CCTIOS-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		454576B12845C17B007410E9 /* TellUsCondiitonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellUsCondiitonController.swift; sourceTree = "<group>"; };
 		454C5B36283B312D001D787C /* BookingServiceFormSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingServiceFormSheetView.swift; sourceTree = "<group>"; };
 		454C5B3B283B77AD001D787C /* BookingServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingServiceModel.swift; sourceTree = "<group>"; };
 		454C5B3D283B7E5D001D787C /* BookingDutyDateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDutyDateModel.swift; sourceTree = "<group>"; };
@@ -1439,6 +1441,7 @@
 			isa = PBXGroup;
 			children = (
 				457CBA922837697E00AE26D8 /* BookingAppointmentController.swift */,
+				454576B12845C17B007410E9 /* TellUsCondiitonController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3817,6 +3820,7 @@
 				490CD5942809472B007F0F11 /* ShopSelectCouponOrVoucherController.swift in Sources */,
 				49E61D1C278ECFBE00B1C136 /* SymptomCheckLetGoContainer.swift in Sources */,
 				4998C035277EF51200A881D5 /* NSAttributedStringExtensions.swift in Sources */,
+				454576B22845C17B007410E9 /* TellUsCondiitonController.swift in Sources */,
 				4998BF2C277ED20D00A881D5 /* UIViewController+Swizzling.swift in Sources */,
 				4902025227DB349600E74415 /* WalletAddCardSheetContentView.swift in Sources */,
 				457CBA962837773300AE26D8 /* BookingServiceFormCell.swift in Sources */,

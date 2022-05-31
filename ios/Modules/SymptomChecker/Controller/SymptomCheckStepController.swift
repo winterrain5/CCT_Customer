@@ -12,8 +12,8 @@ class SymptomCheckStepController: BaseTableController {
     view.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 200)
   }
   private var stepTitleView = SymptomCheckStepTitleView()
-  private var selectIndexPath:IndexPath?
   private var category:Int = 1
+  private var selectIndexPath:IndexPath?
   private var result:[Int:[SymptomCheckStepModel]] = [:]
   private var questions:[String] = [
     "What symptoms are you experiencing?",
@@ -67,21 +67,26 @@ class SymptomCheckStepController: BaseTableController {
   
   override func backAction() {
     AlertView.show(title: "Are you sure you want to Exit?", rightHandler:  {
+      self.result.removeValue(forKey: self.category)
       self.navigationController?.popToRootViewController(animated: true)
     })
+
+
   }
   
   @objc func backButtonAction() {
-    result.removeValue(forKey: category)
-    category -= 1
-    if category == 0 {
+   
+    if category <= 1 {
       self.backAction()
       return
     }
+    
+    category -= 1
     result.removeValue(forKey: category)
     headerView.title = questions[category - 1]
     stepTitleView.progress.previous()
     loadNewData()
+    
   }
   
   @objc func nextButtonAction() {
@@ -133,7 +138,7 @@ class SymptomCheckStepController: BaseTableController {
     tableView?.register(cellWithClass: SymptomCheckStepCell.self)
     tableView?.contentInset = UIEdgeInsets(top: 28, left: 0, bottom: 104, right: 0)
     tableView?.rowHeight = 56
-    tableView?.corner(byRoundingCorners: [.topLeft,.topRight], radii: 16)
+    
   }
   override func listViewFrame() -> CGRect {
     return CGRect(x: 0, y: headerView.frame.maxY - 16, width: kScreenWidth, height: kScreenHeight - headerView.frame.maxY + 16)

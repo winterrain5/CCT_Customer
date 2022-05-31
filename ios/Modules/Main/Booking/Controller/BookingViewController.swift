@@ -141,11 +141,7 @@ class BookingViewController: BaseViewController {
   
   @objc func rightItemAction() {
     
-    BookingDateSheetView.show(dataArray: []) { index in
-      
-    }
-    
-//    getClientCancelCount()
+    getClientCancelCount()
     
   }
   

@@ -3448,6 +3448,7 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "booking_session_clendar", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_session_clendar' is used in nib 'ConfirmSessionContainer', but couldn't be loaded.") }
         if UIKit.UIImage(named: "booking_session_notice", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_session_notice' is used in nib 'ConfirmSessionContainer', but couldn't be loaded.") }
         if UIKit.UIImage(named: "booking_time", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_time' is used in nib 'ConfirmSessionContainer', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "booking_user", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_user' is used in nib 'ConfirmSessionContainer', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'ConfirmSessionContainer', but couldn't be loaded.") }
           if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'ConfirmSessionContainer', but couldn't be loaded.") }
@@ -4445,6 +4446,7 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if UIKit.UIImage(named: "booking_location", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_location' is used in nib 'TodaySessionCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "booking_time", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_time' is used in nib 'TodaySessionCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "booking_user", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_user' is used in nib 'TodaySessionCell', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'TodaySessionCell', but couldn't be loaded.") }
           if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'TodaySessionCell', but couldn't be loaded.") }

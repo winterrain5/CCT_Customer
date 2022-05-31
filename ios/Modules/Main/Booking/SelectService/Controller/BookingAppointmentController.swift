@@ -80,7 +80,7 @@ class BookingAppointmentController: BaseTableController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+//    
     self.view.backgroundColor = R.color.theamBlue()
     headView.addSubview(headLabel)
     headLabel.text = type == .DateTime ? "Select By Preferred Slot" : "Select By Preferred Therapist"
@@ -145,7 +145,7 @@ class BookingAppointmentController: BaseTableController {
   
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    tableView?.corner(byRoundingCorners: [.topLeft,.topRight], radii: 16)
+
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -198,9 +198,6 @@ extension BookingAppointmentController {
     getServiceByLocation()
   }
   @objc func selectTherapist() {
-    
-  }
-  @objc func selectDate() {
     if selectCompany == nil {
       Toast.showMessage("Please Select a outlet")
       return
@@ -208,6 +205,24 @@ extension BookingAppointmentController {
     if selectedService == nil {
       Toast.showMessage("Please Select a Service")
       return
+    }
+    getEmployeeForService()
+  }
+  @objc func selectDate() {
+  
+    if selectCompany == nil {
+      Toast.showMessage("Please Select a outlet")
+      return
+    }
+    if selectedService == nil {
+      Toast.showMessage("Please Select a Service")
+      return
+    }
+    if type == .Therapist {
+      if selectedEmployee == nil {
+        Toast.showMessage("Please Select a Therapist")
+        return
+      }
     }
     getDocSchedulesForService()
   }
@@ -220,7 +235,12 @@ extension BookingAppointmentController {
       Toast.showMessage("Please Select a Service")
       return
     }
-    
+    if type == .Therapist {
+      if selectedEmployee == nil {
+        Toast.showMessage("Please Select a Therapist")
+        return
+      }
+    }
     if selectedDate == nil {
       Toast.showMessage("Please Select a Date")
       return
@@ -257,7 +277,7 @@ extension BookingAppointmentController {
       self.footView.setConfirmButtonIsReady(false)
       
       self.selectCompany = self.companyModels[index]
-      self.models[0].title = self.companyModels[index].alias_name
+      self.models.filter({ $0.type == .outlet }).first?.title = self.companyModels[index].alias_name
       self.tableView?.reloadData()
     }
   }
@@ -287,28 +307,17 @@ extension BookingAppointmentController {
   }
   
   func showServiceSheetView() {
-    
-    if self.serviceModels.count == 1 {
-      
-      self.models[2].title = ""
-      self.models[3].title = ""
-      self.footView.setConfirmButtonIsReady(false)
-      
-      self.selectedService = self.serviceModels[0]
-      self.models[1].title = self.selectedService?.alias_name ?? ""
-      self.tableView?.reloadData()
-      return
-    }
-    
+ 
     let strs = self.serviceModels.map({ $0.alias_name })
     BookingServiceFormSheetView.show(dataArray: strs, type: .Service) { index in
       
-      self.models[2].title = ""
-      self.models[3].title = ""
+      self.models.filter({ $0.type == .date }).first?.title = ""
+      self.models.filter({ $0.type == .timeSlot }).first?.title = ""
+      self.models.filter({ $0.type == .therapist }).first?.title = ""
       self.footView.setConfirmButtonIsReady(false)
       
       self.selectedService = self.serviceModels[index]
-      self.models[1].title = self.selectedService?.alias_name ?? ""
+      self.models.filter({ $0.type == .service }).first?.title = self.selectedService?.alias_name ?? ""
       self.tableView?.reloadData()
     }
   }
@@ -322,14 +331,30 @@ extension BookingAppointmentController {
     Toast.showLoading()
     NetworkManager().request(params: params) { data in
       Toast.dismiss()
-      if let models = DecodeManager.decodeObjectByHandJSON(EmployeeForServiceModel.self, from: data) {
-
+      if let models = DecodeManager.decodeArrayByHandJSON(EmployeeForServiceModel.self, from: data) {
+        self.employeeModels = models
+        self.showEmployeeSheetView()
       }
     } errorHandler: { e in
       Toast.dismiss()
     }
 
     
+  }
+  
+  func showEmployeeSheetView() {
+    let strs = self.employeeModels.map({ $0.employee_name + "(\($0.gender == 1 ? "Male" : "Female"))" })
+    BookingServiceFormSheetView.show(dataArray: strs, type: .Therapist) { index in
+      
+      self.models.filter({ $0.type == .date }).first?.title = ""
+      self.models.filter({ $0.type == .timeSlot }).first?.title = ""
+      
+      self.footView.setConfirmButtonIsReady(false)
+      
+      self.selectedEmployee = self.employeeModels[index]
+      self.models.filter({ $0.type == .therapist }).first?.title = self.selectedEmployee?.employee_name ?? ""
+      self.tableView?.reloadData()
+    }
   }
   
   func getDocSchedulesForService() {
@@ -343,7 +368,6 @@ extension BookingAppointmentController {
         self.dutyDateModels = models
         self.showDateSheetView()
       }
-      Toast.dismiss()
     } errorHandler: { e in
       Toast.showMessage("There is no right date")
     }
@@ -351,14 +375,21 @@ extension BookingAppointmentController {
   }
   
   func showDateSheetView() {
+    if self.dutyDateModels.count == 0 {
+      Toast.showMessage("There is no right date")
+      return
+    }
+    Toast.dismiss()
     let strs = self.dutyDateModels.map({ $0.w_date })
     BookingDateSheetView.show(dataArray: strs) { date in
       
-      self.models[3].title = ""
+      self.models.filter({ $0.type == .timeSlot }).first?.title = ""
       self.footView.setConfirmButtonIsReady(false)
       
       self.selectedDate = date.string(withFormat: "yyyy-MM-dd")
-      self.models[2].title = date.string(withFormat: "dd MMM yyyy,EEE")
+      self.models.filter({ $0.type == .date }).first?.title = date.string(withFormat: "dd MMM yyyy,EEE")
+      
+      
       self.tableView?.reloadData()
     }
   }
@@ -377,7 +408,6 @@ extension BookingAppointmentController {
       let times = try? JSON.init(data: data).arrayObject as? [String]
       self.bookigTimeModels = times ?? []
       self.showTimeSheetView()
-      Toast.dismiss()
     } errorHandler: { e in
       Toast.showMessage("There is no right time")
     }
@@ -388,6 +418,7 @@ extension BookingAppointmentController {
       Toast.showMessage("There is no right time")
       return
     }
+    Toast.dismiss()
     let strs = self.bookigTimeModels.map({  e -> String in
       let sbs = e.split(separator: ":").first ?? ""
       if String(sbs).int ?? 0 > 12 {
@@ -401,7 +432,7 @@ extension BookingAppointmentController {
       self.footView.setConfirmButtonIsReady(true)
       
       self.selectedTime = self.bookigTimeModels[index]
-      self.models[3].title = strs[index]
+      self.models.filter({ $0.type == .timeSlot }).first?.title = strs[index]
       self.tableView?.reloadData()
       
       
@@ -493,6 +524,7 @@ extension BookingAppointmentController {
     params.remark = self.models.filter({ $0.type == .note }).first?.title ?? ""
     params.service_type = self.type
     params.business_id = selectedEmployee?.employee_id ?? ""
+    params.business_name = selectedEmployee?.employee_name ?? ""
     
     params.service_name = selectedService?.alias_name ?? ""
     params.service_id = selectedService?.id ?? ""

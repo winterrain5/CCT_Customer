@@ -21,33 +21,40 @@ class BookingHeadController: BaseViewController {
     label.lineHeight = 24
   }
   var sessionView = TodaySessionView()
+  var additionalH:CGFloat = 0
   var models:[BookingTodayModel] = [] {
     didSet {
+      additionalH = models.filter({ $0.staff_is_random == "2" }).count > 0 ? 28 : 0
       sessionView.models = models
+      layoutViews()
     }
   }
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.clipsToBounds = true
     self.view.addSubview(headLabel)
+  
+    self.view.addSubview(dateLabel)
+ 
+    self.view.addSubview(sessionView)
+  
+  }
+  
+  
+  func layoutViews() {
     headLabel.snp.makeConstraints { make in
       make.left.equalToSuperview().offset(24)
       make.top.equalToSuperview().offset(24)
     }
-    self.view.addSubview(dateLabel)
     dateLabel.snp.makeConstraints { make in
       make.left.equalToSuperview().offset(24)
       make.top.equalTo(headLabel.snp.bottom)
     }
-    self.view.addSubview(sessionView)
     sessionView.snp.makeConstraints { make in
       make.left.right.equalToSuperview()
       make.top.equalToSuperview().offset(94)
-      make.height.equalTo(216)
+      make.height.equalTo(216 + additionalH)
     }
   }
-  
-  
-  
   
 }

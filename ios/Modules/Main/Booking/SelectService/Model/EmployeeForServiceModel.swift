@@ -11,5 +11,6 @@ class EmployeeForServiceModel: BaseModel {
   
   var employee_name = ""
   var employee_id = ""
-  
+  // 1 male 2 female
+  var gender = 1
 }

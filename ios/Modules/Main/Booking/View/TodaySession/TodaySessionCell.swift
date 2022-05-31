@@ -15,12 +15,16 @@ class TodaySessionCell: UICollectionViewCell {
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var locationLabel: UILabel!
   @IBOutlet weak var timeLabel: UILabel!
+  @IBOutlet weak var employeeNameLabel: UILabel!
+  @IBOutlet weak var employeeView: UIView!
   var model:BookingTodayModel! {
     didSet {
       let date = model.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
       timeLabel.text = date?.timeString(ofStyle: .short)
       locationLabel.text = model.location_name
       nameLabel.text = model.alias_name
+      employeeNameLabel.text = model.staff_name
+      employeeView.isHidden = model.staff_is_random == "1"
       setNeedsLayout()
       layoutIfNeeded()
     }

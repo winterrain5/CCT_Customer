@@ -7,18 +7,29 @@
 
 import UIKit
 import CHIPageControl
-class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelegate {
+class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+  
   var models:[BookingTodayModel] = [] {
     didSet {
+      let addtionalH = models.filter({ $0.staff_is_random == "2" }).count > 0 ? 28 : 0
+      collectionView.snp.makeConstraints { make in
+        make.left.right.top.equalToSuperview()
+        make.height.equalTo(196 + addtionalH)
+      }
+      pageControl.snp.makeConstraints { make in
+        make.centerX.equalToSuperview()
+        make.top.equalTo(collectionView.snp.bottom).offset(8)
+      }
+      
       collectionView.reloadData()
       pageControl.numberOfPages = models.count
+      
     }
   }
   
   lazy var layout = PagingCollectionViewLayout().then { layout in
     layout.scrollDirection = .horizontal
     layout.sectionInset = .zero
-    layout.itemSize = CGSize(width: kScreenWidth, height: 196)
     layout.minimumLineSpacing = 0
     layout.minimumInteritemSpacing = 0
   }
@@ -57,14 +68,7 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    collectionView.snp.makeConstraints { make in
-      make.left.right.top.equalToSuperview()
-      make.height.equalTo(196)
-    }
-    pageControl.snp.makeConstraints { make in
-      make.centerX.equalToSuperview()
-      make.bottom.equalToSuperview().offset(-8)
-    }
+   
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -93,4 +97,13 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
    
   }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    if models.count > 0 {
+      let addtionalH = models[indexPath.item].staff_is_random == "2" ? 28 : 0
+      return CGSize(width: kScreenWidth, height: 196 + addtionalH.cgFloat)
+    }
+    return .zero
+  }
+  
 }

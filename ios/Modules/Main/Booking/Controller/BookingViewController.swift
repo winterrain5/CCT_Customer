@@ -104,10 +104,11 @@ class BookingViewController: BaseViewController {
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeArrayByHandJSON(BookingTodayModel.self, from: data) {
         if models.count > 0 {
+          let additionalH = models.filter({ $0.staff_is_random == "2" }).count > 0 ? 28 : 0
           if models.count > 1 {
-            self.tableHeaderViewHeight = 317
+            self.tableHeaderViewHeight = 317 + additionalH
           }else {
-            self.tableHeaderViewHeight = 297
+            self.tableHeaderViewHeight = 297 + additionalH
           }
         }else {
           self.tableHeaderViewHeight = 0

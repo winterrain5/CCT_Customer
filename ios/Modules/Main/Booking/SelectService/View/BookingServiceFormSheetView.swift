@@ -12,6 +12,7 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
     case Outlet
     case Service
     case TimeSlot
+    case Therapist
   }
   var titleLabel = UILabel().then { label in
     label.textColor = R.color.theamBlue()
@@ -34,6 +35,8 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
         titleLabel.text = "Select Service"
       case .TimeSlot:
         titleLabel.text = "Select Time Slot"
+      case .Therapist:
+        titleLabel.text = "Select Therapist"
       }
     }
   }
@@ -93,9 +96,22 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
     let cell = tableView.dequeueReusableCell(withClass: UITableViewCell.self)
     
     if dataArray.count > 0 {
-      cell.textLabel?.text = dataArray[indexPath.row]
+      let str = dataArray[indexPath.row]
       cell.textLabel?.font = UIFont(name: .AvenirNextRegular, size: 14)
-      cell.textLabel?.textColor = R.color.black333()
+      if type == .Therapist {
+        let attrs = NSMutableAttributedString(string: str)
+        let l1 = str.split(separator: "(").first?.count ?? 0
+        let l2 = str.split(separator: "(").last?.count ?? 0
+        attrs.addAttribute(.foregroundColor, value: R.color.black333()!, range:NSRange(location: 0, length: l1))
+        attrs.addAttribute(.foregroundColor, value: R.color.theamRed()!, range:NSRange(location: l1, length: l2 + 1))
+        cell.textLabel?.attributedText = attrs
+      }else {
+        cell.textLabel?.text = str
+        
+        cell.textLabel?.textColor = R.color.black333()
+      }
+      
+      
     }
     
     return cell

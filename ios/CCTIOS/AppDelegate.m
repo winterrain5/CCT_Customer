@@ -16,9 +16,9 @@
   SwiftyFitsize.sharedSwiftyFitsize.referenceW = 375;
   StripeAPI.defaultPublishableKey = [[APIHost alloc] init].STRIPE_PK_LIVE;
   
-  [self configRootViewForRN:launchOptions];
+//  [self configRootViewForRN:launchOptions];
   
-//  [ApplicationUtil configRootViewController];
+  [ApplicationUtil configRootViewController];
   
   
   [self.window makeKeyAndVisible];

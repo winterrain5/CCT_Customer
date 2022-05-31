@@ -34,10 +34,14 @@ class ConfirmSessionModel {
 
 class ConfirmSessionContainer: UIView {
 
+  @IBOutlet weak var employeeView: UIView!
+  @IBOutlet weak var infoHCons: NSLayoutConstraint!
+  @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var timeLabel: UILabel!
   
   @IBOutlet weak var dateLabel: UILabel!
   
+  @IBOutlet weak var employeeNameLabel: UILabel!
   @IBOutlet weak var locationLabel: UILabel!
   @IBOutlet weak var userNameLabel: UILabel!
   @IBOutlet weak var userPassportLabel: UILabel!
@@ -49,15 +53,29 @@ class ConfirmSessionContainer: UIView {
   
   var model:ConfirmSessionModel! {
     didSet {
+      
+      titleLabel.text = model.service_name
       timeLabel.text = model.time
       dateLabel.text = model.date
       locationLabel.text = model.location
+      employeeNameLabel.text = model.business_name
       
       userNameLabel.text = model.user_name
       guard let rang = Range(NSRange(location: 0, length: 5), in: model.user_passport) else { return }
       userPassportLabel.text = model.user_passport.replacingCharacters(in: rang, with: "*****")
       userGenderLabel.text = model.user_gender
       userBirthDayLabel.text = model.user_birth_day
+      
+      if model.service_type == .Therapist {
+        employeeView.isHidden = false
+        infoHCons.constant = 172
+      }else {
+        employeeView.isHidden = true
+        infoHCons.constant = 145
+      }
+      
+      setNeedsLayout()
+      layoutIfNeeded()
     }
   }
   

@@ -29,4 +29,5 @@ extension Notification.Name {
   
   static let bookingUpcomingLoad = Notification.Name(rawValue: "bookingUpcomingLoad")
   static let bookingTodayLoaded = Notification.Name(rawValue: "bookingTodayLoaded")
+  static let bookingNewAppointment = Notification.Name(rawValue: "bookingNewAppointment")
 }

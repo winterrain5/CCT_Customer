@@ -12,10 +12,14 @@ class BookingUpcomingController: BasePagingTableController {
   var todayH:CGFloat = 0
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    NotificationCenter.default.addObserver(forName: .bookingTodayLoaded, object: self, queue: .main) { noti  in
+    NotificationCenter.default.addObserver(forName: .bookingTodayLoaded, object: nil, queue: .main) { noti  in
       let todayH = noti.object as? CGFloat ?? 0
       self.todayH = todayH
       self.tableView?.reloadEmptyDataSet()
+    }
+    
+    NotificationCenter.default.addObserver(forName:.bookingNewAppointment, object: nil, queue: .main) { _ in
+      self.loadNewData()
     }
   }
   
@@ -44,7 +48,7 @@ class BookingUpcomingController: BasePagingTableController {
     params.set(key: "length", value: kPageSize)
     NetworkManager().request(params: params) { data in
      
-      if let models = DecodeManager.decodeArrayByHandJSON(BookingUpComingModel.self, from: data) {
+      if let models = DecodeManager.decodeArrayByHandJSON(BookingUpComingModel.self, from: data),models.count > 0 {
         self.dataArray.append(contentsOf: models)
         self.endRefresh(models.count,emptyString: "You have no upcoming appointments")
         self.view.hideSkeleton()

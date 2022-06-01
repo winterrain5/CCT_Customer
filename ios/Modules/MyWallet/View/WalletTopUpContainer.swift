@@ -524,10 +524,11 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
     params.set(key: "amount", value: topUpAmount)
     params.set(key: "orderNo", value: orderDetailModel?.Order_Info?.invoice_no ?? "")
     NetworkManager().request(params: params) { data in
-      self.getLeveUp()
+     
     } errorHandler: { e in
-      self.getLeveUp()
+      
     }
+    self.getLeveUp()
   }
   
   func getLeveUp()  {

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import EventKit
+
 import HandyJSON
 
 class ServiceFormModel {
@@ -36,7 +36,7 @@ class ServiceFormModel {
 }
 
 enum ServiceType:Int {
-  case Treatment // 看诊
+  case Treatment = 0 // 看诊
   case DateTime // 服务（日期）
   case Therapist // 服务 （人员）
 }
@@ -96,7 +96,16 @@ class BookingAppointmentController: BaseTableController {
     
     self.view.backgroundColor = R.color.theamBlue()
     headView.addSubview(headLabel)
-    headLabel.text = type == .DateTime ? "Select By Preferred Slot" : "Select By Preferred Therapist"
+    var headTitle = ""
+    switch type {
+    case .Treatment:
+      headTitle = "Book Treatment Appointment"
+    case .DateTime:
+      headTitle = "Select By Preferred Slot"
+    case .Therapist:
+      headTitle = "Select By Preferred Therapist"
+    }
+    headLabel.text = headTitle
     headLabel.snp.makeConstraints { make in
       make.left.right.equalToSuperview().inset(24)
       make.top.equalToSuperview().offset(32)
@@ -128,10 +137,18 @@ class BookingAppointmentController: BaseTableController {
         ServiceFormModel(placeHolder: "Additional Note", rightImage: nil, sel: "additionalNote",type: .note),
       ]
     }
-   
     
-    getBusiness()
+    leftButtonDidClick = { [weak self] in
+      self?.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    if type != .Treatment {
+      getBusiness()
+    }
+    
   }
+  
+  
   
   override func createListView() {
     super.createListView()
@@ -145,12 +162,25 @@ class BookingAppointmentController: BaseTableController {
     
     tableView?.tableFooterView = footView
     footView.footerView.isHidden = true
-    footView.size = CGSize(width: kScreenWidth, height: 200 + footerAditonalH)
+    footView.size = CGSize(width: kScreenWidth, height: 226 + footerAditonalH)
     footView.syncCalendar = { [weak self]  isSelect in
       self?.isSyncCalendar = isSelect
     }
     footView.confirmHandler = { [weak self] sender in
-      self?.checkCanBookService(sender: sender)
+      guard let `self` = self else { return }
+      guard let startTime = (self.selectedDate?.appending(" ").appending(self.selectedTime ?? "").appending(":00") ?? "").dateTime else { return }
+      if Date().compare(startTime) == .orderedDescending {
+        Toast.showMessage("The time you selected has expired")
+        return
+      }
+      switch self.type {
+      case .Treatment:
+        self.checkHasConsultation(sender: sender)
+      case .DateTime:
+        self.checkRandomBookService(sender: sender)
+      case .Therapist:
+        self.checkCanBookService(sender: sender)
+      }
     }
     var result:[[SymptomCheckStepModel]] = []
     self.result.sorted(by: { $0.key < $01.key}).forEach { key,value in
@@ -232,26 +262,41 @@ extension BookingAppointmentController {
       Toast.showMessage("Please Select a outlet")
       return
     }
-    if selectedService == nil {
-      Toast.showMessage("Please Select a Service")
-      return
+    if type != .Treatment {
+      if selectedService == nil {
+        Toast.showMessage("Please Select a Service")
+        return
+      }
     }
+    
     if type == .Therapist {
       if selectedEmployee == nil {
         Toast.showMessage("Please Select a Therapist")
         return
       }
     }
-    getDocSchedulesForService()
+    // 0 : 看诊  1 : 服务(日期) 2 ：服务（人员）
+    switch type {
+    case .Treatment:
+      getDocSchedulesForService()
+    case .DateTime:
+      getRandomDutyDates()
+    case .Therapist:
+      getEmployeeDutyDates()
+    }
+    
+    
   }
   @objc func selectTimeSlot() {
     if selectCompany == nil {
       Toast.showMessage("Please Select a outlet")
       return
     }
-    if selectedService == nil {
-      Toast.showMessage("Please Select a Service")
-      return
+    if type != .Treatment {
+      if selectedService == nil {
+        Toast.showMessage("Please Select a Service")
+        return
+      }
     }
     if type == .Therapist {
       if selectedEmployee == nil {
@@ -263,7 +308,14 @@ extension BookingAppointmentController {
       Toast.showMessage("Please Select a Date")
       return
     }
-    getBokingTimeSlots()
+    
+    if type == .DateTime {
+      getRandomTimeSlots()
+    } else {
+      getBokingTimeSlots()
+    }
+    
+    
   }
   
   
@@ -273,7 +325,7 @@ extension BookingAppointmentController {
     Toast.showLoading()
     
     let params = SOAPParams(action: .Company, path: .getCanOnlineBookingLocations)
-    params.set(key: "pId", value: Defaults.shared.get(for: .companyId) ?? "")
+    params.set(key: "pId", value: Defaults.shared.get(for: .companyId) ?? "97")
     
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeArrayByHandJSON(CompanyModel.self, from: data) {
@@ -304,7 +356,7 @@ extension BookingAppointmentController {
     Toast.showLoading()
     let params = SOAPParams(action: .Schedule, path: .getServicesByLocation)
     params.set(key: "locationId", value: selectCompany?.id ?? "")
-    params.set(key: "isWellness", value: "1")
+    params.set(key: "isWellness", value: self.type == .Treatment ? "2" : "1")
     params.set(key: "gendar", value: Defaults.shared.get(for: .userModel)?.gender ?? "")
     
     NetworkManager().request(params: params) { data in
@@ -392,6 +444,39 @@ extension BookingAppointmentController {
     
   }
   
+  func getRandomDutyDates() {
+    Toast.showLoading()
+    let params = SOAPParams(action: .Schedule, path: .getRandomDutyDates)
+    params.set(key: "locationId", value: selectCompany?.id ?? "")
+    params.set(key: "serviceId", value: selectedService?.id ?? "")
+    params.set(key: "gender", value: Defaults.shared.get(for: .userModel)?.gender ?? "")
+    
+    NetworkManager().request(params: params) { data in
+      if let models = DecodeManager.decodeArrayByHandJSON(BookingDutyDateModel.self, from: data) {
+        self.dutyDateModels = models
+        self.showDateSheetView()
+      }
+    } errorHandler: { e in
+      Toast.showMessage("There is no right date")
+    }
+  }
+  
+  func getEmployeeDutyDates() {
+    Toast.showLoading()
+    let params = SOAPParams(action: .Schedule, path: .getEmployeeDutyDates)
+    params.set(key: "locationId", value: selectCompany?.id ?? "")
+    params.set(key: "employeeId", value: selectedEmployee?.employee_id ?? "0")
+    
+    NetworkManager().request(params: params) { data in
+      if let models = DecodeManager.decodeArrayByHandJSON(BookingDutyDateModel.self, from: data) {
+        self.dutyDateModels = models
+        self.showDateSheetView()
+      }
+    } errorHandler: { e in
+      Toast.showMessage("There is no right date")
+    }
+  }
+  
   func showDateSheetView() {
     if self.dutyDateModels.count == 0 {
       Toast.showMessage("There is no right date")
@@ -417,10 +502,28 @@ extension BookingAppointmentController {
     let params = SOAPParams(action: .Schedule, path: .getBookingTimeSlots)
     params.set(key: "locationId", value: selectCompany?.id ?? "")
     params.set(key: "serviceId", value: selectedService?.id ?? "")
-    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "")
+    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
     params.set(key: "date", value: self.selectedDate ?? "")
     params.set(key: "employeeId", value: selectedEmployee?.employee_id ?? "")
-    params.set(key: "isWellness", value: "1")
+    params.set(key: "isWellness", value: self.type == .Treatment ? "2" : "1")
+    
+    NetworkManager().request(params: params) { data in
+      let times = try? JSON.init(data: data).arrayObject as? [String]
+      self.bookigTimeModels = times ?? []
+      self.showTimeSheetView()
+    } errorHandler: { e in
+      Toast.showMessage("There is no right time")
+    }
+  }
+  
+  func getRandomTimeSlots() {
+    Toast.showLoading()
+    let params = SOAPParams(action: .Schedule, path: .getRandomTimeSlots)
+    params.set(key: "locationId", value: selectCompany?.id ?? "")
+    params.set(key: "serviceId", value: selectedService?.id ?? "")
+    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
+    params.set(key: "date", value: self.selectedDate ?? "")
+    params.set(key: "gender", value: Defaults.shared.get(for: .userModel)?.gender ?? "")
     
     NetworkManager().request(params: params) { data in
       let times = try? JSON.init(data: data).arrayObject as? [String]
@@ -499,6 +602,61 @@ extension BookingAppointmentController {
     }
     
   }
+  
+  func checkRandomBookService(sender:LoadingButton) {
+    let params = SOAPParams(action: .BookingOrder, path: .checkRandomBookService)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    let startTime = self.selectedDate?.appending(" ").appending(self.selectedTime ?? "").appending(":00") ?? ""
+    params.set(key: "startTime", value: self.selectedDate?.appending(" ").appending(self.selectedTime ?? "").appending(":00") ?? "")
+    
+    let duration = selectedService?.duration.int ?? 0
+    let endTime = startTime.dateTime?.addingTimeInterval(TimeInterval(duration * 60)).string(withFormat: "yyyy-MM-dd HH:mm:ss") ?? ""
+    params.set(key: "endTime", value: endTime)
+    
+    params.set(key: "serviceId", value: selectedService?.id ?? "")
+    params.set(key: "locationId", value: selectCompany?.id ?? "")
+    params.set(key: "date", value: self.selectedDate ?? "")
+    params.set(key: "gender", value: Defaults.shared.get(for: .userModel)?.gender ?? "")
+    
+    sender.startAnimation()
+    NetworkManager().request(params: params) { data in
+      sender.stopAnimation()
+      let flag = String(data: data, encoding: .utf8)?.int ?? 1
+      if flag == 0 {
+        self.confirm()
+      }else {
+        AlertView.show(message: "Unable to make an appointment in the current time period. Please select another day or time.")
+      }
+      
+    } errorHandler: { e in
+      sender.stopAnimation()
+      AlertView.show(message: "Unable to make an appointment in the current time period. Please select another day or time.")
+    }
+    
+  }
+  
+  func checkHasConsultation(sender:LoadingButton) {
+    let params = SOAPParams(action: .BookingOrder, path: .checkConsulted)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "locationId", value: selectCompany?.id ?? "")
+    params.set(key: "date", value: self.models.filter({ $0.type == .date }).first?.title ?? "")
+    
+    sender.startAnimation()
+    NetworkManager().request(params: params) { data in
+      sender.stopAnimation()
+      let flag = String(data: data, encoding: .utf8)?.int ?? 0
+      if flag == 1 {
+        self.checkCanBookService(sender: sender)
+      }else {
+        AlertView.show(message: "Another appointment with a similar time slot has been created. Please select another day or time.")
+      }
+      
+    } errorHandler: { e in
+      sender.stopAnimation()
+      AlertView.show(message: "Another appointment with a similar time slot has been created. Please select another day or time.")
+    }
+    
+  }
   /*
    var time = ""
    var date = ""
@@ -555,26 +713,5 @@ extension BookingAppointmentController {
     
   }
   
-  func addToCalendar() {
-    let eventStore = EKEventStore()
-    eventStore.requestAccess(to: .event) { flag, e in
-      if flag {
-        DispatchQueue.main.async {
-          let event = EKEvent(eventStore: eventStore)
-          event.title = self.selectedService?.alias_name ?? ""
-          event.startDate = self.selectedDate?.appending(" ").appending(self.selectedTime ?? "").date(withFormat: "yyyy-MM-dd HH:mm")
-          event.endDate = self.selectedDate?.appending(" ").appending("23:59").date(withFormat: "yyyy-MM-dd HH:mm")
-          event.notes = self.models.last?.title ?? ""
-          event.calendar = eventStore.defaultCalendarForNewEvents
-          
-          do {
-            try eventStore.save(event, span: .thisEvent)
-          }catch{
-            print(e?.localizedDescription ?? "")
-          }
-        }
-      }
-    }
-  }
-  
+ 
 }

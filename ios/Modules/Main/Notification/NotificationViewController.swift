@@ -64,7 +64,7 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
   /// - Parameter type: 0 赋值全部 1 弹窗
   func getAllCategories(_ type:Int) {
     let params = SOAPParams(action: .Notifications, path: .getAllCategories)
-    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "")
+    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
     
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeArrayByHandJSON(NotificationCategoryModel.self, from: data) {

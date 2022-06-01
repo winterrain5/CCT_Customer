@@ -48,7 +48,7 @@ class ShopCollectionMethodSheetView: UIView,UITableViewDelegate,UITableViewDataS
   func getCanSendProductLocations() {
     
     let params = SOAPParams(action: .Company, path: .getCanSendProductLocations)
-    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "")
+    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
     
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeArrayByHandJSON(ShopCollectionModel.self, from: data) {

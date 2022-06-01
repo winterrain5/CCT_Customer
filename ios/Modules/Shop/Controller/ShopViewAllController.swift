@@ -38,7 +38,7 @@ class ShopViewAllController: BaseTableController {
   
   func getNewFeaturedProducts()  {
     let params = SOAPParams(action: .Product, path: .getNewFeaturedProducts)
-    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "")
+    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "isFeatured", value: 0)
     params.set(key: "isNew", value: 1)

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import EventKit
 class ConfirmSessionModel {
   var time = ""
   var date = ""
@@ -88,9 +88,14 @@ class ConfirmSessionContainer: UIView {
   
   func saveTOnlineBookingData() {
     
-    var url = API.saveTOnlineBookingData
-    if model.service_type == .Treatment {
+    var url:API!
+    switch model.service_type {
+    case .Treatment:
       url = .saveDocTData
+    case .DateTime:
+      url = .saveAppRandonData
+    case .Therapist:
+      url = .saveAppAssignData
     }
     
     let mapParams = SOAPParams(action: .BookingOrder, path: url)
@@ -185,16 +190,18 @@ class ConfirmSessionContainer: UIView {
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     NetworkManager().request(params: params) { data in
-      self.getTSystemConfig()
+     
     } errorHandler: { e in
       self.confirmButton.stopAnimation()
     }
-
+    self.getTSystemConfig()
+    self.addToCalendar()
+    NotificationCenter.default.post(name: .bookingNewAppointment, object: nil)
   }
   
   func getTSystemConfig() {
     let params = SOAPParams(action: .SystemConfig, path: .getTSystemConfig,isNeedToast: false)
-    params.set(key: "cmpanyId", value: Defaults.shared.get(for: .companyId) ?? "")
+    params.set(key: "cmpanyId", value: Defaults.shared.get(for: .companyId) ?? "97")
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(SystemConfigModel.self, from: data) {
         self.sendSmsForEmail(model)
@@ -222,7 +229,7 @@ class ConfirmSessionContainer: UIView {
     message = message.replacingOccurrences(of: ">", with: "&gt;")
     
     data.set(key: "message", value: message)
-    data.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "")
+    data.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
     data.set(key: "from_email", value: config.send_specific_email ?? "")
     data.set(key: "client_id", value: 0)
     
@@ -247,4 +254,28 @@ class ConfirmSessionContainer: UIView {
   @IBAction func noticeActio(_ sender: Any) {
     DataProtectionSheetView.show()
   }
+  
+  func addToCalendar() {
+    if !model.isSyncCalendar { return }
+    let eventStore = EKEventStore()
+    eventStore.requestAccess(to: .event) { flag, e in
+      if flag {
+        DispatchQueue.main.async {
+          let event = EKEvent(eventStore: eventStore)
+          event.title = self.model.service_name
+          event.startDate = self.model.date.date(withFormat: "dd MMM yyyy,EEE")
+          event.endDate = self.model.date.date(withFormat: "dd MMM yyyy,EEE")
+          event.notes = self.model.remark
+          event.calendar = eventStore.defaultCalendarForNewEvents
+          
+          do {
+            try eventStore.save(event, span: .thisEvent)
+          }catch{
+            print(e?.localizedDescription ?? "")
+          }
+        }
+      }
+    }
+  }
+  
 }

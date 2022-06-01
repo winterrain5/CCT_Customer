@@ -55,6 +55,7 @@ class TellUsCondiitonController: BaseTableController {
     let params = SOAPParams(action: .SymptomCheck, path: .getQuestions)
     params.set(key: "questionCategory", value: category)
     Toast.showLoading()
+    self.view.isUserInteractionEnabled = false
     NetworkManager().request(params: params) { data in
       guard let models = DecodeManager.decodeByCodable([SymptomCheckStepModel].self, from: data) else {
         return
@@ -62,6 +63,7 @@ class TellUsCondiitonController: BaseTableController {
       models.forEach({ $0.isSelected = false })
       self.headView.updateContent(content: self.questions[self.category - 1])
       self.nextButton.isEnabled = false
+      self.view.isUserInteractionEnabled = true
       self.nextButton.backgroundColor = R.color.grayE0()
       self.dataArray = models
       self.endRefresh()

@@ -62,7 +62,7 @@ class CCTShopController: BaseCollectionController,UICollectionViewDelegateFlowLa
     
     params.set(key: "data", value: data.result, type: .map(1))
     
-    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "")
+    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "start", value: page)
     params.set(key: "length", value: kPageSize)
@@ -88,7 +88,7 @@ class CCTShopController: BaseCollectionController,UICollectionViewDelegateFlowLa
     
 
     params.set(key: "isCctMap", value: isCctMap)
-    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "")
+    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
     params.set(key: "start", value: page)
     params.set(key: "length", value: kPageSize)
     params.set(key: "isOnline", value: 1)
@@ -110,7 +110,7 @@ class CCTShopController: BaseCollectionController,UICollectionViewDelegateFlowLa
   
   func getBannerData() {
     let params = SOAPParams(action: .Product, path: .getNewFeaturedProducts)
-    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "")
+    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "isFeatured", value: 1)
     params.set(key: "isNew", value: "false")

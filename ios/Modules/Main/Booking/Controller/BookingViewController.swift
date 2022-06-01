@@ -60,6 +60,9 @@ class BookingViewController: BaseViewController {
   init() {
     super.init(nibName: nil, bundle: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(menuDidClick(_:)), name: .menuDidOpenVc, object: nil)
+    NotificationCenter.default.addObserver(forName:.bookingNewAppointment, object: nil, queue: .main) { _ in
+      self.getClientBookedService()
+    }
   }
   
   required init?(coder: NSCoder) {
@@ -89,13 +92,9 @@ class BookingViewController: BaseViewController {
     self.view.addSubview(paggingView)
     paggingView.frame = CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
     
-    
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
     getClientBookedService()
   }
+
   
   func getClientBookedService() {
     let params = SOAPParams(action: .BookingOrder, path: .getClientBookedServices)
@@ -140,6 +139,7 @@ class BookingViewController: BaseViewController {
   }
   
   @objc func rightItemAction() {
+    
     
     getClientCancelCount()
     

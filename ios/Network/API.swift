@@ -206,8 +206,6 @@ enum API:String {
   case getCanOnlineBookingLocations = "getCanOnlineBookingLocations"
   case getServicesByLocation = "getServicesByLocation"
   case getDocSchedulesForService = "getDocSchedulesForService"
-  case getBookingTimeSlots = "getBookingTimeSlots"
-  case getDocTimeSlots = "getDocTimeSlots"
   case checkCanBookService = "checkCanBookService"
   ///  保存在线预约服务
   case saveTOnlineBookingData = "saveTData"
@@ -221,10 +219,39 @@ enum API:String {
   case checkServiceStaff = "checkServiceStaff"
   /// 选择date之后调用接口获取医师的id和Time Slot
   case getTreatDoctorSchedules = "getTreatDoctorSchedules"
+  // 非指定预约获取日期
+  case  getRandomDutyDates = "getRandomDutyDates"
+  ///  .Date：获取日期，这个日期不是连续的 ScheduleController
+  case getEmployeeDutyDates = "getEmployeeDutyDates"
+  // 非指定预约获取时间
+  case  getRandomTimeSlots = "getRandomTimeSlots"
+  
+  // 非指定预约检查是否可以预约
+  case  checkRandomBookService = "checkRandomBookService"
+  
+  // 非指定预约保存
+  case  saveAppRandonData = "saveAppRandonData"
+  
+  // 指定预约保存
+  case  saveAppAssignData = "saveAppAssignData"
+  
+  //Time Slot: 接口ScheduleController
+  case  getBookingTimeSlots = "getBookingTimeSlots"
+  //Time Slot: 看诊
+  case  getDocTimeSlots = "getDocTimeSlots"
+  
+  // 获取当天问卷测试
+  case getLastSymptomCheckReport = "getLastSymptomCheckReport"
+  /// 检查病人是否已经挂号
+  case checkConsulted = "checkConsulted"
+  
+  
+  //获取配置
+  case  getTConfig = "getTConfig"
   
   // 物品购物车推送
   case itemsInCart = "itemsInCart";
-  // 
+  //
   case getIdByEmail = "getIdByEmail"
   //
   case deductionCreditsNote = "deductionCreditsNote";
@@ -280,5 +307,5 @@ struct WebUrl {
   static let services = "http://info.chienchitow.com/services/"
   static let conditionsWeTreat = "http://info.chienchitow.com/condition-we-treat/"
   static let ourStory = "http://info.chienchitow.com/about-us/"
-
+  
 }

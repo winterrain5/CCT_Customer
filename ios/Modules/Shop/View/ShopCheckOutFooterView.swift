@@ -171,7 +171,7 @@ class ShopCheckOutFooterView: UIView {
     }
     
     let params = SOAPParams(action: .VipDefinition, path: .getNewCardDiscountsByLevel)
-    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "")
+    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
     params.set(key: "cardLevel", value: level)
     
     NetworkManager().request(params: params) { data in
@@ -188,7 +188,7 @@ class ShopCheckOutFooterView: UIView {
   // 获取默认的运费
   func getDefaultDelivery() {
     let params = SOAPParams(action: .SystemConfig, path: .getTSystemConfig)
-    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "")
+    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
     
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(SystemConfigModel.self, from: data) {
@@ -820,7 +820,7 @@ class ShopCheckOutFooterView: UIView {
        
       if selectCollectionMethod?.id == "-1" {
         Order_Lines_Item.set(key: "collection_method", value: 2)
-        Order_Lines_Item.set(key: "delivery_location_id", value: Defaults.shared.get(for: .companyId) ?? "")
+        Order_Lines_Item.set(key: "delivery_location_id", value: Defaults.shared.get(for: .companyId) ?? "97")
       }else {
         Order_Lines_Item.set(key: "collection_method", value: 1)
         Order_Lines_Item.set(key: "delivery_location_id", value: selectCollectionMethod?.id ?? "")

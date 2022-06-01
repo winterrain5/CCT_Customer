@@ -31,6 +31,9 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eT1-lc-HkY">
                                     <rect key="frame" x="16" y="16" width="81" height="22"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="22" id="sF0-7f-FHU"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                                     <color key="textColor" name="TheamBlue"/>
                                     <nil key="highlightedColor"/>
@@ -86,6 +89,7 @@
                                 <constraint firstItem="Ub8-kN-mZZ" firstAttribute="leading" secondItem="BPZ-uT-QCv" secondAttribute="leading" constant="114" id="MoU-2n-DyR"/>
                                 <constraint firstItem="eT1-lc-HkY" firstAttribute="top" secondItem="BPZ-uT-QCv" secondAttribute="top" constant="16" id="NcE-9z-oBe"/>
                                 <constraint firstItem="yDs-a6-qU3" firstAttribute="leading" secondItem="BPZ-uT-QCv" secondAttribute="leading" constant="16" id="PHo-OX-V6E"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="atP-Wv-xj5" secondAttribute="bottom" constant="16" id="XxZ-hb-K3w"/>
                                 <constraint firstItem="XiV-FJ-0dS" firstAttribute="leading" secondItem="Ub8-kN-mZZ" secondAttribute="leading" id="Z2X-Cs-5fs"/>
                                 <constraint firstItem="0qR-Tn-nnH" firstAttribute="top" secondItem="yDs-a6-qU3" secondAttribute="bottom" constant="14" id="cR4-3u-JoA"/>
                                 <constraint firstAttribute="trailing" secondItem="Ub8-kN-mZZ" secondAttribute="trailing" constant="16" id="ddG-s3-qLI"/>
@@ -110,6 +114,9 @@
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDx-xv-odW">
                     <rect key="frame" x="98.5" y="160" width="217" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="1Ot-uj-btM"/>
+                    </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Don’t see your preferred slot?">
                         <fontDescription key="titleFontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
@@ -119,7 +126,7 @@
                         <action selector="helpAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="5J0-Zx-wCo"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrT-bC-bxO" customClass="LoadingButton" customModule="CCTIOS" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrT-bC-bxO" customClass="LoadingButton" customModule="CCTIOS" customModuleProvider="target">
                     <rect key="frame" x="24" y="100" width="366" height="44"/>
                     <color key="backgroundColor" name="grayE0"/>
                     <constraints>
@@ -140,6 +147,9 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXs-ya-xeu">
                     <rect key="frame" x="88" y="32" width="238" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="jPe-j4-Eis"/>
+                    </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" image="symptom_check_box_select" title="  Sync with phone calendar">
                         <fontDescription key="titleFontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
@@ -174,6 +184,7 @@
                 <outlet property="areaOfPainLabel" destination="atP-Wv-xj5" id="luj-mP-N9N"/>
                 <outlet property="confirmButton" destination="OrT-bC-bxO" id="uvb-ho-uqW"/>
                 <outlet property="footerView" destination="CCU-Xq-aQh" id="GIE-b5-ur3"/>
+                <outlet property="infoView" destination="BPZ-uT-QCv" id="sGU-dr-b7D"/>
                 <outlet property="lastActivityLabel" destination="XiV-FJ-0dS" id="b6l-p9-dOh"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="285.60267857142856"/>

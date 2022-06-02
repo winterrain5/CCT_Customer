@@ -21,7 +21,7 @@ class MadamPartumCell: UITableViewCell,UICollectionViewDelegateFlowLayout,UIColl
   }
   lazy var layout = PagingCollectionViewLayout().then { layout in
     layout.scrollDirection = .horizontal
-    layout.minimumLineSpacing = 8
+    layout.minimumInteritemSpacing = 8
     layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
   }
   lazy var collectionView:UICollectionView = {
@@ -109,6 +109,5 @@ class MadamPartumCell: UITableViewCell,UICollectionViewDelegateFlowLayout,UIColl
       let page = floor((scrollView.contentSize.width / scrollView.contentOffset.x))
       pageControl.set(progress: page.int - 1, animated: true)
     }
-   
   }
 }

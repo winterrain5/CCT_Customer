@@ -40,6 +40,13 @@ class MenuViewController: BaseTableController {
     headView.size = CGSize(width: menuWidth, height: 120)
     tableView?.register(cellWithClass: UITableViewCell.self)
     tableView?.backgroundColor = .clear
+    headView.editHandler = { [weak self] in
+      guard let `self` = self else { return }
+      self.sideMenuController?.hideMenu()
+      let vc = EditProfileViewController()
+      self.pushToVc(vc)
+      
+    }
   }
   
   override func listViewFrame() -> CGRect {
@@ -51,7 +58,7 @@ class MenuViewController: BaseTableController {
     return 48
   }
   
-
+  
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return actions.count
   }
@@ -78,14 +85,14 @@ class MenuViewController: BaseTableController {
         self.perform(sel)
       }
     })
-   
+    
     
   }
   
 }
 
 extension BaseViewController {
- 
+  
   
   @objc func home() {
     let tab = sideMenuController?.contentViewController as? BaseTabBarController
@@ -106,7 +113,7 @@ extension BaseViewController {
     let vc = WebBrowserController(url: WebUrl.services)
     pushToVc(vc)
   }
- 
+  
   @objc func shop() {
     let vc = ShopViewController()
     pushToVc(vc)
@@ -166,15 +173,7 @@ extension BaseViewController {
   func pushToVc(_ vc:UIViewController) {
     UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
   }
- 
-  @objc func editProfile() {
-    sideMenuController?.hideMenu(animated: true, completion: { [weak self] flag in
-      guard let `self` = self else { return }
-      let vc = EditProfileViewController()
-      self.navigationController?.pushViewController(vc)
-    })
-    
-  }
+  
   
 }
 
@@ -215,7 +214,7 @@ class MenuHeadView: UIView {
   }
   
   @objc func editAction() {
-    NotificationCenter.default.post(name: .menuDidOpenVc, object: "editProfile")
+    editHandler?()
   }
   
   @objc func setUserName(_ noti:Notification) {

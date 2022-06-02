@@ -132,7 +132,7 @@ class MainViewController: BaseViewController {
       let vc = (temp as! BlogDetailViewController)
       vc.blogId = params?["blogId"] as? String ?? ""
       vc.hasBook = params?["hasBook"] as? Bool ?? false
-      self.navigationController?.pushViewController(vc)
+      UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
       return
     }
     
@@ -140,17 +140,17 @@ class MainViewController: BaseViewController {
       let vc = (temp as! RNBridgeViewController)
       vc.RNProperty = params?["property"] as? Dictionary ?? [:]
       vc.RNPageName = params?["pageName"] as? String ?? ""
-      self.navigationController?.pushViewController(vc)
+      UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
       return
     }
     
-    self.navigationController?.pushViewController(temp)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(temp)
     
     
   }
   
   @objc func goBack(_ noti:Notification) {
-    self.navigationController?.popViewController()
+    UIViewController.getTopVc()?.navigationController?.popViewController()
   }
   @objc func goBackToRootNativeVc() {
     UIViewController.getTopVc()?.navigationController?.popToRootViewController(animated: true)
@@ -160,7 +160,7 @@ class MainViewController: BaseViewController {
     let url = noti.object as? String ?? ""
     let vc = WebBrowserController(url: url)
     vc.navTitle = ""
-    self.navigationController?.pushViewController(vc)
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
   
   @objc func payment(_ noti:Notification) {

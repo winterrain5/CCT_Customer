@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SideMenuSwift
 class ProfileActionModel {
   var image: UIImage?
   var title: String = ""
@@ -38,7 +38,6 @@ class ProfileViewController: BaseTableController {
   private var sectionTitles = ["References","Account & Support",""]
   init() {
     super.init(nibName: nil, bundle: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(menuDidClick(_:)), name: .menuDidOpenVc, object: nil)
   }
   
   required init?(coder: NSCoder) {
@@ -49,6 +48,7 @@ class ProfileViewController: BaseTableController {
     super.viewDidLoad()
     self.navigation.item.title = "Profile"
     self.barAppearance(tintColor: .white, barBackgroundColor: R.color.theamBlue()!, image: nil, backButtonTitle: nil)
+    self.navigation.item.leftBarButtonItem = UIBarButtonItem(image: R.image.notification_menu(), style: .plain, target: self, action: #selector(leftItemAction))
     self.refreshData()
     
   }
@@ -123,19 +123,14 @@ class ProfileViewController: BaseTableController {
       self.perform(sel)
     }
   }
-  
-  @objc func menuDidClick(_ noti:Notification) {
-    let selStr = noti.object as! String
-    let sel = NSSelectorFromString(selStr)
-    if self.responds(to: sel) {
-      self.perform(sel)
-    }
-  }
+
 }
 
 extension ProfileViewController {
   
-
+  @objc func leftItemAction() {
+    sideMenuController?.revealMenu()
+  }
   @objc func transactionHistory() {
     let vc = MyWalletController(defautIndex: 1)
     self.navigationController?.pushViewController(vc)

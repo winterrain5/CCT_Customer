@@ -60,7 +60,6 @@ class BookingViewController: BaseViewController {
   
   init() {
     super.init(nibName: nil, bundle: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(menuDidClick(_:)), name: .menuDidOpenVc, object: nil)
     NotificationCenter.default.addObserver(forName:.bookingDataChanged, object: nil, queue: .main) { _ in
       self.getClientBookedService()
     }
@@ -126,14 +125,7 @@ class BookingViewController: BaseViewController {
     }
 
   }
-  
-  @objc func menuDidClick(_ noti:Notification) {
-    let selStr = noti.object as! String
-    let sel = NSSelectorFromString(selStr)
-    if self.responds(to: sel) {
-      self.perform(sel)
-    }
-  }
+
   
   @objc func leftItemAction() {
     sideMenuController?.revealMenu()

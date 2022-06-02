@@ -115,5 +115,9 @@ class ProfileHeadView: UIView {
   }
   
   @IBAction func editAction(_ sender: Any) {
+    
+    let vc = EditProfileViewController()
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
+    
   }
 }

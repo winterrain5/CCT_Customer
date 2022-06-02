@@ -35,6 +35,9 @@
 		457CBA962837773300AE26D8 /* BookingServiceFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CBA952837773300AE26D8 /* BookingServiceFormCell.swift */; };
 		457CBA98283779D500AE26D8 /* BookingServiceFormFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CBA97283779D500AE26D8 /* BookingServiceFormFooterView.swift */; };
 		457CBA9A283779E900AE26D8 /* BookingServiceFormFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 457CBA99283779E900AE26D8 /* BookingServiceFormFooterView.xib */; };
+		45A505832848997300779B4C /* HomeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A505822848997300779B4C /* HomeContainer.swift */; };
+		45A505852848998000779B4C /* HomeContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45A505842848998000779B4C /* HomeContainer.xib */; };
+		45A505872848B80800779B4C /* HomeKingKongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A505862848B80800779B4C /* HomeKingKongView.swift */; };
 		45B2A12F27A1456200E1264E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B2A12E27A1456200E1264E /* MainViewController.swift */; };
 		45CE32F42834948E00201726 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F32834948E00201726 /* CompanyModel.swift */; };
 		45CE32F628349C4500201726 /* TodaySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F528349C4500201726 /* TodaySessionView.swift */; };
@@ -712,6 +715,9 @@
 		457CBA952837773300AE26D8 /* BookingServiceFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingServiceFormCell.swift; sourceTree = "<group>"; };
 		457CBA97283779D500AE26D8 /* BookingServiceFormFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingServiceFormFooterView.swift; sourceTree = "<group>"; };
 		457CBA99283779E900AE26D8 /* BookingServiceFormFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingServiceFormFooterView.xib; sourceTree = "<group>"; };
+		45A505822848997300779B4C /* HomeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainer.swift; sourceTree = "<group>"; };
+		45A505842848998000779B4C /* HomeContainer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContainer.xib; sourceTree = "<group>"; };
+		45A505862848B80800779B4C /* HomeKingKongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeKingKongView.swift; sourceTree = "<group>"; };
 		45B2A12E27A1456200E1264E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		45CE32F32834948E00201726 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
 		45CE32F528349C4500201726 /* TodaySessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionView.swift; sourceTree = "<group>"; };
@@ -1479,6 +1485,24 @@
 				454C5B3F283B7F95001D787C /* BookingDateSheetView.swift */,
 				454C5B45283CBB2C001D787C /* BookingServiceHelpSheetView.swift */,
 				454C5B47283CBB3C001D787C /* BookingServiceHelpSheetView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		45A505802848992B00779B4C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				492D3B00281B81330022198A /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		45A505812848993500779B4C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				45A505822848997300779B4C /* HomeContainer.swift */,
+				45A505842848998000779B4C /* HomeContainer.xib */,
+				45A505862848B80800779B4C /* HomeKingKongView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2785,7 +2809,8 @@
 		49CE76AD281A6E8F00A3151D /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				492D3B00281B81330022198A /* HomeViewController.swift */,
+				45A505812848993500779B4C /* View */,
+				45A505802848992B00779B4C /* Controller */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -3255,6 +3280,7 @@
 				4902024127D9EB0100E74415 /* WalletTopUpContainer.xib in Resources */,
 				49BA62A52788267F00B898D5 /* BlogDetailContainer.xib in Resources */,
 				49ECEF0627F68A01006F1D86 /* assets in Resources */,
+				45A505852848998000779B4C /* HomeContainer.xib in Resources */,
 				49981EFB27CE1F3500D4F7BF /* EditProfileContainer.xib in Resources */,
 				4902B72B279F9DE000CEE28B /* ServiceDetailFooterView.xib in Resources */,
 				4904C3BF280677C6008FE5A5 /* ShopCartCell.xib in Resources */,
@@ -3747,6 +3773,7 @@
 				4998C027277EF51200A881D5 /* SCNMaterialExtensions.swift in Sources */,
 				4998BF48277ED43500A881D5 /* DKEmptyDataView+Extension.swift in Sources */,
 				4904C3DE2806BCE2008FE5A5 /* ShopDetailHeadContainer.swift in Sources */,
+				45A505872848B80800779B4C /* HomeKingKongView.swift in Sources */,
 				49E61D26278ED9AF00B1C136 /* SymptomCheckQ23ResultModel.swift in Sources */,
 				49727C7B27C4E55C00943156 /* VerificationCodeContainer.swift in Sources */,
 				4904C3BE280677C6008FE5A5 /* ShopHeaderView.swift in Sources */,
@@ -3811,6 +3838,7 @@
 				4998C0A827843CB500A881D5 /* Int_Extension.swift in Sources */,
 				498D85CB279945FB0044F34F /* PushManager.m in Sources */,
 				4998BFFB277EF51200A881D5 /* CGSizeExtensions.swift in Sources */,
+				45A505832848997300779B4C /* HomeContainer.swift in Sources */,
 				4902B721279F9D9100CEE28B /* ServiceDetailPriceView.swift in Sources */,
 				4998C0F02784427F00A881D5 /* ConstraintLayoutGuide+Extensions.swift in Sources */,
 				4906C239279E4B5300F7B67F /* QuestionSubjectModel.swift in Sources */,

@@ -7,13 +7,13 @@
 
 import UIKit
 
-class BlogFilterLabel :Codable {
+class BlogFilterLabel :BaseModel,Codable {
   var id: String?
   var key_word: String?
   var is_on: Bool?
 }
 
-class BlogModel :Codable {
+class BlogModel :BaseModel,Codable {
   var id: String?
   var is_featured: String?
   var filter_keys: String?

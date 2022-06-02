@@ -76,6 +76,7 @@ class BookingAppointmentController: BaseTableController {
   var result:[Int:[SymptomCheckStepModel]] = [:]
   var showReport = true
   
+  let serviceModel = ServiceFormModel(placeHolder: "Select Service", rightImage: R.image.booking_form_dropdown(), sel: "selectService",type: .service)
   
   convenience init(type: ServiceType, result:[Int:[SymptomCheckStepModel]] = [:],showReport:Bool = true) {
     self.init()
@@ -419,9 +420,16 @@ extension BookingAppointmentController {
       Toast.dismiss()
       if let models = DecodeManager.decodeArrayByHandJSON(EmployeeForServiceModel.self, from: data) {
         
-        if self.type != .Therapist {
+        if self.type == .Treatment {
+          if models.count == 0 {
+            Toast.showMessage("There is no suitable therapist at present")
+            return
+          }
           if models.count == 1 {
             self.selectedEmployee = models.first
+          }else {
+            self.models.insert(self.serviceModel, at: 1)
+            self.tableView?.reloadData()
           }
         } else {
           self.employeeModels = models

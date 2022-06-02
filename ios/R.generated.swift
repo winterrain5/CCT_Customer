@@ -444,7 +444,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 115 images.
+  /// This `R.image` struct is generated, and contains static references to 122 images.
   struct image {
     /// Image `account_arrow_right`.
     static let account_arrow_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "account_arrow_right")
@@ -510,6 +510,20 @@ struct R: Rswift.Validatable {
     static let edit_profile_radio_fill = Rswift.ImageResource(bundle: R.hostingBundle, name: "edit_profile_radio_fill")
     /// Image `edit_profile_radio_not_fill`.
     static let edit_profile_radio_not_fill = Rswift.ImageResource(bundle: R.hostingBundle, name: "edit_profile_radio_not_fill")
+    /// Image `home_arrow_right`.
+    static let home_arrow_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "home_arrow_right")
+    /// Image `home_info`.
+    static let home_info = Rswift.ImageResource(bundle: R.hostingBundle, name: "home_info")
+    /// Image `home_kk_mp`.
+    static let home_kk_mp = Rswift.ImageResource(bundle: R.hostingBundle, name: "home_kk_mp")
+    /// Image `home_kk_shop`.
+    static let home_kk_shop = Rswift.ImageResource(bundle: R.hostingBundle, name: "home_kk_shop")
+    /// Image `home_kk_symptom_check`.
+    static let home_kk_symptom_check = Rswift.ImageResource(bundle: R.hostingBundle, name: "home_kk_symptom_check")
+    /// Image `home_kk_treament`.
+    static let home_kk_treament = Rswift.ImageResource(bundle: R.hostingBundle, name: "home_kk_treament")
+    /// Image `home_nav_scan`.
+    static let home_nav_scan = Rswift.ImageResource(bundle: R.hostingBundle, name: "home_nav_scan")
     /// Image `login_background_gradient`.
     static let login_background_gradient = Rswift.ImageResource(bundle: R.hostingBundle, name: "login_background_gradient")
     /// Image `login_background`.
@@ -898,6 +912,55 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "edit_profile_radio_not_fill", bundle: ..., traitCollection: ...)`
     static func edit_profile_radio_not_fill(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.edit_profile_radio_not_fill, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "home_arrow_right", bundle: ..., traitCollection: ...)`
+    static func home_arrow_right(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.home_arrow_right, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "home_info", bundle: ..., traitCollection: ...)`
+    static func home_info(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.home_info, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "home_kk_mp", bundle: ..., traitCollection: ...)`
+    static func home_kk_mp(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.home_kk_mp, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "home_kk_shop", bundle: ..., traitCollection: ...)`
+    static func home_kk_shop(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.home_kk_shop, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "home_kk_symptom_check", bundle: ..., traitCollection: ...)`
+    static func home_kk_symptom_check(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.home_kk_symptom_check, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "home_kk_treament", bundle: ..., traitCollection: ...)`
+    static func home_kk_treament(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.home_kk_treament, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "home_nav_scan", bundle: ..., traitCollection: ...)`
+    static func home_nav_scan(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.home_nav_scan, compatibleWith: traitCollection)
     }
     #endif
 
@@ -1485,7 +1548,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 105 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 106 nibs.
   struct nib {
     /// Nib `AccountEditSheetContentView`.
     static let accountEditSheetContentView = _R.nib._AccountEditSheetContentView()
@@ -1555,6 +1618,8 @@ struct R: Rswift.Validatable {
     static let forgetPwdContainer = _R.nib._ForgetPwdContainer()
     /// Nib `ForgetPwdSheetContentView`.
     static let forgetPwdSheetContentView = _R.nib._ForgetPwdSheetContentView()
+    /// Nib `HomeContainer`.
+    static let homeContainer = _R.nib._HomeContainer()
     /// Nib `LoginContainer`.
     static let loginContainer = _R.nib._LoginContainer()
     /// Nib `MadamPartumAwardsCell`.
@@ -1967,6 +2032,14 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.forgetPwdSheetContentView) instead")
     static func forgetPwdSheetContentView(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.forgetPwdSheetContentView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "HomeContainer", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.homeContainer) instead")
+    static func homeContainer(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.homeContainer)
     }
     #endif
 
@@ -2674,6 +2747,10 @@ struct R: Rswift.Validatable {
       return R.nib.forgetPwdSheetContentView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ForgetPwdSheetContentView
     }
 
+    static func homeContainer(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> HomeContainer? {
+      return R.nib.homeContainer.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? HomeContainer
+    }
+
     static func loginContainer(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> LoginContainer? {
       return R.nib.loginContainer.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? LoginContainer
     }
@@ -3005,6 +3082,7 @@ struct _R: Rswift.Validatable {
       try _DataProtectionHeadView.validate()
       try _EditProfileContainer.validate()
       try _FillInEnquiryFormContentView.validate()
+      try _HomeContainer.validate()
       try _LoginContainer.validate()
       try _MadamPartumDetailFooterCell.validate()
       try _MadamPartumDetailHeaderView.validate()
@@ -3597,6 +3675,30 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ForgetPwdSheetContentView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ForgetPwdSheetContentView
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _HomeContainer: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "HomeContainer"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> HomeContainer? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? HomeContainer
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "home_arrow_right", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'home_arrow_right' is used in nib 'HomeContainer', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "home_info", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'home_info' is used in nib 'HomeContainer', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "profile_head_amount", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'profile_head_amount' is used in nib 'HomeContainer', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "profile_head_points", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'profile_head_points' is used in nib 'HomeContainer', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'HomeContainer', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamRed", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamRed' is used in nib 'HomeContainer', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamYellow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamYellow' is used in nib 'HomeContainer', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'HomeContainer', but couldn't be loaded.") }
+        }
       }
 
       fileprivate init() {}

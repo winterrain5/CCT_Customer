@@ -24,8 +24,8 @@ class BookingServiceFormFooterView: UIView {
       
       if result.isEmpty { return }
       let symptoms = result.first?.map({$0.title ?? ""}).reduce("", { $0 + "\n" + $1}).removingPrefix("\n")
-      let area = result[2].map({$0.title ?? ""}).reduce("", { $0 + "\n" + $1}).removingPrefix("\n")
       let lastActivity = result[1].first?.title ?? ""
+      let area = result[2].map({$0.title ?? ""}).reduce("", { $0 + "\n" + $1}).removingPrefix("\n")
       
       SmptomsLabel.text = symptoms
       lastActivityLabel.text = lastActivity

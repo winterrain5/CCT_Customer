@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SymptomCheckReportModel: Codable {
+class SymptomCheckReportModel: BaseModel,Codable {
   var best_describes_qa_title: String?
   var pain_areas_qa_ids: String?
   var symptoms_qa_id: String?
@@ -17,12 +17,12 @@ class SymptomCheckReportModel: Codable {
   var pain_areas: [PainAreas]?
   var fill_date: String?
 }
-class SymptomsQas :Codable {
+class SymptomsQas :BaseModel,Codable {
   var title: String?
   var id: String?
 }
 
-class PainAreas :Codable {
+class PainAreas :BaseModel,Codable {
   var title: String?
   var id: String?
 }

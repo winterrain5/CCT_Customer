@@ -23,7 +23,7 @@ class SelectTypeOfServiceSheetView: UIView {
     EntryKit.dismiss {
       AlertView.show(title: "Share more about your condition?", message: "", leftButtonTitle: "Skip", rightButtonTitle: "Yes") {
         
-        let vc = BookingAppointmentController(type: .Treatment)
+        let vc = BookingAppointmentController(type: .Treatment,showReport: false)
         UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
         
       } rightHandler: {

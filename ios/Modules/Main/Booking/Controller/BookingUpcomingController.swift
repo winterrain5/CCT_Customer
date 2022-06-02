@@ -18,7 +18,7 @@ class BookingUpcomingController: BasePagingTableController {
       self.tableView?.reloadEmptyDataSet()
     }
     
-    NotificationCenter.default.addObserver(forName:.bookingNewAppointment, object: nil, queue: .main) { _ in
+    NotificationCenter.default.addObserver(forName:.bookingDataChanged, object: nil, queue: .main) { _ in
       self.loadNewData()
     }
   }

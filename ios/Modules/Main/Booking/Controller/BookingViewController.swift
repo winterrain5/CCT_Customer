@@ -57,10 +57,11 @@ class BookingViewController: BaseViewController {
     segment.defaultSelectedIndex = 0
   }
   
+  
   init() {
     super.init(nibName: nil, bundle: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(menuDidClick(_:)), name: .menuDidOpenVc, object: nil)
-    NotificationCenter.default.addObserver(forName:.bookingNewAppointment, object: nil, queue: .main) { _ in
+    NotificationCenter.default.addObserver(forName:.bookingDataChanged, object: nil, queue: .main) { _ in
       self.getClientBookedService()
     }
   }

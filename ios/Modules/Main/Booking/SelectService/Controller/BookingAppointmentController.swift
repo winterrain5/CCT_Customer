@@ -74,25 +74,25 @@ class BookingAppointmentController: BaseTableController {
   var isSyncCalendar:Bool = true
   
   var result:[Int:[SymptomCheckStepModel]] = [:]
+  var showReport = true
   
-  var footerAditonalH:CGFloat = 0
   
-  convenience init(type: ServiceType, result:[Int:[SymptomCheckStepModel]]) {
+  convenience init(type: ServiceType, result:[Int:[SymptomCheckStepModel]] = [:],showReport:Bool = true) {
     self.init()
     self.type = type
     self.result = result
-    footerAditonalH = result.isEmpty ? 0 : 285
+    self.showReport = showReport
+    
   }
   
   convenience init(type: ServiceType) {
     self.init()
     self.type = type
+    
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    
     
     self.view.backgroundColor = R.color.theamBlue()
     headView.addSubview(headLabel)
@@ -142,8 +142,8 @@ class BookingAppointmentController: BaseTableController {
       self?.navigationController?.popToRootViewController(animated: true)
     }
     
-    if type != .Treatment {
-      getBusiness()
+    if showReport {
+      getLastSymptomCheckReport()
     }
     
   }
@@ -161,8 +161,7 @@ class BookingAppointmentController: BaseTableController {
     headView.size = CGSize(width: kScreenWidth, height: 84)
     
     tableView?.tableFooterView = footView
-    footView.footerView.isHidden = true
-    footView.size = CGSize(width: kScreenWidth, height: 226 + footerAditonalH)
+    footView.size = CGSize(width: kScreenWidth, height: 226)
     footView.syncCalendar = { [weak self]  isSelect in
       self?.isSyncCalendar = isSelect
     }
@@ -285,6 +284,10 @@ extension BookingAppointmentController {
       getEmployeeDutyDates()
     }
     
+    // 看诊 设置默认的医疗师
+    if self.type == .Treatment {
+      self.getEmployeeForService()
+    }
     
   }
   @objc func selectTimeSlot() {
@@ -349,6 +352,13 @@ extension BookingAppointmentController {
       self.selectCompany = self.companyModels[index]
       self.models.filter({ $0.type == .outlet }).first?.title = self.companyModels[index].alias_name
       self.tableView?.reloadData()
+      
+      // 看诊获取默认的服务
+      if self.type == .Treatment {
+        self.getServiceByLocation()
+      }
+     
+      
     }
   }
   
@@ -361,13 +371,19 @@ extension BookingAppointmentController {
     
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeArrayByHandJSON(BookingServiceModel.self, from: data) {
-        self.serviceModels = models
-        
-        if self.serviceModels.count == 0 {
-          Toast.showMessage("No siutable service")
-          return
+        if self.type == .Treatment {
+          if models.count == 1 {
+            self.selectedService = models.first
+          }
+        }else {
+          if models.count == 0 {
+            Toast.showMessage("No siutable service")
+            return
+          }
+          self.serviceModels = models
+          self.showServiceSheetView()
         }
-        self.showServiceSheetView()
+        
       }
       Toast.dismiss()
     } errorHandler: { e in
@@ -402,8 +418,16 @@ extension BookingAppointmentController {
     NetworkManager().request(params: params) { data in
       Toast.dismiss()
       if let models = DecodeManager.decodeArrayByHandJSON(EmployeeForServiceModel.self, from: data) {
-        self.employeeModels = models
-        self.showEmployeeSheetView()
+        
+        if self.type != .Therapist {
+          if models.count == 1 {
+            self.selectedEmployee = models.first
+          }
+        } else {
+          self.employeeModels = models
+          self.showEmployeeSheetView()
+        }
+        
       }
     } errorHandler: { e in
       Toast.dismiss()
@@ -413,6 +437,12 @@ extension BookingAppointmentController {
   }
   
   func showEmployeeSheetView() {
+    
+    if self.employeeModels.count == 0 {
+      Toast.showMessage("There is no suitable therapist at present")
+      return
+    }
+    
     let strs = self.employeeModels.map({ $0.employee_name + "(\($0.gender == 1 ? "Male" : "Female"))" })
     BookingServiceFormSheetView.show(dataArray: strs, type: .Therapist) { index in
       
@@ -499,13 +529,24 @@ extension BookingAppointmentController {
   
   func getBokingTimeSlots() {
     Toast.showLoading()
-    let params = SOAPParams(action: .Schedule, path: .getBookingTimeSlots)
+    
+    var url:API!
+    if type == .Treatment {
+      url = .getDocTimeSlots
+    }else {
+      url = .getBookingTimeSlots
+    }
+    
+    let params = SOAPParams(action: .Schedule, path: url)
     params.set(key: "locationId", value: selectCompany?.id ?? "")
     params.set(key: "serviceId", value: selectedService?.id ?? "")
     params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
     params.set(key: "date", value: self.selectedDate ?? "")
     params.set(key: "employeeId", value: selectedEmployee?.employee_id ?? "")
-    params.set(key: "isWellness", value: self.type == .Treatment ? "2" : "1")
+    if self.type != .Treatment {
+      params.set(key: "isWellness", value: "1")
+    }
+    
     
     NetworkManager().request(params: params) { data in
       let times = try? JSON.init(data: data).arrayObject as? [String]
@@ -603,6 +644,7 @@ extension BookingAppointmentController {
     
   }
   
+  /// 非指定预约检查是否可以预约
   func checkRandomBookService(sender:LoadingButton) {
     let params = SOAPParams(action: .BookingOrder, path: .checkRandomBookService)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
@@ -639,13 +681,13 @@ extension BookingAppointmentController {
     let params = SOAPParams(action: .BookingOrder, path: .checkConsulted)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "locationId", value: selectCompany?.id ?? "")
-    params.set(key: "date", value: self.models.filter({ $0.type == .date }).first?.title ?? "")
+    params.set(key: "date", value: self.selectedDate ?? "")
     
     sender.startAnimation()
     NetworkManager().request(params: params) { data in
       sender.stopAnimation()
-      let flag = String(data: data, encoding: .utf8)?.int ?? 0
-      if flag == 1 {
+      let flag = String(data: data, encoding: .utf8)?.int ?? 1
+      if flag == 0 {
         self.checkCanBookService(sender: sender)
       }else {
         AlertView.show(message: "Another appointment with a similar time slot has been created. Please select another day or time.")
@@ -656,6 +698,48 @@ extension BookingAppointmentController {
       AlertView.show(message: "Another appointment with a similar time slot has been created. Please select another day or time.")
     }
     
+  }
+  
+  func getLastSymptomCheckReport() {
+    let params = SOAPParams(action: .SymptomCheck, path: .getLastSymptomCheckReport)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "date", value: Date().string(withFormat: "yyyy-MM-dd"))
+    
+    NetworkManager().request(params: params) { data in
+     
+      if let model = DecodeManager.decodeObjectByHandJSON(SymptomCheckReportModel.self, from: data) {
+        
+        var result:[[SymptomCheckStepModel]] = []
+        
+        let symptoms = model.symptoms_qas?.map({ e -> SymptomCheckStepModel in
+          let m = SymptomCheckStepModel()
+          m.title = e.title
+          return m
+        })
+        
+        let lastActivity = SymptomCheckStepModel()
+        lastActivity.title = model.best_describes_qa_title ?? ""
+        
+        let area = model.pain_areas?.map({ e -> SymptomCheckStepModel  in
+          let m = SymptomCheckStepModel()
+          m.title = e.title
+          return m
+        })
+        
+        result.append(symptoms ?? [])
+        result.append([lastActivity])
+        result.append(area ?? [])
+        
+        self.footView.result = result
+        let footerAditonalH = result.isEmpty ? 0 : 285
+        self.footView.size = CGSize(width: kScreenWidth, height: 226 + footerAditonalH.cgFloat)
+        self.tableView?.tableFooterView = self.footView
+        
+      }
+      
+    } errorHandler: { e in
+      
+    }
   }
   /*
    var time = ""

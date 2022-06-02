@@ -146,7 +146,7 @@ class TellUsCondiitonController: BaseTableController {
   
   @objc func bottomAction() {
     if category == 3 {
-      let vc = BookingAppointmentController(type: .Treatment, result: result)
+      let vc = BookingAppointmentController(type: .Treatment, result: result,showReport: true)
       self.navigationController?.pushViewController(vc)
       return
     }

@@ -196,7 +196,7 @@ class ConfirmSessionContainer: UIView {
     }
     self.getTSystemConfig()
     self.addToCalendar()
-    NotificationCenter.default.post(name: .bookingNewAppointment, object: nil)
+    NotificationCenter.default.post(name: .bookingDataChanged, object: nil)
   }
   
   func getTSystemConfig() {

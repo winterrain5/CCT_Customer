@@ -26,4 +26,11 @@ class BookingTodayModel: BaseModel {
   var wellness_treatment_type: String = ""
   var status: String = ""
   var wellness_or_treatment: String = ""
+  var cellHeight:CGFloat {
+    if staff_is_random == "2" {
+      return 196 + 28
+    }else {
+      return 196
+    }
+  }
 }

@@ -19,6 +19,8 @@ class MadamPartumNewsCell: MadamPartumCell {
     self.clvH = 184
     self.layout.itemSize = CGSize(width: 160, height: self.clvH)
     self.layout.numberOfItemsPerPage = 2
+    self.layout.minimumInteritemSpacing = 0
+    self.layout.minimumLineSpacing = 0
     super.configSubViews()
     self.collectionView.register(nibWithCellClass: MadamPartumNewsItemCell.self)
     self.typeLabel.text = "News"

@@ -7,8 +7,14 @@
 
 import UIKit
 import CHIPageControl
+enum AppointmentViewType {
+  case Today
+  case Upcoming
+  case Wellcom
+}
 class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource {
 
+  
   var pageControl = CHIPageControlJaloro().then { pageControl in
     pageControl.currentPageTintColor = R.color.theamBlue()
     pageControl.tintColor = R.color.theamBlue()?.withAlphaComponent(0.2)
@@ -21,7 +27,8 @@ class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
   
   lazy var layout = PagingCollectionViewLayout().then { layout in
     layout.scrollDirection = .horizontal
-    layout.minimumLineSpacing = 8
+    layout.minimumInteritemSpacing = 0
+    layout.minimumLineSpacing = 0
     layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
     layout.itemSize = CGSize(width: 160, height: 184)
     layout.numberOfItemsPerPage = 2
@@ -36,7 +43,6 @@ class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
     view.decelerationRate = .fast
     return view
   }()
-  
   
   
   var blogDatas:[BlogModel] = [] {
@@ -85,7 +91,12 @@ class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
   @IBOutlet weak var kkContentView: UIView!
   private var selectBlogId:String = ""
   
+  var updateContentHeight:((CGFloat)->())?
+  
   let kingkongView = HomeKingKongView()
+  var wellcomeView = HomeWellcomeView()
+  var bookedView = HomeBookedServiceView()
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     
@@ -145,6 +156,7 @@ class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
       }
 
     }
+    cell.addImageViewShadow()
     return cell
   }
   
@@ -307,5 +319,53 @@ class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
   @IBAction func viewBlogAction(_ sender: Any) {
     let vc = BlogViewController()
     UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
+  }
+  
+ 
+  func updateAppointmentViewData(viewType:AppointmentViewType,today:[BookingTodayModel] = [],upcoming:[BookingUpComingModel] = []) {
+    var totalH:CGFloat = 570
+    var appointmentH:CGFloat = 0
+    appointmentInfoView.removeSubviews()
+    
+    func addWellcomeView() {
+      appointmentH = 74
+      appointmentInfoView.addSubview(wellcomeView)
+      wellcomeView.snp.makeConstraints { make in
+        make.top.left.right.equalToSuperview()
+        make.height.equalTo(appointmentH)
+      }
+    }
+    if viewType == .Wellcom {
+      addWellcomeView()
+    }
+    if viewType == .Today || viewType == .Upcoming{
+      
+      if viewType == .Today && today.count == 0 {
+        addWellcomeView()
+        return
+      }
+      if viewType == .Upcoming && upcoming.count == 0 {
+        addWellcomeView()
+        return
+      }
+      
+      appointmentInfoView.addSubview(bookedView)
+      bookedView.updateAppointmentViewData(viewType: viewType, today: today, upcoming: upcoming)
+      appointmentH = bookedView.contentH
+      bookedView.snp.makeConstraints { make in
+        make.top.left.right.equalToSuperview()
+        make.height.equalTo(appointmentH)
+      }
+    }
+
+    appointmentInfoHCons.constant = appointmentH
+    UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut) {
+      self.setNeedsUpdateConstraints()
+      self.layoutIfNeeded()
+    } completion: { flag in
+      
+    }
+    totalH += appointmentH
+    updateContentHeight?(totalH)
   }
 }

@@ -20,10 +20,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mpb-9D-DbY">
-                        <rect key="frame" x="24" y="8" width="313" height="218"/>
+                        <rect key="frame" x="8" y="8" width="345" height="218"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cds-RM-3iF">
-                                <rect key="frame" x="4" y="4" width="305" height="44"/>
+                                <rect key="frame" x="4" y="4" width="337" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ang Mo Kio Outlet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfa-jx-zN8">
                                         <rect key="frame" x="12" y="12" width="123" height="20"/>
@@ -46,7 +46,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TlF-iI-Gso">
-                                <rect key="frame" x="16" y="66" width="281" height="16"/>
+                                <rect key="frame" x="16" y="66" width="313" height="16"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="booking_time" translatesAutoresizingMaskIntoConstraints="NO" id="ptK-e2-wmW">
                                         <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -81,7 +81,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5OJ-6a-X4i">
-                                <rect key="frame" x="16" y="94" width="281" height="16"/>
+                                <rect key="frame" x="16" y="94" width="313" height="16"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="booking_location" translatesAutoresizingMaskIntoConstraints="NO" id="Lic-hE-gwB">
                                         <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -116,7 +116,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXK-Ea-EoB">
-                                <rect key="frame" x="16" y="166" width="281" height="36"/>
+                                <rect key="frame" x="16" y="166" width="313" height="36"/>
                                 <color key="backgroundColor" name="TheamRed"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="95x-YX-LHa"/>
@@ -137,7 +137,7 @@
                                 </connections>
                             </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aUa-1I-yhq">
-                                <rect key="frame" x="16" y="122" width="281" height="16"/>
+                                <rect key="frame" x="16" y="122" width="313" height="16"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="booking_user" translatesAutoresizingMaskIntoConstraints="NO" id="ynF-0K-fq0">
                                         <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -200,8 +200,8 @@
             <color key="backgroundColor" name="White"/>
             <constraints>
                 <constraint firstItem="Mpb-9D-DbY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="8Bs-Pf-AnQ"/>
-                <constraint firstAttribute="trailing" secondItem="Mpb-9D-DbY" secondAttribute="trailing" constant="24" id="BI3-oG-3wF"/>
-                <constraint firstItem="Mpb-9D-DbY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="24" id="IfN-Lg-N1i"/>
+                <constraint firstAttribute="trailing" secondItem="Mpb-9D-DbY" secondAttribute="trailing" constant="8" id="BI3-oG-3wF"/>
+                <constraint firstItem="Mpb-9D-DbY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="IfN-Lg-N1i"/>
                 <constraint firstAttribute="bottom" secondItem="Mpb-9D-DbY" secondAttribute="bottom" constant="8" id="gjv-0j-4jO"/>
             </constraints>
             <size key="customSize" width="361" height="234"/>

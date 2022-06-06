@@ -16,6 +16,7 @@ class MadamPartumNewsItemCell: UICollectionViewCell {
   @IBOutlet weak var bookmarkButton: UIButton!
   @IBOutlet weak var shareButton: UIButton!
   
+  @IBOutlet weak var shadowView: UIView!
   var shareHandler:((BlogModel)->())?
   var bookmarkHandler:((BlogModel)->())?
   
@@ -48,4 +49,8 @@ class MadamPartumNewsItemCell: UICollectionViewCell {
     bookmarkHandler?(model)
   }
 
+  func addImageViewShadow() {
+    let light:UIColor = UIColor(hexString: "#040000")!.withAlphaComponent(0.12)
+    shadowView.addShadow(ofColor: light, radius: 4, offset: CGSize(width: 0, height: 2), opacity: 2)
+  }
 }

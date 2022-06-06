@@ -15,7 +15,7 @@ class BookingUpcomingController: BasePagingTableController {
     NotificationCenter.default.addObserver(forName: .bookingTodayLoaded, object: nil, queue: .main) { noti  in
       let todayH = noti.object as? CGFloat ?? 0
       self.todayH = todayH
-      self.tableView?.reloadEmptyDataSet()
+      self.loadNewData()
     }
     
     NotificationCenter.default.addObserver(forName:.bookingDataChanged, object: nil, queue: .main) { _ in

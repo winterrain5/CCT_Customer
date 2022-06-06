@@ -92,6 +92,12 @@ class BookingViewController: BaseViewController {
     self.view.addSubview(paggingView)
     paggingView.frame = CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
     
+    let header = RefreshAnimationHeader{ [weak self] in
+      self?.getClientBookedService()
+    }
+    header.colorStyle = .gray
+    paggingView.mainTableView.mj_header = header
+    
     getClientBookedService()
   }
 
@@ -118,8 +124,11 @@ class BookingViewController: BaseViewController {
         self.tableHeaderViewHeight = 0
       }
       NotificationCenter.default.post(name: NSNotification.Name.bookingTodayLoaded, object: self.tableHeaderViewHeight)
+      
       self.paggingView.reloadData()
+      self.paggingView.mainTableView.mj_header?.endRefreshing()
     } errorHandler: { e in
+      self.paggingView.mainTableView.mj_header?.endRefreshing()
       self.tableHeaderViewHeight = 0
       NotificationCenter.default.post(name: NSNotification.Name.bookingTodayLoaded, object: self.tableHeaderViewHeight)
     }

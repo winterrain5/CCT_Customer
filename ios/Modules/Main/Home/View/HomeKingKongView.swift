@@ -71,11 +71,30 @@ class HomeKingKongView: UIView,UICollectionViewDelegate,UICollectionViewDataSour
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-  
+    let selStr = self.datas[indexPath.item].sel
+    let sel = NSSelectorFromString(selStr)
+    if self.responds(to: sel) {
+      self.perform(sel)
+    }
   }
   
-  
-
+  @objc func symptomChecker() {
+    let vc = SymptomCheckBeginController()
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
+  }
+  @objc func shop() {
+    let vc = ShopViewController()
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
+  }
+  @objc func conditionsWeTreat() {
+    let vc = WebBrowserController(url: WebUrl.conditionsWeTreat)
+    vc.navTitle = ""
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
+  }
+  @objc func madamPartum() {
+    let vc = MadamPartumController()
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
+  }
 }
 
 class HomeKingKongCell:UICollectionViewCell {

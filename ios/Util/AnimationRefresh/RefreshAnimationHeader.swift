@@ -48,7 +48,7 @@ class RefreshAnimationHeader: MJRefreshHeader {
     override func placeSubviews() {
          super.placeSubviews()
         activity.frame = CGRect.init(x: (self.frame.size.width - 50) * 0.5, y: iPhoneX() ? 30 : 10, width: 50, height: 40)
-        messageLabel.frame = CGRect.init(x: (self.frame.size.width - 120) * 0.5, y: iPhoneX() ? 30 : 10, width: 120, height: 40)
+        messageLabel.frame = CGRect.init(x: 0, y: iPhoneX() ? 30 : 10, width: kScreenWidth, height: 40)
     }
     
     override var state: MJRefreshState {
@@ -57,12 +57,12 @@ class RefreshAnimationHeader: MJRefreshHeader {
             case .idle:
                 activity.stopAnimating()
                 messageLabel.isHidden = false
-                messageLabel.text = "下拉刷新"
+                messageLabel.text = "Pull To Refresh"
                 break
             case .pulling:
                 activity.stopAnimating()
                 messageLabel.isHidden = false
-                messageLabel.text = "松手刷新"
+                messageLabel.text = "Release To Refresh"
                 break
             case .refreshing:
                 activity.startAnimating()

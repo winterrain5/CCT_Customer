@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,6 +18,28 @@
                 <rect key="frame" x="0.0" y="0.0" width="315" height="340"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fen-DF-Iwx">
+                        <rect key="frame" x="0.0" y="0.0" width="315" height="236.5"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ibz-iU-ZnA">
+                                <rect key="frame" x="4" y="0.0" width="307" height="236.5"/>
+                                <color key="backgroundColor" name="Placeholder"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ibz-iU-ZnA" secondAttribute="trailing" constant="4" id="2Rb-Vt-ExL"/>
+                            <constraint firstItem="ibz-iU-ZnA" firstAttribute="top" secondItem="Fen-DF-Iwx" secondAttribute="top" id="LVn-Ki-CjK"/>
+                            <constraint firstItem="ibz-iU-ZnA" firstAttribute="leading" secondItem="Fen-DF-Iwx" secondAttribute="leading" constant="4" id="MFG-Tp-1R0"/>
+                            <constraint firstAttribute="bottom" secondItem="ibz-iU-ZnA" secondAttribute="bottom" id="PUy-wG-e96"/>
+                            <constraint firstAttribute="width" secondItem="Fen-DF-Iwx" secondAttribute="height" multiplier="4:3" id="jaO-5k-de4"/>
+                        </constraints>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet consecteturLorem ipsum dolor sit amet consectetur" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRN-UF-DHT">
                         <rect key="frame" x="8" y="240.5" width="299" height="38.5"/>
                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
@@ -29,15 +51,6 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ibz-iU-ZnA">
-                        <rect key="frame" x="0.0" y="0.0" width="315" height="236.5"/>
-                        <color key="backgroundColor" name="Placeholder"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="16"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lifestyle, Wellness" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMm-UO-5HO">
                         <rect key="frame" x="8" y="283" width="299" height="16.5"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
@@ -82,20 +95,19 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" name="White"/>
             <constraints>
-                <constraint firstItem="ibz-iU-ZnA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1Xm-OH-7RZ"/>
-                <constraint firstItem="591-0A-cHt" firstAttribute="top" secondItem="ibz-iU-ZnA" secondAttribute="top" constant="8" id="1jS-rN-ieh"/>
                 <constraint firstItem="HMm-UO-5HO" firstAttribute="leading" secondItem="NRN-UF-DHT" secondAttribute="leading" id="26m-Tc-POX"/>
+                <constraint firstItem="591-0A-cHt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="6d0-kW-82v"/>
                 <constraint firstItem="NRN-UF-DHT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="8AL-sd-gt4"/>
-                <constraint firstItem="NRN-UF-DHT" firstAttribute="top" secondItem="ibz-iU-ZnA" secondAttribute="bottom" constant="4" id="9s9-vn-4dI"/>
                 <constraint firstAttribute="trailing" secondItem="HMm-UO-5HO" secondAttribute="trailing" constant="8" id="Ctc-je-O2u"/>
+                <constraint firstItem="NRN-UF-DHT" firstAttribute="top" secondItem="Fen-DF-Iwx" secondAttribute="bottom" constant="4" id="Dno-zc-TnI"/>
                 <constraint firstItem="HMm-UO-5HO" firstAttribute="top" secondItem="NRN-UF-DHT" secondAttribute="bottom" constant="4" id="I2E-QL-qwP"/>
-                <constraint firstAttribute="trailing" secondItem="ibz-iU-ZnA" secondAttribute="trailing" id="VQZ-Aa-Gtb"/>
+                <constraint firstItem="Fen-DF-Iwx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="IfT-Kv-tZP"/>
+                <constraint firstAttribute="trailing" secondItem="Fen-DF-Iwx" secondAttribute="trailing" id="MAy-DU-S11"/>
+                <constraint firstItem="Fen-DF-Iwx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="OLY-3f-IWB"/>
+                <constraint firstAttribute="trailing" secondItem="591-0A-cHt" secondAttribute="trailing" constant="8" id="Vqu-VP-dlD"/>
                 <constraint firstItem="MJ7-UD-CHT" firstAttribute="top" secondItem="591-0A-cHt" secondAttribute="top" id="Zth-aq-1hO"/>
-                <constraint firstItem="ibz-iU-ZnA" firstAttribute="width" secondItem="ibz-iU-ZnA" secondAttribute="height" multiplier="4:3" id="aEw-lX-X1i"/>
                 <constraint firstAttribute="trailing" secondItem="NRN-UF-DHT" secondAttribute="trailing" constant="8" id="ecV-8y-TbL"/>
                 <constraint firstItem="591-0A-cHt" firstAttribute="leading" secondItem="MJ7-UD-CHT" secondAttribute="trailing" constant="4" id="eda-6f-vdN"/>
-                <constraint firstItem="ibz-iU-ZnA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="eqV-LO-Jbc"/>
-                <constraint firstItem="591-0A-cHt" firstAttribute="trailing" secondItem="ibz-iU-ZnA" secondAttribute="trailing" constant="-8" id="uCf-Mi-gzc"/>
             </constraints>
             <size key="customSize" width="315" height="340"/>
             <connections>
@@ -103,6 +115,7 @@
                 <outlet property="blogTagLabel" destination="HMm-UO-5HO" id="Z8G-yi-gHm"/>
                 <outlet property="blogTitleLabel" destination="NRN-UF-DHT" id="xOB-iD-ADC"/>
                 <outlet property="bookmarkButton" destination="591-0A-cHt" id="7bY-kX-JgI"/>
+                <outlet property="shadowView" destination="Fen-DF-Iwx" id="2Em-Zl-UoQ"/>
                 <outlet property="shareButton" destination="MJ7-UD-CHT" id="LEe-fq-RNv"/>
             </connections>
             <point key="canvasLocation" x="142.75362318840581" y="158.03571428571428"/>

@@ -24,7 +24,6 @@ class BookingHeadController: BaseViewController {
   var additionalH:CGFloat = 0
   var models:[BookingTodayModel] = [] {
     didSet {
-      additionalH = models.filter({ $0.staff_is_random == "2" }).count > 0 ? 28 : 0
       sessionView.models = models
       layoutViews()
     }
@@ -53,7 +52,7 @@ class BookingHeadController: BaseViewController {
     sessionView.snp.makeConstraints { make in
       make.left.right.equalToSuperview()
       make.top.equalToSuperview().offset(94)
-      make.height.equalTo(216 + additionalH)
+      make.height.equalTo(sessionView.todayHeight)
     }
   }
   

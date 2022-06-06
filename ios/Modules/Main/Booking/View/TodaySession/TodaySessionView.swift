@@ -9,18 +9,24 @@ import UIKit
 import CHIPageControl
 class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
   
+  var todayHeight:CGFloat = 0
+  var itemWidth:CGFloat = 0
   var models:[BookingTodayModel] = [] {
     didSet {
+      todayHeight = 0
       let addtionalH = models.filter({ $0.staff_is_random == "2" }).count > 0 ? 28 : 0
+      let clvH = 196 + addtionalH.cgFloat
+      let controlH:CGFloat = models.count > 0 ? 24 : 0
+      todayHeight = todayHeight + clvH + controlH
       collectionView.snp.makeConstraints { make in
         make.left.right.top.equalToSuperview()
-        make.height.equalTo(196 + addtionalH)
+        make.height.equalTo(clvH)
       }
       pageControl.snp.makeConstraints { make in
         make.centerX.equalToSuperview()
         make.top.equalTo(collectionView.snp.bottom).offset(8)
       }
-      
+      itemWidth = models.count > 1 ? kScreenWidth * 0.8 : kScreenWidth
       collectionView.reloadData()
       pageControl.numberOfPages = models.count
       
@@ -29,7 +35,7 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
   
   lazy var layout = PagingCollectionViewLayout().then { layout in
     layout.scrollDirection = .horizontal
-    layout.sectionInset = .zero
+    layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     layout.minimumLineSpacing = 0
     layout.minimumInteritemSpacing = 0
   }
@@ -41,6 +47,7 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     view.delegate = self
     view.dataSource = self
     view.isPagingEnabled = true
+    view.decelerationRate = .fast
     return view
   }()
   var pageControl = CHIPageControlJaloro().then { pageControl in
@@ -50,7 +57,7 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     pageControl.padding = 8
     pageControl.elementWidth = 24
     pageControl.elementHeight = 4
-    pageControl.hidesForSinglePage = false
+    pageControl.hidesForSinglePage = true
   }
   
   override init(frame: CGRect) {
@@ -92,7 +99,7 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     if scrollView.contentOffset.x == 0 {
       pageControl.set(progress: 0, animated: true)
     }else {
-      let page = (scrollView.contentOffset.x / kScreenWidth).int
+      let page = (scrollView.contentOffset.x / itemWidth).int
       pageControl.set(progress: page, animated: true)
     }
    
@@ -100,8 +107,8 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     if models.count > 0 {
-      let addtionalH = models[indexPath.item].staff_is_random == "2" ? 28 : 0
-      return CGSize(width: kScreenWidth, height: 196 + addtionalH.cgFloat)
+      let itemH = models[indexPath.item].cellHeight
+      return CGSize(width: itemWidth, height: itemH)
     }
     return .zero
   }

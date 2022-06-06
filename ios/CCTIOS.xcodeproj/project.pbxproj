@@ -44,6 +44,9 @@
 		45CE32FA28349CAF00201726 /* TodaySessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F828349CAF00201726 /* TodaySessionCell.swift */; };
 		45CE32FB28349CAF00201726 /* TodaySessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CE32F928349CAF00201726 /* TodaySessionCell.xib */; };
 		45CE32FD2834CAF500201726 /* BookingTodayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32FC2834CAF500201726 /* BookingTodayModel.swift */; };
+		45D65105284DA03900C7BD39 /* HomeWellcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D65104284DA03900C7BD39 /* HomeWellcomeView.swift */; };
+		45D65107284DCFF100C7BD39 /* HomeBookedServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D65106284DCFF100C7BD39 /* HomeBookedServiceView.swift */; };
+		45D6510A284DD2C100C7BD39 /* UpcomingSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D65109284DD2C100C7BD39 /* UpcomingSessionView.swift */; };
 		4902023527D8934800E74415 /* WalletAddUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902023427D8934800E74415 /* WalletAddUserController.swift */; };
 		4902023727D8939E00E74415 /* WalletAddUserHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902023627D8939E00E74415 /* WalletAddUserHeadView.swift */; };
 		4902023927D893A800E74415 /* WalletAddUserHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4902023827D893A800E74415 /* WalletAddUserHeadView.xib */; };
@@ -724,6 +727,9 @@
 		45CE32F828349CAF00201726 /* TodaySessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionCell.swift; sourceTree = "<group>"; };
 		45CE32F928349CAF00201726 /* TodaySessionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodaySessionCell.xib; sourceTree = "<group>"; };
 		45CE32FC2834CAF500201726 /* BookingTodayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTodayModel.swift; sourceTree = "<group>"; };
+		45D65104284DA03900C7BD39 /* HomeWellcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWellcomeView.swift; sourceTree = "<group>"; };
+		45D65106284DCFF100C7BD39 /* HomeBookedServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBookedServiceView.swift; sourceTree = "<group>"; };
+		45D65109284DD2C100C7BD39 /* UpcomingSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingSessionView.swift; sourceTree = "<group>"; };
 		4902023427D8934800E74415 /* WalletAddUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAddUserController.swift; sourceTree = "<group>"; };
 		4902023627D8939E00E74415 /* WalletAddUserHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAddUserHeadView.swift; sourceTree = "<group>"; };
 		4902023827D893A800E74415 /* WalletAddUserHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletAddUserHeadView.xib; sourceTree = "<group>"; };
@@ -1500,9 +1506,12 @@
 		45A505812848993500779B4C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				45D65108284DD2B100C7BD39 /* UpcomingSesiong */,
 				45A505822848997300779B4C /* HomeContainer.swift */,
 				45A505842848998000779B4C /* HomeContainer.xib */,
 				45A505862848B80800779B4C /* HomeKingKongView.swift */,
+				45D65104284DA03900C7BD39 /* HomeWellcomeView.swift */,
+				45D65106284DCFF100C7BD39 /* HomeBookedServiceView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1515,6 +1524,14 @@
 				45CE32F928349CAF00201726 /* TodaySessionCell.xib */,
 			);
 			path = TodaySession;
+			sourceTree = "<group>";
+		};
+		45D65108284DD2B100C7BD39 /* UpcomingSesiong */ = {
+			isa = PBXGroup;
+			children = (
+				45D65109284DD2C100C7BD39 /* UpcomingSessionView.swift */,
+			);
+			path = UpcomingSesiong;
 			sourceTree = "<group>";
 		};
 		4902024427D9FEF900E74415 /* SwiftNetSwitch */ = {
@@ -3511,6 +3528,7 @@
 				49E61D18278EBF2300B1C136 /* SymptomCheckStepModel.swift in Sources */,
 				4906C221279A5F3300F7B67F /* AwardModel.swift in Sources */,
 				4904C3CC280677D6008FE5A5 /* BaseModel.swift in Sources */,
+				45D65107284DCFF100C7BD39 /* HomeBookedServiceView.swift in Sources */,
 				49056B1527968E7B00FBA1AC /* ScriptMessage.swift in Sources */,
 				49E61D28278ED9BF00B1C136 /* SymptomCheckQ1ResultModel.swift in Sources */,
 				4998C05A277EF51200A881D5 /* CAGradientLayerExtensions.swift in Sources */,
@@ -3582,6 +3600,7 @@
 				4998BF3A277ED29400A881D5 /* DataLoadable.swift in Sources */,
 				4998C0D42784427F00A881D5 /* ConstraintAttributes.swift in Sources */,
 				4998C10427852C4600A881D5 /* BlogViewController.swift in Sources */,
+				45D65105284DA03900C7BD39 /* HomeWellcomeView.swift in Sources */,
 				4998C0E62784427F00A881D5 /* ConstraintMakerEditable.swift in Sources */,
 				4996D7A127D5986500437265 /* WalletCouponsCell.swift in Sources */,
 				497B354427CF69BF00AE20C4 /* BasePagingTableController.swift in Sources */,
@@ -3858,6 +3877,7 @@
 				4904C3D028067865008FE5A5 /* MatchPhoneModel.swift in Sources */,
 				4998C0872783DBF900A881D5 /* OurServicesViewController.swift in Sources */,
 				49FC8EB22791080E00157292 /* SymptomCheckEmailMeController.swift in Sources */,
+				45D6510A284DD2C100C7BD39 /* UpcomingSessionView.swift in Sources */,
 				49BA628D2785938F00B898D5 /* BlogCategoryModel.swift in Sources */,
 				4904C3C1280677C6008FE5A5 /* ShopCartCell.swift in Sources */,
 				49981EE727CCB8F300D4F7BF /* SettingFilterModel.swift in Sources */,

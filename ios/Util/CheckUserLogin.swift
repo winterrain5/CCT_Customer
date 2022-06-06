@@ -10,7 +10,7 @@ import UIKit
 
 @objcMembers class CheckUserLogin: NSObject {
   static var isLogined:Bool {
-    if let _ = Defaults.shared.get(for: .userId) {
+    if let _ = Defaults.shared.get(for: .clientId) {
       return true
     }else {
       return false

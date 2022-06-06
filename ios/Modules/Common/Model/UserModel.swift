@@ -84,7 +84,7 @@ class UserModel: BaseModel,Codable {
   var first_recharge_card_status: String = ""
   var send_notification_by_en: String = ""
   var comment_id: String = ""
-  var points: String = ""
+  var points: Float = 0
   var is_vip: String = ""
   var approach_types: String = ""
   var inbox_content: String = ""

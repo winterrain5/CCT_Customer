@@ -99,10 +99,9 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     if scrollView.contentOffset.x == 0 {
       pageControl.set(progress: 0, animated: true)
     }else {
-      let page = (scrollView.contentOffset.x / itemWidth).int
-      pageControl.set(progress: page, animated: true)
+      let page = floor((scrollView.contentSize.width / scrollView.contentOffset.x))
+      pageControl.set(progress: page.int - 1, animated: true)
     }
-   
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

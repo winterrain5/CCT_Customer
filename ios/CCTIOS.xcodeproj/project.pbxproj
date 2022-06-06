@@ -28,6 +28,7 @@
 		4550946F28339DA90017C244 /* BookingUpComingDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4550946E28339DA90017C244 /* BookingUpComingDetailController.swift */; };
 		4550947128339DEA0017C244 /* BookingUpComingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4550947028339DEA0017C244 /* BookingUpComingDetailView.swift */; };
 		4550947328339DFB0017C244 /* BookingUpComingDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4550947228339DFA0017C244 /* BookingUpComingDetailView.xib */; };
+		45792069284DF222008CD008 /* TapLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45792068284DF222008CD008 /* TapLabel.swift */; };
 		457CBA88283615FE00AE26D8 /* BookingCompleteDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CBA87283615FE00AE26D8 /* BookingCompleteDetailController.swift */; };
 		457CBA8A2836163200AE26D8 /* BookingCompleteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CBA892836163200AE26D8 /* BookingCompleteDetailView.swift */; };
 		457CBA8C2836163E00AE26D8 /* BookingCompleteDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 457CBA8B2836163E00AE26D8 /* BookingCompleteDetailView.xib */; };
@@ -711,6 +712,7 @@
 		4550946E28339DA90017C244 /* BookingUpComingDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingUpComingDetailController.swift; sourceTree = "<group>"; };
 		4550947028339DEA0017C244 /* BookingUpComingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingUpComingDetailView.swift; sourceTree = "<group>"; };
 		4550947228339DFA0017C244 /* BookingUpComingDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingUpComingDetailView.xib; sourceTree = "<group>"; };
+		45792068284DF222008CD008 /* TapLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapLabel.swift; sourceTree = "<group>"; };
 		457CBA87283615FE00AE26D8 /* BookingCompleteDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingCompleteDetailController.swift; sourceTree = "<group>"; };
 		457CBA892836163200AE26D8 /* BookingCompleteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingCompleteDetailView.swift; sourceTree = "<group>"; };
 		457CBA8B2836163E00AE26D8 /* BookingCompleteDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingCompleteDetailView.xib; sourceTree = "<group>"; };
@@ -1468,6 +1470,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		45792067284DF201008CD008 /* TapLabel */ = {
+			isa = PBXGroup;
+			children = (
+				45792068284DF222008CD008 /* TapLabel.swift */,
+			);
+			path = TapLabel;
+			sourceTree = "<group>";
+		};
 		457CBA8D2837428200AE26D8 /* SelectService */ = {
 			isa = PBXGroup;
 			children = (
@@ -2043,6 +2053,7 @@
 		4998BF0A277EAF6500A881D5 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				45792067284DF201008CD008 /* TapLabel */,
 				498D85D127995EB40044F34F /* FSPagerView */,
 				4998C0FE27852BC400A881D5 /* Defaults */,
 				4998C0F42784434E00A881D5 /* Then */,
@@ -3689,6 +3700,7 @@
 				49DED22927C479E50027F476 /* FeedbackFormContainer.swift in Sources */,
 				4998C0EA2784427F00A881D5 /* ConstraintView+Extensions.swift in Sources */,
 				495649D32817E67A00091533 /* MyOrderStatusView.swift in Sources */,
+				45792069284DF222008CD008 /* TapLabel.swift in Sources */,
 				49FC8EB927910F7100157292 /* SystemConfigModel.swift in Sources */,
 				49BCF76327B200CE00B623CE /* MyOrdersController.swift in Sources */,
 				4998C036277EF51200A881D5 /* CalendarExtensions.swift in Sources */,

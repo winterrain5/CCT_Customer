@@ -49,10 +49,15 @@ class ProfileViewController: BaseTableController {
     self.navigation.item.title = "Profile"
     self.barAppearance(tintColor: .white, barBackgroundColor: R.color.theamBlue()!, image: nil, backButtonTitle: nil)
     self.navigation.item.leftBarButtonItem = UIBarButtonItem(image: R.image.notification_menu(), style: .plain, target: self, action: #selector(leftItemAction))
-    self.refreshData()
     
   }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    self.refreshData()
+  }
   override func refreshData() {
+    getNewReCardAmount()
     if let model = Defaults.shared.get(for: .userModel) {
       headView.model = model
     }else {
@@ -68,6 +73,18 @@ class ProfileViewController: BaseTableController {
       } errorHandler: { e in
         
       }
+    }
+  }
+  
+  
+  func getNewReCardAmount() {
+    
+    let params = SOAPParams(action: .Voucher, path: .getNewReCardAmountByClientId)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    NetworkManager().request(params: params) { data in
+      self.headView.money = String(data: data, encoding: .utf8)?.formatMoney().dolar ?? ""
+    } errorHandler: { e in
+      
     }
   }
   

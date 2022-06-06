@@ -9,9 +9,10 @@ import UIKit
 
 class VerificationCodeContainer: UIView {
 
+  @IBOutlet weak var contentView: UIView!
+  @IBOutlet weak var bottomLabel: TapLabel!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var resendLabel: UILabel!
-  @IBOutlet weak var confirmButton: LoadingButton!
   @IBOutlet weak var countDownButton: CountDownButton!
   @IBOutlet weak var inputBox: CRBoxInputView!
   var resendHandler:(()->())?
@@ -26,6 +27,10 @@ class VerificationCodeContainer: UIView {
       if type == .email {
         titleLabel.text = " We have sent the verification code to \(source)"
        
+      }
+      
+      if type == .Login {
+        titleLabel.text = "We have sent the verification code to +65 \(source)"
       }
       
       if type == .pwd {
@@ -68,12 +73,31 @@ class VerificationCodeContainer: UIView {
     attr.addAttribute(.foregroundColor, value: R.color.theamRed()!, range: NSRange(location: 20, length: 11))
     resendLabel.attributedText = attr
     
+    inputBox.textEditStatusChangeblock = { [weak self] status in
+      guard let `self` = self else { return }
+      if status == .endEdit {
+        self.confirmHandler?(self.inputBox.textValue)
+      }
+    }
+
+    bottomLabel.enabledTapAction = true
+    bottomLabel.enabledTapEffect = false
+    
+    bottomLabel.yb_addAttributeTapAction(["Terms of Service and conditions","Privacy Policy"]) { str, range, idx in
+      if idx == 0 {
+        WalletTermsConditionsSheetView.show()
+      }
+      if idx == 1 {
+        DataProtectionSheetView.show()
+      }
+    }
     
   }
 
   override func layoutSubviews() {
     super.layoutSubviews()
-    corner(byRoundingCorners: [.topLeft,.topRight], radii: 16)
+    contentView.corner(byRoundingCorners: [.topLeft,.topRight], radii: 16)
+    
   }
   
   func startCountDown() {
@@ -94,7 +118,5 @@ class VerificationCodeContainer: UIView {
     "00:00"
     }
   }
-  @IBAction func confirmButtonAction(_ sender: Any) {
-    confirmHandler?(inputBox.textValue)
-  }
+
 }

@@ -21,10 +21,10 @@ class VerificationCodeController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.barAppearance(tintColor: .white, barBackgroundColor: R.color.theamBlue()!, image: R.image.return_left(), backButtonTitle: " Back")
+    self.barAppearance(tintColor: .white, barBackgroundColor: R.color.theamBlue()!, image: R.image.return_left(), backButtonTitle: "")
     self.view.backgroundColor = R.color.theamBlue()!
     self.view.addSubview(contentView)
-    contentView.frame = CGRect(x: 0, y: kNavBarHeight + 10, width: kScreenWidth, height: kScreenHeight - kNavBarHeight - 10)
+    contentView.frame = CGRect(x: 0, y: kNavBarHeight , width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
     contentView.source = source
     contentView.type = type
     contentView.resendHandler = { [weak self] in
@@ -57,7 +57,7 @@ class VerificationCodeController: BaseViewController {
   }
   
   func sendCode() {
-    if type == .phone {
+    if type == .phone || type == .Login{
       sendSmsForMobile()
     }
     
@@ -139,15 +139,14 @@ class VerificationCodeController: BaseViewController {
     data.set(key: "mobile", value: source)
     
     params.set(key: "data", value: data.result, type: .map(1))
-    
-    contentView.confirmButton.startAnimation()
+    Toast.showLoading()
     NetworkManager().request(params: params) { data in
       AlertView.show(message: "You have succesfully changed your mobile!") {
         self.navigationController?.popViewController()
       }
-      self.contentView.confirmButton.stopAnimation()
+      Toast.dismiss()
     } errorHandler: { e in
-      self.contentView.confirmButton.stopAnimation()
+      Toast.dismiss()
     }
 
   }
@@ -161,14 +160,14 @@ class VerificationCodeController: BaseViewController {
     
     params.set(key: "data", value: data.result, type: .map(1))
     
-    self.contentView.confirmButton.startAnimation()
+    Toast.showLoading()
     NetworkManager().request(params: params) { data in
       AlertView.show(message: "You have succesfully changed your email!") {
         self.navigationController?.popViewController()
       }
-      self.contentView.confirmButton.stopAnimation()
+      Toast.dismiss()
     } errorHandler: { e in
-      self.contentView.confirmButton.stopAnimation()
+      Toast.dismiss()
     }
   }
 }

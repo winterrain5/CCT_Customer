@@ -78,7 +78,7 @@ class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
         walletLevelLabel.text = "Platinum Tier"
       }
       
-      pointsLabel.text = userModel.points
+      pointsLabel.text = userModel.points.int.string
     }
   }
 
@@ -335,11 +335,12 @@ class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
         make.height.equalTo(appointmentH)
       }
     }
+    
     if viewType == .Wellcom {
       addWellcomeView()
     }
     if viewType == .Today || viewType == .Upcoming{
-      
+
       if viewType == .Today && today.count == 0 {
         addWellcomeView()
         return
@@ -348,7 +349,7 @@ class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
         addWellcomeView()
         return
       }
-      
+
       appointmentInfoView.addSubview(bookedView)
       bookedView.updateAppointmentViewData(viewType: viewType, today: today, upcoming: upcoming)
       appointmentH = bookedView.contentH
@@ -359,7 +360,7 @@ class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
     }
 
     appointmentInfoHCons.constant = appointmentH
-    UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut) {
+    UIView.animate(withDuration: 0, delay: 0, options: .curveEaseOut) {
       self.setNeedsUpdateConstraints()
       self.layoutIfNeeded()
     } completion: { flag in

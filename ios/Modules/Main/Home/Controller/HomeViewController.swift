@@ -59,8 +59,7 @@ class HomeViewController: BaseViewController {
   
   
   func refreshData() {
-    getFeaturedAllBlogs()
-    getNewReCardAmount()
+   
     firstly {
       getClientByUserId()
     }.then { _ in
@@ -82,7 +81,12 @@ class HomeViewController: BaseViewController {
       }else if today.count > 0 { // 有today 则不显示upcoming
         self.contentView.updateAppointmentViewData(viewType: .Today,today: today)
       }
+      
+      self.getFeaturedAllBlogs()
+      self.getNewReCardAmount()
+      
       self.scrolView.mj_header?.endRefreshing()
+      
     }.catch { e in
       self.scrolView.mj_header?.endRefreshing()
       print(e.asAPIError.errorInfo().message)

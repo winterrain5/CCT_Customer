@@ -17,6 +17,11 @@ class ProfileHeadView: UIView {
   @IBOutlet weak var gradientView: GradientView!
   
   @IBOutlet weak var bottomInfoView: UIView!
+  var money:String = "" {
+    didSet {
+      amountLabel.text = money
+    }
+  }
   var model:UserModel! {
     didSet {
       hideSkeleton()
@@ -49,6 +54,7 @@ class ProfileHeadView: UIView {
         
       }
       
+      pointsLabel.text = model.points.int.string
     }
   }
   

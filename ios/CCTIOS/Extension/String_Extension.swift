@@ -51,5 +51,24 @@ extension String {
     return hash as String
   }
   
-  
+  func isHasLowercaseCharacter() -> Bool {
+    let passwordRule = "^(?=.*[a-z])$"
+    let regexPassword = NSPredicate(format: "SELF MATCHES %@",passwordRule)
+    if regexPassword.evaluate(with: self) == true {
+      return true
+    }else
+    {
+      return false
+    }
+  }
+  func isHasUppercaseCharacter() -> Bool {
+    let passwordRule = "^(?=.*[A-Z])$"
+    let regexPassword = NSPredicate(format: "SELF MATCHES %@",passwordRule)
+    if regexPassword.evaluate(with: self) == true {
+      return true
+    }else
+    {
+      return false
+    }
+  }
 }

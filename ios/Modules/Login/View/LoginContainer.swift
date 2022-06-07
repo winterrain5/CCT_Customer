@@ -49,6 +49,10 @@ class LoginContainer: UIView {
     
   }
   @IBAction func signupAction(_ sender: Any) {
+    
+    let vc = InputIDController()
+    UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+
   }
   
   @IBAction func loginAction(_ sender: Any) {
@@ -56,5 +60,6 @@ class LoginContainer: UIView {
     UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
   }
   @IBAction func checkInAction(_ sender: Any) {
+    
   }
 }

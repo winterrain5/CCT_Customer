@@ -13,6 +13,7 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
     case Service
     case TimeSlot
     case Therapist
+    case SelectID
   }
   var titleLabel = UILabel().then { label in
     label.textColor = R.color.theamBlue()
@@ -37,6 +38,8 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
         titleLabel.text = "Select Time Slot"
       case .Therapist:
         titleLabel.text = "Select Therapist"
+      case .SelectID:
+        titleLabel.text = "Select ID Type"
       }
     }
   }

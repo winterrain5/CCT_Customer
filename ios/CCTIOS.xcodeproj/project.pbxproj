@@ -29,6 +29,12 @@
 		4550947128339DEA0017C244 /* BookingUpComingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4550947028339DEA0017C244 /* BookingUpComingDetailView.swift */; };
 		4550947328339DFB0017C244 /* BookingUpComingDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4550947228339DFA0017C244 /* BookingUpComingDetailView.xib */; };
 		45792069284DF222008CD008 /* TapLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45792068284DF222008CD008 /* TapLabel.swift */; };
+		4579206E284EE1B3008CD008 /* InputIDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4579206D284EE1B3008CD008 /* InputIDController.swift */; };
+		45792070284EE1C3008CD008 /* InputIDContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4579206F284EE1C3008CD008 /* InputIDContainer.swift */; };
+		45792072284EE1D8008CD008 /* InputIDContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45792071284EE1D8008CD008 /* InputIDContainer.xib */; };
+		45792074284EF7F4008CD008 /* InputAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45792073284EF7F4008CD008 /* InputAccountController.swift */; };
+		45792076284EF80E008CD008 /* InputAccountContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45792075284EF80E008CD008 /* InputAccountContainer.swift */; };
+		45792078284EF81D008CD008 /* InputAccountContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45792077284EF81D008CD008 /* InputAccountContainer.xib */; };
 		457CBA88283615FE00AE26D8 /* BookingCompleteDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CBA87283615FE00AE26D8 /* BookingCompleteDetailController.swift */; };
 		457CBA8A2836163200AE26D8 /* BookingCompleteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CBA892836163200AE26D8 /* BookingCompleteDetailView.swift */; };
 		457CBA8C2836163E00AE26D8 /* BookingCompleteDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 457CBA8B2836163E00AE26D8 /* BookingCompleteDetailView.xib */; };
@@ -713,6 +719,12 @@
 		4550947028339DEA0017C244 /* BookingUpComingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingUpComingDetailView.swift; sourceTree = "<group>"; };
 		4550947228339DFA0017C244 /* BookingUpComingDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingUpComingDetailView.xib; sourceTree = "<group>"; };
 		45792068284DF222008CD008 /* TapLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapLabel.swift; sourceTree = "<group>"; };
+		4579206D284EE1B3008CD008 /* InputIDController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputIDController.swift; sourceTree = "<group>"; };
+		4579206F284EE1C3008CD008 /* InputIDContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputIDContainer.swift; sourceTree = "<group>"; };
+		45792071284EE1D8008CD008 /* InputIDContainer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputIDContainer.xib; sourceTree = "<group>"; };
+		45792073284EF7F4008CD008 /* InputAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAccountController.swift; sourceTree = "<group>"; };
+		45792075284EF80E008CD008 /* InputAccountContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAccountContainer.swift; sourceTree = "<group>"; };
+		45792077284EF81D008CD008 /* InputAccountContainer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputAccountContainer.xib; sourceTree = "<group>"; };
 		457CBA87283615FE00AE26D8 /* BookingCompleteDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingCompleteDetailController.swift; sourceTree = "<group>"; };
 		457CBA892836163200AE26D8 /* BookingCompleteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingCompleteDetailView.swift; sourceTree = "<group>"; };
 		457CBA8B2836163E00AE26D8 /* BookingCompleteDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingCompleteDetailView.xib; sourceTree = "<group>"; };
@@ -1478,6 +1490,35 @@
 			path = TapLabel;
 			sourceTree = "<group>";
 		};
+		4579206A284E0684008CD008 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				4579206C284EE131008CD008 /* View */,
+				4579206B284EE12C008CD008 /* Controller */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		4579206B284EE12C008CD008 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4579206D284EE1B3008CD008 /* InputIDController.swift */,
+				45792073284EF7F4008CD008 /* InputAccountController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4579206C284EE131008CD008 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4579206F284EE1C3008CD008 /* InputIDContainer.swift */,
+				45792071284EE1D8008CD008 /* InputIDContainer.xib */,
+				45792075284EF80E008CD008 /* InputAccountContainer.swift */,
+				45792077284EF81D008CD008 /* InputAccountContainer.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		457CBA8D2837428200AE26D8 /* SelectService */ = {
 			isa = PBXGroup;
 			children = (
@@ -1744,17 +1785,8 @@
 				49CE76B2281A720600A3151D /* Model */,
 				495649D7281932D600091533 /* View */,
 				495649D6281932D100091533 /* Controller */,
-				495649D5281932CD00091533 /* Model */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		495649D5281932CD00091533 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
-			path = "../New Group/Model";
 			sourceTree = "<group>";
 		};
 		495649D6281932D100091533 /* Controller */ = {
@@ -2379,6 +2411,7 @@
 			isa = PBXGroup;
 			children = (
 				49CE76AC281A6E6D00A3151D /* Main */,
+				4579206A284E0684008CD008 /* Register */,
 				495649D4281932C800091533 /* Login */,
 				4993F9A627E1E7C300BB84FD /* Other */,
 				49981EF227CE1CC300D4F7BF /* EditProfile */,
@@ -3297,6 +3330,7 @@
 				49056AE92794FC9000FBA1AC /* SelectTypeOfServiceSheetView.xib in Resources */,
 				49BCF76C27B34F0F00B623CE /* ShopFilterContentView.xib in Resources */,
 				49BB3C5F278C335200AC34A0 /* BlogBoardEditSheetView.xib in Resources */,
+				45792072284EE1D8008CD008 /* InputIDContainer.xib in Resources */,
 				4996D79427D1A54200437265 /* TransactionDetailFooterView.xib in Resources */,
 				49F17C612807F0E200FCBC87 /* ShopProductReviewCell.xib in Resources */,
 				4996D7A227D5986500437265 /* WalletCouponsCell.xib in Resources */,
@@ -3325,6 +3359,7 @@
 				494DDBCE281524CD0021FE97 /* ShopCollectionMethodSheetView.xib in Resources */,
 				4904C3E02806BCEC008FE5A5 /* ShopDetailHeadContainer.xib in Resources */,
 				49C05B5E281A404A00F5B9D5 /* EnterAccountContainer.xib in Resources */,
+				45792078284EF81D008CD008 /* InputAccountContainer.xib in Resources */,
 				49BA627A278576BC00B898D5 /* BlogHeaderSearchView.xib in Resources */,
 				4933AC7527D87914005E9FB1 /* SetTransactionLimitSheetView.xib in Resources */,
 				49E2C22527D5E56A00F667B7 /* WalletDetailHeadView.xib in Resources */,
@@ -3706,6 +3741,7 @@
 				4998C036277EF51200A881D5 /* CalendarExtensions.swift in Sources */,
 				49E79F7A278D25BA00F304B2 /* VisualActivityViewController.swift in Sources */,
 				4998C04D277EF51200A881D5 /* CharacterExtensions.swift in Sources */,
+				4579206E284EE1B3008CD008 /* InputIDController.swift in Sources */,
 				49E79F86278D757700F304B2 /* PKError.swift in Sources */,
 				49BA629A27881C1000B898D5 /* BlogBookmarksController.swift in Sources */,
 				490CD59728094749007F0F11 /* ShopSelectCouponOrVoucherCell.swift in Sources */,
@@ -3802,6 +3838,7 @@
 				49BB3C59278C2C2C00AC34A0 /* BlogBookmarkRemoveSheetView.swift in Sources */,
 				49F17C6528080DF200FCBC87 /* ShopCartFooterView.swift in Sources */,
 				4998C027277EF51200A881D5 /* SCNMaterialExtensions.swift in Sources */,
+				45792076284EF80E008CD008 /* InputAccountContainer.swift in Sources */,
 				4998BF48277ED43500A881D5 /* DKEmptyDataView+Extension.swift in Sources */,
 				4904C3DE2806BCE2008FE5A5 /* ShopDetailHeadContainer.swift in Sources */,
 				45A505872848B80800779B4C /* HomeKingKongView.swift in Sources */,
@@ -3870,6 +3907,7 @@
 				498D85CB279945FB0044F34F /* PushManager.m in Sources */,
 				4998BFFB277EF51200A881D5 /* CGSizeExtensions.swift in Sources */,
 				45A505832848997300779B4C /* HomeContainer.swift in Sources */,
+				45792074284EF7F4008CD008 /* InputAccountController.swift in Sources */,
 				4902B721279F9D9100CEE28B /* ServiceDetailPriceView.swift in Sources */,
 				4998C0F02784427F00A881D5 /* ConstraintLayoutGuide+Extensions.swift in Sources */,
 				4906C239279E4B5300F7B67F /* QuestionSubjectModel.swift in Sources */,
@@ -3999,6 +4037,7 @@
 				4998C09E27841F5D00A881D5 /* HoverViewFlowLayout.swift in Sources */,
 				491EB3E427E023030019D5B9 /* ClientVipLevelModel.swift in Sources */,
 				4998C03A277EF51200A881D5 /* MKMapViewExtensions.swift in Sources */,
+				45792070284EE1C3008CD008 /* InputIDContainer.swift in Sources */,
 				49727C7927C4E3DE00943156 /* VerificationCodeController.swift in Sources */,
 				4998C011277EF51200A881D5 /* UIImageExtensions.swift in Sources */,
 				4998C0EB2784427F00A881D5 /* ConstraintItem.swift in Sources */,

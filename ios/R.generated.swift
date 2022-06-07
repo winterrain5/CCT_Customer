@@ -1548,7 +1548,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 106 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 108 nibs.
   struct nib {
     /// Nib `AccountEditSheetContentView`.
     static let accountEditSheetContentView = _R.nib._AccountEditSheetContentView()
@@ -1620,6 +1620,10 @@ struct R: Rswift.Validatable {
     static let forgetPwdSheetContentView = _R.nib._ForgetPwdSheetContentView()
     /// Nib `HomeContainer`.
     static let homeContainer = _R.nib._HomeContainer()
+    /// Nib `InputAccountContainer`.
+    static let inputAccountContainer = _R.nib._InputAccountContainer()
+    /// Nib `InputIDContainer`.
+    static let inputIDContainer = _R.nib._InputIDContainer()
     /// Nib `LoginContainer`.
     static let loginContainer = _R.nib._LoginContainer()
     /// Nib `MadamPartumAwardsCell`.
@@ -2040,6 +2044,22 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.homeContainer) instead")
     static func homeContainer(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.homeContainer)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "InputAccountContainer", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.inputAccountContainer) instead")
+    static func inputAccountContainer(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.inputAccountContainer)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "InputIDContainer", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.inputIDContainer) instead")
+    static func inputIDContainer(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.inputIDContainer)
     }
     #endif
 
@@ -2751,6 +2771,14 @@ struct R: Rswift.Validatable {
       return R.nib.homeContainer.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? HomeContainer
     }
 
+    static func inputAccountContainer(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> InputAccountContainer? {
+      return R.nib.inputAccountContainer.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? InputAccountContainer
+    }
+
+    static func inputIDContainer(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> InputIDContainer? {
+      return R.nib.inputIDContainer.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? InputIDContainer
+    }
+
     static func loginContainer(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> LoginContainer? {
       return R.nib.loginContainer.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? LoginContainer
     }
@@ -3083,6 +3111,7 @@ struct _R: Rswift.Validatable {
       try _EditProfileContainer.validate()
       try _FillInEnquiryFormContentView.validate()
       try _HomeContainer.validate()
+      try _InputIDContainer.validate()
       try _LoginContainer.validate()
       try _MadamPartumDetailFooterCell.validate()
       try _MadamPartumDetailHeaderView.validate()
@@ -3698,6 +3727,40 @@ struct _R: Rswift.Validatable {
           if UIKit.UIColor(named: "TheamRed", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamRed' is used in nib 'HomeContainer', but couldn't be loaded.") }
           if UIKit.UIColor(named: "TheamYellow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamYellow' is used in nib 'HomeContainer', but couldn't be loaded.") }
           if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'HomeContainer', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _InputAccountContainer: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "InputAccountContainer"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> InputAccountContainer? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? InputAccountContainer
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _InputIDContainer: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "InputIDContainer"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> InputIDContainer? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? InputIDContainer
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "booking_form_dropdown", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_form_dropdown' is used in nib 'InputIDContainer', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "symptom_check_box_select", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'symptom_check_box_select' is used in nib 'InputIDContainer', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "Black", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black' is used in nib 'InputIDContainer', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'InputIDContainer', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'InputIDContainer', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'InputIDContainer', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "grayE0", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'grayE0' is used in nib 'InputIDContainer', but couldn't be loaded.") }
         }
       }
 

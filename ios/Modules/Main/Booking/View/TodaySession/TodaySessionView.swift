@@ -15,8 +15,8 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     didSet {
       todayHeight = 0
       let addtionalH = models.filter({ $0.staff_is_random == "2" }).count > 0 ? 28 : 0
-      let clvH = 196 + addtionalH.cgFloat
-      let controlH:CGFloat = models.count > 0 ? 24 : 0
+      let clvH = 192 + addtionalH.cgFloat
+      let controlH:CGFloat = models.count > 1 ? 24 : 0
       todayHeight = todayHeight + clvH + controlH
       collectionView.snp.makeConstraints { make in
         make.left.right.top.equalToSuperview()
@@ -26,7 +26,7 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         make.centerX.equalToSuperview()
         make.top.equalTo(collectionView.snp.bottom).offset(8)
       }
-      itemWidth = models.count > 1 ? kScreenWidth * 0.8 : kScreenWidth
+      itemWidth = models.count > 1 ? kScreenWidth * 0.8 : (kScreenWidth - 32)
       collectionView.reloadData()
       pageControl.numberOfPages = models.count
       

@@ -28,7 +28,7 @@ target 'CCTIOS' do
   pod 'SideMenuSwift'
   pod 'SwipeCellKit'
   pod 'FSCalendar'
-  
+  pod 'TextFieldEffects'
 #  pod 'SwifterSwift'
   
   config = use_native_modules!

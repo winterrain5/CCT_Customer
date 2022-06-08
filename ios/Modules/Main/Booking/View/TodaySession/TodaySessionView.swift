@@ -17,7 +17,7 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
       let addtionalH = models.filter({ $0.staff_is_random == "2" }).count > 0 ? 28 : 0
       let clvH = 192 + addtionalH.cgFloat
       let controlH:CGFloat = models.count > 1 ? 24 : 0
-      todayHeight = todayHeight + clvH + controlH
+      todayHeight = clvH + controlH
       collectionView.snp.makeConstraints { make in
         make.left.right.top.equalToSuperview()
         make.height.equalTo(clvH)
@@ -26,7 +26,9 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         make.centerX.equalToSuperview()
         make.top.equalTo(collectionView.snp.bottom).offset(8)
       }
-      itemWidth = models.count > 1 ? kScreenWidth * 0.8 : (kScreenWidth - 32)
+      itemWidth = models.count > 1 ? kScreenWidth * 0.8 : (kScreenWidth - 32).int.cgFloat
+      let itemHeight = models.sorted(by: { $0.cellHeight > $1.cellHeight }).first?.cellHeight ?? 0
+      layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
       collectionView.reloadData()
       pageControl.numberOfPages = models.count
       
@@ -99,17 +101,10 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     if scrollView.contentOffset.x == 0 {
       pageControl.set(progress: 0, animated: true)
     }else {
-      let page = floor((scrollView.contentSize.width / scrollView.contentOffset.x))
+      let page = ceil((scrollView.contentOffset.x / itemWidth))
       pageControl.set(progress: page.int - 1, animated: true)
     }
   }
   
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    if models.count > 0 {
-      let itemH = models[indexPath.item].cellHeight
-      return CGSize(width: itemWidth, height: itemH)
-    }
-    return .zero
-  }
   
 }

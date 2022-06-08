@@ -18,8 +18,8 @@ class HomeKingKongView: UIView,UICollectionViewDelegate,UICollectionViewDataSour
   
   lazy var layout = UICollectionViewFlowLayout().then { layout in
     layout.scrollDirection = .horizontal
-    layout.itemSize = CGSize(width: 80, height: 84)
-    
+    layout.itemSize = CGSize(width: 60, height: 84)
+    layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
   }
   
   lazy var collectionView:UICollectionView = {
@@ -42,7 +42,7 @@ class HomeKingKongView: UIView,UICollectionViewDelegate,UICollectionViewDataSour
       KingKongModel(image: R.image.home_kk_treament(), title: "Conditions\nWe Treat", sel: "conditionsWeTreat"),
       KingKongModel(image: R.image.home_kk_mp(), title: "Madam\nPartum", sel: "madamPartum"),
     ]
-    layout.minimumInteritemSpacing = (kScreenWidth - 48) / (datas.count - 1).cgFloat
+    layout.minimumLineSpacing = (kScreenWidth - 48 - (datas.count * 60).cgFloat ) / (datas.count - 1).cgFloat
     addSubview(collectionView)
     collectionView.register(cellWithClass: HomeKingKongCell.self)
   }

@@ -12,15 +12,15 @@ class InputAccountContainer: UIView,UITextFieldDelegate {
   @IBOutlet weak var pw2Tf: HoshiTextField!
   @IBOutlet weak var pwTf: HoshiTextField!
   @IBOutlet weak var emailTf: HoshiTextField!
-  @IBOutlet weak var line1TopCons: NSLayoutConstraint!
-  
-  @IBOutlet weak var line2TopCons: NSLayoutConstraint!
   @IBOutlet weak var pwdErrorLabel: UILabel!
   @IBOutlet weak var emailErrorLabel: UILabel!
   @IBOutlet weak var pwdError2Label: UILabel!
   
   @IBOutlet weak var infoContentView: UIView!
-
+  
+  var isEmaillValidate = false
+  var isPwdValidate = false
+  var isPwdConfirmValidate = false
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -41,24 +41,33 @@ class InputAccountContainer: UIView,UITextFieldDelegate {
   override func layoutSubviews() {
     super.layoutSubviews()
     infoContentView.corner(byRoundingCorners: [.topLeft,.topRight], radii: 16)
-
+    
   }
   
   @IBAction func nextAction(_ sender: Any) {
-    
+    let vc = InputGeneralInfoController()
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
   }
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     self.endEditing(true)
+    validateText(textField)
     return true
   }
   
+  
   func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+   
+    validateText(textField)
+  }
+  
+  func validateText(_ textField:UITextField) {
+    
     let text = textField.text ?? ""
-    if text.isEmpty { return }
     if textField == emailTf {
-      emailErrorLabel.isHidden = text.isValidEmail
-      emailErrorLabel.text = text.isValidEmail ? "" : "・Email entered is invalid"
+      isEmaillValidate = text.isValidEmail && !text.isEmpty
+      emailErrorLabel.isHidden = isEmaillValidate
+      emailErrorLabel.text = isEmaillValidate ? "" : "・Email entered is invalid"
     }
     
     if textField == pwTf {
@@ -67,24 +76,32 @@ class InputAccountContainer: UIView,UITextFieldDelegate {
         /// ・Passwords need to be at least 6 characters ・At least one lowercase character ・At lease one uppercase character ・Must have numerical number
         errorMessage += "・Passwords need to be at least 6 characters\n"
       }
-      if text.hasNumbers {
-        errorMessage += "・Must have numerical number\n"
-      }
       if !text.isHasLowercaseCharacter() {
         errorMessage += "・At least one lowercase character \n"
       }
       if !text.isHasUppercaseCharacter() {
         errorMessage += "・At lease one uppercase character \n"
       }
+      if !text.hasNumbers {
+        errorMessage += "・Must have numerical number\n"
+      }
+      if text.isEmpty {
+        errorMessage = ""
+      }
+      errorMessage = errorMessage.removingSuffix("\n")
+      isPwdValidate = text.isPasswordRuler()
       pwdErrorLabel.text = errorMessage.isEmpty ? "" : errorMessage
       pwdErrorLabel.isHidden = errorMessage.isEmpty
     }
     
     if textField == pw2Tf {
       // The two passwords must be the same
-      let isValid = text == (pw2Tf.text ?? "")
-      pwdErrorLabel.text = isValid ? "" : "・The two passwords must be the same"
-      pwdError2Label.isHidden = isValid
+      if !(pwTf.text?.isEmpty ?? false) {
+        isPwdConfirmValidate = (text == (pwTf.text ?? ""))
+        pwdError2Label.text = isPwdConfirmValidate ? "" : "・The two passwords must be the same"
+        pwdError2Label.isHidden = isPwdConfirmValidate
+      }
+     
     }
     
     UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut) {
@@ -92,6 +109,13 @@ class InputAccountContainer: UIView,UITextFieldDelegate {
     } completion: { flag in
       
     }
-
+    
+    if isEmaillValidate && isPwdValidate && isPwdConfirmValidate {
+      nextButon.isEnabled = true
+      nextButon.backgroundColor = R.color.theamRed()
+    }else {
+      nextButon.isEnabled = false
+      nextButon.backgroundColor = R.color.grayE0()
+    }
   }
 }

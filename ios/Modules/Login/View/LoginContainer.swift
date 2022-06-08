@@ -50,7 +50,7 @@ class LoginContainer: UIView {
   }
   @IBAction func signupAction(_ sender: Any) {
     
-    let vc = InputIDController()
+    let vc = InputResideController()
     UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
 
   }

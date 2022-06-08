@@ -52,9 +52,9 @@ extension String {
   }
   
   func isHasLowercaseCharacter() -> Bool {
-    let passwordRule = "^(?=.*[a-z])$"
+    let passwordRule = "(?s)[^a-z]*[a-z].*"
     let regexPassword = NSPredicate(format: "SELF MATCHES %@",passwordRule)
-    if regexPassword.evaluate(with: self) == true {
+    if regexPassword.evaluate(with: self) {
       return true
     }else
     {
@@ -62,7 +62,18 @@ extension String {
     }
   }
   func isHasUppercaseCharacter() -> Bool {
-    let passwordRule = "^(?=.*[A-Z])$"
+    let passwordRule = "(?s)[^A-Z]*[A-Z].*"
+    let regexPassword = NSPredicate(format: "SELF MATCHES %@",passwordRule)
+    if regexPassword.evaluate(with: self) {
+      return true
+    }else
+    {
+      return false
+    }
+  }
+  
+  func isPasswordRuler() -> Bool {
+    let passwordRule = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$"
     let regexPassword = NSPredicate(format: "SELF MATCHES %@",passwordRule)
     if regexPassword.evaluate(with: self) == true {
       return true
@@ -71,4 +82,17 @@ extension String {
       return false
     }
   }
+  
+  func isNRICRuler() -> Bool {
+    let passwordRule = "^[STFG]\\d{7}[A-Z]$"
+    let regexPassword = NSPredicate(format: "SELF MATCHES %@",passwordRule)
+    if regexPassword.evaluate(with: self) == true {
+      return true
+    }else
+    {
+      return false
+    }
+  }
+  
+  
 }

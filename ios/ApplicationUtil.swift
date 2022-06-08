@@ -7,6 +7,7 @@
 
 import UIKit
 import SideMenuSwift
+import IQKeyboardManagerSwift
 @objcMembers class ApplicationUtil:NSObject {
   static func configRootViewController() {
     
@@ -27,5 +28,15 @@ import SideMenuSwift
       window?.rootViewController = nav
     }
     
+    configKeyBoard()
   }
+  
+  static func configKeyBoard() {
+    let manager = IQKeyboardManager.shared
+    manager.enable = true
+    manager.shouldResignOnTouchOutside = true
+    manager.shouldShowToolbarPlaceholder = true
+    manager.enableAutoToolbar = false
+  }
+  
 }

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DateOfBirthSheetView" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="405"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ks-9x-Y9w">
+                    <rect key="frame" x="24" y="321" width="163.5" height="44"/>
+                    <color key="backgroundColor" name="grayE0"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="kjq-vh-kYN"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Cancel">
+                        <fontDescription key="titleFontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                        <color key="baseForegroundColor" name="Black333"/>
+                    </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="22"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="cancelAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Df2-8v-GDU"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4HC-3k-a6y">
+                    <rect key="frame" x="207.5" y="321" width="182.5" height="44"/>
+                    <color key="backgroundColor" red="0.76862745099999996" green="0.2784313725" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="jDK-KO-VBS"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Confirm">
+                        <fontDescription key="titleFontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                        <color key="baseForegroundColor" name="White"/>
+                    </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="22"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="confirmAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="xk0-BS-uXv"/>
+                    </connections>
+                </button>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="12n-CS-ABS">
+                    <rect key="frame" x="24" y="73" width="366" height="216"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="216" id="uOK-Ub-rOQ"/>
+                    </constraints>
+                    <connections>
+                        <action selector="dateValueChangedAction:" destination="iN0-l3-epB" eventType="valueChanged" id="gRI-Ou-BVy"/>
+                    </connections>
+                </datePicker>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="12n-CS-ABS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="3rl-i0-4aF"/>
+                <constraint firstItem="7Ks-9x-Y9w" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="Jnt-jT-3EE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="7Ks-9x-Y9w" secondAttribute="bottom" constant="40" id="PaG-a7-EbT"/>
+                <constraint firstItem="4HC-3k-a6y" firstAttribute="width" secondItem="7Ks-9x-Y9w" secondAttribute="width" multiplier="1.11765" id="RTo-fQ-cAf"/>
+                <constraint firstItem="7Ks-9x-Y9w" firstAttribute="top" secondItem="12n-CS-ABS" secondAttribute="bottom" constant="32" id="Vub-p6-tsT"/>
+                <constraint firstItem="4HC-3k-a6y" firstAttribute="centerY" secondItem="7Ks-9x-Y9w" secondAttribute="centerY" id="cHs-tr-xmt"/>
+                <constraint firstItem="4HC-3k-a6y" firstAttribute="leading" secondItem="7Ks-9x-Y9w" secondAttribute="trailing" constant="20" id="q8m-Lf-Esj"/>
+                <constraint firstItem="12n-CS-ABS" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-24" id="qGt-5R-9pK"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4HC-3k-a6y" secondAttribute="trailing" constant="24" id="ut1-iA-dRN"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="datePicker" destination="12n-CS-ABS" id="Aag-Id-lRd"/>
+            </connections>
+            <point key="canvasLocation" x="-284.05797101449275" y="92.075892857142847"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="Black333">
+            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayE0">
+            <color red="0.87800002098083496" green="0.87800002098083496" blue="0.87800002098083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

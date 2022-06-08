@@ -28,6 +28,8 @@
 		4550946F28339DA90017C244 /* BookingUpComingDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4550946E28339DA90017C244 /* BookingUpComingDetailController.swift */; };
 		4550947128339DEA0017C244 /* BookingUpComingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4550947028339DEA0017C244 /* BookingUpComingDetailView.swift */; };
 		4550947328339DFB0017C244 /* BookingUpComingDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4550947228339DFA0017C244 /* BookingUpComingDetailView.xib */; };
+		455B0412285046D6007C5567 /* InputGeneralInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455B0411285046D5007C5567 /* InputGeneralInfoView.swift */; };
+		455B0414285046E9007C5567 /* InputGeneralInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 455B0413285046E9007C5567 /* InputGeneralInfoView.xib */; };
 		45792069284DF222008CD008 /* TapLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45792068284DF222008CD008 /* TapLabel.swift */; };
 		4579206E284EE1B3008CD008 /* InputIDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4579206D284EE1B3008CD008 /* InputIDController.swift */; };
 		45792070284EE1C3008CD008 /* InputIDContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4579206F284EE1C3008CD008 /* InputIDContainer.swift */; };
@@ -54,6 +56,15 @@
 		45D65105284DA03900C7BD39 /* HomeWellcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D65104284DA03900C7BD39 /* HomeWellcomeView.swift */; };
 		45D65107284DCFF100C7BD39 /* HomeBookedServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D65106284DCFF100C7BD39 /* HomeBookedServiceView.swift */; };
 		45D6510A284DD2C100C7BD39 /* UpcomingSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D65109284DD2C100C7BD39 /* UpcomingSessionView.swift */; };
+		45FC54E7285072F600D3C0FF /* InputGeneralInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC54E6285072F600D3C0FF /* InputGeneralInfoController.swift */; };
+		45FC54E9285078BB00D3C0FF /* InputResideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC54E8285078BB00D3C0FF /* InputResideController.swift */; };
+		45FC54EB285078CB00D3C0FF /* InputResideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC54EA285078CB00D3C0FF /* InputResideView.swift */; };
+		45FC54ED285078D100D3C0FF /* InputResideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45FC54EC285078D100D3C0FF /* InputResideView.xib */; };
+		45FC54EF2850852000D3C0FF /* DateOfBirthSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC54EE2850852000D3C0FF /* DateOfBirthSheetView.swift */; };
+		45FC54F12850852A00D3C0FF /* DateOfBirthSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45FC54F02850852A00D3C0FF /* DateOfBirthSheetView.xib */; };
+		45FC54F42850904B00D3C0FF /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC54F32850904B00D3C0FF /* CountryModel.swift */; };
+		45FC54F72850964B00D3C0FF /* UpcomingSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC54F52850964B00D3C0FF /* UpcomingSessionCell.swift */; };
+		45FC54F82850964B00D3C0FF /* UpcomingSessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45FC54F62850964B00D3C0FF /* UpcomingSessionCell.xib */; };
 		4902023527D8934800E74415 /* WalletAddUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902023427D8934800E74415 /* WalletAddUserController.swift */; };
 		4902023727D8939E00E74415 /* WalletAddUserHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902023627D8939E00E74415 /* WalletAddUserHeadView.swift */; };
 		4902023927D893A800E74415 /* WalletAddUserHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4902023827D893A800E74415 /* WalletAddUserHeadView.xib */; };
@@ -718,6 +729,8 @@
 		4550946E28339DA90017C244 /* BookingUpComingDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingUpComingDetailController.swift; sourceTree = "<group>"; };
 		4550947028339DEA0017C244 /* BookingUpComingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingUpComingDetailView.swift; sourceTree = "<group>"; };
 		4550947228339DFA0017C244 /* BookingUpComingDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingUpComingDetailView.xib; sourceTree = "<group>"; };
+		455B0411285046D5007C5567 /* InputGeneralInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputGeneralInfoView.swift; sourceTree = "<group>"; };
+		455B0413285046E9007C5567 /* InputGeneralInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputGeneralInfoView.xib; sourceTree = "<group>"; };
 		45792068284DF222008CD008 /* TapLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapLabel.swift; sourceTree = "<group>"; };
 		4579206D284EE1B3008CD008 /* InputIDController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputIDController.swift; sourceTree = "<group>"; };
 		4579206F284EE1C3008CD008 /* InputIDContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputIDContainer.swift; sourceTree = "<group>"; };
@@ -744,6 +757,15 @@
 		45D65104284DA03900C7BD39 /* HomeWellcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWellcomeView.swift; sourceTree = "<group>"; };
 		45D65106284DCFF100C7BD39 /* HomeBookedServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBookedServiceView.swift; sourceTree = "<group>"; };
 		45D65109284DD2C100C7BD39 /* UpcomingSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingSessionView.swift; sourceTree = "<group>"; };
+		45FC54E6285072F600D3C0FF /* InputGeneralInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputGeneralInfoController.swift; sourceTree = "<group>"; };
+		45FC54E8285078BB00D3C0FF /* InputResideController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputResideController.swift; sourceTree = "<group>"; };
+		45FC54EA285078CB00D3C0FF /* InputResideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputResideView.swift; sourceTree = "<group>"; };
+		45FC54EC285078D100D3C0FF /* InputResideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputResideView.xib; sourceTree = "<group>"; };
+		45FC54EE2850852000D3C0FF /* DateOfBirthSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfBirthSheetView.swift; sourceTree = "<group>"; };
+		45FC54F02850852A00D3C0FF /* DateOfBirthSheetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateOfBirthSheetView.xib; sourceTree = "<group>"; };
+		45FC54F32850904B00D3C0FF /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModel.swift; sourceTree = "<group>"; };
+		45FC54F52850964B00D3C0FF /* UpcomingSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingSessionCell.swift; sourceTree = "<group>"; };
+		45FC54F62850964B00D3C0FF /* UpcomingSessionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingSessionCell.xib; sourceTree = "<group>"; };
 		4902023427D8934800E74415 /* WalletAddUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAddUserController.swift; sourceTree = "<group>"; };
 		4902023627D8939E00E74415 /* WalletAddUserHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAddUserHeadView.swift; sourceTree = "<group>"; };
 		4902023827D893A800E74415 /* WalletAddUserHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletAddUserHeadView.xib; sourceTree = "<group>"; };
@@ -1493,6 +1515,7 @@
 		4579206A284E0684008CD008 /* Register */ = {
 			isa = PBXGroup;
 			children = (
+				45FC54F22850903800D3C0FF /* Model */,
 				4579206C284EE131008CD008 /* View */,
 				4579206B284EE12C008CD008 /* Controller */,
 			);
@@ -1504,6 +1527,8 @@
 			children = (
 				4579206D284EE1B3008CD008 /* InputIDController.swift */,
 				45792073284EF7F4008CD008 /* InputAccountController.swift */,
+				45FC54E6285072F600D3C0FF /* InputGeneralInfoController.swift */,
+				45FC54E8285078BB00D3C0FF /* InputResideController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1515,6 +1540,12 @@
 				45792071284EE1D8008CD008 /* InputIDContainer.xib */,
 				45792075284EF80E008CD008 /* InputAccountContainer.swift */,
 				45792077284EF81D008CD008 /* InputAccountContainer.xib */,
+				455B0411285046D5007C5567 /* InputGeneralInfoView.swift */,
+				455B0413285046E9007C5567 /* InputGeneralInfoView.xib */,
+				45FC54EA285078CB00D3C0FF /* InputResideView.swift */,
+				45FC54EC285078D100D3C0FF /* InputResideView.xib */,
+				45FC54EE2850852000D3C0FF /* DateOfBirthSheetView.swift */,
+				45FC54F02850852A00D3C0FF /* DateOfBirthSheetView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1581,8 +1612,18 @@
 			isa = PBXGroup;
 			children = (
 				45D65109284DD2C100C7BD39 /* UpcomingSessionView.swift */,
+				45FC54F52850964B00D3C0FF /* UpcomingSessionCell.swift */,
+				45FC54F62850964B00D3C0FF /* UpcomingSessionCell.xib */,
 			);
 			path = UpcomingSesiong;
+			sourceTree = "<group>";
+		};
+		45FC54F22850903800D3C0FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				45FC54F32850904B00D3C0FF /* CountryModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		4902024427D9FEF900E74415 /* SwiftNetSwitch */ = {
@@ -3273,7 +3314,9 @@
 				49DED22B27C479FB0027F476 /* FeedbackFormContainer.xib in Resources */,
 				496501DA279FF008004FF3AF /* ServiceDetailForWhoView.xib in Resources */,
 				49FC8EB0278FFA7D00157292 /* SymptomCheckWhatNextContainer.xib in Resources */,
+				45FC54F12850852A00D3C0FF /* DateOfBirthSheetView.xib in Resources */,
 				4904C3C3280677C6008FE5A5 /* ShopLikeProductCell.xib in Resources */,
+				45FC54ED285078D100D3C0FF /* InputResideView.xib in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				454C5B4E283DBEAE001D787C /* ConfirmSessionContainer.xib in Resources */,
 				49F6977B282DF7E7009813EA /* BookingCompletedCell.xib in Resources */,
@@ -3325,8 +3368,10 @@
 				49781BCF27BE2024006F93DF /* MyOrderListCell.xib in Resources */,
 				49781BDF27BE2F33006F93DF /* ProductItemCell.xib in Resources */,
 				4996D79E27D593CF00437265 /* WalletVoucherCouponsCell.xib in Resources */,
+				45FC54F82850964B00D3C0FF /* UpcomingSessionCell.xib in Resources */,
 				498D85A92798F3180044F34F /* MadamPartumFooterView.xib in Resources */,
 				49727C7327C4C90300943156 /* AccountVerifyPwdSheetContentView.xib in Resources */,
+				455B0414285046E9007C5567 /* InputGeneralInfoView.xib in Resources */,
 				49056AE92794FC9000FBA1AC /* SelectTypeOfServiceSheetView.xib in Resources */,
 				49BCF76C27B34F0F00B623CE /* ShopFilterContentView.xib in Resources */,
 				49BB3C5F278C335200AC34A0 /* BlogBoardEditSheetView.xib in Resources */,
@@ -3580,6 +3625,7 @@
 				4998C05A277EF51200A881D5 /* CAGradientLayerExtensions.swift in Sources */,
 				49BA62902787DAD400B898D5 /* Toast.swift in Sources */,
 				49B098B527B399E30055B341 /* ProductCategoryModel.swift in Sources */,
+				45FC54F72850964B00D3C0FF /* UpcomingSessionCell.swift in Sources */,
 				49BA628527857D4400B898D5 /* BlogSaveToBoardSheetView.swift in Sources */,
 				4904C3A9280677A1008FE5A5 /* ShopViewController.swift in Sources */,
 				4998C0D92784427F00A881D5 /* ConstraintDSL.swift in Sources */,
@@ -3608,6 +3654,7 @@
 				4998C0EC2784427F00A881D5 /* Constraint.swift in Sources */,
 				4906C237279E4AC100F7B67F /* QuestionAnswerModel.swift in Sources */,
 				4902023D27D9EAE900E74415 /* WalletTopUpController.swift in Sources */,
+				45FC54E7285072F600D3C0FF /* InputGeneralInfoController.swift in Sources */,
 				4998C041277EF51200A881D5 /* BinaryFloatingPointExtensions.swift in Sources */,
 				494DDBCC281524BF0021FE97 /* ShopCollectionMethodSheetView.swift in Sources */,
 				4998C03B277EF51200A881D5 /* MKPolylineExtensions.swift in Sources */,
@@ -3687,6 +3734,7 @@
 				492D3AFD281B810E0022198A /* NotificationViewController.swift in Sources */,
 				49E79F97278E83B400F304B2 /* SymptomCheckNextContainer.swift in Sources */,
 				49781BD927BE2E0D006F93DF /* MyOrderDetailHeaderView.swift in Sources */,
+				45FC54E9285078BB00D3C0FF /* InputResideController.swift in Sources */,
 				4902024727D9FEF900E74415 /* SwitchController.swift in Sources */,
 				4998C005277EF51200A881D5 /* UINavigationItemExtensions.swift in Sources */,
 				4998C00F277EF51200A881D5 /* UISliderExtensions.swift in Sources */,
@@ -3851,6 +3899,7 @@
 				4998C0D22784427F00A881D5 /* ConstraintDescription.swift in Sources */,
 				497B353E27CF653300AE20C4 /* WalletRewardsController.swift in Sources */,
 				49E79F8F278E6CB200F304B2 /* SymptomCheckBeginController.swift in Sources */,
+				45FC54EF2850852000D3C0FF /* DateOfBirthSheetView.swift in Sources */,
 				4998C038277EF51200A881D5 /* ColorExtensions.swift in Sources */,
 				49E1DF0F282CA9DE002CA549 /* NotificationUndoView.swift in Sources */,
 				4906C23F279E7DC600F7B67F /* FillInEnquiryFormView.swift in Sources */,
@@ -3896,6 +3945,7 @@
 				49E61D16278EBB9E00B1C136 /* SymptomCheckStepCell.swift in Sources */,
 				4904C3C8280677C6008FE5A5 /* ShopLikeProductCell.swift in Sources */,
 				4906C22F279E451F00F7B67F /* QuestionHelperController.swift in Sources */,
+				455B0412285046D6007C5567 /* InputGeneralInfoView.swift in Sources */,
 				4998C0F32784427F00A881D5 /* ConstraintMakerRelatable.swift in Sources */,
 				49E61D0E278EB05700B1C136 /* SymptomCheckStepTitleView.swift in Sources */,
 				4998C0EF2784427F00A881D5 /* LayoutConstraint.swift in Sources */,
@@ -3923,6 +3973,7 @@
 				457CBA962837773300AE26D8 /* BookingServiceFormCell.swift in Sources */,
 				4998C0902783DF5200A881D5 /* UIFont_Extension.swift in Sources */,
 				496501DC27A0E772004FF3AF /* MadamPartumLocationModel.swift in Sources */,
+				45FC54EB285078CB00D3C0FF /* InputResideView.swift in Sources */,
 				4550946D28324EDE0017C244 /* BookingCompleteModel.swift in Sources */,
 				4904C3D028067865008FE5A5 /* MatchPhoneModel.swift in Sources */,
 				4998C0872783DBF900A881D5 /* OurServicesViewController.swift in Sources */,
@@ -4025,6 +4076,7 @@
 				49B098AC27B360640055B341 /* ShopFilterView.swift in Sources */,
 				45CE32FD2834CAF500201726 /* BookingTodayModel.swift in Sources */,
 				4965B38E2828E7690000C1C5 /* NotificationModel.swift in Sources */,
+				45FC54F42850904B00D3C0FF /* CountryModel.swift in Sources */,
 				4933AC6D27D84DB2005E9FB1 /* CardUserDetailController.swift in Sources */,
 				4998BFF9277EF51200A881D5 /* CGFloatExtensions.swift in Sources */,
 				4998BF4E277ED46200A881D5 /* UIScrollView+EmptyDataSet.m in Sources */,

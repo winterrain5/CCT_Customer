@@ -52,7 +52,7 @@ class InputIDContainer: UIView ,UITextFieldDelegate{
       sender.borderColor = .clear
       sender.imageForNormal = R.image.symptom_check_box_select()
     }
-    setNextButonState(!sender.isSelected)
+    setNextButonState(!sender.isSelected && !(idTf.text?.isEmpty ?? false))
   }
   
   @IBAction func nextAction(_ sender: Any) {
@@ -75,7 +75,12 @@ class InputIDContainer: UIView ,UITextFieldDelegate{
   
   func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
     let text = textField.text ?? ""
-    setNextButonState(!isCheckButton.isSelected && !text.isEmpty)
+    let isValidate = text.isNRICRuler()
+    if !isValidate {
+      AlertView.show(message: "The NRIC/FIN does not meet the requirements of Singapore. Please confirm it and input it.")
+      return
+    }
+    setNextButonState(!isCheckButton.isSelected && !text.isEmpty && isValidate)
     
     
   }

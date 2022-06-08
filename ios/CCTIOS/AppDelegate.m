@@ -20,7 +20,7 @@
   
   [ApplicationUtil configRootViewController];
   
-  
+
   [self.window makeKeyAndVisible];
   
   [self setupNotification];

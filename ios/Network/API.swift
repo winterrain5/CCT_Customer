@@ -247,6 +247,8 @@ enum API:String {
   
   //获取配置
   case  getTConfig = "getTConfig"
+  // 获取所有国家
+  case getTCountries = "getTCountries"
   
   // 物品购物车推送
   case itemsInCart = "itemsInCart";
@@ -300,6 +302,7 @@ enum Action:String {
   case Query = "query"
   case BookingOrder = "booking-order"
   case Schedule = "schedule"
+  case Country = "country"
 
 }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InputGeneralInfoView: UIView {
+class InputGeneralInfoView: UIView, UITextFieldDelegate {
   
   @IBOutlet weak var firstNameTf: UITextField!
   @IBOutlet weak var lastNameTf: UITextField!
@@ -25,7 +25,7 @@ class InputGeneralInfoView: UIView {
   @IBOutlet weak var referralCodeTf: UITextField!
   
   
-  @IBOutlet weak var nextButon: UIButton!
+  @IBOutlet weak var nextButon: LoadingButton!
   
   @IBOutlet weak var isCheckButton: UIButton!
   
@@ -77,6 +77,7 @@ class InputGeneralInfoView: UIView {
       gender = "2"
     }
     genderSelectedButton = sender
+    endEditing(true)
     setNextButonState()
   }
   
@@ -92,6 +93,7 @@ class InputGeneralInfoView: UIView {
       isCustomer = "2"
     }
     madamPartumSelectedButton = sender
+    endEditing(true)
     setNextButonState()
   }
   
@@ -99,6 +101,8 @@ class InputGeneralInfoView: UIView {
     DateOfBirthSheetView.show { date in
       self.dateOfBirth = date.dateString()
       self.birthTf.text = date.dateString()
+      self.setNextButonState()
+      
     }
   }
   

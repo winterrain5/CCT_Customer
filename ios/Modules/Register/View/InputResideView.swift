@@ -10,7 +10,7 @@ import TextFieldEffects
 class InputResideView: UIView,UITextFieldDelegate {
 
   @IBOutlet weak var postalCodeTf: HoshiTextField!
-  @IBOutlet weak var nextButon: UIButton!
+  @IBOutlet weak var nextButon: LoadingButton!
   @IBOutlet weak var infoContentView: UIView!
 
   @IBOutlet weak var countryTf: HoshiTextField!
@@ -72,7 +72,7 @@ class InputResideView: UIView,UITextFieldDelegate {
   }
   
   @IBAction func showCityAction(_ sender: Any) {
-    
+    endEditing(true)
     if countries.count > 0 {
       showCountrySheet()
     }else {

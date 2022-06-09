@@ -15,6 +15,7 @@ class ForgetPwdSheetView: UIView {
   var scrolview = UIScrollView()
   var uuid = UUID().uuidString.prefix(6)
   var recieveEmail:String = ""
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     

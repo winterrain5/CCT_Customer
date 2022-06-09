@@ -8,13 +8,6 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-enum EditInfoType {
-  case Login
-  case phone
-  case email
-  case pwd
-}
-
 class AccountEditSheetView: UIView {
   var contentView = AccountEditSheetContentView.loadViewFromNib()
   let contentHeight:CGFloat = 280
@@ -30,7 +23,7 @@ class AccountEditSheetView: UIView {
     contentView.frame = CGRect(x: 0, y: kScreenHeight, width: kScreenWidth, height: contentHeight)
     contentView.confirmHandler = { [weak self] text in
       guard let `self` = self else { return }
-      if self.contentView.type == .email {
+      if self.contentView.type == .EditEmail {
         self.checkUserEmailExists(text)
       }else {
         self.checkUserMobileExists(text)
@@ -131,7 +124,7 @@ class AccountEditSheetView: UIView {
   }
   
   
-  static func show(fromView:UIView,type:EditInfoType) {
+  static func show(fromView:UIView,type:SendVerificaitonCodeType) {
     
     let view = AccountEditSheetView()
     view.frame = fromView.bounds
@@ -153,10 +146,10 @@ class AccountEditSheetContentView: UIView,UITextFieldDelegate {
   @IBOutlet weak var tf: UITextField!
   var confirmHandler:((String)->())?
   var cancelHandler:(()->())?
-  var type:EditInfoType = .phone {
+  var type:SendVerificaitonCodeType = .EditPhone {
     didSet {
       
-      if type == .phone {
+      if type == .EditPhone {
         titleLabel.text = "Edit phone number"
         typeLabel.text = "Phone Number"
         tf.placeholder = "Phone Number"

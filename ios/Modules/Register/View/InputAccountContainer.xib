@@ -70,7 +70,7 @@
                                 <outlet property="delegate" destination="nRd-pl-dvj" id="xKv-dt-zhT"/>
                             </connections>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u1h-bZ-GNJ">
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u1h-bZ-GNJ" customClass="LoadingButton" customModule="CCTIOS" customModuleProvider="target">
                             <rect key="frame" x="24" y="705" width="383" height="44"/>
                             <color key="backgroundColor" name="grayE0"/>
                             <constraints>

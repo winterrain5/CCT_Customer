@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -51,7 +51,7 @@
                                 <constraint firstAttribute="height" constant="1" id="lup-tm-5Kk"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blf-Rq-zKj" customClass="LoadingButton" customModule="CCTIOS" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blf-Rq-zKj" customClass="LoadingButton" customModule="CCTIOS" customModuleProvider="target">
                             <rect key="frame" x="24" y="624" width="366" height="44"/>
                             <color key="backgroundColor" name="grayE0"/>
                             <constraints>
@@ -72,7 +72,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRo-Uf-mjI">
-                            <rect key="frame" x="121" y="562" width="172" height="34"/>
+                            <rect key="frame" x="121" y="178" width="172" height="34"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Forgot Your Password?">
                                 <fontDescription key="titleFontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
@@ -87,6 +87,7 @@
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="blf-Rq-zKj" secondAttribute="bottom" constant="66" id="6hN-Qe-6Hx"/>
                         <constraint firstAttribute="trailing" secondItem="j7x-2O-yof" secondAttribute="trailing" constant="24" id="ARe-UW-MIN"/>
+                        <constraint firstItem="sRo-Uf-mjI" firstAttribute="top" secondItem="WZW-gW-Uhg" secondAttribute="bottom" constant="32" id="BHo-aK-dYW"/>
                         <constraint firstItem="j7x-2O-yof" firstAttribute="top" secondItem="9dq-Cc-MHw" secondAttribute="bottom" id="Bve-vh-h8L"/>
                         <constraint firstItem="9dq-Cc-MHw" firstAttribute="leading" secondItem="tI4-fB-RoH" secondAttribute="leading" constant="24" id="GJS-nP-hB8"/>
                         <constraint firstAttribute="trailing" secondItem="WZW-gW-Uhg" secondAttribute="trailing" constant="24" id="KNV-Pi-9DM"/>
@@ -100,7 +101,6 @@
                         <constraint firstItem="9dq-Cc-MHw" firstAttribute="top" secondItem="tI4-fB-RoH" secondAttribute="top" constant="33" id="e17-Mv-bq8"/>
                         <constraint firstItem="WZW-gW-Uhg" firstAttribute="leading" secondItem="tI4-fB-RoH" secondAttribute="leading" constant="24" id="h3B-te-cZJ"/>
                         <constraint firstItem="WZW-gW-Uhg" firstAttribute="top" secondItem="TY8-HB-yIo" secondAttribute="bottom" id="pjL-Nz-XZG"/>
-                        <constraint firstItem="blf-Rq-zKj" firstAttribute="top" secondItem="sRo-Uf-mjI" secondAttribute="bottom" constant="28" id="prx-JX-XYK"/>
                         <constraint firstItem="TY8-HB-yIo" firstAttribute="top" secondItem="j7x-2O-yof" secondAttribute="bottom" constant="19" id="rbF-XO-aDr"/>
                     </constraints>
                 </view>

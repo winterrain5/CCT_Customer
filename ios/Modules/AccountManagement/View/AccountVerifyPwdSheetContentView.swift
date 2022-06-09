@@ -11,7 +11,7 @@ class AccountVerifyPwdSheetView: UIView {
   var contentView = AccountVerifyPwdSheetContentView.loadViewFromNib()
   let contentHeight:CGFloat = 420
   var scrolview = UIScrollView()
-  var type:EditInfoType = .phone
+  var type:SendVerificaitonCodeType = .EditPhone
   override init(frame: CGRect) {
     super.init(frame: frame)
     
@@ -24,7 +24,7 @@ class AccountVerifyPwdSheetView: UIView {
     contentView.confirmHandler = { [weak self] in
       guard let `self` = self else { return }
       self.dismiss(complete: {
-        if self.type == .pwd {
+        if self.type == .EditPassword {
           let vc = ChangePwdController(type: .Change)
           UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
         }else {
@@ -87,7 +87,7 @@ class AccountVerifyPwdSheetView: UIView {
   }
   
   
-  static func show(fromView:UIView,type:EditInfoType) {
+  static func show(fromView:UIView,type:SendVerificaitonCodeType) {
     
     let view = AccountVerifyPwdSheetView()
     view.frame = fromView.bounds

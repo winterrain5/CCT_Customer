@@ -288,7 +288,7 @@
                             </attributedString>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrF-yR-hjv">
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrF-yR-hjv" customClass="LoadingButton" customModule="CCTIOS" customModuleProvider="target">
                             <rect key="frame" x="32" y="710" width="350" height="44"/>
                             <color key="backgroundColor" name="grayE0"/>
                             <constraints>

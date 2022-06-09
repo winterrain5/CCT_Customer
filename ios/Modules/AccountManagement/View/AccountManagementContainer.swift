@@ -28,20 +28,20 @@ class AccountManagementContainer: UIView {
   }
   
   @IBAction func changePhoneNumberAction(_ sender: Any) {
-     showVerifySheetView(.phone)
+     showVerifySheetView(.EditPhone)
   }
   @IBAction func changeEmailAction(_ sender: Any) {
-    showVerifySheetView(.email)
+    showVerifySheetView(.EditEmail)
   }
   @IBAction func idNoLockAction(_ sender: Any) {
     AlertView.show(title: "Locked Information", message: "For security reasons, you will not be able to make changes to your Identification Number.\n\nPlease contact our staff or visit our nearby Chien Chi Tow outlet should you want to make any changes to this information")
   }
   
   @IBAction func changePwdAction(_ sender: Any) {
-    showVerifySheetView(.pwd)
+    showVerifySheetView(.EditPassword)
   }
   
-  func showVerifySheetView(_ type:EditInfoType) {
+  func showVerifySheetView(_ type:SendVerificaitonCodeType) {
     AccountVerifyPwdSheetView.show(fromView: (UIViewController.getTopVc()?.view)!,type: type)
   }
 }

@@ -65,6 +65,9 @@
 		45FC54F42850904B00D3C0FF /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC54F32850904B00D3C0FF /* CountryModel.swift */; };
 		45FC54F72850964B00D3C0FF /* UpcomingSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC54F52850964B00D3C0FF /* UpcomingSessionCell.swift */; };
 		45FC54F82850964B00D3C0FF /* UpcomingSessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45FC54F62850964B00D3C0FF /* UpcomingSessionCell.xib */; };
+		45FC54FA285180B700D3C0FF /* RegistStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC54F9285180B700D3C0FF /* RegistStepView.swift */; };
+		45FC54FD285188BB00D3C0FF /* InputPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC54FC285188BB00D3C0FF /* InputPhoneView.swift */; };
+		45FC54FF285188C900D3C0FF /* InputPhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45FC54FE285188C800D3C0FF /* InputPhoneView.xib */; };
 		4902023527D8934800E74415 /* WalletAddUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902023427D8934800E74415 /* WalletAddUserController.swift */; };
 		4902023727D8939E00E74415 /* WalletAddUserHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902023627D8939E00E74415 /* WalletAddUserHeadView.swift */; };
 		4902023927D893A800E74415 /* WalletAddUserHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4902023827D893A800E74415 /* WalletAddUserHeadView.xib */; };
@@ -766,6 +769,9 @@
 		45FC54F32850904B00D3C0FF /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModel.swift; sourceTree = "<group>"; };
 		45FC54F52850964B00D3C0FF /* UpcomingSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingSessionCell.swift; sourceTree = "<group>"; };
 		45FC54F62850964B00D3C0FF /* UpcomingSessionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingSessionCell.xib; sourceTree = "<group>"; };
+		45FC54F9285180B700D3C0FF /* RegistStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistStepView.swift; sourceTree = "<group>"; };
+		45FC54FC285188BB00D3C0FF /* InputPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPhoneView.swift; sourceTree = "<group>"; };
+		45FC54FE285188C800D3C0FF /* InputPhoneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputPhoneView.xib; sourceTree = "<group>"; };
 		4902023427D8934800E74415 /* WalletAddUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAddUserController.swift; sourceTree = "<group>"; };
 		4902023627D8939E00E74415 /* WalletAddUserHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAddUserHeadView.swift; sourceTree = "<group>"; };
 		4902023827D893A800E74415 /* WalletAddUserHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletAddUserHeadView.xib; sourceTree = "<group>"; };
@@ -1536,6 +1542,8 @@
 		4579206C284EE131008CD008 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				45FC54FC285188BB00D3C0FF /* InputPhoneView.swift */,
+				45FC54FE285188C800D3C0FF /* InputPhoneView.xib */,
 				4579206F284EE1C3008CD008 /* InputIDContainer.swift */,
 				45792071284EE1D8008CD008 /* InputIDContainer.xib */,
 				45792075284EF80E008CD008 /* InputAccountContainer.swift */,
@@ -1546,6 +1554,7 @@
 				45FC54EC285078D100D3C0FF /* InputResideView.xib */,
 				45FC54EE2850852000D3C0FF /* DateOfBirthSheetView.swift */,
 				45FC54F02850852A00D3C0FF /* DateOfBirthSheetView.xib */,
+				45FC54F9285180B700D3C0FF /* RegistStepView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3409,6 +3418,7 @@
 				4933AC7527D87914005E9FB1 /* SetTransactionLimitSheetView.xib in Resources */,
 				49E2C22527D5E56A00F667B7 /* WalletDetailHeadView.xib in Resources */,
 				4904C3C0280677C6008FE5A5 /* ShopHeaderView.xib in Resources */,
+				45FC54FF285188C900D3C0FF /* InputPhoneView.xib in Resources */,
 				4906C21F279A5AC600F7B67F /* MadamPartumDetailFooterCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3659,6 +3669,7 @@
 				494DDBCC281524BF0021FE97 /* ShopCollectionMethodSheetView.swift in Sources */,
 				4998C03B277EF51200A881D5 /* MKPolylineExtensions.swift in Sources */,
 				49056AEC2795031300FBA1AC /* ReactRootViewManager.m in Sources */,
+				45FC54FD285188BB00D3C0FF /* InputPhoneView.swift in Sources */,
 				49BA629F2788226200B898D5 /* BlogDetailViewController.swift in Sources */,
 				4998C006277EF51200A881D5 /* UIStackViewExtensions.swift in Sources */,
 				49E2C22327D5E56400F667B7 /* WalletDetailHeadView.swift in Sources */,
@@ -3854,6 +3865,7 @@
 				4998BF52277ED52700A881D5 /* RefreshAnimationFooter.swift in Sources */,
 				49E3859C279E9BDF003160FA /* FillInEnquiryFormContentView.swift in Sources */,
 				49781BCB27BDE8D6006F93DF /* ContactUsModel.swift in Sources */,
+				45FC54FA285180B700D3C0FF /* RegistStepView.swift in Sources */,
 				4904C3BC280677C6008FE5A5 /* ShopCollectionCell.swift in Sources */,
 				4998C034277EF51200A881D5 /* DateExtensions.swift in Sources */,
 				491EB3E827E06E170019D5B9 /* CardDiscountModel.swift in Sources */,

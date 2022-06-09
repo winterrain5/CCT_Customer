@@ -7,6 +7,17 @@
 
 import UIKit
 
+
+enum SendVerificaitonCodeType {
+  case LoginByMobile
+  case LoginByEmail
+  case SignUp
+  case EditPhone
+  case EditEmail
+  case EditPassword
+}
+
+
 class VerificationCodeContainer: UIView {
 
   @IBOutlet weak var contentView: UIView!
@@ -18,22 +29,18 @@ class VerificationCodeContainer: UIView {
   var resendHandler:(()->())?
   var confirmHandler:((String?)->())?
   var source:String = ""
-  var type:EditInfoType = .phone {
+  var type:SendVerificaitonCodeType = .EditPhone {
     didSet {
-      if type == .phone {
+      if type == .EditPhone || type == .LoginByMobile || type == .SignUp{
         titleLabel.text = "We have sent the verification code to +65 \(source)"
       }
       
-      if type == .email {
-        titleLabel.text = " We have sent the verification code to \(source)"
+      if type == .EditEmail {
+        titleLabel.text = "We have sent the verification code to \(source)"
        
       }
       
-      if type == .Login {
-        titleLabel.text = "We have sent the verification code to +65 \(source)"
-      }
-      
-      if type == .pwd {
+      if type == .EditPassword {
         
       }
     }

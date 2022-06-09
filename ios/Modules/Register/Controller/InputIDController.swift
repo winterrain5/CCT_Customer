@@ -15,9 +15,7 @@ class InputIDController: BaseViewController {
     
     self.view.addSubview(contentView)
     contentView.frame = CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
-    
-    
-    IQKeyboardManager.shared.enableAutoToolbar = true
+
     
   }
   

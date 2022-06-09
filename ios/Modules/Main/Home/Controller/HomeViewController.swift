@@ -61,8 +61,6 @@ class HomeViewController: BaseViewController {
   func refreshData() {
    
     firstly {
-      getClientByUserId()
-    }.then { _ in
       self.getTClientPartInfo()
     }.done { _ in
       self.getBookedService()
@@ -114,27 +112,16 @@ class HomeViewController: BaseViewController {
     }
   }
   
-  func getClientByUserId() -> Promise<Void>{
-    Promise.init { resolver in
-      let params = SOAPParams(action: .Client, path: .getTClientByUserId)
-      params.set(key: "userId", value: Defaults.shared.get(for: .userId) ?? "")
-      
-      NetworkManager().request(params: params) { data in
-        if let id = try? JSON(data: data)["id"].rawString() {
-          Defaults.shared.set(id, for: .clientId)
-          resolver.fulfill_()
-          return
-        }
-        resolver.reject(APIError.requestError(code: -1, message: "Get Cilent Id Failed"))
-      } errorHandler: { e in
-        resolver.reject(e.asAPIError)
-      }
-    }
-   
-  }
-  
   func getTClientPartInfo() -> Promise<Void> {
     Promise.init { resolver in
+      
+      if let model = Defaults.shared.get(for: .userModel) {
+        self.contentView.userModel = model
+        NotificationCenter.default.post(name: .menuInfoShouldChange, object: model)
+        resolver.fulfill_()
+        return
+      }
+      
       let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       

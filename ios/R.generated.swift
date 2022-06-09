@@ -1548,7 +1548,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 112 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 113 nibs.
   struct nib {
     /// Nib `AccountEditSheetContentView`.
     static let accountEditSheetContentView = _R.nib._AccountEditSheetContentView()
@@ -1628,6 +1628,8 @@ struct R: Rswift.Validatable {
     static let inputGeneralInfoView = _R.nib._InputGeneralInfoView()
     /// Nib `InputIDContainer`.
     static let inputIDContainer = _R.nib._InputIDContainer()
+    /// Nib `InputPhoneView`.
+    static let inputPhoneView = _R.nib._InputPhoneView()
     /// Nib `InputResideView`.
     static let inputResideView = _R.nib._InputResideView()
     /// Nib `LoginContainer`.
@@ -2084,6 +2086,14 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.inputIDContainer) instead")
     static func inputIDContainer(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.inputIDContainer)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "InputPhoneView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.inputPhoneView) instead")
+    static func inputPhoneView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.inputPhoneView)
     }
     #endif
 
@@ -2827,6 +2837,10 @@ struct R: Rswift.Validatable {
       return R.nib.inputIDContainer.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? InputIDContainer
     }
 
+    static func inputPhoneView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> InputPhoneView? {
+      return R.nib.inputPhoneView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? InputPhoneView
+    }
+
     static func inputResideView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> InputResideView? {
       return R.nib.inputResideView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? InputResideView
     }
@@ -3169,6 +3183,7 @@ struct _R: Rswift.Validatable {
       try _HomeContainer.validate()
       try _InputGeneralInfoView.validate()
       try _InputIDContainer.validate()
+      try _InputPhoneView.validate()
       try _InputResideView.validate()
       try _LoginContainer.validate()
       try _MadamPartumDetailFooterCell.validate()
@@ -3858,6 +3873,27 @@ struct _R: Rswift.Validatable {
           if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'InputIDContainer', but couldn't be loaded.") }
           if UIKit.UIColor(named: "gray82", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'gray82' is used in nib 'InputIDContainer', but couldn't be loaded.") }
           if UIKit.UIColor(named: "grayE0", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'grayE0' is used in nib 'InputIDContainer', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _InputPhoneView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "InputPhoneView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> InputPhoneView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? InputPhoneView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "booking_form_dropdown", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_form_dropdown' is used in nib 'InputPhoneView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'InputPhoneView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'InputPhoneView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'InputPhoneView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "grayE0", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'grayE0' is used in nib 'InputPhoneView', but couldn't be loaded.") }
         }
       }
 

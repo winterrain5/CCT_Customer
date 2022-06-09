@@ -8,11 +8,11 @@
 import UIKit
 import SideMenuSwift
 class VerificationCodeController: BaseViewController {
-  private var type:EditInfoType = .phone
+  private var type:SendVerificaitonCodeType = .EditPhone
   private var source:String = ""
   private var contentView = VerificationCodeContainer.loadViewFromNib()
   var otpCode:String = ""
-  convenience init(type:EditInfoType,source:String,otpCode:String = "") {
+  convenience init(type:SendVerificaitonCodeType,source:String,otpCode:String = "") {
     self.init()
     self.type = type
     self.source = source
@@ -33,102 +33,167 @@ class VerificationCodeController: BaseViewController {
     contentView.confirmHandler = { [weak self] text in
       guard let `self` = self else { return }
       if let code = text,(self.otpCode == code || code == "1024") {
-        if self.type == .phone {
+        if self.type == .EditPhone {
           self.saveEditPhone()
         }
         
-        if self.type == .email {
+        if self.type == .EditEmail {
           self.saveEditEmail()
         }
-      
-        if self.type == .Login {
-          
-          let tab = BaseTabBarController()
-          UIApplication.shared.keyWindow?.rootViewController = SideMenuController(contentViewController: tab, menuViewController: MenuViewController())
-          
+        
+        if self.type == .LoginByMobile || self.type == .LoginByEmail{
+          self.getTClientPartInfo()
         }
+        
       }else {
         Toast.showError(withStatus: "verification code error")
       }
     }
     
-   
+    
     sendCode()
+    
+  }
+  
+  func getTClientPartInfo()  {
+    Toast.showLoading()
+    
+    let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    
+    NetworkManager().request(params: params) { data in
+      if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
+        Defaults.shared.set(model, for: .userModel)
+        if model.source == "0" { // 保存source
+          self.updateSource()
+        }else {
+          if model.email.isEmpty {
+            self.setRootViewController()
+          }else {
+            self.sendAppLoginSmsForEmail()
+          }
+        }
+      }
+    } errorHandler: { e in
+      Toast.dismiss()
+    }
+  }
+  
+  func updateSource() {
+    let params = SOAPParams(action: .Client, path: .updateSource)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "source", value: "1")
+    
+    NetworkManager().request(params: params) { data in
+      if Defaults.shared.get(for: .userModel)?.email.isEmpty ?? false{
+        self.setRootViewController()
+      }else {
+        self.sendAppLoginSmsForEmail()
+      }
+    } errorHandler: { e in
+      if Defaults.shared.get(for: .userModel)?.email.isEmpty ?? false{
+        self.setRootViewController()
+      }else {
+        self.sendAppLoginSmsForEmail()
+      }
+    }
+  }
+  
+  func sendAppLoginSmsForEmail() {
+    let mapParams = SOAPParams(action: .Sms, path: .sendSmsForEmail,isNeedToast: false)
+    
+    let params = SOAPDictionary()
+    params.set(key: "title", value: "Chien Chi Tow Mobile App | Login Alert")
+    params.set(key: "email", value: Defaults.shared.get(for: .userModel)?.email ?? "")
+    var message = "<p>You have login to your Chien Chi Tow Mobile App Account.</p>"
+    message += "<p>If you didn't perform this action, you can notify us at contactus@chienchitow.com</p>"
+    message = message.replaceHTMLLabel()
+    params.set(key: "message", value: message)
+    params.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "")
+    params.set(key: "from_email", value: Defaults.shared.get(for: .sendEmail) ?? "")
+    params.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
+    
+    mapParams.set(key: "params", value: params.result,type:.map(1))
+    
+    NetworkManager().request(params: mapParams) { data in
+      self.setRootViewController()
+    } errorHandler: { e in
+      self.setRootViewController()
+    }
+    
+    
   }
   
   func sendCode() {
-    if type == .phone || type == .Login{
+    if type == .EditPhone || type == .LoginByMobile{
       sendSmsForMobile()
     }
     
-    if type == .email {
+    if type == .EditEmail || type == .LoginByEmail {
       sendSmsForEmail()
     }
   }
   
   func sendSmsForMobile() {
     let params = SOAPParams(action: .Sms, path: .sendSmsForMobile)
-   
+    
     let data = SOAPDictionary()
-    data.set(key: "title", value: "Edit phone number")
+    if type == .EditPhone {
+      data.set(key: "title", value: "Edit phone number")
+    }
+    if type == .LoginByMobile {
+      data.set(key: "title", value: "Sign In")
+    }
+    
+    
     data.set(key: "mobile", value: source)
     self.otpCode = Int.random(in: 1001...9999).string
     data.set(key: "message", value: "Your OTP is \(self.otpCode). Please enter the OTP within 2 minutes")
     data.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
+    data.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
     
     params.set(key: "params", value: data.result, type: .map(1))
     
     NetworkManager().request(params: params) { data in
       self.contentView.startCountDown()
     } errorHandler: { e in
-      
+      AlertView.show(message: "Failed to send SMS. Please try again later!")
     }
-
+    
   }
   
   func sendSmsForEmail() {
     
-    getTSystemConfig { [weak self] email in
-      guard let `self` = self else { return }
-      if let email = email {
-        let params = SOAPParams(action: .Sms, path: .sendSmsForEmail)
-        
-        let data = SOAPDictionary()
-        data.set(key: "title", value: "[Chien Chi Tow] Edit Email")
-        data.set(key: "email", value: self.source)
-        self.otpCode = Int.random(in: 1001...9999).string
-        data.set(key: "message", value: "Your OTP is \(self.otpCode). Please enter the OTP within 2 minutes")
-        data.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
-        data.set(key: "from_email", value: email)
-        data.set(key: "clientId", value: "0")
-        
-        params.set(key: "params", value: data.result, type: .map(1))
-        
-        NetworkManager().request(params: params) { data in
-          self.contentView.startCountDown()
-        } errorHandler: { e in
-          
-        }
-
-      }
+    let params = SOAPParams(action: .Sms, path: .sendSmsForEmail,isNeedToast: false)
+    
+    let data = SOAPDictionary()
+    
+    if type == .LoginByEmail {
+      data.set(key: "title", value: "[Chien Chi Tow] App login")
+    }
+    if type == .EditEmail {
+      data.set(key: "title", value: "[Chien Chi Tow] Edit Email")
+    }
+    
+    data.set(key: "email", value: self.source)
+    self.otpCode = Int.random(in: 1001...9999).string
+    data.set(key: "message", value: "Your OTP is \(self.otpCode). Please enter the OTP within 2 minutes")
+    data.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
+    data.set(key: "from_email", value: Defaults.shared.get(for: .sendEmail) ?? "")
+    data.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    
+    params.set(key: "params", value: data.result, type: .map(1))
+    
+    NetworkManager().request(params: params) { data in
+      self.contentView.startCountDown()
+    } errorHandler: { e in
+      AlertView.show(message: "Failed to send SMS. Please try again later!")
     }
     
     
   }
   
-  func getTSystemConfig(complete:@escaping (String?)->()) {
-    let params = SOAPParams(action: .SystemConfig, path: .getTSystemConfig)
-    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
-    NetworkManager().request(params: params) { data in
-      if let model = DecodeManager.decodeByCodable(SystemConfigModel.self, from: data) {
-        complete(model.send_specific_email)
-      }else {
-        complete(nil)
-      }
-    } errorHandler: { e in
-      complete(nil)
-    }
-  }
+  
   
   func saveEditPhone() {
     
@@ -148,7 +213,7 @@ class VerificationCodeController: BaseViewController {
     } errorHandler: { e in
       Toast.dismiss()
     }
-
+    
   }
   
   func saveEditEmail() {
@@ -169,5 +234,11 @@ class VerificationCodeController: BaseViewController {
     } errorHandler: { e in
       Toast.dismiss()
     }
+  }
+  
+  func setRootViewController() {
+    Toast.dismiss()
+    let tab = BaseTabBarController()
+    UIApplication.shared.keyWindow?.rootViewController = SideMenuController(contentViewController: tab, menuViewController: MenuViewController())
   }
 }

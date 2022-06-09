@@ -33,10 +33,10 @@ class LoginContainer: UIView {
       bottom1Cons.constant = 95
     }else {
       let scale = kScreenHeight / 812
-      topRoundVHCons.constant = 538~ * scale
-      topRoundVWCons.constant = 538~ * scale
-      topRoundVTopCons.constant = -206~ * scale
-      topRoundView.cornerRadius = 269~ * scale
+      topRoundVHCons.constant = 538 * scale
+      topRoundVWCons.constant = 538 * scale
+      topRoundVTopCons.constant = -206 * scale
+      topRoundView.cornerRadius = 269 * scale
       top1Cons.constant = 44 * scale
       top2Cons.constant = 32 * scale
       top3Cons.constant = 46 * scale
@@ -50,7 +50,7 @@ class LoginContainer: UIView {
   }
   @IBAction func signupAction(_ sender: Any) {
     
-    let vc = InputResideController()
+    let vc = InputIDController()
     UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
 
   }

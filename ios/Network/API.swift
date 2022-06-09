@@ -244,7 +244,10 @@ enum API:String {
   case getLastSymptomCheckReport = "getLastSymptomCheckReport"
   /// 检查病人是否已经挂号
   case checkConsulted = "checkConsulted"
-  
+  /// 通过手机获取系统所有的用户信息
+  case getClientsByPhone = "getClientsByPhone"
+  ///修改用户Source，注册方式
+  case updateSource = "updateSource"
   //获取配置
   case  getTConfig = "getTConfig"
   // 获取所有国家

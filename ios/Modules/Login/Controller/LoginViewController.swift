@@ -21,12 +21,13 @@ class LoginViewController: BaseViewController {
   }
   
   func getCompanyId() {
-    let params = SOAPParams(action: .Company, path: .getParentCompanyBySysName)
-    params.set(key: "systemName", value: "TCM")
-    
+    let params = SOAPParams(action: .SystemConfig, path: .getTConfig)
+
     NetworkManager().request(params: params) { data in
-      if let id = String(data: data, encoding: .utf8) {
-        Defaults.shared.set(id, for: .companyId)
+      if let model = DecodeManager.decodeObjectByHandJSON(SystemConfigModel.self, from: data) {
+        Defaults.shared.set(model.company_id?.string ?? "", for: .companyId)
+        Defaults.shared.set(model.receive_specific_email ?? "", for: .recieveEmail)
+        Defaults.shared.set(model.send_specific_email ?? "", for: .sendEmail)
       }
     } errorHandler: { e in
       

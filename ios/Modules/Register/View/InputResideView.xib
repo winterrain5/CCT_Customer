@@ -44,7 +44,7 @@
                                 <constraint firstAttribute="height" constant="1" id="rr3-Us-ZF6"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHw-z4-cSC">
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHw-z4-cSC" customClass="LoadingButton" customModule="CCTIOS" customModuleProvider="target">
                             <rect key="frame" x="24" y="698" width="383" height="44"/>
                             <color key="backgroundColor" name="grayE0"/>
                             <constraints>

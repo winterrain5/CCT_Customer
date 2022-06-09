@@ -8,7 +8,7 @@
 import UIKit
 import TextFieldEffects
 class InputAccountContainer: UIView,UITextFieldDelegate {
-  @IBOutlet weak var nextButon: UIButton!
+  @IBOutlet weak var nextButon: LoadingButton!
   @IBOutlet weak var pw2Tf: HoshiTextField!
   @IBOutlet weak var pwTf: HoshiTextField!
   @IBOutlet weak var emailTf: HoshiTextField!

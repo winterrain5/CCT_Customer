@@ -12,6 +12,8 @@ extension DefaultsKey {
   static let clientId = Key<String>("clientId")
   static let loginPwd = Key<String>("loginPwd")
   static let companyId = Key<String>("companyId")
+  static let sendEmail = Key<String>("sendEmail")
+  static let recieveEmail = Key<String>("recieveEmail")
   
   static let userModel = Key<UserModel>("UserModel")
   

@@ -14,7 +14,7 @@ class InputIDContainer: UIView ,UITextFieldDelegate{
   @IBOutlet weak var idTf: UITextField!
   @IBOutlet weak var dataPNLabel: TapLabel!
   @IBOutlet weak var dataPN2Label: TapLabel!
-  @IBOutlet weak var nextButon: UIButton!
+  @IBOutlet weak var nextButon: LoadingButton!
   
   @IBOutlet weak var isCheckButton: UIButton!
   /// 0: Singapore NRIC/FIN 1:Foreign ID

@@ -93,6 +93,13 @@ extension String {
       return false
     }
   }
-  
+ 
+  func replaceHTMLLabel() -> String{
+    var html = self
+    html = html.replacingOccurrences(of: "&", with: "&amp;")
+    html = html.replacingOccurrences(of: "<", with: "&lt;")
+    html = html.replacingOccurrences(of: ">", with: "&gt;")
+    return html
+  }
   
 }

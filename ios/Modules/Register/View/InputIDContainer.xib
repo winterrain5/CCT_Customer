@@ -111,7 +111,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAw-3N-AmA">
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAw-3N-AmA" customClass="LoadingButton" customModule="CCTIOS" customModuleProvider="target">
                             <rect key="frame" x="24" y="554.5" width="366" height="44"/>
                             <color key="backgroundColor" name="grayE0"/>
                             <constraints>

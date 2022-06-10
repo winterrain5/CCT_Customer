@@ -16,8 +16,6 @@
   SwiftyFitsize.sharedSwiftyFitsize.referenceW = 375;
   StripeAPI.defaultPublishableKey = [[APIHost alloc] init].STRIPE_PK_LIVE;
   
-//  [self configRootViewForRN:launchOptions];
-  
   [ApplicationUtil configRootViewController];
   
 
@@ -28,21 +26,7 @@
   return YES;
 }
 
-- (void)configRootViewForRN:(NSDictionary *)launchOptions {
-  RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
-  RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
-                                                   moduleName:@"CCTIOS"
-                                            initialProperties:nil];
 
-  rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
-  UIStoryboard *sb = [UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil];
-  UIViewController *vc = [sb instantiateInitialViewController];
-  rootView.loadingView = vc.view;
-  MainViewController *rootViewController = [[MainViewController alloc] init];
-  rootViewController.view = rootView;
-  BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:rootViewController];
-  self.window.rootViewController = nav;
-}
 
 - (void)setupNotification {
 #ifdef DEBUG
@@ -115,16 +99,5 @@
   
 }
 
-
-- (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
-{
-#if DEBUG
-  self.url = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
-#else
-  self.url = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
-#endif
-  NSLog(@"source url: %@",self.url);
-  return self.url;
-}
 
 @end

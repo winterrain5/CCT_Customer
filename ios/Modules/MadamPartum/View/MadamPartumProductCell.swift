@@ -90,7 +90,7 @@ class MadamPartumProductCell: MadamPartumCell {
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let model = datas[indexPath.item]
-    let vc = RNBridgeViewController(RNPageName: "ShopProductDetailActivity", RNProperty: ["product_id":model.id])
+    let vc = ShopDetailController(productId: model.id)
     UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
 }

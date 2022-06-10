@@ -47,7 +47,7 @@ class SymptomCheckWhatNextController: BaseViewController {
         if count > 3 {
           AlertView.show(message: "If you delay cancelling more than 3 times, your in app reservation permission will be suspended.")
         }else {
-          let vc = RNBridgeViewController(RNPageName: "BookAppointmentActivity", RNProperty: ["select_type":"0"])
+          let vc = BookingAppointmentController(type: .Treatment)
           self.saveReport(vc)
         }
       } errorHandler: { e in

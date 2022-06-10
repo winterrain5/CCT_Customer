@@ -9,10 +9,6 @@
 #import <TTGTagCollectionView/TTGTextTag.h>
 #import <TTGTagCollectionView/TTGTextTagStringContent.h>
 #import <SVProgressHUD/SVProgressHUD.h>
-#import <React/RCTBridge.h>
-#import <React/RCTBundleURLProvider.h>
-#import <React/RCTRootView.h>
-#import "ReactRootViewManager.h"
 #import <CRBoxInputView.h>
 #import <MobPush/MobPush.h>
 #import "AppDelegate.h"

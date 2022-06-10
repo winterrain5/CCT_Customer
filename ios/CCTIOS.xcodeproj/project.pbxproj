@@ -135,7 +135,6 @@
 		4904C3E02806BCEC008FE5A5 /* ShopDetailHeadContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4904C3DF2806BCEC008FE5A5 /* ShopDetailHeadContainer.xib */; };
 		49056AE72794FC8100FBA1AC /* SelectTypeOfServiceSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49056AE62794FC8000FBA1AC /* SelectTypeOfServiceSheetView.swift */; };
 		49056AE92794FC9000FBA1AC /* SelectTypeOfServiceSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49056AE82794FC9000FBA1AC /* SelectTypeOfServiceSheetView.xib */; };
-		49056AEC2795031300FBA1AC /* ReactRootViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49056AEB2795031300FBA1AC /* ReactRootViewManager.m */; };
 		49056AF12795043800FBA1AC /* RNBridgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49056AF02795043800FBA1AC /* RNBridgeViewController.swift */; };
 		49056AF32795427B00FBA1AC /* SymptomCheckTreatmentPlanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49056AF22795427B00FBA1AC /* SymptomCheckTreatmentPlanController.swift */; };
 		49056AF527954C9A00FBA1AC /* SymptomCheckPlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49056AF427954C9A00FBA1AC /* SymptomCheckPlanModel.swift */; };
@@ -303,7 +302,6 @@
 		498D85C4279932F00044F34F /* StripeUICore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 498D85AC279932DE0044F34F /* StripeUICore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		498D85C5279934B20044F34F /* Stripe.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 498D85B0279932E00044F34F /* Stripe.xcframework */; };
 		498D85C6279934B20044F34F /* Stripe.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 498D85B0279932E00044F34F /* Stripe.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		498D85CB279945FB0044F34F /* PushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 498D85CA279945FB0044F34F /* PushManager.m */; };
 		498D85DB27995EB50044F34F /* FSPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498D85D227995EB40044F34F /* FSPagerView.swift */; };
 		498D85DC27995EB50044F34F /* FSPageViewTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498D85D327995EB40044F34F /* FSPageViewTransformer.swift */; };
 		498D85DD27995EB50044F34F /* FSPagerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498D85D527995EB40044F34F /* FSPagerViewCell.swift */; };
@@ -668,7 +666,6 @@
 		49FC8EC227914D5200157292 /* SymptomCheckReportListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FC8EC127914D5200157292 /* SymptomCheckReportListView.swift */; };
 		49FC8EC42791513100157292 /* SymptomCheckReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FC8EC32791513100157292 /* SymptomCheckReportModel.swift */; };
 		49FC8EC627915C6400157292 /* SymptomCheckReportAnalysisController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FC8EC527915C6400157292 /* SymptomCheckReportAnalysisController.swift */; };
-		7A117EC4277DB0AE00FDA382 /* NativeBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A117EBE277DB0AD00FDA382 /* NativeBridge.m */; };
 		7A117EC5277DB0AE00FDA382 /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A117EC0277DB0AE00FDA382 /* NotificationNameExtension.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		EDB2E5E8B37733B293005CC0 /* libPods-CCTIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1AD4863EDBCB20D711EE6C /* libPods-CCTIOS.a */; };
@@ -844,8 +841,6 @@
 		4904C3DF2806BCEC008FE5A5 /* ShopDetailHeadContainer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopDetailHeadContainer.xib; sourceTree = "<group>"; };
 		49056AE62794FC8000FBA1AC /* SelectTypeOfServiceSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTypeOfServiceSheetView.swift; sourceTree = "<group>"; };
 		49056AE82794FC9000FBA1AC /* SelectTypeOfServiceSheetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectTypeOfServiceSheetView.xib; sourceTree = "<group>"; };
-		49056AEA2795031300FBA1AC /* ReactRootViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactRootViewManager.h; sourceTree = "<group>"; };
-		49056AEB2795031300FBA1AC /* ReactRootViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactRootViewManager.m; sourceTree = "<group>"; };
 		49056AF02795043800FBA1AC /* RNBridgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNBridgeViewController.swift; sourceTree = "<group>"; };
 		49056AF22795427B00FBA1AC /* SymptomCheckTreatmentPlanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomCheckTreatmentPlanController.swift; sourceTree = "<group>"; };
 		49056AF427954C9A00FBA1AC /* SymptomCheckPlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomCheckPlanModel.swift; sourceTree = "<group>"; };
@@ -1008,8 +1003,6 @@
 		498D85AE279932DE0044F34F /* StripeCardScan.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = StripeCardScan.xcframework; sourceTree = "<group>"; };
 		498D85AF279932DF0044F34F /* Stripe3DS2.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Stripe3DS2.xcframework; sourceTree = "<group>"; };
 		498D85B0279932E00044F34F /* Stripe.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Stripe.xcframework; sourceTree = "<group>"; };
-		498D85C9279945FB0044F34F /* PushManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PushManager.h; sourceTree = "<group>"; };
-		498D85CA279945FB0044F34F /* PushManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PushManager.m; sourceTree = "<group>"; };
 		498D85D227995EB40044F34F /* FSPagerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerView.swift; sourceTree = "<group>"; };
 		498D85D327995EB40044F34F /* FSPageViewTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageViewTransformer.swift; sourceTree = "<group>"; };
 		498D85D427995EB40044F34F /* FSPagerViewObjcCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPagerViewObjcCompat.h; sourceTree = "<group>"; };
@@ -1377,9 +1370,7 @@
 		49FC8EC127914D5200157292 /* SymptomCheckReportListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomCheckReportListView.swift; sourceTree = "<group>"; };
 		49FC8EC32791513100157292 /* SymptomCheckReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomCheckReportModel.swift; sourceTree = "<group>"; };
 		49FC8EC527915C6400157292 /* SymptomCheckReportAnalysisController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomCheckReportAnalysisController.swift; sourceTree = "<group>"; };
-		7A117EBE277DB0AD00FDA382 /* NativeBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NativeBridge.m; path = CCTIOS/NativeBridge.m; sourceTree = "<group>"; };
 		7A117EC0277DB0AE00FDA382 /* NotificationNameExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
-		7A117EC2277DB0AE00FDA382 /* NativeBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeBridge.h; path = CCTIOS/NativeBridge.h; sourceTree = "<group>"; };
 		7A1E3A24277ABFA100AC5130 /* CCTIOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCTIOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CCTIOS/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9AE586BA7D70A3A376BC9285 /* Pods-CCTIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCTIOS.release.xcconfig"; path = "Target Support Files/Pods-CCTIOS/Pods-CCTIOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -1460,15 +1451,9 @@
 				4998BF09277EAEFE00A881D5 /* Util */,
 				4998BF02277E996D00A881D5 /* Network */,
 				7A117EBF277DB0AE00FDA382 /* Extension */,
-				7A117EC2277DB0AE00FDA382 /* NativeBridge.h */,
-				7A117EBE277DB0AD00FDA382 /* NativeBridge.m */,
-				498D85C9279945FB0044F34F /* PushManager.h */,
-				498D85CA279945FB0044F34F /* PushManager.m */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				4998BEB4277DA24300A881D5 /* AppDelegate.m */,
 				4915ABC0282A3FE900BBB3E7 /* ApplicationUtil.swift */,
-				49056AEA2795031300FBA1AC /* ReactRootViewManager.h */,
-				49056AEB2795031300FBA1AC /* ReactRootViewManager.m */,
 				49BA627327856F9000B898D5 /* R.generated.swift */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -3204,12 +3189,10 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "CCTIOS" */;
 			buildPhases = (
 				D3424D467AE4C66B3230AC61 /* [CP] Check Pods Manifest.lock */,
-				FD10A7F022414F080027D42C /* Start Packager */,
 				49BA627227856BA300B898D5 /* ShellScript */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
-				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				6D4DCC6786BC80033F1EF50D /* [CP] Copy Pods Resources */,
 				498D85BA279932E80044F34F /* Embed Frameworks */,
 			);
@@ -3456,20 +3439,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native code and images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
-		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3511,13 +3480,11 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CCTIOS/Pods-CCTIOS-resources.sh",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3545,25 +3512,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FD10A7F022414F080027D42C /* Start Packager */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Start Packager";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F122414F3F0027D42C /* Start Packager */ = {
@@ -3684,7 +3632,6 @@
 				4998C041277EF51200A881D5 /* BinaryFloatingPointExtensions.swift in Sources */,
 				494DDBCC281524BF0021FE97 /* ShopCollectionMethodSheetView.swift in Sources */,
 				4998C03B277EF51200A881D5 /* MKPolylineExtensions.swift in Sources */,
-				49056AEC2795031300FBA1AC /* ReactRootViewManager.m in Sources */,
 				45FC54FD285188BB00D3C0FF /* InputPhoneView.swift in Sources */,
 				49BA629F2788226200B898D5 /* BlogDetailViewController.swift in Sources */,
 				4998C006277EF51200A881D5 /* UIStackViewExtensions.swift in Sources */,
@@ -3736,7 +3683,6 @@
 				4998BF20277ED20D00A881D5 /* UIViewController+Associated.swift in Sources */,
 				4998C053277EF51200A881D5 /* StdlibDeprecated.swift in Sources */,
 				4998C0E02784427F00A881D5 /* ConstraintView.swift in Sources */,
-				7A117EC4277DB0AE00FDA382 /* NativeBridge.m in Sources */,
 				49F69773282DF375009813EA /* BookingHeadController.swift in Sources */,
 				49133E4328167BDE0086E518 /* ValidNewVoucherModel.swift in Sources */,
 				4998C047277EF51200A881D5 /* DictionaryExtensions.swift in Sources */,
@@ -3985,7 +3931,6 @@
 				49BA6278278575AE00B898D5 /* BlogHeaderSearchView.swift in Sources */,
 				49727C7127C4C8F800943156 /* AccountVerifyPwdSheetContentView.swift in Sources */,
 				4998C0A827843CB500A881D5 /* Int_Extension.swift in Sources */,
-				498D85CB279945FB0044F34F /* PushManager.m in Sources */,
 				4998BFFB277EF51200A881D5 /* CGSizeExtensions.swift in Sources */,
 				45A505832848997300779B4C /* HomeContainer.swift in Sources */,
 				45792074284EF7F4008CD008 /* InputAccountController.swift in Sources */,

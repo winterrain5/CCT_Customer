@@ -553,7 +553,7 @@ _therapist_renderItem = (item) => {
           <View style = {styles.view_pop_therapist}>
 
              <Text style = {styles.text_popup_therapist_content}>{item.item.employee_name}</Text>
-            <Text style = { {color:"#C44729"}}> {item.item.gender == 1 ? "(Male)" : "(Female)"} </Text>
+			 <View />
           </View>
 
          
@@ -660,7 +660,7 @@ _therapist_renderItem = (item) => {
 
         }else {
           
-           toastShort('There is no right date!');
+           temporary.showErrorHintPopup('The date you have selected is not available, please try a different date.');
 
         }
 
@@ -698,7 +698,7 @@ _therapist_renderItem = (item) => {
 
         }else {
           
-           toastShort('There is no right date!');
+           temporary.showErrorHintPopup('The date you have selected is not available, please try a different date.');
 
         }
 
@@ -737,7 +737,8 @@ _therapist_renderItem = (item) => {
 
         }else {
           
-           toastShort('There is no right date!');
+		  
+           temporary.showErrorHintPopup('The date you have selected is not available, please try a different date.');
 
         }
 
@@ -1152,7 +1153,7 @@ _therapist_renderItem = (item) => {
 
         }else {
           
-           toastShort('There is no right time!');
+           temporary.showErrorHintPopup('The time you have selected is not available, please try a different time.');
 
         }
 
@@ -1192,7 +1193,7 @@ _therapist_renderItem = (item) => {
 
         }else {
           
-           toastShort('There is no right time!');
+            temporary.showErrorHintPopup('The time you have selected is not available, please try a different time.');
 
         }
 
@@ -1544,9 +1545,31 @@ selectedTimeSlot(item){
             ()=>this.coverLayer.hide(),
             CoverLayer.popupMode.bottom);
 
+  }
+  
+  showErrorHintPopup(content){
+
+     // 根据传入的方法渲染并弹出
+
+    this.coverLayer.showWithContent(
+                ()=> {
+                    return (
+                        <View style={styles.view_popup_bg}>
+
+                          <Text style = {styles.text_popup_content}>Another appointment with a similar time slot has been created. Please select another day or time.</Text>
+               
+                        </View>
+                       
+                    )
+                },
+            ()=>this.coverLayer.hide(),
+            CoverLayer.popupMode.bottom);
+
 
 
   }
+  
+  
 
 
 

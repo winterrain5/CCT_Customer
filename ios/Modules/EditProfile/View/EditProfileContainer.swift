@@ -36,7 +36,7 @@ class EditProfileContainer: UIView,UITextFieldDelegate {
       lastNameTf.text = model.last_name
       
       genderButtonAction(model.gender == "1" ? maleButton : femaleButton)
-      madamPartumButtonAction(model.cct_or_mp == "1" ? yesButton : noButton)
+      madamPartumButtonAction(model.cct_or_mp == "2" ? yesButton : noButton)
       dateLabel.text = model.birthday
       
       postCodeTf.text = model.post_code
@@ -108,9 +108,9 @@ class EditProfileContainer: UIView,UITextFieldDelegate {
     }
     sender.isSelected = !sender.isSelected
     if sender == yesButton {
-      editModel.isCustomer = "1"
-    }else {
       editModel.isCustomer = "2"
+    }else {
+      editModel.isCustomer = "1"
     }
     madamPartumSelectedButton = sender
   }

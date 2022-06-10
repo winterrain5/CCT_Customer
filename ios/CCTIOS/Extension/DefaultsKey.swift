@@ -17,6 +17,8 @@ extension DefaultsKey {
   
   static let userModel = Key<UserModel>("UserModel")
   
+  static let registModel = Key<RegistUserInfoModel>("RegistUserInfoModel")
+  
   static let payMethodLine = Key<MethodLines>("PayMethodLine")
   static let payMethodId = Key<String>("PayMethodId")
   

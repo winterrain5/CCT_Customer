@@ -31,6 +31,7 @@ class InputGeneralInfoView: UIView, UITextFieldDelegate {
   
   @IBOutlet weak var infoContentView: UIView!
 
+  @IBOutlet weak var referralCodeView: UIView!
   
   var gender = ""
   var isCustomer = ""
@@ -43,6 +44,41 @@ class InputGeneralInfoView: UIView, UITextFieldDelegate {
   override func awakeFromNib() {
     super.awakeFromNib()
     isCheckButton.borderColor = .clear
+    
+    if let user = Defaults.shared.get(for: .userModel) {
+      firstNameTf.text = user.first_name
+      lastNameTf.text = user.last_name
+      if user.gender == "1" {
+        maleButton.isSelected = true
+        genderButtonAction(maleButton)
+      }else {
+        femaleButton.isSelected = true
+        genderButtonAction(femaleButton)
+      }
+      
+      if user.cct_or_mp == "2" {
+        yesButton.isSelected = true
+        madamPartumButtonAction(yesButton)
+      }else {
+        noButton.isSelected = true
+        madamPartumButtonAction(noButton)
+      }
+      
+      birthTf.text = user.birthday
+      
+      firstName = user.first_name
+      lastName = user.last_name
+      gender = user.gender
+      isCustomer = user.cct_or_mp
+      dateOfBirth = user.birthday
+      
+      referralCodeView.isHidden = true
+      
+      setNextButonState()
+    }else {
+      referralCodeView.isHidden = false
+    }
+    
   }
   
   override func layoutSubviews() {
@@ -88,9 +124,9 @@ class InputGeneralInfoView: UIView, UITextFieldDelegate {
     }
     sender.isSelected = !sender.isSelected
     if sender == yesButton {
-      isCustomer = "1"
-    }else {
       isCustomer = "2"
+    }else {
+      isCustomer = "1"
     }
     madamPartumSelectedButton = sender
     endEditing(true)
@@ -99,16 +135,29 @@ class InputGeneralInfoView: UIView, UITextFieldDelegate {
   
   @IBAction func showCalendarAction(_ sender: Any) {
     DateOfBirthSheetView.show { date in
-      self.dateOfBirth = date.dateString()
-      self.birthTf.text = date.dateString()
+      let dateStr = date.string(withFormat: "yyyy-MM-dd")
+      self.dateOfBirth = dateStr
+      self.birthTf.text = dateStr
       self.setNextButonState()
       
     }
   }
   
   @IBAction func nextAction(_ sender: Any) {
+   
+    if let registInfo = Defaults.shared.get(for: .registModel) {
+      registInfo.firstName = firstName
+      registInfo.lastName = lastName
+      registInfo.gender = gender
+      registInfo.dataOfBirth = dateOfBirth
+      registInfo.isCustomer = isCustomer
+      registInfo.referralCode = referralCode
+      Defaults.shared.set(registInfo, for: .registModel)
+    }
+    nextButon.stopAnimation()
     let vc = InputResideController()
     UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
+    
   }
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -127,6 +176,7 @@ class InputGeneralInfoView: UIView, UITextFieldDelegate {
     
     if textField == referralCodeTf {
       referralCode = text
+      checkReferralCodeExist()
     }
     setNextButonState()
   }
@@ -141,4 +191,19 @@ class InputGeneralInfoView: UIView, UITextFieldDelegate {
       nextButon.backgroundColor = R.color.grayE0()
     }
   }
+  
+  func checkReferralCodeExist() {
+    let params = SOAPParams(action: .Client, path: .checkReferralCodeExists)
+    params.set(key: "code", value: referralCode)
+    NetworkManager().request(params: params) { data in
+      let data = String(data: data, encoding: .utf8)
+      if data != "1" {
+        AlertView.show(message: "The current invitation code is incorrect, please check !")
+      }
+    } errorHandler: { e in
+      
+    }
+
+  }
+  
 }

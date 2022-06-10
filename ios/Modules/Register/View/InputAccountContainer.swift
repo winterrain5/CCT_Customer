@@ -7,6 +7,7 @@
 
 import UIKit
 import TextFieldEffects
+import CryptoKit
 class InputAccountContainer: UIView,UITextFieldDelegate {
   @IBOutlet weak var nextButon: LoadingButton!
   @IBOutlet weak var pw2Tf: HoshiTextField!
@@ -45,9 +46,48 @@ class InputAccountContainer: UIView,UITextFieldDelegate {
   }
   
   @IBAction func nextAction(_ sender: Any) {
+    
+    if let user = Defaults.shared.get(for: .userModel),!user.email.isEmpty,user.email == (emailTf.text ?? "") {
+      next()
+    }else {
+      checkUserEmailExist()
+    }
+    
+  }
+  
+  func checkUserEmailExist() {
+    
+    nextButon.startAnimation()
+    
+    let params = SOAPParams(action: .Client, path: .userEmailExists)
+    params.set(key: "email", value: emailTf.text ?? "")
+    
+    NetworkManager().request(params: params) { data in
+      self.nextButon.stopAnimation()
+      let data = String(data: data, encoding: .utf8)
+      if data == "0" {
+        self.next()
+      }else {
+        AlertView.show(message: "Email already exists in the system, please confirm first.")
+      }
+    } errorHandler: { e in
+      self.nextButon.stopAnimation()
+    }
+
+  }
+  
+  func next() {
+    
+    if let registInfo = Defaults.shared.get(for: .registModel) {
+      registInfo.email = emailTf.text ?? ""
+      registInfo.password = pwTf.text ?? ""
+      Defaults.shared.set(registInfo, for: .registModel)
+    }
+    nextButon.stopAnimation()
     let vc = InputGeneralInfoController()
     UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
   }
+  
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     self.endEditing(true)
@@ -98,7 +138,7 @@ class InputAccountContainer: UIView,UITextFieldDelegate {
       // The two passwords must be the same
       if !(pwTf.text?.isEmpty ?? false) {
         isPwdConfirmValidate = (text == (pwTf.text ?? ""))
-        pwdError2Label.text = isPwdConfirmValidate ? "" : "・The two passwords must be the same"
+        pwdError2Label.text = isPwdConfirmValidate ? "" : "・Password is inconsistent with Re-enter Password"
         pwdError2Label.isHidden = isPwdConfirmValidate
       }
      

@@ -35,6 +35,7 @@ class InputPhoneView: UIView,UITextFieldDelegate {
   @IBAction func sendOTPAction(_ sender: Any) {
     getClientByPhone()
   }
+  
   @IBAction func selectAreaCodeAction(_ sender: Any) {
     
   }
@@ -65,10 +66,11 @@ class InputPhoneView: UIView,UITextFieldDelegate {
         if models.count == 0 { // 未注册
           self.sendSMSForMobile(nil)
         }
-        if models.count == 1 { // 已注册
+        if models.count == 1,let user = models.first { // 已注册
           // 判断是app 注册还是电脑端注册  电脑端注册 补全信息;手机端注册显示已经注册
-          if models.first?.source == "0" { // 电脑端
-            self.sendSMSForMobile(models.first)
+          if user.source == "0" { // 电脑端
+            Defaults.shared.set(user, for: .userModel)
+            self.sendSMSForMobile(user)
           }else{
             self.showErrorAlert(errorType: 1)
           }
@@ -104,6 +106,11 @@ class InputPhoneView: UIView,UITextFieldDelegate {
     
     NetworkManager().request(params: mapParams) { data in
       self.sendOTPButton.stopAnimation()
+      
+      let registInfo = RegistUserInfoModel()
+      registInfo.mobile = mobile
+      Defaults.shared.set(registInfo, for: .registModel)
+      
       let vc = VerificationCodeController(type: .SignUp, source: mobile,otpCode:self.otpCode)
       UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
     } errorHandler: { e in

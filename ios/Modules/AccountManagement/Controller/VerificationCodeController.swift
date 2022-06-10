@@ -45,6 +45,11 @@ class VerificationCodeController: BaseViewController {
           self.getTClientPartInfo()
         }
         
+        if self.type == .SignUp {
+          let vc = InputIDController()
+          self.navigationController?.pushViewController(vc, completion: nil)
+        }
+        
       }else {
         Toast.showError(withStatus: "verification code error")
       }
@@ -116,11 +121,14 @@ class VerificationCodeController: BaseViewController {
     mapParams.set(key: "params", value: params.result,type:.map(1))
     
     NetworkManager().request(params: mapParams) { data in
-      self.setRootViewController()
+      
     } errorHandler: { e in
-      self.setRootViewController()
+      
     }
     
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+      self.setRootViewController()
+    }
     
   }
   
@@ -144,13 +152,19 @@ class VerificationCodeController: BaseViewController {
     if type == .LoginByMobile {
       data.set(key: "title", value: "Sign In")
     }
-    
+    if type == .SignUp {
+      data.set(key: "title", value: "Sign Up")
+    }
     
     data.set(key: "mobile", value: source)
     self.otpCode = Int.random(in: 1001...9999).string
     data.set(key: "message", value: "Your OTP is \(self.otpCode). Please enter the OTP within 2 minutes")
     data.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
-    data.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
+    
+    if let clientId = Defaults.shared.get(for: .clientId){
+      data.set(key: "client_id", value: clientId)
+    }
+    
     
     params.set(key: "params", value: data.result, type: .map(1))
     

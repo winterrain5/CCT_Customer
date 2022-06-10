@@ -17,7 +17,7 @@ class InputIDContainer: UIView ,UITextFieldDelegate{
   @IBOutlet weak var nextButon: LoadingButton!
   
   @IBOutlet weak var isCheckButton: UIButton!
-  /// 0: Singapore NRIC/FIN 1:Foreign ID
+  /// 1: Singapore NRIC/FIN 2:Foreign ID
   var selectIDType =  0
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -52,10 +52,61 @@ class InputIDContainer: UIView ,UITextFieldDelegate{
       sender.borderColor = .clear
       sender.imageForNormal = R.image.symptom_check_box_select()
     }
-    setNextButonState(!sender.isSelected && !(idTf.text?.isEmpty ?? false))
+    setNextButonState()
   }
   
   @IBAction func nextAction(_ sender: Any) {
+    if selectIDType == 1 {
+      if let user = Defaults.shared.get(for: .userModel),!user.card_number.isEmpty,user.card_number.uppercased() == (idTf.text?.uppercased() ?? "") {
+        next()
+      }else {
+        checkICExist()
+      }
+    }else {
+      checkICExist()
+    }
+    
+  }
+  
+  func checkICExist() {
+    nextButon.startAnimation()
+    
+    let params = SOAPParams(action: .Client, path: .clientICExists)
+    params.set(key: "IcNo", value: idTf.text ?? "")
+    
+    NetworkManager().request(params: params) { data in
+      let data = String(data: data, encoding: .utf8)
+      if data == "0" {
+        self.next()
+      }else {
+        self.showErrorSheet()
+      }
+    } errorHandler: { e in
+      
+    }
+
+  }
+  
+  func showErrorSheet() {
+    let title = "You seem to have a  duplicate Identification No."
+    let info = "Unable to proceed with registration, please approach our counter staff or call 62933933"
+    let confirm = "Call now"
+    AlertView.show(title: title, message: info, leftButtonTitle: "Cancle", rightButtonTitle: confirm, messageAlignment: .center) {
+      
+    } rightHandler: {
+      CallUtil.call(with: "62933933")
+    } dismissHandler: {
+      
+    }
+
+  }
+  
+  func next() {
+    if let registInfo = Defaults.shared.get(for: .registModel) {
+      registInfo.IcNum = idTf.text ?? ""
+      Defaults.shared.set(registInfo, for: .registModel)
+    }
+    nextButon.stopAnimation()
     let vc = InputAccountController()
     UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
   }
@@ -63,8 +114,9 @@ class InputIDContainer: UIView ,UITextFieldDelegate{
   @IBAction func selectIDAction(_ sender: Any) {
     let dataArray = ["Singapore NRIC/FIN","Foreign ID"]
     BookingServiceFormSheetView.show(dataArray: dataArray, type: .SelectID) { idx in
-      self.selectIDType = idx
+      self.selectIDType = idx + 1
       self.idTypeButton.titleForNormal = dataArray[idx]
+      self.setNextButonState()
     }
   }
   
@@ -74,18 +126,32 @@ class InputIDContainer: UIView ,UITextFieldDelegate{
   }
   
   func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-    let text = textField.text ?? ""
-    let isValidate = text.isNRICRuler()
-    if !isValidate {
-      AlertView.show(message: "The NRIC/FIN does not meet the requirements of Singapore. Please confirm it and input it.")
-      return
-    }
-    setNextButonState(!isCheckButton.isSelected && !text.isEmpty && isValidate)
-    
-    
+    setNextButonState()
   }
   
-  func setNextButonState(_ isEnable:Bool) {
+  func setNextButonState() {
+    
+    let text = idTf.text ?? ""
+    
+    if text.isEmpty {
+      return
+    }
+    
+    if selectIDType == 0 {
+      AlertView.show(message: "Please select ID Type")
+      return
+    }
+    
+    var isValidate = true
+    if selectIDType == 1 {
+      isValidate = text.isNRICRuler()
+      if !isValidate {
+        AlertView.show(message: "The NRIC/FIN does not meet the requirements of Singapore. Please confirm it and input it.")
+        return
+      }
+    }
+    
+    let isEnable = !isCheckButton.isSelected && isValidate && selectIDType != 0
     if isEnable {
       nextButon.isEnabled = true
       nextButon.backgroundColor = R.color.theamRed()

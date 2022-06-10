@@ -207,7 +207,6 @@ Cg
                 <outlet property="bottomLabel" destination="vff-UD-XpG" id="l3F-bi-QKr"/>
                 <outlet property="phoneTf" destination="SLn-9N-6Bh" id="lPm-6s-WFD"/>
                 <outlet property="sendOTPButton" destination="Vv3-vf-ONo" id="7wn-Je-yCk"/>
-                <outlet property="titleLabel" destination="F91-lt-eTl" id="Uy8-Dy-yW3"/>
             </connections>
             <point key="canvasLocation" x="-103" y="-212"/>
         </view>

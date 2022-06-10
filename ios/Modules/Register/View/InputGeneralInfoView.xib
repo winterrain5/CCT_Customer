@@ -394,6 +394,7 @@
                 <outlet property="nextButon" destination="BrF-yR-hjv" id="cUy-rW-Q5c"/>
                 <outlet property="noButton" destination="xgO-dz-15u" id="VzD-V8-IYR"/>
                 <outlet property="referralCodeTf" destination="AeS-0j-r1I" id="90C-P8-vo7"/>
+                <outlet property="referralCodeView" destination="OSR-0j-cCc" id="srk-Cu-rbq"/>
                 <outlet property="yesButton" destination="dgM-Bc-z2E" id="xGH-C9-wyg"/>
             </connections>
             <point key="canvasLocation" x="-94" y="29"/>

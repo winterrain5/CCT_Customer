@@ -113,14 +113,21 @@ extension NetworkManager {
   
   func parserDidEndDocument(_ parser: XMLParser) {
     if currentNodeName == "faultstring" {
-      Toast.showError(withStatus: result)
-      self.errorHandler(APIError.requestError(code: -1, message: result))
+      DispatchQueue.main.async {
+        Toast.showError(withStatus: self.result)
+        self.errorHandler(APIError.requestError(code: -1, message: self.result))
+      }
+  
       print("faultstring:\(result)")
+  
     }
+   
     if currentNodeName == "return" {
       if result != ""{
+        
         let json = JSON(parseJSON: result)
         print("response:\(json.dictionaryValue)")
+       
         DispatchQueue.main.async {
           guard let code = json["success"].int,let message = json["message"].string else {
             self.errorHandler(APIError.serviceError(.unableParse))
@@ -128,9 +135,13 @@ extension NetworkManager {
           }
           
           if code != 1 {
+            #if DEBUG
             if self.params.isNeedToast && !message.isEmpty{
               Toast.showError(withStatus: message)
             }
+            #else
+            AlertView.show(message: "The system is abnormal. Please try again later")
+            #endif
             self.errorHandler(APIError.requestError(code: code, message: message))
             return
           }

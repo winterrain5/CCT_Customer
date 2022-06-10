@@ -72,6 +72,7 @@ class HomeViewController: BaseViewController {
   
   func getBookedService() {
     when(fulfilled: getTodaySession(),getUpComingSession()).done { (today,upcoming) in
+      
       if today.count == 0 && upcoming.count == 0 { // 显示名称
         self.contentView.updateAppointmentViewData(viewType: .Wellcom)
       }else if upcoming.count > 0 && today.count == 0 { // 显示upcoming
@@ -82,10 +83,12 @@ class HomeViewController: BaseViewController {
       
       self.getFeaturedAllBlogs()
       self.getNewReCardAmount()
-      
       self.scrolView.mj_header?.endRefreshing()
       
     }.catch { e in
+      self.getFeaturedAllBlogs()
+      self.getNewReCardAmount()
+      self.contentView.updateAppointmentViewData(viewType: .Wellcom)
       self.scrolView.mj_header?.endRefreshing()
       print(e.asAPIError.errorInfo().message)
     }

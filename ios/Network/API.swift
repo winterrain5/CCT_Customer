@@ -239,6 +239,9 @@ enum API:String {
   case  getBookingTimeSlots = "getBookingTimeSlots"
   //Time Slot: 看诊
   case  getDocTimeSlots = "getDocTimeSlots"
+  case saveTClient = "saveTClient"
+  /// 获取优惠券
+  case getFixedDiscount = "getFixedDiscount"
   
   // 获取当天问卷测试
   case getLastSymptomCheckReport = "getLastSymptomCheckReport"
@@ -252,6 +255,12 @@ enum API:String {
   case  getTConfig = "getTConfig"
   // 获取所有国家
   case getTCountries = "getTCountries"
+  /// 验证ic是否存在
+  case clientICExists = "clientICExists"
+  /// 验证推荐码是否存在
+  case checkReferralCodeExists = "checkReferralCodeExists"
+  /// 获取折扣用于注册时赠送顾客
+  case getDiscountForRegister = "getDiscountForRegister"
   
   // 物品购物车推送
   case itemsInCart = "itemsInCart";

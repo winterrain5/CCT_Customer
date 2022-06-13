@@ -28,6 +28,8 @@ class BookingHeadController: BaseViewController {
       layoutViews()
     }
   }
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.clipsToBounds = true

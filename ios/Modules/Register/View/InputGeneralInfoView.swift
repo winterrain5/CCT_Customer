@@ -175,8 +175,10 @@ class InputGeneralInfoView: UIView, UITextFieldDelegate {
     }
     
     if textField == referralCodeTf {
-      referralCode = text
-      checkReferralCodeExist()
+      if !text.isEmpty {
+        referralCode = text
+        checkReferralCodeExist()
+      }
     }
     setNextButonState()
   }
@@ -193,6 +195,7 @@ class InputGeneralInfoView: UIView, UITextFieldDelegate {
   }
   
   func checkReferralCodeExist() {
+    
     let params = SOAPParams(action: .Client, path: .checkReferralCodeExists)
     params.set(key: "code", value: referralCode)
     NetworkManager().request(params: params) { data in

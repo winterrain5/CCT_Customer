@@ -10,11 +10,18 @@ import IQKeyboardManagerSwift
 
 class InputIDController: BaseViewController {
   var contentView = InputIDContainer.loadViewFromNib()
+  var scrollView = UIScrollView()
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.view.addSubview(contentView)
-    contentView.frame = CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
+    self.view.backgroundColor = R.color.theamBlue()
+    
+    self.view.addSubview(scrollView)
+    scrollView.frame = CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
+    scrollView.contentSize = CGSize(width: kScreenWidth, height: 685)
+    
+    scrollView.addSubview(contentView)
+    contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 685)
 
     
   }

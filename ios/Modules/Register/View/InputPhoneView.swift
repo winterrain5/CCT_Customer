@@ -27,6 +27,17 @@ class InputPhoneView: UIView,UITextFieldDelegate {
         DataProtectionSheetView.show()
       }
     }
+    phoneTf.rx.text.changed.subscribe(onNext:{
+      if $0?.isEmpty ?? false {
+        self.sendOTPButton.isEnabled = false
+        self.sendOTPButton.backgroundColor = R.color.grayE0()
+      }else {
+        self.sendOTPButton.isEnabled = true
+        self.sendOTPButton.backgroundColor = R.color.theamRed()
+      }
+    }).disposed(by: rx.disposeBag)
+  
+    
   }
   override func layoutSubviews() {
     super.layoutSubviews()
@@ -44,17 +55,7 @@ class InputPhoneView: UIView,UITextFieldDelegate {
     endEditing(true)
     return true
   }
-  func textFieldDidEndEditing(_ textField: UITextField) {
-    let text = textField.text ?? ""
-    if text.isEmpty {
-      sendOTPButton.isEnabled = false
-      sendOTPButton.backgroundColor = R.color.grayE0()
-    }else {
-      sendOTPButton.isEnabled = true
-      sendOTPButton.backgroundColor = R.color.theamRed()
-    }
-  }
-  
+ 
   func getClientByPhone() {
     sendOTPButton.startAnimation()
     
@@ -76,11 +77,13 @@ class InputPhoneView: UIView,UITextFieldDelegate {
           }
         }
         if models.count >= 2 {
-          self.showErrorAlert(errorType: 2)
+          self.showErrorAlert(errorType: 0)
         }
         
       }
+      self.sendOTPButton.stopAnimation()
     } errorHandler: { e in
+      self.sendOTPButton.stopAnimation()
       AlertView.show(message: "Failed to query system user！")
     }
     

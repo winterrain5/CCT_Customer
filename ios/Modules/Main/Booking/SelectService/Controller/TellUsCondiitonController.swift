@@ -21,6 +21,9 @@ class TellUsCondiitonController: BaseTableController {
     btn.isEnabled = false
   }
   var headView = TellUsConditionHeadView()
+  var tableContentView = UIView().then { view in
+    view.backgroundColor = .white
+  }
   private var selectIndexPath:IndexPath?
   private var result:[Int:[SymptomCheckStepModel]] = [:]
   private var questions:[(title:String,content:String)] = [
@@ -33,6 +36,9 @@ class TellUsCondiitonController: BaseTableController {
     super.viewDidLoad()
     
     self.barAppearance(tintColor: .white, barBackgroundColor: R.color.theamBlue()!, image: R.image.return_left(), backButtonTitle: " Back")
+    
+    self.view.addSubview(tableContentView)
+    tableContentView.frame = CGRect(x: 24, y: 100 + kNavBarHeight, width: kScreenWidth - 48, height: kScreenHeight - kBottomsafeAreaMargin - 40 - 44 - 52 - 100 - kNavBarHeight)
     
     self.view.addSubview(headLabel)
     headLabel.snp.makeConstraints { make in
@@ -79,11 +85,39 @@ class TellUsCondiitonController: BaseTableController {
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     view.corner(byRoundingCorners: [.topLeft,.topRight], radii: 16)
-    tableView?.addLightShadow(by: 16)
+    tableContentView.addLightShadow(by: 16)
   }
   
   override func createListView() {
-    super.createListView()
+    
+    
+    tableView = UITableView.init(frame: listViewFrame(), style: .plain)
+    
+    tableView?.delegate = self
+    tableView?.dataSource = self
+    tableView?.emptyDataSetSource = self
+    tableView?.emptyDataSetDelegate = self
+    
+    tableView?.separatorStyle = .none
+    tableView?.separatorColor = .clear
+    tableView?.backgroundColor = .white
+    tableView?.showsHorizontalScrollIndicator = false
+    tableView?.showsVerticalScrollIndicator = false
+    tableView?.tableFooterView = UIView.init()
+    
+    tableView?.estimatedRowHeight = 0
+    tableView?.estimatedSectionFooterHeight = 0
+    tableView?.estimatedSectionHeaderHeight = 0
+    //
+    tableView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: kBottomsafeAreaMargin + 20, right: 0)
+    tableView?.contentInsetAdjustmentBehavior = .never
+    
+    if #available(iOS 15.0, *) {
+      tableView?.sectionHeaderTopPadding = 0
+    }
+    
+    tableContentView.addSubview(tableView!)
+    
     tableView?.register(cellWithClass: SymptomCheckStepCell.self)
     tableView?.tableHeaderView = headView
     headView.size = CGSize(width: kScreenWidth - 48, height: 80)
@@ -91,7 +125,7 @@ class TellUsCondiitonController: BaseTableController {
   }
   
   override func listViewFrame() -> CGRect {
-    return CGRect(x: 24, y: 100 + kNavBarHeight, width: kScreenWidth - 48, height: kScreenHeight - kBottomsafeAreaMargin - 40 - 44 - 52 - 100 - kNavBarHeight)
+    return CGRect(x: 0, y: 0, width: kScreenWidth - 48, height: kScreenHeight - kBottomsafeAreaMargin - 40 - 44 - 52 - 100 - kNavBarHeight)
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

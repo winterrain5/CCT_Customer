@@ -12,6 +12,16 @@ class BookingUpcomingController: BasePagingTableController {
   var todayH:CGFloat = 0
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
     NotificationCenter.default.addObserver(forName: .bookingTodayLoaded, object: nil, queue: .main) { noti  in
       let todayH = noti.object as? CGFloat ?? 0
       self.todayH = todayH
@@ -21,14 +31,7 @@ class BookingUpcomingController: BasePagingTableController {
     NotificationCenter.default.addObserver(forName:.bookingDataChanged, object: nil, queue: .main) { _ in
       self.loadNewData()
     }
-  }
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
+    
     self.refreshData()
   }
 

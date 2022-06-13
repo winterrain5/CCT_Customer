@@ -28,10 +28,10 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YHn-zx-8m7">
-                    <rect key="frame" x="0.0" y="120" width="414" height="776"/>
+                    <rect key="frame" x="0.0" y="117" width="414" height="779"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vff-UD-XpG" customClass="TapLabel" customModule="CCTIOS" customModuleProvider="target">
-                            <rect key="frame" x="24" y="674.5" width="366" height="57.5"/>
+                            <rect key="frame" x="24" y="677.5" width="366" height="57.5"/>
                             <attributedString key="attributedText">
                                 <fragment content="By registering with us, you are agreeing to our">
                                     <attributes>
@@ -176,7 +176,7 @@ Cg
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We will need to verify your registration by sending a one time password (OTP) via SMS!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ma-lv-MzL">
-                    <rect key="frame" x="24" y="44" width="366" height="44"/>
+                    <rect key="frame" x="24" y="41" width="366" height="44"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                     <color key="textColor" name="White"/>
                     <nil key="highlightedColor"/>
@@ -196,9 +196,9 @@ Cg
                 <constraint firstItem="F91-lt-eTl" firstAttribute="top" secondItem="C4O-oz-9k8" secondAttribute="top" constant="8" id="K0g-c9-CJ0"/>
                 <constraint firstItem="F91-lt-eTl" firstAttribute="leading" secondItem="C4O-oz-9k8" secondAttribute="leading" constant="24" id="O2J-Nd-SSZ"/>
                 <constraint firstItem="YHn-zx-8m7" firstAttribute="top" secondItem="8ma-lv-MzL" secondAttribute="bottom" constant="32" id="TOU-ib-8Hg"/>
-                <constraint firstItem="8ma-lv-MzL" firstAttribute="top" secondItem="xci-Lb-mK6" secondAttribute="top" id="XmQ-fS-fYg"/>
                 <constraint firstItem="YHn-zx-8m7" firstAttribute="leading" secondItem="xci-Lb-mK6" secondAttribute="leading" id="Z37-9y-MIb"/>
                 <constraint firstAttribute="trailing" secondItem="8ma-lv-MzL" secondAttribute="trailing" constant="24" id="eoC-GS-VHG"/>
+                <constraint firstItem="8ma-lv-MzL" firstAttribute="top" secondItem="F91-lt-eTl" secondAttribute="bottom" id="hur-qj-6dr"/>
                 <constraint firstAttribute="bottom" secondItem="YHn-zx-8m7" secondAttribute="bottom" id="nWw-Ss-EVr"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

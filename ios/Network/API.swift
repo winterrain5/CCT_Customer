@@ -212,7 +212,7 @@ enum API:String {
   /// 保存在线预约服务(看诊)
   case saveDocTData = "saveDocTData"
   /// 根据服务的id获取员工信息
-  case getEmployeeForService = "getAppEmployeeForService"
+  case getAppEmployeeForService = "getAppEmployeeForService"
   /// Date和Time Slot: 选择某个员工后，根据员工和分店，获取他的排班数据
   case getEmployeeSchedules = "getEmployeeSchedules"
   /// 检查这段时间是否已经被其他顾客预约

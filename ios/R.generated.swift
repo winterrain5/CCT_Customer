@@ -422,29 +422,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 2 files.
-  struct file {
-    /// Resource file `assets`.
-    static let assets = Rswift.FileResource(bundle: R.hostingBundle, name: "assets", pathExtension: "")
-    /// Resource file `main.jsbundle`.
-    static let mainJsbundle = Rswift.FileResource(bundle: R.hostingBundle, name: "main", pathExtension: "jsbundle")
-
-    /// `bundle.url(forResource: "assets", withExtension: "")`
-    static func assets(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.assets
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "main", withExtension: "jsbundle")`
-    static func mainJsbundle(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.mainJsbundle
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    fileprivate init() {}
-  }
-
-  /// This `R.image` struct is generated, and contains static references to 122 images.
+  /// This `R.image` struct is generated, and contains static references to 123 images.
   struct image {
     /// Image `account_arrow_right`.
     static let account_arrow_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "account_arrow_right")
@@ -602,6 +580,8 @@ struct R: Rswift.Validatable {
     static let profile_transaction_history = Rswift.ImageResource(bundle: R.hostingBundle, name: "profile_transaction_history")
     /// Image `profile_wallet`.
     static let profile_wallet = Rswift.ImageResource(bundle: R.hostingBundle, name: "profile_wallet")
+    /// Image `qrcode_info`.
+    static let qrcode_info = Rswift.ImageResource(bundle: R.hostingBundle, name: "qrcode_info")
     /// Image `question_help_arrow_down`.
     static let question_help_arrow_down = Rswift.ImageResource(bundle: R.hostingBundle, name: "question_help_arrow_down")
     /// Image `refer_friend_code_background`.
@@ -1234,6 +1214,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "profile_wallet", bundle: ..., traitCollection: ...)`
     static func profile_wallet(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.profile_wallet, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "qrcode_info", bundle: ..., traitCollection: ...)`
+    static func qrcode_info(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.qrcode_info, compatibleWith: traitCollection)
     }
     #endif
 

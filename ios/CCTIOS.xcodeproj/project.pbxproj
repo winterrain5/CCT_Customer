@@ -61,6 +61,14 @@
 		45D65105284DA03900C7BD39 /* HomeWellcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D65104284DA03900C7BD39 /* HomeWellcomeView.swift */; };
 		45D65107284DCFF100C7BD39 /* HomeBookedServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D65106284DCFF100C7BD39 /* HomeBookedServiceView.swift */; };
 		45D6510A284DD2C100C7BD39 /* UpcomingSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D65109284DD2C100C7BD39 /* UpcomingSessionView.swift */; };
+		45F894AC28534384008BC7CC /* QRCodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F894A428534383008BC7CC /* QRCodeError.swift */; };
+		45F894AD28534384008BC7CC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F894A528534383008BC7CC /* ImagePicker.swift */; };
+		45F894AE28534384008BC7CC /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F894A628534383008BC7CC /* UIImage+Extension.swift */; };
+		45F894AF28534384008BC7CC /* SwiftQRScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F894A728534383008BC7CC /* SwiftQRScanner.swift */; };
+		45F894B028534384008BC7CC /* QRScannerFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F894A828534383008BC7CC /* QRScannerFrame.swift */; };
+		45F894B128534384008BC7CC /* SwiftQRScannerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F894A928534384008BC7CC /* SwiftQRScannerDelegate.swift */; };
+		45F894B228534384008BC7CC /* QRScannerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F894AA28534384008BC7CC /* QRScannerConfiguration.swift */; };
+		45F894B328534384008BC7CC /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F894AB28534384008BC7CC /* RoundButton.swift */; };
 		45FC54E7285072F600D3C0FF /* InputGeneralInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC54E6285072F600D3C0FF /* InputGeneralInfoController.swift */; };
 		45FC54E9285078BB00D3C0FF /* InputResideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC54E8285078BB00D3C0FF /* InputResideController.swift */; };
 		45FC54EB285078CB00D3C0FF /* InputResideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC54EA285078CB00D3C0FF /* InputResideView.swift */; };
@@ -352,21 +360,6 @@
 		4998BF08277EAC4100A881D5 /* SOAPParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF07277EAC4100A881D5 /* SOAPParams.swift */; };
 		4998BF0C277EAF8300A881D5 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF0B277EAF8300A881D5 /* Defaults.swift */; };
 		4998BF0E277EB11000A881D5 /* DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF0D277EB11000A881D5 /* DefaultsKey.swift */; };
-		4998BF1F277ED20D00A881D5 /* UIViewController+EachNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF10277ED20D00A881D5 /* UIViewController+EachNavigationBar.swift */; };
-		4998BF20277ED20D00A881D5 /* UIViewController+Associated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF11277ED20D00A881D5 /* UIViewController+Associated.swift */; };
-		4998BF21277ED20D00A881D5 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF12277ED20D00A881D5 /* Navigation.swift */; };
-		4998BF22277ED20D00A881D5 /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF13277ED20D00A881D5 /* UIViewController+Navigation.swift */; };
-		4998BF23277ED20D00A881D5 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF14277ED20D00A881D5 /* Shadow.swift */; };
-		4998BF24277ED20D00A881D5 /* UITableViewController+EachNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF15277ED20D00A881D5 /* UITableViewController+EachNavigationBar.swift */; };
-		4998BF25277ED20D00A881D5 /* BackBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF16277ED20D00A881D5 /* BackBarButtonItem.swift */; };
-		4998BF26277ED20D00A881D5 /* UINavigationController+EachNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF17277ED20D00A881D5 /* UINavigationController+EachNavigationBar.swift */; };
-		4998BF27277ED20D00A881D5 /* EachNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF18277ED20D00A881D5 /* EachNavigationBar.swift */; };
-		4998BF28277ED20D00A881D5 /* AssociatedKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF19277ED20D00A881D5 /* AssociatedKeys.swift */; };
-		4998BF29277ED20D00A881D5 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF1A277ED20D00A881D5 /* Const.swift */; };
-		4998BF2A277ED20D00A881D5 /* UINavigationBar+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF1B277ED20D00A881D5 /* UINavigationBar+Sugar.swift */; };
-		4998BF2B277ED20D00A881D5 /* EachNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF1C277ED20D00A881D5 /* EachNavigationItem.swift */; };
-		4998BF2C277ED20D00A881D5 /* UIViewController+Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF1D277ED20D00A881D5 /* UIViewController+Swizzling.swift */; };
-		4998BF2D277ED20D00A881D5 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF1E277ED20D00A881D5 /* Configuration.swift */; };
 		4998BF34277ED25200A881D5 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF30277ED25100A881D5 /* BaseNavigationController.swift */; };
 		4998BF35277ED25200A881D5 /* BaseTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF31277ED25100A881D5 /* BaseTableController.swift */; };
 		4998BF36277ED25200A881D5 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998BF32277ED25200A881D5 /* BaseViewController.swift */; };
@@ -636,8 +629,6 @@
 		49E79F95278E833B00F304B2 /* SymptomCheckNextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E79F94278E833B00F304B2 /* SymptomCheckNextController.swift */; };
 		49E79F97278E83B400F304B2 /* SymptomCheckNextContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E79F96278E83B400F304B2 /* SymptomCheckNextContainer.swift */; };
 		49E79F99278E83BB00F304B2 /* SymptomCheckNextContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E79F98278E83BB00F304B2 /* SymptomCheckNextContainer.xib */; };
-		49ECEF0527F68A01006F1D86 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 49ECEF0327F68A01006F1D86 /* main.jsbundle */; };
-		49ECEF0627F68A01006F1D86 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 49ECEF0427F68A01006F1D86 /* assets */; };
 		49F17C5B2807C70C00FCBC87 /* ShopDetailReviewHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F17C5A2807C70C00FCBC87 /* ShopDetailReviewHeadView.swift */; };
 		49F17C5D2807EF4C00FCBC87 /* ShopProductReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F17C5C2807EF4C00FCBC87 /* ShopProductReviewModel.swift */; };
 		49F17C602807F0E200FCBC87 /* ShopProductReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F17C5E2807F0E200FCBC87 /* ShopProductReviewCell.swift */; };
@@ -767,6 +758,14 @@
 		45D65104284DA03900C7BD39 /* HomeWellcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWellcomeView.swift; sourceTree = "<group>"; };
 		45D65106284DCFF100C7BD39 /* HomeBookedServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBookedServiceView.swift; sourceTree = "<group>"; };
 		45D65109284DD2C100C7BD39 /* UpcomingSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingSessionView.swift; sourceTree = "<group>"; };
+		45F894A428534383008BC7CC /* QRCodeError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeError.swift; sourceTree = "<group>"; };
+		45F894A528534383008BC7CC /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		45F894A628534383008BC7CC /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		45F894A728534383008BC7CC /* SwiftQRScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftQRScanner.swift; sourceTree = "<group>"; };
+		45F894A828534383008BC7CC /* QRScannerFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerFrame.swift; sourceTree = "<group>"; };
+		45F894A928534384008BC7CC /* SwiftQRScannerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftQRScannerDelegate.swift; sourceTree = "<group>"; };
+		45F894AA28534384008BC7CC /* QRScannerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerConfiguration.swift; sourceTree = "<group>"; };
+		45F894AB28534384008BC7CC /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		45FC54E6285072F600D3C0FF /* InputGeneralInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputGeneralInfoController.swift; sourceTree = "<group>"; };
 		45FC54E8285078BB00D3C0FF /* InputResideController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputResideController.swift; sourceTree = "<group>"; };
 		45FC54EA285078CB00D3C0FF /* InputResideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputResideView.swift; sourceTree = "<group>"; };
@@ -1054,21 +1053,6 @@
 		4998BF07277EAC4100A881D5 /* SOAPParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOAPParams.swift; sourceTree = "<group>"; };
 		4998BF0B277EAF8300A881D5 /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		4998BF0D277EB11000A881D5 /* DefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKey.swift; sourceTree = "<group>"; };
-		4998BF10277ED20D00A881D5 /* UIViewController+EachNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+EachNavigationBar.swift"; sourceTree = "<group>"; };
-		4998BF11277ED20D00A881D5 /* UIViewController+Associated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Associated.swift"; sourceTree = "<group>"; };
-		4998BF12277ED20D00A881D5 /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
-		4998BF13277ED20D00A881D5 /* UIViewController+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Navigation.swift"; sourceTree = "<group>"; };
-		4998BF14277ED20D00A881D5 /* Shadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
-		4998BF15277ED20D00A881D5 /* UITableViewController+EachNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewController+EachNavigationBar.swift"; sourceTree = "<group>"; };
-		4998BF16277ED20D00A881D5 /* BackBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackBarButtonItem.swift; sourceTree = "<group>"; };
-		4998BF17277ED20D00A881D5 /* UINavigationController+EachNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+EachNavigationBar.swift"; sourceTree = "<group>"; };
-		4998BF18277ED20D00A881D5 /* EachNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EachNavigationBar.swift; sourceTree = "<group>"; };
-		4998BF19277ED20D00A881D5 /* AssociatedKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatedKeys.swift; sourceTree = "<group>"; };
-		4998BF1A277ED20D00A881D5 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
-		4998BF1B277ED20D00A881D5 /* UINavigationBar+Sugar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Sugar.swift"; sourceTree = "<group>"; };
-		4998BF1C277ED20D00A881D5 /* EachNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EachNavigationItem.swift; sourceTree = "<group>"; };
-		4998BF1D277ED20D00A881D5 /* UIViewController+Swizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Swizzling.swift"; sourceTree = "<group>"; };
-		4998BF1E277ED20D00A881D5 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		4998BF30277ED25100A881D5 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		4998BF31277ED25100A881D5 /* BaseTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableController.swift; sourceTree = "<group>"; };
 		4998BF32277ED25200A881D5 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -1340,8 +1324,6 @@
 		49E79F94278E833B00F304B2 /* SymptomCheckNextController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomCheckNextController.swift; sourceTree = "<group>"; };
 		49E79F96278E83B400F304B2 /* SymptomCheckNextContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomCheckNextContainer.swift; sourceTree = "<group>"; };
 		49E79F98278E83BB00F304B2 /* SymptomCheckNextContainer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SymptomCheckNextContainer.xib; sourceTree = "<group>"; };
-		49ECEF0327F68A01006F1D86 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		49ECEF0427F68A01006F1D86 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		49F17C5A2807C70C00FCBC87 /* ShopDetailReviewHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailReviewHeadView.swift; sourceTree = "<group>"; };
 		49F17C5C2807EF4C00FCBC87 /* ShopProductReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopProductReviewModel.swift; sourceTree = "<group>"; };
 		49F17C5E2807F0E200FCBC87 /* ShopProductReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopProductReviewCell.swift; sourceTree = "<group>"; };
@@ -1441,8 +1423,6 @@
 		13B07FAE1A68108700A75B9A /* CCTIOS */ = {
 			isa = PBXGroup;
 			children = (
-				49ECEF0427F68A01006F1D86 /* assets */,
-				49ECEF0327F68A01006F1D86 /* main.jsbundle */,
 				4932AB9E27C720CB0029F000 /* CCTIOSDebug.entitlements */,
 				4932AB9927C71A1A0029F000 /* CCTIOSRelease.entitlements */,
 				4998C0842783DBC900A881D5 /* Modules */,
@@ -1621,6 +1601,21 @@
 				45FC54F62850964B00D3C0FF /* UpcomingSessionCell.xib */,
 			);
 			path = UpcomingSesiong;
+			sourceTree = "<group>";
+		};
+		45F894A32853433F008BC7CC /* QRCodeScanner */ = {
+			isa = PBXGroup;
+			children = (
+				45F894AA28534384008BC7CC /* QRScannerConfiguration.swift */,
+				45F894A528534383008BC7CC /* ImagePicker.swift */,
+				45F894A428534383008BC7CC /* QRCodeError.swift */,
+				45F894A828534383008BC7CC /* QRScannerFrame.swift */,
+				45F894AB28534384008BC7CC /* RoundButton.swift */,
+				45F894A728534383008BC7CC /* SwiftQRScanner.swift */,
+				45F894A928534384008BC7CC /* SwiftQRScannerDelegate.swift */,
+				45F894A628534383008BC7CC /* UIImage+Extension.swift */,
+			);
+			path = QRCodeScanner;
 			sourceTree = "<group>";
 		};
 		45FC54F22850903800D3C0FF /* Model */ = {
@@ -2135,6 +2130,7 @@
 		4998BF0A277EAF6500A881D5 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				45F894A32853433F008BC7CC /* QRCodeScanner */,
 				45792067284DF201008CD008 /* TapLabel */,
 				498D85D127995EB40044F34F /* FSPagerView */,
 				4998C0FE27852BC400A881D5 /* Defaults */,
@@ -2144,31 +2140,8 @@
 				4998BFD0277EF51200A881D5 /* SwiftyJSON */,
 				4998BF4B277ED46200A881D5 /* DZNEmptyDataSet */,
 				4998BF44277ED43500A881D5 /* DKEmptyDataSet */,
-				4998BF0F277ED20D00A881D5 /* EachNavigationBar */,
 			);
 			path = ThirdPart;
-			sourceTree = "<group>";
-		};
-		4998BF0F277ED20D00A881D5 /* EachNavigationBar */ = {
-			isa = PBXGroup;
-			children = (
-				4998BF10277ED20D00A881D5 /* UIViewController+EachNavigationBar.swift */,
-				4998BF11277ED20D00A881D5 /* UIViewController+Associated.swift */,
-				4998BF12277ED20D00A881D5 /* Navigation.swift */,
-				4998BF13277ED20D00A881D5 /* UIViewController+Navigation.swift */,
-				4998BF14277ED20D00A881D5 /* Shadow.swift */,
-				4998BF15277ED20D00A881D5 /* UITableViewController+EachNavigationBar.swift */,
-				4998BF16277ED20D00A881D5 /* BackBarButtonItem.swift */,
-				4998BF17277ED20D00A881D5 /* UINavigationController+EachNavigationBar.swift */,
-				4998BF18277ED20D00A881D5 /* EachNavigationBar.swift */,
-				4998BF19277ED20D00A881D5 /* AssociatedKeys.swift */,
-				4998BF1A277ED20D00A881D5 /* Const.swift */,
-				4998BF1B277ED20D00A881D5 /* UINavigationBar+Sugar.swift */,
-				4998BF1C277ED20D00A881D5 /* EachNavigationItem.swift */,
-				4998BF1D277ED20D00A881D5 /* UIViewController+Swizzling.swift */,
-				4998BF1E277ED20D00A881D5 /* Configuration.swift */,
-			);
-			path = EachNavigationBar;
 			sourceTree = "<group>";
 		};
 		4998BF2E277ED21200A881D5 /* Base */ = {
@@ -3393,7 +3366,6 @@
 				454C5B48283CBB3C001D787C /* BookingServiceHelpSheetView.xib in Resources */,
 				4902024127D9EB0100E74415 /* WalletTopUpContainer.xib in Resources */,
 				49BA62A52788267F00B898D5 /* BlogDetailContainer.xib in Resources */,
-				49ECEF0627F68A01006F1D86 /* assets in Resources */,
 				45A505852848998000779B4C /* HomeContainer.xib in Resources */,
 				49981EFB27CE1F3500D4F7BF /* EditProfileContainer.xib in Resources */,
 				4902B72B279F9DE000CEE28B /* ServiceDetailFooterView.xib in Resources */,
@@ -3401,7 +3373,6 @@
 				49981EF127CDC00C00D4F7BF /* DataProtectionHeadView.xib in Resources */,
 				4998C09A2783F07C00A881D5 /* ServicesFooterView.xib in Resources */,
 				49981EDF27CC6C5500D4F7BF /* SettingCell.xib in Resources */,
-				49ECEF0527F68A01006F1D86 /* main.jsbundle in Resources */,
 				4971A7FE2806C7E700253F68 /* ShopDetailAboutHeadView.xib in Resources */,
 				49E2C22B27D5EA9D00F667B7 /* WalletDetailCardUserOrOwenrCell.xib in Resources */,
 				4902B71F279F9D7C00CEE28B /* ServiceDetailHeaderView.xib in Resources */,
@@ -3479,11 +3450,13 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CCTIOS/Pods-CCTIOS-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EachNavigationBar/EachNavigationBar.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EachNavigationBar.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
@@ -3581,7 +3554,6 @@
 				4998BF55277ED60A00A881D5 /* Constants.swift in Sources */,
 				4998C04B277EF51200A881D5 /* DoubleExtensions.swift in Sources */,
 				4998C0F12784427F00A881D5 /* ConstraintDirectionalInsets.swift in Sources */,
-				4998BF2B277ED20D00A881D5 /* EachNavigationItem.swift in Sources */,
 				4998C009277EF51200A881D5 /* UIBarButtonItemExtensions.swift in Sources */,
 				49DED22727C479B40027F476 /* FeedbackFormController.swift in Sources */,
 				4998C003277EF51200A881D5 /* UITextFieldExtensions.swift in Sources */,
@@ -3595,6 +3567,7 @@
 				45D65107284DCFF100C7BD39 /* HomeBookedServiceView.swift in Sources */,
 				49056B1527968E7B00FBA1AC /* ScriptMessage.swift in Sources */,
 				49E61D28278ED9BF00B1C136 /* SymptomCheckQ1ResultModel.swift in Sources */,
+				45F894AD28534384008BC7CC /* ImagePicker.swift in Sources */,
 				4998C05A277EF51200A881D5 /* CAGradientLayerExtensions.swift in Sources */,
 				49BA62902787DAD400B898D5 /* Toast.swift in Sources */,
 				49B098B527B399E30055B341 /* ProductCategoryModel.swift in Sources */,
@@ -3644,6 +3617,7 @@
 				4998C03E277EF51200A881D5 /* ComparableExtensions.swift in Sources */,
 				4996D79927D592D200437265 /* WalletVouchersCell.swift in Sources */,
 				4904C3C5280677C6008FE5A5 /* ShopProductItemCell.swift in Sources */,
+				45F894AE28534384008BC7CC /* UIImage+Extension.swift in Sources */,
 				49BA6292278806DA00B898D5 /* BlogBoardModel.swift in Sources */,
 				4998BF08277EAC4100A881D5 /* SOAPParams.swift in Sources */,
 				454C5B44283C8305001D787C /* EmployeeForServiceModel.swift in Sources */,
@@ -3680,7 +3654,6 @@
 				4902B72E279FA12D00CEE28B /* ServiceDetailApproachCell.swift in Sources */,
 				49F69777282DF75B009813EA /* BookingCompletedController.swift in Sources */,
 				49E385A0279EA927003160FA /* FillInEnquiryFromSelectSubjectSheetView.swift in Sources */,
-				4998BF20277ED20D00A881D5 /* UIViewController+Associated.swift in Sources */,
 				4998C053277EF51200A881D5 /* StdlibDeprecated.swift in Sources */,
 				4998C0E02784427F00A881D5 /* ConstraintView.swift in Sources */,
 				49F69773282DF375009813EA /* BookingHeadController.swift in Sources */,
@@ -3702,6 +3675,7 @@
 				49BA629727880CFD00B898D5 /* BlogBoardListCell.swift in Sources */,
 				4904C3BD280677C6008FE5A5 /* CCTShopHeaderView.swift in Sources */,
 				495BB8042828E570001FD065 /* NotificationCell.swift in Sources */,
+				45F894B328534384008BC7CC /* RoundButton.swift in Sources */,
 				4906C22D279E352D00F7B67F /* PagingCollectionViewLayout.swift in Sources */,
 				4998C0F62784434E00A881D5 /* Then.swift in Sources */,
 				492D3AFD281B810E0022198A /* NotificationViewController.swift in Sources */,
@@ -3713,7 +3687,6 @@
 				4998C005277EF51200A881D5 /* UINavigationItemExtensions.swift in Sources */,
 				4998C00F277EF51200A881D5 /* UISliderExtensions.swift in Sources */,
 				4998C0D72784427F00A881D5 /* ConstraintInsets.swift in Sources */,
-				4998BF27277ED20D00A881D5 /* EachNavigationBar.swift in Sources */,
 				4998C0D82784427F00A881D5 /* ConstraintMakerFinalizable.swift in Sources */,
 				49FC8EC227914D5200157292 /* SymptomCheckReportListView.swift in Sources */,
 				4978FA9F27C3383700E51DA0 /* ProductLeaveReviewSheetFooterView.swift in Sources */,
@@ -3744,9 +3717,9 @@
 				4998C03C277EF51200A881D5 /* SignedIntegerExtensions.swift in Sources */,
 				4998BF59277EF3D200A881D5 /* APIError.swift in Sources */,
 				4998C04C277EF51200A881D5 /* RandomAccessCollectionExtensions.swift in Sources */,
-				4998BF28277ED20D00A881D5 /* AssociatedKeys.swift in Sources */,
 				49781BE227BE34B8006F93DF /* ProductCompleteItemCell.swift in Sources */,
 				457CBA8A2836163200AE26D8 /* BookingCompleteDetailView.swift in Sources */,
+				45F894B028534384008BC7CC /* QRScannerFrame.swift in Sources */,
 				4904C3D128067865008FE5A5 /* FriendUseCardModel.swift in Sources */,
 				454C5B4A283CDAB4001D787C /* ConfirmSessionController.swift in Sources */,
 				4998C002277EF51200A881D5 /* UIScrollViewExtensions.swift in Sources */,
@@ -3802,8 +3775,6 @@
 				49CE76B4281A721B00A3151D /* UserPasswordModel.swift in Sources */,
 				4998C037277EF51200A881D5 /* EdgeInsetsExtensions.swift in Sources */,
 				492FA120279808DA002F38B3 /* MadamPartumNewsCell.swift in Sources */,
-				4998BF2D277ED20D00A881D5 /* Configuration.swift in Sources */,
-				4998BF26277ED20D00A881D5 /* UINavigationController+EachNavigationBar.swift in Sources */,
 				4998C0E52784427F00A881D5 /* ConstraintOffsetTarget.swift in Sources */,
 				49E79F95278E833B00F304B2 /* SymptomCheckNextController.swift in Sources */,
 				4998BFFD277EF51200A881D5 /* CGPointExtensions.swift in Sources */,
@@ -3815,6 +3786,7 @@
 				49BA62A32788267300B898D5 /* BlogDetailContainer.swift in Sources */,
 				457CBA932837697E00AE26D8 /* BookingAppointmentController.swift in Sources */,
 				4904C3A7280677A1008FE5A5 /* CCTShopController.swift in Sources */,
+				45F894B128534384008BC7CC /* SwiftQRScannerDelegate.swift in Sources */,
 				4998C0ED2784427F00A881D5 /* Debugging.swift in Sources */,
 				492FA12F2798160C002F38B3 /* MadamPartumNewsItemCell.swift in Sources */,
 				4550947128339DEA0017C244 /* BookingUpComingDetailView.swift in Sources */,
@@ -3840,7 +3812,6 @@
 				49BA626C27853FB300B898D5 /* BlogItemVerticalLayoutCell.swift in Sources */,
 				4998C015277EF51200A881D5 /* UIWindowExtensions.swift in Sources */,
 				4998BF4A277ED43500A881D5 /* DKEmptyDataView.swift in Sources */,
-				4998BF22277ED20D00A881D5 /* UIViewController+Navigation.swift in Sources */,
 				4998C018277EF51200A881D5 /* UIButtonExtensions.swift in Sources */,
 				4998BF43277ED35300A881D5 /* EmptyDataType.swift in Sources */,
 				4998C023277EF51200A881D5 /* SCNBoxExtensions.swift in Sources */,
@@ -3870,7 +3841,6 @@
 				49727C7B27C4E55C00943156 /* VerificationCodeContainer.swift in Sources */,
 				4904C3BE280677C6008FE5A5 /* ShopHeaderView.swift in Sources */,
 				4998C02D277EF51200A881D5 /* UserDefaultsExtensions.swift in Sources */,
-				4998BF21277ED20D00A881D5 /* Navigation.swift in Sources */,
 				4955EF9627D0512100D365BE /* GradientView.swift in Sources */,
 				4998C0D22784427F00A881D5 /* ConstraintDescription.swift in Sources */,
 				497B353E27CF653300AE20C4 /* WalletRewardsController.swift in Sources */,
@@ -3888,6 +3858,7 @@
 				497B354227CF659900AE20C4 /* WalletCardController.swift in Sources */,
 				498D85DB27995EB50044F34F /* FSPagerView.swift in Sources */,
 				49981EEB27CDB21E00D4F7BF /* DataProtectionModel.swift in Sources */,
+				45F894AC28534384008BC7CC /* QRCodeError.swift in Sources */,
 				4998C0A227842A9700A881D5 /* OurServicesByCategoryModel.swift in Sources */,
 				49727C6327C48FDD00943156 /* LoaddingButton.swift in Sources */,
 				4998C04F277EF51200A881D5 /* IntExtensions.swift in Sources */,
@@ -3905,7 +3876,6 @@
 				4998C0A62784330000A881D5 /* String_Extension.swift in Sources */,
 				492FA11A2798080A002F38B3 /* MadamPartumHeaderView.swift in Sources */,
 				49F17C632807F83500FCBC87 /* ShopDetialBottomView.swift in Sources */,
-				4998BF2A277ED20D00A881D5 /* UINavigationBar+Sugar.swift in Sources */,
 				4998C040277EF51200A881D5 /* StringProtocolExtensions.swift in Sources */,
 				4906C21E279A5AC600F7B67F /* MadamPartumDetailFooterCell.swift in Sources */,
 				4932ABA027C872BD0029F000 /* FindPwdStatusModel.swift in Sources */,
@@ -3933,6 +3903,7 @@
 				4998C0A827843CB500A881D5 /* Int_Extension.swift in Sources */,
 				4998BFFB277EF51200A881D5 /* CGSizeExtensions.swift in Sources */,
 				45A505832848997300779B4C /* HomeContainer.swift in Sources */,
+				45F894B228534384008BC7CC /* QRScannerConfiguration.swift in Sources */,
 				45792074284EF7F4008CD008 /* InputAccountController.swift in Sources */,
 				4902B721279F9D9100CEE28B /* ServiceDetailPriceView.swift in Sources */,
 				4998C0F02784427F00A881D5 /* ConstraintLayoutGuide+Extensions.swift in Sources */,
@@ -3944,7 +3915,6 @@
 				49E61D1C278ECFBE00B1C136 /* SymptomCheckLetGoContainer.swift in Sources */,
 				4998C035277EF51200A881D5 /* NSAttributedStringExtensions.swift in Sources */,
 				454576B22845C17B007410E9 /* TellUsCondiitonController.swift in Sources */,
-				4998BF2C277ED20D00A881D5 /* UIViewController+Swizzling.swift in Sources */,
 				4902025227DB349600E74415 /* WalletAddCardSheetContentView.swift in Sources */,
 				457CBA962837773300AE26D8 /* BookingServiceFormCell.swift in Sources */,
 				4998C0902783DF5200A881D5 /* UIFont_Extension.swift in Sources */,
@@ -3954,6 +3924,7 @@
 				4904C3D028067865008FE5A5 /* MatchPhoneModel.swift in Sources */,
 				4998C0872783DBF900A881D5 /* OurServicesViewController.swift in Sources */,
 				49FC8EB22791080E00157292 /* SymptomCheckEmailMeController.swift in Sources */,
+				45F894AF28534384008BC7CC /* SwiftQRScanner.swift in Sources */,
 				45D6510A284DD2C100C7BD39 /* UpcomingSessionView.swift in Sources */,
 				49BA628D2785938F00B898D5 /* BlogCategoryModel.swift in Sources */,
 				4904C3C1280677C6008FE5A5 /* ShopCartCell.swift in Sources */,
@@ -3969,7 +3940,6 @@
 				4998C030277EF51200A881D5 /* FileManagerExtensions.swift in Sources */,
 				492FA118279807EA002F38B3 /* MadamPartumController.swift in Sources */,
 				49981EE927CDB07000D4F7BF /* DataProtectionSheetView.swift in Sources */,
-				4998BF23277ED20D00A881D5 /* Shadow.swift in Sources */,
 				49056AE72794FC8100FBA1AC /* SelectTypeOfServiceSheetView.swift in Sources */,
 				4998C010277EF51200A881D5 /* UIViewControllerExtensions.swift in Sources */,
 				4998C031277EF51200A881D5 /* NotificationCenterExtensions.swift in Sources */,
@@ -4005,9 +3975,7 @@
 				49781BBF27BCF440006F93DF /* TCApplyPrivilegesSheetView.swift in Sources */,
 				457CBA88283615FE00AE26D8 /* BookingCompleteDetailController.swift in Sources */,
 				4998BF53277ED52700A881D5 /* RefreshAnimationHeader.swift in Sources */,
-				4998BF24277ED20D00A881D5 /* UITableViewController+EachNavigationBar.swift in Sources */,
 				4904C3C2280677C6008FE5A5 /* ShopStepperView.swift in Sources */,
-				4998BF25277ED20D00A881D5 /* BackBarButtonItem.swift in Sources */,
 				4996D7A827D5A02F00437265 /* RewardsDetailController.swift in Sources */,
 				4998C03F277EF51200A881D5 /* ArrayExtensions.swift in Sources */,
 				4932AB9427C637770029F000 /* ChangePwdController.swift in Sources */,
@@ -4016,7 +3984,6 @@
 				4998C049277EF51200A881D5 /* DecodableExtensions.swift in Sources */,
 				49C05B5C281A403D00F5B9D5 /* EnterAccountContainer.swift in Sources */,
 				4998C0A02784247500A881D5 /* API.swift in Sources */,
-				4998BF1F277ED20D00A881D5 /* UIViewController+EachNavigationBar.swift in Sources */,
 				4998C032277EF51200A881D5 /* URLExtensions.swift in Sources */,
 				4932AB9627C637830029F000 /* ChangePwdContainer.swift in Sources */,
 				4904C3DC2806BB4E008FE5A5 /* ShopDetailHeadController.swift in Sources */,
@@ -4036,7 +4003,6 @@
 				49F17C69280903FF00FCBC87 /* ShopCheckOutController.swift in Sources */,
 				4998C0DE2784427F00A881D5 /* ConstraintConfig.swift in Sources */,
 				49E79F7C278D284F00F304B2 /* UIViewController_Extension.swift in Sources */,
-				4998BF29277ED20D00A881D5 /* Const.swift in Sources */,
 				4904C3DA2806B6FB008FE5A5 /* ShopDetailReviewController.swift in Sources */,
 				49F17C602807F0E200FCBC87 /* ShopProductReviewCell.swift in Sources */,
 				4998C01F277EF51200A881D5 /* UIColorExtensions.swift in Sources */,

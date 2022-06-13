@@ -26,8 +26,12 @@ target 'CCTIOS' do
   pod 'SwipeCellKit'
   pod 'FSCalendar'
   pod 'TextFieldEffects'
-#  pod 'SwifterSwift'
-
+  pod 'EachNavigationBar'
+  #  pod 'SwifterSwift'
+  pod 'RxSwift','5.1.2'
+  pod 'RxGesture'
+  pod 'RxSwiftExt'
+  pod 'RxCocoa'
   
 end
 

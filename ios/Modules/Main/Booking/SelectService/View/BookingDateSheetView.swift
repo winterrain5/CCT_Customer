@@ -36,7 +36,7 @@ class BookingDateSheetView: UIView{
   
   var dataArray:[String] = [] {
     didSet {
-      
+      calendar.reloadData()
     }
   }
   

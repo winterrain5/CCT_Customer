@@ -8,6 +8,7 @@
 import UIKit
 import SideMenuSwift
 import PromiseKit
+
 class HomeViewController: BaseViewController {
   
   var scrolView = UIScrollView()
@@ -118,13 +119,6 @@ class HomeViewController: BaseViewController {
   func getTClientPartInfo() -> Promise<Void> {
     Promise.init { resolver in
       
-      if let model = Defaults.shared.get(for: .userModel) {
-        self.contentView.userModel = model
-        NotificationCenter.default.post(name: .menuInfoShouldChange, object: model)
-        resolver.fulfill_()
-        return
-      }
-      
       let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       
@@ -139,7 +133,7 @@ class HomeViewController: BaseViewController {
         resolver.reject(APIError.requestError(code: -1, message: "GetTClientPartInfo Failed"))
         
       } errorHandler: { e in
-        resolver.reject(e.asAPIError)
+        resolver.fulfill_()
       }
     }
    
@@ -202,7 +196,34 @@ class HomeViewController: BaseViewController {
   
   @objc func rightItemAction() {
     
+    var configuration = QRScannerConfiguration()
+    configuration.title = ""
+    configuration.hint = "Scan the Outlet QR Code"
+    configuration.color = .white
+    configuration.thickness = 2
+    configuration.length = 44
+    configuration.radius = 22
+    configuration.readQRFromPhotos = false
+    configuration.previewSize = CGSize(width: kScreenWidth - 48, height: kScreenWidth - 48)
+    configuration.roundCornerSize = CGSize(width: kScreenWidth - 24, height: kScreenWidth - 24)
     
+    let scanner = QRCodeScannerController(qrScannerConfiguration: configuration)
+    scanner.delegate = self
+    self.navigationController?.pushViewController(scanner, completion: nil)
   }
   
+}
+
+extension HomeViewController: QRScannerCodeDelegate {
+    func qrScannerDidFail(_ controller: UIViewController, error: QRCodeError) {
+        print("error:\(error.localizedDescription)")
+    }
+    
+    func qrScanner(_ controller: UIViewController, scanDidComplete result: String) {
+        print("result:\(result)")
+    }
+    
+    func qrScannerDidCancel(_ controller: UIViewController) {
+        print("SwiftQRScanner did cancel")
+    }
 }

@@ -13,6 +13,9 @@ class InputPhoneController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    
+    Defaults.shared.removeAll()
+    
     self.view.addSubview(contentView)
     contentView.frame = CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
 

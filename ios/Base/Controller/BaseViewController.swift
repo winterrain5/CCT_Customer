@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import EachNavigationBar
+
 class BaseViewController: UIViewController {
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -98,3 +100,5 @@ class BaseViewController: UIViewController {
     print("\(self.className) 销毁了")
   }
 }
+
+

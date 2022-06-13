@@ -133,6 +133,7 @@ class InputResideView: UIView,UITextFieldDelegate {
     client_info.set(key: "sync_phone_calendar", value: "1")
     client_info.set(key: "create_time", value: Date().string(withFormat: "yyyy-MM-dd HH:mm:ss"))
     client_info.set(key: "is_delete", value: "0")
+    client_info.set(key: "source", value: "2")
     
     data.set(key: "Client_Info", value: client_info.result, keyType: .string, valueType: .map(1))
     
@@ -246,7 +247,7 @@ class InputResideView: UIView,UITextFieldDelegate {
   }
   
   func setNextButonState() {
-    let isEnable = !postalCode.isEmpty && !blockNum.isEmpty && !streetName.isEmpty && !unitNum.isEmpty
+    let isEnable = !postalCode.isEmpty && !blockNum.isEmpty && !streetName.isEmpty
     if isEnable {
       nextButon.isEnabled = true
       nextButon.backgroundColor = R.color.theamRed()

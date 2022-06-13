@@ -23,6 +23,7 @@ class BookingServiceHelpSheetView: UIView {
     let vc = ContactUsViewController()
     UIViewController.getTopVc()?.navigationController?.pushViewController(vc, animated: true)
     
+    EntryKit.dismiss()
   }
   
   static func show() {

@@ -60,9 +60,7 @@ class BookingViewController: BaseViewController {
   
   init() {
     super.init(nibName: nil, bundle: nil)
-    NotificationCenter.default.addObserver(forName:.bookingDataChanged, object: nil, queue: .main) { _ in
-      self.getClientBookedService()
-    }
+   
   }
   
   required init?(coder: NSCoder) {
@@ -71,6 +69,10 @@ class BookingViewController: BaseViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    NotificationCenter.default.addObserver(forName:.bookingDataChanged, object: nil, queue: .main) { _ in
+      self.getClientBookedService()
+    }
   
     self.barAppearance(tintColor: .white, barBackgroundColor: R.color.theamBlue()!, image: nil, backButtonTitle: nil)
     self.navigation.item.leftBarButtonItem = UIBarButtonItem(image: R.image.notification_menu(), style: .plain, target: self, action: #selector(leftItemAction))

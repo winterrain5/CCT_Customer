@@ -133,11 +133,11 @@ class VerificationCodeController: BaseViewController {
   }
   
   func sendCode() {
-    if type == .EditPhone || type == .LoginByMobile{
+    if type == .EditPhone || type == .LoginByMobile || type == .SignUp{
       sendSmsForMobile()
     }
     
-    if type == .EditEmail || type == .LoginByEmail {
+    if type == .EditEmail || type == .LoginByEmail  {
       sendSmsForEmail()
     }
   }

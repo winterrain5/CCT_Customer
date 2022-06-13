@@ -104,19 +104,8 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
     if dataArray.count > 0 {
       let str = dataArray[indexPath.row]
       cell.textLabel?.font = UIFont(name: .AvenirNextRegular, size: 14)
-      if type == .Therapist {
-        let attrs = NSMutableAttributedString(string: str)
-        let l1 = str.split(separator: "(").first?.count ?? 0
-        let l2 = str.split(separator: "(").last?.count ?? 0
-        attrs.addAttribute(.foregroundColor, value: R.color.black333()!, range:NSRange(location: 0, length: l1))
-        attrs.addAttribute(.foregroundColor, value: R.color.theamRed()!, range:NSRange(location: l1, length: l2 + 1))
-        cell.textLabel?.attributedText = attrs
-      }else {
-        cell.textLabel?.text = str
-        
-        cell.textLabel?.textColor = R.color.black333()
-      }
-      
+      cell.textLabel?.text = str
+      cell.textLabel?.textColor = R.color.black333()
       
     }
     

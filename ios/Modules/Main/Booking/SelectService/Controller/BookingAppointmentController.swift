@@ -36,9 +36,12 @@ class ServiceFormModel {
 }
 
 enum ServiceType:Int {
-  case Treatment = 0 // 看诊
-  case DateTime // 服务（日期）
-  case Therapist // 服务 （人员）
+  /// 0 看诊
+  case Treatment = 0
+  /// 1 服务（日期）
+  case DateTime
+  /// 2 服务 （人员）
+  case Therapist
 }
 
 class BookingAppointmentController: BaseTableController {
@@ -46,7 +49,8 @@ class BookingAppointmentController: BaseTableController {
   
   var headLabel = UILabel().then { label in
     label.textColor = R.color.theamBlue()
-    label.font = UIFont(name: .AvenirNextDemiBold, size: 24)
+    label.font = UIFont(name: .AvenirNextDemiBold, size: 24~)
+    label.adjustsFontSizeToFitWidth = true
   }
   var headView = UIView().then { view in
     view.backgroundColor = .white
@@ -244,6 +248,7 @@ extension BookingAppointmentController {
       return
     }
     getServiceByLocation()
+    
   }
   @objc func selectTherapist() {
     if selectCompany == nil {
@@ -285,10 +290,7 @@ extension BookingAppointmentController {
       getEmployeeDutyDates()
     }
     
-    // 看诊 设置默认的医疗师
-    if self.type == .Treatment {
-      self.getEmployeeForService()
-    }
+ 
     
   }
   @objc func selectTimeSlot() {
@@ -410,7 +412,7 @@ extension BookingAppointmentController {
   }
   
   func getEmployeeForService() {
-    let params = SOAPParams(action: .Schedule, path: .getEmployeeForService)
+    let params = SOAPParams(action: .Schedule, path: .getAppEmployeeForService)
     params.set(key: "locationId", value: selectCompany?.id ?? "")
     params.set(key: "serviceId", value: selectedService?.id ?? "")
     params.set(key: "gender", value: Defaults.shared.get(for: .userModel)?.gender ?? "")
@@ -421,10 +423,6 @@ extension BookingAppointmentController {
       if let models = DecodeManager.decodeArrayByHandJSON(EmployeeForServiceModel.self, from: data) {
         
         if self.type == .Treatment {
-          if models.count == 0 {
-            Toast.showMessage("There is no suitable therapist at present")
-            return
-          }
           if models.count == 1 {
             self.selectedEmployee = models.first
           }else {
@@ -451,7 +449,7 @@ extension BookingAppointmentController {
       return
     }
     
-    let strs = self.employeeModels.map({ $0.employee_name + "(\($0.gender == 1 ? "Male" : "Female"))" })
+    let strs = self.employeeModels.map({ $0.employee_name })
     BookingServiceFormSheetView.show(dataArray: strs, type: .Therapist) { index in
       
       self.models.filter({ $0.type == .date }).first?.title = ""
@@ -530,6 +528,12 @@ extension BookingAppointmentController {
       self.selectedDate = date.string(withFormat: "yyyy-MM-dd")
       self.models.filter({ $0.type == .date }).first?.title = date.string(withFormat: "dd MMM yyyy,EEE")
       
+      // 看诊选择日期后 自带医生ID
+      if self.type == .Treatment {
+        let employee = EmployeeForServiceModel()
+        employee.employee_id = self.dutyDateModels.filter({ $0.w_date == self.selectedDate }).first?.employee_id ?? ""
+        self.selectedEmployee = employee
+      }
       
       self.tableView?.reloadData()
     }

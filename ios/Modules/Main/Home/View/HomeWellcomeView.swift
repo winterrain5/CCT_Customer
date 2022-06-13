@@ -12,7 +12,9 @@ class HomeWellcomeView: UIView {
   var nameLabel = UILabel().then { label in
     label.textColor = R.color.theamBlue()
     label.font = UIFont(name: .AvenirNextDemiBold, size: 24)
-    label.text = "Wellcome," + (Defaults.shared.get(for: .userModel)?.last_name ?? "")
+    let firstname = Defaults.shared.get(for: .userModel)?.first_name ?? ""
+    let lastname = Defaults.shared.get(for: .userModel)?.last_name ?? ""
+    label.text = "Wellcome," + firstname + " " + lastname
   }
   var tipLabel = UILabel().then { label in
     label.textColor = R.color.black()

@@ -155,7 +155,7 @@
                                 <constraint firstAttribute="height" constant="1" id="6cJ-J9-Dox"/>
                             </constraints>
                         </view>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Unit Number*" textAlignment="natural" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x5c-BH-YDL" customClass="HoshiTextField" customModule="TextFieldEffects">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Unit Number" textAlignment="natural" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x5c-BH-YDL" customClass="HoshiTextField" customModule="TextFieldEffects">
                             <rect key="frame" x="24" y="224" width="383" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="34" id="fBT-VU-PgU"/>
@@ -347,7 +347,7 @@
             <size key="intrinsicContentSize" width="28.5" height="23.5"/>
         </designable>
         <designable name="x5c-BH-YDL">
-            <size key="intrinsicContentSize" width="102" height="23.5"/>
+            <size key="intrinsicContentSize" width="94.5" height="23.5"/>
         </designable>
     </designables>
     <resources>

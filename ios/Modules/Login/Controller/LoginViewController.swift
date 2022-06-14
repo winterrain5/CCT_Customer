@@ -25,7 +25,7 @@ class LoginViewController: BaseViewController {
 
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(SystemConfigModel.self, from: data) {
-        Defaults.shared.set(model.company_id?.string ?? "", for: .companyId)
+        Defaults.shared.set(model.company_id?.string ?? "97", for: .companyId)
         Defaults.shared.set(model.receive_specific_email ?? "", for: .recieveEmail)
         Defaults.shared.set(model.send_specific_email ?? "", for: .sendEmail)
       }

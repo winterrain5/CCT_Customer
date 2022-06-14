@@ -42,7 +42,10 @@ class ShopCartController: BaseTableController {
     super.viewDidLoad()
     
     navigation.item.title = showType == 0 ? "Your Cart" : "Buy Now"
-    refreshData()
+    if self.dataArray.count > 0 {
+      addTableFooterView()
+    }
+    endRefresh(dataArray.count, emptyString: "No Items")
   }
   
   override func refreshData() {
@@ -73,12 +76,18 @@ class ShopCartController: BaseTableController {
     
     tableView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomSheetHeight, right: 0)
     
-    tableView?.tableFooterView = footerView
-    footerView.size = CGSize(width: kScreenWidth, height: 138)
-    
     self.view.isSkeletonable = true
     self.tableView?.isSkeletonable = true
     self.cellIdentifier = ShopCartCell.className
+    
+    
+    
+    self.registRefreshHeader()
+  }
+  
+  func addTableFooterView() {
+    tableView?.tableFooterView = footerView
+    footerView.size = CGSize(width: kScreenWidth, height: 138)
     
     self.view.addSubview(bottomView)
     bottomView.snp.makeConstraints { make in
@@ -86,8 +95,6 @@ class ShopCartController: BaseTableController {
       make.height.equalTo(bottomSheetHeight)
       
     }
-    
-    self.registRefreshHeader()
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

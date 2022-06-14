@@ -24,6 +24,9 @@ class ConfirmSessionController: BaseViewController {
     self.view.addSubview(contentView)
     contentView.frame = CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
     contentView.model = params
+    contentView.confirmHandler = { [weak self] in
+      self?.navigationController?.popToRootViewController(animated: true)
+    }
   }
   
   override func viewDidLayoutSubviews() {

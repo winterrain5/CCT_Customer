@@ -35,6 +35,28 @@ class InputResideView: UIView,UITextFieldDelegate {
   override func awakeFromNib() {
     super.awakeFromNib()
     getCounties(false)
+    
+    if let user = Defaults.shared.get(for: .userModel) {
+      postalCodeTf.text = user.post_code
+      postalCode = user.post_code
+      
+      BlockNumTf.text = user.building_block_num
+      blockNum = user.building_block_num
+      
+      streetNameTf.text = user.street_name
+      streetName = user.street_name
+      
+      unitNumTf.text = user.unit_num
+      unitNum = user.unit_num
+      
+      cityTf.text = user.city
+      city = user.city
+      
+      countryTf.text = user.country_name
+      country = user.country_name
+     
+      
+    }
   }
   
   func getCounties(_ isGetBySelf:Bool) {
@@ -107,7 +129,7 @@ class InputResideView: UIView,UITextFieldDelegate {
     
     let user = Defaults.shared.get(for: .userModel)
     
-    client_info.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "")
+    client_info.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
     client_info.set(key: "id", value: user?.id ?? "")
     client_info.set(key: "first_name", value: registInfo?.firstName ?? "")
     client_info.set(key: "last_name", value: registInfo?.lastName ?? "")

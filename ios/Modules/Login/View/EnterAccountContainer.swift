@@ -57,6 +57,7 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
       }else {
         AlertView.show(message: "The mobile / email / password is invalid. Please try again.")
       }
+      self.loginBtn.stopAnimation()
     } errorHandler: { e in
       self.loginBtn.stopAnimation()
       AlertView.show(message: "The mobile / email / password is invalid. Please try again.")

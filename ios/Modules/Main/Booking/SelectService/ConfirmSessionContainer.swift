@@ -247,7 +247,7 @@ class ConfirmSessionContainer: UIView {
   func showSuccessSheet() {
     let atttr = NSMutableAttributedString(string: "Your appointment has been confirmed !")
     AlertView.show(message: atttr, messageAlignment: .left) {
-      UIViewController.getTopVc()?.navigationController?.popToRootViewController(animated: true)
+      self.confirmHandler?()
     }
   }
   

@@ -153,7 +153,9 @@ class QRCodeScannerController: BaseViewController,
   }
   
   @objc func helpAction() {
-    
+    let view = WhereQRCodeSheetView.loadViewFromNib()
+    let size = CGSize(width: kScreenWidth, height: 656~)
+    EntryKit.display(view: view, size: size, style: .sheet)
   }
   
   //Creates corner rectagle frame with green coloe(default color)

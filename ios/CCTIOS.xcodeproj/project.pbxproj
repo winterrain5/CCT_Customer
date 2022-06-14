@@ -53,6 +53,8 @@
 		45A505852848998000779B4C /* HomeContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45A505842848998000779B4C /* HomeContainer.xib */; };
 		45A505872848B80800779B4C /* HomeKingKongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A505862848B80800779B4C /* HomeKingKongView.swift */; };
 		45B2A12F27A1456200E1264E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B2A12E27A1456200E1264E /* MainViewController.swift */; };
+		45C6B78D285732BD00546CC8 /* WellcomBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6B78C285732BD00546CC8 /* WellcomBackView.swift */; };
+		45C6B78F2857335900546CC8 /* WellcomBackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C6B78E2857335900546CC8 /* WellcomBackView.xib */; };
 		45CE32F42834948E00201726 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F32834948E00201726 /* CompanyModel.swift */; };
 		45CE32F628349C4500201726 /* TodaySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F528349C4500201726 /* TodaySessionView.swift */; };
 		45CE32FA28349CAF00201726 /* TodaySessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F828349CAF00201726 /* TodaySessionCell.swift */; };
@@ -69,6 +71,8 @@
 		45F894B128534384008BC7CC /* SwiftQRScannerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F894A928534384008BC7CC /* SwiftQRScannerDelegate.swift */; };
 		45F894B228534384008BC7CC /* QRScannerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F894AA28534384008BC7CC /* QRScannerConfiguration.swift */; };
 		45F894B328534384008BC7CC /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F894AB28534384008BC7CC /* RoundButton.swift */; };
+		45F894B528571DAD008BC7CC /* WhereQRCodeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F894B428571DAD008BC7CC /* WhereQRCodeSheetView.swift */; };
+		45F894B728571DBC008BC7CC /* WhereQRCodeSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45F894B628571DBB008BC7CC /* WhereQRCodeSheetView.xib */; };
 		45FC54E7285072F600D3C0FF /* InputGeneralInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC54E6285072F600D3C0FF /* InputGeneralInfoController.swift */; };
 		45FC54E9285078BB00D3C0FF /* InputResideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC54E8285078BB00D3C0FF /* InputResideController.swift */; };
 		45FC54EB285078CB00D3C0FF /* InputResideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC54EA285078CB00D3C0FF /* InputResideView.swift */; };
@@ -750,6 +754,8 @@
 		45A505842848998000779B4C /* HomeContainer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContainer.xib; sourceTree = "<group>"; };
 		45A505862848B80800779B4C /* HomeKingKongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeKingKongView.swift; sourceTree = "<group>"; };
 		45B2A12E27A1456200E1264E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		45C6B78C285732BD00546CC8 /* WellcomBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellcomBackView.swift; sourceTree = "<group>"; };
+		45C6B78E2857335900546CC8 /* WellcomBackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WellcomBackView.xib; sourceTree = "<group>"; };
 		45CE32F32834948E00201726 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
 		45CE32F528349C4500201726 /* TodaySessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionView.swift; sourceTree = "<group>"; };
 		45CE32F828349CAF00201726 /* TodaySessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionCell.swift; sourceTree = "<group>"; };
@@ -766,6 +772,8 @@
 		45F894A928534384008BC7CC /* SwiftQRScannerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftQRScannerDelegate.swift; sourceTree = "<group>"; };
 		45F894AA28534384008BC7CC /* QRScannerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerConfiguration.swift; sourceTree = "<group>"; };
 		45F894AB28534384008BC7CC /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		45F894B428571DAD008BC7CC /* WhereQRCodeSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereQRCodeSheetView.swift; sourceTree = "<group>"; };
+		45F894B628571DBB008BC7CC /* WhereQRCodeSheetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WhereQRCodeSheetView.xib; sourceTree = "<group>"; };
 		45FC54E6285072F600D3C0FF /* InputGeneralInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputGeneralInfoController.swift; sourceTree = "<group>"; };
 		45FC54E8285078BB00D3C0FF /* InputResideController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputResideController.swift; sourceTree = "<group>"; };
 		45FC54EA285078CB00D3C0FF /* InputResideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputResideView.swift; sourceTree = "<group>"; };
@@ -1531,6 +1539,8 @@
 				45FC54EE2850852000D3C0FF /* DateOfBirthSheetView.swift */,
 				45FC54F02850852A00D3C0FF /* DateOfBirthSheetView.xib */,
 				45FC54F9285180B700D3C0FF /* RegistStepView.swift */,
+				45C6B78C285732BD00546CC8 /* WellcomBackView.swift */,
+				45C6B78E2857335900546CC8 /* WellcomBackView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1579,6 +1589,8 @@
 				45A505862848B80800779B4C /* HomeKingKongView.swift */,
 				45D65104284DA03900C7BD39 /* HomeWellcomeView.swift */,
 				45D65106284DCFF100C7BD39 /* HomeBookedServiceView.swift */,
+				45F894B428571DAD008BC7CC /* WhereQRCodeSheetView.swift */,
+				45F894B628571DBB008BC7CC /* WhereQRCodeSheetView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3325,6 +3337,7 @@
 				49BA62712785431400B898D5 /* BolgItemHorizontalLayoutCell.xib in Resources */,
 				492FA1302798160C002F38B3 /* MadamPartumNewsItemCell.xib in Resources */,
 				4996D7B227D5DFD500437265 /* WalletCardView.xib in Resources */,
+				45C6B78F2857335900546CC8 /* WellcomBackView.xib in Resources */,
 				4904C3C7280677C6008FE5A5 /* CCTShopFooterView.xib in Resources */,
 				4936C21D28334A3D009125A1 /* BookingUpComingCell.xib in Resources */,
 				497B354827CF6F7000AE20C4 /* WalletCardContainer.xib in Resources */,
@@ -3384,6 +3397,7 @@
 				49C05B5E281A404A00F5B9D5 /* EnterAccountContainer.xib in Resources */,
 				45792078284EF81D008CD008 /* InputAccountContainer.xib in Resources */,
 				49BA627A278576BC00B898D5 /* BlogHeaderSearchView.xib in Resources */,
+				45F894B728571DBC008BC7CC /* WhereQRCodeSheetView.xib in Resources */,
 				4933AC7527D87914005E9FB1 /* SetTransactionLimitSheetView.xib in Resources */,
 				49E2C22527D5E56A00F667B7 /* WalletDetailHeadView.xib in Resources */,
 				4904C3C0280677C6008FE5A5 /* ShopHeaderView.xib in Resources */,
@@ -3607,6 +3621,7 @@
 				4998C03B277EF51200A881D5 /* MKPolylineExtensions.swift in Sources */,
 				45FC54FD285188BB00D3C0FF /* InputPhoneView.swift in Sources */,
 				49BA629F2788226200B898D5 /* BlogDetailViewController.swift in Sources */,
+				45F894B528571DAD008BC7CC /* WhereQRCodeSheetView.swift in Sources */,
 				4998C006277EF51200A881D5 /* UIStackViewExtensions.swift in Sources */,
 				49E2C22327D5E56400F667B7 /* WalletDetailHeadView.swift in Sources */,
 				4550946F28339DA90017C244 /* BookingUpComingDetailController.swift in Sources */,
@@ -3686,6 +3701,7 @@
 				4902024727D9FEF900E74415 /* SwitchController.swift in Sources */,
 				4998C005277EF51200A881D5 /* UINavigationItemExtensions.swift in Sources */,
 				4998C00F277EF51200A881D5 /* UISliderExtensions.swift in Sources */,
+				45C6B78D285732BD00546CC8 /* WellcomBackView.swift in Sources */,
 				4998C0D72784427F00A881D5 /* ConstraintInsets.swift in Sources */,
 				4998C0D82784427F00A881D5 /* ConstraintMakerFinalizable.swift in Sources */,
 				49FC8EC227914D5200157292 /* SymptomCheckReportListView.swift in Sources */,

@@ -22,7 +22,7 @@ class InputIDContainer: UIView ,UITextFieldDelegate{
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    let tap = UITapGestureRecognizer(target: self, action: #selector(dataPNTaped))u
+    let tap = UITapGestureRecognizer(target: self, action: #selector(dataPNTaped))
     let tap2 = UITapGestureRecognizer(target: self, action: #selector(dataPNTaped))
     dataPNLabel.addGestureRecognizer(tap)
     dataPN2Label.addGestureRecognizer(tap2)
@@ -31,6 +31,13 @@ class InputIDContainer: UIView ,UITextFieldDelegate{
     idTf.returnKeyType = .done
     
     isCheckButton.borderColor = .clear
+    
+    if let user = Defaults.shared.get(for: .userModel) {
+      idTf.text = user.card_number
+      idTypeButton.titleForNormal = "Singapore NRIC/FIN"
+      selectIDType = 1
+      setNextButonState()
+    }
   
   }
   

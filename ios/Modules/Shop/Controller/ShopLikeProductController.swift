@@ -21,8 +21,10 @@ class ShopLikeProductController: BaseTableController {
     showSkeleton()
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeArrayByHandJSON(ShopProductModel.self, from: data) {
+        models.forEach({ $0.isLike = true })
         self.dataArray = models
       }
+      
       self.endRefresh(self.dataArray.count,emptyString: "No Like Items")
       self.hideSkeleton()
     } errorHandler: { e in

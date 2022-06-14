@@ -46,8 +46,18 @@ class VerificationCodeController: BaseViewController {
         }
         
         if self.type == .SignUp {
-          let vc = InputIDController()
-          self.navigationController?.pushViewController(vc, completion: nil)
+          if Defaults.shared.get(for: .userModel) != nil {
+            let view = WellcomBackView.loadViewFromNib()
+            view.frame = self.view.bounds
+            view.alpha = 0
+            view.layer.zPosition = 100000
+            self.view.addSubview(view)
+            view.fadeIn()
+          }else {
+            let vc = InputIDController()
+            self.navigationController?.pushViewController(vc, completion: nil)
+          }
+         
         }
         
       }else {

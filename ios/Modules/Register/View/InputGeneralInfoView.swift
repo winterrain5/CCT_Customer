@@ -48,19 +48,16 @@ class InputGeneralInfoView: UIView, UITextFieldDelegate {
     if let user = Defaults.shared.get(for: .userModel) {
       firstNameTf.text = user.first_name
       lastNameTf.text = user.last_name
+    
       if user.gender == "1" {
-        maleButton.isSelected = true
         genderButtonAction(maleButton)
       }else {
-        femaleButton.isSelected = true
         genderButtonAction(femaleButton)
       }
       
       if user.cct_or_mp == "2" {
-        yesButton.isSelected = true
         madamPartumButtonAction(yesButton)
       }else {
-        noButton.isSelected = true
         madamPartumButtonAction(noButton)
       }
       

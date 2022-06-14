@@ -37,6 +37,11 @@ class InputAccountContainer: UIView,UITextFieldDelegate {
     pwTf.delegate = self
     pw2Tf.delegate = self
     
+    if let user = Defaults.shared.get(for: .userModel) {
+      emailTf.text = user.email
+      isEmaillValidate = true
+    }
+    
   }
   
   override func layoutSubviews() {

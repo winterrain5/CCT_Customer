@@ -422,7 +422,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 123 images.
+  /// This `R.image` struct is generated, and contains static references to 126 images.
   struct image {
     /// Image `account_arrow_right`.
     static let account_arrow_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "account_arrow_right")
@@ -582,6 +582,10 @@ struct R: Rswift.Validatable {
     static let profile_wallet = Rswift.ImageResource(bundle: R.hostingBundle, name: "profile_wallet")
     /// Image `qrcode_info`.
     static let qrcode_info = Rswift.ImageResource(bundle: R.hostingBundle, name: "qrcode_info")
+    /// Image `qrcode_reception_desk`.
+    static let qrcode_reception_desk = Rswift.ImageResource(bundle: R.hostingBundle, name: "qrcode_reception_desk")
+    /// Image `qrcode_waiting_area`.
+    static let qrcode_waiting_area = Rswift.ImageResource(bundle: R.hostingBundle, name: "qrcode_waiting_area")
     /// Image `question_help_arrow_down`.
     static let question_help_arrow_down = Rswift.ImageResource(bundle: R.hostingBundle, name: "question_help_arrow_down")
     /// Image `refer_friend_code_background`.
@@ -594,6 +598,8 @@ struct R: Rswift.Validatable {
     static let refer_friend_telefram = Rswift.ImageResource(bundle: R.hostingBundle, name: "refer_friend_telefram")
     /// Image `refer_friend_whatsapp`.
     static let refer_friend_whatsapp = Rswift.ImageResource(bundle: R.hostingBundle, name: "refer_friend_whatsapp")
+    /// Image `regist_wellcom_back`.
+    static let regist_wellcom_back = Rswift.ImageResource(bundle: R.hostingBundle, name: "regist_wellcom_back")
     /// Image `return_left_black`.
     static let return_left_black = Rswift.ImageResource(bundle: R.hostingBundle, name: "return_left_black")
     /// Image `return_left`.
@@ -1225,6 +1231,20 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "qrcode_reception_desk", bundle: ..., traitCollection: ...)`
+    static func qrcode_reception_desk(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.qrcode_reception_desk, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "qrcode_waiting_area", bundle: ..., traitCollection: ...)`
+    static func qrcode_waiting_area(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.qrcode_waiting_area, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "question_help_arrow_down", bundle: ..., traitCollection: ...)`
     static func question_help_arrow_down(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.question_help_arrow_down, compatibleWith: traitCollection)
@@ -1263,6 +1283,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "refer_friend_whatsapp", bundle: ..., traitCollection: ...)`
     static func refer_friend_whatsapp(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.refer_friend_whatsapp, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "regist_wellcom_back", bundle: ..., traitCollection: ...)`
+    static func regist_wellcom_back(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.regist_wellcom_back, compatibleWith: traitCollection)
     }
     #endif
 
@@ -1535,7 +1562,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 113 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 115 nibs.
   struct nib {
     /// Nib `AccountEditSheetContentView`.
     static let accountEditSheetContentView = _R.nib._AccountEditSheetContentView()
@@ -1761,8 +1788,12 @@ struct R: Rswift.Validatable {
     static let walletVoucherCouponsCell = _R.nib._WalletVoucherCouponsCell()
     /// Nib `WalletVouchersCell`.
     static let walletVouchersCell = _R.nib._WalletVouchersCell()
+    /// Nib `WellcomBackView`.
+    static let wellcomBackView = _R.nib._WellcomBackView()
     /// Nib `WellnessAppointmentTypeSelectShetView`.
     static let wellnessAppointmentTypeSelectShetView = _R.nib._WellnessAppointmentTypeSelectShetView()
+    /// Nib `WhereQRCodeSheetView`.
+    static let whereQRCodeSheetView = _R.nib._WhereQRCodeSheetView()
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "AccountEditSheetContentView", in: bundle)`
@@ -2661,10 +2692,26 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "WellcomBackView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.wellcomBackView) instead")
+    static func wellcomBackView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.wellcomBackView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "WellnessAppointmentTypeSelectShetView", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.wellnessAppointmentTypeSelectShetView) instead")
     static func wellnessAppointmentTypeSelectShetView(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.wellnessAppointmentTypeSelectShetView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "WhereQRCodeSheetView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.whereQRCodeSheetView) instead")
+    static func whereQRCodeSheetView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.whereQRCodeSheetView)
     }
     #endif
 
@@ -3116,8 +3163,16 @@ struct R: Rswift.Validatable {
       return R.nib.walletVouchersCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletVouchersCell
     }
 
+    static func wellcomBackView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WellcomBackView? {
+      return R.nib.wellcomBackView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WellcomBackView
+    }
+
     static func wellnessAppointmentTypeSelectShetView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WellnessAppointmentTypeSelectShetView? {
       return R.nib.wellnessAppointmentTypeSelectShetView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WellnessAppointmentTypeSelectShetView
+    }
+
+    static func whereQRCodeSheetView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WhereQRCodeSheetView? {
+      return R.nib.whereQRCodeSheetView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WhereQRCodeSheetView
     }
 
     fileprivate init() {}
@@ -3201,7 +3256,9 @@ struct _R: Rswift.Validatable {
       try _WalletDetailCardUserOrOwenrCell.validate()
       try _WalletPaymentMethodCell.validate()
       try _WalletTopUpContainer.validate()
+      try _WellcomBackView.validate()
       try _WellnessAppointmentTypeSelectShetView.validate()
+      try _WhereQRCodeSheetView.validate()
     }
 
     struct _AccountEditSheetContentView: Rswift.NibResourceType {
@@ -4985,6 +5042,27 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
+    struct _WellcomBackView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "WellcomBackView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WellcomBackView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WellcomBackView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "regist_wellcom_back", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'regist_wellcom_back' is used in nib 'WellcomBackView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'WellcomBackView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'WellcomBackView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamRed", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamRed' is used in nib 'WellcomBackView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'WellcomBackView', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+
     struct _WellnessAppointmentTypeSelectShetView: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "WellnessAppointmentTypeSelectShetView"
@@ -4999,6 +5077,27 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "wellness_type_icon2", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'wellness_type_icon2' is used in nib 'WellnessAppointmentTypeSelectShetView', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'WellnessAppointmentTypeSelectShetView', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _WhereQRCodeSheetView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "WhereQRCodeSheetView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WhereQRCodeSheetView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WhereQRCodeSheetView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "qrcode_reception_desk", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'qrcode_reception_desk' is used in nib 'WhereQRCodeSheetView', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "qrcode_waiting_area", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'qrcode_waiting_area' is used in nib 'WhereQRCodeSheetView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'WhereQRCodeSheetView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'WhereQRCodeSheetView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamYellow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamYellow' is used in nib 'WhereQRCodeSheetView', but couldn't be loaded.") }
         }
       }
 

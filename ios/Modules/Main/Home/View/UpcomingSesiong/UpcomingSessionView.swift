@@ -21,11 +21,11 @@ class UpcomingSessionView: UIView,UICollectionViewDataSource,UICollectionViewDel
       let clvH = 156 + addtionalH.cgFloat
       let controlH:CGFloat = models.count > 1 ? 24 : 0
       upcomingHeight = clvH + controlH
-      collectionView.snp.makeConstraints { make in
+      collectionView.snp.updateConstraints { make in
         make.left.right.top.equalToSuperview()
         make.height.equalTo(clvH)
       }
-      pageControl.snp.makeConstraints { make in
+      pageControl.snp.updateConstraints { make in
         make.centerX.equalToSuperview()
         make.top.equalTo(collectionView.snp.bottom).offset(8)
       }

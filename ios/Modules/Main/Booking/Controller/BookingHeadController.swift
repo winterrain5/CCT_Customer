@@ -29,15 +29,24 @@ class BookingHeadController: BaseViewController {
     }
   }
   
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    self.view.clipsToBounds = true
+  init() {
+    super.init(nibName: nil, bundle: nil)
     self.view.addSubview(headLabel)
   
     self.view.addSubview(dateLabel)
  
     self.view.addSubview(sessionView)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.view.clipsToBounds = true
+   
   
   }
   

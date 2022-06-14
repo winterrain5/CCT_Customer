@@ -113,10 +113,16 @@ extension NetworkManager {
   
   func parserDidEndDocument(_ parser: XMLParser) {
     if currentNodeName == "faultstring" {
+      
+    
       DispatchQueue.main.async {
+#if DEBUG
         Toast.showError(withStatus: self.result)
+#endif
         self.errorHandler(APIError.requestError(code: -1, message: self.result))
       }
+   
+     
   
       print("faultstring:\(result)")
   
@@ -126,7 +132,7 @@ extension NetworkManager {
       if result != ""{
         
         let json = JSON(parseJSON: result)
-        print("response:\(json.dictionaryValue)")
+        print("url:\(params.path) \n response:\(json.dictionaryValue)")
        
         DispatchQueue.main.async {
           guard let code = json["success"].int,let message = json["message"].string else {

@@ -115,7 +115,7 @@ class TellUsCondiitonController: BaseTableController {
     if #available(iOS 15.0, *) {
       tableView?.sectionHeaderTopPadding = 0
     }
-    
+    tableView?.cornerRadius = 16
     tableContentView.addSubview(tableView!)
     
     tableView?.register(cellWithClass: SymptomCheckStepCell.self)

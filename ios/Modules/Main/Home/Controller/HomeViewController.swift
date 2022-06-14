@@ -9,13 +9,22 @@ import UIKit
 import SideMenuSwift
 import PromiseKit
 
+enum ScanType {
+  case Home
+  case CheckIn
+}
 class HomeViewController: BaseViewController {
   
   var scrolView = UIScrollView()
   var contentView = HomeContainer.loadViewFromNib()
+  var scanType: ScanType = .Home
+  var checkInSessionModel = BookingTodayModel()
   init() {
     super.init(nibName: nil, bundle: nil)
-    NotificationCenter.default.addObserver(forName: .bookingDataChanged, object: nil, queue: .main) { noti in
+    NotificationCenter.default.addObserver(forName: .todayCheckIn, object: nil, queue: .main) { noti in
+      self.checkInSessionModel = noti.object as! BookingTodayModel
+      self.showScanVc()
+      self.scanType = .CheckIn
       
     }
   }
@@ -177,7 +186,7 @@ class HomeViewController: BaseViewController {
       params.set(key: "length", value: 30)
       NetworkManager().request(params: params) { data in
        
-        if let models = DecodeManager.decodeArrayByHandJSON(BookingUpComingModel.self, from: data),models.count > 0 {
+        if let models = DecodeManager.decodeArrayByHandJSON(BookingUpComingModel.self, from: data){
           resolver.fulfill(models)
           return
         }
@@ -195,7 +204,11 @@ class HomeViewController: BaseViewController {
   }
   
   @objc func rightItemAction() {
-    
+    showScanVc()
+    scanType = .Home
+  }
+  
+  func showScanVc() {
     var configuration = QRScannerConfiguration()
     configuration.title = ""
     configuration.hint = "Scan the Outlet QR Code"
@@ -221,6 +234,22 @@ extension HomeViewController: QRScannerCodeDelegate {
     
     func qrScanner(_ controller: UIViewController, scanDidComplete result: String) {
         print("result:\(result)")
+      let json = JSON(parseJSON: result)
+      let locationName = json["name"].stringValue
+      let id = json["id"].stringValue
+      let type = json["type"].stringValue
+      if scanType == .Home {
+        let vc = CheckInTodaySessionController(locationName: locationName)
+        self.navigationController?.pushViewController(vc, completion: nil)
+      }
+      if scanType == .CheckIn {
+        
+        let vc = ConfirmSessionController(params: ConfirmSessionModel())
+        self.navigationController?.pushViewController(vc, completion: nil)
+        
+      }
+      
+      
     }
     
     func qrScannerDidCancel(_ controller: UIViewController) {

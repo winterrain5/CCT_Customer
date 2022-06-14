@@ -1,33 +1,26 @@
 //
-//  TodaySessionView.swift
+//  CheckInTodaySessionView.swift
 //  CCTIOS
 //
-//  Created by chengquan zhou on 2022/5/18.
+//  Created by chengquan zhou on 2022/6/14.
 //
 
 import UIKit
 import CHIPageControl
-class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+class CheckInTodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelegate {
+
+  @IBOutlet weak var clvContentView: UIView!
+
+  @IBOutlet weak var titleLabel: UILabel!
   
-  var todayHeight:CGFloat = 0
+  @IBOutlet weak var timeLabel: UILabel!
+  
   var itemWidth:CGFloat = 0
   var models:[BookingTodayModel] = [] {
     didSet {
-      todayHeight = 0
-      let addtionalH = models.filter({ $0.staff_is_random == "2" }).count > 0 ? 28 : 0
-      let clvH = 192 + addtionalH.cgFloat
-      let controlH:CGFloat = models.count > 1 ? 24 : 0
-      todayHeight = clvH + controlH
-      collectionView.snp.updateConstraints { make in
-        make.left.right.top.equalToSuperview()
-        make.height.equalTo(clvH)
-      }
-      pageControl.snp.updateConstraints { make in
-        make.centerX.equalToSuperview()
-        make.top.equalTo(collectionView.snp.bottom).offset(8)
-      }
-      itemWidth = models.count > 1 ? kScreenWidth * 0.8 : (kScreenWidth - 32).int.cgFloat
-      let itemHeight = models.sorted(by: { $0.cellHeight > $1.cellHeight }).first?.cellHeight ?? 0
+      pageControl.isHidden = models.count == 0
+      itemWidth = models.count > 1 ? 200~ : (kScreenWidth - 48).int.cgFloat
+      let itemHeight = 164.cgFloat
       layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
       collectionView.reloadData()
       pageControl.numberOfPages = models.count
@@ -37,8 +30,8 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
   
   lazy var layout = PagingCollectionViewLayout().then { layout in
     layout.scrollDirection = .horizontal
-    layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-    layout.minimumLineSpacing = 0
+    layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
+    layout.minimumLineSpacing = 16
     layout.minimumInteritemSpacing = 0
   }
   
@@ -61,22 +54,25 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     pageControl.hidesForSinglePage = true
   }
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    addSubview(collectionView)
-    collectionView.register(nibWithCellClass: TodaySessionCell.self)
-    
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    clvContentView.addSubview(collectionView)
+    collectionView.register(nibWithCellClass: CheckInTodayCell.self)
     addSubview(pageControl)
+    
+    timeLabel.text = Date().string(withFormat: "dd MMMM yyyy,EEE")
   }
   
-  required init?(coder: NSCoder) {
-    super.init(coder: coder)
-    
-  }
   
   override func layoutSubviews() {
     super.layoutSubviews()
-   
+    collectionView.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
+    }
+    pageControl.snp.makeConstraints { make in
+      make.centerX.equalToSuperview()
+      make.top.equalTo(clvContentView.snp.bottom).offset(8)
+    }
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -84,16 +80,11 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withClass: TodaySessionCell.self, for: indexPath)
+    let cell = collectionView.dequeueReusableCell(withClass: CheckInTodayCell.self, for: indexPath)
     if models.count > 0 {
       cell.model = models[indexPath.item]
     }
     return cell
-  }
-
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let vc = BookingUpComingDetailController(today: models[indexPath.item])
-    UIViewController.getTopVc()?.navigationController?.pushViewController(vc, animated: true)
   }
   
   func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -106,4 +97,7 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
   }
   
   
+  @IBAction func registerSessionAction(_ sender: Any) {
+    
+  }
 }

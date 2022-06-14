@@ -45,6 +45,7 @@ class BookingCompleteDetailView: UIView,UITableViewDelegate,UITableViewDataSourc
         dateLabel.text = date.string(withFormat: "dd MMM yyyy,EEE - ").appending(date.timeString(ofStyle: .short))
       }
       
+      locationLabel.text = complete.location_name
       layoutIfNeeded()
     }
   }
@@ -144,7 +145,7 @@ class BookingCompleteDetailView: UIView,UITableViewDelegate,UITableViewDataSourc
     shadowView1.addLightShadow(by: 16)
     shadowView2.addLightShadow(by: 16)
     shadowView3.addLightShadow(by: 16)
-    shadowView3.isHidden = true
+    shadowView3.alpha = 0
     setupTableView()
   }
   

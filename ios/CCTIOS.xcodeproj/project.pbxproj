@@ -55,6 +55,11 @@
 		45B2A12F27A1456200E1264E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B2A12E27A1456200E1264E /* MainViewController.swift */; };
 		45C6B78D285732BD00546CC8 /* WellcomBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6B78C285732BD00546CC8 /* WellcomBackView.swift */; };
 		45C6B78F2857335900546CC8 /* WellcomBackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C6B78E2857335900546CC8 /* WellcomBackView.xib */; };
+		45C6B7912858251400546CC8 /* CheckInTodaySessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6B7902858251400546CC8 /* CheckInTodaySessionController.swift */; };
+		45C6B7932858253100546CC8 /* CheckInTodaySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6B7922858253100546CC8 /* CheckInTodaySessionView.swift */; };
+		45C6B7952858253C00546CC8 /* CheckInTodaySessionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C6B7942858253C00546CC8 /* CheckInTodaySessionView.xib */; };
+		45C6B7982858282C00546CC8 /* CheckInTodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6B7962858282C00546CC8 /* CheckInTodayCell.swift */; };
+		45C6B7992858282C00546CC8 /* CheckInTodayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C6B7972858282C00546CC8 /* CheckInTodayCell.xib */; };
 		45CE32F42834948E00201726 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F32834948E00201726 /* CompanyModel.swift */; };
 		45CE32F628349C4500201726 /* TodaySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F528349C4500201726 /* TodaySessionView.swift */; };
 		45CE32FA28349CAF00201726 /* TodaySessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F828349CAF00201726 /* TodaySessionCell.swift */; };
@@ -756,6 +761,11 @@
 		45B2A12E27A1456200E1264E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		45C6B78C285732BD00546CC8 /* WellcomBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellcomBackView.swift; sourceTree = "<group>"; };
 		45C6B78E2857335900546CC8 /* WellcomBackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WellcomBackView.xib; sourceTree = "<group>"; };
+		45C6B7902858251400546CC8 /* CheckInTodaySessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInTodaySessionController.swift; sourceTree = "<group>"; };
+		45C6B7922858253100546CC8 /* CheckInTodaySessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInTodaySessionView.swift; sourceTree = "<group>"; };
+		45C6B7942858253C00546CC8 /* CheckInTodaySessionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckInTodaySessionView.xib; sourceTree = "<group>"; };
+		45C6B7962858282C00546CC8 /* CheckInTodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInTodayCell.swift; sourceTree = "<group>"; };
+		45C6B7972858282C00546CC8 /* CheckInTodayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckInTodayCell.xib; sourceTree = "<group>"; };
 		45CE32F32834948E00201726 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
 		45CE32F528349C4500201726 /* TodaySessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionView.swift; sourceTree = "<group>"; };
 		45CE32F828349CAF00201726 /* TodaySessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionCell.swift; sourceTree = "<group>"; };
@@ -1576,6 +1586,7 @@
 			isa = PBXGroup;
 			children = (
 				492D3B00281B81330022198A /* HomeViewController.swift */,
+				45C6B7902858251400546CC8 /* CheckInTodaySessionController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1591,6 +1602,10 @@
 				45D65106284DCFF100C7BD39 /* HomeBookedServiceView.swift */,
 				45F894B428571DAD008BC7CC /* WhereQRCodeSheetView.swift */,
 				45F894B628571DBB008BC7CC /* WhereQRCodeSheetView.xib */,
+				45C6B7922858253100546CC8 /* CheckInTodaySessionView.swift */,
+				45C6B7942858253C00546CC8 /* CheckInTodaySessionView.xib */,
+				45C6B7962858282C00546CC8 /* CheckInTodayCell.swift */,
+				45C6B7972858282C00546CC8 /* CheckInTodayCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3295,6 +3310,7 @@
 				49BB3C5B278C2C3400AC34A0 /* BlogBookmarkRemoveSheetView.xib in Resources */,
 				4902B72F279FA12D00CEE28B /* ServiceDetailApproachCell.xib in Resources */,
 				4904C3C4280677C6008FE5A5 /* CCTShopHeaderView.xib in Resources */,
+				45C6B7952858253C00546CC8 /* CheckInTodaySessionView.xib in Resources */,
 				49BB3C63278D17B400AC34A0 /* BlogBoardDeleteConfirmSheetView.xib in Resources */,
 				49727C7D27C4E56A00943156 /* VerificationCodeContainer.xib in Resources */,
 				49E79F90278E6CB200F304B2 /* SymptomCheckBeginContainer.xib in Resources */,
@@ -3356,6 +3372,7 @@
 				49056B1D27979B4C00FBA1AC /* WellnessAppointmentTypeSelectShetView.xib in Resources */,
 				4978FA9D27C333FD00E51DA0 /* ProductLeaveReviewSheetContentView.xib in Resources */,
 				4904C3D428067BDD008FE5A5 /* ShopProductItemCell.xib in Resources */,
+				45C6B7992858282C00546CC8 /* CheckInTodayCell.xib in Resources */,
 				45CE32FB28349CAF00201726 /* TodaySessionCell.xib in Resources */,
 				49056AFD2795581D00FBA1AC /* SymptomCheckPlanCell.xib in Resources */,
 				49781BCF27BE2024006F93DF /* MyOrderListCell.xib in Resources */,
@@ -3660,6 +3677,7 @@
 				4998C0E62784427F00A881D5 /* ConstraintMakerEditable.swift in Sources */,
 				4996D7A127D5986500437265 /* WalletCouponsCell.swift in Sources */,
 				497B354427CF69BF00AE20C4 /* BasePagingTableController.swift in Sources */,
+				45C6B7932858253100546CC8 /* CheckInTodaySessionView.swift in Sources */,
 				49E79F7E278D5FD000F304B2 /* BlogBookmarkedModel.swift in Sources */,
 				49F17C5D2807EF4C00FCBC87 /* ShopProductReviewModel.swift in Sources */,
 				49B098B127B393350055B341 /* RangeSlider.swift in Sources */,
@@ -3939,11 +3957,13 @@
 				4550946D28324EDE0017C244 /* BookingCompleteModel.swift in Sources */,
 				4904C3D028067865008FE5A5 /* MatchPhoneModel.swift in Sources */,
 				4998C0872783DBF900A881D5 /* OurServicesViewController.swift in Sources */,
+				45C6B7912858251400546CC8 /* CheckInTodaySessionController.swift in Sources */,
 				49FC8EB22791080E00157292 /* SymptomCheckEmailMeController.swift in Sources */,
 				45F894AF28534384008BC7CC /* SwiftQRScanner.swift in Sources */,
 				45D6510A284DD2C100C7BD39 /* UpcomingSessionView.swift in Sources */,
 				49BA628D2785938F00B898D5 /* BlogCategoryModel.swift in Sources */,
 				4904C3C1280677C6008FE5A5 /* ShopCartCell.swift in Sources */,
+				45C6B7982858282C00546CC8 /* CheckInTodayCell.swift in Sources */,
 				49981EE727CCB8F300D4F7BF /* SettingFilterModel.swift in Sources */,
 				49BA629427880CAE00B898D5 /* BlogBoardsController.swift in Sources */,
 				4933AC6F27D84DC8005E9FB1 /* CardUserDetailHeadView.swift in Sources */,

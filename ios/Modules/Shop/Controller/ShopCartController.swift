@@ -46,6 +46,8 @@ class ShopCartController: BaseTableController {
       addTableFooterView()
     }
     endRefresh(dataArray.count, emptyString: "No Items")
+    
+    updateFooterViewData()
   }
   
   override func refreshData() {
@@ -58,6 +60,7 @@ class ShopCartController: BaseTableController {
   
   @discardableResult
   func updateFooterViewData() -> Float{
+    if self.dataArray.count == 0 { return 0 }
     let products = self.dataArray as! [Product]
     let count = products.reduce(0, { $0 + $1.count })
     let price = products.reduce(0, { $0 + ($1.count.float * ($1.sell_price.float() ?? 0)) })

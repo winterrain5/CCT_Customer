@@ -122,12 +122,13 @@ class QRCodeScannerController: BaseViewController,
     UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
     _delayCount = 0
     prepareQRScannerView()
-    startScanningQRCode()
+    
   }
   
   override public func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     addButtons()
+    startScanningQRCode()
   }
   
   /** This calls up methods which makes code ready for scan codes.
@@ -342,7 +343,6 @@ class QRCodeScannerController: BaseViewController,
               delegate?.qrScannerDidFail(self, error: .emptyResult)
             }
             captureSession.stopRunning()
-            self.navigationController?.popViewController(animated: true)
           }
         }
       }

@@ -42,6 +42,6 @@ class TodaySessionCell: UICollectionViewCell {
   }
 
   @IBAction func checkinAction(_ sender: Any) {
-    
+    NotificationCenter.default.post(name: NSNotification.Name.todayCheckIn, object: self.model)
   }
 }

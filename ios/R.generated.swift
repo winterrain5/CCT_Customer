@@ -422,7 +422,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 126 images.
+  /// This `R.image` struct is generated, and contains static references to 127 images.
   struct image {
     /// Image `account_arrow_right`.
     static let account_arrow_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "account_arrow_right")
@@ -478,6 +478,8 @@ struct R: Rswift.Validatable {
     static let card_set_pin_close = Rswift.ImageResource(bundle: R.hostingBundle, name: "card_set_pin_close")
     /// Image `card_user_delete`.
     static let card_user_delete = Rswift.ImageResource(bundle: R.hostingBundle, name: "card_user_delete")
+    /// Image `check_in_help`.
+    static let check_in_help = Rswift.ImageResource(bundle: R.hostingBundle, name: "check_in_help")
     /// Image `contact_us_location`.
     static let contact_us_location = Rswift.ImageResource(bundle: R.hostingBundle, name: "contact_us_location")
     /// Image `contact_us_phone`.
@@ -863,6 +865,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "card_user_delete", bundle: ..., traitCollection: ...)`
     static func card_user_delete(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.card_user_delete, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "check_in_help", bundle: ..., traitCollection: ...)`
+    static func check_in_help(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.check_in_help, compatibleWith: traitCollection)
     }
     #endif
 
@@ -1562,7 +1571,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 115 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 117 nibs.
   struct nib {
     /// Nib `AccountEditSheetContentView`.
     static let accountEditSheetContentView = _R.nib._AccountEditSheetContentView()
@@ -1612,6 +1621,10 @@ struct R: Rswift.Validatable {
     static let cardUserDetailHeadView = _R.nib._CardUserDetailHeadView()
     /// Nib `ChangePwdContainer`.
     static let changePwdContainer = _R.nib._ChangePwdContainer()
+    /// Nib `CheckInTodayCell`.
+    static let checkInTodayCell = _R.nib._CheckInTodayCell()
+    /// Nib `CheckInTodaySessionView`.
+    static let checkInTodaySessionView = _R.nib._CheckInTodaySessionView()
     /// Nib `ConfirmSessionContainer`.
     static let confirmSessionContainer = _R.nib._ConfirmSessionContainer()
     /// Nib `ContactUsListCell`.
@@ -1984,6 +1997,22 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.changePwdContainer) instead")
     static func changePwdContainer(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.changePwdContainer)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "CheckInTodayCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.checkInTodayCell) instead")
+    static func checkInTodayCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.checkInTodayCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "CheckInTodaySessionView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.checkInTodaySessionView) instead")
+    static func checkInTodaySessionView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.checkInTodaySessionView)
     }
     #endif
 
@@ -2811,6 +2840,14 @@ struct R: Rswift.Validatable {
       return R.nib.changePwdContainer.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ChangePwdContainer
     }
 
+    static func checkInTodayCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CheckInTodayCell? {
+      return R.nib.checkInTodayCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CheckInTodayCell
+    }
+
+    static func checkInTodaySessionView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CheckInTodaySessionView? {
+      return R.nib.checkInTodaySessionView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CheckInTodaySessionView
+    }
+
     static func confirmSessionContainer(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ConfirmSessionContainer? {
       return R.nib.confirmSessionContainer.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ConfirmSessionContainer
     }
@@ -3217,6 +3254,7 @@ struct _R: Rswift.Validatable {
       try _BookingUpComingDetailView.validate()
       try _CCTShopFooterView.validate()
       try _CardUserDetailHeadView.validate()
+      try _CheckInTodaySessionView.validate()
       try _ConfirmSessionContainer.validate()
       try _ContactUsListCell.validate()
       try _DataProtectionHeadView.validate()
@@ -3657,6 +3695,38 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ChangePwdContainer? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ChangePwdContainer
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _CheckInTodayCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "CheckInTodayCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CheckInTodayCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CheckInTodayCell
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _CheckInTodaySessionView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "CheckInTodaySessionView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CheckInTodaySessionView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CheckInTodaySessionView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "check_in_help", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'check_in_help' is used in nib 'CheckInTodaySessionView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'CheckInTodaySessionView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'CheckInTodaySessionView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamRed", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamRed' is used in nib 'CheckInTodaySessionView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'CheckInTodaySessionView', but couldn't be loaded.") }
+        }
       }
 
       fileprivate init() {}

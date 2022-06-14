@@ -238,7 +238,12 @@ class InputResideView: UIView,UITextFieldDelegate {
   }
   
   @IBAction func nextAction(_ sender: Any) {
-   getFreeDiscountsForClient()
+    if Defaults.shared.get(for: .userModel) == nil {
+      getFreeDiscountsForClient()
+    }else {
+      save()
+    }
+   
   }
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {

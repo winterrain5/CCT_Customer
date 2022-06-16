@@ -49,7 +49,7 @@ class ShopDetailReviewController: BasePagingTableController {
   
   override func createListView() {
     super.createListView()
-    
+    self.tableView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 74 + kBottomsafeAreaMargin, right: 0)
     self.tableView?.register(nibWithCellClass: ShopProductReviewCell.self)
     self.tableView?.estimatedRowHeight = 100
     self.tableView?.rowHeight = UITableView.automaticDimension

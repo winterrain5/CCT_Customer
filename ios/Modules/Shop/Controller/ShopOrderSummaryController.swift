@@ -61,8 +61,8 @@ class ShopOrderSummaryController: BaseViewController {
     }
     
     self.view.addSubview(returnButton)
-    (returnButton).addTarget(self, action: #selector(returnButtonAction), for: .touchUpInside)
-    (returnButton).snp.makeConstraints { make in
+    returnButton.addTarget(self, action: #selector(returnButtonAction), for: .touchUpInside)
+    returnButton.snp.makeConstraints { make in
       make.left.right.equalToSuperview().inset(32)
       make.height.equalTo(44)
       make.bottom.equalToSuperview().inset(40 + kBottomsafeAreaMargin)

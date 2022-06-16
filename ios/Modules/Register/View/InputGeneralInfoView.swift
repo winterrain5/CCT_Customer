@@ -131,7 +131,7 @@ class InputGeneralInfoView: UIView, UITextFieldDelegate {
   }
   
   @IBAction func showCalendarAction(_ sender: Any) {
-    DateOfBirthSheetView.show { date in
+    DatePickerSheetView.show(maximumDate:Date()) { date in
       let dateStr = date.string(withFormat: "yyyy-MM-dd")
       self.dateOfBirth = dateStr
       self.birthTf.text = dateStr

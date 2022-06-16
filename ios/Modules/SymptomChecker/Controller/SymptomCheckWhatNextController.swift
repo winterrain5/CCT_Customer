@@ -54,8 +54,6 @@ class SymptomCheckWhatNextController: BaseViewController {
         Toast.dismiss()
       }
 
-      
-//      SelectTypeOfServiceSheetView.show()
     }
     container.saveReportHandler = {
       [weak self] isSave in

@@ -36,10 +36,9 @@ class NetworkManager:NSObject, XMLParserDelegate {
     self.errorHandler = errorHandler
     self.params = params
     guard let url = getURL(action: params.action) else { return }
-    print("url:\(url)")
     
     let soapMsg:String = toSoapMessage(path:params.path, pams: params.result)
-    print("soapMsg:\(soapMsg)")
+   
     
     let urlRequest: URLRequest = getURLRequest(url: url, soapMsg: soapMsg)
     var task:URLSessionTask!
@@ -114,6 +113,7 @@ extension NetworkManager {
   func parserDidEndDocument(_ parser: XMLParser) {
     if currentNodeName == "faultstring" {
       
+      print("soapMsg:\(toSoapMessage(path:self.params.path, pams: self.params.result))")
     
       DispatchQueue.main.async {
 #if DEBUG
@@ -122,16 +122,16 @@ extension NetworkManager {
         self.errorHandler(APIError.requestError(code: -1, message: self.result))
       }
    
-     
-  
       print("faultstring:\(result)")
   
     }
-   
+    
     if currentNodeName == "return" {
       if result != ""{
         
         let json = JSON(parseJSON: result)
+        
+        print("soapMsg:\(toSoapMessage(path:self.params.path, pams: self.params.result))")
         print("url:\(params.path) \n response:\(json.dictionaryValue)")
        
         DispatchQueue.main.async {

@@ -8,6 +8,7 @@
 import UIKit
 import CoreGraphics
 import AVFoundation
+import Haptica
 
 
 /**
@@ -331,14 +332,25 @@ class QRCodeScannerController: BaseViewController,
   
   // This method get called when Scanning gets complete
   public func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+   
     for data in metadataObjects {
       let transformed = videoPreviewLayer.transformedMetadataObject(for: data) as? AVMetadataMachineReadableCodeObject
       if let unwraped = transformed {
         if view.bounds.contains(unwraped.bounds) {
           _delayCount = _delayCount + 1
           if _delayCount > delayCount {
+            
             if let unwrapedStringValue = unwraped.stringValue {
-              delegate?.qrScanner(self, scanDidComplete: unwrapedStringValue)
+              if #available(iOS 13.0, *) {
+                Haptic.impact(.soft).generate()
+              } else {
+                Haptic.impact(.light).generate()
+              }
+              self.addTriggerButton(unwraped.bounds)
+              DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.delegate?.qrScanner(self, scanDidComplete: unwrapedStringValue)
+              }
+              
             } else {
               delegate?.qrScannerDidFail(self, error: .emptyResult)
             }
@@ -346,6 +358,19 @@ class QRCodeScannerController: BaseViewController,
           }
         }
       }
+    }
+  }
+  
+  func addTriggerButton(_ bounds:CGRect) {
+    let btn = UIButton()
+    btn.cornerRadius = 15
+    btn.borderColor = .white
+    btn.borderWidth = 2
+    btn.backgroundColor = R.color.theamBlue()
+    btn.frame = CGRect(x: bounds.midX, y: bounds.midY, width: 30, height: 30)
+    self.view.addSubview(btn)
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+      btn.removeFromSuperview()
     }
   }
 }

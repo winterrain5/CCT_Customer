@@ -247,6 +247,9 @@ enum API:String {
   case getLastSymptomCheckReport = "getLastSymptomCheckReport"
   /// 检查病人是否已经挂号
   case checkConsulted = "checkConsulted"
+  /// 获取某天某分店某类服务的排队数量和等待时间
+  case getWaitServiceInfo = "getWaitServiceInfo"
+  
   /// 通过手机获取系统所有的用户信息
   case getClientsByPhone = "getClientsByPhone"
   ///修改用户Source，注册方式
@@ -261,6 +264,17 @@ enum API:String {
   case checkReferralCodeExists = "checkReferralCodeExists"
   /// 获取折扣用于注册时赠送顾客
   case getDiscountForRegister = "getDiscountForRegister"
+  
+  //获取客户产前问卷信息
+  case getPrePartumItems = "getPrePartumItems"
+  
+  //获取产后详细信息
+  case getPostPartumItems = "getPostPartumItems"
+  
+  //获取问卷
+  case getTAllItems = "getTAllItems"
+  /// 修改某次服务的状态并给看诊服务排队号
+  case changeTStatus = "changeTStatus"
   
   // 物品购物车推送
   case itemsInCart = "itemsInCart";
@@ -315,7 +329,7 @@ enum Action:String {
   case BookingOrder = "booking-order"
   case Schedule = "schedule"
   case Country = "country"
-
+  
 }
 
 struct WebUrl {

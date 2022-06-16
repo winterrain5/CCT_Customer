@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="248" id="U8B-X1-I6p" customClass="DeclarationFormMethodOfDeiveryCell" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="453" height="248"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U8B-X1-I6p" id="2nK-mS-GzH">
+                <rect key="frame" x="0.0" y="0.0" width="453" height="248"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xl2-QH-BKU">
+                        <rect key="frame" x="24" y="8" width="405" height="232"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question 01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bpf-9V-141">
+                                <rect key="frame" x="16" y="16" width="58" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="Wb1-3a-DlA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
+                                <color key="textColor" name="Black333"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Method of Delivery" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSJ-5M-2D0">
+                                <rect key="frame" x="16" y="30" width="373" height="126"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                <color key="textColor" name="Black333"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qHg-qC-sJt">
+                                <rect key="frame" x="16" y="172" width="373" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVl-I6-Y8c">
+                                        <rect key="frame" x="0.0" y="0.0" width="186.5" height="44"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="C-Section">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                            <color key="baseForegroundColor" name="grayBD"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cSectionAction:" destination="U8B-X1-I6p" eventType="touchUpInside" id="EkL-fy-AoD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTI-7E-dQN">
+                                        <rect key="frame" x="186.5" y="0.0" width="186.5" height="44"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Natural Birth">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                            <color key="baseForegroundColor" name="grayBD"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="naturalBirth:" destination="U8B-X1-I6p" eventType="touchUpInside" id="f4B-uD-bBt"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Gbn-fM-kD7"/>
+                                    <constraint firstItem="fTI-7E-dQN" firstAttribute="width" secondItem="gVl-I6-Y8c" secondAttribute="width" id="TSR-lp-2bq"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bSJ-5M-2D0" firstAttribute="leading" secondItem="xl2-QH-BKU" secondAttribute="leading" constant="16" id="8rv-7R-OYv"/>
+                            <constraint firstItem="qHg-qC-sJt" firstAttribute="leading" secondItem="xl2-QH-BKU" secondAttribute="leading" constant="16" id="Jmc-px-ySN"/>
+                            <constraint firstItem="bSJ-5M-2D0" firstAttribute="top" secondItem="Bpf-9V-141" secondAttribute="bottom" id="TFG-XQ-7jU"/>
+                            <constraint firstAttribute="bottom" secondItem="qHg-qC-sJt" secondAttribute="bottom" constant="16" id="drC-wk-o4n"/>
+                            <constraint firstAttribute="trailing" secondItem="qHg-qC-sJt" secondAttribute="trailing" constant="16" id="ke1-XJ-g0g"/>
+                            <constraint firstItem="Bpf-9V-141" firstAttribute="top" secondItem="xl2-QH-BKU" secondAttribute="top" constant="16" id="soT-VJ-YZi"/>
+                            <constraint firstItem="qHg-qC-sJt" firstAttribute="top" secondItem="bSJ-5M-2D0" secondAttribute="bottom" constant="16" id="vZ0-M1-tmD"/>
+                            <constraint firstAttribute="trailing" secondItem="bSJ-5M-2D0" secondAttribute="trailing" constant="16" id="xW0-Ny-pVp"/>
+                            <constraint firstItem="Bpf-9V-141" firstAttribute="leading" secondItem="xl2-QH-BKU" secondAttribute="leading" constant="16" id="z02-4X-uxy"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="xl2-QH-BKU" secondAttribute="trailing" constant="24" id="1Cf-Kz-tsI"/>
+                    <constraint firstAttribute="bottom" secondItem="xl2-QH-BKU" secondAttribute="bottom" constant="8" id="IB9-6a-Qea"/>
+                    <constraint firstItem="xl2-QH-BKU" firstAttribute="top" secondItem="2nK-mS-GzH" secondAttribute="top" constant="8" id="s9D-5f-neH"/>
+                    <constraint firstItem="xl2-QH-BKU" firstAttribute="leading" secondItem="2nK-mS-GzH" secondAttribute="leading" constant="24" id="sEp-Fj-BYK"/>
+                </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="Dkf-0t-i7Z"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="cSectionBtn" destination="gVl-I6-Y8c" id="a5N-Eu-7Qi"/>
+                <outlet property="descLabel" destination="bSJ-5M-2D0" id="UNh-zD-Fhu"/>
+                <outlet property="naturalBirthBtn" destination="fTI-7E-dQN" id="Ugb-el-tTq"/>
+                <outlet property="numLabel" destination="Bpf-9V-141" id="gnI-eu-jGw"/>
+                <outlet property="shadowView" destination="xl2-QH-BKU" id="0YF-RW-ReX"/>
+                <outlet property="stackView" destination="qHg-qC-sJt" id="wlo-fH-qbo"/>
+            </connections>
+            <point key="canvasLocation" x="-1133" y="24"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="Black333">
+            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayBD">
+            <color red="0.74099999666213989" green="0.74099999666213989" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

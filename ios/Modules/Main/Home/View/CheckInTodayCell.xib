@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="222" height="196"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Treatment Session" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agx-C4-OJa">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Treatment Session" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agx-C4-OJa">
                         <rect key="frame" x="16" y="16" width="190" height="22"/>
                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                         <color key="textColor" name="TheamBlue"/>
@@ -52,10 +52,16 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDS-FM-DQu">
-                        <rect key="frame" x="16" y="136" width="190" height="44"/>
+                        <rect key="frame" x="16" y="138" width="190" height="42"/>
                         <color key="backgroundColor" name="TheamYellow"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="44" id="Tsx-fR-Ah2"/>
+                            <constraint firstAttribute="height" constant="42" id="Tsx-fR-Ah2">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="swiftyFitType">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="Check In">
@@ -81,9 +87,21 @@
                 <constraint firstAttribute="trailing" secondItem="agx-C4-OJa" secondAttribute="trailing" constant="16" id="Pmt-Y5-DIj"/>
                 <constraint firstItem="HDS-FM-DQu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="X3t-Y5-s2j"/>
                 <constraint firstItem="agx-C4-OJa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="aN6-Fe-OTv"/>
-                <constraint firstItem="agx-C4-OJa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="aWo-Ax-eiQ"/>
+                <constraint firstItem="agx-C4-OJa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="aWo-Ax-eiQ">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="swiftyFitType">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
                 <constraint firstAttribute="trailing" secondItem="HDS-FM-DQu" secondAttribute="trailing" constant="16" id="iIe-w1-jqA"/>
-                <constraint firstItem="tyc-dw-Mkr" firstAttribute="top" secondItem="agx-C4-OJa" secondAttribute="bottom" constant="16" id="ibe-Nr-bFp"/>
+                <constraint firstItem="tyc-dw-Mkr" firstAttribute="top" secondItem="agx-C4-OJa" secondAttribute="bottom" constant="16" id="ibe-Nr-bFp">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="swiftyFitType">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
                 <constraint firstAttribute="bottom" secondItem="HDS-FM-DQu" secondAttribute="bottom" constant="16" id="k55-es-MVo"/>
                 <constraint firstItem="IXK-ix-tsF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="yoS-1T-z6P"/>
             </constraints>
@@ -92,7 +110,7 @@
                 <outlet property="timeLabel" destination="IXK-ix-tsF" id="25l-aj-law"/>
                 <outlet property="titleLabel" destination="agx-C4-OJa" id="6TB-pf-MDq"/>
             </connections>
-            <point key="canvasLocation" x="-217.39130434782609" y="141.96428571428569"/>
+            <point key="canvasLocation" x="-217.39130434782609" y="141.29464285714286"/>
         </collectionViewCell>
     </objects>
     <resources>

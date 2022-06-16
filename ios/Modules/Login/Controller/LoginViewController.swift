@@ -16,7 +16,9 @@ class LoginViewController: BaseViewController {
     self.navigation.bar.isHidden = true
     self.view.addSubview(content)
     content.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight)
-    
+    content.scanQRCodeHandler = { [weak self] in
+      self?.showScanVc()
+    }
     getCompanyId()
   }
   
@@ -35,5 +37,43 @@ class LoginViewController: BaseViewController {
 
   }
   
-  
+  func showScanVc() {
+    var configuration = QRScannerConfiguration()
+    configuration.title = ""
+    configuration.hint = "Scan the Outlet QR Code"
+    configuration.color = .white
+    configuration.thickness = 2
+    configuration.length = 44
+    configuration.radius = 22
+    configuration.readQRFromPhotos = false
+    configuration.previewSize = CGSize(width: kScreenWidth - 48, height: kScreenWidth - 48)
+    configuration.roundCornerSize = CGSize(width: kScreenWidth - 24, height: kScreenWidth - 24)
+    
+    let scanner = QRCodeScannerController(qrScannerConfiguration: configuration)
+    scanner.delegate = self
+    self.navigationController?.pushViewController(scanner, completion: nil)
+  }
 }
+
+extension LoginViewController: QRScannerCodeDelegate {
+    func qrScannerDidFail(_ controller: UIViewController, error: QRCodeError) {
+        print("error:\(error.localizedDescription)")
+    }
+    
+    func qrScanner(_ controller: UIViewController, scanDidComplete result: String) {
+        print("result:\(result)")
+      
+//      let json = JSON(parseJSON: result)
+//      let locationName = json["name"].stringValue
+//      let id = json["id"].stringValue
+//      let type = json["type"].stringValue
+//
+      let vc = EnterAccountController(isFromScanQRCode: true)
+      self.navigationController?.pushViewController(vc, completion: nil)
+    }
+    
+    func qrScannerDidCancel(_ controller: UIViewController) {
+        print("SwiftQRScanner did cancel")
+    }
+}
+

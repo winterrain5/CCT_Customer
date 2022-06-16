@@ -53,10 +53,11 @@ class InputIDContainer: UIView ,UITextFieldDelegate{
     sender.isSelected.toggle()
     if sender.isSelected {
       sender.imageForNormal = R.image.symptom_check_box_unselect()
-      sender.backgroundColor = R.color.grayE0()
+      sender.tintColor = R.color.grayE0()
       sender.borderColor = UIColor(hexString: "777777")
     }else {
       sender.borderColor = .clear
+      sender.tintColor = R.color.white()
       sender.imageForNormal = R.image.symptom_check_box_select()
     }
     setNextButonState()

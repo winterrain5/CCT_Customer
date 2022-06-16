@@ -12,19 +12,29 @@ class HomeWellcomeView: UIView {
   var nameLabel = UILabel().then { label in
     label.textColor = R.color.theamBlue()
     label.font = UIFont(name: .AvenirNextDemiBold, size: 24)
-    let firstname = Defaults.shared.get(for: .userModel)?.first_name ?? ""
-    let lastname = Defaults.shared.get(for: .userModel)?.last_name ?? ""
-    label.text = "Wellcome," + firstname + " " + lastname
+   
   }
   var tipLabel = UILabel().then { label in
     label.textColor = R.color.black()
     label.font = UIFont(name: .AvenirNextRegular, size: 14)
     label.text = "Start exploring our integrated healthcare app!"
   }
+  
+  var user:UserModel? {
+    didSet {
+      guard let user = user else {
+        return
+      }
+      let firstname = user.first_name
+      let lastname = user.last_name
+      nameLabel.text = "Wellcome," + firstname + " " + lastname
+    }
+  }
   override init(frame: CGRect) {
     super.init(frame: frame)
     addSubview(nameLabel)
     addSubview(tipLabel)
+    
   }
   
   required init?(coder: NSCoder) {

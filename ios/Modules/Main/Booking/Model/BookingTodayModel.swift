@@ -14,6 +14,8 @@ class BookingTodayModel: BaseModel {
   var filled_health_form: Bool = false
   var health_declaration_form_type: String = ""
   var queue_no: String = ""
+  var duration_mins = ""
+  var queue_count: String = ""
   var location_name: String = ""
   var booking_staff_id: String = ""
   var location_id: String = ""
@@ -24,9 +26,15 @@ class BookingTodayModel: BaseModel {
   var alias_name: String = ""
   var staff_name: String = ""
   var wellness_treatment_type: String = ""
-  var status: String = ""
+  var status: Int = 0
   var wellness_or_treatment: String = ""
   var cellHeight:CGFloat {
+    if status == 4 && filled_health_form {
+      return 164
+    }
+    if !queue_no.isEmpty {
+      return 225
+    }
     if staff_is_random == "2" {
       return 196 + 28
     }else {

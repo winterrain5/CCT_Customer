@@ -15,12 +15,14 @@ class WalletVoucherCouponsCell: UICollectionViewCell {
     didSet {
       titleLabel.text = voucher.name
       descLabel.text = voucher.description
+      
     }
   }
   var coupon:WalletCouponsModel! {
     didSet {
       titleLabel.text = coupon.name
       descLabel.text = coupon.description
+      imageView.yy_setImage(with: coupon.img?.asURL, options: .setImageWithFadeAnimation)
     }
   }
     override func awakeFromNib() {

@@ -11,7 +11,6 @@ class BookingCompleteDetailController: BaseViewController {
 
   let contentView = BookingCompleteDetailView.loadViewFromNib()
   var complete: BookingCompleteModel!
-  
   var scrolView = UIScrollView()
   var button = UIButton().then { btn in
     btn.backgroundColor = R.color.theamBlue()

@@ -9,11 +9,17 @@ import UIKit
 
 class EnterAccountContainer: UIView,UITextFieldDelegate {
 
+  @IBOutlet weak var registerBtn: LoadingButton!
   @IBOutlet weak var loginBtn: LoadingButton!
   @IBOutlet weak var pwdTf: UITextField!
   @IBOutlet weak var accountTf: UITextField!
   var otpCode = ""
   var isLoginByMobile = false
+  var isFromScanQRCode = false {
+    didSet {
+      registerBtn.isHidden = !isFromScanQRCode
+    }
+  }
   @IBOutlet weak var bottomView: UIView!
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -28,7 +34,13 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
     super.layoutSubviews()
     bottomView.corner(byRoundingCorners: [.topLeft,.topRight], radii: 16)
   }
-
+  @IBAction func registerNewAction(_ sender: Any) {
+    
+    let vc = InputPhoneController()
+    UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
+    
+  }
+  
   @IBAction func forgotPwdAction(_ sender: Any) {
     ForgetPwdSheetView.show()
   }
@@ -55,9 +67,9 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
       if let models = DecodeManager.decodeArrayByHandJSON(UserPasswordModel.self, from: data),models.count > 0 ,let password = models.first,password.password == (self.pwdTf.text?.md5 ?? "") {
         self.getTClientByuserId(userID: password.id)
       }else {
+        self.loginBtn.stopAnimation()
         AlertView.show(message: "The mobile / email / password is invalid. Please try again.")
       }
-      self.loginBtn.stopAnimation()
     } errorHandler: { e in
       self.loginBtn.stopAnimation()
       AlertView.show(message: "The mobile / email / password is invalid. Please try again.")

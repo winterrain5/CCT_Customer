@@ -51,8 +51,10 @@ class ConfirmSessionContainer: UIView {
   @IBOutlet weak var confirmButton: LoadingButton!
   var confirmHandler:(()->())?
   
-  var model:ConfirmSessionModel! {
+  var model:ConfirmSessionModel? {
     didSet {
+      
+      guard let model = model else { return }
       
       titleLabel.text = model.service_name
       timeLabel.text = model.time
@@ -79,16 +81,79 @@ class ConfirmSessionContainer: UIView {
     }
   }
   
+  var todayModel:BookingTodayModel? {
+    didSet {
+      guard let todayModel = todayModel else {
+        return
+      }
+      let date = todayModel.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
+      titleLabel.text = todayModel.alias_name
+      timeLabel.text = date?.timeString(ofStyle: .short)
+      dateLabel.text = date?.string(withFormat: "dd MMM yyyy,EEE")
+      locationLabel.text = todayModel.location_name
+      employeeNameLabel.text = todayModel.staff_name
+      
+      if let user = Defaults.shared.get(for: .userModel) {
+        userNameLabel.text = user.first_name + " " + user.last_name
+        guard let rang = Range(NSRange(location: 0, length: 5), in: user.card_number) else { return }
+        userPassportLabel.text = user.card_number.replacingCharacters(in: rang, with: "*****")
+        userGenderLabel.text = user.gender == "1" ? "Male" : "Female"
+        userBirthDayLabel.text = user.birthday.date(withFormat: "yyyy-MM-dd")?.string(withFormat: "dd MMM yyyy")
+      }
+      
+      if todayModel.staff_is_random == "2" {
+        employeeView.isHidden = false
+        infoHCons.constant = 172
+      }else {
+        employeeView.isHidden = true
+        infoHCons.constant = 145
+      }
+      
+      setNeedsLayout()
+      layoutIfNeeded()
+    }
+  }
   
   @IBAction func confirmAction(_ sender: LoadingButton) {
+    if todayModel != nil {
+      changeTStatus()
+    }else {
+      saveTOnlineBookingData()
+    }
+  }
+  
+  func changeTStatus() {
+    // 1.保健 2.治疗 3.产前，4.产后
+    let formType = todayModel?.health_declaration_form_type.int ?? 0
     
-    saveTOnlineBookingData()
+    if formType == 1 {
+      
+    }
     
+    if formType == 2 {
+      
+    }
+    
+    if formType == 3 {
+      
+    }
+    
+    if formType == 	4 {
+      guard let todayModel = todayModel else {
+        return
+      }
+      let vc = PostPartumDeclarationController(bookedService: todayModel)
+      UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
+    }
   }
   
   func saveTOnlineBookingData() {
     
     var url:API!
+    guard let model = model else {
+      return
+    }
+
     switch model.service_type {
     case .Treatment:
       url = .saveDocTData
@@ -97,6 +162,7 @@ class ConfirmSessionContainer: UIView {
     case .Therapist:
       url = .saveAppAssignData
     }
+    
     
     let mapParams = SOAPParams(action: .BookingOrder, path: url)
     
@@ -185,6 +251,10 @@ class ConfirmSessionContainer: UIView {
   }
   
   func newCreateAppointment() {
+    guard let model = model else {
+      return
+    }
+
     let params = SOAPParams(action: .Notifications, path: .newCreateAppointment)
     params.set(key: "service", value: model.service_name)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
@@ -192,6 +262,7 @@ class ConfirmSessionContainer: UIView {
     NetworkManager().request(params: params) { data in
      
     } errorHandler: { e in
+      self.showSuccessSheet()
       self.confirmButton.stopAnimation()
     }
     self.getTSystemConfig()
@@ -214,6 +285,10 @@ class ConfirmSessionContainer: UIView {
   }
   
   func sendSmsForEmail(_ config:SystemConfigModel) {
+    guard let model = model else {
+      return
+    }
+
     let mapParams = SOAPParams(action: .Sms, path: .sendSmsForEmail,isNeedToast: false)
     
     let data = SOAPDictionary()
@@ -256,16 +331,24 @@ class ConfirmSessionContainer: UIView {
   }
   
   func addToCalendar() {
+    guard let model = model else {
+      return
+    }
+
     if !model.isSyncCalendar { return }
     let eventStore = EKEventStore()
     eventStore.requestAccess(to: .event) { flag, e in
       if flag {
         DispatchQueue.main.async {
           let event = EKEvent(eventStore: eventStore)
-          event.title = self.model.service_name
-          event.startDate = self.model.date.date(withFormat: "dd MMM yyyy,EEE")
-          event.endDate = self.model.date.date(withFormat: "dd MMM yyyy,EEE")
-          event.notes = self.model.remark
+          event.title = model.service_name
+          
+          let date = model.date.date(withFormat: "dd MMM yyyy,EEE")?.string(withFormat: "yyyy-MM-dd") ?? ""
+          let therapy_start_date = date.appending(" ").appending(model.time.dropLast(3)).appending(":00")
+          let therapy_end_date = therapy_start_date.dateTime?.addingTimeInterval(TimeInterval(model.duration.int ?? 0)).string(withFormat: "yyyy-MM-dd HH:mm:ss") ?? ""
+          event.startDate = therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
+          event.endDate = therapy_end_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
+          event.notes = model.remark
           event.calendar = eventStore.defaultCalendarForNewEvents
           
           do {

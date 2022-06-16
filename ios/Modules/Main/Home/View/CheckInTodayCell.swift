@@ -19,14 +19,15 @@ class CheckInTodayCell: UICollectionViewCell {
       let date = model.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
       timeLabel.text = date?.timeString(ofStyle: .short)
       titleLabel.text = model.alias_name
-    
+      
     }
   }
+  
   override func awakeFromNib() {
-        super.awakeFromNib()
-    contentView.cornerRadius = 16
-    }
-
+    super.awakeFromNib()
+    cornerRadius = 16
+  }
+  
   @IBAction func checkAction(_ sender: Any) {
     checkInHandler?(model)
   }

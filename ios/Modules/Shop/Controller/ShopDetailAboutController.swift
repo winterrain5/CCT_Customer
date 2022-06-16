@@ -44,7 +44,7 @@ class ShopDetailAboutController: BasePagingTableController {
       self.headView.height = height
       self.tableView?.tableHeaderView = self.headView
     }
-    
+    self.tableView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 74 + kBottomsafeAreaMargin, right: 0)
     self.tableView?.register(cellWithClass: ShopCollectionCell.self)
   }
   

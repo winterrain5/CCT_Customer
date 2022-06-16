@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="248" id="KGk-i7-Jjw" customClass="DeclarationFormCell" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="453" height="248"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="453" height="248"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQx-92-i5N">
+                        <rect key="frame" x="24" y="8" width="405" height="232"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question 01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RkX-UY-Tj9">
+                                <rect key="frame" x="16" y="16" width="58" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="7oT-sH-Icz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
+                                <color key="textColor" name="Black333"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have you undergone any form of surgery in the past 6 months?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8N-uX-Cqr">
+                                <rect key="frame" x="16" y="30" width="373" height="126"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                <color key="textColor" name="Black333"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XI0-6Q-26D">
+                                <rect key="frame" x="16" y="172" width="373" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9u-zN-2nd">
+                                        <rect key="frame" x="0.0" y="0.0" width="124.5" height="44"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="No">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                            <color key="baseForegroundColor" name="grayBD"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="noAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iZa-Ob-rWT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkl-Ss-PlW">
+                                        <rect key="frame" x="124.5" y="0.0" width="124" height="44"/>
+                                        <color key="backgroundColor" name="White"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Yes">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                            <color key="baseForegroundColor" name="grayBD"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="yesAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HU4-9r-CsG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5i-L3-Bog">
+                                        <rect key="frame" x="248.5" y="0.0" width="124.5" height="44"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Unsure">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                            <color key="baseForegroundColor" name="grayBD"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="unSureAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="CRA-7b-RzT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="lkl-Ss-PlW" firstAttribute="width" secondItem="J9u-zN-2nd" secondAttribute="width" id="LJO-gT-KN1"/>
+                                    <constraint firstItem="Z5i-L3-Bog" firstAttribute="width" secondItem="J9u-zN-2nd" secondAttribute="width" id="mYb-eZ-9SU"/>
+                                    <constraint firstAttribute="height" constant="44" id="w2Z-am-EOu"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="u8N-uX-Cqr" secondAttribute="trailing" constant="16" id="0J5-lF-fXf"/>
+                            <constraint firstItem="u8N-uX-Cqr" firstAttribute="leading" secondItem="cQx-92-i5N" secondAttribute="leading" constant="16" id="Qah-0G-uvR"/>
+                            <constraint firstItem="RkX-UY-Tj9" firstAttribute="leading" secondItem="cQx-92-i5N" secondAttribute="leading" constant="16" id="Vkt-PT-QGw"/>
+                            <constraint firstItem="XI0-6Q-26D" firstAttribute="leading" secondItem="cQx-92-i5N" secondAttribute="leading" constant="16" id="Vn3-yU-GPR"/>
+                            <constraint firstItem="XI0-6Q-26D" firstAttribute="top" secondItem="u8N-uX-Cqr" secondAttribute="bottom" constant="16" id="bfi-bC-WEw"/>
+                            <constraint firstAttribute="trailing" secondItem="XI0-6Q-26D" secondAttribute="trailing" constant="16" id="dxz-SL-WdJ"/>
+                            <constraint firstItem="RkX-UY-Tj9" firstAttribute="top" secondItem="cQx-92-i5N" secondAttribute="top" constant="16" id="mtM-BE-Tyh"/>
+                            <constraint firstItem="u8N-uX-Cqr" firstAttribute="top" secondItem="RkX-UY-Tj9" secondAttribute="bottom" id="sdA-8Z-4Ob"/>
+                            <constraint firstAttribute="bottom" secondItem="XI0-6Q-26D" secondAttribute="bottom" constant="16" id="wBb-AE-1LF"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="cQx-92-i5N" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="BCT-Tj-HoY"/>
+                    <constraint firstAttribute="bottom" secondItem="cQx-92-i5N" secondAttribute="bottom" constant="8" id="auw-L8-eqr"/>
+                    <constraint firstItem="cQx-92-i5N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="cb7-fW-soj"/>
+                    <constraint firstAttribute="trailing" secondItem="cQx-92-i5N" secondAttribute="trailing" constant="24" id="dGF-0r-4KM"/>
+                </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="YesBtn" destination="lkl-Ss-PlW" id="7yJ-bT-faZ"/>
+                <outlet property="descLabel" destination="u8N-uX-Cqr" id="qdO-vG-NQb"/>
+                <outlet property="noBtn" destination="J9u-zN-2nd" id="wQC-46-aIW"/>
+                <outlet property="numLabel" destination="RkX-UY-Tj9" id="irQ-F1-1RX"/>
+                <outlet property="shadowView" destination="cQx-92-i5N" id="7Hc-Tj-f80"/>
+                <outlet property="stackView" destination="XI0-6Q-26D" id="aqS-Fx-TMW"/>
+                <outlet property="unsureBtn" destination="Z5i-L3-Bog" id="Bax-N6-kO6"/>
+            </connections>
+            <point key="canvasLocation" x="-892" y="119"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="Black333">
+            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayBD">
+            <color red="0.74099999666213989" green="0.74099999666213989" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

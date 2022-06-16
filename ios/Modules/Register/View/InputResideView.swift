@@ -60,7 +60,7 @@ class InputResideView: UIView,UITextFieldDelegate {
   }
   
   func getCounties(_ isGetBySelf:Bool) {
-    let  params = SOAPParams(action: .Country, path: .getTCountries)
+    let params = SOAPParams(action: .Country, path: .getTCountries)
     NetworkManager().request(params: params) { data in
       Toast.dismiss()
       if let models = DecodeManager.decodeArrayByHandJSON(CountryModel.self, from: data) {
@@ -179,7 +179,7 @@ class InputResideView: UIView,UITextFieldDelegate {
   }
   
   func sendNewUserSmsForEmail() {
-    let mapParams = SOAPParams(action: .Sms, path: .sendSmsForEmail)
+    let mapParams = SOAPParams(action: .Sms, path: .sendSmsForEmail,isNeedToast: false)
     
     let params = SOAPDictionary()
     params.set(key: "title", value: "[Chien Chi Tow]")

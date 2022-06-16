@@ -7,15 +7,28 @@
 
 import UIKit
 
-class DateOfBirthSheetView: UIView {
+class DatePickerSheetView: UIView {
 
   @IBOutlet weak var datePicker: UIDatePicker!
  
   var selectCompleteHalder:((Date)->())?
-  
+  var minDate:Date? {
+    didSet {
+      if let minDate = minDate {
+        datePicker.minimumDate = minDate
+      }
+    }
+  }
+  var maxDate:Date? {
+    didSet {
+      if let maxDate = maxDate {
+        datePicker.maximumDate = maxDate
+      }
+    }
+  }
   override func awakeFromNib() {
     super.awakeFromNib()
-    datePicker.maximumDate = Date()
+  
     if #available(iOS 13.4, *) {
       datePicker.preferredDatePickerStyle = .wheels
     } else {
@@ -40,8 +53,10 @@ class DateOfBirthSheetView: UIView {
     print(sender.date.dateString())
   }
   
-  static func show(complete:@escaping (Date)->()) {
-    let view = DateOfBirthSheetView.loadViewFromNib()
+  static func show(maximumDate:Date? = nil, minimumDate:Date? = nil, complete:@escaping (Date)->()) {
+    let view = DatePickerSheetView.loadViewFromNib()
+    view.maxDate = maximumDate
+    view.minDate = minimumDate
     view.selectCompleteHalder = complete
     let size = CGSize(width: kScreenWidth, height: 400)
     EntryKit.display(view: view, size: size, style: .sheet)

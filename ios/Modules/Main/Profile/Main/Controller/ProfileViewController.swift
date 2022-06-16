@@ -70,8 +70,9 @@ class ProfileViewController: BaseTableController {
           Defaults.shared.set(model, for: .userModel)
           self.headView.model = model
         }
+        self.endRefresh()
       } errorHandler: { e in
-        
+        self.endRefresh()
       }
     }
   }

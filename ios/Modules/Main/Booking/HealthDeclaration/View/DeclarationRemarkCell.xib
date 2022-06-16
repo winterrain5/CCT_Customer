@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="188" id="cTL-FQ-UP9" customClass="DeclarationRemarkCell" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="453" height="188"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cTL-FQ-UP9" id="LON-ii-mDr">
+                <rect key="frame" x="0.0" y="0.0" width="453" height="188"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXU-9M-7aT">
+                        <rect key="frame" x="24" y="8" width="405" height="172"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remarks" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fu-Ky-uVh">
+                                <rect key="frame" x="16" y="16" width="373" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="dga-zd-HnQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                <color key="textColor" name="Black333"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="30y-Q2-9Gh">
+                                <rect key="frame" x="16" y="56" width="373" height="48"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQb-Na-qMS">
+                                        <rect key="frame" x="0.0" y="47" width="373" height="1"/>
+                                        <color key="backgroundColor" name="grayE0"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="QY7-uz-oXU"/>
+                                        </constraints>
+                                    </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6Ob-XW-Scz" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
+                                        <rect key="frame" x="9" y="6" width="355" height="36"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="textColor" name="Black333"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Let us know"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" name="gray82"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="cTL-FQ-UP9" id="8lk-op-YIJ"/>
+                                        </connections>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="bQb-Na-qMS" secondAttribute="trailing" id="2qf-er-ofo"/>
+                                    <constraint firstItem="6Ob-XW-Scz" firstAttribute="leading" secondItem="30y-Q2-9Gh" secondAttribute="leading" constant="9" id="4D3-Gj-dEc"/>
+                                    <constraint firstItem="bQb-Na-qMS" firstAttribute="leading" secondItem="30y-Q2-9Gh" secondAttribute="leading" id="Poa-sN-fPa"/>
+                                    <constraint firstAttribute="bottom" secondItem="bQb-Na-qMS" secondAttribute="bottom" id="TQy-cy-hCo"/>
+                                    <constraint firstAttribute="bottom" secondItem="6Ob-XW-Scz" secondAttribute="bottom" constant="6" id="X6b-gV-bIm"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Ob-XW-Scz" secondAttribute="trailing" constant="9" id="ine-2n-Aig"/>
+                                    <constraint firstItem="6Ob-XW-Scz" firstAttribute="top" secondItem="30y-Q2-9Gh" secondAttribute="top" constant="6" id="kDs-nS-wFw"/>
+                                    <constraint firstAttribute="height" constant="48" id="y4q-R3-Ljg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9fu-Ky-uVh" firstAttribute="top" secondItem="gXU-9M-7aT" secondAttribute="top" constant="16" id="OsI-XR-Nwj"/>
+                            <constraint firstAttribute="trailing" secondItem="30y-Q2-9Gh" secondAttribute="trailing" constant="16" id="hUm-9g-klD"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="30y-Q2-9Gh" secondAttribute="bottom" constant="16" id="iyJ-f1-VYU"/>
+                            <constraint firstAttribute="trailing" secondItem="9fu-Ky-uVh" secondAttribute="trailing" constant="16" id="nFW-0D-khK"/>
+                            <constraint firstItem="30y-Q2-9Gh" firstAttribute="top" secondItem="9fu-Ky-uVh" secondAttribute="bottom" constant="16" id="vSX-US-1nL"/>
+                            <constraint firstItem="30y-Q2-9Gh" firstAttribute="leading" secondItem="gXU-9M-7aT" secondAttribute="leading" constant="16" id="vYg-Z3-Zg6"/>
+                            <constraint firstItem="9fu-Ky-uVh" firstAttribute="leading" secondItem="gXU-9M-7aT" secondAttribute="leading" constant="16" id="xSf-R8-E3M"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gXU-9M-7aT" firstAttribute="top" secondItem="LON-ii-mDr" secondAttribute="top" constant="8" id="4Qy-gx-4xv"/>
+                    <constraint firstItem="gXU-9M-7aT" firstAttribute="leading" secondItem="LON-ii-mDr" secondAttribute="leading" constant="24" id="Wru-bn-jCL"/>
+                    <constraint firstAttribute="bottom" secondItem="gXU-9M-7aT" secondAttribute="bottom" constant="8" id="Yvz-1U-jDv"/>
+                    <constraint firstAttribute="trailing" secondItem="gXU-9M-7aT" secondAttribute="trailing" constant="24" id="jc1-dG-8lG"/>
+                </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="YYH-I1-ZcD"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="shadowView" destination="gXU-9M-7aT" id="Eqw-hq-8pm"/>
+                <outlet property="textHCons" destination="y4q-R3-Ljg" id="J41-ea-RGR"/>
+            </connections>
+            <point key="canvasLocation" x="-1254" y="-66"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="Black333">
+            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray82">
+            <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayE0">
+            <color red="0.87800002098083496" green="0.87800002098083496" blue="0.87800002098083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

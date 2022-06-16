@@ -65,7 +65,7 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     super.init(frame: frame)
     addSubview(collectionView)
     collectionView.register(nibWithCellClass: TodaySessionCell.self)
-    
+    collectionView.register(nibWithCellClass: TodayWellnessCheckSessionCell.self)
     addSubview(pageControl)
   }
   
@@ -84,11 +84,23 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withClass: TodaySessionCell.self, for: indexPath)
     if models.count > 0 {
-      cell.model = models[indexPath.item]
+      let model = models[indexPath.item]
+      
+      if model.status == 4 && model.filled_health_form{
+        let cell = collectionView.dequeueReusableCell(withClass: TodayWellnessCheckSessionCell.self, for: indexPath)
+        cell.model = model
+        return cell
+      }
+      
+      if model.status == 1 {
+        let cell = collectionView.dequeueReusableCell(withClass: TodaySessionCell.self, for: indexPath)
+        cell.model = model
+        return cell
+      }
+      
     }
-    return cell
+    return UICollectionViewCell()
   }
 
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -101,7 +113,8 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
       pageControl.set(progress: 0, animated: true)
     }else {
       let page = ceil((scrollView.contentOffset.x / itemWidth))
-      pageControl.set(progress: page.int - 1, animated: true)
+ 
+      pageControl.set(progress: page.int, animated: true)
     }
   }
   

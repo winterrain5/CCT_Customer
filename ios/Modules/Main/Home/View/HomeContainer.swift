@@ -79,6 +79,8 @@ class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
       }
       
       pointsLabel.text = userModel.points.int.string
+      
+      wellcomeView.user = userModel
     }
   }
 

@@ -126,8 +126,10 @@ class BookingCompleteDetailView: UIView,UITableViewDelegate,UITableViewDataSourc
       let totalTop = discount > 0 ? 40 : 16
       let tableH = model?.Order_Line_Info?.reduce(0, { $0 + $1.bookCompleteCellHeight }) ?? 0
       let paymentH = ((paymentMethodView.subviews.count - 2) * 16 + 50)
-      let totalHeight = paymentH + priceH + 50 + tableH.int + 16
+   
+      let totalHeight = paymentH + priceH + 50 + tableH.int + 16 + totalTop
       heightUpdateHandler?(CGFloat(totalHeight))
+     
       orderInfoVHCons.constant = totalHeight.cgFloat
       tableHCons.constant = tableH
       paymentHCons.constant = paymentH.cgFloat

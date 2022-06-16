@@ -244,7 +244,7 @@ extension HomeViewController: QRScannerCodeDelegate {
       }
       if scanType == .CheckIn {
         
-        let vc = ConfirmSessionController(params: ConfirmSessionModel())
+        let vc = ConfirmSessionController(todayModel: self.checkInSessionModel)
         self.navigationController?.pushViewController(vc, completion: nil)
         
       }

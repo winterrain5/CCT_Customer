@@ -353,7 +353,8 @@ extension BookingAppointmentController {
       self.footView.setConfirmButtonIsReady(false)
       
       self.selectCompany = self.companyModels[index]
-      self.models.filter({ $0.type == .outlet }).first?.title = self.companyModels[index].alias_name
+      let name = self.companyModels[index].alias_name.isEmpty ? self.companyModels[index].name : self.companyModels[index].alias_name
+      self.models.filter({ $0.type == .outlet }).first?.title = name
       self.tableView?.reloadData()
       
       // 看诊获取默认的服务

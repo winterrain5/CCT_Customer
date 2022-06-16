@@ -19,6 +19,8 @@ class LoginContainer: UIView {
   @IBOutlet weak var top1Cons: NSLayoutConstraint!
   
   @IBOutlet weak var bottom1Cons: NSLayoutConstraint!
+  
+  var scanQRCodeHandler:(()->())?
   override func awakeFromNib() {
     super.awakeFromNib()
     
@@ -60,6 +62,6 @@ class LoginContainer: UIView {
     UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
   }
   @IBAction func checkInAction(_ sender: Any) {
-    
+    scanQRCodeHandler?()
   }
 }

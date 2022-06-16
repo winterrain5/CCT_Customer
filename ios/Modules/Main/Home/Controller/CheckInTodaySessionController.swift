@@ -10,21 +10,33 @@ import UIKit
 class CheckInTodaySessionController: BaseViewController {
   
   var contentView = CheckInTodaySessionView.loadViewFromNib()
+  var scrollView = UIScrollView()
   var locatioName = ""
-  init(locationName:String) {
-    super.init(nibName: nil, bundle: nil)
+  convenience init(locationName:String) {
+    self.init()
     self.locatioName = locationName
   }
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
+
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.addSubview(contentView)
+    
+    self.interactivePopGestureRecognizerEnable = false
+    
+    self.addLeftBarButtonItem(R.image.return_left())
+    self.leftButtonDidClick = { [weak self] in
+      self?.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
+    self.view.backgroundColor = R.color.theamBlue()
+    self.view.addSubview(scrollView)
+    scrollView.frame = CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
+    scrollView.contentSize = CGSize(width: kScreenWidth, height: 732)
+    
+    scrollView.addSubview(contentView)
     contentView.titleLabel.text = "Check in today's session at \(locatioName)"
-    contentView.frame = CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
+    contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 732)
     getTodaySession()
   }
   

@@ -18,6 +18,7 @@ class TodayWellnessCheckSessionCell: UICollectionViewCell {
   @IBOutlet weak var employeeNameLabel: UILabel!
   @IBOutlet weak var employeeView: UIView!
   
+  @IBOutlet weak var bottomLabelTopCons: NSLayoutConstraint!
   var model:BookingTodayModel! {
     didSet {
       let date = model.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
@@ -26,6 +27,7 @@ class TodayWellnessCheckSessionCell: UICollectionViewCell {
       nameLabel.text = model.alias_name
       employeeNameLabel.text = model.staff_name
       employeeView.isHidden = model.staff_is_random == "1"
+      bottomLabelTopCons.constant = model.staff_is_random == "1" ? 8 : 36
     }
   }
   

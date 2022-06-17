@@ -136,13 +136,13 @@
                             <constraint firstAttribute="trailing" secondItem="g3C-vX-0wZ" secondAttribute="trailing" constant="4" id="2xB-mR-RGM"/>
                             <constraint firstItem="g3C-vX-0wZ" firstAttribute="leading" secondItem="Bg3-MT-UNI" secondAttribute="leading" constant="4" id="GV9-mv-SDa"/>
                             <constraint firstItem="jCZ-zV-cTc" firstAttribute="leading" secondItem="Bg3-MT-UNI" secondAttribute="leading" constant="16" id="Hyg-TA-sm5"/>
-                            <constraint firstItem="pcY-Bl-1XI" firstAttribute="top" secondItem="jCZ-zV-cTc" secondAttribute="bottom" constant="8" id="Kfj-qc-ySz"/>
                             <constraint firstItem="jCZ-zV-cTc" firstAttribute="top" secondItem="GMh-Lg-aHZ" secondAttribute="bottom" constant="12" id="RrW-RM-z0U"/>
                             <constraint firstItem="GMh-Lg-aHZ" firstAttribute="leading" secondItem="Bg3-MT-UNI" secondAttribute="leading" constant="16" id="T6I-ct-EWn"/>
                             <constraint firstAttribute="trailing" secondItem="jCZ-zV-cTc" secondAttribute="trailing" constant="16" id="bCY-SE-O94"/>
                             <constraint firstAttribute="trailing" secondItem="GMh-Lg-aHZ" secondAttribute="trailing" constant="16" id="bLI-dl-jFJ"/>
                             <constraint firstItem="pcY-Bl-1XI" firstAttribute="leading" secondItem="Bg3-MT-UNI" secondAttribute="leading" constant="16" id="caB-4U-CdT"/>
                             <constraint firstAttribute="trailing" secondItem="pcY-Bl-1XI" secondAttribute="trailing" constant="16" id="lay-Cx-DA3"/>
+                            <constraint firstItem="pcY-Bl-1XI" firstAttribute="top" secondItem="GMh-Lg-aHZ" secondAttribute="bottom" constant="36" id="o6M-ah-ixY"/>
                             <constraint firstItem="GMh-Lg-aHZ" firstAttribute="top" secondItem="g3C-vX-0wZ" secondAttribute="bottom" constant="16" id="ui6-ca-8TZ"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -161,6 +161,7 @@
             </constraints>
             <size key="customSize" width="361" height="222"/>
             <connections>
+                <outlet property="bottomLabelTopCons" destination="o6M-ah-ixY" id="Wse-qm-PHp"/>
                 <outlet property="employeeNameLabel" destination="TDw-N3-pIz" id="ByY-Yv-JD5"/>
                 <outlet property="employeeView" destination="jCZ-zV-cTc" id="Qqu-n0-sZ0"/>
                 <outlet property="infoContentView" destination="Bg3-MT-UNI" id="HPr-e2-jl2"/>
@@ -169,7 +170,7 @@
                 <outlet property="nameLabel" destination="Kyc-a1-kQc" id="Vxb-rs-stU"/>
                 <outlet property="timeLabel" destination="rRu-6e-boN" id="xqr-ac-Vgw"/>
             </connections>
-            <point key="canvasLocation" x="-331.15942028985512" y="-6.0267857142857144"/>
+            <point key="canvasLocation" x="-849" y="-2"/>
         </collectionViewCell>
     </objects>
     <resources>

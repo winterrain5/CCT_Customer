@@ -144,7 +144,8 @@ class ConfirmSessionContainer: UIView {
     }
     
     if formType == 1 {
-      
+      let vc = HealthCareDeclarationController(bookedService: todayModel)
+      UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
     }
     
     if formType == 2 {

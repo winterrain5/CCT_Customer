@@ -40,6 +40,7 @@
 		455E9EA3285C5C86004471C4 /* BookingUpcomingTreatmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455E9EA2285C5C86004471C4 /* BookingUpcomingTreatmentController.swift */; };
 		455E9EA5285C5C9B004471C4 /* BookingUpcomingTreatmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455E9EA4285C5C9B004471C4 /* BookingUpcomingTreatmentView.swift */; };
 		455E9EA7285C5CA6004471C4 /* BookingUpcomingTreatmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 455E9EA6285C5CA6004471C4 /* BookingUpcomingTreatmentView.xib */; };
+		455E9EA9285C74BC004471C4 /* HealthCareDeclarationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455E9EA8285C74BC004471C4 /* HealthCareDeclarationController.swift */; };
 		456905002851FB6D0033A649 /* RegistUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456904FF2851FB6D0033A649 /* RegistUserInfoModel.swift */; };
 		45792069284DF222008CD008 /* TapLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45792068284DF222008CD008 /* TapLabel.swift */; };
 		4579206E284EE1B3008CD008 /* InputIDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4579206D284EE1B3008CD008 /* InputIDController.swift */; };
@@ -779,6 +780,7 @@
 		455E9EA2285C5C86004471C4 /* BookingUpcomingTreatmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingUpcomingTreatmentController.swift; sourceTree = "<group>"; };
 		455E9EA4285C5C9B004471C4 /* BookingUpcomingTreatmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingUpcomingTreatmentView.swift; sourceTree = "<group>"; };
 		455E9EA6285C5CA6004471C4 /* BookingUpcomingTreatmentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingUpcomingTreatmentView.xib; sourceTree = "<group>"; };
+		455E9EA8285C74BC004471C4 /* HealthCareDeclarationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthCareDeclarationController.swift; sourceTree = "<group>"; };
 		456904FF2851FB6D0033A649 /* RegistUserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistUserInfoModel.swift; sourceTree = "<group>"; };
 		45792068284DF222008CD008 /* TapLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapLabel.swift; sourceTree = "<group>"; };
 		4579206D284EE1B3008CD008 /* InputIDController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputIDController.swift; sourceTree = "<group>"; };
@@ -1566,6 +1568,7 @@
 				45B680B128597CDB00F2E430 /* PostPartumDeclarationController.swift */,
 				45DA0E53285B1FAF00056132 /* PreConceptionDeclarationController.swift */,
 				45DA0E63285C151000056132 /* TreatmentDeclarationController.swift */,
+				455E9EA8285C74BC004471C4 /* HealthCareDeclarationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3960,6 +3963,7 @@
 				4998C013277EF51200A881D5 /* UIViewExtensions.swift in Sources */,
 				49FC8EBF27914BE900157292 /* SymptomCheckReportCell.swift in Sources */,
 				495649D9281935BF00091533 /* SwiftFitSize.swift in Sources */,
+				455E9EA9285C74BC004471C4 /* HealthCareDeclarationController.swift in Sources */,
 				498D85E027995EB50044F34F /* FSPageControl.swift in Sources */,
 				49CE76B4281A721B00A3151D /* UserPasswordModel.swift in Sources */,
 				4998C037277EF51200A881D5 /* EdgeInsetsExtensions.swift in Sources */,

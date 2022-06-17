@@ -1,13 +1,13 @@
 //
-//  PostPartumDeclarationController.swift
+//  PreConceptionDeclarationController.swift
 //  CCTIOS
 //
-//  Created by chengquan zhou on 2022/6/15.
+//  Created by chengquan zhou on 2022/6/16.
 //
 
 import UIKit
 import PromiseKit
-class PostPartumDeclarationController: BaseTableController {
+class PreConceptionDeclarationController: BaseTableController {
   
   var headView = DeclarationFormHeadView.loadViewFromNib()
   var footView = DeclarationFormFootView.loadViewFromNib()
@@ -23,18 +23,19 @@ class PostPartumDeclarationController: BaseTableController {
     self.view.backgroundColor = R.color.theamBlue()
     self.barAppearance(tintColor: .white, barBackgroundColor: R.color.theamBlue()!, image: R.image.return_left(), backButtonTitle: " Back")
     
-    footView.healthDeclarationType = 4
+    footView.healthDeclarationType = 3
     footView.confirmHander = { [weak self] sender in
-      self?.savePatientResults(sender)
+      
     }
     
     refreshData()
   }
   
+  
   override func refreshData() {
-
+    
     if isFirstLoad { Toast.showLoading() }
-    when(fulfilled: getPostPartumItems(), getTAllItemsForCategory1(), getTAllItemsForCategory2()).done { a1,a2,a3 in
+    when(fulfilled: getPrePartumItems(), getTAllItemsForCategory1(), getTAllItemsForCategory2()).done { a1,a2,a3 in
       
       Toast.dismiss()
       
@@ -55,18 +56,52 @@ class PostPartumDeclarationController: BaseTableController {
       temp.removeFirst(where: { $0.description_en == "Are you pregnant?" })
       temp.removeFirst(where: { $0.description_en == "Do you have irregular periods?" })
       
+      let weekNo = HealthDeclarationModel()
+      weekNo.description_en = "Number of weeks into pregnancy?"
+      weekNo.placeholder = "Enter no. of weeks"
+      weekNo.formType = .Input
+      temp.append(weekNo)
+      
       let dateModel = HealthDeclarationModel()
       dateModel.formType = .Date
-      dateModel.description_en = "Date of Delivery"
-      dateModel.date = a1.postPartumFields?.delivery_estimated_date ?? ""
-      let methodModel = HealthDeclarationModel()
-      methodModel.formType = .DeliveryMethod
-      methodModel.mehtod_of_delivery = a1.postPartumFields?.delivery_method.string ?? "2"
+      dateModel.description_en = "Estimated Due Date (EDD)"
+      dateModel.date = a1.prePartumFields?.delivery_estimated_date ?? ""
+      temp.append(dateModel)
+      
+      let name = HealthDeclarationModel()
+      name.description_en = "Name of Gynecologist"
+      name.placeholder = "Enter name"
+      name.formType = .Input
+      temp.append(name)
+      
+      let contactNo = HealthDeclarationModel()
+      contactNo.description_en = "Gynecologist Contact Number"
+      contactNo.placeholder = "Enter Contact No."
+      contactNo.formType = .Input
+      temp.append(contactNo)
+      
+      let elaborate1 = HealthDeclarationModel()
+      elaborate1.description_en = "Is your preganancy considered to be high risk?"
+      elaborate1.placeholder = "Please elaborate"
+      elaborate1.formType = .InputWithOptions
+      temp.append(elaborate1)
+      
+      
+      let elaborate2 = HealthDeclarationModel()
+      elaborate2.description_en = "Have you had any complications or problems in this pregnancy? "
+      elaborate2.placeholder = "Please elaborate"
+      elaborate2.formType = .InputWithOptions
+      temp.append(elaborate2)
+      
+      
+      let focusArea = HealthDeclarationModel()
+      focusArea.description_en = "What areas of the body would you like the therapist to focus on?"
+      focusArea.placeholder = "Please elaborate"
+      focusArea.formType = .FocusArea
+      temp.append(focusArea)
+      
       let remarkModel = HealthDeclarationModel()
       remarkModel.formType = .Remark
-      
-      temp.append(dateModel)
-      temp.append(methodModel)
       temp.append(remarkModel)
       
       self.dataArray = temp
@@ -88,17 +123,17 @@ class PostPartumDeclarationController: BaseTableController {
       self.endRefresh(e.asAPIError.emptyDatatype)
       self.hideSkeleton()
     }
-
+    
   }
   
   /// 用户已经填写的
-  func getPostPartumItems() -> Promise<PostPartumModel> {
+  func getPrePartumItems() -> Promise<PrePartumModel> {
     Promise.init { resolver in
-      let params = SOAPParams(action: .questionnaireSurvey, path: .getPostPartumItems)
+      let params = SOAPParams(action: .questionnaireSurvey, path: .getPrePartumItems)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
-      params.set(key: "category", value: 5)
+      params.set(key: "category", value: 4)
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decodeObjectByHandJSON(PostPartumModel.self, from: data) {
+        if let model = DecodeManager.decodeObjectByHandJSON(PrePartumModel.self, from: data) {
           resolver.fulfill(model)
           return
         }
@@ -144,15 +179,17 @@ class PostPartumDeclarationController: BaseTableController {
       }
     }
   }
-
+  
   override func createListView() {
     super.createListView()
     
     
     tableView?.register(nibWithCellClass: DeclarationFormCell.self)
+    tableView?.register(nibWithCellClass: DeclarationFormInputCell.self)
+    tableView?.register(nibWithCellClass: DeclarationFormFocusAreaCell.self)
+    tableView?.register(nibWithCellClass: DeclarationFormInputWithOptionsCell.self)
     tableView?.register(nibWithCellClass: DeclarationRemarkCell.self)
     tableView?.register(nibWithCellClass: DeclarationFormDateOfDeliverCell.self)
-    tableView?.register(nibWithCellClass: DeclarationFormMethodOfDeiveryCell.self)
     tableView?.estimatedRowHeight = 100
     tableView?.rowHeight = UITableView.automaticDimension
     
@@ -171,29 +208,39 @@ class PostPartumDeclarationController: BaseTableController {
       model?.index = indexPath.row + 1
       
       if let type = model?.formType {
-        if type == .Date {
-          let cell = tableView.dequeueReusableCell(withClass: DeclarationFormDateOfDeliverCell.self)
-          cell.model = model
-          cell.selectionStyle = .none
-          return cell
+        switch type {
+          case .Date:
+            let cell = tableView.dequeueReusableCell(withClass: DeclarationFormDateOfDeliverCell.self)
+            cell.model = model
+            cell.selectionStyle = .none
+            return cell
+          case .InputWithOptions:
+            let cell = tableView.dequeueReusableCell(withClass: DeclarationFormInputWithOptionsCell.self)
+            cell.model = model
+            cell.selectionStyle = .none
+            return cell
+          case .FocusArea:
+            let cell = tableView.dequeueReusableCell(withClass: DeclarationFormFocusAreaCell.self)
+            cell.model = model
+            cell.selectionStyle = .none
+            return cell
+          case .Input:
+            let cell = tableView.dequeueReusableCell(withClass: DeclarationFormInputCell.self)
+            cell.model = model
+            cell.selectionStyle = .none
+            return cell
+          case .Remark:
+            let cell = tableView.dequeueReusableCell(withClass: DeclarationRemarkCell.self)
+            cell.model = model
+            cell.selectionStyle = .none
+            cell.remarkDidChange = { [weak self] model in
+              self?.tableView?.reloadRows(at: [IndexPath(row: model.index, section: 0)], with: .none)
+            }
+            return cell
+          default:
+          return UITableViewCell()
         }
         
-        if type == .DeliveryMethod {
-          let cell = tableView.dequeueReusableCell(withClass: DeclarationFormMethodOfDeiveryCell.self)
-          cell.model = model
-          cell.selectionStyle = .none
-          return cell
-        }
-        
-        if type == .Remark {
-          let cell = tableView.dequeueReusableCell(withClass: DeclarationRemarkCell.self)
-          cell.model = model
-          cell.selectionStyle = .none
-          cell.remarkDidChange = { [weak self] model in
-            self?.tableView?.reloadRows(at: [IndexPath(row: model.index, section: 0)], with: .none)
-          }
-          return cell
-        }
       }else {
         let cell = tableView.dequeueReusableCell(withClass: DeclarationFormCell.self)
         cell.model = model
@@ -204,7 +251,9 @@ class PostPartumDeclarationController: BaseTableController {
         
         return cell
       }
-     
+      
+      
+      
     }
     return UITableViewCell()
   }
@@ -221,7 +270,7 @@ class PostPartumDeclarationController: BaseTableController {
     summary_data.set(key: "registration_id", value: 0)
     summary_data.set(key: "create_time", value: Date().string(withFormat: "yyyy-MM-dd HH:mm:ss"))
     summary_data.set(key: "create_uid", value: 1)
-    summary_data.set(key: "remarks", value: temp.filter({ $0.formType == .Remark }).first?.remark ?? "")
+    summary_data.set(key: "remarks", value: temp.filter({ $0.type == "remark"}).first?.remark ?? "")
     summary_data.set(key: "category", value: 5)
     summary_data.set(key: "location_id", value: bookedService.location_id)
     
@@ -232,10 +281,10 @@ class PostPartumDeclarationController: BaseTableController {
     let base_info = SOAPDictionary()
     
     base_info.set(key: "address", value: "")
-    base_info.set(key: "delivery_estimated_date", value: temp.filter({ $0.formType == .Date }).first?.date ?? "")
+    base_info.set(key: "delivery_estimated_date", value: temp.filter({ $0.type == "date" }).first?.date ?? "")
     base_info.set(key: "is_need_corset", value: 0)
     base_info.set(key: "is_need_slimming_oil", value: 0)
-    base_info.set(key: "delivery_method", value: temp.filter({ $0.formType == .DeliveryMethod }).first?.mehtod_of_delivery ?? "")
+    base_info.set(key: "delivery_method", value: temp.filter({ $0.type == "method" }).first?.mehtod_of_delivery ?? "")
     
     for (i,e) in temp.enumerated() {
       if e.type == "remark" || e.type == "date" || e.type == "method" {
@@ -247,7 +296,7 @@ class PostPartumDeclarationController: BaseTableController {
       
       xg_qa_lines_data.set(key: i.string, value: lines.result, keyType: .string, valueType: .map(1))
     }
-   
+    
     post_massage_record.set(key: "xg_qa_lines_data", value: xg_qa_lines_data.result,keyType: .string,valueType: .map(1))
     post_massage_record.set(key: "base_info", value: base_info.result,keyType: .string,valueType: .map(1))
     
@@ -261,7 +310,7 @@ class PostPartumDeclarationController: BaseTableController {
     } errorHandler: { e in
       sender.stopAnimation()
     }
-
+    
   }
   
   func chanageTStatus(_ sender:LoadingButton) {
@@ -277,6 +326,7 @@ class PostPartumDeclarationController: BaseTableController {
     } errorHandler: { e in
       sender.stopAnimation()
     }
-
+    
   }
+  
 }

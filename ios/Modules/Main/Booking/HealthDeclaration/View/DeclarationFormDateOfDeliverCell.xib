@@ -117,6 +117,7 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="dateBtn" destination="T8L-uW-fK5" id="C6z-F9-aRn"/>
+                <outlet property="descLabel" destination="5zj-YN-toB" id="BHG-hA-VD0"/>
                 <outlet property="numLabel" destination="abZ-vi-BMg" id="89H-la-sBz"/>
                 <outlet property="shadowView" destination="Y71-hh-SlU" id="kqL-ad-ZEi"/>
             </connections>

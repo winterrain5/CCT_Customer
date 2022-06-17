@@ -29,12 +29,18 @@ class BookingTodayModel: BaseModel {
   var status: Int = 0
   var wellness_or_treatment: String = ""
   var cellHeight:CGFloat {
-    if status == 4 && filled_health_form {
-      return 164
+    if status == 4 && wellness_or_treatment == "2" {
+      return 250
     }
-    if !queue_no.isEmpty {
-      return 225
+    
+    if status == 4 && wellness_or_treatment != "2" {
+      if staff_is_random == "2" {
+        return 192
+      }else {
+        return 164
+      }
     }
+   
     if staff_is_random == "2" {
       return 196 + 28
     }else {

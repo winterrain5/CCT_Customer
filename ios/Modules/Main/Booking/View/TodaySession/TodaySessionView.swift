@@ -14,8 +14,8 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
   var models:[BookingTodayModel] = [] {
     didSet {
       todayHeight = 0
-      let addtionalH = models.filter({ $0.staff_is_random == "2" }).count > 0 ? 28 : 0
-      let clvH = 192 + addtionalH.cgFloat
+      let itemHeight = models.sorted(by: { $0.cellHeight > $1.cellHeight }).first?.cellHeight ?? 0
+      let clvH = itemHeight
       let controlH:CGFloat = models.count > 1 ? 24 : 0
       todayHeight = clvH + controlH
       collectionView.snp.updateConstraints { make in
@@ -27,7 +27,6 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         make.top.equalTo(collectionView.snp.bottom).offset(8)
       }
       itemWidth = models.count > 1 ? kScreenWidth * 0.8 : (kScreenWidth - 32).int.cgFloat
-      let itemHeight = models.sorted(by: { $0.cellHeight > $1.cellHeight }).first?.cellHeight ?? 0
       layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
       collectionView.reloadData()
       pageControl.numberOfPages = models.count
@@ -64,8 +63,9 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
   override init(frame: CGRect) {
     super.init(frame: frame)
     addSubview(collectionView)
-    collectionView.register(nibWithCellClass: TodaySessionCell.self)
+    collectionView.register(nibWithCellClass: TodayCheckInCell.self)
     collectionView.register(nibWithCellClass: TodayWellnessCheckSessionCell.self)
+    collectionView.register(nibWithCellClass: TodayTreatmentQueueCell.self)
     addSubview(pageControl)
   }
   
@@ -87,14 +87,20 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     if models.count > 0 {
       let model = models[indexPath.item]
       
-      if model.status == 4 && model.filled_health_form{
+      if model.status == 4 && model.wellness_or_treatment != "2"{
         let cell = collectionView.dequeueReusableCell(withClass: TodayWellnessCheckSessionCell.self, for: indexPath)
         cell.model = model
         return cell
       }
       
+      if model.status == 4 && model.wellness_or_treatment == "2"{
+        let cell = collectionView.dequeueReusableCell(withClass: TodayTreatmentQueueCell.self, for: indexPath)
+        cell.model = model
+        return cell
+      }
+      
       if model.status == 1 {
-        let cell = collectionView.dequeueReusableCell(withClass: TodaySessionCell.self, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withClass: TodayCheckInCell.self, for: indexPath)
         cell.model = model
         return cell
       }
@@ -104,8 +110,15 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
   }
 
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let vc = BookingUpComingDetailController(today: models[indexPath.item])
-    UIViewController.getTopVc()?.navigationController?.pushViewController(vc, animated: true)
+    let model = models[indexPath.item]
+    if model.status == 4 { // inProgress 已经checkin
+      let vc = BookingInProgressController(today: model)
+      UIViewController.getTopVc()?.navigationController?.pushViewController(vc, animated: true)
+    }else {
+      let vc = BookingUpComingDetailController(today: model)
+      UIViewController.getTopVc()?.navigationController?.pushViewController(vc, animated: true)
+    }
+   
   }
   
   func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

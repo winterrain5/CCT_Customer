@@ -19,7 +19,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tI4-fB-RoH">
                     <rect key="frame" x="0.0" y="162" width="414" height="734"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email/Phone Number" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9dq-Cc-MHw">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email/Phone Number" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9dq-Cc-MHw">
                             <rect key="frame" x="24" y="33" width="366" height="46"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="46" id="hXi-zx-xTt"/>
@@ -35,7 +35,7 @@
                                 <constraint firstAttribute="height" constant="1" id="foS-OH-jfH"/>
                             </constraints>
                         </view>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TY8-HB-yIo">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TY8-HB-yIo">
                             <rect key="frame" x="24" y="99" width="366" height="46"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="46" id="Hfm-Gh-Kd2"/>

@@ -11,6 +11,7 @@ class DeclarationFormDateOfDeliverCell: UITableViewCell {
   @IBOutlet weak var numLabel: UILabel!
   @IBOutlet weak var shadowView: UIView!
 
+  @IBOutlet weak var descLabel: UILabel!
   @IBOutlet weak var dateBtn: UIButton!
   var model:HealthDeclarationModel? {
     didSet {
@@ -18,6 +19,7 @@ class DeclarationFormDateOfDeliverCell: UITableViewCell {
         return
       }
       numLabel.text = model.index < 10 ? "Question 0\(model.index)" : "Question \(model.index)"
+      descLabel.text = model.description_en
       if model.date.isEmpty {
         return
       }

@@ -26,7 +26,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eBB-f2-oOY">
-                    <rect key="frame" x="24" y="100" width="366" height="172"/>
+                    <rect key="frame" x="24" y="100" width="366" height="192"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Treatment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5SL-e1-Bbs">
                             <rect key="frame" x="16" y="16" width="334" height="25"/>
@@ -35,7 +35,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFN-2u-j43">
-                            <rect key="frame" x="16" y="80.5" width="334" height="16"/>
+                            <rect key="frame" x="16" y="99.5" width="334" height="16"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="booking_session_clendar" translatesAutoresizingMaskIntoConstraints="NO" id="EZh-bg-tCn">
                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -70,7 +70,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="keW-hq-Pnk">
-                            <rect key="frame" x="16" y="49" width="334" height="19.5"/>
+                            <rect key="frame" x="16" y="49" width="334" height="38.5"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="booking_time" translatesAutoresizingMaskIntoConstraints="NO" id="zKa-75-qHU">
                                     <rect key="frame" x="0.0" y="2" width="16" height="16"/>
@@ -79,8 +79,8 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="NO"/>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTI-wj-XHR">
-                                    <rect key="frame" x="21" y="0.0" width="9" height="19.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 currently in queue Estimated 60 mins waiting time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTI-wj-XHR">
+                                    <rect key="frame" x="21" y="0.0" width="199" height="38.5"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                     <color key="textColor" name="Black333"/>
                                     <nil key="highlightedColor"/>
@@ -95,8 +95,8 @@
                                 <constraint firstItem="BTI-wj-XHR" firstAttribute="top" secondItem="keW-hq-Pnk" secondAttribute="top" id="1tf-P8-bw2"/>
                                 <constraint firstAttribute="bottom" secondItem="BTI-wj-XHR" secondAttribute="bottom" id="79t-kk-BmD"/>
                                 <constraint firstItem="BTI-wj-XHR" firstAttribute="leading" secondItem="zKa-75-qHU" secondAttribute="trailing" constant="5" id="HCI-ZT-ftH"/>
+                                <constraint firstItem="zKa-75-qHU" firstAttribute="top" secondItem="keW-hq-Pnk" secondAttribute="top" constant="2" id="aGC-c7-1AA"/>
                                 <constraint firstItem="zKa-75-qHU" firstAttribute="leading" secondItem="keW-hq-Pnk" secondAttribute="leading" id="eAh-Ij-JwT"/>
-                                <constraint firstItem="zKa-75-qHU" firstAttribute="centerY" secondItem="keW-hq-Pnk" secondAttribute="centerY" id="g6I-PV-pzf"/>
                                 <constraint firstItem="zKa-75-qHU" firstAttribute="leading" secondItem="keW-hq-Pnk" secondAttribute="leading" id="u1o-Ow-nmP"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BTI-wj-XHR" secondAttribute="trailing" constant="15" id="vvR-QU-Nf3"/>
                             </constraints>
@@ -105,7 +105,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQm-5I-C7b">
-                            <rect key="frame" x="16" y="108.5" width="334" height="16"/>
+                            <rect key="frame" x="16" y="127.5" width="334" height="16"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="booking_location" translatesAutoresizingMaskIntoConstraints="NO" id="MeP-YB-qes">
                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -140,7 +140,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u0w-Hr-o9S">
-                            <rect key="frame" x="16" y="136.5" width="334" height="16"/>
+                            <rect key="frame" x="16" y="155.5" width="334" height="16"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="booking_user" translatesAutoresizingMaskIntoConstraints="NO" id="mXM-mr-XEG">
                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -180,7 +180,7 @@
                         <constraint firstItem="OQm-5I-C7b" firstAttribute="leading" secondItem="OFN-2u-j43" secondAttribute="leading" id="3Ez-gp-hO4"/>
                         <constraint firstItem="5SL-e1-Bbs" firstAttribute="top" secondItem="eBB-f2-oOY" secondAttribute="top" constant="16" id="5GG-PK-uMg"/>
                         <constraint firstItem="u0w-Hr-o9S" firstAttribute="leading" secondItem="eBB-f2-oOY" secondAttribute="leading" constant="16" id="6La-nU-cyg"/>
-                        <constraint firstAttribute="height" constant="172" id="7fd-Do-jKY"/>
+                        <constraint firstAttribute="height" constant="192" id="7fd-Do-jKY"/>
                         <constraint firstItem="OFN-2u-j43" firstAttribute="leading" secondItem="keW-hq-Pnk" secondAttribute="leading" id="HRY-FW-D3t"/>
                         <constraint firstItem="OQm-5I-C7b" firstAttribute="top" secondItem="OFN-2u-j43" secondAttribute="bottom" constant="12" id="Lmn-DD-yUa"/>
                         <constraint firstItem="OFN-2u-j43" firstAttribute="top" secondItem="keW-hq-Pnk" secondAttribute="bottom" constant="12" id="Mz5-aE-0e6"/>
@@ -201,7 +201,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIC-WS-QLb">
-                    <rect key="frame" x="24" y="284" width="366" height="180"/>
+                    <rect key="frame" x="24" y="304" width="366" height="180"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Patient's Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7M4-eO-tjF">
                             <rect key="frame" x="16" y="16" width="334" height="25"/>
@@ -441,7 +441,7 @@
                 <outlet property="userNameLabel" destination="eI0-hw-Rh3" id="Mws-wV-ZnQ"/>
                 <outlet property="userPassportLabel" destination="ITG-pZ-hvr" id="39m-Rh-15D"/>
             </connections>
-            <point key="canvasLocation" x="-214" y="70"/>
+            <point key="canvasLocation" x="-612" y="70"/>
         </view>
     </objects>
     <resources>

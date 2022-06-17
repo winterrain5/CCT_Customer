@@ -9,6 +9,9 @@ import UIKit
 
 class BookingUpComingDetailView: UIView {
 
+  @IBOutlet weak var employeeNameLabel: UILabel!
+  @IBOutlet weak var employeeView: UIView!
+  @IBOutlet weak var shaowV1HCons: NSLayoutConstraint!
   @IBOutlet weak var progressLabel: UILabel!
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var remarkLabel: UILabel!
@@ -31,7 +34,11 @@ class BookingUpComingDetailView: UIView {
       nameLabel.text = upcoming.alias_name
       if let date = upcoming.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss") {
         dateLabel.text = date.string(withFormat: "dd MMM yyyy,EEE - ").appending(date.timeString(ofStyle: .short))
+        isCanCheckIn = date.isInToday
       }
+      employeeView.isHidden = upcoming.staff_is_random == "1"
+      employeeNameLabel.text = upcoming.employee_first_name + " " + upcoming.employee_last_name
+      shaowV1HCons.constant = upcoming.staff_is_random == "1" ? 80 : 108
       remarkLabel.text = upcoming.remark
       self.updateCheckinButtonStatus()
       layoutIfNeeded()
@@ -46,9 +53,13 @@ class BookingUpComingDetailView: UIView {
       nameLabel.text = today.alias_name
       if let date = today.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss") {
         dateLabel.text = date.string(withFormat: "dd MMM yyyy,EEE - ").appending(date.timeString(ofStyle: .short))
+        isCanCheckIn = date.isInToday
       }
       remarkLabel.text = today.remark
-      
+      employeeView.isHidden = today.staff_is_random == "1"
+      employeeNameLabel.text = today.staff_name
+      shaowV1HCons.constant = today.staff_is_random == "1" ? 80 : 108
+      self.updateCheckinButtonStatus()
       layoutIfNeeded()
     }
   }
@@ -73,8 +84,14 @@ class BookingUpComingDetailView: UIView {
   }
   
   func updateCheckinButtonStatus() {
-    checkinButton.backgroundColor = R.color.placeholder()
-    checkinButton.isEnabled = false
+    if isCanCheckIn {
+      checkinButton.backgroundColor = R.color.theamRed()
+      checkinButton.isEnabled = true
+    }else {
+      checkinButton.backgroundColor = R.color.placeholder()
+      checkinButton.isEnabled = false
+    }
+ 
   }
   
   @IBAction func phoneAction(_ sender: Any) {

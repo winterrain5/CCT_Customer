@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="721" id="mQC-FN-AcU" customClass="DeclarationFormFocusAreaCell" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="453" height="721"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mQC-FN-AcU" id="IyI-c8-7wh">
+                <rect key="frame" x="0.0" y="0.0" width="453" height="721"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXA-hc-PdR">
+                        <rect key="frame" x="24" y="8" width="405" height="705"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question 01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2q-Dp-eYz">
+                                <rect key="frame" x="16" y="16" width="58" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="XYm-Wc-LrO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
+                                <color key="textColor" name="Black333"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have you undergone any form of surgery in the past 6 months?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="or9-QU-azD">
+                                <rect key="frame" x="16" y="30" width="373" height="104"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                <color key="textColor" name="Black333"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IU8-wy-3sj">
+                                <rect key="frame" x="16" y="150" width="373" height="539"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sHB-cC-fXy">
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="53"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Neck">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                            <color key="baseForegroundColor" name="grayBD"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="focusAreaAction:" destination="mQC-FN-AcU" eventType="touchUpInside" id="jJa-3m-GTb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8h-EW-oLD">
+                                        <rect key="frame" x="0.0" y="61" width="373" height="52.5"/>
+                                        <color key="backgroundColor" name="White"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Shoulders">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                            <color key="baseForegroundColor" name="grayBD"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="focusAreaAction:" destination="mQC-FN-AcU" eventType="touchUpInside" id="v8O-7q-nLv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yM2-PZ-bBR">
+                                        <rect key="frame" x="0.0" y="121.5" width="373" height="53"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Elbows">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                            <color key="baseForegroundColor" name="grayBD"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="focusAreaAction:" destination="mQC-FN-AcU" eventType="touchUpInside" id="aqy-r4-h1S"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Fb-fi-cxH">
+                                        <rect key="frame" x="0.0" y="182.5" width="373" height="52.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Wrists">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                            <color key="baseForegroundColor" name="grayBD"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="focusAreaAction:" destination="mQC-FN-AcU" eventType="touchUpInside" id="ED0-wJ-ekf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUp-hJ-Bk6">
+                                        <rect key="frame" x="0.0" y="243" width="373" height="53"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Back">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                            <color key="baseForegroundColor" name="grayBD"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="focusAreaAction:" destination="mQC-FN-AcU" eventType="touchUpInside" id="4wA-zz-axz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNa-Pl-10c">
+                                        <rect key="frame" x="0.0" y="304" width="373" height="52.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Lower Back">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                            <color key="baseForegroundColor" name="grayBD"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="focusAreaAction:" destination="mQC-FN-AcU" eventType="touchUpInside" id="deS-IN-H2o"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCy-FW-pnI">
+                                        <rect key="frame" x="0.0" y="364.5" width="373" height="53"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Thighs">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                            <color key="baseForegroundColor" name="grayBD"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="focusAreaAction:" destination="mQC-FN-AcU" eventType="touchUpInside" id="Kcq-cY-696"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyq-gr-yfO">
+                                        <rect key="frame" x="0.0" y="425.5" width="373" height="52.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Knees">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                            <color key="baseForegroundColor" name="grayBD"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="focusAreaAction:" destination="mQC-FN-AcU" eventType="touchUpInside" id="wHJ-da-upQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zs-cy-dqs">
+                                        <rect key="frame" x="0.0" y="486" width="373" height="53"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Ankle">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                            <color key="baseForegroundColor" name="grayBD"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="focusAreaAction:" destination="mQC-FN-AcU" eventType="touchUpInside" id="ZbK-97-OJB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="gUp-hJ-Bk6" firstAttribute="height" secondItem="sHB-cC-fXy" secondAttribute="height" id="3Th-4d-jLB"/>
+                                    <constraint firstItem="3zs-cy-dqs" firstAttribute="height" secondItem="sHB-cC-fXy" secondAttribute="height" id="8P1-tq-EYB"/>
+                                    <constraint firstItem="yM2-PZ-bBR" firstAttribute="height" secondItem="sHB-cC-fXy" secondAttribute="height" id="OF1-ST-HwQ"/>
+                                    <constraint firstAttribute="height" constant="539" id="Op6-HK-48P"/>
+                                    <constraint firstItem="VNa-Pl-10c" firstAttribute="height" secondItem="sHB-cC-fXy" secondAttribute="height" id="VzB-jz-Qmu"/>
+                                    <constraint firstItem="nCy-FW-pnI" firstAttribute="height" secondItem="sHB-cC-fXy" secondAttribute="height" id="ckP-nt-bKU"/>
+                                    <constraint firstItem="wyq-gr-yfO" firstAttribute="height" secondItem="sHB-cC-fXy" secondAttribute="height" id="sjJ-dH-G8q"/>
+                                    <constraint firstItem="a8h-EW-oLD" firstAttribute="height" secondItem="sHB-cC-fXy" secondAttribute="height" id="td9-i0-zVB"/>
+                                    <constraint firstItem="6Fb-fi-cxH" firstAttribute="height" secondItem="sHB-cC-fXy" secondAttribute="height" id="y6R-SB-a6x"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="S2q-Dp-eYz" firstAttribute="leading" secondItem="gXA-hc-PdR" secondAttribute="leading" constant="16" id="85f-oG-yLB"/>
+                            <constraint firstItem="S2q-Dp-eYz" firstAttribute="top" secondItem="gXA-hc-PdR" secondAttribute="top" constant="16" id="Ca6-WA-NcU"/>
+                            <constraint firstItem="IU8-wy-3sj" firstAttribute="leading" secondItem="gXA-hc-PdR" secondAttribute="leading" constant="16" id="OkE-70-G4S"/>
+                            <constraint firstItem="or9-QU-azD" firstAttribute="leading" secondItem="gXA-hc-PdR" secondAttribute="leading" constant="16" id="SPc-IP-Ucl"/>
+                            <constraint firstAttribute="trailing" secondItem="IU8-wy-3sj" secondAttribute="trailing" constant="16" id="SYG-hQ-haV"/>
+                            <constraint firstItem="or9-QU-azD" firstAttribute="top" secondItem="S2q-Dp-eYz" secondAttribute="bottom" id="SnV-aT-ccR"/>
+                            <constraint firstAttribute="trailing" secondItem="or9-QU-azD" secondAttribute="trailing" constant="16" id="eo9-xg-9l3"/>
+                            <constraint firstItem="IU8-wy-3sj" firstAttribute="top" secondItem="or9-QU-azD" secondAttribute="bottom" constant="16" id="mcy-y8-tlP"/>
+                            <constraint firstAttribute="bottom" secondItem="IU8-wy-3sj" secondAttribute="bottom" constant="16" id="sAg-5N-bul"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gXA-hc-PdR" firstAttribute="top" secondItem="IyI-c8-7wh" secondAttribute="top" constant="8" id="7JV-jz-SY9"/>
+                    <constraint firstAttribute="bottom" secondItem="gXA-hc-PdR" secondAttribute="bottom" constant="8" id="N2q-Z2-dHn"/>
+                    <constraint firstItem="gXA-hc-PdR" firstAttribute="leading" secondItem="IyI-c8-7wh" secondAttribute="leading" constant="24" id="fBs-Nv-cmi"/>
+                    <constraint firstAttribute="trailing" secondItem="gXA-hc-PdR" secondAttribute="trailing" constant="24" id="hRu-3P-ST3"/>
+                </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="AaI-cu-ZdI"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="descLabel" destination="or9-QU-azD" id="BnU-DB-zoW"/>
+                <outlet property="numLabel" destination="S2q-Dp-eYz" id="OQg-6L-bkI"/>
+                <outlet property="shadowView" destination="gXA-hc-PdR" id="YGk-AX-44N"/>
+                <outlet property="stackView" destination="IU8-wy-3sj" id="RLG-Au-Xze"/>
+            </connections>
+            <point key="canvasLocation" x="-1408" y="-275"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="Black333">
+            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayBD">
+            <color red="0.74099999666213989" green="0.74099999666213989" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

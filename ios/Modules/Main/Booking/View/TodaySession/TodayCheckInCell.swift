@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TodaySessionCell: UICollectionViewCell {
+class TodayCheckInCell: UICollectionViewCell {
 
   @IBOutlet weak var infoContentView: UIView!
   @IBOutlet weak var locationView: UIView!
@@ -25,8 +25,7 @@ class TodaySessionCell: UICollectionViewCell {
       nameLabel.text = model.alias_name
       employeeNameLabel.text = model.staff_name
       employeeView.isHidden = model.staff_is_random == "1"
-      setNeedsLayout()
-      layoutIfNeeded()
+     
     }
   }
   override func awakeFromNib() {

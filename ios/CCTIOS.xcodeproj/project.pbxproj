@@ -70,14 +70,28 @@
 		45C6B7992858282C00546CC8 /* CheckInTodayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C6B7972858282C00546CC8 /* CheckInTodayCell.xib */; };
 		45CE32F42834948E00201726 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F32834948E00201726 /* CompanyModel.swift */; };
 		45CE32F628349C4500201726 /* TodaySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F528349C4500201726 /* TodaySessionView.swift */; };
-		45CE32FA28349CAF00201726 /* TodaySessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F828349CAF00201726 /* TodaySessionCell.swift */; };
-		45CE32FB28349CAF00201726 /* TodaySessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CE32F928349CAF00201726 /* TodaySessionCell.xib */; };
+		45CE32FA28349CAF00201726 /* TodayCheckInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F828349CAF00201726 /* TodayCheckInCell.swift */; };
+		45CE32FB28349CAF00201726 /* TodayCheckInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CE32F928349CAF00201726 /* TodayCheckInCell.xib */; };
 		45CE32FD2834CAF500201726 /* BookingTodayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32FC2834CAF500201726 /* BookingTodayModel.swift */; };
 		45D65105284DA03900C7BD39 /* HomeWellcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D65104284DA03900C7BD39 /* HomeWellcomeView.swift */; };
 		45D65107284DCFF100C7BD39 /* HomeBookedServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D65106284DCFF100C7BD39 /* HomeBookedServiceView.swift */; };
 		45D6510A284DD2C100C7BD39 /* UpcomingSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D65109284DD2C100C7BD39 /* UpcomingSessionView.swift */; };
 		45DA0E51285AC73400056132 /* TodayWellnessCheckSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA0E4F285AC73400056132 /* TodayWellnessCheckSessionCell.swift */; };
 		45DA0E52285AC73400056132 /* TodayWellnessCheckSessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45DA0E50285AC73400056132 /* TodayWellnessCheckSessionCell.xib */; };
+		45DA0E54285B1FAF00056132 /* PreConceptionDeclarationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA0E53285B1FAF00056132 /* PreConceptionDeclarationController.swift */; };
+		45DA0E56285B22FC00056132 /* PrePartumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA0E55285B22FC00056132 /* PrePartumModel.swift */; };
+		45DA0E59285B256000056132 /* DeclarationFormInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA0E57285B256000056132 /* DeclarationFormInputCell.swift */; };
+		45DA0E5A285B256000056132 /* DeclarationFormInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45DA0E58285B256000056132 /* DeclarationFormInputCell.xib */; };
+		45DA0E5D285B28E400056132 /* DeclarationFormInputWithOptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA0E5B285B28E400056132 /* DeclarationFormInputWithOptionsCell.swift */; };
+		45DA0E5E285B28E400056132 /* DeclarationFormInputWithOptionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45DA0E5C285B28E400056132 /* DeclarationFormInputWithOptionsCell.xib */; };
+		45DA0E61285B29E100056132 /* DeclarationFormFocusAreaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA0E5F285B29E100056132 /* DeclarationFormFocusAreaCell.swift */; };
+		45DA0E62285B29E100056132 /* DeclarationFormFocusAreaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45DA0E60285B29E100056132 /* DeclarationFormFocusAreaCell.xib */; };
+		45DA0E64285C151100056132 /* TreatmentDeclarationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA0E63285C151000056132 /* TreatmentDeclarationController.swift */; };
+		45DA0E67285C1E5500056132 /* TodayTreatmentQueueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA0E65285C1E5500056132 /* TodayTreatmentQueueCell.swift */; };
+		45DA0E68285C1E5500056132 /* TodayTreatmentQueueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45DA0E66285C1E5500056132 /* TodayTreatmentQueueCell.xib */; };
+		45DA0E6A285C4EE000056132 /* BookingInProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA0E69285C4EDF00056132 /* BookingInProgressController.swift */; };
+		45DA0E6C285C4EF100056132 /* BookingInProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA0E6B285C4EF100056132 /* BookingInProgressView.swift */; };
+		45DA0E6E285C4F0000056132 /* BookingInProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45DA0E6D285C4F0000056132 /* BookingInProgressView.xib */; };
 		45DBB8FE2859D2FF0063EF4E /* DeclarationFormMethodOfDeiveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DBB8FC2859D2FF0063EF4E /* DeclarationFormMethodOfDeiveryCell.swift */; };
 		45DBB8FF2859D2FF0063EF4E /* DeclarationFormMethodOfDeiveryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45DBB8FD2859D2FF0063EF4E /* DeclarationFormMethodOfDeiveryCell.xib */; };
 		45DBB9022859D3E40063EF4E /* DeclarationRemarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DBB9002859D3E40063EF4E /* DeclarationRemarkCell.swift */; };
@@ -792,14 +806,28 @@
 		45C6B7972858282C00546CC8 /* CheckInTodayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckInTodayCell.xib; sourceTree = "<group>"; };
 		45CE32F32834948E00201726 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
 		45CE32F528349C4500201726 /* TodaySessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionView.swift; sourceTree = "<group>"; };
-		45CE32F828349CAF00201726 /* TodaySessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionCell.swift; sourceTree = "<group>"; };
-		45CE32F928349CAF00201726 /* TodaySessionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodaySessionCell.xib; sourceTree = "<group>"; };
+		45CE32F828349CAF00201726 /* TodayCheckInCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCheckInCell.swift; sourceTree = "<group>"; };
+		45CE32F928349CAF00201726 /* TodayCheckInCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayCheckInCell.xib; sourceTree = "<group>"; };
 		45CE32FC2834CAF500201726 /* BookingTodayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTodayModel.swift; sourceTree = "<group>"; };
 		45D65104284DA03900C7BD39 /* HomeWellcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWellcomeView.swift; sourceTree = "<group>"; };
 		45D65106284DCFF100C7BD39 /* HomeBookedServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBookedServiceView.swift; sourceTree = "<group>"; };
 		45D65109284DD2C100C7BD39 /* UpcomingSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingSessionView.swift; sourceTree = "<group>"; };
 		45DA0E4F285AC73400056132 /* TodayWellnessCheckSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWellnessCheckSessionCell.swift; sourceTree = "<group>"; };
 		45DA0E50285AC73400056132 /* TodayWellnessCheckSessionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayWellnessCheckSessionCell.xib; sourceTree = "<group>"; };
+		45DA0E53285B1FAF00056132 /* PreConceptionDeclarationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreConceptionDeclarationController.swift; sourceTree = "<group>"; };
+		45DA0E55285B22FC00056132 /* PrePartumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrePartumModel.swift; sourceTree = "<group>"; };
+		45DA0E57285B256000056132 /* DeclarationFormInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarationFormInputCell.swift; sourceTree = "<group>"; };
+		45DA0E58285B256000056132 /* DeclarationFormInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeclarationFormInputCell.xib; sourceTree = "<group>"; };
+		45DA0E5B285B28E400056132 /* DeclarationFormInputWithOptionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarationFormInputWithOptionsCell.swift; sourceTree = "<group>"; };
+		45DA0E5C285B28E400056132 /* DeclarationFormInputWithOptionsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeclarationFormInputWithOptionsCell.xib; sourceTree = "<group>"; };
+		45DA0E5F285B29E100056132 /* DeclarationFormFocusAreaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarationFormFocusAreaCell.swift; sourceTree = "<group>"; };
+		45DA0E60285B29E100056132 /* DeclarationFormFocusAreaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeclarationFormFocusAreaCell.xib; sourceTree = "<group>"; };
+		45DA0E63285C151000056132 /* TreatmentDeclarationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentDeclarationController.swift; sourceTree = "<group>"; };
+		45DA0E65285C1E5500056132 /* TodayTreatmentQueueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTreatmentQueueCell.swift; sourceTree = "<group>"; };
+		45DA0E66285C1E5500056132 /* TodayTreatmentQueueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayTreatmentQueueCell.xib; sourceTree = "<group>"; };
+		45DA0E69285C4EDF00056132 /* BookingInProgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingInProgressController.swift; sourceTree = "<group>"; };
+		45DA0E6B285C4EF100056132 /* BookingInProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingInProgressView.swift; sourceTree = "<group>"; };
+		45DA0E6D285C4F0000056132 /* BookingInProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingInProgressView.xib; sourceTree = "<group>"; };
 		45DBB8FC2859D2FF0063EF4E /* DeclarationFormMethodOfDeiveryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarationFormMethodOfDeiveryCell.swift; sourceTree = "<group>"; };
 		45DBB8FD2859D2FF0063EF4E /* DeclarationFormMethodOfDeiveryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeclarationFormMethodOfDeiveryCell.xib; sourceTree = "<group>"; };
 		45DBB9002859D3E40063EF4E /* DeclarationRemarkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarationRemarkCell.swift; sourceTree = "<group>"; };
@@ -1530,6 +1558,8 @@
 			isa = PBXGroup;
 			children = (
 				45B680B128597CDB00F2E430 /* PostPartumDeclarationController.swift */,
+				45DA0E53285B1FAF00056132 /* PreConceptionDeclarationController.swift */,
+				45DA0E63285C151000056132 /* TreatmentDeclarationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1549,6 +1579,12 @@
 				45DBB8FD2859D2FF0063EF4E /* DeclarationFormMethodOfDeiveryCell.xib */,
 				45DBB9002859D3E40063EF4E /* DeclarationRemarkCell.swift */,
 				45DBB9012859D3E40063EF4E /* DeclarationRemarkCell.xib */,
+				45DA0E57285B256000056132 /* DeclarationFormInputCell.swift */,
+				45DA0E58285B256000056132 /* DeclarationFormInputCell.xib */,
+				45DA0E5B285B28E400056132 /* DeclarationFormInputWithOptionsCell.swift */,
+				45DA0E5C285B28E400056132 /* DeclarationFormInputWithOptionsCell.xib */,
+				45DA0E5F285B29E100056132 /* DeclarationFormFocusAreaCell.swift */,
+				45DA0E60285B29E100056132 /* DeclarationFormFocusAreaCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1557,6 +1593,7 @@
 			isa = PBXGroup;
 			children = (
 				453CD5162859B017005FEEE1 /* PostPartumModel.swift */,
+				45DA0E55285B22FC00056132 /* PrePartumModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1691,10 +1728,12 @@
 			isa = PBXGroup;
 			children = (
 				45CE32F528349C4500201726 /* TodaySessionView.swift */,
-				45CE32F828349CAF00201726 /* TodaySessionCell.swift */,
-				45CE32F928349CAF00201726 /* TodaySessionCell.xib */,
+				45CE32F828349CAF00201726 /* TodayCheckInCell.swift */,
+				45CE32F928349CAF00201726 /* TodayCheckInCell.xib */,
 				45DA0E4F285AC73400056132 /* TodayWellnessCheckSessionCell.swift */,
 				45DA0E50285AC73400056132 /* TodayWellnessCheckSessionCell.xib */,
+				45DA0E65285C1E5500056132 /* TodayTreatmentQueueCell.swift */,
+				45DA0E66285C1E5500056132 /* TodayTreatmentQueueCell.xib */,
 			);
 			path = TodaySession;
 			sourceTree = "<group>";
@@ -3136,6 +3175,7 @@
 				49F69776282DF75B009813EA /* BookingCompletedController.swift */,
 				4550946E28339DA90017C244 /* BookingUpComingDetailController.swift */,
 				457CBA87283615FE00AE26D8 /* BookingCompleteDetailController.swift */,
+				45DA0E69285C4EDF00056132 /* BookingInProgressController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3152,6 +3192,8 @@
 				4550947228339DFA0017C244 /* BookingUpComingDetailView.xib */,
 				457CBA892836163200AE26D8 /* BookingCompleteDetailView.swift */,
 				457CBA8B2836163E00AE26D8 /* BookingCompleteDetailView.xib */,
+				45DA0E6B285C4EF100056132 /* BookingInProgressView.swift */,
+				45DA0E6D285C4F0000056132 /* BookingInProgressView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3423,6 +3465,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				497C629327BE38E600127F3F /* MyOrderDetailHeaderView.xib in Resources */,
 				496501E027A0E7E3004FF3AF /* MadamPartumLocationCell.xib in Resources */,
+				45DA0E5E285B28E400056132 /* DeclarationFormInputWithOptionsCell.xib in Resources */,
 				498D85A72798F1630044F34F /* MadamPartumHeaderView.xib in Resources */,
 				457CBA9A283779E900AE26D8 /* BookingServiceFormFooterView.xib in Resources */,
 				4902025427DB34A000E74415 /* WalletAddCardSheetContentView.xib in Resources */,
@@ -3446,8 +3489,11 @@
 				495649DF281A2CC100091533 /* LoginContainer.xib in Resources */,
 				49E79F99278E83BB00F304B2 /* SymptomCheckNextContainer.xib in Resources */,
 				453CD51B2859D063005FEEE1 /* DeclarationFormDateOfDeliverCell.xib in Resources */,
+				45DA0E6E285C4F0000056132 /* BookingInProgressView.xib in Resources */,
 				4902B727279F9DC000CEE28B /* ServiceDetailHelpView.xib in Resources */,
 				49727C7727C4CE0700943156 /* AccountEditSheetContentView.xib in Resources */,
+				45DA0E68285C1E5500056132 /* TodayTreatmentQueueCell.xib in Resources */,
+				45DA0E5A285B256000056132 /* DeclarationFormInputCell.xib in Resources */,
 				4550947328339DFB0017C244 /* BookingUpComingDetailView.xib in Resources */,
 				49E61D30278EDC2B00B1C136 /* SymptomCheckDetailCell.xib in Resources */,
 				49FC8EC027914BE900157292 /* SymptomCheckReportCell.xib in Resources */,
@@ -3458,7 +3504,7 @@
 				4978FA9D27C333FD00E51DA0 /* ProductLeaveReviewSheetContentView.xib in Resources */,
 				4904C3D428067BDD008FE5A5 /* ShopProductItemCell.xib in Resources */,
 				45C6B7992858282C00546CC8 /* CheckInTodayCell.xib in Resources */,
-				45CE32FB28349CAF00201726 /* TodaySessionCell.xib in Resources */,
+				45CE32FB28349CAF00201726 /* TodayCheckInCell.xib in Resources */,
 				49056AFD2795581D00FBA1AC /* SymptomCheckPlanCell.xib in Resources */,
 				49781BCF27BE2024006F93DF /* MyOrderListCell.xib in Resources */,
 				49781BDF27BE2F33006F93DF /* ProductItemCell.xib in Resources */,
@@ -3469,6 +3515,7 @@
 				455B0414285046E9007C5567 /* InputGeneralInfoView.xib in Resources */,
 				49056AE92794FC9000FBA1AC /* SelectTypeOfServiceSheetView.xib in Resources */,
 				453CD51028598626005FEEE1 /* DeclarationFormCell.xib in Resources */,
+				45DA0E62285B29E100056132 /* DeclarationFormFocusAreaCell.xib in Resources */,
 				49BCF76C27B34F0F00B623CE /* ShopFilterContentView.xib in Resources */,
 				49BB3C5F278C335200AC34A0 /* BlogBoardEditSheetView.xib in Resources */,
 				45792072284EE1D8008CD008 /* InputIDContainer.xib in Resources */,
@@ -3646,6 +3693,7 @@
 				49959E5827EDB0100065D23B /* CallUtil.swift in Sources */,
 				4906C231279E47D900F7B67F /* QuestionSegmentSectionView.swift in Sources */,
 				4998C0E32784427F00A881D5 /* Typealiases.swift in Sources */,
+				45DA0E64285C151100056132 /* TreatmentDeclarationController.swift in Sources */,
 				4998C007277EF51200A881D5 /* UICollectionViewExtensions.swift in Sources */,
 				49BA62A12788249900B898D5 /* BlogDetailModel.swift in Sources */,
 				4998C02F277EF51200A881D5 /* URLRequestExtensions.swift in Sources */,
@@ -3682,6 +3730,7 @@
 				454C5B40283B7F95001D787C /* BookingDateSheetView.swift in Sources */,
 				49E61D18278EBF2300B1C136 /* SymptomCheckStepModel.swift in Sources */,
 				4906C221279A5F3300F7B67F /* AwardModel.swift in Sources */,
+				45DA0E59285B256000056132 /* DeclarationFormInputCell.swift in Sources */,
 				4904C3CC280677D6008FE5A5 /* BaseModel.swift in Sources */,
 				45D65107284DCFF100C7BD39 /* HomeBookedServiceView.swift in Sources */,
 				49056B1527968E7B00FBA1AC /* ScriptMessage.swift in Sources */,
@@ -3796,6 +3845,7 @@
 				4998C029277EF51200A881D5 /* SCNConeExtensions.swift in Sources */,
 				4902B729279F9DDA00CEE28B /* ServiceDetailFooterView.swift in Sources */,
 				498D85DD27995EB50044F34F /* FSPagerViewCell.swift in Sources */,
+				45DA0E56285B22FC00056132 /* PrePartumModel.swift in Sources */,
 				49BA629727880CFD00B898D5 /* BlogBoardListCell.swift in Sources */,
 				4904C3BD280677C6008FE5A5 /* CCTShopHeaderView.swift in Sources */,
 				495BB8042828E570001FD065 /* NotificationCell.swift in Sources */,
@@ -3845,6 +3895,7 @@
 				49781BE227BE34B8006F93DF /* ProductCompleteItemCell.swift in Sources */,
 				457CBA8A2836163200AE26D8 /* BookingCompleteDetailView.swift in Sources */,
 				45F894B028534384008BC7CC /* QRScannerFrame.swift in Sources */,
+				45DA0E54285B1FAF00056132 /* PreConceptionDeclarationController.swift in Sources */,
 				4904C3D128067865008FE5A5 /* FriendUseCardModel.swift in Sources */,
 				454C5B4A283CDAB4001D787C /* ConfirmSessionController.swift in Sources */,
 				4998C002277EF51200A881D5 /* UIScrollViewExtensions.swift in Sources */,
@@ -3861,6 +3912,7 @@
 				4998C036277EF51200A881D5 /* CalendarExtensions.swift in Sources */,
 				49E79F7A278D25BA00F304B2 /* VisualActivityViewController.swift in Sources */,
 				4998C04D277EF51200A881D5 /* CharacterExtensions.swift in Sources */,
+				45DA0E6C285C4EF100056132 /* BookingInProgressView.swift in Sources */,
 				4579206E284EE1B3008CD008 /* InputIDController.swift in Sources */,
 				49E79F86278D757700F304B2 /* PKError.swift in Sources */,
 				49BA629A27881C1000B898D5 /* BlogBookmarksController.swift in Sources */,
@@ -3876,6 +3928,7 @@
 				4998BFFA277EF51200A881D5 /* CGVectorExtensions.swift in Sources */,
 				4998C043277EF51200A881D5 /* KeyedDecodingContainerExtensions.swift in Sources */,
 				4998C050277EF51200A881D5 /* RangeReplaceableCollectionExtensions.swift in Sources */,
+				45DA0E6A285C4EE000056132 /* BookingInProgressController.swift in Sources */,
 				4998C042277EF51200A881D5 /* FloatExtensions.swift in Sources */,
 				4998BEB5277DA24300A881D5 /* AppDelegate.m in Sources */,
 				45B2A12F27A1456200E1264E /* MainViewController.swift in Sources */,
@@ -3923,6 +3976,7 @@
 				4998C044277EF51200A881D5 /* SequenceExtensions.swift in Sources */,
 				4978FA9927C321F300E51DA0 /* SymptomCheckTreamentPlanWebController.swift in Sources */,
 				454C5B4C283DBE9F001D787C /* ConfirmSessionContainer.swift in Sources */,
+				45DA0E67285C1E5500056132 /* TodayTreatmentQueueCell.swift in Sources */,
 				496501D5279FE94E004FF3AF /* ServiceDetailHelpCell.swift in Sources */,
 				4998BF52277ED52700A881D5 /* RefreshAnimationFooter.swift in Sources */,
 				49E3859C279E9BDF003160FA /* FillInEnquiryFormContentView.swift in Sources */,
@@ -3979,7 +4033,7 @@
 				4998C0E22784427F00A881D5 /* ConstraintLayoutSupport.swift in Sources */,
 				458612142852ECBE00C699A8 /* InputPhoneController.swift in Sources */,
 				4902B731279FA6F700CEE28B /* ServiceDetailBrifeModel.swift in Sources */,
-				45CE32FA28349CAF00201726 /* TodaySessionCell.swift in Sources */,
+				45CE32FA28349CAF00201726 /* TodayCheckInCell.swift in Sources */,
 				49FC8EC627915C6400157292 /* SymptomCheckReportAnalysisController.swift in Sources */,
 				4998C0832783D40300A881D5 /* DecodeManager.swift in Sources */,
 				497B354227CF659900AE20C4 /* WalletCardController.swift in Sources */,
@@ -4001,6 +4055,7 @@
 				4998BFF8277EF51200A881D5 /* CGRectExtensions.swift in Sources */,
 				4998C02A277EF51200A881D5 /* SCNCapsuleExtensions.swift in Sources */,
 				4998C0A62784330000A881D5 /* String_Extension.swift in Sources */,
+				45DA0E5D285B28E400056132 /* DeclarationFormInputWithOptionsCell.swift in Sources */,
 				492FA11A2798080A002F38B3 /* MadamPartumHeaderView.swift in Sources */,
 				49F17C632807F83500FCBC87 /* ShopDetialBottomView.swift in Sources */,
 				4998C040277EF51200A881D5 /* StringProtocolExtensions.swift in Sources */,
@@ -4155,6 +4210,7 @@
 				4933AC6D27D84DB2005E9FB1 /* CardUserDetailController.swift in Sources */,
 				4998BFF9277EF51200A881D5 /* CGFloatExtensions.swift in Sources */,
 				4998BF4E277ED46200A881D5 /* UIScrollView+EmptyDataSet.m in Sources */,
+				45DA0E61285B29E100056132 /* DeclarationFormFocusAreaCell.swift in Sources */,
 				49C1C9B0281BB95100087357 /* ProfileHeadView.swift in Sources */,
 				4906C22B279A976400F7B67F /* StarRateView.swift in Sources */,
 				49981EEF27CDC00400D4F7BF /* DataProtectionHeadView.swift in Sources */,

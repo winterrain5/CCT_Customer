@@ -6,14 +6,21 @@
 //
 
 import UIKit
-
+import HandyJSON
+enum DeclarationFormType:String,HandyJSONEnum {
+  case Date
+  case DeliveryMethod
+  case Remark
+  case Input
+  case InputWithOptions
+  case FocusArea
+}
 class HealthDeclarationModel :BaseModel {
   var category: String = ""
   var result: String = "3"
   var sort: String = ""
   var id: String = ""
   var desc: String = ""
-  ///  date method remark  属于自定义
   var type: String = ""
   var description_en: String = ""
   
@@ -23,9 +30,15 @@ class HealthDeclarationModel :BaseModel {
   var create_time: String = ""
   var s_class: String = ""
   
+  /// 以下为自定义字段
   var date = ""
   var mehtod_of_delivery = ""
   var remark = ""
+  var text = ""
+  var placeholder = ""
+  var focus_area:[String] = []
+  
+  var formType:DeclarationFormType?
   
   var index = 1
 }

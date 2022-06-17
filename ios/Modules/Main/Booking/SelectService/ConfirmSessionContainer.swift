@@ -88,7 +88,28 @@ class ConfirmSessionContainer: UIView {
       }
       let date = todayModel.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
       titleLabel.text = todayModel.alias_name
-      timeLabel.text = date?.timeString(ofStyle: .short)
+      
+      if todayModel.wellness_treatment_type == "2" { // treatment
+        let sub1 = "\(todayModel.queue_count) currently in queue \nEstimated "
+        let str = "\(todayModel.queue_count) currently in queue \nEstimated \(todayModel.duration_mins) mins waiting time"
+        let attr = NSMutableAttributedString(string: str)
+        attr.addAttribute(.font, value: UIFont(name: .AvenirNextDemiBold, size: 14), range: NSRange(location: 0, length: todayModel.queue_count.count))
+        attr.addAttribute(.font, value: UIFont(name: .AvenirNextDemiBold, size: 14), range: NSRange(location: sub1.count, length: (todayModel.duration_mins + " mins").count))
+        timeLabel.attributedText = attr
+        employeeView.isHidden = true
+        infoHCons.constant = 172
+      }else{
+        timeLabel.text = date?.timeString(ofStyle: .short)
+        if todayModel.staff_is_random == "2" {
+          employeeView.isHidden = false
+          infoHCons.constant = 172
+        }else {
+          employeeView.isHidden = true
+          infoHCons.constant = 145
+        }
+      }
+      
+      
       dateLabel.text = date?.string(withFormat: "dd MMM yyyy,EEE")
       locationLabel.text = todayModel.location_name
       employeeNameLabel.text = todayModel.staff_name
@@ -99,14 +120,6 @@ class ConfirmSessionContainer: UIView {
         userPassportLabel.text = user.card_number.replacingCharacters(in: rang, with: "*****")
         userGenderLabel.text = user.gender == "1" ? "Male" : "Female"
         userBirthDayLabel.text = user.birthday.date(withFormat: "yyyy-MM-dd")?.string(withFormat: "dd MMM yyyy")
-      }
-      
-      if todayModel.staff_is_random == "2" {
-        employeeView.isHidden = false
-        infoHCons.constant = 172
-      }else {
-        employeeView.isHidden = true
-        infoHCons.constant = 145
       }
       
       setNeedsLayout()
@@ -126,22 +139,25 @@ class ConfirmSessionContainer: UIView {
     // 1.保健 2.治疗 3.产前，4.产后
     let formType = todayModel?.health_declaration_form_type.int ?? 0
     
+    guard let todayModel = todayModel else {
+      return
+    }
+    
     if formType == 1 {
       
     }
     
     if formType == 2 {
-      
+      let vc = TreatmentDeclarationController(bookedService: todayModel)
+      UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
     }
     
     if formType == 3 {
-      
+      let vc = PreConceptionDeclarationController(bookedService: todayModel)
+      UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
     }
     
     if formType == 	4 {
-      guard let todayModel = todayModel else {
-        return
-      }
       let vc = PostPartumDeclarationController(bookedService: todayModel)
       UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
     }

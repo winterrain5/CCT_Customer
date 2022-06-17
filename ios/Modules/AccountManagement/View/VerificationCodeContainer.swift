@@ -83,6 +83,9 @@ class VerificationCodeContainer: UIView {
     inputBox.textEditStatusChangeblock = { [weak self] status in
       guard let `self` = self else { return }
       if status == .endEdit {
+        if self.inputBox.textValue?.isEmpty ?? false {
+          return
+        }
         self.confirmHandler?(self.inputBox.textValue)
       }
     }

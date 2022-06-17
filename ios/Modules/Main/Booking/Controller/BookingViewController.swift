@@ -56,7 +56,8 @@ class BookingViewController: BaseViewController {
     segment.backgroundColor = .clear
     segment.defaultSelectedIndex = 0
   }
-  
+  var checkInSessionModel = BookingTodayModel()
+
   
   init() {
     super.init(nibName: nil, bundle: nil)
@@ -64,7 +65,14 @@ class BookingViewController: BaseViewController {
     NotificationCenter.default.addObserver(forName:.bookingDataChanged, object: nil, queue: .main) { _ in
       self.getClientBookedService()
     }
-    
+    NotificationCenter.default.addObserver(forName: .todayCheckIn, object: nil, queue: .main) { noti in
+      
+      let tab = self.sideMenuController?.contentViewController as? BaseTabBarController
+      if tab?.selectedIndex == 1 {
+        self.checkInSessionModel = noti.object as! BookingTodayModel
+        self.showScanVc()
+      }
+    }
   }
   
   required init?(coder: NSCoder) {
@@ -112,12 +120,11 @@ class BookingViewController: BaseViewController {
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeArrayByHandJSON(BookingTodayModel.self, from: data) {
         if models.count > 0 {
-          let additionalH = models.filter({ $0.staff_is_random == "2" }).count > 0 ? 28 : 0
-          if models.count > 1 {
-            self.tableHeaderViewHeight = 317 + additionalH
-          }else {
-            self.tableHeaderViewHeight = 297 + additionalH
-          }
+          let topSpace = 94.cgFloat
+          let bottomspace:CGFloat = models.count == 1 ? 0 : 24
+          let clvH = models.sorted(by: { $0.cellHeight > $1.cellHeight }).first?.cellHeight ?? 0
+          let totalH = topSpace + bottomspace + clvH
+          self.tableHeaderViewHeight = totalH.int
         }else {
           self.tableHeaderViewHeight = 0
         }
@@ -214,4 +221,47 @@ extension BookingViewController:JXPagingViewDelegate {
   }
   
   
+}
+
+
+
+extension BookingViewController: QRScannerCodeDelegate {
+  
+  func showScanVc() {
+    var configuration = QRScannerConfiguration()
+    configuration.title = ""
+    configuration.hint = "Scan the Outlet QR Code"
+    configuration.color = .white
+    configuration.thickness = 2
+    configuration.length = 44
+    configuration.radius = 22
+    configuration.readQRFromPhotos = false
+    configuration.previewSize = CGSize(width: kScreenWidth - 48, height: kScreenWidth - 48)
+    configuration.roundCornerSize = CGSize(width: kScreenWidth - 24, height: kScreenWidth - 24)
+    
+    let scanner = QRCodeScannerController(qrScannerConfiguration: configuration)
+    scanner.delegate = self
+    self.navigationController?.pushViewController(scanner, completion: nil)
+  }
+  
+  
+  func qrScannerDidFail(_ controller: UIViewController, error: QRCodeError) {
+    print("error:\(error.localizedDescription)")
+  }
+  
+  func qrScanner(_ controller: UIViewController, scanDidComplete result: String) {
+    print("result:\(result)")
+//    let json = JSON(parseJSON: result)
+//    let locationName = json["name"].stringValue
+//    let id = json["id"].stringValue
+//    let type = json["type"].stringValue
+    let vc = ConfirmSessionController(todayModel: self.checkInSessionModel)
+    self.navigationController?.pushViewController(vc, completion: nil)
+    
+    
+  }
+  
+  func qrScannerDidCancel(_ controller: UIViewController) {
+    print("SwiftQRScanner did cancel")
+  }
 }

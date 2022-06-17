@@ -1580,7 +1580,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 129 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 130 nibs.
   struct nib {
     /// Nib `AccountEditSheetContentView`.
     static let accountEditSheetContentView = _R.nib._AccountEditSheetContentView()
@@ -1622,8 +1622,10 @@ struct R: Rswift.Validatable {
     static let bookingServiceHelpSheetView = _R.nib._BookingServiceHelpSheetView()
     /// Nib `BookingUpComingCell`.
     static let bookingUpComingCell = _R.nib._BookingUpComingCell()
-    /// Nib `BookingUpComingDetailView`.
-    static let bookingUpComingDetailView = _R.nib._BookingUpComingDetailView()
+    /// Nib `BookingUpComingWellnessView`.
+    static let bookingUpComingWellnessView = _R.nib._BookingUpComingWellnessView()
+    /// Nib `BookingUpcomingTreatmentView`.
+    static let bookingUpcomingTreatmentView = _R.nib._BookingUpcomingTreatmentView()
     /// Nib `CCTShopFooterView`.
     static let cctShopFooterView = _R.nib._CCTShopFooterView()
     /// Nib `CCTShopHeaderView`.
@@ -2002,10 +2004,18 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UINib(name: "BookingUpComingDetailView", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.bookingUpComingDetailView) instead")
-    static func bookingUpComingDetailView(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.bookingUpComingDetailView)
+    /// `UINib(name: "BookingUpComingWellnessView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.bookingUpComingWellnessView) instead")
+    static func bookingUpComingWellnessView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.bookingUpComingWellnessView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "BookingUpcomingTreatmentView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.bookingUpcomingTreatmentView) instead")
+    static func bookingUpcomingTreatmentView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.bookingUpcomingTreatmentView)
     }
     #endif
 
@@ -2953,8 +2963,12 @@ struct R: Rswift.Validatable {
       return R.nib.bookingUpComingCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BookingUpComingCell
     }
 
-    static func bookingUpComingDetailView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> BookingUpComingDetailView? {
-      return R.nib.bookingUpComingDetailView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BookingUpComingDetailView
+    static func bookingUpComingWellnessView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> BookingUpComingWellnessView? {
+      return R.nib.bookingUpComingWellnessView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BookingUpComingWellnessView
+    }
+
+    static func bookingUpcomingTreatmentView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> BookingUpcomingTreatmentView? {
+      return R.nib.bookingUpcomingTreatmentView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BookingUpcomingTreatmentView
     }
 
     static func cardUserDetailHeadView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CardUserDetailHeadView? {
@@ -3429,7 +3443,8 @@ struct _R: Rswift.Validatable {
       try _BookingInProgressView.validate()
       try _BookingServiceFormFooterView.validate()
       try _BookingUpComingCell.validate()
-      try _BookingUpComingDetailView.validate()
+      try _BookingUpComingWellnessView.validate()
+      try _BookingUpcomingTreatmentView.validate()
       try _CCTShopFooterView.validate()
       try _CardUserDetailHeadView.validate()
       try _CheckInTodaySessionView.validate()
@@ -3821,27 +3836,53 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    struct _BookingUpComingDetailView: Rswift.NibResourceType, Rswift.Validatable {
+    struct _BookingUpComingWellnessView: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
-      let name = "BookingUpComingDetailView"
+      let name = "BookingUpComingWellnessView"
 
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> BookingUpComingDetailView? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BookingUpComingDetailView
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> BookingUpComingWellnessView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BookingUpComingWellnessView
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "booking_location", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_location' is used in nib 'BookingUpComingDetailView', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "booking_time", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_time' is used in nib 'BookingUpComingDetailView', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "booking_user", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_user' is used in nib 'BookingUpComingDetailView', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "contact_us_phone", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'contact_us_phone' is used in nib 'BookingUpComingDetailView', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "contact_us_whatsapp", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'contact_us_whatsapp' is used in nib 'BookingUpComingDetailView', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "booking_location", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_location' is used in nib 'BookingUpComingWellnessView', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "booking_time", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_time' is used in nib 'BookingUpComingWellnessView', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "booking_user", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_user' is used in nib 'BookingUpComingWellnessView', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "contact_us_phone", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'contact_us_phone' is used in nib 'BookingUpComingWellnessView', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "contact_us_whatsapp", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'contact_us_whatsapp' is used in nib 'BookingUpComingWellnessView', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
-          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'BookingUpComingDetailView', but couldn't be loaded.") }
-          if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'BookingUpComingDetailView', but couldn't be loaded.") }
-          if UIKit.UIColor(named: "TheamColor", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamColor' is used in nib 'BookingUpComingDetailView', but couldn't be loaded.") }
-          if UIKit.UIColor(named: "TheamPink", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamPink' is used in nib 'BookingUpComingDetailView', but couldn't be loaded.") }
-          if UIKit.UIColor(named: "TheamRed", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamRed' is used in nib 'BookingUpComingDetailView', but couldn't be loaded.") }
-          if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'BookingUpComingDetailView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'BookingUpComingWellnessView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'BookingUpComingWellnessView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamColor", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamColor' is used in nib 'BookingUpComingWellnessView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamPink", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamPink' is used in nib 'BookingUpComingWellnessView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamRed", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamRed' is used in nib 'BookingUpComingWellnessView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'BookingUpComingWellnessView', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _BookingUpcomingTreatmentView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "BookingUpcomingTreatmentView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> BookingUpcomingTreatmentView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BookingUpcomingTreatmentView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "booking_location", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_location' is used in nib 'BookingUpcomingTreatmentView', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "booking_time", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_time' is used in nib 'BookingUpcomingTreatmentView', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "contact_us_phone", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'contact_us_phone' is used in nib 'BookingUpcomingTreatmentView', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "contact_us_whatsapp", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'contact_us_whatsapp' is used in nib 'BookingUpcomingTreatmentView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'BookingUpcomingTreatmentView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'BookingUpcomingTreatmentView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamColor", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamColor' is used in nib 'BookingUpcomingTreatmentView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamPink", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamPink' is used in nib 'BookingUpcomingTreatmentView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamRed", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamRed' is used in nib 'BookingUpcomingTreatmentView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'BookingUpcomingTreatmentView', but couldn't be loaded.") }
         }
       }
 

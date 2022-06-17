@@ -107,8 +107,16 @@ class BookingUpcomingController: BasePagingTableController {
   }
    
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let vc = BookingUpComingDetailController(upcoming: self.dataArray[indexPath.row] as! BookingUpComingModel)
-    self.navigationController?.pushViewController(vc, animated: true)
+    let model = self.dataArray[indexPath.row] as! BookingUpComingModel
+    if model.wellness_treatment_type == "2" {
+      let vc = BookingUpcomingTreatmentController(upcoming: model)
+      self.navigationController?.pushViewController(vc, animated: true)
+    }else {
+      let vc = BookingUpComingWellnessController(upcoming: model)
+      self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+  
   }
 
   func buttonImage(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> UIImage! {
@@ -139,6 +147,6 @@ class BookingUpcomingController: BasePagingTableController {
   }
   
   func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
-    return -(kScreenHeight - self.todayH - kNavBarHeight - 120 - kTabBarHeight) * 0.5
+    return -(kScreenHeight - self.todayH - kNavBarHeight - kTabBarHeight) * 0.5
   }
 }

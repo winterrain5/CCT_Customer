@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BookingUpComingDetailView" customModule="CCTIOS" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BookingUpComingWellnessView" customModule="CCTIOS" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -153,7 +153,6 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="wvc-3m-bWn" secondAttribute="bottom" constant="18" id="5O7-e1-yt8"/>
                         <constraint firstItem="wvc-3m-bWn" firstAttribute="leading" secondItem="DBA-xz-UA6" secondAttribute="leading" constant="16" id="Dum-FM-OGn"/>
                         <constraint firstItem="Auh-CV-2XA" firstAttribute="leading" secondItem="DBA-xz-UA6" secondAttribute="leading" constant="16" id="F6P-gC-VQn"/>
                         <constraint firstItem="wvc-3m-bWn" firstAttribute="top" secondItem="kyS-Gx-Jcg" secondAttribute="bottom" constant="12" id="FsF-Ik-EtP"/>
@@ -170,7 +169,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFy-Qz-VeU">
-                    <rect key="frame" x="24" y="243" width="366" height="114.5"/>
+                    <rect key="frame" x="24" y="243" width="366" height="60"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Additional Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPm-FG-i65">
                             <rect key="frame" x="16" y="15" width="335" height="20"/>
@@ -185,8 +184,8 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="NO"/>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recently has a surgey and require a check up on my condition Recently has a surgey and require a check up on my condition" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUZ-Kl-1IG">
-                            <rect key="frame" x="16" y="45" width="334" height="57.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUZ-Kl-1IG">
+                            <rect key="frame" x="16" y="45" width="334" height="0.0"/>
                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                             <color key="textColor" name="Black333"/>
                             <nil key="highlightedColor"/>
@@ -203,7 +202,7 @@
                         <constraint firstItem="yUZ-Kl-1IG" firstAttribute="top" secondItem="hPm-FG-i65" secondAttribute="bottom" constant="10" id="QsL-a4-jbh"/>
                         <constraint firstItem="yUZ-Kl-1IG" firstAttribute="leading" secondItem="jFy-Qz-VeU" secondAttribute="leading" constant="16" id="YLc-FI-3S9"/>
                         <constraint firstItem="hPm-FG-i65" firstAttribute="top" secondItem="jFy-Qz-VeU" secondAttribute="top" constant="15" id="lp7-dG-BEU"/>
-                        <constraint firstAttribute="bottom" secondItem="yUZ-Kl-1IG" secondAttribute="bottom" constant="12" id="m3T-u8-rAb"/>
+                        <constraint firstAttribute="height" constant="60" id="oab-2D-MHM"/>
                         <constraint firstAttribute="trailing" secondItem="yUZ-Kl-1IG" secondAttribute="trailing" constant="16" id="xTm-Fz-bhd"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
@@ -211,7 +210,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kY3-Ui-DLc">
-                    <rect key="frame" x="24" y="373.5" width="366" height="84"/>
+                    <rect key="frame" x="24" y="319" width="366" height="84"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hT-aE-5gj">
                             <rect key="frame" x="16" y="50" width="182.5" height="24"/>
@@ -382,7 +381,6 @@
                 <constraint firstItem="jFy-Qz-VeU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="785-h7-xRy"/>
                 <constraint firstItem="jFy-Qz-VeU" firstAttribute="top" secondItem="DBA-xz-UA6" secondAttribute="bottom" constant="16" id="Elb-xb-62U"/>
                 <constraint firstItem="V1a-0u-svm" firstAttribute="top" secondItem="tgh-78-xi0" secondAttribute="bottom" constant="16" id="L7y-Co-Pos"/>
-                <constraint firstItem="kY3-Ui-DLc" firstAttribute="top" secondItem="jFy-Qz-VeU" secondAttribute="bottom" constant="16" id="LpS-DX-m4u"/>
                 <constraint firstItem="DBA-xz-UA6" firstAttribute="top" secondItem="Nh3-BE-XUZ" secondAttribute="bottom" constant="24" id="OQc-ag-Bif"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Nh3-BE-XUZ" secondAttribute="trailing" constant="24" id="Orh-IY-r1x"/>
                 <constraint firstItem="RRT-Sl-KTc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TqF-Kn-C3h"/>
@@ -394,6 +392,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jFy-Qz-VeU" secondAttribute="trailing" constant="24" id="sZa-k1-AbG"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DBA-xz-UA6" secondAttribute="trailing" constant="24" id="tV1-fF-E62"/>
                 <constraint firstItem="Nh3-BE-XUZ" firstAttribute="top" secondItem="RRT-Sl-KTc" secondAttribute="bottom" constant="4" id="uEv-uT-9vx"/>
+                <constraint firstItem="kY3-Ui-DLc" firstAttribute="top" secondItem="DBA-xz-UA6" secondAttribute="bottom" constant="92" id="vx3-4m-Y9S"/>
                 <constraint firstItem="Nh3-BE-XUZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="we4-xa-pwI"/>
                 <constraint firstItem="tgh-78-xi0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yO7-ZN-C0F"/>
                 <constraint firstItem="DBA-xz-UA6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="zul-Ey-ARf"/>
@@ -413,13 +412,15 @@
                 <outlet property="phoneLabel" destination="rSz-FP-QcR" id="wcB-FC-aIh"/>
                 <outlet property="progressLabel" destination="RRT-Sl-KTc" id="Dvj-SS-3iD"/>
                 <outlet property="remarkLabel" destination="yUZ-Kl-1IG" id="bBr-lA-5Sn"/>
+                <outlet property="shadowV3TopsCons" destination="vx3-4m-Y9S" id="e5K-xn-fSM"/>
                 <outlet property="shadowView1" destination="DBA-xz-UA6" id="IIf-ar-mwk"/>
                 <outlet property="shadowView2" destination="jFy-Qz-VeU" id="lBW-La-nRU"/>
                 <outlet property="shadowView3" destination="kY3-Ui-DLc" id="UfO-ef-GT3"/>
+                <outlet property="shaodwV2HCons" destination="oab-2D-MHM" id="r8T-nT-Klf"/>
                 <outlet property="shaowV1HCons" destination="Mjq-A4-e3v" id="Ojd-o3-vhp"/>
                 <outlet property="whatsappLabel" destination="q6Y-5p-TvM" id="VvI-bi-44j"/>
             </connections>
-            <point key="canvasLocation" x="-959" y="169"/>
+            <point key="canvasLocation" x="-1771.0144927536232" y="148.66071428571428"/>
         </view>
     </objects>
     <resources>

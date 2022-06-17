@@ -22,17 +22,17 @@ class NotificationModel: BaseModel {
     let date = send_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
     if date?.isInToday ?? false {
      
-      let hour = Date().hoursSince(date!)
-      let min = Date().minutesSince(date!)
-      let second = Date().secondsSince(date!)
+      let hour = Date().hoursSince(date!).int
+      let min = Date().minutesSince(date!).int
+      let second = Date().secondsSince(date!).int
       if hour > 0 {
-        return hour.int.string.appending("h ago")
+        return hour.string.appending("h ago")
       }
       if hour == 0 && min > 0 {
-        return min.int.string.appending("m ago")
+        return min.string.appending("m ago")
       }
       if hour == 0 && min == 0 && second > 0{
-        return second.int.string.appending("s ago")
+        return second.string.appending("s ago")
       }
     }else {
       if date?.isInYesterday ?? false{

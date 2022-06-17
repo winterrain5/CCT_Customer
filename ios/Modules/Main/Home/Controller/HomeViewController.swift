@@ -22,10 +22,13 @@ class HomeViewController: BaseViewController {
   init() {
     super.init(nibName: nil, bundle: nil)
     NotificationCenter.default.addObserver(forName: .todayCheckIn, object: nil, queue: .main) { noti in
-      self.checkInSessionModel = noti.object as! BookingTodayModel
-      self.showScanVc()
-      self.scanType = .CheckIn
       
+      let tab = self.sideMenuController?.contentViewController as? BaseTabBarController
+      if tab?.selectedIndex == 0 {
+        self.checkInSessionModel = noti.object as! BookingTodayModel
+        self.showScanVc()
+        self.scanType = .CheckIn
+      }
     }
   }
   
@@ -69,7 +72,7 @@ class HomeViewController: BaseViewController {
   
   
   func refreshData() {
-   
+    
     firstly {
       self.getTClientPartInfo()
     }.done { _ in
@@ -145,7 +148,7 @@ class HomeViewController: BaseViewController {
         resolver.fulfill_()
       }
     }
-   
+    
   }
   
   func getNewReCardAmount() {
@@ -185,7 +188,7 @@ class HomeViewController: BaseViewController {
       params.set(key: "start", value: 0)
       params.set(key: "length", value: 30)
       NetworkManager().request(params: params) { data in
-       
+        
         if let models = DecodeManager.decodeArrayByHandJSON(BookingUpComingModel.self, from: data){
           resolver.fulfill(models)
           return
@@ -194,10 +197,10 @@ class HomeViewController: BaseViewController {
       } errorHandler: { e in
         resolver.reject(e.asAPIError)
       }
-
+      
     }
   }
-
+  
   
   @objc func leftItemAction() {
     sideMenuController?.revealMenu()
@@ -207,6 +210,11 @@ class HomeViewController: BaseViewController {
     showScanVc()
     scanType = .Home
   }
+  
+  
+}
+
+extension HomeViewController: QRScannerCodeDelegate {
   
   func showScanVc() {
     var configuration = QRScannerConfiguration()
@@ -225,34 +233,32 @@ class HomeViewController: BaseViewController {
     self.navigationController?.pushViewController(scanner, completion: nil)
   }
   
-}
-
-extension HomeViewController: QRScannerCodeDelegate {
-    func qrScannerDidFail(_ controller: UIViewController, error: QRCodeError) {
-        print("error:\(error.localizedDescription)")
+  
+  func qrScannerDidFail(_ controller: UIViewController, error: QRCodeError) {
+    print("error:\(error.localizedDescription)")
+  }
+  
+  func qrScanner(_ controller: UIViewController, scanDidComplete result: String) {
+    print("result:\(result)")
+    let json = JSON(parseJSON: result)
+    let locationName = json["name"].stringValue
+//    let id = json["id"].stringValue
+//    let type = json["type"].stringValue
+    if scanType == .Home {
+      let vc = CheckInTodaySessionController(locationName: locationName)
+      self.navigationController?.pushViewController(vc, completion: nil)
     }
-    
-    func qrScanner(_ controller: UIViewController, scanDidComplete result: String) {
-        print("result:\(result)")
-      let json = JSON(parseJSON: result)
-      let locationName = json["name"].stringValue
-      let id = json["id"].stringValue
-      let type = json["type"].stringValue
-      if scanType == .Home {
-        let vc = CheckInTodaySessionController(locationName: locationName)
-        self.navigationController?.pushViewController(vc, completion: nil)
-      }
-      if scanType == .CheckIn {
-        
-        let vc = ConfirmSessionController(todayModel: self.checkInSessionModel)
-        self.navigationController?.pushViewController(vc, completion: nil)
-        
-      }
+    if scanType == .CheckIn {
       
+      let vc = ConfirmSessionController(todayModel: self.checkInSessionModel)
+      self.navigationController?.pushViewController(vc, completion: nil)
       
     }
     
-    func qrScannerDidCancel(_ controller: UIViewController) {
-        print("SwiftQRScanner did cancel")
-    }
+    
+  }
+  
+  func qrScannerDidCancel(_ controller: UIViewController) {
+    print("SwiftQRScanner did cancel")
+  }
 }

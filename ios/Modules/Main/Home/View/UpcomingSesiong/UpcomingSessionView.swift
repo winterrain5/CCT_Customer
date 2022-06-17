@@ -96,8 +96,14 @@ class UpcomingSessionView: UIView,UICollectionViewDataSource,UICollectionViewDel
   }
 
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let vc = BookingUpComingDetailController(upcoming: models[indexPath.item])
-    UIViewController.getTopVc()?.navigationController?.pushViewController(vc, animated: true)
+    let model = models[indexPath.item]
+    if model.wellness_treatment_type == "2" {
+      let vc = BookingUpcomingTreatmentController(upcoming: model)
+      UIViewController.getTopVc()?.navigationController?.pushViewController(vc, animated: true)
+    }else {
+      let vc = BookingUpComingWellnessController(upcoming: model)
+      UIViewController.getTopVc()?.navigationController?.pushViewController(vc, animated: true)
+    }
   }
   
   func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

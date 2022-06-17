@@ -147,10 +147,6 @@ class BookingAppointmentController: BaseTableController {
       self?.navigationController?.popToRootViewController(animated: true)
     }
     
-    if showReport {
-      getLastSymptomCheckReport()
-    }
-    
   }
   
   
@@ -186,12 +182,18 @@ class BookingAppointmentController: BaseTableController {
         self.checkCanBookService(sender: sender)
       }
     }
-    var result:[[SymptomCheckStepModel]] = []
-    self.result.sorted(by: { $0.key < $01.key}).forEach { key,value in
-      result.append(value)
+    if self.type == .Treatment {
+      if showReport {
+          getLastSymptomCheckReport()
+      }else {
+        var result:[[SymptomCheckStepModel]] = []
+        self.result.sorted(by: { $0.key < $01.key}).forEach { key,value in
+          result.append(value)
+        }
+        footView.result = result
+      }
     }
-    footView.result = result
-    
+  
     tableView?.register(cellWithClass: BookingServiceFormCell.self)
   }
   

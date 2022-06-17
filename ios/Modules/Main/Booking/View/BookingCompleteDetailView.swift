@@ -54,7 +54,7 @@ class BookingCompleteDetailView: UIView,UITableViewDelegate,UITableViewDataSourc
     didSet {
 
       tableView.reloadData()
-      pointsLabel.text = "(Points earned \(model?.Order_Info?.present_points ?? ""))"
+      pointsLabel.text = "(Points earned \(model?.Order_Info?.present_points ?? "0"))"
       
       let showTotal:Float = model?.Order_Info?.total?.float() ?? 0
       let freight:Float = model?.Order_Info?.freight?.float() ?? 0

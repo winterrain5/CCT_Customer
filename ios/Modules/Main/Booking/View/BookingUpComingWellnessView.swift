@@ -7,8 +7,10 @@
 
 import UIKit
 
-class BookingUpComingDetailView: UIView {
+class BookingUpComingWellnessView: UIView {
 
+  @IBOutlet weak var shaodwV2HCons: NSLayoutConstraint!
+  @IBOutlet weak var shadowV3TopsCons: NSLayoutConstraint!
   @IBOutlet weak var employeeNameLabel: UILabel!
   @IBOutlet weak var employeeView: UIView!
   @IBOutlet weak var shaowV1HCons: NSLayoutConstraint!
@@ -26,6 +28,7 @@ class BookingUpComingDetailView: UIView {
   @IBOutlet weak var whatsappLabel: UILabel!
   @IBOutlet weak var shadowView2: UIView!
   var isCanCheckIn:Bool = false
+  var checkInHandler:((BookingTodayModel)->())?
   var upcoming:BookingUpComingModel? {
     didSet {
       guard let upcoming = upcoming else {
@@ -39,8 +42,8 @@ class BookingUpComingDetailView: UIView {
       employeeView.isHidden = upcoming.staff_is_random == "1"
       employeeNameLabel.text = upcoming.employee_first_name + " " + upcoming.employee_last_name
       shaowV1HCons.constant = upcoming.staff_is_random == "1" ? 80 : 108
-      remarkLabel.text = upcoming.remark
       self.updateCheckinButtonStatus()
+      self.updateRemarkData(upcoming.remark)
       layoutIfNeeded()
     }
   }
@@ -55,11 +58,11 @@ class BookingUpComingDetailView: UIView {
         dateLabel.text = date.string(withFormat: "dd MMM yyyy,EEE - ").appending(date.timeString(ofStyle: .short))
         isCanCheckIn = date.isInToday
       }
-      remarkLabel.text = today.remark
       employeeView.isHidden = today.staff_is_random == "1"
       employeeNameLabel.text = today.staff_name
       shaowV1HCons.constant = today.staff_is_random == "1" ? 80 : 108
       self.updateCheckinButtonStatus()
+      self.updateRemarkData(today.remark)
       layoutIfNeeded()
     }
   }
@@ -81,6 +84,22 @@ class BookingUpComingDetailView: UIView {
   override func layoutSubviews() {
     super.layoutSubviews()
     corner(byRoundingCorners: [.topRight,.topLeft], radii: 16)
+  }
+  
+  func updateRemarkData(_ remark:String) {
+    if remark.isEmpty {
+      shadowView2.isHidden = true
+      shadowV3TopsCons.constant = 16
+      shaodwV2HCons.constant = 0
+    }else {
+      shadowView2.isHidden = false
+      let remarkH = remark.heightWithConstrainedWidth(width: kScreenWidth - 80, font: UIFont(name: .AvenirNextRegular, size: 14)) + 8
+      let s2h = remarkH + 56
+      shaodwV2HCons.constant = s2h
+      shadowV3TopsCons.constant = s2h + 32
+    }
+    
+    remarkLabel.text = remark
   }
   
   func updateCheckinButtonStatus() {
@@ -179,6 +198,10 @@ class BookingUpComingDetailView: UIView {
   }
   
   @IBAction func checkinAction(_ sender: Any) {
+    if let today = today {
+      checkInHandler?(today)
+    }
+    
   }
   
 }

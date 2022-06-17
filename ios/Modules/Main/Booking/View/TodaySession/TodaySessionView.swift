@@ -115,8 +115,14 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
       let vc = BookingInProgressController(today: model)
       UIViewController.getTopVc()?.navigationController?.pushViewController(vc, animated: true)
     }else {
-      let vc = BookingUpComingDetailController(today: model)
-      UIViewController.getTopVc()?.navigationController?.pushViewController(vc, animated: true)
+      if model.wellness_treatment_type == "2" {
+        let vc = BookingUpcomingTreatmentController(today: model)
+        UIViewController.getTopVc()?.navigationController?.pushViewController(vc, animated: true)
+      }else {
+        let vc = BookingUpComingWellnessController(today: model)
+        UIViewController.getTopVc()?.navigationController?.pushViewController(vc, animated: true)
+      }
+      
     }
    
   }

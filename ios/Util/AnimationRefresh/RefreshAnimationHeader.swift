@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haptica
 
 enum RefreshColorStyle {
     case white,gray
@@ -60,6 +61,11 @@ class RefreshAnimationHeader: MJRefreshHeader {
                 messageLabel.text = "Pull To Refresh"
                 break
             case .pulling:
+              if #available(iOS 13.0, *) {
+                Haptic.impact(.soft).generate()
+              } else {
+                Haptic.impact(.light).generate()
+              }
                 activity.stopAnimating()
                 messageLabel.isHidden = false
                 messageLabel.text = "Release To Refresh"

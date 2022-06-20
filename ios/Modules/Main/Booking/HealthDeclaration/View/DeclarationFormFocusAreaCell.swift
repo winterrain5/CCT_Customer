@@ -24,6 +24,13 @@ class DeclarationFormFocusAreaCell: UITableViewCell {
       descLabel.text = model.description_en
       numLabel.text = model.index < 10 ? "Question 0\(model.index)" : "Question \(model.index)"
       
+      updateSelectStatus(0, result: model.focus_on_head)
+      updateSelectStatus(1, result: model.focus_on_neck)
+      updateSelectStatus(2, result: model.focus_on_arms)
+      updateSelectStatus(3, result: model.focus_on_shoulders)
+      updateSelectStatus(4, result: model.focus_on_legs)
+      updateSelectStatus(5, result: model.focus_on_back)
+      
     }
   }
   override func awakeFromNib() {
@@ -36,27 +43,52 @@ class DeclarationFormFocusAreaCell: UITableViewCell {
     sender.isSelected.toggle()
     if sender.isSelected {
       selectStyle(sender)
+      updateData(sender, result: 1)
     }else {
       normalStyle(sender)
+      updateData(sender, result: 0)
+    }
+    
+  }
+  
+  
+  
+  func updateSelectStatus(_ tag:Int,result:Int) {
+    let sender = stackView.subviews.filter({ $0.tag == tag }).first as! UIButton
+    if result == 1 {
+      focusAreaAction(sender)
     }
   }
   
-  func updateSelectStatus(_ sender:UIButton,result:String) {
-    
-    if result == model?.result { return }
-    model?.result = result
-    updateOptionsHandler?(model!)
+  func updateData(_ sender:UIButton,result:Int) {
+    let tag = sender.tag
+    switch tag {
+    case 0:
+      model?.focus_on_head = result
+    case 1:
+      model?.focus_on_neck = result
+    case 2:
+      model?.focus_on_arms = result
+    case 3:
+      model?.focus_on_shoulders = result
+    case 4:
+      model?.focus_on_legs = result
+    case 5:
+      model?.focus_on_back = result
+    default:
+      print("none of cased")
+    }
   }
   
   func selectStyle(_ btn:UIButton) {
     btn.backgroundColor = R.color.grayf2()
-    btn.setTitleColor(R.color.theamRed(), for: .normal)
-    btn.tintColor = R.color.theamRed()
+    btn.tintColor = .clear
+    btn.setTitleColor(R.color.theamRed(), for: .selected)
   }
   func normalStyle(_ btn:UIButton) {
     btn.backgroundColor = R.color.white()
+    btn.tintColor = .clear
     btn.setTitleColor(R.color.grayBD(), for: .normal)
-    btn.tintColor = R.color.grayBD()
   }
     
 }

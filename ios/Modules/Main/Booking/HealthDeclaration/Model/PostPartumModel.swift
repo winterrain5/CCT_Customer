@@ -15,6 +15,13 @@ enum DeclarationFormType:String,HandyJSONEnum {
   case InputWithOptions
   case FocusArea
 }
+enum InputContentType:String,HandyJSONEnum {
+  case PregnancyWeeks
+  case GynecologistName
+  case GynecologistPhone
+  case HighRiskReason
+  case ComplicationsProblems
+}
 class HealthDeclarationModel :BaseModel {
   var category: String = ""
   var result: String = "3"
@@ -31,13 +38,21 @@ class HealthDeclarationModel :BaseModel {
   var s_class: String = ""
   
   /// 以下为自定义字段
-  var date = ""
+  var delivery_date = ""
   var mehtod_of_delivery = ""
   var remark = ""
   var text = ""
   var placeholder = ""
-  var focus_area:[String] = []
   
+  // 产前问题
+  var inputType:InputContentType?
+  var focus_on_head:Int = 0
+  var focus_on_legs:Int = 0
+  var focus_on_shoulders:Int = 0
+  var focus_on_arms:Int = 0
+  var focus_on_neck:Int = 0
+  var focus_on_back:Int = 0
+ 
   var formType:DeclarationFormType?
   
   var index = 1

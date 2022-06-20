@@ -35,7 +35,7 @@ class DeclarationFormCell: UITableViewCell {
         updateSelectStatus(YesBtn,result: "2")
       }
 
-      if model.result == "3" {
+      if  model.result == "3" || model.result == "0" {
         updateSelectStatus(unsureBtn,result: "3")
       }
     }

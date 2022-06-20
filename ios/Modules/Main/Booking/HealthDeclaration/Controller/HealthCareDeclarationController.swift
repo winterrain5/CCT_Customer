@@ -39,18 +39,17 @@ class HealthCareDeclarationController: BaseTableController {
       Toast.dismiss()
       
       var temp:[HealthDeclarationModel] = []
-      
-      temp.append(contentsOf: a3)
-      temp.append(contentsOf: a2)
-      
-      temp.forEach { e1 in
+      var commonElements:[HealthDeclarationModel] = []
+      a3.forEach { e1 in
         a1.xgQuestions.forEach { e2 in
           if e1.id == e2.id { // 相等则移除e1 留下e2
-            temp.removeAll(e1)
-            temp.append(e2)
+            commonElements.append(e2)
           }
         }
       }
+      temp.append(contentsOf: commonElements)
+      temp.append(contentsOf: a2)
+      temp.removeDuplicates(keyPath: \.id)
       
       let remarkModel = HealthDeclarationModel()
       remarkModel.formType = .Remark

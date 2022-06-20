@@ -11,7 +11,7 @@ class PreConceptionDeclarationController: BaseTableController {
   
   var headView = DeclarationFormHeadView.loadViewFromNib()
   var footView = DeclarationFormFootView.loadViewFromNib()
-  
+  var prePartumField:PrePartumFields?
   var bookedService:BookingTodayModel!
   convenience init(bookedService:BookingTodayModel) {
     self.init()
@@ -25,7 +25,7 @@ class PreConceptionDeclarationController: BaseTableController {
     
     footView.healthDeclarationType = 3
     footView.confirmHander = { [weak self] sender in
-      
+      self?.savePatientResults(sender)
     }
     
     refreshData()
@@ -40,18 +40,17 @@ class PreConceptionDeclarationController: BaseTableController {
       Toast.dismiss()
       
       var temp:[HealthDeclarationModel] = []
-      
-      temp.append(contentsOf: a3)
-      temp.append(contentsOf: a2)
-      
-      temp.forEach { e1 in
+      var commonElements:[HealthDeclarationModel] = []
+      a3.forEach { e1 in
         a1.xgQuestions.forEach { e2 in
           if e1.id == e2.id { // 相等则移除e1 留下e2
-            temp.removeAll(e1)
-            temp.append(e2)
+            commonElements.append(e2)
           }
         }
       }
+      temp.append(contentsOf: commonElements)
+      temp.append(contentsOf: a2)
+      temp.removeDuplicates(keyPath: \.id)
       
       temp.removeFirst(where: { $0.description_en == "Are you pregnant?" })
       temp.removeFirst(where: { $0.description_en == "Do you have irregular periods?" })
@@ -60,29 +59,50 @@ class PreConceptionDeclarationController: BaseTableController {
       weekNo.description_en = "Number of weeks into pregnancy?"
       weekNo.placeholder = "Enter no. of weeks"
       weekNo.formType = .Input
+      weekNo.inputType = .PregnancyWeeks
+      weekNo.text = a1.prePartumFields?.pregnancy_weeks ?? ""
       temp.append(weekNo)
       
       let dateModel = HealthDeclarationModel()
       dateModel.formType = .Date
       dateModel.description_en = "Estimated Due Date (EDD)"
-      dateModel.date = a1.prePartumFields?.delivery_estimated_date ?? ""
+      dateModel.delivery_date = a1.prePartumFields?.delivery_estimated_date ?? ""
       temp.append(dateModel)
       
       let name = HealthDeclarationModel()
       name.description_en = "Name of Gynecologist"
       name.placeholder = "Enter name"
+      name.text = String(a1.prePartumFields?.name_phone_gynecologist?.split(separator: "/").first ?? "")
+      name.inputType = .GynecologistName
       name.formType = .Input
       temp.append(name)
       
       let contactNo = HealthDeclarationModel()
       contactNo.description_en = "Gynecologist Contact Number"
       contactNo.placeholder = "Enter Contact No."
+      contactNo.text = String(a1.prePartumFields?.name_phone_gynecologist?.split(separator: "/").last ?? "")
+      contactNo.inputType = .GynecologistPhone
       contactNo.formType = .Input
       temp.append(contactNo)
       
+      let doctorNote = HealthDeclarationModel()
+      doctorNote.description_en = "Is your primary care physician aware you are receiving a massage, or do you have a doctor’s note?"
+      doctorNote.result = a1.prePartumFields?.physician_aware_you ?? "3"
+      doctorNote.id = "-1"
+      temp.append(doctorNote)
+      
+      let firstmassage = HealthDeclarationModel()
+      firstmassage.description_en = "Is this your first prenatal massage?"
+      firstmassage.result = a1.prePartumFields?.is_first_massage.string ?? "3"
+      firstmassage.id = "-2"
+      temp.append(firstmassage)
+      
       let elaborate1 = HealthDeclarationModel()
-      elaborate1.description_en = "Is your preganancy considered to be high risk?"
       elaborate1.placeholder = "Please elaborate"
+      elaborate1.description_en = "Is your preganancy considered to be high risk?"
+      elaborate1.result = a1.prePartumFields?.has_high_risk.string ?? "3"
+      elaborate1.text = a1.prePartumFields?.high_risk_reasons ?? ""
+      elaborate1.inputType = .HighRiskReason
       elaborate1.formType = .InputWithOptions
       temp.append(elaborate1)
       
@@ -90,6 +110,9 @@ class PreConceptionDeclarationController: BaseTableController {
       let elaborate2 = HealthDeclarationModel()
       elaborate2.description_en = "Have you had any complications or problems in this pregnancy? "
       elaborate2.placeholder = "Please elaborate"
+      elaborate2.result = a1.prePartumFields?.has_any_complications.string ?? "3"
+      elaborate2.text = a1.prePartumFields?.complications_problems ?? ""
+      elaborate2.inputType = .ComplicationsProblems
       elaborate2.formType = .InputWithOptions
       temp.append(elaborate2)
       
@@ -98,6 +121,13 @@ class PreConceptionDeclarationController: BaseTableController {
       focusArea.description_en = "What areas of the body would you like the therapist to focus on?"
       focusArea.placeholder = "Please elaborate"
       focusArea.formType = .FocusArea
+      focusArea.focus_on_head = a1.prePartumFields?.focus_on_head ?? 0
+      focusArea.focus_on_neck = a1.prePartumFields?.focus_on_neck ?? 0
+      focusArea.focus_on_arms = a1.prePartumFields?.focus_on_arms ?? 0
+      focusArea.focus_on_shoulders = a1.prePartumFields?.focus_on_shoulders ?? 0
+      focusArea.focus_on_legs = a1.prePartumFields?.focus_on_legs ?? 0
+      focusArea.focus_on_back = a1.prePartumFields?.focus_on_back ?? 0
+      
       temp.append(focusArea)
       
       let remarkModel = HealthDeclarationModel()
@@ -105,7 +135,7 @@ class PreConceptionDeclarationController: BaseTableController {
       temp.append(remarkModel)
       
       self.dataArray = temp
-      
+  
       if self.dataArray.count > 0 {
         
         self.tableView?.tableHeaderView = self.headView
@@ -115,6 +145,8 @@ class PreConceptionDeclarationController: BaseTableController {
         self.footView.size = CGSize(width: kScreenWidth, height: 604)
         
       }
+      
+      self.prePartumField = a1.prePartumFields
       self.endRefresh()
       self.hideSkeleton()
       
@@ -270,21 +302,15 @@ class PreConceptionDeclarationController: BaseTableController {
     summary_data.set(key: "registration_id", value: 0)
     summary_data.set(key: "create_time", value: Date().string(withFormat: "yyyy-MM-dd HH:mm:ss"))
     summary_data.set(key: "create_uid", value: 1)
-    summary_data.set(key: "remarks", value: temp.filter({ $0.type == "remark"}).first?.remark ?? "")
-    summary_data.set(key: "category", value: 5)
     summary_data.set(key: "location_id", value: bookedService.location_id)
+    summary_data.set(key: "remarks", value: temp.filter({ $0.type == "remark"}).first?.remark ?? "")
+    summary_data.set(key: "category", value: 4)
     
     data.set(key: "Summary_Data", value: summary_data.result, keyType: .string, valueType: .map(1))
     
-    let post_massage_record = SOAPDictionary()
+    let pre_partum_record = SOAPDictionary()
     let xg_qa_lines_data = SOAPDictionary()
-    let base_info = SOAPDictionary()
-    
-    base_info.set(key: "address", value: "")
-    base_info.set(key: "delivery_estimated_date", value: temp.filter({ $0.type == "date" }).first?.date ?? "")
-    base_info.set(key: "is_need_corset", value: 0)
-    base_info.set(key: "is_need_slimming_oil", value: 0)
-    base_info.set(key: "delivery_method", value: temp.filter({ $0.type == "method" }).first?.mehtod_of_delivery ?? "")
+   
     
     for (i,e) in temp.enumerated() {
       if e.type == "remark" || e.type == "date" || e.type == "method" {
@@ -297,10 +323,32 @@ class PreConceptionDeclarationController: BaseTableController {
       xg_qa_lines_data.set(key: i.string, value: lines.result, keyType: .string, valueType: .map(1))
     }
     
-    post_massage_record.set(key: "xg_qa_lines_data", value: xg_qa_lines_data.result,keyType: .string,valueType: .map(1))
-    post_massage_record.set(key: "base_info", value: base_info.result,keyType: .string,valueType: .map(1))
+    pre_partum_record.set(key: "xg_qa_lines_data", value: xg_qa_lines_data.result,keyType: .string,valueType: .map(1))
     
-    data.set(key: "post_massage_record", value: post_massage_record.result, keyType: .string, valueType: .map(1))
+    
+    let base_info = SOAPDictionary()
+    
+    base_info.set(key: "address", value: "")
+    let gynecologist_name = temp.filter({ $0.inputType == .GynecologistName }).first?.text ?? ""
+    let gynecologist_phone = temp.filter({ $0.inputType == .GynecologistPhone }).first?.text ?? ""
+    base_info.set(key: "name_phone_gynecologist", value:  gynecologist_name + "/" + gynecologist_phone)
+    base_info.set(key: "physician_aware_you", value: temp.filter({$0.id == "-1"}).first?.result ?? "3")
+    base_info.set(key: "pregnancy_weeks", value: temp.filter({ $0.inputType == .PregnancyWeeks }).first?.text ?? "")
+    base_info.set(key: "delivery_estimated_date", value: temp.filter({ $0.formType == .Date }).first?.delivery_date ?? "")
+    base_info.set(key: "is_first_massage", value: temp.filter({ $0.id == "-2" }).first?.result ?? "3")
+    base_info.set(key: "has_high_risk", value: temp.filter({ $0.inputType == .HighRiskReason}).first?.result ?? "3")
+    base_info.set(key: "high_risk_reasons", value: temp.filter({ $0.inputType == .HighRiskReason}).first?.text ?? "")
+    base_info.set(key: "has_any_complications", value: temp.filter({ $0.inputType == .ComplicationsProblems}).first?.result ?? "3")
+    base_info.set(key: "complications_problems", value: temp.filter({ $0.inputType == .ComplicationsProblems}).first?.text ?? "3")
+    base_info.set(key: "focus_on_neck", value: temp.filter({ $0.formType == .FocusArea}).first?.focus_on_neck ?? 0)
+    base_info.set(key: "focus_on_arms", value: temp.filter({ $0.formType == .FocusArea}).first?.focus_on_arms ?? 0)
+    base_info.set(key: "focus_on_shoulders", value: temp.filter({ $0.formType == .FocusArea}).first?.focus_on_shoulders ?? 0)
+    base_info.set(key: "focus_on_legs", value: temp.filter({ $0.formType == .FocusArea}).first?.focus_on_legs ?? 0)
+    base_info.set(key: "focus_on_head", value: temp.filter({ $0.formType == .FocusArea}).first?.focus_on_head ?? 0)
+    base_info.set(key: "focus_on_back", value: temp.filter({ $0.formType == .FocusArea}).first?.focus_on_back ?? 0)
+    pre_partum_record.set(key: "base_info", value: base_info.result,keyType: .string,valueType: .map(1))
+    
+    data.set(key: "pre_partum_record", value: pre_partum_record.result, keyType: .string, valueType: .map(1))
     
     mapParams.set(key: "data", value: data.result,type: .map(1))
     

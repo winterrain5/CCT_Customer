@@ -37,7 +37,7 @@ class BookingTodayModel: BaseModel {
       if staff_is_random == "2" {
         return 192
       }else {
-        return 164
+        return 185
       }
     }
    

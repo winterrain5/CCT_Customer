@@ -39,18 +39,17 @@ class PostPartumDeclarationController: BaseTableController {
       Toast.dismiss()
       
       var temp:[HealthDeclarationModel] = []
-      
-      temp.append(contentsOf: a3)
-      temp.append(contentsOf: a2)
-      
-      temp.forEach { e1 in
+      var commonElements:[HealthDeclarationModel] = []
+      a3.forEach { e1 in
         a1.xgQuestions.forEach { e2 in
           if e1.id == e2.id { // 相等则移除e1 留下e2
-            temp.removeAll(e1)
-            temp.append(e2)
+            commonElements.append(e2)
           }
         }
       }
+      temp.append(contentsOf: commonElements)
+      temp.append(contentsOf: a2)
+      temp.removeDuplicates(keyPath: \.id)
       
       temp.removeFirst(where: { $0.description_en == "Are you pregnant?" })
       temp.removeFirst(where: { $0.description_en == "Do you have irregular periods?" })
@@ -58,7 +57,7 @@ class PostPartumDeclarationController: BaseTableController {
       let dateModel = HealthDeclarationModel()
       dateModel.formType = .Date
       dateModel.description_en = "Date of Delivery"
-      dateModel.date = a1.postPartumFields?.delivery_estimated_date ?? ""
+      dateModel.delivery_date = a1.postPartumFields?.delivery_estimated_date ?? ""
       let methodModel = HealthDeclarationModel()
       methodModel.formType = .DeliveryMethod
       methodModel.mehtod_of_delivery = a1.postPartumFields?.delivery_method.string ?? "2"
@@ -232,7 +231,7 @@ class PostPartumDeclarationController: BaseTableController {
     let base_info = SOAPDictionary()
     
     base_info.set(key: "address", value: "")
-    base_info.set(key: "delivery_estimated_date", value: temp.filter({ $0.formType == .Date }).first?.date ?? "")
+    base_info.set(key: "delivery_estimated_date", value: temp.filter({ $0.formType == .Date }).first?.delivery_date ?? "")
     base_info.set(key: "is_need_corset", value: 0)
     base_info.set(key: "is_need_slimming_oil", value: 0)
     base_info.set(key: "delivery_method", value: temp.filter({ $0.formType == .DeliveryMethod }).first?.mehtod_of_delivery ?? "")

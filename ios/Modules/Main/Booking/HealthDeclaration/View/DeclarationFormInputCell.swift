@@ -7,7 +7,7 @@
 
 import UIKit
 import KMPlaceholderTextView
-class DeclarationFormInputCell: UITableViewCell {
+class DeclarationFormInputCell: UITableViewCell,UITextViewDelegate {
   @IBOutlet weak var descLabel: UILabel!
   @IBOutlet weak var numLabel: UILabel!
   @IBOutlet weak var textView: KMPlaceholderTextView!
@@ -19,6 +19,9 @@ class DeclarationFormInputCell: UITableViewCell {
       descLabel.text = model.description_en
       numLabel.text = model.index < 10 ? "Question 0\(model.index)" : "Question \(model.index)"
       textView.placeholder = model.placeholder
+      if !model.text.isEmpty {
+        textView.text = model.text
+      }
     }
   }
   @IBOutlet weak var shadowView: UIView!

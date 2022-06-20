@@ -20,10 +20,10 @@ class DeclarationFormDateOfDeliverCell: UITableViewCell {
       }
       numLabel.text = model.index < 10 ? "Question 0\(model.index)" : "Question \(model.index)"
       descLabel.text = model.description_en
-      if model.date.isEmpty {
+      if model.delivery_date.isEmpty {
         return
       }
-      dateBtn.titleForNormal = model.date
+      dateBtn.titleForNormal = model.delivery_date
     }
   }
   override func awakeFromNib() {
@@ -36,7 +36,7 @@ class DeclarationFormDateOfDeliverCell: UITableViewCell {
     DatePickerSheetView.show(minimumDate:Date()){ date in
       let dateStr = date.string(withFormat: "yyyy-MM-dd")
       self.dateBtn.titleForNormal = dateStr
-      self.model?.date = dateStr
+      self.model?.delivery_date = dateStr
     }
   }
   

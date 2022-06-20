@@ -7,7 +7,7 @@
 
 import UIKit
 import KMPlaceholderTextView
-class DeclarationFormInputWithOptionsCell: UITableViewCell {
+class DeclarationFormInputWithOptionsCell: UITableViewCell,UITextViewDelegate {
 
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var unsureBtn: UIButton!
@@ -30,6 +30,10 @@ class DeclarationFormInputWithOptionsCell: UITableViewCell {
       descLabel.text = model.description_en
       numLabel.text = model.index < 10 ? "Question 0\(model.index)" : "Question \(model.index)"
       textView.placeholder = model.placeholder
+      if !model.text.isEmpty {
+        textView.text = model.text
+      }
+ 
       
       if model.result == "1" {
         updateSelectStatus(noBtn,result: "1")
@@ -39,7 +43,7 @@ class DeclarationFormInputWithOptionsCell: UITableViewCell {
         updateSelectStatus(YesBtn,result: "2")
       }
 
-      if model.result == "3" {
+      if model.result == "3" || model.result == "0"{
         updateSelectStatus(unsureBtn,result: "3")
       }
     }

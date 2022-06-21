@@ -23,4 +23,7 @@ extension DefaultsKey {
   static let payMethodId = Key<String>("PayMethodId")
   
   static let blogFilterKey = Key<String>("blogFilterKey")
+  
+  static let isReview = Key<Bool>("isReview")
+  
 }

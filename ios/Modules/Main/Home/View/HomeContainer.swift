@@ -371,4 +371,8 @@ class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
     totalH += appointmentH
     updateContentHeight?(totalH)
   }
+  
+  func updateKingKongData(_ isReview:Bool) {
+    kingkongView.isReview = isReview
+  }
 }

@@ -247,7 +247,7 @@ class CCTShopController: BaseCollectionController,UICollectionViewDelegateFlowLa
   }
   
   func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
-    return (footerHeight + headerHeight) * 0.5
+    return -(footerHeight + headerHeight) * 0.5
   }
 }
 

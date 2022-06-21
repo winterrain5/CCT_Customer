@@ -72,7 +72,6 @@ class HomeViewController: BaseViewController {
   
   
   func refreshData() {
-    
     firstly {
       self.getTClientPartInfo()
     }.done { _ in
@@ -81,6 +80,7 @@ class HomeViewController: BaseViewController {
       self.scrolView.mj_header?.endRefreshing()
       print(e.asAPIError.errorInfo().message)
     }
+    getAppVersion()
   }
   
   func getBookedService() {
@@ -134,7 +134,7 @@ class HomeViewController: BaseViewController {
   
   func getTClientPartInfo() -> Promise<Void> {
     Promise.init { resolver in
-        
+      
       let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       
@@ -151,6 +151,43 @@ class HomeViewController: BaseViewController {
       } errorHandler: { e in
         resolver.fulfill_()
       }
+    }
+    
+  }
+  
+  func getAppVersion() {
+    let params = SOAPParams(action: .AppConfig, path: .getAll)
+    params.set(key: "typeId", value: 2)
+    NetworkManager().request(params: params) { data in
+      if let model = DecodeManager.decodeObjectByHandJSON(AppVersionModel.self, from: data) {
+        //把版本号转换成数值 默认版本号1.0.0类型
+        let array1 = Device.appVersion.split(separator: ".").map({ String($0).int })
+        var currentVersion:Int = 0
+        if (array1.count == 3){
+          currentVersion = array1[0]!*100 + array1[1]!*10 + array1[2]!
+        }else {
+          currentVersion = array1[0]!*100 + array1[1]!*10
+        }
+        let array2 = model.version.split(separator: ".").map({ String($0).int })
+        var lastesVersion:Int = 0
+        if (array2.count == 3) {
+          lastesVersion = array2[0]!*100 + array2[1]!*10 + array2[2]!
+        }else {
+          lastesVersion = array2[0]!*100 + array2[1]!*10
+        }
+        if lastesVersion < currentVersion { // 后台版本小于当前版本 则为在审核中
+          Defaults.shared.set(true, for: .isReview)
+          self.contentView.updateKingKongData(true)
+        }else {
+          Defaults.shared.set(false, for: .isReview)
+          self.contentView.updateKingKongData(false)
+        }
+        if lastesVersion > currentVersion { // 后台版本大于当前版本 提示更新
+          //            VersionUpdateView.show(model)
+        }
+      }
+    } errorHandler: { e in
+      self.contentView.updateKingKongData(true)
     }
     
   }
@@ -246,8 +283,8 @@ extension HomeViewController: QRScannerCodeDelegate {
     print("result:\(result)")
     let json = JSON(parseJSON: result)
     let locationName = json["name"].stringValue
-//    let id = json["id"].stringValue
-//    let type = json["type"].stringValue
+    //    let id = json["id"].stringValue
+    //    let type = json["type"].stringValue
     if scanType == .Home {
       let vc = CheckInTodaySessionController(locationName: locationName)
       self.navigationController?.pushViewController(vc, completion: nil)

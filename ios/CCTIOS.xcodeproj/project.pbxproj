@@ -74,6 +74,8 @@
 		45C6B7952858253C00546CC8 /* CheckInTodaySessionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C6B7942858253C00546CC8 /* CheckInTodaySessionView.xib */; };
 		45C6B7982858282C00546CC8 /* CheckInTodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6B7962858282C00546CC8 /* CheckInTodayCell.swift */; };
 		45C6B7992858282C00546CC8 /* CheckInTodayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C6B7972858282C00546CC8 /* CheckInTodayCell.xib */; };
+		45C983032861AF4900887CAE /* AppVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C983022861AF4900887CAE /* AppVersionModel.swift */; };
+		45C983052861B02F00887CAE /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C983042861B02F00887CAE /* Device.swift */; };
 		45CE32F42834948E00201726 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F32834948E00201726 /* CompanyModel.swift */; };
 		45CE32F628349C4500201726 /* TodaySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F528349C4500201726 /* TodaySessionView.swift */; };
 		45CE32FA28349CAF00201726 /* TodayCheckInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F828349CAF00201726 /* TodayCheckInCell.swift */; };
@@ -816,6 +818,8 @@
 		45C6B7942858253C00546CC8 /* CheckInTodaySessionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckInTodaySessionView.xib; sourceTree = "<group>"; };
 		45C6B7962858282C00546CC8 /* CheckInTodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInTodayCell.swift; sourceTree = "<group>"; };
 		45C6B7972858282C00546CC8 /* CheckInTodayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckInTodayCell.xib; sourceTree = "<group>"; };
+		45C983022861AF4900887CAE /* AppVersionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionModel.swift; sourceTree = "<group>"; };
+		45C983042861B02F00887CAE /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		45CE32F32834948E00201726 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
 		45CE32F528349C4500201726 /* TodaySessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionView.swift; sourceTree = "<group>"; };
 		45CE32F828349CAF00201726 /* TodayCheckInCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCheckInCell.swift; sourceTree = "<group>"; };
@@ -1737,6 +1741,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		45C983012861AF3D00887CAE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				45C983022861AF4900887CAE /* AppVersionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		45CE32F728349C8600201726 /* TodaySession */ = {
 			isa = PBXGroup;
 			children = (
@@ -2281,6 +2293,7 @@
 				490E2AA327DB3E2700370512 /* DatePickerView.swift */,
 				490E2AA527DB3E3500370512 /* DatePickerView.xib */,
 				49959E5727EDB0100065D23B /* CallUtil.swift */,
+				45C983042861B02F00887CAE /* Device.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -3052,6 +3065,7 @@
 		49CE76AD281A6E8F00A3151D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				45C983012861AF3D00887CAE /* Model */,
 				45A505812848993500779B4C /* View */,
 				45A505802848992B00779B4C /* Controller */,
 			);
@@ -3730,6 +3744,7 @@
 				4998BF34277ED25200A881D5 /* BaseNavigationController.swift in Sources */,
 				4998C058277EF51200A881D5 /* NSViewExtensions.swift in Sources */,
 				45CE32F42834948E00201726 /* CompanyModel.swift in Sources */,
+				45C983052861B02F00887CAE /* Device.swift in Sources */,
 				49FC8EBB279112E800157292 /* UITableView_Extension.swift in Sources */,
 				494DDBD0281526DF0021FE97 /* ShopCollectionModel.swift in Sources */,
 				49781BC627BDD948006F93DF /* ContactUsListCell.swift in Sources */,
@@ -4055,6 +4070,7 @@
 				49E1DF0F282CA9DE002CA549 /* NotificationUndoView.swift in Sources */,
 				4906C23F279E7DC600F7B67F /* FillInEnquiryFormView.swift in Sources */,
 				4998C0E22784427F00A881D5 /* ConstraintLayoutSupport.swift in Sources */,
+				45C983032861AF4900887CAE /* AppVersionModel.swift in Sources */,
 				458612142852ECBE00C699A8 /* InputPhoneController.swift in Sources */,
 				4902B731279FA6F700CEE28B /* ServiceDetailBrifeModel.swift in Sources */,
 				45CE32FA28349CAF00201726 /* TodayCheckInCell.swift in Sources */,
@@ -4410,6 +4426,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-webview\"",
 					/usr/lib/swift,
 				);
+				MARKETING_VERSION = 1.0.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -4446,6 +4463,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

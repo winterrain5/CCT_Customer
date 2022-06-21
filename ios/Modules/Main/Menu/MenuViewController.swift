@@ -11,6 +11,7 @@ class MenuViewController: BaseTableController {
   let menuWidth = SideMenuController.preferences.basic.menuWidth
   let navVc =  UIViewController.getTopVc()?.navigationController
   private var headView = MenuHeadView()
+  private let sc = ProfileActionModel(title: "Symptom Checker", sel: "symptomChecker")
   private var actions:[ProfileActionModel] = [
     ProfileActionModel(title: "Home", sel: "home"),
     ProfileActionModel(title: "CCT Wallet", sel: "myWallet"),
@@ -18,7 +19,6 @@ class MenuViewController: BaseTableController {
     ProfileActionModel(title: "Services", sel: "services"),
     ProfileActionModel(title: "Shop", sel: "shop"),
     ProfileActionModel(title: "My Orders", sel: "myOrders"),
-    ProfileActionModel(title: "Symptom Checker", sel: "symptomChecker"),
     ProfileActionModel(title: "Conditions We Treat", sel: "conditionsWeTreat"),
     ProfileActionModel(title: "Blog", sel: "blog"),
     ProfileActionModel(title: "Madam Partum", sel: "madamPartum"),
@@ -31,6 +31,20 @@ class MenuViewController: BaseTableController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = R.color.theamBlue()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    let isReview = Defaults.shared.get(for: .isReview) ?? true
+    if !isReview {
+      if !actions.contains(where: { $0.sel == "symptomChecker"}) {
+        actions.insert(sc, at: 6)
+      }
+    }else {
+      if !actions.contains(where: { $0.sel == "symptomChecker"}) {
+        actions.removeFirst(where: { $0.sel == "symptomChecker"})
+      }
+    }
     tableView?.reloadData()
   }
   

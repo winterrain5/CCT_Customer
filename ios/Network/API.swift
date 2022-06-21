@@ -292,6 +292,9 @@ enum API:String {
   /// 修改某次服务的状态并给看诊服务排队号
   case changeTStatus = "changeTStatus"
   
+  /// 获取app 版本信息
+  case getAll = "getAll"
+  
   // 物品购物车推送
   case itemsInCart = "itemsInCart";
   //
@@ -346,7 +349,7 @@ enum Action:String {
   case Schedule = "schedule"
   case Country = "country"
   case Cart = "cart"
-  
+  case AppConfig = "app-config"
 }
 
 struct WebUrl {

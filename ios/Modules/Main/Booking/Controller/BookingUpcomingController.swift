@@ -147,6 +147,9 @@ class BookingUpcomingController: BasePagingTableController {
   }
   
   func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
-    return -(kScreenHeight - self.todayH - kNavBarHeight - kTabBarHeight) * 0.5
+    if self.todayH == 0 {
+      return 0
+    }
+    return -120
   }
 }

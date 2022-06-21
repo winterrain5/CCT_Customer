@@ -16,6 +16,27 @@ struct KingKongModel {
 class HomeKingKongView: UIView,UICollectionViewDelegate,UICollectionViewDataSource {
   lazy var datas:[KingKongModel] = []
   
+  var isReview:Bool = true {
+    didSet {
+      if isReview {
+        datas = [
+          KingKongModel(image: R.image.home_kk_shop(), title: "shop", sel: "shop"),
+          KingKongModel(image: R.image.home_kk_treament(), title: "Conditions\nWe Treat", sel: "conditionsWeTreat"),
+          KingKongModel(image: R.image.home_kk_mp(), title: "Madam\nPartum", sel: "madamPartum"),
+        ]
+      }else {
+        datas = [
+          KingKongModel(image: R.image.home_kk_symptom_check(), title: "Symptom\nChecker", sel: "symptomChecker"),
+          KingKongModel(image: R.image.home_kk_shop(), title: "shop", sel: "shop"),
+          KingKongModel(image: R.image.home_kk_treament(), title: "Conditions\nWe Treat", sel: "conditionsWeTreat"),
+          KingKongModel(image: R.image.home_kk_mp(), title: "Madam\nPartum", sel: "madamPartum"),
+        ]
+      }
+      layout.minimumLineSpacing = (kScreenWidth - 48 - (datas.count * 60).cgFloat ) / (datas.count - 1).cgFloat
+      collectionView.reloadData()
+    }
+  }
+  
   lazy var layout = UICollectionViewFlowLayout().then { layout in
     layout.scrollDirection = .horizontal
     layout.itemSize = CGSize(width: 60, height: 84)
@@ -36,13 +57,7 @@ class HomeKingKongView: UIView,UICollectionViewDelegate,UICollectionViewDataSour
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    datas = [
-      KingKongModel(image: R.image.home_kk_symptom_check(), title: "Symptom\nChecker", sel: "symptomChecker"),
-      KingKongModel(image: R.image.home_kk_shop(), title: "shop", sel: "shop"),
-      KingKongModel(image: R.image.home_kk_treament(), title: "Conditions\nWe Treat", sel: "conditionsWeTreat"),
-      KingKongModel(image: R.image.home_kk_mp(), title: "Madam\nPartum", sel: "madamPartum"),
-    ]
-    layout.minimumLineSpacing = (kScreenWidth - 48 - (datas.count * 60).cgFloat ) / (datas.count - 1).cgFloat
+   
     addSubview(collectionView)
     collectionView.register(cellWithClass: HomeKingKongCell.self)
   }
@@ -66,7 +81,9 @@ class HomeKingKongView: UIView,UICollectionViewDelegate,UICollectionViewDataSour
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withClass: HomeKingKongCell.self, for: indexPath)
-    cell.model = datas[indexPath.item]
+    if datas.count > 0 {
+      cell.model = datas[indexPath.item]
+    }
     return cell
   }
   

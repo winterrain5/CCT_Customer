@@ -422,7 +422,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 128 images.
+  /// This `R.image` struct is generated, and contains static references to 132 images.
   struct image {
     /// Image `account_arrow_right`.
     static let account_arrow_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "account_arrow_right")
@@ -558,6 +558,14 @@ struct R: Rswift.Validatable {
     static let notification_menu = Rswift.ImageResource(bundle: R.hostingBundle, name: "notification_menu")
     /// Image `notification_swip_delete`.
     static let notification_swip_delete = Rswift.ImageResource(bundle: R.hostingBundle, name: "notification_swip_delete")
+    /// Image `onboardingbooking`.
+    static let onboardingbooking = Rswift.ImageResource(bundle: R.hostingBundle, name: "onboardingbooking")
+    /// Image `onboardingloyalty`.
+    static let onboardingloyalty = Rswift.ImageResource(bundle: R.hostingBundle, name: "onboardingloyalty")
+    /// Image `onboardingprogress`.
+    static let onboardingprogress = Rswift.ImageResource(bundle: R.hostingBundle, name: "onboardingprogress")
+    /// Image `onboardingvoucher`.
+    static let onboardingvoucher = Rswift.ImageResource(bundle: R.hostingBundle, name: "onboardingvoucher")
     /// Image `payment_card`.
     static let payment_card = Rswift.ImageResource(bundle: R.hostingBundle, name: "payment_card")
     /// Image `profile_account_manager`.
@@ -1151,6 +1159,34 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "onboardingbooking", bundle: ..., traitCollection: ...)`
+    static func onboardingbooking(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.onboardingbooking, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "onboardingloyalty", bundle: ..., traitCollection: ...)`
+    static func onboardingloyalty(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.onboardingloyalty, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "onboardingprogress", bundle: ..., traitCollection: ...)`
+    static func onboardingprogress(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.onboardingprogress, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "onboardingvoucher", bundle: ..., traitCollection: ...)`
+    static func onboardingvoucher(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.onboardingvoucher, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "payment_card", bundle: ..., traitCollection: ...)`
     static func payment_card(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.payment_card, compatibleWith: traitCollection)
@@ -1580,7 +1616,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 130 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 131 nibs.
   struct nib {
     /// Nib `AccountEditSheetContentView`.
     static let accountEditSheetContentView = _R.nib._AccountEditSheetContentView()
@@ -1716,6 +1752,8 @@ struct R: Rswift.Validatable {
     static let myOrderListCell = _R.nib._MyOrderListCell()
     /// Nib `NotificationCell`.
     static let notificationCell = _R.nib._NotificationCell()
+    /// Nib `OnBoardCell`.
+    static let onBoardCell = _R.nib._OnBoardCell()
     /// Nib `ProductCompleteItemCell`.
     static let productCompleteItemCell = _R.nib._ProductCompleteItemCell()
     /// Nib `ProductItemCell`.
@@ -2376,6 +2414,14 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.notificationCell) instead")
     static func notificationCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.notificationCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "OnBoardCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.onBoardCell) instead")
+    static func onBoardCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.onBoardCell)
     }
     #endif
 
@@ -3149,6 +3195,10 @@ struct R: Rswift.Validatable {
 
     static func notificationCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NotificationCell? {
       return R.nib.notificationCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NotificationCell
+    }
+
+    static func onBoardCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OnBoardCell? {
+      return R.nib.onBoardCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? OnBoardCell
     }
 
     static func productCompleteItemCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ProductCompleteItemCell? {
@@ -4599,6 +4649,17 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NotificationCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NotificationCell
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _OnBoardCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "OnBoardCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OnBoardCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? OnBoardCell
       }
 
       fileprivate init() {}

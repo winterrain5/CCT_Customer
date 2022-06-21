@@ -19,14 +19,21 @@ import IQKeyboardManagerSwift
     SideMenuController.preferences.basic.supportedOrientations = .portrait
     SideMenuController.preferences.basic.shouldRespectLanguageDirection = true
     let window = (UIApplication.shared.delegate as! AppDelegate).window
-    if (CheckUserLogin.isLogined) {
-      let tab = BaseTabBarController()
-      window?.rootViewController = SideMenuController(contentViewController: tab, menuViewController: MenuViewController())
+    
+    if Defaults.shared.get(for: .isFirstInstallApp) != nil {
+      if (CheckUserLogin.isLogined) {
+        let tab = BaseTabBarController()
+        window?.rootViewController = SideMenuController(contentViewController: tab, menuViewController: MenuViewController())
+      }else {
+        let rootViewController = LoginViewController()
+        let nav = BaseNavigationController(rootViewController: rootViewController)
+        window?.rootViewController = nav
+      }
     }else {
-      let rootViewController = LoginViewController()
-      let nav = BaseNavigationController(rootViewController: rootViewController)
-      window?.rootViewController = nav
+      let vc = OnBoardViewController()
+      window?.rootViewController = vc
     }
+   
     
     configKeyBoard()
   }

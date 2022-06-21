@@ -76,6 +76,9 @@
 		45C6B7992858282C00546CC8 /* CheckInTodayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C6B7972858282C00546CC8 /* CheckInTodayCell.xib */; };
 		45C983032861AF4900887CAE /* AppVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C983022861AF4900887CAE /* AppVersionModel.swift */; };
 		45C983052861B02F00887CAE /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C983042861B02F00887CAE /* Device.swift */; };
+		45C983082861B65000887CAE /* OnBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C983072861B65000887CAE /* OnBoardViewController.swift */; };
+		45C9830B2861B66A00887CAE /* OnBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C983092861B66A00887CAE /* OnBoardCell.swift */; };
+		45C9830C2861B66A00887CAE /* OnBoardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C9830A2861B66A00887CAE /* OnBoardCell.xib */; };
 		45CE32F42834948E00201726 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F32834948E00201726 /* CompanyModel.swift */; };
 		45CE32F628349C4500201726 /* TodaySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F528349C4500201726 /* TodaySessionView.swift */; };
 		45CE32FA28349CAF00201726 /* TodayCheckInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F828349CAF00201726 /* TodayCheckInCell.swift */; };
@@ -820,6 +823,9 @@
 		45C6B7972858282C00546CC8 /* CheckInTodayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckInTodayCell.xib; sourceTree = "<group>"; };
 		45C983022861AF4900887CAE /* AppVersionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionModel.swift; sourceTree = "<group>"; };
 		45C983042861B02F00887CAE /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		45C983072861B65000887CAE /* OnBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardViewController.swift; sourceTree = "<group>"; };
+		45C983092861B66A00887CAE /* OnBoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardCell.swift; sourceTree = "<group>"; };
+		45C9830A2861B66A00887CAE /* OnBoardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnBoardCell.xib; sourceTree = "<group>"; };
 		45CE32F32834948E00201726 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
 		45CE32F528349C4500201726 /* TodaySessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionView.swift; sourceTree = "<group>"; };
 		45CE32F828349CAF00201726 /* TodayCheckInCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCheckInCell.swift; sourceTree = "<group>"; };
@@ -1747,6 +1753,16 @@
 				45C983022861AF4900887CAE /* AppVersionModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		45C983062861B63700887CAE /* Onboard */ = {
+			isa = PBXGroup;
+			children = (
+				45C983072861B65000887CAE /* OnBoardViewController.swift */,
+				45C983092861B66A00887CAE /* OnBoardCell.swift */,
+				45C9830A2861B66A00887CAE /* OnBoardCell.xib */,
+			);
+			path = Onboard;
 			sourceTree = "<group>";
 		};
 		45CE32F728349C8600201726 /* TodaySession */ = {
@@ -3052,6 +3068,7 @@
 		49CE76AC281A6E6D00A3151D /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				45C983062861B63700887CAE /* Onboard */,
 				4915ABBD282A3E9000BBB3E7 /* Menu */,
 				49CE76B1281A6EB700A3151D /* Tab */,
 				49CE76B0281A6EA500A3151D /* Profile */,
@@ -3503,6 +3520,7 @@
 				4902025427DB34A000E74415 /* WalletAddCardSheetContentView.xib in Resources */,
 				4996D79A27D592D200437265 /* WalletVouchersCell.xib in Resources */,
 				49E61D2C278EDA3F00B1C136 /* SymptomCheckDetailHeaderView.xib in Resources */,
+				45C9830C2861B66A00887CAE /* OnBoardCell.xib in Resources */,
 				4902B723279F9D9700CEE28B /* ServiceDetailPriceView.xib in Resources */,
 				4955EF9A27D0675800D365BE /* WalletTransactionCell.xib in Resources */,
 				49727C6F27C4BD7700943156 /* AccountManagementContainer.xib in Resources */,
@@ -3969,6 +3987,7 @@
 				4998BEB5277DA24300A881D5 /* AppDelegate.m in Sources */,
 				45B2A12F27A1456200E1264E /* MainViewController.swift in Sources */,
 				4902025027DB2DB300E74415 /* WalletPaymentMethodModel.swift in Sources */,
+				45C983082861B65000887CAE /* OnBoardViewController.swift in Sources */,
 				4998BFFF277EF51200A881D5 /* UIBezierPathExtensions.swift in Sources */,
 				454C5B3C283B77AD001D787C /* BookingServiceModel.swift in Sources */,
 				4933AC6B27D848A5005E9FB1 /* WalletTermsConditionsSheetView.swift in Sources */,
@@ -4228,6 +4247,7 @@
 				49E79F93278E771600F304B2 /* SymptomCheckBeginContainer.swift in Sources */,
 				49B098BB27BB53600055B341 /* CardDigitPinView.swift in Sources */,
 				49F17C69280903FF00FCBC87 /* ShopCheckOutController.swift in Sources */,
+				45C9830B2861B66A00887CAE /* OnBoardCell.swift in Sources */,
 				4998C0DE2784427F00A881D5 /* ConstraintConfig.swift in Sources */,
 				49E79F7C278D284F00F304B2 /* UIViewController_Extension.swift in Sources */,
 				4904C3DA2806B6FB008FE5A5 /* ShopDetailReviewController.swift in Sources */,

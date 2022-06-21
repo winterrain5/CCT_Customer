@@ -59,6 +59,24 @@ class ShopDetailController: BaseViewController {
     segment.indicators = [indicator]
     segment.backgroundColor = .clear
   }
+  
+  var heartButton = UIButton().then { btn in
+    btn.setImage(R.image.shop_nav_heart(), for: .normal)
+    btn.size = CGSize(width: 30, height: 44)
+  }
+  var basketButton = UIButton().then { btn in
+    btn.setImage(R.image.shop_nav_basket(), for: .normal)
+    btn.badgeType = .Text
+    btn.badgeBGColor = R.color.theamRed()
+    btn.badgeTextColor = .white
+    btn.badgeMinSize = 15
+    btn.badgeOriginX = 15
+    btn.badgeOriginY = 10
+    btn.shouldHideBadgeAtZero = true
+    btn.badgeValue = "0"
+    btn.size = CGSize(width: 30, height: 44)
+  }
+  
   private var productId = ""
   private var detailModel = ShopProductDetailModel()
   convenience init(productId:String) {
@@ -86,8 +104,11 @@ class ShopDetailController: BaseViewController {
     paggingView.listContainerView.scrollView.panGestureRecognizer.require(toFail: self.navigationController!.interactivePopGestureRecognizer!)
     paggingView.mainTableView.panGestureRecognizer.require(toFail: self.navigationController!.interactivePopGestureRecognizer!)
        
-    let heartItem = UIBarButtonItem(image: R.image.shop_nav_heart()!, style: .plain, target: self, action: #selector(shopHertBarItemAction))
-    let basketItem = UIBarButtonItem(image: R.image.shop_nav_basket()!, style: .plain, target: self, action: #selector(shopBasketBarItemAction))
+    heartButton.addTarget(self, action: #selector(shopHertBarItemAction), for: .touchUpInside)
+    let heartItem = UIBarButtonItem(customView: heartButton)
+ 
+    basketButton.addTarget(self, action: #selector(shopBasketBarItemAction), for: .touchUpInside)
+    let basketItem = UIBarButtonItem(customView: basketButton)
     self.navigation.item.rightBarButtonItems = [basketItem,heartItem]
     
     
@@ -104,8 +125,8 @@ class ShopDetailController: BaseViewController {
     self.view.addSubview(bottomView)
     bottomView.isHidden = true
     bottomView.frame = CGRect(x: 0, y: kScreenHeight - bottomSheetHeight, width: kScreenWidth, height: bottomSheetHeight)
-    bottomView.addToCartHandler = {
-      
+    bottomView.addToCartHandler = { [weak self] in
+      self?.addProductToCart()
     }
     bottomView.buyNowHandler = { [weak self] in
       guard let `self` = self else { return }
@@ -128,6 +149,11 @@ class ShopDetailController: BaseViewController {
   @objc func shopBasketBarItemAction() {
     let vc = ShopCartController()
     self.navigationController?.pushViewController(vc)
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    getCartCount()
   }
   
   
@@ -153,17 +179,41 @@ class ShopDetailController: BaseViewController {
 
   }
   
+  func getCartCount() {
+    let params = SOAPParams(action: .Cart, path: .getCartCount)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    NetworkManager().request(params: params) { data in
+      self.basketButton.badgeValue = String(data: data, encoding: .utf8) ?? "0"
+    } errorHandler: { e in
+      
+    }
+
+  }
+  
   func saveRecentViewedProduct() {
     let params = SOAPParams(action: .Product, path: .saveRecentViewedProduct)
     params.set(key: "productId", value: productId)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     NetworkManager().request(params: params) { data in
-      
+      self.getCartCount()
     } errorHandler: { e in
       
     }
 
+  }
+  
+  func addProductToCart() {
+    let params = SOAPParams(action: .Cart, path: .saveClientCart)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "0")
+    params.set(key: "goodsId", value: self.detailModel.Product?.id ?? "")
+    params.set(key: "goodsNum", value: self.detailModel.Product?.count ?? "1")
+    NetworkManager().request(params: params) { data in
+      Toast.showSuccess(withStatus: "Added successfully")
+      self.getCartCount()
+    } errorHandler: { e in
+      
+    }
   }
   
 }

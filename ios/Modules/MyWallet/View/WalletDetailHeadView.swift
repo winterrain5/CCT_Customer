@@ -14,25 +14,35 @@ class WalletDetailHeadView: UIView {
   @IBOutlet weak var privilegesLabel: UILabel!
   let card = WalletCardView.loadViewFromNib()
   var updateHeightHandler:((CGFloat)->())?
-  var model:CardDiscountDetailModel! {
+  var model:CardDiscountDetailModel? {
     didSet {
+      guard let model = model else {
+        return
+      }
+      
       let str = NSMutableAttributedString(string: "")
       
-      let attr1 = NSMutableAttributedString(string: "· \(model.r_discount1 ?? "")\n")
-      attr1.addAttribute(.font, value: UIFont(name: .AvenirNextDemiBold, size:16), range: NSRange(location: 0, length: 1))
-      attr1.addAttribute(.font, value: UIFont(name:.AvenirNextRegular,size:14), range: NSRange(location: 1, length: attr1.string.count - 1))
-      str.append(attr1)
+      if !(model.r_discount1?.isEmpty ?? false) {
+        let attr1 = NSMutableAttributedString(string: "· \(model.r_discount1 ?? "")\n")
+        attr1.addAttribute(.font, value: UIFont(name: .AvenirNextDemiBold, size:16), range: NSRange(location: 0, length: 1))
+        attr1.addAttribute(.font, value: UIFont(name:.AvenirNextRegular,size:14), range: NSRange(location: 1, length: attr1.string.count - 1))
+        str.append(attr1)
+      }
       
-      let attr2 = NSMutableAttributedString(string: "· \(model.r_discount2 ?? "")\n")
-      attr2.addAttribute(.font, value: UIFont(name: .AvenirNextDemiBold, size:16), range: NSRange(location: 0, length: 1))
-      attr2.addAttribute(.font, value: UIFont(name:.AvenirNextRegular,size:14), range: NSRange(location: 1, length: attr2.string.count - 1))
-      str.append(attr2)
+      if !(model.r_discount2?.isEmpty ?? false) {
+        let attr2 = NSMutableAttributedString(string: "· \(model.r_discount2 ?? "")\n")
+        attr2.addAttribute(.font, value: UIFont(name: .AvenirNextDemiBold, size:16), range: NSRange(location: 0, length: 1))
+        attr2.addAttribute(.font, value: UIFont(name:.AvenirNextRegular,size:14), range: NSRange(location: 1, length: attr2.string.count - 1))
+        str.append(attr2)
+      }
       
-      let attr3 = NSMutableAttributedString(string: "· \(model.r_discount3 ?? "")\n")
-      attr3.addAttribute(.font, value: UIFont(name: .AvenirNextDemiBold, size:16), range: NSRange(location: 0, length: 1))
-      attr3.addAttribute(.font, value: UIFont(name:.AvenirNextRegular,size:14), range: NSRange(location: 1, length: attr3.string.count - 1))
+      if !(model.r_discount3?.isEmpty ?? false) {
+        let attr3 = NSMutableAttributedString(string: "· \(model.r_discount3 ?? "")\n")
+        attr3.addAttribute(.font, value: UIFont(name: .AvenirNextDemiBold, size:16), range: NSRange(location: 0, length: 1))
+        attr3.addAttribute(.font, value: UIFont(name:.AvenirNextRegular,size:14), range: NSRange(location: 1, length: attr3.string.count - 1))
+        str.append(attr3)
+      }
       
-      str.append(attr3)
       
       privilegesLabel.attributedText = str
       updateHeightHandler?(privilegesLabel.requiredHeight + 295)

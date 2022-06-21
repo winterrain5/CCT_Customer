@@ -16,6 +16,7 @@ class ProfileHeadView: UIView {
   @IBOutlet weak var amountLabel: UILabel!
   @IBOutlet weak var gradientView: GradientView!
   
+  @IBOutlet weak var infoContentView: UIView!
   @IBOutlet weak var bottomInfoView: UIView!
   var money:String = "" {
     didSet {
@@ -65,6 +66,16 @@ class ProfileHeadView: UIView {
     shadowView.shadow(cornerRadius: 16, color: light, offset: CGSize(width: 0, height: 4), radius: 10, opacity: 1)
     gradientView.clipsToBounds = true
     gradientView.cornerRadius = 16
+    
+    infoContentView.rx
+      .tapGesture()
+      .when(.recognized)
+      .subscribe(onNext: { _ in
+        let vc = MyWalletController()
+        UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
+      })
+      .disposed(by: rx.disposeBag)
+
     
     showSkeleton()
   }

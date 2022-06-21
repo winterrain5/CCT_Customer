@@ -84,8 +84,9 @@ class CheckInTodaySessionView: UIView,UICollectionViewDataSource,UICollectionVie
     if models.count > 0 {
       cell.model = models[indexPath.item]
       
-      cell.checkInHandler = { [weak self] model in
-        
+      cell.checkInHandler = { model in
+        let vc = ConfirmSessionController(todayModel: model)
+        UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
       }
     }
     return cell

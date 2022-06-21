@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import PromiseKit
 class ConfirmSessionController: BaseViewController {
   
   var contentView = ConfirmSessionContainer.loadViewFromNib()
@@ -44,30 +44,70 @@ class ConfirmSessionController: BaseViewController {
     
     if let todayModel = todayModel {
       if todayModel.wellness_treatment_type == "2" { // 获取排队信息
-        getWaitServiceInfo()
+        when(fulfilled: getWaitServiceInfo(), getTClientPartInfo()).done { [weak self] in
+          self?.contentView.todayModel = todayModel
+        }.catch { e in
+          print(e)
+        }
       }else {
-        contentView.todayModel = todayModel
+        getTClientPartInfo().done { [weak self] _ in
+          self?.contentView.todayModel = todayModel
+        }.catch { e in
+          print(e)
+        }
+        
       }
     }
   }
   
   
-  func getWaitServiceInfo() {
-    let params = SOAPParams(action: .BookingOrder, path: .getWaitServiceInfo)
-    params.set(key: "locationId", value: todayModel?.location_id ?? "")
-    params.set(key: "startTime", value: Date().string(withFormat: "yyyy-MM-dd"))
-    params.set(key: "endTime", value: Date().adding(.day, value: 1).string(withFormat: "yyyy-MM-dd"))
-    params.set(key: "wellnessTreatType", value: 2)
-    NetworkManager().request(params: params) { data in
-      if let model = DecodeManager.decodeObjectByHandJSON(WaitServiceModel.self, from: data) {
-        self.todayModel?.queue_count = model.queue_count
-        self.todayModel?.duration_mins = model.duration_mins
-        self.contentView.todayModel = self.todayModel
+  func getWaitServiceInfo() -> Promise<Void>{
+    Promise.init { resolver in
+      let params = SOAPParams(action: .BookingOrder, path: .getWaitServiceInfo)
+      params.set(key: "locationId", value: todayModel?.location_id ?? "")
+      params.set(key: "startTime", value: Date().string(withFormat: "yyyy-MM-dd"))
+      params.set(key: "endTime", value: Date().adding(.day, value: 1).string(withFormat: "yyyy-MM-dd"))
+      params.set(key: "wellnessTreatType", value: 2)
+      NetworkManager().request(params: params) { data in
+        if let model = DecodeManager.decodeObjectByHandJSON(WaitServiceModel.self, from: data) {
+          self.todayModel?.queue_count = model.queue_count
+          self.todayModel?.duration_mins = model.duration_mins
+          resolver.fulfill_()
+          return
+        }
+        resolver.reject(APIError.requestError(code: -1, message: "decode WaitServiceModel failed"))
+      } errorHandler: { e in
+        resolver.reject(e)
       }
-    } errorHandler: { e in
-      
     }
-
+    
+  }
+  
+  func getTClientPartInfo() -> Promise<Void> {
+    Promise.init { resolver in
+      
+      
+      if let _ = Defaults.shared.get(for: .userModel) {
+        resolver.fulfill_()
+        return
+      }
+      
+      let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
+      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+      
+      NetworkManager().request(params: params) { data in
+        if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
+          Defaults.shared.set(model, for: .userModel)
+          resolver.fulfill_()
+          return
+        }
+        resolver.reject(APIError.requestError(code: -1, message: "GetTClientPartInfo Failed"))
+        
+      } errorHandler: { e in
+        resolver.fulfill_()
+      }
+    }
+    
   }
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()

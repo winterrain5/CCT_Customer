@@ -9,9 +9,11 @@ import UIKit
 import IQKeyboardManagerSwift
 class EnterAccountController: BaseViewController {
   var isFromScanQRCode = false
-  convenience init(isFromScanQRCode:Bool = false) {
+  var locationName = ""
+  convenience init(isFromScanQRCode:Bool = false,locationName:String = "") {
     self.init()
     self.isFromScanQRCode = isFromScanQRCode
+    self.locationName = locationName
   }
   var content = EnterAccountContainer.loadViewFromNib()
     override func viewDidLoad() {

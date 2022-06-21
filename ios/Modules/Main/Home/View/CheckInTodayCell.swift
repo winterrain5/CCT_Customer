@@ -12,6 +12,7 @@ class CheckInTodayCell: UICollectionViewCell {
   
   @IBOutlet weak var timeLabel: UILabel!
   
+  @IBOutlet weak var checkInButton: UIButton!
   var checkInHandler:((BookingTodayModel)->())?
   var model:BookingTodayModel! {
     didSet {
@@ -19,7 +20,7 @@ class CheckInTodayCell: UICollectionViewCell {
       let date = model.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
       timeLabel.text = date?.timeString(ofStyle: .short)
       titleLabel.text = model.alias_name
-      
+      checkInButton.isHidden = model.status == 4
     }
   }
   

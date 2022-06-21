@@ -46,8 +46,11 @@ class MadamPartumController: BaseTableController {
       params.set(key: "isFeatured", value: 1)
       params.set(key: "categoryId", value: 0)
       params.set(key: "limit", value: 4)
+      params.set(key: "filterKeys", value: 0)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
-      
+      let search = SOAPDictionary()
+      search.set(key: "cct_or_mp", value: 2)
+      params.set(key: "searchData", value: search.result, type: .map(1))
       NetworkManager().request(params: params) { data in
         guard let models = DecodeManager.decodeByCodable([BlogModel].self, from: data) else {
           resolver.reject(APIError.requestError(code: -1, message: "decode failed"))

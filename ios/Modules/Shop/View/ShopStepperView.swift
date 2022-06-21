@@ -34,6 +34,7 @@ class ShopStepperView: UIView {
     }
   }
   var valueDidChangeHandler:((Int)->())?
+  var enableValueToZero = true
   override init(frame: CGRect) {
     super.init(frame: frame)
     setupViews()
@@ -72,6 +73,9 @@ class ShopStepperView: UIView {
   }
   
   @objc func decreaseAction(_ sender:UIButton) {
+    if !enableValueToZero && value == 1 {
+      return
+    }
     if value == 0 {
       return
     }

@@ -15,6 +15,7 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
   @IBOutlet weak var accountTf: UITextField!
   var otpCode = ""
   var isLoginByMobile = false
+  var locationName = ""
   var isFromScanQRCode = false {
     didSet {
       registerBtn.isHidden = !isFromScanQRCode
@@ -83,9 +84,17 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
     
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(UserPasswordModel.self, from: data) {
-        if self.isLoginByMobile {
-          self.sendSMSForMobile(userID: userID, clientID: model.id)
+        Defaults.shared.set(model.id, for: .clientId)
+        Defaults.shared.set(userID, for: .userId)
+        if self.isFromScanQRCode {
+          let vc = CheckInTodaySessionController(locationName: self.locationName)
+          UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
+        }else {
+          if self.isLoginByMobile {
+            self.sendSMSForMobile(userID: userID, clientID: model.id)
+          }
         }
+        
       }else {
         AlertView.show(message: "The mobile / email / password is invalid. Please try again.")
       }
@@ -113,8 +122,6 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
     
     NetworkManager().request(params: mapParams) { data in
       self.loginBtn.stopAnimation()
-      Defaults.shared.set(userID, for: .userId)
-      Defaults.shared.set(clientID, for: .clientId)
       let vc = VerificationCodeController(type: .LoginByMobile, source: mobile,otpCode:self.otpCode)
       UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
     } errorHandler: { e in

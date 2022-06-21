@@ -40,6 +40,7 @@ class ShopDetailHeadContainer: UIView {
     stepperView.valueDidChangeHandler = { [weak self] count in
       self?.product?.count = count
     }
+    stepperView.enableValueToZero = false
   }
   
   override func layoutSubviews() {

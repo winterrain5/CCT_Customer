@@ -63,6 +63,8 @@
 		45A505832848997300779B4C /* HomeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A505822848997300779B4C /* HomeContainer.swift */; };
 		45A505852848998000779B4C /* HomeContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45A505842848998000779B4C /* HomeContainer.xib */; };
 		45A505872848B80800779B4C /* HomeKingKongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A505862848B80800779B4C /* HomeKingKongView.swift */; };
+		45A5C44328604A9E006B6D4C /* UIView+Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A5C44228604A9E006B6D4C /* UIView+Badge.swift */; };
+		45A5C4452860552C006B6D4C /* ShopCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A5C4442860552C006B6D4C /* ShopCartModel.swift */; };
 		45B2A12F27A1456200E1264E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B2A12E27A1456200E1264E /* MainViewController.swift */; };
 		45B680B228597CDC00F2E430 /* PostPartumDeclarationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B680B128597CDB00F2E430 /* PostPartumDeclarationController.swift */; };
 		45C6B78D285732BD00546CC8 /* WellcomBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6B78C285732BD00546CC8 /* WellcomBackView.swift */; };
@@ -803,6 +805,8 @@
 		45A505822848997300779B4C /* HomeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainer.swift; sourceTree = "<group>"; };
 		45A505842848998000779B4C /* HomeContainer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContainer.xib; sourceTree = "<group>"; };
 		45A505862848B80800779B4C /* HomeKingKongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeKingKongView.swift; sourceTree = "<group>"; };
+		45A5C44228604A9E006B6D4C /* UIView+Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Badge.swift"; sourceTree = "<group>"; };
+		45A5C4442860552C006B6D4C /* ShopCartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCartModel.swift; sourceTree = "<group>"; };
 		45B2A12E27A1456200E1264E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		45B680B128597CDB00F2E430 /* PostPartumDeclarationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPartumDeclarationController.swift; sourceTree = "<group>"; };
 		45C6B78C285732BD00546CC8 /* WellcomBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellcomBackView.swift; sourceTree = "<group>"; };
@@ -2801,6 +2805,7 @@
 				49F17C5C2807EF4C00FCBC87 /* ShopProductReviewModel.swift */,
 				494DDBCF281526DF0021FE97 /* ShopCollectionModel.swift */,
 				49133E4228167BDE0086E518 /* ValidNewVoucherModel.swift */,
+				45A5C4442860552C006B6D4C /* ShopCartModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3252,6 +3257,7 @@
 				49BA627B2785787800B898D5 /* NSObject_Extension.swift */,
 				49E79F7B278D284F00F304B2 /* UIViewController_Extension.swift */,
 				49FC8EBA279112E800157292 /* UITableView_Extension.swift */,
+				45A5C44228604A9E006B6D4C /* UIView+Badge.swift */,
 			);
 			name = Extension;
 			path = CCTIOS/Extension;
@@ -3803,6 +3809,7 @@
 				45F894AE28534384008BC7CC /* UIImage+Extension.swift in Sources */,
 				49BA6292278806DA00B898D5 /* BlogBoardModel.swift in Sources */,
 				4998BF08277EAC4100A881D5 /* SOAPParams.swift in Sources */,
+				45A5C4452860552C006B6D4C /* ShopCartModel.swift in Sources */,
 				454C5B44283C8305001D787C /* EmployeeForServiceModel.swift in Sources */,
 				4998C012277EF51200A881D5 /* UINavigationControllerExtensions.swift in Sources */,
 				4996D7AA27D5A03F00437265 /* RewardsDetailContainer.swift in Sources */,
@@ -3991,6 +3998,7 @@
 				4998C044277EF51200A881D5 /* SequenceExtensions.swift in Sources */,
 				4978FA9927C321F300E51DA0 /* SymptomCheckTreamentPlanWebController.swift in Sources */,
 				454C5B4C283DBE9F001D787C /* ConfirmSessionContainer.swift in Sources */,
+				45A5C44328604A9E006B6D4C /* UIView+Badge.swift in Sources */,
 				45DA0E67285C1E5500056132 /* TodayTreatmentQueueCell.swift in Sources */,
 				496501D5279FE94E004FF3AF /* ServiceDetailHelpCell.swift in Sources */,
 				4998BF52277ED52700A881D5 /* RefreshAnimationFooter.swift in Sources */,

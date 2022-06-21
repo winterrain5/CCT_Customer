@@ -44,6 +44,7 @@ class InputPhoneView: UIView,UITextFieldDelegate {
     
   }
   @IBAction func sendOTPAction(_ sender: Any) {
+    self.endEditing(true)
     getClientByPhone()
   }
   

@@ -12,12 +12,32 @@ class ShopViewController: BaseTableController {
   var recentlyProducts:[ShopProductModel] = []
   var newProducts:[ShopProductModel] = []
   var bannerProducts:[ShopProductModel] = []
+  var heartButton = UIButton().then { btn in
+    btn.setImage(R.image.shop_nav_heart(), for: .normal)
+    btn.size = CGSize(width: 30, height: 44)
+  }
+  var basketButton = UIButton().then { btn in
+    btn.setImage(R.image.shop_nav_basket(), for: .normal)
+    btn.badgeType = .Text
+    btn.badgeBGColor = R.color.theamRed()
+    btn.badgeTextColor = .white
+    btn.badgeMinSize = 15
+    btn.badgeOriginX = 15
+    btn.badgeOriginY = 10
+    btn.shouldHideBadgeAtZero = true
+    btn.badgeValue = "0"
+    btn.size = CGSize(width: 30, height: 44)
+  }
   override func viewDidLoad() {
     super.viewDidLoad()
     
     self.navigation.item.title = "Shop"
-    let heartItem = UIBarButtonItem(image: R.image.shop_nav_heart()!, style: .plain, target: self, action: #selector(shopHertBarItemAction))
-    let basketItem = UIBarButtonItem(image: R.image.shop_nav_basket()!, style: .plain, target: self, action: #selector(shopBasketBarItemAction))
+    
+    heartButton.addTarget(self, action: #selector(shopHertBarItemAction), for: .touchUpInside)
+    let heartItem = UIBarButtonItem(customView: heartButton)
+ 
+    basketButton.addTarget(self, action: #selector(shopBasketBarItemAction), for: .touchUpInside)
+    let basketItem = UIBarButtonItem(customView: basketButton)
     self.navigation.item.rightBarButtonItems = [basketItem,heartItem]
     
     
@@ -29,7 +49,7 @@ class ShopViewController: BaseTableController {
   }
   
   @objc func shopBasketBarItemAction() {
-    let vc = ShopCartController()
+    let vc = ShopCartController(showType: 0)
     self.navigationController?.pushViewController(vc)
   }
   
@@ -48,7 +68,7 @@ class ShopViewController: BaseTableController {
     }.catch { e in
       Toast.showError(withStatus: e.asAPIError.errorInfo().message)
     }
-    
+    getCartCount()
   }
   
   func getNewFeaturedProducts() -> Promise<Void> {
@@ -115,6 +135,16 @@ class ShopViewController: BaseTableController {
     }
   }
 
+  func getCartCount() {
+    let params = SOAPParams(action: .Cart, path: .getCartCount)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    NetworkManager().request(params: params) { data in
+      self.basketButton.badgeValue = String(data: data, encoding: .utf8) ?? "0"
+    } errorHandler: { e in
+      
+    }
+
+  }
   
   override func createListView() {
     super.createListView()

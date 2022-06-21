@@ -187,6 +187,7 @@
                 <outlet property="amountLabel" destination="G2N-VH-RAQ" id="QQX-Bv-ISj"/>
                 <outlet property="bottomInfoView" destination="WYk-cj-feM" id="REY-uS-gH8"/>
                 <outlet property="gradientView" destination="t4J-uJ-4DM" id="L4z-Oi-Q2A"/>
+                <outlet property="infoContentView" destination="Sqb-kh-7TL" id="QGH-Ea-Rho"/>
                 <outlet property="levelLabel" destination="Lf6-gn-Fld" id="5qb-S7-3Wg"/>
                 <outlet property="nameLabel" destination="3ie-Nt-Xmc" id="1xr-KF-Isl"/>
                 <outlet property="pointsLabel" destination="xpt-oj-XCJ" id="ufZ-4L-dh3"/>

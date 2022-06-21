@@ -11,7 +11,7 @@ let bottomSheetHeight:CGFloat = 74 + kBottomsafeAreaMargin
 class ShopCheckOutController: BaseTableController {
   lazy var footerView = ShopCheckOutFooterView.loadViewFromNib()
   
-  convenience init(orderId:String, products:[Product] = []) {
+  convenience init(orderId:String, products:[ShopCartModel] = []) {
     self.init()
     self.dataArray = products
     
@@ -71,7 +71,7 @@ class ShopCheckOutController: BaseTableController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withClass: ProductItemCell.self)
     if self.dataArray.count > 0{
-      cell.product = self.dataArray[indexPath.row] as? Product
+      cell.cart = self.dataArray[indexPath.row] as? ShopCartModel
     }
     return cell
   }

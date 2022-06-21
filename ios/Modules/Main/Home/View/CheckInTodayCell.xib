@@ -107,6 +107,7 @@
             </constraints>
             <size key="customSize" width="222" height="196"/>
             <connections>
+                <outlet property="checkInButton" destination="HDS-FM-DQu" id="5OY-4A-ECD"/>
                 <outlet property="timeLabel" destination="IXK-ix-tsF" id="25l-aj-law"/>
                 <outlet property="titleLabel" destination="agx-C4-OJa" id="6TB-pf-MDq"/>
             </connections>

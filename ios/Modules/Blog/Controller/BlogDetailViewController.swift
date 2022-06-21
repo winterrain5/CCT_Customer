@@ -29,6 +29,7 @@ class BlogDetailViewController: BaseViewController {
     view.addSubview(scrollView)
     scrollView.addSubview(contentView)
     contentView.setContentCompleteHandler = { [weak self] height in
+      self?.contentView.height = height
       self?.scrollView.contentSize = CGSize(width: kScreenWidth, height: height)
     }
     contentView.frame = self.view.bounds

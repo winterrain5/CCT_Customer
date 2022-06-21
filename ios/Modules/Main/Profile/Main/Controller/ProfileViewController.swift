@@ -58,22 +58,17 @@ class ProfileViewController: BaseTableController {
   }
   override func refreshData() {
     getNewReCardAmount()
-    if let model = Defaults.shared.get(for: .userModel) {
-      headView.model = model
-    }else {
-      
-      let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
-      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
-      
-      NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
-          Defaults.shared.set(model, for: .userModel)
-          self.headView.model = model
-        }
-        self.endRefresh()
-      } errorHandler: { e in
-        self.endRefresh()
+    let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    
+    NetworkManager().request(params: params) { data in
+      if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
+        Defaults.shared.set(model, for: .userModel)
+        self.headView.model = model
       }
+      self.endRefresh()
+    } errorHandler: { e in
+      self.endRefresh()
     }
   }
   

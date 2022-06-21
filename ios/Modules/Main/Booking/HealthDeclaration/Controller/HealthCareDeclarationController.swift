@@ -63,7 +63,7 @@ class HealthCareDeclarationController: BaseTableController {
         self.headView.size = CGSize(width: kScreenWidth, height: 184)
         
         self.tableView?.tableFooterView = self.footView
-        self.footView.size = CGSize(width: kScreenWidth, height: 664)
+        self.footView.size = CGSize(width: kScreenWidth, height: 680)
         
       }
       self.endRefresh()

@@ -925,7 +925,7 @@ class ShopCheckOutFooterView: UIView {
         self.toNextVc()
       }
     } errorHandler: { e in
-      
+      Toast.dismiss()
     }
   }
   

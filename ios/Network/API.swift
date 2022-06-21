@@ -81,6 +81,22 @@ enum API:String {
   case getRecommendProducts = "getRecommendProducts"
   case getProductsReviews = "getProductsReviews"
   case getCanSendProductLocations = "getCanSendProductLocations"
+  /// 保存或者修改购物车中的产品
+  case saveClientCart = "saveClientCart"
+  /// 获取当前用户购物车中的产品
+  case getTCart = "getTCart"
+  /// 删除购物车中的商品
+  case delClientCart = "delClientCart"
+  /// 检查购物车是否都发送了推送
+  case  checkCartNotice = "checkCartNotice"
+  /// 当前顾客的购物车所有商品notice修改状态
+  case editAllNotice = "editAllNotice"
+  /// 货物购物车总数量
+  case getCartCount = "getCartCount"
+  /// 批量删除
+  case delAllCart = "delAllCart"
+  
+  
   //// 获取所有分店地址
   case getAllMp = "getAllMp"
   case getTLocations = "getTLocations"
@@ -329,6 +345,7 @@ enum Action:String {
   case BookingOrder = "booking-order"
   case Schedule = "schedule"
   case Country = "country"
+  case Cart = "cart"
   
 }
 

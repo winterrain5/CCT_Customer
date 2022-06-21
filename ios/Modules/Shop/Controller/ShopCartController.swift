@@ -7,6 +7,8 @@
 
 import UIKit
 import PromiseKit
+import SwipeCellKit
+import Haptica
 class ShopCartController: BaseTableController {
   lazy var bottomSheetHeight:CGFloat = 74 + kBottomsafeAreaMargin
   lazy var checkoutBtn = LoadingButton().then { btn in
@@ -27,43 +29,74 @@ class ShopCartController: BaseTableController {
     
   }
   var footerView = ShopCartFooterView.loadViewFromNib()
-  // 0 cart 1 buynow
+  
   private var showType = 0
   private var taxModel:TaxesModel!
   private var staffModel:BusinessManModel?
   let dateHMS = Date().string(withFormat: "yyyy-MM-dd HH:mm:ss")
   let dateYMD = Date().string(withFormat: "yyyy-MM-dd")
+  
+  /// init
+  /// - Parameters:
+  ///   - showType: 0 cart 1 buynow
+  ///   - products: buy now 带过来的数据
   convenience init(showType:Int,products:[Product] = []) {
     self.init()
     self.showType = showType
-    self.dataArray = products
+    self.dataArray = products.map({
+      let cart = ShopCartModel()
+      cart.goods_num = $0.count
+      cart.picture = $0.picture
+      cart.alias = $0.alias
+      cart.name = $0.name
+      cart.sell_price = $0.sell_price
+      cart.goods_id = $0.id
+      return cart
+    })
   }
   override func viewDidLoad() {
     super.viewDidLoad()
     
     navigation.item.title = showType == 0 ? "Your Cart" : "Buy Now"
-    if self.dataArray.count > 0 {
-      addTableFooterView()
-    }
-    endRefresh(dataArray.count, emptyString: "No Items")
-    
-    updateFooterViewData()
+   
+    refreshData()
   }
   
   override func refreshData() {
     if showType == 1 {
+      if self.dataArray.count > 0 {
+        addTableFooterView()
+      }
       updateFooterViewData()
-      self.reloadData()
+      reloadData()
+      endRefresh(dataArray.count, emptyString: "No Items")
       return
     }
+    let params = SOAPParams(action: .Cart, path: .getTCart)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    NetworkManager().request(params: params) { data in
+      if let models = DecodeManager.decodeArrayByHandJSON(ShopCartModel.self, from: data) {
+        self.dataArray = models
+        self.endRefresh(models.count,emptyString: "No Items")
+        self.updateFooterViewData()
+        if self.dataArray.count > 0 {
+          self.addTableFooterView()
+        }else {
+          self.removerTableFooterView()
+        }
+      }
+    } errorHandler: { e in
+      self.endRefresh(e.asAPIError.emptyDatatype)
+    }
+
   }
   
   @discardableResult
   func updateFooterViewData() -> Float{
     if self.dataArray.count == 0 { return 0 }
-    let products = self.dataArray as! [Product]
-    let count = products.reduce(0, { $0 + $1.count })
-    let price = products.reduce(0, { $0 + ($1.count.float * ($1.sell_price.float() ?? 0)) })
+    let products = self.dataArray as! [ShopCartModel]
+    let count = products.reduce(0, { $0 + $1.goods_num })
+    let price = products.reduce(0, { $0 + ($1.goods_num.float * ($1.sell_price.float() ?? 0)) })
     let formatPrice = price.string.formatMoney().dolar
     footerView.update(count: count, subTotal: formatPrice, total: formatPrice)
     return price
@@ -100,6 +133,11 @@ class ShopCartController: BaseTableController {
     }
   }
   
+  func removerTableFooterView() {
+    tableView?.tableFooterView = nil
+    bottomView.removeFromSuperview()
+  }
+  
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 152
   }
@@ -111,14 +149,51 @@ class ShopCartController: BaseTableController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withClass: ShopCartCell.self)
     if self.dataArray.count > 0 {
-      cell.model = self.dataArray[indexPath.row] as? Product
-      cell.updateProductCountHandler = { [weak self] in
-        self?.updateFooterViewData()
+      cell.cart = self.dataArray[indexPath.row] as? ShopCartModel
+      cell.updateProductCountHandler = { [weak self] model in
+        if model.goods_num == 0 {
+          AlertView.show(title: "", message: "Are you sure you want to remove this item?", leftButtonTitle: "No", rightButtonTitle: "Yes", messageAlignment: .center) {
+            model.goods_num = 1
+            self?.tableView?.reloadRows(at: [IndexPath(row: (self?.dataArray as! [ShopCartModel]).firstIndex(of: model) ?? 0, section: 0)], with: .none)
+          } rightHandler: {
+            self?.deleteProduct(model)
+          } dismissHandler: {
+                
+          }
+          return
+        }
+        self?.updateGoodCount(model)
       }
+      
+      cell.delegate = self
     }
     return cell
   }
 
+  func updateGoodCount(_ model:ShopCartModel) {
+    let params = SOAPParams(action: .Cart, path: .saveClientCart)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "0")
+    params.set(key: "goodsId", value: model.goods_id)
+    params.set(key: "goodsNum", value: model.goods_num)
+    NetworkManager().request(params: params) { data in
+      self.updateFooterViewData()
+    } errorHandler: { e in
+      
+    }
+  }
+  
+  func deleteProduct(_ model:ShopCartModel) {
+    let params = SOAPParams(action: .Cart, path: .delClientCart)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "goodsId", value: model.goods_id)
+    Toast.showLoading()
+    NetworkManager().request(params: params) { data in
+      Toast.dismiss()
+      self.loadNewData()
+    } errorHandler: { e in
+      Toast.dismiss()
+    }
+  }
 
   @objc func checkoutAction() {
     checkoutBtn.startAnimation()
@@ -215,17 +290,18 @@ class ShopCartController: BaseTableController {
       
       let orderLines = SOAPDictionary()
       
-      (self.dataArray as! [Product]).enumerated().forEach { [weak self] i,e in
+      (self.dataArray as! [ShopCartModel]).enumerated().forEach { [weak self] i,e in
         guard let `self` = self else { return }
         
         let orderLine0 = SOAPDictionary()
         let orderLineItem = SOAPDictionary()
-        orderLineItem.set(key: "product_category", value: "9")
-        orderLineItem.set(key: "product_id", value: e.id)
+        
+        orderLineItem.set(key: "product_category", value: e.product_category == "0" ? "5" : "1")
+        orderLineItem.set(key: "product_id", value: e.goods_id)
         orderLineItem.set(key: "name", value: e.name)
         orderLineItem.set(key: "location_id", value: Defaults.shared.get(for: .companyId) ?? "97")
         orderLineItem.set(key: "price", value: e.sell_price)
-        orderLineItem.set(key: "qty", value: e.count)
+        orderLineItem.set(key: "qty", value: e.goods_num)
         orderLineItem.set(key: "present_qty", value: 0)
         orderLineItem.set(key: "product_unit_id", value: "")
         orderLineItem.set(key: "discount_id", value: 0)
@@ -238,7 +314,7 @@ class ShopCartController: BaseTableController {
         orderLineItem.set(key: "tax", value: tax)
         
         orderLineItem.set(key: "tax_is_include", value: 1)
-        orderLineItem.set(key: "total", value: voucher * e.count.float)
+        orderLineItem.set(key: "total", value: e.goods_num)
         orderLineItem.set(key: "cost", value: voucher)
         orderLineItem.set(key: "retail_price", value: voucher)
         orderLineItem.set(key: "staff_id", value: self.staffModel?.id ?? "")
@@ -247,13 +323,13 @@ class ShopCartController: BaseTableController {
         orderLineItem.set(key: "responsible_doctor", value: 0)
         orderLineItem.set(key: "referrer", value: 0)
         orderLineItem.set(key: "equal_staffs", value: "")
-        orderLineItem.set(key: "collection_method", value: 1)
-        orderLineItem.set(key: "has_delivered", value: 1)
+        orderLineItem.set(key: "collection_method", value: "")
+        orderLineItem.set(key: "has_delivered", value: "")
         orderLineItem.set(key: "create_time", value: dateHMS)
         orderLineItem.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
         orderLineItem.set(key: "is_delete", value: "0")
-        orderLineItem.set(key: "delivery_time", value: dateHMS)
-        orderLineItem.set(key: "delivery_location_id", value: Defaults.shared.get(for: .companyId) ?? "97")
+        orderLineItem.set(key: "delivery_time", value: "")
+        orderLineItem.set(key: "delivery_location_id", value: "")
        
         orderLine0.set(key: "data", value: orderLineItem.result, keyType: .string, valueType: .map(1))
         
@@ -270,7 +346,7 @@ class ShopCartController: BaseTableController {
       
       NetworkManager().request(params: mapParams) { data in
         if let id = JSON.init(from: data)?.rawString() {
-          let vc = ShopCheckOutController(orderId: id, products: self.dataArray as! [Product])
+          let vc = ShopCheckOutController(orderId: id, products: self.dataArray as! [ShopCartModel])
           self.navigationController?.pushViewController(vc)
           resolver.fulfill_()
         }else {
@@ -283,4 +359,31 @@ class ShopCartController: BaseTableController {
     }
   }
   
+}
+
+extension ShopCartController:SwipeTableViewCellDelegate {
+  func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+    if orientation == .right {
+      let delete = SwipeAction(style: .destructive, title: nil) { a, i in
+        Haptic.impact(.light).generate()
+        let model = (self.dataArray as! [ShopCartModel])[indexPath.row]
+        AlertView.show(title: "", message: "Are you sure you want to remove this item?", leftButtonTitle: "No", rightButtonTitle: "Yes", messageAlignment: .center, leftHandler: nil, rightHandler: {
+          self.deleteProduct(model)
+        }, dismissHandler: nil)
+      }
+      delete.image = R.image.notification_swip_delete()
+      delete.backgroundColor = .white
+      
+      return [delete]
+    }
+   return nil
+  }
+  
+  func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+    var options = SwipeOptions()
+    options.backgroundColor = .white
+    
+    return options
+    
+  }
 }

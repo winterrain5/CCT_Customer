@@ -6,29 +6,29 @@
 //
 
 import UIKit
-
-class ShopCartCell: UITableViewCell {
+import SwipeCellKit
+class ShopCartCell: SwipeTableViewCell {
 
   @IBOutlet weak var productNameLabel: UILabel!
   @IBOutlet weak var productImageView: UIImageView!
   
   @IBOutlet weak var stepperView: ShopStepperView!
   @IBOutlet weak var priceLabel: UILabel!
-  var updateProductCountHandler:(()->())?
-  var model:Product! {
+  var updateProductCountHandler:((ShopCartModel)->())?
+  var cart:ShopCartModel! {
     didSet {
-      productNameLabel.text = model.alias.isEmpty ? model.name : model.alias
-      productImageView.yy_setImage(with: model.picture.asURL, options: .setImageWithFadeAnimation)
-      priceLabel.text = model.sell_price.formatMoney().dolar
-      stepperView.count = model.count
+      productNameLabel.text = cart.alias.isEmpty ? cart.name : cart.alias
+      productImageView.yy_setImage(with: cart.picture.asURL, options: .setImageWithFadeAnimation)
+      priceLabel.text = cart.sell_price.formatMoney().dolar
+      stepperView.count = cart.goods_num
     }
   }
   override func awakeFromNib() {
     super.awakeFromNib()
     stepperView.valueDidChangeHandler = { [weak self] count in
       guard let `self` = self else { return }
-      self.model.count = count
-      self.updateProductCountHandler?()
+      self.cart.goods_num = count
+      self.updateProductCountHandler?(self.cart)
     }
   }
   

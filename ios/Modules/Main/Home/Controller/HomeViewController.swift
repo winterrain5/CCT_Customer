@@ -114,7 +114,11 @@ class HomeViewController: BaseViewController {
     params.set(key: "isFeatured", value: 1)
     params.set(key: "categoryId", value: 0)
     params.set(key: "limit", value: 4)
+    params.set(key: "filterKeys", value: 0)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    let search = SOAPDictionary()
+    search.set(key: "cct_or_mp", value: 2)
+    params.set(key: "searchData", value: search.result, type: .map(1))
     
     NetworkManager().request(params: params) { data in
       
@@ -130,7 +134,7 @@ class HomeViewController: BaseViewController {
   
   func getTClientPartInfo() -> Promise<Void> {
     Promise.init { resolver in
-      
+        
       let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       
@@ -186,7 +190,7 @@ class HomeViewController: BaseViewController {
       params.set(key: "startDateTime", value: Date().tomorrow.string(withFormat: "yyyy-MM-dd").appending(" 00:00:00"))
       params.set(key: "wellnessType", value: "")
       params.set(key: "start", value: 0)
-      params.set(key: "length", value: 30)
+      params.set(key: "length", value: 5)
       NetworkManager().request(params: params) { data in
         
         if let models = DecodeManager.decodeArrayByHandJSON(BookingUpComingModel.self, from: data){

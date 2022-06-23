@@ -307,7 +307,7 @@ class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
     NetworkManager().request(params: params) { data in
       Toast.dismiss()
       let count = JSON.init(from: data)?["cancel_count"].rawString()?.int ?? 0
-      if count > 3 {
+      if count >= 3 {
         AlertView.show(message: "If you delay cancelling more than 3 times, your in app reservation permission will be suspended.")
       }else {
         SelectTypeOfServiceSheetView.show()

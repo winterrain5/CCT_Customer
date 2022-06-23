@@ -59,14 +59,6 @@ class SettingViewController: BaseTableController {
   var blogCategories:[BlogCategoryModel] = []
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    
-    SwitchManager.shared.configWithNavBar(self,true) { type in
-    
-      SwitchManager.shared.setDefaultNetworkConfig()
-    }
-    
-    
     self.barAppearance(tintColor: .white, barBackgroundColor: R.color.theamBlue()!, image: R.image.return_left(), backButtonTitle: " Back")
     refreshData()
   }

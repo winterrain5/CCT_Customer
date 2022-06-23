@@ -80,7 +80,7 @@ class InputIDContainer: UIView ,UITextFieldDelegate{
     nextButon.startAnimation()
     
     let params = SOAPParams(action: .Client, path: .clientICExists)
-    params.set(key: "IcNo", value: idTf.text ?? "")
+    params.set(key: "IcNo", value: idTf.text?.uppercased() ?? "")
     
     NetworkManager().request(params: params) { data in
       let data = String(data: data, encoding: .utf8)
@@ -116,7 +116,7 @@ class InputIDContainer: UIView ,UITextFieldDelegate{
   
   func next() {
     if let registInfo = Defaults.shared.get(for: .registModel) {
-      registInfo.IcNum = idTf.text ?? ""
+      registInfo.IcNum = idTf.text?.uppercased() ?? ""
       Defaults.shared.set(registInfo, for: .registModel)
     }
     nextButon.stopAnimation()
@@ -144,11 +144,13 @@ class InputIDContainer: UIView ,UITextFieldDelegate{
   
   func setNextButonState() {
     
-    let text = idTf.text ?? ""
+    let text = idTf.text?.uppercased() ?? ""
     
     if text.isEmpty {
       return
     }
+    
+    idTf.text = text
     
     if selectIDType == 0 {
       AlertView.show(message: "Please select ID Type")

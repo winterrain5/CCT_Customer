@@ -117,7 +117,6 @@ class HomeViewController: BaseViewController {
     params.set(key: "filterKeys", value: 0)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     let search = SOAPDictionary()
-    search.set(key: "cct_or_mp", value: 2)
     params.set(key: "searchData", value: search.result, type: .map(1))
     
     NetworkManager().request(params: params) { data in

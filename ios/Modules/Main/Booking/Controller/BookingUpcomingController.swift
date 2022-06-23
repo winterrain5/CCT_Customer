@@ -55,6 +55,7 @@ class BookingUpcomingController: BasePagingTableController {
         self.dataArray.append(contentsOf: models)
         var temp = self.dataArray as! [BookingUpComingModel]
         temp.removeDuplicates(keyPath: \.id)
+        temp.sort(by: {( $0.therapy_start_date.dateTime?.unixTimestamp ?? 0) > ($1.therapy_start_date.dateTime?.unixTimestamp ?? 0) })
         self.dataArray = temp
         self.endRefresh(models.count,emptyString: "You have no upcoming appointments")
         self.view.hideSkeleton()
@@ -110,6 +111,7 @@ class BookingUpcomingController: BasePagingTableController {
   }
    
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if self.dataArray.count == 0 { return }
     let model = self.dataArray[indexPath.row] as! BookingUpComingModel
     if model.wellness_treatment_type == "2" {
       let vc = BookingUpcomingTreatmentController(upcoming: model)
@@ -138,7 +140,7 @@ class BookingUpcomingController: BasePagingTableController {
     NetworkManager().request(params: params) { data in
       Toast.dismiss()
       let count = JSON.init(from: data)?["cancel_count"].rawString()?.int ?? 0
-      if count > 3 {
+      if count >= 3 {
         AlertView.show(message: "If you delay cancelling more than 3 times, your in app reservation permission will be suspended.")
       }else {
         SelectTypeOfServiceSheetView.show()

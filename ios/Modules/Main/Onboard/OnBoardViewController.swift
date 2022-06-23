@@ -47,7 +47,9 @@ class OnBoardViewController: BaseCollectionController {
       if self.row == 3 {
         self.nextButton.titleForNormal = "Get Start"
       }
+      self.collectionView?.isPagingEnabled = false
       self.collectionView?.scrollToItem(at: IndexPath(row: self.row, section: 0), at: .centeredHorizontally, animated: true)
+      self.collectionView?.isPagingEnabled = true
       self.pageControl.set(progress: self.row, animated: true)
     }).disposed(by: rx.disposeBag)
     
@@ -67,6 +69,7 @@ class OnBoardViewController: BaseCollectionController {
   
   override func createListView() {
     super.createListView()
+    collectionView?.isPagingEnabled = true
     collectionView?.register(nibWithCellClass: OnBoardCell.self)
     collectionView?.showsHorizontalScrollIndicator = false
   }
@@ -95,4 +98,21 @@ class OnBoardViewController: BaseCollectionController {
     return cell
   }
   
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    if scrollView.contentOffset.x == 0 {
+      self.row = 0
+      self.nextButton.titleForNormal = "Next"
+      pageControl.set(progress: 0, animated: true)
+    }else {
+      let page = ceil((scrollView.contentOffset.x / kScreenWidth))
+      self.row = Int(page)
+      pageControl.set(progress: page.int, animated: true)
+      
+      if page == 3 {
+        self.nextButton.titleForNormal = "Get Start"
+      }else {
+        self.nextButton.titleForNormal = "Next"
+      }
+    }
+  }
 }

@@ -27,24 +27,6 @@ class WalletAddUserController: BaseTableController {
     }
   }
   
-  func searchClientsByFields(_ mobile:String) {
-    let params = SOAPParams(action: .Client, path: .searchClientsByFields)
-    
-    let data = SOAPDictionary()
-    data.set(key: "mobile", value: mobile)
-    
-    params.set(key: "searchData", value: data.result,type: .map(1))
-    params.set(key: "ownerId", value: Defaults.shared.get(for: .clientId) ?? "")
-    params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
-  
-    NetworkManager().request(params: params) { data in
-      
-    } errorHandler: { e in
-      
-    }
-
-  }
-  
   
   func loadContactsData() {
     //获取授权状态

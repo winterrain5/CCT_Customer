@@ -34,7 +34,7 @@ class TreatmentDeclarationController: BaseTableController {
   override func refreshData() {
 
     if isFirstLoad { Toast.showLoading() }
-    when(fulfilled: getPostPartumItems(), getTAllItemsForCategory3(), getTAllItemsForCategory2()).done { a1,a2,a3 in
+    when(fulfilled: getUsertems(), getTAllItemsForCategory3(), getTAllItemsForCategory2()).done { a1,a2,a3 in
       
       Toast.dismiss()
       
@@ -83,11 +83,12 @@ class TreatmentDeclarationController: BaseTableController {
   }
   
   /// 用户已经填写的
-  func getPostPartumItems() -> Promise<[HealthDeclarationModel]> {
+  func getUsertems() -> Promise<[HealthDeclarationModel]> {
     Promise.init { resolver in
       let params = SOAPParams(action: .questionnaireSurvey, path: .getTAllItems)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       params.set(key: "category", value: 3)
+      params.set(key: "gender", value: Defaults.shared.get(for: .userModel)?.gender ?? "")
       NetworkManager().request(params: params) { data in
         if let model = DecodeManager.decodeArrayByHandJSON(HealthDeclarationModel.self, from: data) {
           resolver.fulfill(model)
@@ -165,7 +166,7 @@ class TreatmentDeclarationController: BaseTableController {
           cell.model = model
           cell.selectionStyle = .none
           cell.remarkDidChange = { [weak self] model in
-            self?.tableView?.reloadRows(at: [IndexPath(row: model.index, section: 0)], with: .none)
+            self?.tableView?.reloadRows(at: [IndexPath(row: model.index - 2, section: 0)], with: .none)
           }
           return cell
         }
@@ -173,7 +174,7 @@ class TreatmentDeclarationController: BaseTableController {
         let cell = tableView.dequeueReusableCell(withClass: DeclarationFormCell.self)
         cell.model = model
         cell.updateOptionsHandler = { [weak self] model in
-          self?.tableView?.reloadRows(at: [IndexPath(row: model.index, section: 0)], with: .none)
+          self?.tableView?.reloadRows(at: [IndexPath(row: model.index - 1, section: 0)], with: .none)
         }
         cell.selectionStyle = .none
         

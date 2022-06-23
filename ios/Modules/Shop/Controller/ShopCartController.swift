@@ -228,7 +228,7 @@ class ShopCartController: BaseTableController {
         }
         resolver.fulfill_()
       } errorHandler: { e in
-        resolver.reject(APIError.requestError(code: -1, message: e.localizedDescription))
+        resolver.reject(e)
       }
     }
   }
@@ -246,7 +246,7 @@ class ShopCartController: BaseTableController {
           resolver.reject(APIError.requestError(code: -1, message: "Decode BusinessManModel Failed"))
         }
       } errorHandler: { e in
-        resolver.reject(APIError.requestError(code: -1, message: e.localizedDescription))
+        resolver.reject(e)
       }
     }
   }
@@ -353,7 +353,7 @@ class ShopCartController: BaseTableController {
           resolver.reject(APIError.requestError(code: -1, message: "Failed to generate order"))
         }
       } errorHandler: { e in
-        resolver.reject(APIError.requestError(code: -1, message: e.localizedDescription))
+        resolver.reject(e)
       }
       
     }

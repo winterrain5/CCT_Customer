@@ -67,6 +67,7 @@ class UpcomingSessionView: UIView,UICollectionViewDataSource,UICollectionViewDel
   
   override init(frame: CGRect) {
     super.init(frame: frame)
+    
     addSubview(collectionView)
     collectionView.register(nibWithCellClass: UpcomingSessionCell.self)
     

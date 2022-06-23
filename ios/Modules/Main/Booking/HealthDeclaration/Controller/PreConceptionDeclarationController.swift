@@ -266,7 +266,7 @@ class PreConceptionDeclarationController: BaseTableController {
             cell.model = model
             cell.selectionStyle = .none
             cell.remarkDidChange = { [weak self] model in
-              self?.tableView?.reloadRows(at: [IndexPath(row: model.index, section: 0)], with: .none)
+              self?.tableView?.reloadRows(at: [IndexPath(row: model.index - 2, section: 0)], with: .none)
             }
             return cell
           default:
@@ -277,7 +277,7 @@ class PreConceptionDeclarationController: BaseTableController {
         let cell = tableView.dequeueReusableCell(withClass: DeclarationFormCell.self)
         cell.model = model
         cell.updateOptionsHandler = { [weak self] model in
-          self?.tableView?.reloadRows(at: [IndexPath(row: model.index, section: 0)], with: .none)
+          self?.tableView?.reloadRows(at: [IndexPath(row: model.index - 1, section: 0)], with: .none)
         }
         cell.selectionStyle = .none
         

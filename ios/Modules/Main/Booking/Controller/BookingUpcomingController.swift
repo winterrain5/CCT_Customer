@@ -53,6 +53,9 @@ class BookingUpcomingController: BasePagingTableController {
      
       if let models = DecodeManager.decodeArrayByHandJSON(BookingUpComingModel.self, from: data),models.count > 0 {
         self.dataArray.append(contentsOf: models)
+        var temp = self.dataArray as! [BookingUpComingModel]
+        temp.removeDuplicates(keyPath: \.id)
+        self.dataArray = temp
         self.endRefresh(models.count,emptyString: "You have no upcoming appointments")
         self.view.hideSkeleton()
         return

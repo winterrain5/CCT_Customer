@@ -35,7 +35,7 @@ class BookingTodayModel: BaseModel {
     
     if status == 4 && wellness_or_treatment != "2" {
       if staff_is_random == "2" {
-        return 192
+        return 212
       }else {
         return 185
       }

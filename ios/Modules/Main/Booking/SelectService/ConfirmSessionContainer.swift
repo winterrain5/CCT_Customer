@@ -220,7 +220,7 @@ class ConfirmSessionContainer: UIView {
     order_lines_info.set(key: "booking_service_duration_id", value: model.service_id)
     order_lines_info.set(key: "book_date", value: date)
     let therapy_start_date = date.appending(" ").appending(model.time.dropLast(3)).appending(":00")
-    let therapy_end_date = therapy_start_date.dateTime?.addingTimeInterval(TimeInterval(model.duration.int ?? 0)).string(withFormat: "yyyy-MM-dd HH:mm:ss") ?? ""
+    let therapy_end_date = therapy_start_date.dateTime?.addingTimeInterval(TimeInterval((model.duration.int ?? 0) * 60)).string(withFormat: "yyyy-MM-dd HH:mm:ss") ?? ""
     order_lines_info.set(key: "therapy_start_date", value: therapy_start_date)
     order_lines_info.set(key: "therapy_end_date", value: therapy_end_date)
     order_lines_info.set(key: "duration", value: model.duration)

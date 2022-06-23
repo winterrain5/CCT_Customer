@@ -317,22 +317,25 @@ extension WebBrowserController {
   /// 页面开始加载时调用
   func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
     print("页面开始加载\n\(webView.url?.absoluteString ?? "")")
+    Toast.showLoading()
   }
   
   /// 页面开始返回时调用
   func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
     print("页面开始返回")
+    Toast.dismiss()
   }
   
   /// 页面加载完成之后调用
   func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
     print("页面加载完成\(webView.url?.absoluteString ?? "")")
+    Toast.dismiss()
     
   }
   
   /// 加载失败时调用
   func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-    
+    Toast.dismiss()
   }
   
   /// 收到服务器跳转请求之后调用

@@ -123,9 +123,8 @@ class WalletAddUserController: BaseTableController {
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     NetworkManager().request(params: params) { data in
-      
-      
       if let models = DecodeManager.decodeArrayByHandJSON(MatchPhoneModel.self, from: data) {
+        
         self.result.forEach { e in
           models.forEach { me in
             e.isAdd = me.phone == e.phone

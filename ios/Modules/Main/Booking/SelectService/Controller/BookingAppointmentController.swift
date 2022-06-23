@@ -183,14 +183,16 @@ class BookingAppointmentController: BaseTableController {
       }
     }
     if self.type == .Treatment {
-      if showReport {
+      if showReport && result.isEmpty{
           getLastSymptomCheckReport()
       }else {
         var result:[[SymptomCheckStepModel]] = []
         self.result.sorted(by: { $0.key < $01.key}).forEach { key,value in
           result.append(value)
         }
-        footView.result = result
+        self.footView.result = result
+        self.footView.size = CGSize(width: kScreenWidth, height: 512)
+        self.tableView?.tableFooterView = self.footView
       }
     }
   

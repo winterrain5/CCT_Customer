@@ -10,7 +10,7 @@ import UIKit
 class BookingCompletedController: BasePagingTableController {
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    NotificationCenter.default.addObserver(forName: .bookingTodayLoaded, object: nil, queue: .main) { noti  in
+    NotificationCenter.default.addObserver(forName: .bookingDataChanged, object: nil, queue: .main) { noti  in
       self.loadNewData()
     }
 

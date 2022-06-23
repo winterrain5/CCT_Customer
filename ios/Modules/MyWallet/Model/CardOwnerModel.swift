@@ -17,6 +17,8 @@ class CardOwnerModel: BaseModel,Codable {
   var trans_limit: String?
   var first_name: String?
   
+  var new_recharge_card_period = ""
+  var new_recharge_card_level_text = ""
   
   var desc: String?
   var exceed_value: String?
@@ -30,7 +32,7 @@ class CardOwnerModel: BaseModel,Codable {
   var nominal_value: String?
   var name: String?
   
-  var new_card_amount:Int?
+  var new_card_amount:CGFloat?
   
   /// 是否是朋友的卡
   var isFriendCard:Bool?

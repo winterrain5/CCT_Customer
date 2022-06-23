@@ -34,6 +34,7 @@ class BookingServiceFormFooterView: UIView {
   }
   override func awakeFromNib() {
     super.awakeFromNib()
+    self.clipsToBounds = true
     setConfirmButtonIsReady(false)
     infoView.addLightShadow(by: 16)
   }

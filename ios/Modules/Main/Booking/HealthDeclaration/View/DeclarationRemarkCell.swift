@@ -25,14 +25,18 @@ class DeclarationRemarkCell: UITableViewCell,UITextViewDelegate {
   }
   
   func textViewDidChange(_ textView: UITextView) {
+    model?.remark = textView.text
     remarkDidChange?(model!)
+    
     let size = textView.sizeThatFits(CGSize(width: textView.width, height: CGFloat.infinity))
     textHCons.constant = size.height + 12
     UIView.animate(withDuration: 0.1) {
       IQKeyboardManager.shared.reloadLayoutIfNeeded()
       self.layoutIfNeeded()
     }
-    model?.remark = textView.text
+    
+    
+    
   }
   
   func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

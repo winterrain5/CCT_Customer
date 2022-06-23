@@ -113,6 +113,10 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
   }
   
   func deleteNotification() {
+    if selectModels.count == 0 {
+      Toast.showMessage("None of items be selected")
+      return
+    }
     let params = SOAPParams(action: .Notifications, path: .deleteNotices)
     
     let ids = SOAPDictionary()
@@ -268,7 +272,14 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    Haptic.impact(.light).generate()
+    if isAllowSelect {
+      if #available(iOS 13.0, *) {
+        Haptic.impact(.soft).generate()
+      } else {
+        Haptic.impact(.light).generate()
+      }
+     
+    }
     processDataArray(indexPath)
     
   }

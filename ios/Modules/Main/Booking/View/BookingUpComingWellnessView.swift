@@ -190,7 +190,7 @@ class BookingUpComingWellnessView: UIView {
     Toast.showLoading()
     NetworkManager().request(params: params) { data in
       UIViewController.getTopVc()?.navigationController?.popViewController()
-      NotificationCenter.default.post(name: .bookingUpcomingLoad, object: nil)
+      NotificationCenter.default.post(name: .bookingDataChanged, object: nil)
     } errorHandler: { e in
       Toast.dismiss()
     }

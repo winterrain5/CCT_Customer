@@ -88,7 +88,7 @@ class WalletDetailController: BaseTableController {
       let params = SOAPParams(action: .Voucher, path: .getFriendsCard)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       NetworkManager().request(params: params) { data in
-        if let models = DecodeManager.decodeByCodable([CardOwnerModel].self, from: data) {
+        if let models = DecodeManager.decodeArrayByHandJSON(CardOwnerModel.self, from: data) {
           models.forEach({ $0.isFriendCard = true })
           resolver.fulfill(models)
         }else {
@@ -106,7 +106,7 @@ class WalletDetailController: BaseTableController {
       let params = SOAPParams(action: .Voucher, path: .getCardFriends)
       params.set(key: "ownerId", value: Defaults.shared.get(for: .clientId) ?? "")
       NetworkManager().request(params: params) { data in
-        if let models = DecodeManager.decodeByCodable([CardOwnerModel].self, from: data) {
+        if let models = DecodeManager.decodeArrayByHandJSON(CardOwnerModel.self, from: data) {
           models.forEach({ $0.isFriendCard = false })
           resolver.fulfill(models)
         }else {
@@ -230,7 +230,7 @@ class WalletDetailController: BaseTableController {
         if (models?.count ?? 0 > 0)  {
           return 52
         }else {
-          return 92
+          return 102
         }
       } else {
         if models?.count ?? 0 > 0 {

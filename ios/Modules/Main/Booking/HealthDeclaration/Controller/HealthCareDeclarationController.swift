@@ -34,22 +34,23 @@ class HealthCareDeclarationController: BaseTableController {
   override func refreshData() {
 
     if isFirstLoad { Toast.showLoading() }
-    when(fulfilled: getPostPartumItems(), getTAllItemsForCategory1(), getTAllItemsForCategory2()).done { a1,a2,a3 in
+    when(fulfilled: getUsertems(), getTAllItemsForCategory1(), getTAllItemsForCategory2()).done { a1,a2,a3 in
       
       Toast.dismiss()
       
       var temp:[HealthDeclarationModel] = []
-      var commonElements:[HealthDeclarationModel] = []
-      a3.forEach { e1 in
-        a1.xgQuestions.forEach { e2 in
+      
+      temp.append(contentsOf: a3)
+      temp.append(contentsOf: a2)
+      
+      temp.forEach { e1 in
+        a1.forEach { e2 in
           if e1.id == e2.id { // 相等则移除e1 留下e2
-            commonElements.append(e2)
+            temp.removeAll(e1)
+            temp.append(e2)
           }
         }
       }
-      temp.append(contentsOf: commonElements)
-      temp.append(contentsOf: a2)
-      temp.removeDuplicates(keyPath: \.id)
       
       let remarkModel = HealthDeclarationModel()
       remarkModel.formType = .Remark
@@ -78,13 +79,14 @@ class HealthCareDeclarationController: BaseTableController {
   }
   
   /// 用户已经填写的
-  func getPostPartumItems() -> Promise<PostPartumModel> {
+  func getUsertems() -> Promise<[HealthDeclarationModel]> {
     Promise.init { resolver in
-      let params = SOAPParams(action: .questionnaireSurvey, path: .getPostPartumItems)
+      let params = SOAPParams(action: .questionnaireSurvey, path: .getTAllItems)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       params.set(key: "category", value: 1)
+      params.set(key: "gender", value: Defaults.shared.get(for: .userModel)?.gender ?? "")
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decodeObjectByHandJSON(PostPartumModel.self, from: data) {
+        if let model = DecodeManager.decodeArrayByHandJSON(HealthDeclarationModel.self, from: data) {
           resolver.fulfill(model)
           return
         }
@@ -161,7 +163,7 @@ class HealthCareDeclarationController: BaseTableController {
           cell.model = model
           cell.selectionStyle = .none
           cell.remarkDidChange = { [weak self] model in
-            self?.tableView?.reloadRows(at: [IndexPath(row: model.index, section: 0)], with: .none)
+            self?.tableView?.reloadRows(at: [IndexPath(row: model.index - 2, section: 0)], with: .none)
           }
           return cell
         }
@@ -169,7 +171,7 @@ class HealthCareDeclarationController: BaseTableController {
         let cell = tableView.dequeueReusableCell(withClass: DeclarationFormCell.self)
         cell.model = model
         cell.updateOptionsHandler = { [weak self] model in
-          self?.tableView?.reloadRows(at: [IndexPath(row: model.index, section: 0)], with: .none)
+          self?.tableView?.reloadRows(at: [IndexPath(row: model.index - 1, section: 0)], with: .none)
         }
         cell.selectionStyle = .none
         

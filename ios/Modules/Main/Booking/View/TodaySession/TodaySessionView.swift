@@ -91,20 +91,15 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         let cell = collectionView.dequeueReusableCell(withClass: TodayWellnessCheckSessionCell.self, for: indexPath)
         cell.model = model
         return cell
-      }
-      
-      if model.status == 4 && model.wellness_or_treatment == "2"{
+      } else if model.status == 4 && model.wellness_or_treatment == "2"{
         let cell = collectionView.dequeueReusableCell(withClass: TodayTreatmentQueueCell.self, for: indexPath)
         cell.model = model
         return cell
-      }
-      
-      if model.status == 1 {
+      } else {
         let cell = collectionView.dequeueReusableCell(withClass: TodayCheckInCell.self, for: indexPath)
         cell.model = model
         return cell
       }
-      
     }
     return UICollectionViewCell()
   }

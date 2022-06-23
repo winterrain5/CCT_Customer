@@ -13,7 +13,13 @@ class DatePickerView: UIView {
   
   var completeHandler:((Date)->())?
   var dismissHandler:(()->())?
- 
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    datePicker.subviews.forEach { v in
+      print("datepicker subview:\(v)")
+    }
+  }
+  
   override func layoutSubviews() {
       super.layoutSubviews()
       corner(byRoundingCorners: [.topLeft,.topRight], radii: 20)

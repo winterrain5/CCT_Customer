@@ -40,7 +40,7 @@ class BookingCompletedController: BasePagingTableController {
         self.dataArray.append(contentsOf: items as [Any])
         var temp = self.dataArray as! [BookingCompleteModel]
         temp.removeDuplicates(keyPath: \.id)
-        temp.sort(by: {( $0.therapy_start_date.dateTime?.unixTimestamp ?? 0) > ($1.therapy_start_date.dateTime?.unixTimestamp ?? 0) })
+        temp.sort(by: {( $0.therapy_start_date.dateTime?.unixTimestamp ?? 0) < ($1.therapy_start_date.dateTime?.unixTimestamp ?? 0) })
         self.dataArray = temp
         self.endRefresh(items.count,emptyString: "You have no completed appointments")
       }else {

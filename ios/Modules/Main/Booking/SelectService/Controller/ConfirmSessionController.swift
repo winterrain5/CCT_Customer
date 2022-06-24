@@ -7,6 +7,7 @@
 
 import UIKit
 import PromiseKit
+import SideMenuSwift
 class ConfirmSessionController: BaseViewController {
   
   var contentView = ConfirmSessionContainer.loadViewFromNib()
@@ -32,7 +33,8 @@ class ConfirmSessionController: BaseViewController {
     contentView.confirmHandler = { [weak self] in
       guard let `self` = self else { return }
       if ((self.navigationController?.children.contains(where: { $0 is LoginViewController })) != nil) {
-        ApplicationUtil.configRootViewController()
+        let tab = BaseTabBarController()
+        UIApplication.shared.keyWindow?.rootViewController = SideMenuController(contentViewController: tab, menuViewController: MenuViewController())
       }else {
         self.navigationController?.popToRootViewController(animated: true)
       }

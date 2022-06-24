@@ -197,6 +197,7 @@ class WalletAddUserController: BaseTableController {
     
     Toast.showLoading()
     NetworkManager().request(params: params) { data in
+      Toast.showSuccess(withStatus: "Add Successfully")
       self.addUserNotification(model)
     } errorHandler: { e in
       Toast.showError(withStatus: "Add Failed")
@@ -211,9 +212,9 @@ class WalletAddUserController: BaseTableController {
     params.set(key: "friendId", value: model.id)
     
     NetworkManager().request(params: params) { data in
-      Toast.showSuccess(withStatus: "Add Successfully")
+      self.navigationController?.popViewController()
     } errorHandler: { e in
-      Toast.showError(withStatus: "Add Failed")
+      self.navigationController?.popViewController()
     }
 
   }

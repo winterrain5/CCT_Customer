@@ -47,7 +47,21 @@ class MadamPartumHeaderView: UIView,FSPagerViewDelegate,FSPagerViewDataSource {
     }
   }
   @IBAction func bookAppointmentButtonAction(_ sender: Any) {
-    SelectTypeOfServiceSheetView.show()
+    let params = SOAPParams(action: .Client, path: .getClientCancelCount)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    
+    Toast.showLoading()
+    NetworkManager().request(params: params) { data in
+      Toast.dismiss()
+      let count = JSON.init(from: data)?["cancel_count"].rawString()?.int ?? 0
+      if count >= 3 {
+        AlertView.show(message: "If you delay cancelling more than 3 times, your in app reservation permission will be suspended.")
+      }else {
+        SelectTypeOfServiceSheetView.show()
+      }
+    } errorHandler: { e in
+      Toast.dismiss()
+    }
   }
   
   public func numberOfItems(in pagerView: FSPagerView) -> Int {

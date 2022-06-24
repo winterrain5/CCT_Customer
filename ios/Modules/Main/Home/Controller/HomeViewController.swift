@@ -171,10 +171,10 @@ class HomeViewController: BaseViewController {
         var lastesVersion:Int = 0
         if (array2.count == 3) {
           lastesVersion = array2[0]!*100 + array2[1]!*10 + array2[2]!
-        }else {
+        }else if(array2.count == 2){
           lastesVersion = array2[0]!*100 + array2[1]!*10
         }
-        if currentVersion == 100 { // first version
+        if lastesVersion == 0 { // first version
           Defaults.shared.set(true, for: .isReview)
           self.contentView.updateKingKongData(true)
           return
@@ -186,11 +186,13 @@ class HomeViewController: BaseViewController {
           Defaults.shared.set(false, for: .isReview)
           self.contentView.updateKingKongData(false)
         }else { // 后台版本大于当前版本 提示更新
-          
+          Defaults.shared.set(false, for: .isReview)
+          self.contentView.updateKingKongData(false)
         }
         
       }
     } errorHandler: { e in
+      Defaults.shared.set(true, for: .isReview)
       self.contentView.updateKingKongData(true)
     }
     

@@ -65,10 +65,10 @@ extension LoginViewController: QRScannerCodeDelegate {
       
       let json = JSON(parseJSON: result)
       let locationName = json["name"].stringValue
-//      let id = json["id"].stringValue
+      let id = json["id"].stringValue
 //      let type = json["type"].stringValue
 //
-      let vc = EnterAccountController(isFromScanQRCode: true,locationName: locationName)
+      let vc = EnterAccountController(isFromScanQRCode: true,outlet: (id:id,name:locationName))
       self.navigationController?.pushViewController(vc, completion: nil)
     }
     

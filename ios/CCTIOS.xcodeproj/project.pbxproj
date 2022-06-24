@@ -1626,6 +1626,7 @@
 			children = (
 				457CBA922837697E00AE26D8 /* BookingAppointmentController.swift */,
 				454576B12845C17B007410E9 /* TellUsCondiitonController.swift */,
+				454C5B49283CDAB4001D787C /* ConfirmSessionController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1698,9 +1699,6 @@
 				454576B02845A7E2007410E9 /* Controller */,
 				454C5B38283B7190001D787C /* Model */,
 				457CBA942837768100AE26D8 /* View */,
-				454C5B49283CDAB4001D787C /* ConfirmSessionController.swift */,
-				454C5B4B283DBE9F001D787C /* ConfirmSessionContainer.swift */,
-				454C5B4D283DBEAE001D787C /* ConfirmSessionContainer.xib */,
 			);
 			path = SelectService;
 			sourceTree = "<group>";
@@ -1715,6 +1713,8 @@
 				454C5B3F283B7F95001D787C /* BookingDateSheetView.swift */,
 				454C5B45283CBB2C001D787C /* BookingServiceHelpSheetView.swift */,
 				454C5B47283CBB3C001D787C /* BookingServiceHelpSheetView.xib */,
+				454C5B4B283DBE9F001D787C /* ConfirmSessionContainer.swift */,
+				454C5B4D283DBEAE001D787C /* ConfirmSessionContainer.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";

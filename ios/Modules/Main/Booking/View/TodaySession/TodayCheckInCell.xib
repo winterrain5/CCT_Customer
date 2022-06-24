@@ -25,8 +25,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cds-RM-3iF">
                                 <rect key="frame" x="4" y="4" width="337" height="44"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ang Mo Kio Outlet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfa-jx-zN8">
-                                        <rect key="frame" x="12" y="12" width="123" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ang Mo Kio Outlet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfa-jx-zN8">
+                                        <rect key="frame" x="12" y="12" width="313" height="20"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
                                         <color key="textColor" name="TheamBlue"/>
                                         <nil key="highlightedColor"/>
@@ -40,6 +40,7 @@
                                     <constraint firstAttribute="height" constant="44" id="AyW-LX-6jv"/>
                                     <constraint firstItem="Qfa-jx-zN8" firstAttribute="leading" secondItem="cds-RM-3iF" secondAttribute="leading" constant="12" id="Qpu-0f-mmJ"/>
                                     <constraint firstItem="Qfa-jx-zN8" firstAttribute="centerY" secondItem="cds-RM-3iF" secondAttribute="centerY" id="dSi-JX-SPZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qfa-jx-zN8" secondAttribute="trailing" constant="12" id="qcM-2N-LxX"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>

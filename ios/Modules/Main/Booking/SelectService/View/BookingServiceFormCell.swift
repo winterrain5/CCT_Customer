@@ -67,7 +67,8 @@ class BookingServiceFormCell: UITableViewCell,UITextFieldDelegate {
     
     label.snp.makeConstraints { make in
       make.left.equalToSuperview().offset(24)
-      make.bottom.equalToSuperview().offset(-10)
+      make.right.equalToSuperview().offset(-32)
+      make.top.equalToSuperview().offset(30)
     }
     
     rightImage.snp.makeConstraints { make in

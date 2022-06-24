@@ -143,9 +143,6 @@ class BookingAppointmentController: BaseTableController {
       ]
     }
     
-    leftButtonDidClick = { [weak self] in
-      self?.navigationController?.popToRootViewController(animated: true)
-    }
     
   }
   
@@ -162,7 +159,7 @@ class BookingAppointmentController: BaseTableController {
     headView.size = CGSize(width: kScreenWidth, height: 84)
     
     tableView?.tableFooterView = footView
-    footView.size = CGSize(width: kScreenWidth, height: 226)
+    footView.size = CGSize(width: kScreenWidth, height: 208)
     footView.syncCalendar = { [weak self]  isSelect in
       self?.isSyncCalendar = isSelect
     }
@@ -375,7 +372,7 @@ extension BookingAppointmentController {
     let params = SOAPParams(action: .Schedule, path: .getServicesByLocation)
     params.set(key: "locationId", value: selectCompany?.id ?? "")
     params.set(key: "isWellness", value: self.type == .Treatment ? "2" : "1")
-    params.set(key: "gendar", value: Defaults.shared.get(for: .userModel)?.gender ?? "")
+    params.set(key: "gender", value: Defaults.shared.get(for: .userModel)?.gender ?? "")
     
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeArrayByHandJSON(BookingServiceModel.self, from: data) {

@@ -9,13 +9,23 @@ import UIKit
 import CHIPageControl
 class CheckInTodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelegate {
 
+  @IBOutlet weak var registerServiceContentView: UIView!
   @IBOutlet weak var clvContentView: UIView!
-
   @IBOutlet weak var titleLabel: UILabel!
   
   @IBOutlet weak var timeLabel: UILabel!
   
+  @IBOutlet weak var timeLabel2: UILabel!
+  @IBOutlet weak var titleLabel2: UILabel!
+  @IBOutlet weak var waitTimeLabel: UILabel!
+  
+  @IBOutlet weak var registerButton: LoadingButton!
   var itemWidth:CGFloat = 0
+  var outlet:(id:String,name:String)? {
+    didSet {
+      titleLabel.text = "Registering for today at \(outlet?.name ?? "")"
+    }
+  }
   var models:[BookingTodayModel] = [] {
     didSet {
       pageControl.isHidden = models.count == 0
@@ -24,6 +34,15 @@ class CheckInTodaySessionView: UIView,UICollectionViewDataSource,UICollectionVie
       layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
       collectionView.reloadData()
       pageControl.numberOfPages = models.count
+      
+      if models.count == 0 {
+        self.getWaitInfo()
+        registerServiceContentView.isHidden = false
+      }else {
+        self.hideSkeleton()
+        registerServiceContentView.isHidden = true
+      }
+      
       
     }
   }
@@ -61,8 +80,30 @@ class CheckInTodaySessionView: UIView,UICollectionViewDataSource,UICollectionVie
     addSubview(pageControl)
     
     timeLabel.text = Date().string(withFormat: "dd MMMM yyyy,EEE")
+    
+    self.showSkeleton()
   }
   
+  func getWaitInfo() {
+    let params = SOAPParams(action: .BookingOrder, path: .getWaitServiceInfo)
+    params.set(key: "locationId", value: outlet?.id ?? "")
+    params.set(key: "startTime", value: Date().string(withFormat: "yyyy-MM-dd"))
+    params.set(key: "endTime", value: Date().adding(.day, value: 1).string(withFormat: "yyyy-MM-dd"))
+    params.set(key: "wellnessTreatType", value: 2)
+    NetworkManager().request(params: params) { data in
+      if let model = DecodeManager.decodeObjectByHandJSON(WaitServiceModel.self, from: data) {
+        
+        let sub1 = "\(model.queue_count) in queue -Est. "
+        let str = "\(model.queue_count)  in queue -Est. \(model.duration_mins) mins waiting time"
+        let attr = NSMutableAttributedString(string: str)
+        attr.addAttribute(.font, value: UIFont(name: .AvenirNextDemiBold, size: 14), range: NSRange(location: 0, length: model.queue_count.count))
+        attr.addAttribute(.font, value: UIFont(name: .AvenirNextDemiBold, size: 14), range: NSRange(location: sub1.count, length: (model.duration_mins + " mins").count))
+      }
+      self.hideSkeleton()
+    } errorHandler: { e in
+      self.hideSkeleton()
+    }
+  }
   
   override func layoutSubviews() {
     super.layoutSubviews()
@@ -103,23 +144,42 @@ class CheckInTodaySessionView: UIView,UICollectionViewDataSource,UICollectionVie
   
   
   @IBAction func registerSessionAction(_ sender: LoadingButton) {
+    getCancelCount(0)
+  }
+  
+  @IBAction func treatmentServiceAction(_ sender: Any) {
+    getCancelCount(1)
+  }
+  @IBAction func wellnessServiceAction(_ sender: Any) {
+    
+    getCancelCount(2)
+  }
+  
+  func getCancelCount(_ wellnessTreatment:Int) {
     let params = SOAPParams(action: .Client, path: .getClientCancelCount)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
-    sender.startAnimation()
+    Toast.showLoading()
     NetworkManager().request(params: params) { data in
-      sender.stopAnimation()
+      Toast.dismiss()
       let count = JSON.init(from: data)?["cancel_count"].rawString()?.int ?? 0
-      if count > 3 {
+      if count >= 3 {
         AlertView.show(message: "If you delay cancelling more than 3 times, your in app reservation permission will be suspended.")
       }else {
-        SelectTypeOfServiceSheetView.show()
-       
+        if wellnessTreatment == 0 {
+          SelectTypeOfServiceSheetView.show()
+        }
+        if wellnessTreatment == 1 { //
+          let vc = BookingAppointmentController(type: .Treatment)
+          UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
+        }
+        if wellnessTreatment == 2 {
+          WellnessAppointmentTypeSelectShetView.show()
+        }
       }
      
     } errorHandler: { e in
-      sender.stopAnimation()
+      Toast.dismiss()
     }
   }
-  
 }

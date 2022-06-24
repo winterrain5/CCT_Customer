@@ -61,6 +61,8 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
     tableView = UITableView(frame: .zero, style: .plain)
     addSubview(tableView)
     
+    tableView.rowHeight = UITableView.automaticDimension
+    tableView.estimatedRowHeight = 44
     tableView.delegate = self
     tableView.dataSource = self
     tableView.separatorStyle = .singleLine
@@ -91,7 +93,7 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 44
+    return UITableView.automaticDimension
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -106,7 +108,7 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
       cell.textLabel?.font = UIFont(name: .AvenirNextRegular, size: 14)
       cell.textLabel?.text = str
       cell.textLabel?.textColor = R.color.black333()
-      
+      cell.textLabel?.numberOfLines = 0
     }
     
     return cell
@@ -124,7 +126,7 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
     view.type = type
     view.selectComplete = selectComplete
     
-    let height = (dataArray.count * 44 + 92) > (kScreenHeight * 0.7).int ? Int(kScreenHeight * 0.7) : (dataArray.count * 44 + 92)
+    let height = (dataArray.count * 50 + 92) > (kScreenHeight * 0.7).int ? Int(kScreenHeight * 0.7) : (dataArray.count * 50 + 92)
     let size = CGSize(width: kScreenWidth, height: height.cgFloat + kBottomsafeAreaMargin + 40)
     EntryKit.display(view: view, size: size, style: .sheet)
   }

@@ -9,6 +9,7 @@ import UIKit
 
 class BookingServiceFormFooterView: UIView {
   
+  @IBOutlet weak var syncCalendarButton: UIButton!
   @IBOutlet weak var infoView: UIView!
   @IBOutlet weak var footerView: UIView!
   @IBOutlet weak var confirmButton: LoadingButton!
@@ -30,6 +31,8 @@ class BookingServiceFormFooterView: UIView {
       SmptomsLabel.text = symptoms
       lastActivityLabel.text = lastActivity
       areaOfPainLabel.text = area
+      
+     
     }
   }
   override func awakeFromNib() {
@@ -37,6 +40,8 @@ class BookingServiceFormFooterView: UIView {
     self.clipsToBounds = true
     setConfirmButtonIsReady(false)
     infoView.addLightShadow(by: 16)
+    syncCalendarButton.borderColor = .clear
+    syncCalendarButton.titleForNormal = ""
   }
   
   override func layoutSubviews() {
@@ -47,9 +52,13 @@ class BookingServiceFormFooterView: UIView {
   @IBAction func syncCalendarAction(_ sender: UIButton) {
     sender.isSelected.toggle()
     if sender.isSelected {
-      sender.imageForNormal = R.image.symptom_check_box_select()
-    }else {
       sender.imageForNormal = R.image.symptom_check_box_unselect()
+      sender.tintColor = .clear
+      sender.borderColor = R.color.grayBD()
+    }else {
+      sender.borderColor = .clear
+      sender.tintColor = .clear
+      sender.imageForNormal = R.image.symptom_check_box_select()
     }
     syncCalendar?(sender.isSelected)
   }

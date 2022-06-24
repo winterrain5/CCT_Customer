@@ -11,10 +11,10 @@ class CheckInTodaySessionController: BaseViewController {
   
   var contentView = CheckInTodaySessionView.loadViewFromNib()
   var scrollView = UIScrollView()
-  var locatioName = ""
-  convenience init(locationName:String) {
+  var outlet:(id:String,name:String)?
+  convenience init(outlet:(id:String,name:String)?) {
     self.init()
-    self.locatioName = locationName
+    self.outlet = outlet
   }
 
   
@@ -23,20 +23,20 @@ class CheckInTodaySessionController: BaseViewController {
     
     self.interactivePopGestureRecognizerEnable = false
     
-    self.addLeftBarButtonItem(R.image.return_left())
-    self.leftButtonDidClick = { [weak self] in
-      self?.navigationController?.popToRootViewController(animated: true)
-    }
+//    self.addLeftBarButtonItem(R.image.return_left())
+//    self.leftButtonDidClick = { [weak self] in
+//      self?.navigationController?.popToRootViewController(animated: true)
+//    }
     
-    
+    self.view.isSkeletonable = true
     self.view.backgroundColor = R.color.theamBlue()
     self.view.addSubview(scrollView)
     scrollView.frame = CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
     scrollView.contentSize = CGSize(width: kScreenWidth, height: 732)
     
     scrollView.addSubview(contentView)
-    contentView.titleLabel.text = "Check in today's session at \(locatioName)"
     contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 732)
+    contentView.outlet = outlet
     getTodaySession()
   }
   

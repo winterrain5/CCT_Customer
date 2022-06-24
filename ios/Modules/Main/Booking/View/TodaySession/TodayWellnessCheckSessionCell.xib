@@ -25,8 +25,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3C-vX-0wZ">
                                 <rect key="frame" x="4" y="4" width="337" height="84"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wellness Massage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kyc-a1-kQc">
-                                        <rect key="frame" x="12" y="12" width="119" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wellness Massage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kyc-a1-kQc">
+                                        <rect key="frame" x="12" y="12" width="313" height="20"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
                                         <color key="textColor" name="TheamBlue"/>
                                         <nil key="highlightedColor"/>
@@ -47,6 +47,7 @@
                                     <constraint firstItem="Kyc-a1-kQc" firstAttribute="top" secondItem="g3C-vX-0wZ" secondAttribute="top" constant="12" id="Hjo-q9-Hcu"/>
                                     <constraint firstItem="Kyc-a1-kQc" firstAttribute="leading" secondItem="g3C-vX-0wZ" secondAttribute="leading" constant="12" id="SdA-NX-BWj"/>
                                     <constraint firstItem="rRu-6e-boN" firstAttribute="leading" secondItem="g3C-vX-0wZ" secondAttribute="leading" constant="12" id="Va1-fQ-B7o"/>
+                                    <constraint firstAttribute="trailing" secondItem="Kyc-a1-kQc" secondAttribute="trailing" constant="12" id="n97-O1-V8t"/>
                                     <constraint firstItem="rRu-6e-boN" firstAttribute="top" secondItem="Kyc-a1-kQc" secondAttribute="bottom" constant="4" id="yRx-P8-r7c"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>

@@ -3846,6 +3846,7 @@ struct _R: Rswift.Validatable {
           if UIKit.UIColor(named: "TheamRed", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamRed' is used in nib 'BookingServiceFormFooterView', but couldn't be loaded.") }
           if UIKit.UIColor(named: "TheamYellow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamYellow' is used in nib 'BookingServiceFormFooterView', but couldn't be loaded.") }
           if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'BookingServiceFormFooterView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "grayBD", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'grayBD' is used in nib 'BookingServiceFormFooterView', but couldn't be loaded.") }
           if UIKit.UIColor(named: "grayE0", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'grayE0' is used in nib 'BookingServiceFormFooterView', but couldn't be loaded.") }
         }
       }
@@ -4020,6 +4021,7 @@ struct _R: Rswift.Validatable {
 
       static func validate() throws {
         if UIKit.UIImage(named: "check_in_help", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'check_in_help' is used in nib 'CheckInTodaySessionView', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "select_type_of_service_right_arrow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'select_type_of_service_right_arrow' is used in nib 'CheckInTodaySessionView', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'CheckInTodaySessionView', but couldn't be loaded.") }
           if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'CheckInTodaySessionView', but couldn't be loaded.") }

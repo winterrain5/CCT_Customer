@@ -98,10 +98,259 @@ at Ang Mo Kio Outlet</string>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jJe-f5-Dd0">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="728"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4v-5i-Td0">
+                            <rect key="frame" x="24" y="32" width="366" height="66"/>
+                            <string key="text">Registering for today at 
+Ang Mo Kio Outlet</string>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
+                            <color key="textColor" name="TheamBlue"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="fontFitType">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27th October 2020, Wed" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7I0-og-yxp">
+                            <rect key="frame" x="24" y="106" width="366" height="22"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                            <color key="textColor" name="Black333"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jNH-B8-IdM">
+                            <rect key="frame" x="24" y="160" width="366" height="200"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Treatment Services" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJx-w0-7xr">
+                                    <rect key="frame" x="16" y="16" width="140" height="22"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                    <color key="textColor" name="TheamBlue"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                            <real key="value" value="28"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSa-uB-eEf">
+                                    <rect key="frame" x="16" y="54" width="334" height="18"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="13"/>
+                                    <color key="textColor" name="Black333"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 in Queue - Est. 0 mins waiting time" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPz-kQ-Xol">
+                                    <rect key="frame" x="16" y="76" width="334" height="19.5"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                    <color key="textColor" name="Black333"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sf-uI-1NX">
+                                    <rect key="frame" x="324" y="12" width="30" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="86e-tg-V7o"/>
+                                        <constraint firstAttribute="width" constant="30" id="UNI-Ym-TbB"/>
+                                    </constraints>
+                                    <state key="normal" image="select_type_of_service_right_arrow"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUj-0l-254">
+                                    <rect key="frame" x="16" y="111.5" width="69.5" height="18"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="13"/>
+                                    <color key="textColor" name="Black333"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Treating pain management such as bone, muscle and joints issues" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nki-ZW-AQc">
+                                    <rect key="frame" x="16" y="133.5" width="334" height="38.5"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                    <color key="textColor" name="Black333"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKH-Ui-dHC">
+                                    <rect key="frame" x="0.0" y="0.0" width="366" height="200"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title=""/>
+                                    <connections>
+                                        <action selector="treatmentServiceAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="RwT-sZ-Tbw"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.98039215690000003" green="0.95294117649999999" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="RPz-kQ-Xol" firstAttribute="top" secondItem="FSa-uB-eEf" secondAttribute="bottom" constant="4" id="1fp-5h-KbH"/>
+                                <constraint firstItem="YJx-w0-7xr" firstAttribute="leading" secondItem="jNH-B8-IdM" secondAttribute="leading" constant="16" id="1lj-wC-i35"/>
+                                <constraint firstAttribute="trailing" secondItem="IKH-Ui-dHC" secondAttribute="trailing" id="3Ab-GW-p66"/>
+                                <constraint firstItem="nki-ZW-AQc" firstAttribute="top" secondItem="VUj-0l-254" secondAttribute="bottom" constant="4" id="5rB-7H-lt8"/>
+                                <constraint firstAttribute="trailing" secondItem="nki-ZW-AQc" secondAttribute="trailing" constant="16" id="9GP-u1-AaH"/>
+                                <constraint firstItem="nki-ZW-AQc" firstAttribute="leading" secondItem="jNH-B8-IdM" secondAttribute="leading" constant="16" id="9VD-FQ-M0F"/>
+                                <constraint firstItem="YJx-w0-7xr" firstAttribute="top" secondItem="jNH-B8-IdM" secondAttribute="top" constant="16" id="C2V-xV-PAC"/>
+                                <constraint firstAttribute="trailing" secondItem="RPz-kQ-Xol" secondAttribute="trailing" constant="16" id="CNp-qn-jjY"/>
+                                <constraint firstItem="IKH-Ui-dHC" firstAttribute="leading" secondItem="jNH-B8-IdM" secondAttribute="leading" id="D5f-RB-rwc"/>
+                                <constraint firstAttribute="height" constant="200" id="GXV-sM-eW0"/>
+                                <constraint firstItem="VUj-0l-254" firstAttribute="top" secondItem="RPz-kQ-Xol" secondAttribute="bottom" constant="16" id="GwQ-Yk-zuL"/>
+                                <constraint firstItem="RPz-kQ-Xol" firstAttribute="leading" secondItem="jNH-B8-IdM" secondAttribute="leading" constant="16" id="IwF-Cu-kbw"/>
+                                <constraint firstItem="2sf-uI-1NX" firstAttribute="centerY" secondItem="YJx-w0-7xr" secondAttribute="centerY" id="Kac-tD-yE1"/>
+                                <constraint firstAttribute="bottom" secondItem="IKH-Ui-dHC" secondAttribute="bottom" id="Pa9-8h-ZCO"/>
+                                <constraint firstItem="FSa-uB-eEf" firstAttribute="top" secondItem="YJx-w0-7xr" secondAttribute="bottom" constant="16" id="QG0-7l-hHj"/>
+                                <constraint firstAttribute="trailing" secondItem="FSa-uB-eEf" secondAttribute="trailing" constant="16" id="SZW-YS-PoI"/>
+                                <constraint firstItem="IKH-Ui-dHC" firstAttribute="top" secondItem="jNH-B8-IdM" secondAttribute="top" id="XYw-8A-IDX"/>
+                                <constraint firstItem="FSa-uB-eEf" firstAttribute="leading" secondItem="jNH-B8-IdM" secondAttribute="leading" constant="16" id="YIr-zP-Ocg"/>
+                                <constraint firstItem="VUj-0l-254" firstAttribute="leading" secondItem="jNH-B8-IdM" secondAttribute="leading" constant="16" id="iyG-hM-NeT"/>
+                                <constraint firstAttribute="trailing" secondItem="2sf-uI-1NX" secondAttribute="trailing" constant="12" id="qbb-lF-ftE"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IcW-2U-cHQ">
+                            <rect key="frame" x="24" y="376" width="366" height="158"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wellness Service" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDM-Dt-jyP">
+                                    <rect key="frame" x="16" y="16" width="124" height="22"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                    <color key="textColor" name="TheamBlue"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                            <real key="value" value="28"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rejuvenate your well being and experience a pampering time. Including specialised services for mothers" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJ2-Bj-eDV">
+                                    <rect key="frame" x="16" y="76" width="334" height="57.5"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                    <color key="textColor" name="Black333"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEQ-or-IRh">
+                                    <rect key="frame" x="324" y="12" width="30" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="30" id="5P6-si-kss"/>
+                                        <constraint firstAttribute="height" constant="30" id="TK1-7O-F6n"/>
+                                    </constraints>
+                                    <state key="normal" image="select_type_of_service_right_arrow"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ud8-F6-tHY">
+                                    <rect key="frame" x="16" y="54" width="69.5" height="18"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="13"/>
+                                    <color key="textColor" name="Black333"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ctd-UW-1Uw">
+                                    <rect key="frame" x="0.0" y="0.0" width="366" height="158"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title=""/>
+                                    <connections>
+                                        <action selector="wellnessServiceAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="a9R-RP-5g5"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.98039215690000003" green="0.95294117649999999" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="Ctd-UW-1Uw" firstAttribute="leading" secondItem="IcW-2U-cHQ" secondAttribute="leading" id="56Z-Vk-XVS"/>
+                                <constraint firstAttribute="trailing" secondItem="Ctd-UW-1Uw" secondAttribute="trailing" id="6so-zF-Dyb"/>
+                                <constraint firstItem="Ctd-UW-1Uw" firstAttribute="top" secondItem="IcW-2U-cHQ" secondAttribute="top" id="ESP-hg-4HT"/>
+                                <constraint firstItem="Ud8-F6-tHY" firstAttribute="top" secondItem="fDM-Dt-jyP" secondAttribute="bottom" constant="16" id="Ete-II-fnq"/>
+                                <constraint firstAttribute="height" constant="158" id="I6S-IS-7Nz"/>
+                                <constraint firstAttribute="trailing" secondItem="xJ2-Bj-eDV" secondAttribute="trailing" constant="16" id="OjP-gf-qHj"/>
+                                <constraint firstAttribute="bottom" secondItem="Ctd-UW-1Uw" secondAttribute="bottom" id="UBA-1U-nZq"/>
+                                <constraint firstItem="AEQ-or-IRh" firstAttribute="centerY" secondItem="fDM-Dt-jyP" secondAttribute="centerY" id="b8b-bW-Qba"/>
+                                <constraint firstItem="fDM-Dt-jyP" firstAttribute="top" secondItem="IcW-2U-cHQ" secondAttribute="top" constant="16" id="buy-vH-NtW"/>
+                                <constraint firstAttribute="trailing" secondItem="AEQ-or-IRh" secondAttribute="trailing" constant="12" id="cJB-sy-QKo"/>
+                                <constraint firstItem="xJ2-Bj-eDV" firstAttribute="top" secondItem="Ud8-F6-tHY" secondAttribute="bottom" constant="4" id="iaf-8L-lfM"/>
+                                <constraint firstItem="fDM-Dt-jyP" firstAttribute="leading" secondItem="IcW-2U-cHQ" secondAttribute="leading" constant="16" id="kQT-QR-qjX"/>
+                                <constraint firstItem="xJ2-Bj-eDV" firstAttribute="leading" secondItem="IcW-2U-cHQ" secondAttribute="leading" constant="16" id="o3e-Pd-uWV"/>
+                                <constraint firstItem="Ud8-F6-tHY" firstAttribute="leading" secondItem="IcW-2U-cHQ" secondAttribute="leading" constant="16" id="sgY-pM-fei"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="L4v-5i-Td0" secondAttribute="trailing" constant="24" id="2dL-jR-r70"/>
+                        <constraint firstAttribute="trailing" secondItem="7I0-og-yxp" secondAttribute="trailing" constant="24" id="8xn-mv-7No"/>
+                        <constraint firstItem="L4v-5i-Td0" firstAttribute="leading" secondItem="jJe-f5-Dd0" secondAttribute="leading" constant="24" id="FGX-Vd-vaO"/>
+                        <constraint firstItem="jNH-B8-IdM" firstAttribute="top" secondItem="7I0-og-yxp" secondAttribute="bottom" constant="32" id="KBY-uJ-0cs"/>
+                        <constraint firstItem="7I0-og-yxp" firstAttribute="top" secondItem="L4v-5i-Td0" secondAttribute="bottom" constant="8" id="Mgx-MV-02q"/>
+                        <constraint firstAttribute="trailing" secondItem="IcW-2U-cHQ" secondAttribute="trailing" constant="24" id="OXZ-Yw-ck4"/>
+                        <constraint firstItem="IcW-2U-cHQ" firstAttribute="top" secondItem="jNH-B8-IdM" secondAttribute="bottom" constant="16" id="WZO-cR-f9l"/>
+                        <constraint firstItem="IcW-2U-cHQ" firstAttribute="leading" secondItem="jJe-f5-Dd0" secondAttribute="leading" constant="24" id="el6-Y1-Jxe"/>
+                        <constraint firstItem="L4v-5i-Td0" firstAttribute="top" secondItem="jJe-f5-Dd0" secondAttribute="top" constant="32" id="hJJ-qL-lN2"/>
+                        <constraint firstItem="IcW-2U-cHQ" firstAttribute="top" secondItem="jNH-B8-IdM" secondAttribute="bottom" constant="16" id="o28-V7-kqK"/>
+                        <constraint firstItem="jNH-B8-IdM" firstAttribute="leading" secondItem="jJe-f5-Dd0" secondAttribute="leading" constant="24" id="yMc-N3-eMD"/>
+                        <constraint firstAttribute="trailing" secondItem="jNH-B8-IdM" secondAttribute="trailing" constant="24" id="ynd-15-y9Q"/>
+                        <constraint firstItem="7I0-og-yxp" firstAttribute="leading" secondItem="jJe-f5-Dd0" secondAttribute="leading" constant="24" id="zmC-uZ-pL8"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" name="TheamBlue"/>
             <constraints>
+                <constraint firstItem="jJe-f5-Dd0" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="16" id="232-vL-q1t"/>
                 <constraint firstItem="MsY-8J-Lqo" firstAttribute="top" secondItem="h1j-7I-BQ3" secondAttribute="bottom" constant="32" id="7ak-i6-TMg">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="swiftyFitType">
@@ -110,6 +359,7 @@ at Ang Mo Kio Outlet</string>
                     </userDefinedRuntimeAttributes>
                 </constraint>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MsY-8J-Lqo" secondAttribute="trailing" id="8JN-gs-x9j"/>
+                <constraint firstItem="jJe-f5-Dd0" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="El8-5Y-PpN"/>
                 <constraint firstItem="MsY-8J-Lqo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="HLw-iv-Tht"/>
                 <constraint firstItem="DSV-jP-7of" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="32" id="HMw-df-Off">
                     <userDefinedRuntimeAttributes>
@@ -118,6 +368,8 @@ at Ang Mo Kio Outlet</string>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </constraint>
+                <constraint firstItem="jJe-f5-Dd0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="MdA-0D-CHk"/>
+                <constraint firstItem="jJe-f5-Dd0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="P7D-xw-DGg"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="h1j-7I-BQ3" secondAttribute="trailing" constant="24" id="RfF-Ti-7Ue"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DSV-jP-7of" secondAttribute="trailing" constant="24" id="Swt-DV-NyS"/>
                 <constraint firstItem="1mn-br-fWQ" firstAttribute="top" secondItem="MsY-8J-Lqo" secondAttribute="bottom" constant="68" id="U7L-cX-v4S">
@@ -134,16 +386,25 @@ at Ang Mo Kio Outlet</string>
                 <constraint firstItem="1mn-br-fWQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="o98-FI-GUV"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="clvContentView" destination="MsY-8J-Lqo" id="X7b-dZ-pgF"/>
+                <outlet property="registerButton" destination="CyQ-zG-eYy" id="u3D-iE-gQV"/>
+                <outlet property="registerServiceContentView" destination="jJe-f5-Dd0" id="qQK-r2-ZgE"/>
                 <outlet property="timeLabel" destination="h1j-7I-BQ3" id="u5d-s0-v49"/>
+                <outlet property="timeLabel2" destination="7I0-og-yxp" id="SCK-fD-pBP"/>
                 <outlet property="titleLabel" destination="DSV-jP-7of" id="tYC-5L-iUS"/>
+                <outlet property="titleLabel2" destination="L4v-5i-Td0" id="Mk4-39-1qc"/>
+                <outlet property="waitTimeLabel" destination="RPz-kQ-Xol" id="bzd-2g-dbp"/>
             </connections>
             <point key="canvasLocation" x="-30.434782608695656" y="50.892857142857139"/>
         </view>
     </objects>
     <resources>
         <image name="check_in_help" width="54" height="52"/>
+        <image name="select_type_of_service_right_arrow" width="24" height="24"/>
         <namedColor name="Black333">
             <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -362,7 +362,7 @@ class ConfirmSessionContainer: UIView {
           
           let date = model.date.date(withFormat: "dd MMM yyyy,EEE")?.string(withFormat: "yyyy-MM-dd") ?? ""
           let therapy_start_date = date.appending(" ").appending(model.time.dropLast(3)).appending(":00")
-          let therapy_end_date = therapy_start_date.dateTime?.addingTimeInterval(TimeInterval(model.duration.int ?? 0)).string(withFormat: "yyyy-MM-dd HH:mm:ss") ?? ""
+          let therapy_end_date = therapy_start_date.dateTime?.addingTimeInterval(TimeInterval((model.duration.int ?? 0) * 60)).string(withFormat: "yyyy-MM-dd HH:mm:ss") ?? ""
           event.startDate = therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
           event.endDate = therapy_end_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
           event.notes = model.remark

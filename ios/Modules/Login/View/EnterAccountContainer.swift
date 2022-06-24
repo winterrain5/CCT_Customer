@@ -15,7 +15,7 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
   @IBOutlet weak var accountTf: UITextField!
   var otpCode = ""
   var isLoginByMobile = false
-  var locationName = ""
+  var outlet:(id:String,name:String)?
   var isFromScanQRCode = false {
     didSet {
       registerBtn.isHidden = !isFromScanQRCode
@@ -87,7 +87,8 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
         Defaults.shared.set(model.id, for: .clientId)
         Defaults.shared.set(userID, for: .userId)
         if self.isFromScanQRCode {
-          let vc = CheckInTodaySessionController(locationName: self.locationName)
+          self.loginBtn.stopAnimation()
+          let vc = CheckInTodaySessionController(outlet: self.outlet)
           UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
         }else {
           if self.isLoginByMobile {

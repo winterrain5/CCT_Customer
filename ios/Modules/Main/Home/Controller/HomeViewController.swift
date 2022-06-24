@@ -282,10 +282,10 @@ extension HomeViewController: QRScannerCodeDelegate {
     print("result:\(result)")
     let json = JSON(parseJSON: result)
     let locationName = json["name"].stringValue
-    //    let id = json["id"].stringValue
+    let id = json["id"].stringValue
     //    let type = json["type"].stringValue
     if scanType == .Home {
-      let vc = CheckInTodaySessionController(locationName: locationName)
+      let vc = CheckInTodaySessionController(outlet: (id:id,name:locationName))
       self.navigationController?.pushViewController(vc, completion: nil)
     }
     if scanType == .CheckIn {

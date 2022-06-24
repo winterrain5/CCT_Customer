@@ -23,22 +23,20 @@ class ConfirmSessionController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.interactivePopGestureRecognizerEnable = false
-    
-    self.addLeftBarButtonItem(R.image.return_left())
-    self.leftButtonDidClick = { [weak self] in
-      self?.navigationController?.popToRootViewController(animated: true)
-    }
     
     self.barAppearance(tintColor: .white, barBackgroundColor: R.color.theamBlue()!, image: R.image.return_left(), backButtonTitle: " Back")
     self.view.backgroundColor = R.color.theamBlue()
     
     self.view.addSubview(contentView)
     contentView.frame = CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
-    contentView.model = params
     contentView.confirmHandler = { [weak self] in
       guard let `self` = self else { return }
-      self.navigationController?.popToRootViewController(animated: true)
+      if ((self.navigationController?.children.contains(where: { $0 is LoginViewController })) != nil) {
+        ApplicationUtil.configRootViewController()
+      }else {
+        self.navigationController?.popToRootViewController(animated: true)
+      }
+      
       
     }
     
@@ -55,8 +53,21 @@ class ConfirmSessionController: BaseViewController {
         }.catch { e in
           print(e)
         }
-        
       }
+    }else {
+      getTClientPartInfo().done { [weak self] _ in
+        guard let `self` = self else { return }
+        if let user = Defaults.shared.get(for: .userModel) {
+          self.params?.user_name = user.first_name + " " + user.last_name
+          self.params?.user_gender = user.gender == "1" ? "Male" : "Female"
+          self.params?.user_birth_day = user.birthday.date?.string(withFormat: "dd MMM yyyy") ?? ""
+          self.params?.user_passport = user.card_number
+        }
+        self.contentView.model = self.params
+      }.catch { e in
+        print(e)
+      }
+      
     }
   }
   

@@ -36,8 +36,8 @@ class BookingCompleteDetailController: BaseViewController {
     self.view.addSubview(scrolView)
     scrolView.isSkeletonable = true
     scrolView.bounces = false
-    scrolView.frame = CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight)
-    scrolView.contentSize = CGSize(width: kScreenWidth, height: kScreenHeight)
+    scrolView.frame = CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
+    scrolView.contentSize = CGSize(width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
     scrolView.backgroundColor = .clear
     
     scrolView.addSubview(contentView)
@@ -45,9 +45,9 @@ class BookingCompleteDetailController: BaseViewController {
     contentView.heightUpdateHandler = { [weak self] height in
       guard let `self` = self else { return }
       let originH = self.contentView.frame.size.height
-      let realH = height < originH ? originH : height
+      let realH = (height < originH ? originH : height) + kBottomsafeAreaMargin
       self.contentView.frame.size.height = realH
-      self.scrolView.contentSize.height = realH
+      self.scrolView.contentSize = CGSize(width: kScreenWidth, height: realH)
       
     }
     

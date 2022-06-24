@@ -174,16 +174,21 @@ class HomeViewController: BaseViewController {
         }else {
           lastesVersion = array2[0]!*100 + array2[1]!*10
         }
+        if currentVersion == 100 { // first version
+          Defaults.shared.set(true, for: .isReview)
+          self.contentView.updateKingKongData(true)
+          return
+        }
         if lastesVersion < currentVersion { // 后台版本小于当前版本 则为在审核中
           Defaults.shared.set(true, for: .isReview)
           self.contentView.updateKingKongData(true)
-        }else {
+        }else if lastesVersion == currentVersion{ // 相等则为最新版本
           Defaults.shared.set(false, for: .isReview)
           self.contentView.updateKingKongData(false)
+        }else { // 后台版本大于当前版本 提示更新
+          
         }
-        if lastesVersion > currentVersion { // 后台版本大于当前版本 提示更新
-          //            VersionUpdateView.show(model)
-        }
+        
       }
     } errorHandler: { e in
       self.contentView.updateKingKongData(true)

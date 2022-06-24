@@ -128,7 +128,7 @@ class BookingCompleteDetailView: UIView,UITableViewDelegate,UITableViewDataSourc
       let paymentH = ((paymentMethodView.subviews.count - 2) * 16 + 50)
    
       let totalHeight = paymentH + priceH + 50 + tableH.int + 16 + totalTop
-      heightUpdateHandler?(CGFloat(totalHeight))
+      heightUpdateHandler?(CGFloat(totalHeight + 200))
      
       orderInfoVHCons.constant = totalHeight.cgFloat
       tableHCons.constant = tableH

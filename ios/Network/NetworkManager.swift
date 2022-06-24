@@ -132,7 +132,10 @@ extension NetworkManager {
         let json = JSON(parseJSON: result)
         
         print("soapMsg:\(toSoapMessage(path:self.params.path, pams: self.params.result))")
-        print("url:\(params.path) \n response:\(json.dictionaryValue)")
+        if let url = getURL(action: params.action) {
+          print("url:\(url.absoluteString) path:\(params.path) \n response:\(json.dictionaryValue)")
+        }
+        
        
         DispatchQueue.main.async {
           guard let code = json["success"].int,let message = json["message"].string else {

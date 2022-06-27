@@ -15,6 +15,7 @@ class CardDigitPinView: UIView {
   let contentHeight:CGFloat = 340
   var scrolview = UIScrollView()
   var confirmHandler:((String)->())?
+  var cancelHandler:(()->())?
   override init(frame: CGRect) {
     super.init(frame: frame)
     
@@ -29,6 +30,7 @@ class CardDigitPinView: UIView {
     contentView.closeHandler = {
       [weak self] in
       self?.dismiss()
+      self?.cancelHandler?()
     }
     contentView.confirmHandler = {
       [weak self] pin in
@@ -74,11 +76,12 @@ class CardDigitPinView: UIView {
     contentView.corner(byRoundingCorners: [.topLeft,.topRight], radii: 16)
   }
   
-  static func showView(pin:String, confirmHandler:@escaping ((String)->())) {
+  static func showView(pin:String, confirmHandler:@escaping ((String)->()),cancleHandler: (()->())? = nil) {
     let spView = UIViewController.getTopVc()?.view
     
     let view = CardDigitPinView()
     view.confirmHandler = confirmHandler
+    view.cancelHandler = cancleHandler
     view.contentView.pin = pin
     view.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight)
    

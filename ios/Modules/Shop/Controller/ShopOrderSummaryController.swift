@@ -27,10 +27,12 @@ class ShopOrderSummaryController: BaseViewController {
     btn.titleForNormal = "Return to Shop"
   }
   private var id = ""
-  convenience init(id:String) {
+  // 1 myorder 2 shop
+  private var status:Int = 1
+  convenience init(id:String,status:Int = 1) {
     self.init()
     self.id = id
-    
+    self.status = status
   }
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -45,7 +47,7 @@ class ShopOrderSummaryController: BaseViewController {
     self.scrollView.contentSize.height += 114
     
     scrollView.addSubview(headerView)
-    headerView.status = 1
+    headerView.status = self.status
     headerView.frame = CGRect(x: 0, y: textLabel.frame.maxY, width: kScreenWidth, height: 0)
     headerView.updateHeightHandler = { [weak self] height in
       self?.headerView.height = height

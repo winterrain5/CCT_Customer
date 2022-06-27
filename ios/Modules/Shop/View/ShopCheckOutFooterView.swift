@@ -350,6 +350,7 @@ class ShopCheckOutFooterView: UIView {
     vc.selectCompleteHandler = {  [weak self] model,card in
       guard let `self` = self else { return }
       self.payMethodCard = card
+      self.selectPayMethod = model
       if model.type == 0 { // 自己的余额
         self.walletTypeImg.image = R.image.payment_card()
         self.walletTypeLabel.text = "CCT Wallet"
@@ -465,6 +466,8 @@ class ShopCheckOutFooterView: UIView {
     CardDigitPinView.showView(pin: pwd) { pwd in
       self.bottomView.isHidden = false
       self.getBusiness()
+    } cancleHandler: {
+      self.bottomView.isHidden = false
     }
   }
   
@@ -473,6 +476,8 @@ class ShopCheckOutFooterView: UIView {
     CardDigitPinView.showView(pin: pwd) { pwd in
       self.bottomView.isHidden = false
       self.getBusiness()
+    } cancleHandler: {
+      self.bottomView.isHidden = false
     }
   }
   
@@ -944,7 +949,7 @@ class ShopCheckOutFooterView: UIView {
   
   func toNextVc() {
     Toast.dismiss()
-    let vc = ShopOrderSummaryController(id: orderDetail?.Order_Info?.id ?? "")
+    let vc = ShopOrderSummaryController(id: orderDetail?.Order_Info?.id ?? "",status: 2)
     UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
 }

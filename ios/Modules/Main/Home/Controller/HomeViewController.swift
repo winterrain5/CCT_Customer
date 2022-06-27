@@ -159,6 +159,7 @@ class HomeViewController: BaseViewController {
     params.set(key: "typeId", value: 2)
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(AppVersionModel.self, from: data) {
+        
         //把版本号转换成数值 默认版本号1.0.0类型
         let array1 = Device.appVersion.split(separator: ".").map({ String($0).int })
         var currentVersion:Int = 0
@@ -167,6 +168,7 @@ class HomeViewController: BaseViewController {
         }else {
           currentVersion = array1[0]!*100 + array1[1]!*10
         }
+        
         let array2 = model.version.split(separator: ".").map({ String($0).int })
         var lastesVersion:Int = 0
         if (array2.count == 3) {
@@ -174,11 +176,13 @@ class HomeViewController: BaseViewController {
         }else if(array2.count == 2){
           lastesVersion = array2[0]!*100 + array2[1]!*10
         }
+       
         if lastesVersion == 0 { // first version
           Defaults.shared.set(true, for: .isReview)
           self.contentView.updateKingKongData(true)
           return
         }
+       
         if lastesVersion < currentVersion { // 后台版本小于当前版本 则为在审核中
           Defaults.shared.set(true, for: .isReview)
           self.contentView.updateKingKongData(true)

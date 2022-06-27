@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSHumanReadableCopyright</key>
+	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -72,7 +74,7 @@
 		</dict>
 	</dict>
 	<key>NSCalendarsUsageDescription</key>
-	<string></string>
+	<string>Chien Chi Tow requires access to your calendar in order to add Book Appointment Information</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Chien Chi Tow requires access to user your camera to scan QRCode</string>
 	<key>NSContactsUsageDescription</key>

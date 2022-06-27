@@ -122,7 +122,7 @@ class WalletAddCardSheetContentView: UIView,UITextFieldDelegate {
   }
   @IBAction func dateSelectAction(_ sender: Any) {
     endEditing(true)
-    DatePickerView.show(mode: .date) { date in
+    DatePickerView.show { date in
       let dateStr = date.string(withFormat: "MM/YY")
       self.date = date.string(withFormat: "yyyy-MM-dd")
       self.dateTf.text = dateStr

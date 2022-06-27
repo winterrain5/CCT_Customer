@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -16,9 +16,6 @@
             <rect key="frame" x="0.0" y="0.0" width="385" height="376"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="GxV-C3-mJZ">
-                    <rect key="frame" x="0.0" y="32" width="385" height="228"/>
-                </datePicker>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uel-Rc-7b3">
                     <rect key="frame" x="24" y="292" width="159.5" height="44"/>
                     <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -61,21 +58,14 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="uel-Rc-7b3" firstAttribute="top" secondItem="GxV-C3-mJZ" secondAttribute="bottom" constant="32" id="9zi-mq-JL8"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="uel-Rc-7b3" secondAttribute="bottom" constant="40" id="C4R-7B-lFf"/>
                 <constraint firstItem="uel-Rc-7b3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="DqA-NL-ma8"/>
                 <constraint firstItem="SJT-7B-uEz" firstAttribute="top" secondItem="uel-Rc-7b3" secondAttribute="top" id="FJh-yX-w2L"/>
                 <constraint firstItem="SJT-7B-uEz" firstAttribute="width" secondItem="uel-Rc-7b3" secondAttribute="width" id="HOl-8S-8ya"/>
-                <constraint firstItem="GxV-C3-mJZ" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="W48-ey-F3b"/>
                 <constraint firstItem="SJT-7B-uEz" firstAttribute="leading" secondItem="uel-Rc-7b3" secondAttribute="trailing" constant="18" id="htZ-Pg-UDb"/>
-                <constraint firstItem="GxV-C3-mJZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="32" id="l8Z-dA-PJd"/>
-                <constraint firstItem="GxV-C3-mJZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="nzb-Nq-Sjl"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SJT-7B-uEz" secondAttribute="trailing" constant="24" id="oiI-zP-ut0"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="datePicker" destination="GxV-C3-mJZ" id="OyO-fu-QqN"/>
-            </connections>
             <point key="canvasLocation" x="71.739130434782609" y="38.839285714285715"/>
         </view>
     </objects>

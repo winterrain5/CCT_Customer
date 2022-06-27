@@ -26,7 +26,7 @@
                                 <rect key="frame" x="4" y="4" width="337" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ang Mo Kio Outlet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RW6-Lf-f0G">
-                                        <rect key="frame" x="12" y="12" width="313" height="20"/>
+                                        <rect key="frame" x="12" y="12.5" width="313" height="19.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
                                         <color key="textColor" name="TheamBlue"/>
                                         <nil key="highlightedColor"/>

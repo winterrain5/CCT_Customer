@@ -37,6 +37,7 @@ PODS:
   - mob_pushsdk/MobPush (3.0.3):
     - MOBFoundation
   - MOBFoundation (3.2.28)
+  - NTMonthYearPicker (1.0.0)
   - PromiseKit/CorePromise (6.15.3)
   - R.swift (6.1.0):
     - R.swift.Library (~> 5.3.0)
@@ -88,6 +89,7 @@ DEPENDENCIES:
   - LookinServer
   - MJRefresh
   - mob_pushsdk
+  - NTMonthYearPicker
   - PromiseKit/CorePromise (~> 6.8)
   - R.swift
   - RxCocoa
@@ -121,6 +123,7 @@ SPEC REPOS:
     - MJRefresh
     - mob_pushsdk
     - MOBFoundation
+    - NTMonthYearPicker
     - PromiseKit
     - R.swift
     - R.swift.Library
@@ -157,6 +160,7 @@ SPEC CHECKSUMS:
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   mob_pushsdk: da91cf00e2bc3ac01b5cbd58a204e0a0d1b4c145
   MOBFoundation: 962823dbe3fd7353972a255e2c534a0825e961ef
+  NTMonthYearPicker: 27e1739d6e29428628c8275a7c1a9e4835c352f4
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
   R.swift: ec98ff71c4ab2f6fd01dd077e5afd15e63a4834c
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
@@ -175,6 +179,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: f73930025c2d386d6dd3d6fa8980378bb9539019
+PODFILE CHECKSUM: 5e3be87795945bfb45b118b3b19bcbc64a73b673
 
 COCOAPODS: 1.11.2

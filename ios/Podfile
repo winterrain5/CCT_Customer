@@ -27,7 +27,7 @@ target 'CCTIOS' do
   pod 'FSCalendar'
   pod 'TextFieldEffects'
   pod 'EachNavigationBar'
-  #  pod 'SwifterSwift'
+  pod 'NTMonthYearPicker'
   pod 'RxSwift','5.1.2'
   pod 'RxGesture'
   pod 'RxSwiftExt'

@@ -20,13 +20,6 @@ class InputResideView: UIView,UITextFieldDelegate {
   @IBOutlet weak var streetNameTf: HoshiTextField!
   @IBOutlet weak var BlockNumTf: HoshiTextField!
   
-  var postalCode = ""
-  var blockNum = ""
-  var streetName = ""
-  var unitNum = ""
-  var city = ""
-  var country = ""
-  
   var countries:[CountryModel] = []
   var userCountry:CountryModel?
   
@@ -38,24 +31,24 @@ class InputResideView: UIView,UITextFieldDelegate {
     
     if let user = Defaults.shared.get(for: .userModel) {
       postalCodeTf.text = user.post_code
-      postalCode = user.post_code
+      registInfo?.postalCode = user.post_code
       
       BlockNumTf.text = user.building_block_num
-      blockNum = user.building_block_num
+      registInfo?.blockNum = user.building_block_num
       
       streetNameTf.text = user.street_name
-      streetName = user.street_name
+      registInfo?.streetName = user.street_name
       
       unitNumTf.text = user.unit_num
-      unitNum = user.unit_num
+      registInfo?.unitNum = user.unit_num
       
       cityTf.text = user.city
-      city = user.city
+      registInfo?.city = user.city
       
       countryTf.text = user.country_name
-      country = user.country_name
-     
-      
+      registInfo?.country_id = user.country_id
+
+      setNextButonState()
     }
   }
   
@@ -129,29 +122,33 @@ class InputResideView: UIView,UITextFieldDelegate {
     
     let user = Defaults.shared.get(for: .userModel)
     
+    guard let registInfo = registInfo else {
+      return
+    }
+    
     client_info.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
     client_info.set(key: "id", value: user?.id ?? "")
-    client_info.set(key: "first_name", value: registInfo?.firstName ?? "")
-    client_info.set(key: "last_name", value: registInfo?.lastName ?? "")
-    client_info.set(key: "mobile", value: registInfo?.mobile ?? "")
-    client_info.set(key: "phone", value: registInfo?.mobile ?? "")
-    client_info.set(key: "email", value: registInfo?.email ?? "")
-    client_info.set(key: "gender", value: registInfo?.gender ?? "")
-    client_info.set(key: "birthday", value: registInfo?.dataOfBirth ?? "")
+    client_info.set(key: "first_name", value: registInfo.firstName)
+    client_info.set(key: "last_name", value: registInfo.lastName)
+    client_info.set(key: "mobile", value: registInfo.mobile)
+    client_info.set(key: "phone", value: registInfo.mobile)
+    client_info.set(key: "email", value: registInfo.email)
+    client_info.set(key: "gender", value: registInfo.gender)
+    client_info.set(key: "birthday", value: registInfo.dataOfBirth)
     client_info.set(key: "is_display_on_all_booking", value: "1")
-    client_info.set(key: "card_number", value: registInfo?.IcNum ?? "")
+    client_info.set(key: "card_number", value: registInfo.IcNum)
     client_info.set(key: "is_vip", value: "1")
-    client_info.set(key: "city", value: registInfo?.city ?? "")
-    client_info.set(key: "country_id", value: userCountry?.id ?? "")
-    client_info.set(key: "present_cash_voucher", value: registInfo?.present_cash_voucher ?? "")
-    client_info.set(key: "present_invite_cash_voucher", value: registInfo?.present_invite_cash_voucher ?? "")
-    client_info.set(key: "invite_code", value: registInfo?.referralCode ?? "")
-    client_info.set(key: "present_reward_discount", value: registInfo?.present_reward_discount_id ?? "")
-    client_info.set(key: "cct_or_mp", value: registInfo?.isCustomer ?? "")
-    client_info.set(key: "street_name", value: registInfo?.streetName ?? "")
-    client_info.set(key: "building_block_num", value: registInfo?.blockNum ?? "")
-    client_info.set(key: "unit_num", value: registInfo?.unitNum ?? "")
-    client_info.set(key: "post_code", value: registInfo?.postalCode ?? "")
+    client_info.set(key: "city", value: registInfo.city)
+    client_info.set(key: "country_id", value: registInfo.country_id)
+    client_info.set(key: "present_cash_voucher", value: registInfo.present_cash_voucher)
+    client_info.set(key: "present_invite_cash_voucher", value: registInfo.present_invite_cash_voucher)
+    client_info.set(key: "invite_code", value: registInfo.referralCode)
+    client_info.set(key: "present_reward_discount", value: registInfo.present_reward_discount_id)
+    client_info.set(key: "cct_or_mp", value: registInfo.isCustomer)
+    client_info.set(key: "street_name", value: registInfo.streetName)
+    client_info.set(key: "building_block_num", value: registInfo.blockNum)
+    client_info.set(key: "unit_num", value: registInfo.unitNum)
+    client_info.set(key: "post_code", value: registInfo.postalCode)
     client_info.set(key: "sync_phone_calendar", value: "1")
     client_info.set(key: "create_time", value: Date().string(withFormat: "yyyy-MM-dd HH:mm:ss"))
     client_info.set(key: "is_delete", value: "0")
@@ -160,7 +157,7 @@ class InputResideView: UIView,UITextFieldDelegate {
     data.set(key: "Client_Info", value: client_info.result, keyType: .string, valueType: .map(1))
     
     let userInfo = SOAPDictionary()
-    userInfo.set(key: "password", value: registInfo?.password.md5 ?? "")
+    userInfo.set(key: "password", value: registInfo.password.md5)
     
     data.set(key: "User_Info", value: userInfo.result, keyType: .string, valueType: .map(1))
     
@@ -231,8 +228,8 @@ class InputResideView: UIView,UITextFieldDelegate {
     let strs = countries.map({ $0.name })
     BookingServiceFormSheetView.show(dataArray: strs, type: .SelectCountry) { idx in
       self.userCountry = self.countries[idx]
-      self.country = self.userCountry?.name ?? ""
-      self.countryTf.text = self.country
+      self.registInfo?.country_id = self.userCountry?.id ?? ""
+      self.countryTf.text = self.userCountry?.name ?? ""
       self.setNextButonState()
     }
   }
@@ -255,25 +252,28 @@ class InputResideView: UIView,UITextFieldDelegate {
   func textFieldDidEndEditing(_ textField: UITextField) {
     let text = textField.text ?? ""
     if textField == postalCodeTf {
-      postalCode = text
+      registInfo?.postalCode = text
     }
     if textField == BlockNumTf {
-      blockNum = text
+      registInfo?.blockNum = text
     }
     if textField == streetNameTf {
-      streetName = text
+      registInfo?.streetName = text
     }
     if textField == unitNumTf {
-      unitNum = text
+      registInfo?.unitNum = text
     }
     if textField == cityTf {
-      city = text
+      registInfo?.city = text
     }
     
     setNextButonState()
   }
   
   func setNextButonState() {
+    let postalCode = registInfo?.postalCode ?? ""
+    let blockNum = registInfo?.blockNum ?? ""
+    let streetName = registInfo?.streetName ?? ""
     let isEnable = !postalCode.isEmpty && !blockNum.isEmpty && !streetName.isEmpty
     if isEnable {
       nextButon.isEnabled = true

@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSHumanReadableCopyright</key>
-	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -79,6 +77,8 @@
 	<string>Chien Chi Tow requires access to user your camera to scan QRCode</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Chien Chi Tow requires access to your contacts in order to add new card users</string>
+	<key>NSHumanReadableCopyright</key>
+	<string></string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

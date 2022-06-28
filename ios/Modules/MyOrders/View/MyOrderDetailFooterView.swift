@@ -15,6 +15,7 @@ class MyOrderDetailFooterView: UIView {
   
   @IBOutlet weak var totalItemsLabel: UILabel!
   @IBOutlet weak var subTotalPriceLabel: UILabel!
+  @IBOutlet weak var subTotalHeadLabel: UILabel!
   @IBOutlet weak var discountLabel: UILabel!
   @IBOutlet weak var deliveryFeeTypeLabel: UILabel!
   @IBOutlet weak var deliveryFeeLabel: UILabel!
@@ -45,10 +46,7 @@ class MyOrderDetailFooterView: UIView {
         
         discount += (item.reward_discount?.float() ?? 0)
         
-        let paid_amount = item.paid_amount?.float() ?? 0
-        let rate = item.rate?.float() ?? 0
-        
-        gst += paid_amount / (1 + (rate / 100))*(rate / 100);
+        gst += item.tax?.float() ?? 0
         
       })
       
@@ -92,12 +90,13 @@ class MyOrderDetailFooterView: UIView {
       addressLabel.text = address
       
       totalItemsLabel.text = total.string
+      
+      subTotalHeadLabel.text = gst > 0 ? "Sub Total(Inclusive of GST \(gst.string.formatMoney().dolar))" : "Sub Total"
       subTotalPriceLabel.text = sub_total.string.formatMoney().dolar
       discountLabel.text = discount > 0 ? ("-" + discount.string.formatMoney().dolar) : "$0.00"
       deliveryFeeTypeLabel.text = feeTypeHead
       deliveryFeeLabel.text = freight.string.formatMoney().dolar
       
-      totalHeaderLabel.text = gst > 0 ? "Total(Inclusive of GST \(gst.string.formatMoney().dolar))" : "Total"
       totalPriceLabel.text = show_total.string.formatMoney().dolar
       
       pointsLabel.text = "(Points earned \(model.Order_Info?.present_points ?? ""))"

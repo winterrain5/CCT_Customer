@@ -85,7 +85,7 @@ class ProfileViewController: BaseTableController {
   }
   
   override func createListView() {
-    super.createListView()
+    configTableview(.grouped)
     
     self.tableView?.tableHeaderView = headView
     headView.size = CGSize(width: kScreenWidth, height: 152)
@@ -127,7 +127,9 @@ class ProfileViewController: BaseTableController {
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     return ProfileSectionView(text: sectionTitles[section])
   }
-  
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return 0.001
+  }
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
     let selStr = actions[indexPath.section][indexPath.row].sel

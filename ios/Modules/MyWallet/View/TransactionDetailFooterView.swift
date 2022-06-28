@@ -31,10 +31,7 @@ class TransactionDetailFooterView: UIView {
         
         discount += (item.reward_discount?.float() ?? 0)
         
-        let paid_amount = item.paid_amount?.float() ?? 0
-        let rate = item.rate?.float() ?? 0
-        
-        gst += paid_amount / (1 + (rate / 100))*(rate / 100);
+        gst += item.tax?.cgFloat()?.float ?? 0
         
       })
       

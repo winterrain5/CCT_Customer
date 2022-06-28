@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -52,8 +52,8 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Total" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gji-rU-sMz">
-                            <rect key="frame" x="16" y="137" width="59" height="19.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Total(Inclusive of GST $0.00)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gji-rU-sMz">
+                            <rect key="frame" x="16" y="137" width="208" height="19.5"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="19.5" id="yLe-Xs-0t2"/>
                             </constraints>
@@ -80,8 +80,8 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total (Inclusive of GST $0.00)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enK-5z-Epc">
-                            <rect key="frame" x="16" y="255.5" width="215" height="22"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enK-5z-Epc">
+                            <rect key="frame" x="16" y="255.5" width="40" height="22"/>
                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                             <color key="textColor" name="Black333"/>
                             <nil key="highlightedColor"/>
@@ -233,12 +233,13 @@
                 <outlet property="deliveryType" destination="dNU-1Z-rnD" id="bmI-dv-5GY"/>
                 <outlet property="discountLabel" destination="8Jr-bf-F5e" id="4bB-Wl-PFb"/>
                 <outlet property="pointsLabel" destination="y7O-CW-EQT" id="wwf-A6-7fG"/>
+                <outlet property="subTotalHeadLabel" destination="Gji-rU-sMz" id="XsS-kb-0zT"/>
                 <outlet property="subTotalPriceLabel" destination="QjC-NK-wl0" id="ncv-sw-1Mh"/>
                 <outlet property="totalHeaderLabel" destination="enK-5z-Epc" id="nVb-9f-bOC"/>
                 <outlet property="totalItemsLabel" destination="05j-VL-FC4" id="EDD-Ub-DgS"/>
                 <outlet property="totalPriceLabel" destination="3YG-RF-irH" id="RAJ-4m-IeA"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="-97.433035714285708"/>
+            <point key="canvasLocation" x="-283" y="-107"/>
         </view>
     </objects>
     <resources>

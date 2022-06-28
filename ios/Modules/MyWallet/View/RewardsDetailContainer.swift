@@ -25,13 +25,13 @@ class RewardsDetailContainer: UIView {
   var voucher:WalletVouchersModel? {
     didSet {
       titleLabel.text = voucher?.name
-      descLabel.text = voucher?.description
+      descLabel.text = voucher?.desc
     }
   }
   var coupon:WalletCouponsModel? {
     didSet {
       titleLabel.text = coupon?.name
-      descLabel.text = coupon?.description
+      descLabel.text = coupon?.desc
     }
   }
   var type:RewardDetailViewType = .watch {

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import IQKeyboardManagerSwift
 let bottomSheetHeight:CGFloat = 74 + kBottomsafeAreaMargin
 class ShopCheckOutController: BaseTableController {
   lazy var footerView = ShopCheckOutFooterView.loadViewFromNib()
@@ -33,8 +33,8 @@ class ShopCheckOutController: BaseTableController {
       })
     }
     
-    interactivePopGestureRecognizerEnable = false
   }
+  
   
   override func createListView() {
     super.createListView()
@@ -58,11 +58,15 @@ class ShopCheckOutController: BaseTableController {
   override func viewWillDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     footerView.removeFooterView()
+    IQKeyboardManager.shared.enableAutoToolbar = false
+    interactivePopGestureRecognizerEnable = true
   }
   
-  override func viewWillAppear(_ animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     footerView.addFooterView()
+    IQKeyboardManager.shared.enableAutoToolbar = true
+    interactivePopGestureRecognizerEnable = false
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

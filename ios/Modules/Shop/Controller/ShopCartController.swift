@@ -312,9 +312,9 @@ class ShopCartController: BaseTableController {
         let rate = self.taxModel?.rate?.float() ?? 0
         let tax = (voucher - (voucher / (1 + rate / 100)))
         orderLineItem.set(key: "tax", value: tax)
-        
         orderLineItem.set(key: "tax_is_include", value: 1)
-        orderLineItem.set(key: "total", value: e.goods_num)
+        
+        orderLineItem.set(key: "total", value: e.goods_num.cgFloat * voucher.cgFloat)
         orderLineItem.set(key: "cost", value: voucher)
         orderLineItem.set(key: "retail_price", value: voucher)
         orderLineItem.set(key: "staff_id", value: self.staffModel?.id ?? "")

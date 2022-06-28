@@ -12,9 +12,11 @@ extension String {
     return URL(string: APIHost().URL_API_IMAGE + (self.removingPrefix(".").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)?.replacingOccurrences(of: " ", with: "%20") ?? ""))
   }
   
-  func formatMoney() -> String {
-    return String(format: "%.2f", (self.double() ?? 0) * 1000 / 1000)
+  /// number of digits 保留位数
+  func formatMoney(nd:Int = 2) -> String {
+    return String(format: "%.\(nd)f", (self.double() ?? 0) * 1000 / 1000)
   }
+  
   var dolar:String {
     "$" + self.formatMoney()
   }

@@ -166,6 +166,7 @@ class InputResideView: UIView,UITextFieldDelegate {
     NetworkManager().request(params: mapParams) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(SaveClientModel.self, from: data) {
         Defaults.shared.set(model.client_id, for: .clientId)
+        Defaults.shared.set(self.registInfo?.password ?? "", for: .loginPwd)
         self.sendNewUserSmsForEmail()
       }
     } errorHandler: { e in
@@ -181,10 +182,12 @@ class InputResideView: UIView,UITextFieldDelegate {
     let params = SOAPDictionary()
     params.set(key: "title", value: "[Chien Chi Tow]")
     params.set(key: "email", value: registInfo?.email ?? "")
-    params.set(key: "message", value: "You have successfully registered for your personal Chien Chi Tow App account. Welcome to Chien Chi Tow App, your personal health & wellness companion. Be rewarded and enjoy exclusive deals when you use the App. Check your CCT points that you have collected from your purchases. Use the App to make an appointment with us now!")
+    let message = "You have successfully registered for your personal Chien Chi Tow App account. Welcome to Chien Chi Tow App, your personal health & wellness companion. Be rewarded and enjoy exclusive deals when you use the App. Check your CCT points that you have collected from your purchases. Use the App to make an appointment with us now!".replaceHTMLLabel()
+    params.set(key: "message", value: message)
     params.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "")
     params.set(key: "from_email", value: Defaults.shared.get(for: .sendEmail) ?? "")
     params.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
+    
     mapParams.set(key: "params", value: params.result, type: .map(1))
     
     NetworkManager().request(params: mapParams) { data in

@@ -149,7 +149,9 @@ extension NetworkManager {
               Toast.showError(withStatus: message)
             }
             #else
-            AlertView.show(message: "The system is abnormal. Please try again later")
+            if self.params.isNeedToast {
+              AlertView.show(message: "The system is abnormal. Please try again later")
+            }
             #endif
             self.errorHandler(APIError.requestError(code: code, message: message))
             return

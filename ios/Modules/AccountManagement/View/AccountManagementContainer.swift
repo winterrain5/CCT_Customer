@@ -18,7 +18,10 @@ class AccountManagementContainer: UIView {
       emailLabel.text = model.email
       
       var cardNo = model.card_number
-      if cardNo.count < 5 { return }
+      if cardNo.count < 5 {
+        idNoLabel.text = cardNo
+        return
+      }
       let startIndex =  cardNo.startIndex
       let endIndex = cardNo.index(startIndex, offsetBy: 4)
       cardNo = cardNo.replacingCharacters(in: startIndex...endIndex, with: "*****")

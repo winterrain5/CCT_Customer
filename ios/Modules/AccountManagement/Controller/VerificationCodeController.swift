@@ -27,6 +27,7 @@ class VerificationCodeController: BaseViewController {
     contentView.frame = CGRect(x: 0, y: kNavBarHeight , width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
     contentView.source = source
     contentView.type = type
+    contentView.startCountDown()
     contentView.resendHandler = { [weak self] in
       self?.sendCode()
     }
@@ -64,9 +65,6 @@ class VerificationCodeController: BaseViewController {
         Toast.showError(withStatus: "verification code error")
       }
     }
-    
-    
-    sendCode()
     
   }
   

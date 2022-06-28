@@ -86,6 +86,7 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
       if let model = DecodeManager.decodeObjectByHandJSON(UserPasswordModel.self, from: data) {
         Defaults.shared.set(model.id, for: .clientId)
         Defaults.shared.set(userID, for: .userId)
+        Defaults.shared.set(self.pwdTf.text ?? "", for: .loginPwd)
         if self.isFromScanQRCode {
           self.loginBtn.stopAnimation()
           let vc = CheckInTodaySessionController(outlet: self.outlet)
@@ -182,6 +183,6 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
       loginBtn.backgroundColor = R.color.grayE0()
     }
     isLoginByMobile = !account.isValidEmail
-   
+    
   }
 }

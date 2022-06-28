@@ -224,7 +224,7 @@ class ShopCheckOutFooterView: UIView {
   var coupon_discount_total:CGFloat = 0
   var voucher_total:CGFloat = 0
   var delivery_total:CGFloat = 0
-  var total:CGFloat = 0
+  var total_pay:CGFloat = 0
   
   func updateViewData() {
     
@@ -232,7 +232,7 @@ class ShopCheckOutFooterView: UIView {
     coupon_discount_total = 0
     voucher_total = 0
     delivery_total = 0
-    total = 0
+    total_pay = 0
     
     sub_total = orderDetail?.Order_Info?.subtotal?.cgFloat() ?? 0
     
@@ -301,27 +301,15 @@ class ShopCheckOutFooterView: UIView {
       delivery_total = 0
     }
     
-    deliveryFeeLabel.text = delivery_total.string.formatMoney().dolar
-    
     if sub_total - coupon_discount_total - voucher_total < 0 {
-      total = delivery_total
+      total_pay = delivery_total
     }else {
-      total = sub_total - coupon_discount_total - voucher_total + delivery_total
+      total_pay = sub_total - coupon_discount_total - voucher_total + delivery_total
     }
     
-    
-    if sub_total < coupon_discount_total {
-      coupon_discount_total = sub_total
-    }else if(sub_total - coupon_discount_total < voucher_total) {
-      voucher_total = sub_total - coupon_discount_total
-    }
-    
-    
-    
-    
-    
+    deliveryFeeLabel.text = delivery_total.string.formatMoney().dolar
     subTotalLabel.text = sub_total.string.formatMoney().dolar
-    totalLabel.text = total.string.formatMoney().dolar
+    totalLabel.text = total_pay.string.formatMoney().dolar
     totalItemLabel.text = orderDetail?.Order_Line_Info?.reduce(0, { $0 + ($1.qty?.cgFloat() ?? 0) }).string
     
     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
@@ -429,7 +417,7 @@ class ShopCheckOutFooterView: UIView {
   
   func judgeAmountCanPay() -> Bool{
     if methodType == 0 {
-      if userBalance < total {
+      if userBalance < total_pay {
         Toast.showMessage("Current balance is insufficient")
         return false
       }
@@ -440,7 +428,7 @@ class ShopCheckOutFooterView: UIView {
       if transLimit > 0 {
         banlance = transLimit
       }
-      if banlance < total {
+      if banlance < total_pay {
         Toast.showMessage("Current balance is insufficient")
         return false
       }
@@ -585,7 +573,7 @@ class ShopCheckOutFooterView: UIView {
     let params = SOAPParams(action: .StripePayment, path: .createInstance)
     
     let data = SOAPDictionary()
-    data.set(key: "totalAmount", value: total * 100)
+    data.set(key: "totalAmount", value: total_pay * 100)
     data.set(key: "email", value: Defaults.shared.get(for: .userModel)?.email ?? "")
     data.set(key: "invoice_no", value: orderDetail?.Order_Info?.invoice_no ?? "")
     data.set(key: "orderId", value: orderId)
@@ -636,17 +624,49 @@ class ShopCheckOutFooterView: UIView {
     
     let data = SOAPDictionary()
     
+    //                ['id' => 传订单的id
+    //                'date' => 当前的日期,
+    //                'total_recharge_discount' => 如果是会员卡打折，传打折额度；否则传0,
+    //                 ’reward_id‘=>如果是用reward打折，传reward的id,
+    //                ‘reward_amout’=>如果是用reward打折，传reward的折扣额度,
+    //                'paid_amount' =>如果是会员卡付款，传0；信用卡付款传实际支付额度,
+    //                'origin_paid_amount' => 如果是会员卡付款，传0；信用卡付款传应该支付额度,
+    //                'gift_voucher_amount' => 默认传0,
+    //                'new_gift_voucher_amount' =>如果是会员卡付款，传实际付款额度；如果是信用卡支付，传0,
+    //                'voucher_amount' =>  默认传0,
+    //                'pay_by_balance' =>  默认传0,
+    //                'pay_by_gift' =>  默认传0,
+    //                'pay_by_service' =>  默认传0,
+    //                'change' => 默认0,
+    //                ‘freight’=>如果是快递方式，传运费;如果是自取，传0,
+    //                'saleman_id' =>传默认员工id,
+    //                'balance' => 默认传0,
+    //                'remark' =>传空’‘,
+    //                 'present_points' =>如果是会员卡付款，传0；如果是信用卡付款，根据上面计算得到积分,
+    //                  ’collection_method‘=>自取传1，快递传2,
+    //                  ‘post_code’=>快递方式，传邮政编码；否则传空,
+    //                 ‘city’=>快递方式，传city字段；否则传空,
+    //                  ‘street_name’=>快递方式，传street name字段；否则传空,
+    //                  ‘building_block_num’=>快递方式，传building block num字段；否则传空,
+    //                  ‘unit_num’=>快递方式，传unit num字段；否则传空,
+    //                 ‘address’=>快递方式，按照设计图上把地址右边拼起来；否则就传空,
+    //                'invoice_date' => 当前日期’yyyy-MM-dd‘,
+    //        'due_date' => 当前日期’yyyy-MM-dd‘,
+    //        'close_time' => 当前时间 'yyyy-MM-dd HH:mm:ss',
+    //                'status' => 默认传1,
+    //‘is_from_app’=1]
+    
     let Order_Info = SOAPDictionary()
     Order_Info.set(key: "id", value: orderDetail?.Order_Info?.id ?? "")
     Order_Info.set(key: "date", value: dateYMD)
     
-    if selectCoupon == nil && (methodType == 0 || methodType == 1) {
+    if selectCoupon == nil && (methodType == 0 || methodType == 1) { // 使用会员折扣
       Order_Info.set(key: "total_recharge_discount", value: coupon_discount_total)
     }else {
       Order_Info.set(key: "total_recharge_discount", value: 0)
     }
     
-    if selectCoupon != nil {
+    if selectCoupon != nil { // 使用了优惠券
       Order_Info.set(key: "reward_id", value: selectCoupon?.id ?? "")
       Order_Info.set(key: "reward_amout", value: coupon_discount_total)
     }
@@ -656,13 +676,13 @@ class ShopCheckOutFooterView: UIView {
       Order_Info.set(key: "gift_amout", value: voucher_total)
     }
     
-    if methodType == 0 || methodType == 1 {
+    if methodType == 0 || methodType == 1 { // 会员卡支付
       Order_Info.set(key: "paid_amount", value: 0)
       Order_Info.set(key: "origin_paid_amount", value: 0)
-      Order_Info.set(key: "new_gift_voucher_amount", value: total)
-    }else {
-      Order_Info.set(key: "paid_amount", value: total)
-      Order_Info.set(key: "origin_paid_amount", value: total)
+      Order_Info.set(key: "new_gift_voucher_amount", value: total_pay)
+    }else { // 信用卡支付
+      Order_Info.set(key: "paid_amount", value: total_pay)
+      Order_Info.set(key: "origin_paid_amount", value: total_pay)
       Order_Info.set(key: "new_gift_voucher_amount", value: 0)
     }
     Order_Info.set(key: "gift_voucher_amount", value: 0)
@@ -677,10 +697,10 @@ class ShopCheckOutFooterView: UIView {
     var presentPoints:CGFloat = 0
     if selectCollectionMethod?.id == "-1" && delivery_total > 0 {
       Order_Info.set(key: "freight", value: delivery_total)
-      presentPoints = total - delivery_total
+      presentPoints = total_pay - delivery_total
     }else {
       Order_Info.set(key: "freight", value: 0)
-      presentPoints = total
+      presentPoints = total_pay
     }
     
     Order_Info.set(key: "saleman_id", value: staff?.id ?? "")
@@ -730,18 +750,31 @@ class ShopCheckOutFooterView: UIView {
       Order_Info.set(key: "friend_pay", value: 1)
       Order_Info.set(key: "card_owner_id", value: selectPayMethod?.card_owner_id ?? "")
       Order_Info.set(key: "price", value: sub_total)
-      Order_Info.set(key: "total_price", value: total)
+      Order_Info.set(key: "total_price", value: total_pay)
     }
     
     data.set(key: "Order_Info", value: Order_Info.result, keyType: .string, valueType: .map(1))
+    
+    
+    //        >[
+    //‘data’=>[
+    //        'id' => 明细的id,
+    //                'salesmen_id' =>传默认员工id,
+    //                'has_paid' => 1,
+    //                'pay_by_balance' =>默认传0,
+    //‘pay_by_voucher’=>如果是会员卡付款，传付款额度；如果是信用卡付款，传0,
+    //‘pay_by_gift’=>默认传0,
+    //‘pay_by_service’=>默认传0,
+    //‘new_recharge_discount’=>如果是会员卡付款，传折扣额度；如果是信用卡付款，传0
+    //]
     
     let Order_Lines = SOAPDictionary()
     
     var map:[String:[SOAPDictionary]] = [:]
     
     if (methodType == 0 || methodType == 1) && validNewVouchers.count > 0 {
-      orderDetail?.Order_Line_Info?.forEach({ e in
-        
+      guard let order_line_info = orderDetail?.Order_Line_Info else { return }
+      for e in order_line_info {
         var line_total:CGFloat = 0
         let order_pay = e.total?.cgFloat() ?? 0
         if selectCoupon == nil {
@@ -749,7 +782,7 @@ class ShopCheckOutFooterView: UIView {
           if discountPercent > 0 {
             line_total = order_pay * (1 - discountPercent / 100)
           }else {
-            line_total = e.total?.cgFloat() ?? 0
+            line_total = e.price?.cgFloat() ?? 0
           }
           let total_all = orderDetail?.Order_Info?.total?.cgFloat() ?? 0
           line_total = line_total - (voucher_total * (order_pay / total_all))
@@ -770,8 +803,10 @@ class ShopCheckOutFooterView: UIView {
         
         var pay_voucher:[SOAPDictionary] = []
         if line_total > 0 {
-          validNewVouchers.enumerated().forEach { i,e in
+          for e in validNewVouchers {
             let balance = e.balance.cgFloat() ?? 0
+            
+            if balance == 0 { continue }
             
             let pay_voucher_item = SOAPDictionary()
             
@@ -790,12 +825,14 @@ class ShopCheckOutFooterView: UIView {
             pay_voucher_item.set(key: "is_present", value: 0)
             
             pay_voucher.append(pay_voucher_item)
+            
+            if line_total == 0 { break }
           }
         }
         
         map[e.id ?? ""] = pay_voucher
-        
-      })
+      }
+     
     }
     
     orderDetail?.Order_Line_Info?.enumerated().forEach({ i,e in
@@ -812,10 +849,10 @@ class ShopCheckOutFooterView: UIView {
       
       var reward_discount:CGFloat = 0
       let total_all = orderDetail?.Order_Info?.subtotal?.cgFloat() ?? 0
-      if methodType == 0 || methodType == 1 {
+      if methodType == 0 || methodType == 1 { // 会员卡支付
         var pay_by_voucher:CGFloat = 0
         var new_recharge_discount:CGFloat = 0
-        if selectCoupon != nil {
+        if selectCoupon != nil { // 优惠券
           let nominal_value = selectCoupon?.nominal_value?.cgFloat() ?? 0
           if selectCoupon?.value_type == "1" {
             
@@ -828,7 +865,7 @@ class ShopCheckOutFooterView: UIView {
             pay_by_voucher = e_total - reward_discount
             
           }
-        }else {
+        }else { // 会员折扣
           if discountPercent > 0 {
             
             new_recharge_discount = e_total * (discountPercent / 100)
@@ -841,7 +878,7 @@ class ShopCheckOutFooterView: UIView {
         Order_Lines_Item.set(key: "pay_by_voucher", value: pay_by_voucher)
         Order_Lines_Item.set(key: "new_recharge_discount", value: new_recharge_discount)
         
-      } else {
+      } else { // 信用卡支付
         
         if selectCoupon == nil {
           Order_Lines_Item.set(key: "reward_discount", value: reward_discount)
@@ -898,9 +935,9 @@ class ShopCheckOutFooterView: UIView {
       var pay_total:CGFloat = 0
       
       if selectCollectionMethod?.id == "-1" && delivery_total > 0 {
-        pay_total = total - delivery_total
+        pay_total = total_pay - delivery_total
       }else {
-        pay_total = total
+        pay_total = total_pay
       }
       
       payMethods_0.set(key: "pay_method_line_id", value: self.payMethodCard?.id ?? "")
@@ -914,6 +951,7 @@ class ShopCheckOutFooterView: UIView {
     
     data.set(key: "bookingTimesData", value: SOAPDictionary().result,keyType: .string,valueType: .map(1))
     
+    // 信用卡支付运费
     if methodType == 2 && selectCollectionMethod?.id == "-1" {
       let payFreight_0 = SOAPDictionary()
       payFreight_0.set(key: "pay_method_line_id", value: self.payMethodCard?.id ?? "")
@@ -924,9 +962,10 @@ class ShopCheckOutFooterView: UIView {
       data.set(key: "payFreight", value: payFreight_0.result,keyType: .string,valueType: .map(1))
       
     }
-    let payFreighVoucher = SOAPDictionary()
     
+    //会员卡支付运费
     if (methodType == 0 || methodType == 1) && selectCollectionMethod?.id == "-1" {
+      let payFreighVoucher = SOAPDictionary()
       var fee_total = delivery_total
       
       for (i,e) in validNewVouchers.enumerated() {
@@ -976,7 +1015,7 @@ class ShopCheckOutFooterView: UIView {
   func deductionCreditsNote() {
     let params = SOAPParams(action: .Notifications, path: .deductionCreditsNote)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
-    params.set(key: "amount", value: total)
+    params.set(key: "amount", value: total_pay)
     params.set(key: "orderNo", value: orderDetail?.Order_Info?.invoice_no ?? "")
     NetworkManager().request(params: params) { data in
       self.toNextVc()

@@ -6,12 +6,12 @@
 //
 
 import UIKit
-
-class WalletVouchersModel: Codable {
+import HandyJSON
+class WalletVouchersModel:BaseModel, Codable {
   var id: String?
   var gift_id: String?
   var create_date: String?
-  var description: String?
+  var desc: String?
   var balance: String?
   var voucher_id: String?
   var is_delete: String?
@@ -20,4 +20,9 @@ class WalletVouchersModel: Codable {
   var client_id: String?
   var nominal_value: String?
   var name: String?
+  var isSelected = false
+  func mapping(mapper: HelpingMapper) {
+    mapper <<<
+      self.desc <-- "description"
+  }
 }

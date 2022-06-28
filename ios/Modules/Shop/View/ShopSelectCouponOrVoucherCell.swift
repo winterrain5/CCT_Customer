@@ -15,15 +15,27 @@ class ShopSelectCouponOrVoucherCell: UITableViewCell {
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var imgView: UIImageView!
   
+
+  @IBOutlet weak var selectButton: UIButton!
   var voucher:WalletVouchersModel! {
     didSet {
-      setupData(name: voucher.name, desc: voucher.description, img: "", date: voucher.last_use_date ?? "")
+      setupData(name: voucher.name, desc: voucher.desc, img: "", date: voucher.last_use_date ?? "")
+      if voucher.isSelected {
+        selectButton.titleForNormal = "Cancel Use"
+      }else {
+        selectButton.titleForNormal = "Use Now"
+      }
     }
   }
   
   var coupon:WalletCouponsModel! {
     didSet {
-      setupData(name: coupon.name, desc: coupon.description, img: coupon.img ?? "", date: coupon.expired_time ?? "")
+      setupData(name: coupon.name, desc: coupon.desc, img: coupon.img ?? "", date: coupon.expired_time ?? "")
+      if coupon.isSelected {
+        selectButton.titleForNormal = "Cancel Use"
+      }else {
+        selectButton.titleForNormal = "Use Now"
+      }
     }
   }
   
@@ -48,8 +60,10 @@ class ShopSelectCouponOrVoucherCell: UITableViewCell {
   }
   @IBAction func userNowAction(_ sender: Any) {
     if voucher != nil {
+      voucher.isSelected.toggle()
       useNowHandler?(voucher)
     }else {
+      coupon.isSelected.toggle()
       useNowHandler?(coupon)
     }
     UIViewController.getTopVc()?.navigationController?.popViewController()

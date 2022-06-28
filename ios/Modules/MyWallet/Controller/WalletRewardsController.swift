@@ -16,15 +16,10 @@ class WalletRewardsController: BasePagingTableController {
   override func viewDidLoad() {
       super.viewDidLoad()
 
- 
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
     getClienGifts()
     getClientValidRewards()
   }
-  
+
   /// coupons
   func getClientValidRewards() {
     let params = SOAPParams(action: .RewardDiscounts, path: .getClientValidRewards)
@@ -32,7 +27,7 @@ class WalletRewardsController: BasePagingTableController {
     params.set(key: "isDiscount", value: "1")
     params.set(key: "exceed", value: "0")
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decodeByCodable([WalletCouponsModel].self, from: data) {
+      if let models = DecodeManager.decodeArrayByHandJSON(WalletCouponsModel.self, from: data) {
         self.coupons = models
         self.tableView?.reloadData()
       }
@@ -47,7 +42,7 @@ class WalletRewardsController: BasePagingTableController {
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "isValid", value: "1")
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decodeByCodable([WalletVouchersModel].self, from: data) {
+      if let models = DecodeManager.decodeArrayByHandJSON(WalletVouchersModel.self, from: data) {
         self.vouchers = models
         self.tableView?.reloadData()
       }

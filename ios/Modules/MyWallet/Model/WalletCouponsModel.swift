@@ -6,10 +6,10 @@
 //
 
 import UIKit
-
-class WalletCouponsModel: Codable {
+import HandyJSON
+class WalletCouponsModel:BaseModel, Codable {
   var id: String?
-  var description: String?
+  var desc: String?
   var create_date: String?
   var expired_time: String?
   var exceed_value: String?
@@ -23,5 +23,10 @@ class WalletCouponsModel: Codable {
   var client_id: String?
   var last_name: String?
   var name: String?
+  var isSelected = false
   
+  func mapping(mapper: HelpingMapper) {
+    mapper <<<
+      self.desc <-- "description"
+  }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -54,7 +54,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expires on 30 Dec 2020, Wed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xk-Dd-TQR">
-                        <rect key="frame" x="196" y="102.5" width="230" height="16.5"/>
+                        <rect key="frame" x="196" y="102.5" width="238" height="16.5"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                         <color key="textColor" name="gray82"/>
                         <nil key="highlightedColor"/>
@@ -96,7 +96,7 @@
                     <constraint firstItem="I8T-S3-vcx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="oxF-vt-7Cf"/>
                     <constraint firstItem="a0d-UG-ZQ8" firstAttribute="top" secondItem="I8T-S3-vcx" secondAttribute="bottom" constant="24" id="qhW-Sk-5Dc"/>
                     <constraint firstItem="I8T-S3-vcx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="vvc-wf-1gq"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="4Xk-Dd-TQR" secondAttribute="trailing" constant="16" id="xow-Ud-EDf"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="4Xk-Dd-TQR" secondAttribute="trailing" constant="8" id="xow-Ud-EDf"/>
                     <constraint firstItem="4Xk-Dd-TQR" firstAttribute="top" secondItem="vAZ-pT-BSE" secondAttribute="bottom" constant="9" id="ygI-Wg-vJq"/>
                     <constraint firstAttribute="trailing" secondItem="a0d-UG-ZQ8" secondAttribute="trailing" constant="24" id="zm1-o0-Srm"/>
                 </constraints>
@@ -107,8 +107,9 @@
                 <outlet property="descLabel" destination="vAZ-pT-BSE" id="KRw-HO-TC0"/>
                 <outlet property="imgView" destination="I8T-S3-vcx" id="6h1-BM-cDJ"/>
                 <outlet property="nameLabel" destination="smL-6C-OCY" id="YMM-ZF-fxl"/>
+                <outlet property="selectButton" destination="a0d-UG-ZQ8" id="tBQ-hb-2GJ"/>
             </connections>
-            <point key="canvasLocation" x="240.57971014492756" y="150.66964285714286"/>
+            <point key="canvasLocation" x="-377" y="126"/>
         </tableViewCell>
     </objects>
     <resources>

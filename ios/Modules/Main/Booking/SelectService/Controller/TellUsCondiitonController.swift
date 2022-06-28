@@ -63,7 +63,7 @@ class TellUsCondiitonController: BaseTableController {
     Toast.showLoading()
     self.view.isUserInteractionEnabled = false
     NetworkManager().request(params: params) { data in
-      guard let models = DecodeManager.decodeByCodable([SymptomCheckStepModel].self, from: data) else {
+      guard let models = DecodeManager.decodeArrayByHandJSON(SymptomCheckStepModel.self, from: data) else {
         return
       }
       models.forEach({ $0.isSelected = false })

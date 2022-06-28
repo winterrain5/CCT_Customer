@@ -47,10 +47,15 @@ class ShopCheckOutController: BaseTableController {
     
     tableView?.tableFooterView = footerView
     footerView.size = CGSize(width: kScreenWidth, height: 911)
+    footerView.updateContentHeight = { [weak self] height in
+      guard let `self` = self else { return }
+      self.footerView.height = height
+      self.tableView?.tableFooterView = self.footerView
+    }
     
   }
   
-  override func viewDidDisappear(_ animated: Bool) {
+  override func viewWillDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     footerView.removeFooterView()
   }

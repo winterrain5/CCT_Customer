@@ -56,14 +56,17 @@ class ShopCheckOutFooterView: UIView {
   @IBOutlet weak var voucherLabel: UILabel!
   @IBOutlet weak var deliveryFeeLabel: UILabel!
   @IBOutlet weak var totalLabel: UILabel!
+  @IBOutlet weak var totalPriceContentView: UIView!
   
   @IBOutlet weak var couponContainer: UIView!
   @IBOutlet weak var voucherContainer: UIView!
   @IBOutlet weak var deliveryFeeContainer: UIView!
- 
+  
   @IBOutlet weak var couponVHCons: NSLayoutConstraint!
   @IBOutlet weak var voucherVCons: NSLayoutConstraint!
   @IBOutlet weak var deliveryFeeVHCons: NSLayoutConstraint!
+  
+  var updateContentHeight:((CGFloat)->())?
   
   var collectionMethodSheetView = ShopCollectionMethodSheetView.loadViewFromNib()
   
@@ -182,7 +185,7 @@ class ShopCheckOutFooterView: UIView {
     } errorHandler: { e in
       
     }
-
+    
   }
   
   // 获取默认的运费
@@ -214,7 +217,7 @@ class ShopCheckOutFooterView: UIView {
     } errorHandler: { e in
       
     }
-
+    
   }
   
   var sub_total:CGFloat = 0
@@ -224,6 +227,12 @@ class ShopCheckOutFooterView: UIView {
   var total:CGFloat = 0
   
   func updateViewData() {
+    
+    sub_total = 0
+    coupon_discount_total = 0
+    voucher_total = 0
+    delivery_total = 0
+    total = 0
     
     sub_total = orderDetail?.Order_Info?.subtotal?.cgFloat() ?? 0
     
@@ -254,7 +263,9 @@ class ShopCheckOutFooterView: UIView {
     }
     couponLabel.text = "-" + coupon_discount_total.string.formatMoney().dolar
     
+    // 礼券
     if selectVoucher == nil {
+      voucher_total = 0
       voucherVCons.constant = 0
       voucherContainer.isHidden = true
     }else {
@@ -264,6 +275,7 @@ class ShopCheckOutFooterView: UIView {
       voucherLabel.text = "-" + voucher_total.string.formatMoney().dolar
     }
     
+    // 运费
     if self.selectCollectionMethod?.id == "-1" {
       delivery_total = self.selectCollectionMethod?.delivery_fee.cgFloat() ?? 0
       if delivery_total == 0 {
@@ -282,9 +294,14 @@ class ShopCheckOutFooterView: UIView {
       shipingAddressVHCons.constant = 0
       ShipingAddressContaier.isHidden = true
       deliveryFeeContainer.isHidden = true
+      
     }
-    deliveryFeeLabel.text = self.selectCollectionMethod?.delivery_fee.formatMoney().dolar
-   
+    // 金额大于150 免运费
+    if sub_total >= 150 {
+      delivery_total = 0
+    }
+    
+    deliveryFeeLabel.text = delivery_total.string.formatMoney().dolar
     
     if sub_total - coupon_discount_total - voucher_total < 0 {
       total = delivery_total
@@ -292,21 +309,30 @@ class ShopCheckOutFooterView: UIView {
       total = sub_total - coupon_discount_total - voucher_total + delivery_total
     }
     
-    subTotalLabel.text = sub_total.string.formatMoney().dolar
-    totalLabel.text = total.string.formatMoney().dolar
-    totalItemLabel.text = orderDetail?.Order_Line_Info?.reduce(0, { $0 + ($1.qty?.cgFloat() ?? 0) }).string
-  
+    
     if sub_total < coupon_discount_total {
       coupon_discount_total = sub_total
     }else if(sub_total - coupon_discount_total < voucher_total) {
       voucher_total = sub_total - coupon_discount_total
     }
     
-   
-    UIView.animate(withDuration: 0.3) {
+    
+    
+    
+    
+    subTotalLabel.text = sub_total.string.formatMoney().dolar
+    totalLabel.text = total.string.formatMoney().dolar
+    totalItemLabel.text = orderDetail?.Order_Line_Info?.reduce(0, { $0 + ($1.qty?.cgFloat() ?? 0) }).string
+    
+    UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
       self.setNeedsUpdateConstraints()
       self.layoutIfNeeded()
+    } completion: { flag in
+      print("totalPriceContentView:\(self.totalPriceContentView.frame.maxY)")
+      self.updateContentHeight?(self.totalPriceContentView.frame.maxY + 40)
     }
+    
+    
   }
   
   override func layoutSubviews() {
@@ -314,18 +340,31 @@ class ShopCheckOutFooterView: UIView {
   }
   
   @IBAction func selectCouponButtonAction(_ sender: Any) {
-    let vc = ShopSelectCouponOrVoucherController(selectType: 0)
+    let vc = ShopSelectCouponOrVoucherController(selectType: 0,selectCoupon: selectCoupon)
     UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
     vc.selectCouponHandler = { [weak self] model in
+      guard let model = model else {
+        self?.selectCouponName.text = "Not Selected"
+        self?.couponTitleLabel.text = "Discount"
+        self?.selectCoupon = nil
+        self?.updateViewData()
+        return
+      }
       self?.selectCoupon = model
       self?.selectCouponName.text = model.name
       self?.updateViewData()
     }
   }
   @IBAction func selectVoucherButtonAction(_ sender: Any) {
-    let vc = ShopSelectCouponOrVoucherController(selectType: 1)
+    let vc = ShopSelectCouponOrVoucherController(selectType: 1,selectVoucher: selectVoucher)
     UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
     vc.selectVoucherHandler = { [weak self] model in
+      guard let model = model else {
+        self?.selectVoucherNameLabel.text = "Not Selected"
+        self?.selectVoucher = nil
+        self?.updateViewData()
+        return
+      }
       self?.selectVoucher = model
       self?.selectVoucherNameLabel.text = model.name
       self?.updateViewData()
@@ -457,7 +496,7 @@ class ShopCheckOutFooterView: UIView {
     } errorHandler: { _ in
       
     }
-
+    
   }
   
   func showUserPasswordSheet() {
@@ -501,7 +540,7 @@ class ShopCheckOutFooterView: UIView {
     } errorHandler: { e in
       
     }
-
+    
   }
   
   func getValidNewVouchers() {
@@ -522,7 +561,7 @@ class ShopCheckOutFooterView: UIView {
     } errorHandler: { e in
       
     }
-
+    
   }
   
   func getClientVipLevel() {
@@ -539,7 +578,7 @@ class ShopCheckOutFooterView: UIView {
     } errorHandler: { e in
       
     }
-
+    
   }
   
   func createInstance() {
@@ -627,7 +666,7 @@ class ShopCheckOutFooterView: UIView {
       Order_Info.set(key: "new_gift_voucher_amount", value: 0)
     }
     Order_Info.set(key: "gift_voucher_amount", value: 0)
-
+    
     Order_Info.set(key: "voucher_amount", value: 0)
     Order_Info.set(key: "pay_by_balance", value: 0)
     Order_Info.set(key: "pay_by_gift", value: voucher_total)
@@ -702,11 +741,11 @@ class ShopCheckOutFooterView: UIView {
     
     if (methodType == 0 || methodType == 1) && validNewVouchers.count > 0 {
       orderDetail?.Order_Line_Info?.forEach({ e in
-       
+        
         var line_total:CGFloat = 0
         let order_pay = e.total?.cgFloat() ?? 0
         if selectCoupon == nil {
-         
+          
           if discountPercent > 0 {
             line_total = order_pay * (1 - discountPercent / 100)
           }else {
@@ -749,7 +788,7 @@ class ShopCheckOutFooterView: UIView {
             pay_voucher_item.set(key: "voucher_type", value: e.voucher_type)
             pay_voucher_item.set(key: "create_date", value: dateHMS)
             pay_voucher_item.set(key: "is_present", value: 0)
-           
+            
             pay_voucher.append(pay_voucher_item)
           }
         }
@@ -822,7 +861,7 @@ class ShopCheckOutFooterView: UIView {
       Order_Lines_Item.set(key: "pay_by_gift", value: pay_by_gift)
       Order_Lines_Item.set(key: "pay_by_service", value: 0)
       Order_Lines_Item.set(key: "reward_discount", value: reward_discount)
-       
+      
       if selectCollectionMethod?.id == "-1" {
         Order_Lines_Item.set(key: "collection_method", value: 2)
         Order_Lines_Item.set(key: "delivery_location_id", value: Defaults.shared.get(for: .companyId) ?? "97")
@@ -944,7 +983,7 @@ class ShopCheckOutFooterView: UIView {
     } errorHandler: { e in
       self.toNextVc()
     }
-
+    
   }
   
   func toNextVc() {

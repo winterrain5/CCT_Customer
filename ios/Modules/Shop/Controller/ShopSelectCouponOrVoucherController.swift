@@ -8,13 +8,17 @@
 import UIKit
 
 class ShopSelectCouponOrVoucherController: BaseTableController {
-  var selectCouponHandler:((WalletCouponsModel)->())?
-  var selectVoucherHandler:((WalletVouchersModel)->())?
+  var selectCouponHandler:((WalletCouponsModel?)->())?
+  var selectVoucherHandler:((WalletVouchersModel?)->())?
+  private var selectCoupon:WalletCouponsModel?
+  private var selectVoucher:WalletVouchersModel?
   /// 0 Coupon 1 voucher
   private var selectType:Int = 0
-  convenience init(selectType:Int) {
+  convenience init(selectType:Int,selectCoupon:WalletCouponsModel? = nil,selectVoucher:WalletVouchersModel? = nil) {
     self.init()
     self.selectType = selectType
+    self.selectCoupon = selectCoupon
+    self.selectVoucher = selectVoucher
   }
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -37,7 +41,12 @@ class ShopSelectCouponOrVoucherController: BaseTableController {
     params.set(key: "isDiscount", value: "1")
     params.set(key: "exceed", value: "0")
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decodeByCodable([WalletCouponsModel].self, from: data) {
+      if let models = DecodeManager.decodeArrayByHandJSON(WalletCouponsModel.self, from: data) {
+        models.forEach({
+          if $0.id == self.selectCoupon?.id {
+            $0.isSelected = true
+          }
+        })
         self.dataArray = models
         self.endRefresh(models.count,emptyString: "No Coupons")
       }
@@ -52,7 +61,12 @@ class ShopSelectCouponOrVoucherController: BaseTableController {
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "isValid", value: "1")
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decodeByCodable([WalletVouchersModel].self, from: data) {
+      if let models = DecodeManager.decodeArrayByHandJSON(WalletVouchersModel.self, from: data) {
+        models.forEach({
+          if $0.id == self.selectVoucher?.id {
+            $0.isSelected = true
+          }
+        })
         self.dataArray = models
         self.endRefresh(models.count,emptyString: "No Vouchers")
       }
@@ -91,10 +105,13 @@ class ShopSelectCouponOrVoucherController: BaseTableController {
       cell.useNowHandler = { [weak self] model in
         guard let `self` = self else { return }
         if self.selectType == 0 {
-          self.selectCouponHandler?(model as! WalletCouponsModel)
+          let temp = model as! WalletCouponsModel
+          self.selectCouponHandler?(temp.isSelected ? temp : nil)
         }else {
-          self.selectVoucherHandler?(model as! WalletVouchersModel)
+          let temp = model as! WalletVouchersModel
+          self.selectVoucherHandler?(temp.isSelected ? temp : nil)
         }
+        self.reloadData()
       }
     }
     cell.selectionStyle = .none

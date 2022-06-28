@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SymptomCheckStepModel: Codable {
+class SymptomCheckStepModel:BaseModel, Codable {
   var isSelected:Bool?
   var id: String?
   var title: String?

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -586,6 +586,7 @@
                 <outlet property="subTotalLabel" destination="I8S-WD-FrU" id="3az-TE-rIT"/>
                 <outlet property="totalItemLabel" destination="HU3-wK-2j0" id="49c-ji-xvU"/>
                 <outlet property="totalLabel" destination="fnr-hW-RsD" id="SWL-7r-TLa"/>
+                <outlet property="totalPriceContentView" destination="kcn-RD-ekz" id="7V5-Va-1e6"/>
                 <outlet property="unitNumTf" destination="67K-os-B0t" id="YTF-9d-Rd2"/>
                 <outlet property="voucherContainer" destination="gdH-cb-Nfv" id="ngM-sN-jgc"/>
                 <outlet property="voucherLabel" destination="qbQ-Ms-I7Z" id="gTm-PI-XMO"/>

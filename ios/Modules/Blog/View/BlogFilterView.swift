@@ -31,6 +31,10 @@ class BlogFilterView: UIView,UITableViewDelegate,UITableViewDataSource {
     EntryKit.dismissHandler = {
       self.updateComplete?(self.datas)
     }
+    
+    rx.anyGesture(.tap()).when(.recognized).subscribe(onNext:{ _ in
+      EntryKit.dismiss()
+    }).disposed(by: rx.disposeBag)
   }
   
   func configData(users:[BlogFilterLabel],all:[BlogFilterLabel]) {
@@ -115,7 +119,8 @@ class BlogFilterView: UIView,UITableViewDelegate,UITableViewDataSource {
     view.configData(users: users, all: all)
     view.updateComplete = complete
     let height = (view.datas.count * 50).cgFloat + 150 + kBottomsafeAreaMargin
-    let size = CGSize(width: kScreenWidth, height: height)
+    let realHeight = height >= kScreenHeight * 0.7 ? kScreenHeight * 0.7 : height
+    let size = CGSize(width: kScreenWidth, height: realHeight)
     EntryKit.display(view: view, size: size, style: .sheet, backgroundColor: R.color.blackAlpha8()!, touchDismiss: true)
   }
   

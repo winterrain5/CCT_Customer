@@ -57,6 +57,7 @@ class ShopCheckOutFooterView: UIView {
   @IBOutlet weak var deliveryFeeLabel: UILabel!
   @IBOutlet weak var totalLabel: UILabel!
   @IBOutlet weak var totalPriceContentView: UIView!
+  @IBOutlet weak var totalHeadLabel: UILabel!
   
   @IBOutlet weak var couponContainer: UIView!
   @IBOutlet weak var voucherContainer: UIView!
@@ -311,16 +312,13 @@ class ShopCheckOutFooterView: UIView {
     subTotalLabel.text = sub_total.string.formatMoney().dolar
     totalLabel.text = total_pay.string.formatMoney().dolar
     totalItemLabel.text = orderDetail?.Order_Line_Info?.reduce(0, { $0 + ($1.qty?.cgFloat() ?? 0) }).string
+    let gst = orderDetail?.Order_Line_Info?.reduce(0, { $0 + ($1.tax?.float() ?? 0) }) ?? 0
+    totalHeadLabel.text = gst > 0 ? "Total(Inclusive of GST \(gst.string.formatMoney().dolar))" : "Total"
     
-    UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
-      self.setNeedsUpdateConstraints()
-      self.layoutIfNeeded()
-    } completion: { flag in
-      print("totalPriceContentView:\(self.totalPriceContentView.frame.maxY)")
-      self.updateContentHeight?(self.totalPriceContentView.frame.maxY + 40)
-    }
-    
-    
+    self.setNeedsUpdateConstraints()
+    self.layoutIfNeeded()
+    self.updateContentHeight?(self.totalPriceContentView.frame.maxY + 40)
+   
   }
   
   override func layoutSubviews() {

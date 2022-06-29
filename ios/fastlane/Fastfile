@@ -1,0 +1,52 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Description of what the lane does"
+  lane :custom_lane do
+    # add actions here: https://docs.fastlane.tools/actions
+  end
+
+lane :adhoc do
+  build_app(scheme: "CCTIOS",
+            workspace: "CCTIOS.xcworkspace",
+            include_bitcode: false,
+            export_method: "ad-hoc")
+  fir_cli(api_token: "bb99fe80f14bf4748f8cbbb05abf1e29",  changelog: "update for adhoc")
+end
+
+lane :dev do
+  build_app(scheme: "CCTIOS",
+            workspace: "CCTIOS.xcworkspace",
+            include_bitcode: false,
+            export_method: "development")
+  fir_cli(api_token: "bb99fe80f14bf4748f8cbbb05abf1e29",  changelog: "update for dev")
+end
+
+lane :release do
+  build_app(scheme: "CCTIOS",
+            workspace: "CCTIOS.xcworkspace",
+            include_bitcode: false)
+  deliver(
+    submit_for_review: false,
+    force: true, # Skip HTMl report verification
+    skip_metadata: true,
+    skip_screenshots: true,
+    submission_information:{export_compliance_uses_encryption: false})
+end
+
+end

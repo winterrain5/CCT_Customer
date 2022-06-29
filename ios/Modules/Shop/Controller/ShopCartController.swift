@@ -116,9 +116,10 @@ class ShopCartController: BaseTableController {
     self.tableView?.isSkeletonable = true
     self.cellIdentifier = ShopCartCell.className
     
+    if showType == 0 {
+      self.registRefreshHeader()
+    }
     
-    
-    self.registRefreshHeader()
   }
   
   func addTableFooterView() {
@@ -164,7 +165,7 @@ class ShopCartController: BaseTableController {
         }
         self?.updateGoodCount(model)
       }
-      
+      cell.selectionStyle = .none
       cell.delegate = self
     }
     return cell

@@ -91,7 +91,7 @@ class MyOrderDetailFooterView: UIView {
       
       totalItemsLabel.text = total.string
       
-      subTotalHeadLabel.text = gst > 0 ? "Sub Total(Inclusive of GST \(gst.string.formatMoney().dolar))" : "Sub Total"
+      totalHeaderLabel.text = gst > 0 ? "Total(Inclusive of GST \(gst.string.formatMoney().dolar))" : "Total"
       subTotalPriceLabel.text = sub_total.string.formatMoney().dolar
       discountLabel.text = discount > 0 ? ("-" + discount.string.formatMoney().dolar) : "$0.00"
       deliveryFeeTypeLabel.text = feeTypeHead

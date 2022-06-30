@@ -55,6 +55,7 @@ class ShopOrderSummaryController: BaseViewController {
     }
     
     scrollView.addSubview(footerView)
+    footerView.statust = status
     footerView.frame = CGRect(x: 0, y: headerView.frame.maxY, width: kScreenWidth, height: 0)
     footerView.updateHeightHandler = { [weak self] height in
       self?.footerView.height = height

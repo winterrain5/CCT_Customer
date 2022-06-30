@@ -242,6 +242,7 @@ class TreatmentDeclarationController: BaseTableController {
     
     NetworkManager().request(params: mapParams) { data in
       sender.stopAnimation()
+      NotificationCenter.default.post(name: NSNotification.Name.bookingDataChanged, object: nil)
       self.navigationController?.popToRootViewController(animated: true)
     } errorHandler: { e in
       sender.stopAnimation()

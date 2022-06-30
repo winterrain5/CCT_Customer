@@ -25,6 +25,7 @@ class MyOrderDetailFooterView: UIView {
   @IBOutlet weak var pointsLabel: UILabel!
   
   var updateHeightHandler:((CGFloat)->())?
+  var statust:Int = 1
   var model:MyOrderDetailModel! {
     didSet {
       
@@ -88,18 +89,18 @@ class MyOrderDetailFooterView: UIView {
       
       deliveryType.text = local_title
       addressLabel.text = address
-      
       totalItemsLabel.text = total.string
-      
-      totalHeaderLabel.text = gst > 0 ? "Total(Inclusive of GST \(gst.string.formatMoney().dolar))" : "Total"
       subTotalPriceLabel.text = sub_total.string.formatMoney().dolar
       discountLabel.text = discount > 0 ? ("-" + discount.string.formatMoney().dolar) : "$0.00"
       deliveryFeeTypeLabel.text = feeTypeHead
       deliveryFeeLabel.text = freight.string.formatMoney().dolar
-      
       totalPriceLabel.text = show_total.string.formatMoney().dolar
-      
       pointsLabel.text = "(Points earned \(model.Order_Info?.present_points ?? ""))"
+      if statust == 1 {
+        totalHeaderLabel.text = gst > 0 ? "Total(Inclusive of GST \(gst.string.formatMoney().dolar))" : "Total"
+      }else {
+        totalHeaderLabel.text = "Total(Inclusive of GST)"
+      }
       
       self.setNeedsLayout()
       self.layoutIfNeeded()

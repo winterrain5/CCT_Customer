@@ -37,6 +37,8 @@ class ShopHeaderView: UIView,FSPagerViewDelegate,FSPagerViewDataSource {
     pageControl.elementWidth = 24
     pageControl.elementHeight = 4
     pageControl.progress = 0
+    pageControl.hidesForSinglePage = true
+    pageControl.numberOfPages = 0
     
     bannerContentView.addSubview(pagerView)
     bannerContentView.bringSubviewToFront(pageControl)

@@ -23,11 +23,6 @@ class CheckInTodaySessionController: BaseViewController {
     
     self.interactivePopGestureRecognizerEnable = false
     
-//    self.addLeftBarButtonItem(R.image.return_left())
-//    self.leftButtonDidClick = { [weak self] in
-//      self?.navigationController?.popToRootViewController(animated: true)
-//    }
-    
     self.view.isSkeletonable = true
     self.view.backgroundColor = R.color.theamBlue()
     self.view.addSubview(scrollView)

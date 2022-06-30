@@ -230,7 +230,7 @@ class ConfirmSessionContainer: UIView {
     order_lines_info.set(key: "from", value: "app booking")
     order_lines_info.set(key: "status", value: 1)
     order_lines_info.set(key: "type", value: 1)
-    order_lines_info.set(key: "has_pid", value: 0)
+    order_lines_info.set(key: "has_paid", value: 0)
     
     if model.service_type == .Therapist {
       order_lines_info.set(key: "staff_is_random", value: 2)

@@ -101,7 +101,7 @@ class SymptomCheckWhatNextController: BaseViewController {
     summaryData.set(key: "registration_id", value: 0)
     summaryData.set(key: "sign_img", value: "")
     summaryData.set(key: "create_time", value: Date().string(withFormat: "yyyy-MM-dd HH:mm:ss"))
-    summaryData.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+    summaryData.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
     summaryData.set(key: "remarks", value: "")
     summaryData.set(key: "category", value: 6)
     summaryData.set(key: "location_id", value: Defaults.shared.get(for: .companyId) ?? "97")
@@ -111,7 +111,7 @@ class SymptomCheckWhatNextController: BaseViewController {
     params.set(key: "data", value: data.result, type: .map(1))
     
     let logData = SOAPDictionary()
-    logData.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+    logData.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
     logData.set(key: "ip", value: "")
     
     params.set(key: "logData", value: logData.result,type: .map(2))

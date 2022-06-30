@@ -284,7 +284,7 @@ class ShopCartController: BaseTableController {
       orderInfo.set(key: "invoice_date", value: dateHMS)
       orderInfo.set(key: "due_date", value: dateYMD)
       orderInfo.set(key: "create_time", value: dateHMS)
-      orderInfo.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+      orderInfo.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
       orderInfo.set(key: "is_delete", value: "0")
       orderInfo.set(key: "is_from_app", value: "1")
       data.set(key: "Order_Info", value: orderInfo.result, keyType: .string, valueType: .map(1))
@@ -327,7 +327,7 @@ class ShopCartController: BaseTableController {
         orderLineItem.set(key: "collection_method", value: "")
         orderLineItem.set(key: "has_delivered", value: "")
         orderLineItem.set(key: "create_time", value: dateHMS)
-        orderLineItem.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+        orderLineItem.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
         orderLineItem.set(key: "is_delete", value: "0")
         orderLineItem.set(key: "delivery_time", value: "")
         orderLineItem.set(key: "delivery_location_id", value: "")
@@ -342,7 +342,7 @@ class ShopCartController: BaseTableController {
       mapParams.set(key: "data", value: data.result, type: .map(1))
       
       let logData = SOAPDictionary()
-      logData.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+      logData.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
       mapParams.set(key: "logData", value: logData.result, type: .map(2))
       
       NetworkManager().request(params: mapParams) { data in

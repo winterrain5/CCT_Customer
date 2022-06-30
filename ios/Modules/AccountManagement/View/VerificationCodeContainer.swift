@@ -15,6 +15,7 @@ enum SendVerificaitonCodeType {
   case EditPhone
   case EditEmail
   case EditPassword
+  case DeleteAccount
 }
 
 
@@ -38,10 +39,6 @@ class VerificationCodeContainer: UIView {
       if type == .EditEmail {
         titleLabel.text = "We have sent the verification code to \(source)"
        
-      }
-      
-      if type == .EditPassword {
-        
       }
     }
   }

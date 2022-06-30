@@ -33,7 +33,7 @@ class CardUserDetailHeadView: UIView {
        params.set(key: "id", value: self.cardUserModel?.id ?? "")
        
        let log = SOAPDictionary()
-       log.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+       log.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
        params.set(key: "logData", value: log.result, type: .map(1))
        
        Toast.showLoading()

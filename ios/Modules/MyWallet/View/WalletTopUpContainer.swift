@@ -170,7 +170,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       data.set(key: "enable_sales", value: "0")
       data.set(key: "default_count_in_pos", value: "1")
       data.set(key: "create_time", value: Date().string(withFormat: "yyyy-MM-dd HH:mm:ss"))
-      data.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+      data.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
       data.set(key: "is_delet", value: "0")
       
       mapParams.set(key: "data", value: data.result,type: .map(1))
@@ -212,7 +212,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       let clientInfo = SOAPDictionary()
       clientInfo.set(key: "id", value: Defaults.shared.get(for: .clientId) ?? "")
       clientInfo.set(key: "pay_password", value: self.payPd)
-      clientInfo.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+      clientInfo.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
       data.set(key: "Client_Info", value: clientInfo.result, keyType: .string, valueType: .map(1))
       
       let orderInfo = SOAPDictionary()
@@ -227,7 +227,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       orderInfo.set(key: "invoice_date", value: dateHMS)
       orderInfo.set(key: "due_date", value: dateYMD)
       orderInfo.set(key: "create_time", value: dateHMS)
-      orderInfo.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+      orderInfo.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
       orderInfo.set(key: "is_delete", value: "0")
       orderInfo.set(key: "is_from_app", value: "1")
       data.set(key: "Order_Info", value: orderInfo.result, keyType: .string, valueType: .map(1))
@@ -266,7 +266,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       orderLineItem.set(key: "collection_method", value: 1)
       orderLineItem.set(key: "has_delivered", value: 1)
       orderLineItem.set(key: "create_time", value: dateHMS)
-      orderLineItem.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+      orderLineItem.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
       orderLineItem.set(key: "is_delete", value: "0")
       orderLineItem.set(key: "delivery_time", value: dateHMS)
       orderLineItem.set(key: "delivery_location_id", value: Defaults.shared.get(for: .companyId) ?? "97")
@@ -296,7 +296,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       mapParams.set(key: "data", value: data.result, type: .map(1))
       
       let logData = SOAPDictionary()
-      logData.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+      logData.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
       mapParams.set(key: "logData", value: logData.result, type: .map(2))
       
 #if DEBUG
@@ -490,7 +490,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       mapParams.set(key: "data", value: data.result, type: .map(1))
       
       let logData = SOAPDictionary()
-      logData.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+      logData.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
       mapParams.set(key: "logData", value: logData.result, type: .map(2))
       
 #if DEBUG

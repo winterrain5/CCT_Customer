@@ -166,7 +166,7 @@ class SettingViewController: BaseTableController {
     params.set(key: "data", value: data.result,type: .map(1))
     
     let log = SOAPDictionary()
-    log.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+    log.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
     log.set(key: "ip", value: "")
     
     params.set(key: "logData", value: log.result,type: .map(2))

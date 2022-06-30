@@ -206,7 +206,7 @@ class ConfirmSessionContainer: UIView {
     order_info.set(key: "start_date", value: date)
     order_info.set(key: "end_date", value: date)
     order_info.set(key: "create_time", value: Date().string(withFormat: "yyyy-MM-dd HH:mm:ss"))
-    order_info.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+    order_info.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
     order_info.set(key: "is_delete", value: 0)
     
     data.set(key: "Order_Info", value: order_info.result, keyType: .string, valueType: .map(1))
@@ -244,7 +244,7 @@ class ConfirmSessionContainer: UIView {
       order_lines_info.set(key: "show_in_pos", value: 1)
     }
     
-    order_lines_info.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+    order_lines_info.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
     order_lines_info.set(key: "remark", value: model.remark)
     
     order_lines_infos.set(key: "0", value: order_lines_info.result, keyType: .string, valueType: .map(1))
@@ -254,7 +254,7 @@ class ConfirmSessionContainer: UIView {
     mapParams.set(key: "data", value: data.result, type: .map(1))
     
     let logData = SOAPDictionary()
-    logData.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+    logData.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
     
     mapParams.set(key: "logData", value: logData.result,type: .map(2))
    

@@ -44,6 +44,9 @@ class AccountManagementContainer: UIView {
     showVerifySheetView(.EditPassword)
   }
   
+  @IBAction func DeleteAccount(_ sender: Any) {
+    showVerifySheetView(.DeleteAccount)
+  }
   func showVerifySheetView(_ type:SendVerificaitonCodeType) {
     AccountVerifyPwdSheetView.show(fromView: (UIViewController.getTopVc()?.view)!,type: type)
   }

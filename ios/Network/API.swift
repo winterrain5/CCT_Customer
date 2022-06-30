@@ -294,6 +294,7 @@ enum API:String {
   
   /// 获取app 版本信息
   case getAll = "getAll"
+  case delete = "delete"
   
   // 物品购物车推送
   case itemsInCart = "itemsInCart";

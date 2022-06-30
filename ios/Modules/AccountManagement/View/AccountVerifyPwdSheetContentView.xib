@@ -139,9 +139,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="messageLabel" destination="IJi-Gp-5y1" id="LOT-4A-dHY"/>
                 <outlet property="pwdTf" destination="4Z7-Gg-kft" id="U0U-KR-ESz"/>
             </connections>
-            <point key="canvasLocation" x="-354" y="235"/>
+            <point key="canvasLocation" x="-811" y="-85"/>
         </view>
     </objects>
     <resources>

@@ -34,8 +34,13 @@ class InputIDContainer: UIView ,UITextFieldDelegate{
     
     if let user = Defaults.shared.get(for: .userModel) {
       idTf.text = user.card_number
-      idTypeButton.titleForNormal = "Singapore NRIC/FIN"
-      selectIDType = 1
+      if user.card_number.isNRICRuler() {
+        idTypeButton.titleForNormal = "Singapore NRIC/FIN"
+        selectIDType = 1
+      }else {
+        idTypeButton.titleForNormal = "Foreign ID"
+        selectIDType = 2
+      }
       setNextButonState()
     }
   
@@ -64,16 +69,11 @@ class InputIDContainer: UIView ,UITextFieldDelegate{
   }
   
   @IBAction func nextAction(_ sender: Any) {
-    if selectIDType == 1 {
-      if let user = Defaults.shared.get(for: .userModel),!user.card_number.isEmpty,user.card_number.uppercased() == (idTf.text?.uppercased() ?? "") {
-        next()
-      }else {
-        checkICExist()
-      }
+    if let user = Defaults.shared.get(for: .userModel),!user.card_number.isEmpty,user.card_number.uppercased() == (idTf.text?.uppercased() ?? "") {
+      next()
     }else {
       checkICExist()
     }
-    
   }
   
   func checkICExist() {

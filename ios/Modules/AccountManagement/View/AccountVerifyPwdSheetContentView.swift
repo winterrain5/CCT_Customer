@@ -11,7 +11,11 @@ class AccountVerifyPwdSheetView: UIView {
   var contentView = AccountVerifyPwdSheetContentView.loadViewFromNib()
   let contentHeight:CGFloat = 420
   var scrolview = UIScrollView()
-  var type:SendVerificaitonCodeType = .EditPhone
+  var type:SendVerificaitonCodeType = .EditPhone {
+    didSet {
+      contentView.setMessage(with: type)
+    }
+  }
   override init(frame: CGRect) {
     super.init(frame: frame)
     
@@ -24,10 +28,13 @@ class AccountVerifyPwdSheetView: UIView {
     contentView.confirmHandler = { [weak self] in
       guard let `self` = self else { return }
       self.dismiss(complete: {
-        if self.type == .EditPassword {
+        switch self.type {
+        case .EditPassword:
           let vc = ChangePwdController(type: .Change)
           UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
-        }else {
+        case .DeleteAccount:
+          self.deleteAccount()
+        default:
           AccountEditSheetView.show(fromView:( UIViewController.getTopVc()?.view)!, type: self.type)
         }
         
@@ -50,6 +57,34 @@ class AccountVerifyPwdSheetView: UIView {
   
   required init?(coder: NSCoder) {
     super.init(coder: coder)
+  }
+  
+  func deleteAccount() {
+    let params = SOAPParams(action: .User, path: .delete)
+    params.set(key: "userId", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
+    
+    let logData = SOAPDictionary()
+    logData.set(key: "ip", value: "")
+    logData.set(key: "create_uid", value: Defaults.shared.get(for: .clientId) ?? "")
+    
+    params.set(key: "logData", value: logData.result, type: .map(2))
+    
+    Toast.showLoading()
+    NetworkManager().request(params: params) { data in
+      Toast.dismiss()
+      let attr = NSMutableAttributedString(string: "Your account has been successfully deleted")
+      AlertView.show(message: attr, messageAlignment: .left) {
+        Defaults.shared.removeAll()
+        let vc = LoginViewController()
+        let nav = BaseNavigationController(rootViewController: vc)
+        UIApplication.shared.keyWindow?.rootViewController = nav
+      }
+     
+    } errorHandler: { e in
+      Toast.dismiss()
+    }
+
+    
   }
   
   @objc func tapAction(_ ges:UIGestureRecognizer) {
@@ -102,6 +137,7 @@ class AccountVerifyPwdSheetView: UIView {
 }
 
 class AccountVerifyPwdSheetContentView: UIView,UITextFieldDelegate {
+  @IBOutlet weak var messageLabel: UILabel!
   @IBOutlet weak var pwdTf: UITextField!
   var confirmHandler:(()->())?
   var cancelHandler:(()->())?
@@ -109,6 +145,14 @@ class AccountVerifyPwdSheetContentView: UIView,UITextFieldDelegate {
   override func awakeFromNib() {
     super.awakeFromNib()
     pwdTf.delegate = self
+  }
+  
+  func setMessage(with type:SendVerificaitonCodeType) {
+    if type == .DeleteAccount {
+      messageLabel.text = "You are deleting your account, please verify by entering your password."
+    }else {
+      messageLabel.text = "Before making changes, please verify by entering your password"
+    }
   }
   
   @IBAction func forgetPwdButtonAction(_ sender: Any) {

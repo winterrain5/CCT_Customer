@@ -85,7 +85,6 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(UserPasswordModel.self, from: data) {
         Defaults.shared.set(model.id, for: .clientId)
-        Defaults.shared.set(userID, for: .userId)
         Defaults.shared.set(self.pwdTf.text ?? "", for: .loginPwd)
         if self.isFromScanQRCode {
           self.loginBtn.stopAnimation()
@@ -94,6 +93,8 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
         }else {
           if self.isLoginByMobile {
             self.sendSMSForMobile(userID: userID, clientID: model.id)
+          }else {
+            self.sendSmsForEmail(userID: userID, clientID: model.id)
           }
         }
         
@@ -150,8 +151,6 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
     
     NetworkManager().request(params: mapParams) { data in
       self.loginBtn.stopAnimation()
-      Defaults.shared.set(userID, for: .userId)
-      Defaults.shared.set(clientID, for: .clientId)
       let vc = VerificationCodeController(type: .LoginByEmail, source: email,otpCode:self.otpCode)
       UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
     } errorHandler: { e in

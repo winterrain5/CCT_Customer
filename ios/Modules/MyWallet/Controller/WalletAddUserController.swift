@@ -191,7 +191,7 @@ class WalletAddUserController: BaseTableController {
     params.set(key: "data", value: data.result,type: .map(1))
     
     let logData = SOAPDictionary()
-    logData.set(key: "create_uid", value: Defaults.shared.get(for: .userId) ?? "")
+    logData.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
     
     params.set(key: "logData", value: logData.result,type: .map(1))
     

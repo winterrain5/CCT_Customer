@@ -8,7 +8,6 @@
 import Foundation
 
 extension DefaultsKey {
-  static let userId = Key<String>("userId")
   static let clientId = Key<String>("clientId")
   static let loginPwd = Key<String>("loginPwd")
   static let companyId = Key<String>("companyId")

@@ -54,12 +54,13 @@ class LoginContainer: UIView {
     
     let vc = InputPhoneController()
     UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
-
+    
   }
   
   @IBAction func loginAction(_ sender: Any) {
     let vc = EnterAccountController()
     UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+    Defaults.shared.set(false, for: .isLoginByScanQRCode)
   }
   @IBAction func checkInAction(_ sender: Any) {
     scanQRCodeHandler?()

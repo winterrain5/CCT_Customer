@@ -113,12 +113,21 @@ class VerificationCodeController: BaseViewController {
   }
   
   func sendAppLoginSmsForEmail() {
+    
+    if Defaults.shared.get(for: .isFirstInstallApp) != nil {
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        self.setRootViewController()
+      }
+      return
+    }
+    
     let mapParams = SOAPParams(action: .Sms, path: .sendSmsForEmail,isNeedToast: false)
     
     let params = SOAPDictionary()
     params.set(key: "title", value: "Chien Chi Tow Mobile App | Login Alert")
     params.set(key: "email", value: Defaults.shared.get(for: .userModel)?.email ?? "")
     var message = "<p>You have login to your Chien Chi Tow Mobile App Account.</p>"
+    
     message += "<p>If you didn't perform this action, you can notify us at contactus@chienchitow.com</p>"
     message = message.replaceHTMLLabel()
     params.set(key: "message", value: message)

@@ -32,13 +32,16 @@ class VerificationCodeContainer: UIView {
   var source:String = ""
   var type:SendVerificaitonCodeType = .EditPhone {
     didSet {
-      if type == .EditPhone || type == .LoginByMobile || type == .SignUp || type == .LoginByEmail{
+      if type == .EditPhone || type == .LoginByMobile || type == .SignUp {
         titleLabel.text = "We have sent the verification code to +65 \(source)"
+      }
+      
+      if type == .LoginByEmail {
+        titleLabel.text = "We have sent the verification code to \(source)"
       }
       
       if type == .EditEmail {
         titleLabel.text = "We have sent the verification code to \(source)"
-       
       }
     }
   }

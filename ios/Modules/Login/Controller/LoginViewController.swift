@@ -70,6 +70,7 @@ extension LoginViewController: QRScannerCodeDelegate {
 //
       let vc = EnterAccountController(isFromScanQRCode: true,outlet: (id:id,name:locationName))
       self.navigationController?.pushViewController(vc, completion: nil)
+      Defaults.shared.set(true, for: .isLoginByScanQRCode)
     }
     
     func qrScannerDidCancel(_ controller: UIViewController) {

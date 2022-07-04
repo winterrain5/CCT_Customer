@@ -22,6 +22,7 @@ import IQKeyboardManagerSwift
     
     if Defaults.shared.get(for: .isFirstInstallApp) != nil {
       if (CheckUserLogin.isLogined) {
+        Defaults.shared.set(false, for: .isFirstInstallApp)
         let tab = BaseTabBarController()
         window?.rootViewController = SideMenuController(contentViewController: tab, menuViewController: MenuViewController())
       }else {

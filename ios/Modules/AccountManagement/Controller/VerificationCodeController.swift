@@ -115,12 +115,13 @@ class VerificationCodeController: BaseViewController {
   func sendAppLoginSmsForEmail() {
     
     if Defaults.shared.get(for: .isFirstInstallApp) != nil {
+      print("----is not first install app")
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
         self.setRootViewController()
       }
       return
     }
-    
+    print("----is first install app")
     let mapParams = SOAPParams(action: .Sms, path: .sendSmsForEmail,isNeedToast: false)
     
     let params = SOAPDictionary()
@@ -138,12 +139,8 @@ class VerificationCodeController: BaseViewController {
     mapParams.set(key: "params", value: params.result,type:.map(1))
     
     NetworkManager().request(params: mapParams) { data in
-      
+      self.setRootViewController()
     } errorHandler: { e in
-      
-    }
-    
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
       self.setRootViewController()
     }
     

@@ -34,7 +34,7 @@ class OnBoardViewController: BaseCollectionController {
   var row:Int = 0
   override func viewDidLoad() {
     super.viewDidLoad()
-    Defaults.shared.set(false, for: .isFirstInstallApp)
+   
     nextButton.rx.tap.subscribe(onNext:{ [weak self] in
       guard let `self` = self else { return }
       if self.row == 3 {

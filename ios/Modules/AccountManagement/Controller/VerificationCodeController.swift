@@ -114,7 +114,7 @@ class VerificationCodeController: BaseViewController {
   
   func sendAppLoginSmsForEmail() {
     
-    if Defaults.shared.get(for: .isFirstInstallApp) != nil {
+    if Defaults.shared.get(for: .isFirstLogin) != nil {
       print("----is not first install app")
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
         self.setRootViewController()
@@ -266,7 +266,7 @@ class VerificationCodeController: BaseViewController {
   
   func setRootViewController() {
     Toast.dismiss()
-    Defaults.shared.set(false, for: .isFirstInstallApp)
+    Defaults.shared.set(false, for: .isFirstLogin)
     let tab = BaseTabBarController()
     UIApplication.shared.keyWindow?.rootViewController = SideMenuController(contentViewController: tab, menuViewController: MenuViewController())
   }

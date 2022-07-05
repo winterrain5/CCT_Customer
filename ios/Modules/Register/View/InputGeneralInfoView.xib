@@ -16,6 +16,13 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="739"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7t9-PC-pIs">
+                    <rect key="frame" x="0.0" y="611" width="414" height="128"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="XdI-Vp-zql"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4rN-RY-wSv">
                     <rect key="frame" x="0.0" y="60" width="414" height="679"/>
                     <subviews>
@@ -378,9 +385,12 @@
                 <constraint firstAttribute="bottom" secondItem="4rN-RY-wSv" secondAttribute="bottom" id="4fZ-ow-hGl"/>
                 <constraint firstItem="4rN-RY-wSv" firstAttribute="leading" secondItem="Bkh-nd-xe4" secondAttribute="leading" id="HvS-HI-dJp"/>
                 <constraint firstItem="4rN-RY-wSv" firstAttribute="trailing" secondItem="Bkh-nd-xe4" secondAttribute="trailing" id="XUY-zt-gKm"/>
+                <constraint firstItem="Bkh-nd-xe4" firstAttribute="trailing" secondItem="7t9-PC-pIs" secondAttribute="trailing" id="aCt-NB-HAN"/>
                 <constraint firstItem="hgX-ei-8bu" firstAttribute="top" secondItem="mX1-4R-PEw" secondAttribute="top" constant="8" id="gqt-lp-aJs"/>
                 <constraint firstItem="4rN-RY-wSv" firstAttribute="top" secondItem="hgX-ei-8bu" secondAttribute="bottom" constant="24" id="hwb-tp-CYj"/>
                 <constraint firstItem="hgX-ei-8bu" firstAttribute="leading" secondItem="Bkh-nd-xe4" secondAttribute="leading" constant="24" id="n4C-jz-jB2"/>
+                <constraint firstItem="Bkh-nd-xe4" firstAttribute="bottom" secondItem="7t9-PC-pIs" secondAttribute="bottom" id="okR-tA-n3q"/>
+                <constraint firstItem="7t9-PC-pIs" firstAttribute="leading" secondItem="Bkh-nd-xe4" secondAttribute="leading" id="rrK-P9-YfF"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

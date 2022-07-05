@@ -166,6 +166,7 @@ extension ProfileViewController {
     AlertView.show(title: "Are you sure you want to logout from your account", message: "", leftButtonTitle: "Cancel", rightButtonTitle: "Confirm", messageAlignment: .center, leftHandler: nil) {
       Defaults.shared.removeAll()
       Defaults.shared.set(false, for: .isFirstInstallApp)
+      Defaults.shared.set(false, for: .isFirstLogin)
       let vc = LoginViewController()
       let nav = BaseNavigationController(rootViewController: vc)
       UIApplication.shared.keyWindow?.rootViewController = nav

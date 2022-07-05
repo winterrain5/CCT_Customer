@@ -82,7 +82,6 @@ class InputPhoneView: UIView,UITextFieldDelegate {
         }
         
       }
-      self.sendOTPButton.stopAnimation()
     } errorHandler: { e in
       self.sendOTPButton.stopAnimation()
       AlertView.show(message: "Failed to query system user！")

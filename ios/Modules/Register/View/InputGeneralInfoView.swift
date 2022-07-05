@@ -49,26 +49,29 @@ class InputGeneralInfoView: UIView, UITextFieldDelegate {
       firstNameTf.text = user.first_name
       lastNameTf.text = user.last_name
     
-      if user.gender == "1" {
-        genderButtonAction(maleButton)
-      }else {
-        genderButtonAction(femaleButton)
+      if !user.gender.isEmpty {
+        if user.gender == "1" {
+          genderButtonAction(maleButton)
+        }else {
+          genderButtonAction(femaleButton)
+        }
+        gender = user.gender
       }
-      
-      if user.cct_or_mp == "2" {
-        madamPartumButtonAction(yesButton)
-      }else {
-        madamPartumButtonAction(noButton)
+    
+      if !user.cct_or_mp.isEmpty {
+        if user.cct_or_mp == "2" {
+          madamPartumButtonAction(yesButton)
+        }else {
+          madamPartumButtonAction(noButton)
+        }
+        isCustomer = user.cct_or_mp
       }
+     
       
       birthTf.text = user.birthday
-      
       firstName = user.first_name
       lastName = user.last_name
-      gender = user.gender
-      isCustomer = user.cct_or_mp
       dateOfBirth = user.birthday
-      
       referralCodeView.isHidden = true
       
       setNextButonState()

@@ -25,6 +25,7 @@ extension DefaultsKey {
   
   static let isReview = Key<Bool>("isReview")
   
+  static let isFirstLogin = Key<Bool>("isFirstLogin")
   static let isFirstInstallApp = Key<Bool>("isFirstInstallApp")
   static let isLoginByScanQRCode = Key<Bool>("isLoginByScanQRCode")
   

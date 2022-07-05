@@ -205,7 +205,7 @@ class InputResideView: UIView,UITextFieldDelegate {
   }
   
   func setRootViewController() {
-    Defaults.shared.set(false, for: .isFirstInstallApp)
+    Defaults.shared.set(false, for: .isFirstLogin)
     DispatchQueue.main.async {
       let tab = BaseTabBarController()
       UIApplication.shared.keyWindow?.rootViewController = SideMenuController(contentViewController: tab, menuViewController: MenuViewController())

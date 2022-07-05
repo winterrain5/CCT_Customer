@@ -266,6 +266,7 @@ class VerificationCodeController: BaseViewController {
   
   func setRootViewController() {
     Toast.dismiss()
+    Defaults.shared.set(false, for: .isFirstInstallApp)
     let tab = BaseTabBarController()
     UIApplication.shared.keyWindow?.rootViewController = SideMenuController(contentViewController: tab, menuViewController: MenuViewController())
   }

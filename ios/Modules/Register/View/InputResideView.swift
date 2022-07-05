@@ -195,19 +195,17 @@ class InputResideView: UIView,UITextFieldDelegate {
     mapParams.set(key: "params", value: params.result, type: .map(1))
     
     NetworkManager().request(params: mapParams) { data in
-      
+      self.setRootViewController()
     } errorHandler: { e in
-      
-    }
-    
-    
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
       self.setRootViewController()
     }
+    
+    
+   
   }
   
   func setRootViewController() {
-    
+    Defaults.shared.set(false, for: .isFirstInstallApp)
     DispatchQueue.main.async {
       let tab = BaseTabBarController()
       UIApplication.shared.keyWindow?.rootViewController = SideMenuController(contentViewController: tab, menuViewController: MenuViewController())

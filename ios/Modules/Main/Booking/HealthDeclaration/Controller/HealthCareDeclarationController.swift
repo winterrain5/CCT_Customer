@@ -236,7 +236,7 @@ class HealthCareDeclarationController: BaseTableController {
     NetworkManager().request(params: mapParams) { data in
       sender.stopAnimation()
       if Defaults.shared.get(for: .isLoginByScanQRCode) == true {
-        ApplicationUtil.configRootViewController()
+        ApplicationUtil.setRootViewController()
       }else {
         NotificationCenter.default.post(name: NSNotification.Name.bookingDataChanged, object: nil)
         self.navigationController?.popToRootViewController(animated: true)

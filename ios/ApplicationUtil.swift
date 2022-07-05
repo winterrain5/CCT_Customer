@@ -39,6 +39,17 @@ import IQKeyboardManagerSwift
     configKeyBoard()
   }
   
+  static func setRootViewController() {
+    
+    Defaults.shared.set(false, for: .isFirstInstallApp)
+    DispatchQueue.main.async {
+      let tab = BaseTabBarController()
+      let window = (UIApplication.shared.delegate as! AppDelegate).window
+      window?.rootViewController = SideMenuController(contentViewController: tab, menuViewController: MenuViewController())
+    }
+   
+  }
+  
   static func configKeyBoard() {
     let manager = IQKeyboardManager.shared
     manager.enable = true

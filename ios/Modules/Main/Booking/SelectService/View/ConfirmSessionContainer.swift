@@ -367,6 +367,9 @@ class ConfirmSessionContainer: UIView {
           event.endDate = therapy_end_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
           event.notes = model.remark
           event.calendar = eventStore.defaultCalendarForNewEvents
+          let alarm = EKAlarm(absoluteDate: event.startDate.addingTimeInterval(-60 * 60))
+          event.addAlarm(alarm)
+          event.location = model.outlet_address
           
           do {
             try eventStore.save(event, span: .thisEvent)

@@ -94,6 +94,8 @@ class InputResideView: UIView,UITextFieldDelegate {
         }else {
           self.getFreeGiftByValue()
         }
+      }else {
+        self.getFreeGiftByValue()
       }
     } errorHandler: { e in
       self.nextButon.stopAnimation()
@@ -108,6 +110,8 @@ class InputResideView: UIView,UITextFieldDelegate {
       if let model = DecodeManager.decodeObjectByHandJSON(FreeGiftModel.self, from: data) {
         self.registInfo?.present_cash_voucher = model.id
         self.registInfo?.present_invite_cash_voucher = model.id
+        self.save()
+      }else {
         self.save()
       }
     } errorHandler: { e in

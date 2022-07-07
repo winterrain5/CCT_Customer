@@ -102,22 +102,23 @@ class ShopCheckOutFooterView: UIView {
     super.awakeFromNib()
     
     addFooterView()
-    
-    getClientInfo()
-    getUserAmount()
-  }
-  
-  func addFooterView() {
     let window = UIApplication.shared.keyWindow
     window?.addSubview(bottomView)
     bottomView.snp.makeConstraints { make in
       make.left.right.bottom.equalToSuperview()
       make.height.equalTo(bottomSheetHeight)
     }
+    
+    getClientInfo()
+    getUserAmount()
+  }
+  
+  func addFooterView() {
+    bottomView.alpha = 1
   }
   
   func removeFooterView() {
-    bottomView.removeFromSuperview()
+    bottomView.alpha = 0
   }
   
   func getCheckOutDetail() {
@@ -486,23 +487,23 @@ class ShopCheckOutFooterView: UIView {
   }
   
   func showUserPasswordSheet() {
-    bottomView.isHidden = true
+    removeFooterView()
     let pwd = Defaults.shared.get(for: .userModel)?.pay_password ?? ""
     CardDigitPinView.showView(pin: pwd) { pwd in
-      self.bottomView.isHidden = false
+      self.addFooterView()
       self.getBusiness()
     } cancleHandler: {
-      self.bottomView.isHidden = false
+      self.addFooterView()
     }
   }
   
   func showFriendPasswordSheet(_ pwd:String) {
-    bottomView.isHidden = true
+    removeFooterView()
     CardDigitPinView.showView(pin: pwd) { pwd in
-      self.bottomView.isHidden = false
+      self.addFooterView()
       self.getBusiness()
     } cancleHandler: {
-      self.bottomView.isHidden = false
+      self.addFooterView()
     }
   }
   
@@ -1000,14 +1001,38 @@ class ShopCheckOutFooterView: UIView {
     Toast.showLoading(withStatus: mapParams.path)
 #endif
     NetworkManager().request(params: mapParams) { data in
-      if self.methodType == 2 {
-        self.deductionCreditsNote()
-      }else { // to next vc
-        self.toNextVc()
+      self.deleteAllCart {
+        if self.methodType == 2 {
+          self.deductionCreditsNote()
+        }else { // to next vc
+          self.toNextVc()
+        }
       }
+      
     } errorHandler: { e in
       Toast.dismiss()
     }
+  }
+  
+  /// 清空购物车
+  func deleteAllCart(complete:@escaping ()->()) {
+    let params = SOAPParams(action: .Cart, path: .delAllCart)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    
+    let goodsArr = SOAPDictionary()
+    orderDetail?.Order_Line_Info?.enumerated().forEach({ i,e in
+      goodsArr.set(key: i.string, value: e.product_id ?? "")
+    })
+    params.set(key: "goodsArr", value: goodsArr.result,type: .map(1))
+#if DEBUG
+    Toast.showLoading(withStatus: params.path)
+#endif
+    NetworkManager().request(params: params) { data in
+      complete()
+    } errorHandler: { e in
+      complete()
+    }
+
   }
   
   func deductionCreditsNote() {

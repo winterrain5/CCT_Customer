@@ -56,8 +56,10 @@ class CardDigitPinView: UIView {
       self.contentView.frame.origin.y = kScreenHeight
       self.backgroundColor = .clear
     } completion: { flag in
+      self.cancelHandler?()
       self.removeFromSuperview()
     }
+    
   }
   
   func show() {

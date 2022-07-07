@@ -52,8 +52,10 @@ class NetworkManager:NSObject, XMLParserDelegate {
         DispatchQueue.main.async {
           Toast.dismiss()
           self.errorHandler(APIError.networkError(error!))
+          if self.params.isNeedToast {
+            AlertView.show(message: message)
+          }
         }
-        Logger.debug(message)
         task.cancel()
       }
     }

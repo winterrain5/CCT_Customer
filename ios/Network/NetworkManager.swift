@@ -37,7 +37,7 @@ class NetworkManager:NSObject, XMLParserDelegate {
     self.params = params
     guard let url = getURL(action: params.action) else { return }
     
-    let soapMsg:String = toSoapMessage(path:params.path, pams: params.result)
+    let soapMsg:String = createSoapMessage(path:params.path, pams: params.result)
    
     
     let urlRequest: URLRequest = getURLRequest(url: url, soapMsg: soapMsg)
@@ -80,7 +80,7 @@ class NetworkManager:NSObject, XMLParserDelegate {
     return request
   }
   
-  private  func toSoapMessage(path: String, pams: String) -> String {
+  private  func createSoapMessage(path: String, pams: String) -> String {
     var message: String = String()
     message +=  "<v:Envelope xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:d=\"http://www.w3.org/2001/XMLSchema\" xmlns:c=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:v=\"http://schemas.xmlsoap.org/soap/envelope/\">"
     message += "<v:Header/>"
@@ -115,7 +115,7 @@ extension NetworkManager {
   func parserDidEndDocument(_ parser: XMLParser) {
     if currentNodeName == "faultstring" {
       
-      print("soapMsg:\(toSoapMessage(path:self.params.path, pams: self.params.result))")
+      print("soapMsg:\(createSoapMessage(path:self.params.path, pams: self.params.result))")
     
       DispatchQueue.main.async {
 #if DEBUG
@@ -133,7 +133,7 @@ extension NetworkManager {
         
         let json = JSON(parseJSON: result)
         
-        print("soapMsg:\(toSoapMessage(path:self.params.path, pams: self.params.result))")
+        print("soapMsg:\(createSoapMessage(path:self.params.path, pams: self.params.result))")
         if let url = getURL(action: params.action) {
           print("url:\(url.absoluteString) path:\(params.path) \n response:\(json.dictionaryValue)")
         }

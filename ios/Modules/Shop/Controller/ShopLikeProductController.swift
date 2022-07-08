@@ -68,4 +68,11 @@ class ShopLikeProductController: BaseTableController {
     }
     return cell
   }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+    let productId = (self.dataArray as! [ShopProductModel])[indexPath.row].id
+    let vc = ShopDetailController(productId: productId)
+    self.navigationController?.pushViewController(vc, completion: nil)
+  }
 }

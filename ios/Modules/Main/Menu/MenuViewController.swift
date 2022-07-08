@@ -217,13 +217,17 @@ class MenuHeadView: UIView {
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    nameLabel.snp.makeConstraints { make in
-      make.left.equalToSuperview().offset(24)
-      make.top.equalToSuperview().offset(64)
-    }
+    
     editButton.snp.makeConstraints { make in
       make.centerY.equalTo(nameLabel)
-      make.left.equalTo(nameLabel.snp.right).offset(18)
+      make.width.height.equalTo(40)
+      make.right.equalToSuperview().offset(-24)
+    }
+    
+    nameLabel.snp.makeConstraints { make in
+      make.left.equalToSuperview().offset(16)
+      make.top.equalToSuperview().offset(64)
+      make.right.equalTo(editButton.snp.left).offset(-16)
     }
   }
   

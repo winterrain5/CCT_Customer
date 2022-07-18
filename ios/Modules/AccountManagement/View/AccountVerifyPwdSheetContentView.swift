@@ -60,29 +60,32 @@ class AccountVerifyPwdSheetView: UIView {
   }
   
   func deleteAccount() {
-    let params = SOAPParams(action: .User, path: .delete)
-    params.set(key: "userId", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
-    
-    let logData = SOAPDictionary()
-    logData.set(key: "ip", value: "")
-    logData.set(key: "create_uid", value: Defaults.shared.get(for: .clientId) ?? "")
-    
-    params.set(key: "logData", value: logData.result, type: .map(2))
-    
-    Toast.showLoading()
-    NetworkManager().request(params: params) { data in
-      Toast.dismiss()
-      let attr = NSMutableAttributedString(string: "Your account has been successfully deleted")
-      AlertView.show(message: attr, messageAlignment: .left) {
-        Defaults.shared.removeAll()
-        let vc = LoginViewController()
-        let nav = BaseNavigationController(rootViewController: vc)
-        UIApplication.shared.keyWindow?.rootViewController = nav
+    AlertView.show(title: "Confirm Deletion", message: "You are about to delete your Chien Chi Tow App account, once deleted you will need to register for an account if you would like to use the app in the future.", leftButtonTitle: "Cancel", rightButtonTitle: "Confirm", messageAlignment: .left, leftHandler: nil, rightHandler: {
+      let params = SOAPParams(action: .User, path: .delete)
+      params.set(key: "userId", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
+      
+      let logData = SOAPDictionary()
+      logData.set(key: "ip", value: "")
+      logData.set(key: "create_uid", value: Defaults.shared.get(for: .clientId) ?? "")
+      
+      params.set(key: "logData", value: logData.result, type: .map(2))
+      
+      Toast.showLoading()
+      NetworkManager().request(params: params) { data in
+        Toast.dismiss()
+        let attr = NSMutableAttributedString(string: "Your account has been successfully deleted")
+        AlertView.show(message: attr, messageAlignment: .left) {
+          Defaults.shared.removeAll()
+          let vc = LoginViewController()
+          let nav = BaseNavigationController(rootViewController: vc)
+          UIApplication.shared.keyWindow?.rootViewController = nav
+        }
+       
+      } errorHandler: { e in
+        Toast.dismiss()
       }
-     
-    } errorHandler: { e in
-      Toast.dismiss()
-    }
+    }, dismissHandler: nil)
+   
 
     
   }

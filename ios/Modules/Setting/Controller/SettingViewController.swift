@@ -7,6 +7,7 @@
 
 import UIKit
 import PromiseKit
+import SwiftEntryKit
 class SettingViewController: BaseTableController {
   
   private var headerView = UIView().then { view in
@@ -290,11 +291,15 @@ class SettingViewController: BaseTableController {
     }
     
     if model.title == "Terms and Conditions" {
-      TCApplyPrivilegesSheetView.show()
+      let view = TCApplyPrivilegesSheetView()
+      let size = CGSize(width: kScreenWidth, height: kScreenHeight - kNavBarHeight * 1.5)
+      SwiftEntryKit.displayView(asSheet: view, size: size)
     }
     
     if model.title == "Privacy Policy" {
-      DataProtectionSheetView.show()
+      let view = DataProtectionSheetView()
+      let size = CGSize(width: kScreenWidth, height: kScreenHeight - kNavBarHeight * 1.5)
+      SwiftEntryKit.displayView(asSheet: view, size: size)
     }
   }
 }

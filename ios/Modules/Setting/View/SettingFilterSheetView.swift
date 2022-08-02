@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SwiftEntryKit
 
 class SettingFilterSheetView: UIView,UITableViewDelegate,UITableViewDataSource {
 
@@ -93,7 +93,7 @@ class SettingFilterSheetView: UIView,UITableViewDelegate,UITableViewDataSource {
     view.updateComplete = complete
     let height = (view.datas.count * 50).cgFloat + 150 + kBottomsafeAreaMargin
     let size = CGSize(width: kScreenWidth, height: height)
-    EntryKit.display(view: view, size: size, style: .sheet, backgroundColor: R.color.blackAlpha8()!, touchDismiss: true)
+    SwiftEntryKit.displayView(asSheet: view, size: size)
   }
   
 

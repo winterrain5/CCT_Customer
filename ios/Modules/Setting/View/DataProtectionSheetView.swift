@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftEntryKit
 @objcMembers
 class DataProtectionSheetView: UIView,UITableViewDelegate,UITableViewDataSource {
   private var titleLabel = UILabel().then { label in
@@ -180,8 +181,8 @@ class DataProtectionSheetView: UIView,UITableViewDelegate,UITableViewDataSource 
   
   static func show() {
     let view = DataProtectionSheetView()
-    let size = CGSize(width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
-    EntryKit.display(view: view, size: size, style: .sheet)
+    let size = CGSize(width: kScreenWidth, height: kScreenHeight - kNavBarHeight * 1.5)
+    SwiftEntryKit.displayView(asSheet: view, size: size)
   }
  
 }

@@ -291,15 +291,11 @@ class SettingViewController: BaseTableController {
     }
     
     if model.title == "Terms and Conditions" {
-      let view = TCApplyPrivilegesSheetView()
-      let size = CGSize(width: kScreenWidth, height: kScreenHeight - kNavBarHeight * 1.5)
-      SwiftEntryKit.displayView(asSheet: view, size: size)
+      TCApplyPrivilegesSheetView.show()
     }
     
     if model.title == "Privacy Policy" {
-      let view = DataProtectionSheetView()
-      let size = CGSize(width: kScreenWidth, height: kScreenHeight - kNavBarHeight * 1.5)
-      SwiftEntryKit.displayView(asSheet: view, size: size)
+      DataProtectionSheetView.show()
     }
   }
 }

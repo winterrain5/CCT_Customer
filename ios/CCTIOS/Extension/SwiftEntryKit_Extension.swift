@@ -41,9 +41,9 @@ extension SwiftEntryKit {
       )
     )
     attributes.positionConstraints.verticalOffset = 0
-   
+    attributes.positionConstraints.safeArea = .empty(fillSafeArea: true)
     
-    attributes.statusBar = .dark
+    attributes.statusBar = .currentStatusBar
     return attributes
   }
   

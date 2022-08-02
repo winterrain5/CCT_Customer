@@ -20,10 +20,16 @@ class ProductItemCell: UITableViewCell {
       guard let model = model else {
         return
       }
-      productImageView.yy_setImage(with: model.picture?.asURL, options: .setImageWithFadeAnimation)
+      if let qty = model.qty?.float(),qty > 1 {
+        priceLabel.text = ((model.retail_price?.float() ?? 0) * qty).string.formatMoney().dolar
+      }else {
+        priceLabel.text = model.retail_price?.float()?.string.dolar ?? ""
+      }
+      
       numLabel.text = (model.qty?.removingSuffix(".00") ?? "") + " x"
+      productImageView.yy_setImage(with: model.picture?.asURL, options: .setImageWithFadeAnimation)
       nameLabel.text = model.name
-      priceLabel.text = model.price?.float()?.string.dolar ?? ""
+
       priceWCons.constant = priceLabel.sizeThatFits(CGSize(width: CGFloat.infinity, height: 20)).width
       layoutIfNeeded()
     }

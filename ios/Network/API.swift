@@ -126,8 +126,8 @@ enum API:String {
   ///获取订单详情
   case getOrderDetails = "getOrderDetails"
   case getCheckoutDetails = "getCheckoutDetails"
-  case getHistoryCheckoutDetails = "getHistoryCheckoutDetails"
-  case getHistoryOrderDetails = "getHistoryOrderDetails"
+  case getHistoryCheckoutDetails = "getAppHistoryCheckoutDetails"
+  case getHistoryOrderDetails = "getAppHistoryOrderDetails"
   
   /// 保存顾客对产品的评价
   case saveProductReview = "saveProductReview"

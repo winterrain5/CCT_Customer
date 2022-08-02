@@ -169,21 +169,29 @@ class TransactionDetailCell: UITableViewCell {
   
   var model:OrderLineInfo? {
     didSet {
-      productNameLabel.text = model?.name
-      priceLabel.text = model?.price?.formatMoney().dolar
       
-      let discount = (model?.discount_amount1?.float() ?? 0) + (model?.discount_amount2?.float() ?? 0)
+      guard let model = model else { return }
+      if let qty = model.qty?.float(),qty > 1 {
+        productNameLabel.text = model.name?.appending(" x").appending(qty.int.string)
+        priceLabel.text = ((model.retail_price?.float() ?? 0) * qty).string.formatMoney().dolar
+      }else {
+        productNameLabel.text = model.name
+        priceLabel.text = model.price?.formatMoney().dolar
+      }
+      
+      
+      let discount = (model.discount_amount1?.float() ?? 0) + (model.discount_amount2?.float() ?? 0)
       
       var discountName = ""
-      if !(model?.discount?.isEmpty ?? false) {
-        discountName.append(model?.discount ?? "")
+      if !(model.discount?.isEmpty ?? false) {
+        discountName.append(model.discount ?? "")
       }
-      if !(model?.discount2?.isEmpty ?? false) {
+      if !(model.discount2?.isEmpty ?? false) {
         if discountName.isEmpty {
-          discountName.append(model?.discount2 ?? "")
+          discountName.append(model.discount2 ?? "")
         }else {
           discountName.append(",")
-          discountName.append(model?.discount ?? "")
+          discountName.append(model.discount ?? "")
         }
       }
       

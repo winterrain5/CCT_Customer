@@ -16,7 +16,7 @@ class BaseTableController: BaseViewController,DataLoadable {
   var refreshWhenLoad: Bool = false
   var isFirstLoad: Bool = true
   
-  var page: Int = 0
+  var page: Int = 1
   var pageSize: Int = kPageSize
   
   var shouldDisplayEmptyDataView: Bool = false
@@ -102,7 +102,7 @@ class BaseTableController: BaseViewController,DataLoadable {
   }
   
   func loadNewData() {
-    page = 0
+    page = 1
     if self.dataArray.count > 0 {
       self.dataArray.removeAll()
     }

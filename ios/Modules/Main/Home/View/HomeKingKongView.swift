@@ -20,14 +20,14 @@ class HomeKingKongView: UIView,UICollectionViewDelegate,UICollectionViewDataSour
     didSet {
       if isReview {
         datas = [
-          KingKongModel(image: R.image.home_kk_shop(), title: "shop", sel: "shop"),
+          KingKongModel(image: R.image.home_kk_shop(), title: "Shop", sel: "shop"),
           KingKongModel(image: R.image.home_kk_treament(), title: "Conditions\nWe Treat", sel: "conditionsWeTreat"),
           KingKongModel(image: R.image.home_kk_mp(), title: "Madam\nPartum", sel: "madamPartum"),
         ]
       }else {
         datas = [
           KingKongModel(image: R.image.home_kk_symptom_check(), title: "Symptom\nChecker", sel: "symptomChecker"),
-          KingKongModel(image: R.image.home_kk_shop(), title: "shop", sel: "shop"),
+          KingKongModel(image: R.image.home_kk_shop(), title: "Shop", sel: "shop"),
           KingKongModel(image: R.image.home_kk_treament(), title: "Conditions\nWe Treat", sel: "conditionsWeTreat"),
           KingKongModel(image: R.image.home_kk_mp(), title: "Madam\nPartum", sel: "madamPartum"),
         ]

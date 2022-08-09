@@ -48,7 +48,7 @@ class SymptomCheckReportListView: UIView ,UITableViewDelegate,UITableViewDataSou
     Toast.showLoading()
     let params = SOAPParams(action: .SymptomCheck, path: .getSymptomCheckReports)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
-    params.set(key: "start", value: 0)
+    params.set(key: "start", value: 1)
     params.set(key: "length", value: 1000)
     NetworkManager().request(params: params) { data in
       guard let models = DecodeManager.decodeByCodable([SymptomCheckReportModel].self, from: data) else {

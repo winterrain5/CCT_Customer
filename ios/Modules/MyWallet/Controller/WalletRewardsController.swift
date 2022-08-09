@@ -76,10 +76,12 @@ class WalletRewardsController: BasePagingTableController {
     if indexPath.row == 0 {
       let cell = tableView.dequeueReusableCell(withClass: WalletVouchersCell.self)
       cell.vouchers = vouchers
+      cell.selectionStyle = .none
       return cell
     }else {
       let cell = tableView.dequeueReusableCell(withClass: WalletCouponsCell.self)
       cell.coupons = coupons
+      cell.selectionStyle = .none
       return cell
     }
     

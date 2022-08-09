@@ -18,10 +18,11 @@ class InputIDController: BaseViewController {
     
     self.view.addSubview(scrollView)
     scrollView.frame = CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
-    scrollView.contentSize = CGSize(width: kScreenWidth, height: 685)
+    let contentH = kScreenHeight - kNavBarHeight < 685 ? 685 : kScreenHeight - kNavBarHeight
+    scrollView.contentSize = CGSize(width: kScreenWidth, height: contentH)
     
     scrollView.addSubview(contentView)
-    contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 685)
+    contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: contentH)
 
     
   }

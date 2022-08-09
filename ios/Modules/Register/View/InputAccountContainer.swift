@@ -130,6 +130,10 @@ class InputAccountContainer: UIView,UITextFieldDelegate {
       if !text.hasNumbers {
         errorMessage += "・Must have numerical number\n"
       }
+      if text.isHasSpecialSymbol() {
+        errorMessage += "・Password cannot contain special characters such as \"#@!~%^&*\"\n"
+      }
+      
       if text.isEmpty {
         errorMessage = ""
       }

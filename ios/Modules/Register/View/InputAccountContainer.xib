@@ -44,7 +44,7 @@
                                 <constraint firstAttribute="height" constant="1" id="HbP-xv-Zo2"/>
                             </constraints>
                         </view>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address*" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j2E-i5-jcY" customClass="HoshiTextField" customModule="TextFieldEffects">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j2E-i5-jcY" customClass="HoshiTextField" customModule="TextFieldEffects">
                             <rect key="frame" x="24" y="34" width="383" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="34" id="RiC-7J-m77"/>

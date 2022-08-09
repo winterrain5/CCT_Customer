@@ -134,6 +134,12 @@ class HomeViewController: BaseViewController {
   func getTClientPartInfo() -> Promise<Void> {
     Promise.init { resolver in
       
+      if let user = Defaults.shared.get(for: .userModel) {
+        NotificationCenter.default.post(name: .menuInfoShouldChange, object: user)
+        resolver.fulfill_()
+        return
+      }
+      
       let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       
@@ -236,7 +242,7 @@ class HomeViewController: BaseViewController {
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       params.set(key: "startDateTime", value: Date().tomorrow.string(withFormat: "yyyy-MM-dd").appending(" 00:00:00"))
       params.set(key: "wellnessType", value: "")
-      params.set(key: "start", value: 0)
+      params.set(key: "start", value: 1)
       params.set(key: "length", value: 5)
       NetworkManager().request(params: params) { data in
         

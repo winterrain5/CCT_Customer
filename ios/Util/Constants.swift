@@ -30,7 +30,7 @@ let kScreenHeight:CGFloat = UIScreen.main.bounds.size.height
 let kScreenWidth:CGFloat = UIScreen.main.bounds.size.width
 
 
-let kPageSize:Int = 18
+let kPageSize:Int = 20
 
 /// 判断是否是iPhone
 func iPhoneX() -> Bool {

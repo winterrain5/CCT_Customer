@@ -13,12 +13,13 @@ class WalletTransactionsController: BasePagingTableController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-  
+    refreshData()
+
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    refreshData()
+    
   }
   
   override func refreshData() {
@@ -26,8 +27,8 @@ class WalletTransactionsController: BasePagingTableController {
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "isHistory", value: "1")
     params.set(key: "orderType", value: "0")
-//    params.set(key: "start", value: page)
-//    params.set(key: "length", value: kPageSize)
+    params.set(key: "start", value: page)
+    params.set(key: "length", value: kPageSize)
     
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeByCodable([WalletTranscationModel].self, from: data)  {

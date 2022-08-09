@@ -597,7 +597,7 @@ extension BookingAppointmentController {
     Toast.dismiss()
     let strs = self.bookigTimeModels.map({  e -> String in
       let sbs = e.split(separator: ":").first ?? ""
-      if String(sbs).int ?? 0 > 12 {
+      if String(sbs).int ?? 0 >= 12 {
         return e.appending(" PM")
       }else {
         return e.appending(" AM")

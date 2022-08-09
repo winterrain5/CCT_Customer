@@ -95,9 +95,10 @@ class SymptomCheckStepController: BaseTableController {
       self.navigationController?.pushViewController(vc)
       return
     }
+    category += 1
     headerView.title = questions[category - 1]
     stepTitleView.progress.next()
-    category += 1
+    
     loadNewData()
   }
   

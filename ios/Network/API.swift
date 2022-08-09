@@ -252,7 +252,7 @@ enum API:String {
   case  saveAppAssignData = "saveAppAssignData"
   
   //Time Slot: 接口ScheduleController
-  case  getBookingTimeSlots = "getBookingTimeSlots"
+  case  getBookingTimeSlots = "getAppBookingTimeSlots"
   //Time Slot: 看诊
   case  getDocTimeSlots = "getDocTimeSlots"
   case saveTClient = "saveTClient"

@@ -54,9 +54,9 @@ extension String {
   }
   
   func isHasLowercaseCharacter() -> Bool {
-    let passwordRule = "(?s)[^a-z]*[a-z].*"
-    let regexPassword = NSPredicate(format: "SELF MATCHES %@",passwordRule)
-    if regexPassword.evaluate(with: self) {
+    let rule = "(?s)[^a-z]*[a-z].*"
+    let regex = NSPredicate(format: "SELF MATCHES %@",rule)
+    if regex.evaluate(with: self) {
       return true
     }else
     {
@@ -64,14 +64,25 @@ extension String {
     }
   }
   func isHasUppercaseCharacter() -> Bool {
-    let passwordRule = "(?s)[^A-Z]*[A-Z].*"
-    let regexPassword = NSPredicate(format: "SELF MATCHES %@",passwordRule)
-    if regexPassword.evaluate(with: self) {
+    let rule = "(?s)[^A-Z]*[A-Z].*"
+    let regex = NSPredicate(format: "SELF MATCHES %@",rule)
+    if regex.evaluate(with: self) {
       return true
     }else
     {
       return false
     }
+  }
+  func isHasSpecialSymbol() -> Bool {
+    let rule = "#@!~%^&*"
+    var result = false
+    for c in self.charactersArray {
+      if rule.charactersArray.contains(c) {
+        result = true
+        break
+      }
+    }
+    return result
   }
   
   func isPasswordRuler() -> Bool {
@@ -86,9 +97,9 @@ extension String {
   }
   
   func isNRICRuler() -> Bool {
-    let passwordRule = "^[STFG]\\d{7}[A-Z]$"
-    let regexPassword = NSPredicate(format: "SELF MATCHES %@",passwordRule)
-    if regexPassword.evaluate(with: self) == true {
+    let rule = "^[STFG]\\d{7}[A-Z]$"
+    let regex = NSPredicate(format: "SELF MATCHES %@",rule)
+    if regex.evaluate(with: self) == true {
       return true
     }else
     {

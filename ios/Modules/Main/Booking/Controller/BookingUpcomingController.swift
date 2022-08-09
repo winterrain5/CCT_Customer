@@ -31,8 +31,7 @@ class BookingUpcomingController: BasePagingTableController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    
-    self.refreshData()
+
   }
 
   

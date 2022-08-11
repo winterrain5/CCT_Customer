@@ -160,6 +160,7 @@ enum API:String {
   /// wallet coupons
   case getClientValidRewards = "getClientValidRewards"
   case getValidNewVouchers = "getValidNewVouchers"
+  case getPackagesByClientId = "getPackagesByClientId"
   
   case getNewCardDiscountsByLevel = "getNewCardDiscountsByLevel"
   case getCardDiscountDetails = "getCardDiscountDetails"

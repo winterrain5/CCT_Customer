@@ -23,7 +23,7 @@ class MyWalletController: BaseViewController {
   
   lazy var titleDataSource: JXSegmentedTitleDataSource = {
     let dataSource = JXSegmentedTitleDataSource()
-    dataSource.titles = ["Rewards","Transactions"]
+    dataSource.titles = ["Redemptions","Transactions"]
     dataSource.isTitleColorGradientEnabled = true
     dataSource.isTitleZoomEnabled = false
     dataSource.isTitleStrokeWidthEnabled = false

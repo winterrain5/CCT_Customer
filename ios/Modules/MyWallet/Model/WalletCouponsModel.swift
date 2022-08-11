@@ -7,7 +7,7 @@
 
 import UIKit
 import HandyJSON
-class WalletCouponsModel:BaseModel, Codable {
+class WalletCouponsModel:BaseModel,Codable {
   var id: String?
   var desc: String?
   var create_date: String?
@@ -24,9 +24,5 @@ class WalletCouponsModel:BaseModel, Codable {
   var last_name: String?
   var name: String?
   var isSelected = false
-  
-  func mapping(mapper: HelpingMapper) {
-    mapper <<<
-      self.desc <-- "description"
-  }
+
 }

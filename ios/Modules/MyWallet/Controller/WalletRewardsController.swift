@@ -12,12 +12,14 @@ class WalletRewardsController: BasePagingTableController {
 
   var coupons:[WalletCouponsModel] = []
   var vouchers:[WalletVouchersModel] = []
-  
+  var packages:[WalletPackagesModel] = []
   override func viewDidLoad() {
       super.viewDidLoad()
 
     getClienGifts()
     getClientValidRewards()
+    getClientPackages()
+    
   }
 
   /// coupons
@@ -27,9 +29,14 @@ class WalletRewardsController: BasePagingTableController {
     params.set(key: "isDiscount", value: "1")
     params.set(key: "exceed", value: "0")
     NetworkManager().request(params: params) { data in
+      guard let json = try? JSON.init(data: data) else { return }
+      
       if let models = DecodeManager.decodeArrayByHandJSON(WalletCouponsModel.self, from: data) {
+        models.enumerated().forEach { index,item in
+          item.desc = json[index]["description"].string
+        }
         self.coupons = models
-        self.tableView?.reloadData()
+        self.tableView?.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
       }
     } errorHandler: { e in
       
@@ -42,9 +49,26 @@ class WalletRewardsController: BasePagingTableController {
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "isValid", value: "1")
     NetworkManager().request(params: params) { data in
+      guard let json = try? JSON.init(data: data) else { return }
       if let models = DecodeManager.decodeArrayByHandJSON(WalletVouchersModel.self, from: data) {
+        models.enumerated().forEach { index,item in
+          item.desc = json[index]["description"].string
+        }
         self.vouchers = models
-        self.tableView?.reloadData()
+        self.tableView?.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+      }
+    } errorHandler: { e in
+      
+    }
+  }
+  
+  func getClientPackages() {
+    let params = SOAPParams(action: .Voucher, path: .getPackagesByClientId)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    NetworkManager().request(params: params) { data in
+      if let models = DecodeManager.decodeArrayByHandJSON(WalletPackagesModel.self, from: data) {
+        self.packages = models
+        self.tableView?.reloadRows(at: [IndexPath(row: 2, section: 0)], with: .none)
       }
     } errorHandler: { e in
       
@@ -61,6 +85,7 @@ class WalletRewardsController: BasePagingTableController {
     
     tableView?.register(nibWithCellClass: WalletVouchersCell.self)
     tableView?.register(nibWithCellClass: WalletCouponsCell.self)
+    tableView?.register(nibWithCellClass: WalletPackagesCell.self)
     
   }
   
@@ -69,7 +94,7 @@ class WalletRewardsController: BasePagingTableController {
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 2
+    return 3
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,9 +103,14 @@ class WalletRewardsController: BasePagingTableController {
       cell.vouchers = vouchers
       cell.selectionStyle = .none
       return cell
-    }else {
+    }else if indexPath.row == 1{
       let cell = tableView.dequeueReusableCell(withClass: WalletCouponsCell.self)
       cell.coupons = coupons
+      cell.selectionStyle = .none
+      return cell
+    }else {
+      let cell = tableView.dequeueReusableCell(withClass: WalletPackagesCell.self)
+      cell.packages = packages
       cell.selectionStyle = .none
       return cell
     }

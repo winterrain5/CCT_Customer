@@ -109,6 +109,11 @@
 		45DBB9032859D3E50063EF4E /* DeclarationRemarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45DBB9012859D3E40063EF4E /* DeclarationRemarkCell.xib */; };
 		45DBB9052859D9BD0063EF4E /* DeclarationFormFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DBB9042859D9BD0063EF4E /* DeclarationFormFootView.swift */; };
 		45DBB9072859D9C50063EF4E /* DeclarationFormFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45DBB9062859D9C50063EF4E /* DeclarationFormFootView.xib */; };
+		45DF033C28A3A6280060A224 /* WalletPackageItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DF033A28A3A6280060A224 /* WalletPackageItemCell.swift */; };
+		45DF033D28A3A6280060A224 /* WalletPackageItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45DF033B28A3A6280060A224 /* WalletPackageItemCell.xib */; };
+		45F0D81D28A23C71006B4124 /* WalletPackagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F0D81C28A23C71006B4124 /* WalletPackagesModel.swift */; };
+		45F0D82028A23EAA006B4124 /* WalletPackagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F0D81E28A23EAA006B4124 /* WalletPackagesCell.swift */; };
+		45F0D82128A23EAA006B4124 /* WalletPackagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45F0D81F28A23EAA006B4124 /* WalletPackagesCell.xib */; };
 		45F894AC28534384008BC7CC /* QRCodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F894A428534383008BC7CC /* QRCodeError.swift */; };
 		45F894AD28534384008BC7CC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F894A528534383008BC7CC /* ImagePicker.swift */; };
 		45F894AE28534384008BC7CC /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F894A628534383008BC7CC /* UIImage+Extension.swift */; };
@@ -856,6 +861,11 @@
 		45DBB9012859D3E40063EF4E /* DeclarationRemarkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeclarationRemarkCell.xib; sourceTree = "<group>"; };
 		45DBB9042859D9BD0063EF4E /* DeclarationFormFootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarationFormFootView.swift; sourceTree = "<group>"; };
 		45DBB9062859D9C50063EF4E /* DeclarationFormFootView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeclarationFormFootView.xib; sourceTree = "<group>"; };
+		45DF033A28A3A6280060A224 /* WalletPackageItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPackageItemCell.swift; sourceTree = "<group>"; };
+		45DF033B28A3A6280060A224 /* WalletPackageItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletPackageItemCell.xib; sourceTree = "<group>"; };
+		45F0D81C28A23C71006B4124 /* WalletPackagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPackagesModel.swift; sourceTree = "<group>"; };
+		45F0D81E28A23EAA006B4124 /* WalletPackagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPackagesCell.swift; sourceTree = "<group>"; };
+		45F0D81F28A23EAA006B4124 /* WalletPackagesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletPackagesCell.xib; sourceTree = "<group>"; };
 		45F894A428534383008BC7CC /* QRCodeError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeError.swift; sourceTree = "<group>"; };
 		45F894A528534383008BC7CC /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		45F894A628534383008BC7CC /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -2201,6 +2211,7 @@
 				4996D78D27D0B70000437265 /* WalletTranscationModel.swift */,
 				4996D7A327D59BC000437265 /* WalletCouponsModel.swift */,
 				4996D7A527D59BD300437265 /* WalletVouchersModel.swift */,
+				45F0D81C28A23C71006B4124 /* WalletPackagesModel.swift */,
 				49E2C22C27D6085F00F667B7 /* CardPrivilegesModel.swift */,
 				49E2C22E27D608A300F667B7 /* CardOwnerModel.swift */,
 				4933AC6827D75D73005E9FB1 /* TierListModel.swift */,
@@ -2863,8 +2874,12 @@
 				4996D79827D592D200437265 /* WalletVouchersCell.xib */,
 				4996D79B27D593CF00437265 /* WalletVoucherCouponsCell.swift */,
 				4996D79C27D593CF00437265 /* WalletVoucherCouponsCell.xib */,
+				45DF033A28A3A6280060A224 /* WalletPackageItemCell.swift */,
+				45DF033B28A3A6280060A224 /* WalletPackageItemCell.xib */,
 				4996D79F27D5986500437265 /* WalletCouponsCell.swift */,
 				4996D7A027D5986500437265 /* WalletCouponsCell.xib */,
+				45F0D81E28A23EAA006B4124 /* WalletPackagesCell.swift */,
+				45F0D81F28A23EAA006B4124 /* WalletPackagesCell.xib */,
 				4996D7A927D5A03F00437265 /* RewardsDetailContainer.swift */,
 				4996D7AB27D5A04D00437265 /* RewardsDetailContainer.xib */,
 				4996D7AF27D5DFCD00437265 /* WalletCardView.swift */,
@@ -3589,8 +3604,10 @@
 				4998C09A2783F07C00A881D5 /* ServicesFooterView.xib in Resources */,
 				49981EDF27CC6C5500D4F7BF /* SettingCell.xib in Resources */,
 				4971A7FE2806C7E700253F68 /* ShopDetailAboutHeadView.xib in Resources */,
+				45DF033D28A3A6280060A224 /* WalletPackageItemCell.xib in Resources */,
 				49E2C22B27D5EA9D00F667B7 /* WalletDetailCardUserOrOwenrCell.xib in Resources */,
 				4902B71F279F9D7C00CEE28B /* ServiceDetailHeaderView.xib in Resources */,
+				45F0D82128A23EAA006B4124 /* WalletPackagesCell.xib in Resources */,
 				490CD59828094749007F0F11 /* ShopSelectCouponOrVoucherCell.xib in Resources */,
 				498D85ED279A4F920044F34F /* MadamPartumDetailHeaderView.xib in Resources */,
 				490E2AA627DB3E3500370512 /* DatePickerView.xib in Resources */,
@@ -3802,6 +3819,7 @@
 				49E61D1A278ECECD00B1C136 /* SymptomCheckLetGoController.swift in Sources */,
 				4998C024277EF51200A881D5 /* SCNGeometryExtensions.swift in Sources */,
 				49727C7527C4CDFF00943156 /* AccountEditSheetContentView.swift in Sources */,
+				45F0D81D28A23C71006B4124 /* WalletPackagesModel.swift in Sources */,
 				458612122852E57400C699A8 /* SaveClientModel.swift in Sources */,
 				4904C3A8280677A1008FE5A5 /* ShopViewAllController.swift in Sources */,
 				49781BB927BCE711006F93DF /* ReferFriendController.swift in Sources */,
@@ -4047,6 +4065,7 @@
 				4998C02C277EF51200A881D5 /* NSRegularExpressionExtensions.swift in Sources */,
 				456905002851FB6D0033A649 /* RegistUserInfoModel.swift in Sources */,
 				49E2C22D27D6085F00F667B7 /* CardPrivilegesModel.swift in Sources */,
+				45DF033C28A3A6280060A224 /* WalletPackageItemCell.swift in Sources */,
 				49BA626C27853FB300B898D5 /* BlogItemVerticalLayoutCell.swift in Sources */,
 				4998C015277EF51200A881D5 /* UIWindowExtensions.swift in Sources */,
 				4998BF4A277ED43500A881D5 /* DKEmptyDataView.swift in Sources */,
@@ -4054,6 +4073,7 @@
 				4998BF43277ED35300A881D5 /* EmptyDataType.swift in Sources */,
 				4998C023277EF51200A881D5 /* SCNBoxExtensions.swift in Sources */,
 				4902023B27D8A85400E74415 /* WalletInviteUserModel.swift in Sources */,
+				45F0D82028A23EAA006B4124 /* WalletPackagesCell.swift in Sources */,
 				7A117EC5277DB0AE00FDA382 /* NotificationNameExtension.swift in Sources */,
 				49BA629D27881CFD00B898D5 /* BlogViewModel.swift in Sources */,
 				4998C052277EF51200A881D5 /* CollectionExtensions.swift in Sources */,

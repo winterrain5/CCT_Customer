@@ -22,7 +22,7 @@ PODS:
   - DKLogger (0.4.0)
   - EachNavigationBar (1.16.0)
   - FSCalendar (2.8.4)
-  - HandyJSON (5.0.2)
+  - HandyJSON (5.0.4-beta)
   - Haptica (3.0.3)
   - IQKeyboardManagerSwift (6.5.9)
   - JXPagingView/Paging (2.1.2)
@@ -81,7 +81,7 @@ DEPENDENCIES:
   - DKLogger
   - EachNavigationBar
   - FSCalendar
-  - HandyJSON (~> 5.0.2)
+  - HandyJSON (from `https://github.com/alibaba/handyjson`)
   - Haptica
   - IQKeyboardManagerSwift
   - JXPagingView/Paging
@@ -114,7 +114,6 @@ SPEC REPOS:
     - DKLogger
     - EachNavigationBar
     - FSCalendar
-    - HandyJSON
     - Haptica
     - IQKeyboardManagerSwift
     - JXPagingView
@@ -145,6 +144,15 @@ SPEC REPOS:
     - YYImage
     - YYWebImage
 
+EXTERNAL SOURCES:
+  HandyJSON:
+    :git: https://github.com/alibaba/handyjson
+
+CHECKOUT OPTIONS:
+  HandyJSON:
+    :commit: f0b15db3bc0c51e935ea2385d6e33d412f04fffe
+    :git: https://github.com/alibaba/handyjson
+
 SPEC CHECKSUMS:
   CHIPageControl: 76b35c8309d8dd155e869c109cc6ffc0aaa465ff
   CRBoxInputView: 2380c292aabbf786fe923776f111ba3053438fba
@@ -152,7 +160,7 @@ SPEC CHECKSUMS:
   DKLogger: 4db2407d09a97241fbb81ea2f2b7f3190f032769
   EachNavigationBar: e1b9f5c824b2bd7aa18d91767bbc54801ea5dd8e
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
-  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  HandyJSON: a9c67202df97805a0ba4a00e30b50e9a30ac28f3
   Haptica: 23497230b2d7476621f7860263ae0667279a0a89
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
   JXPagingView: 90924b364a2ff7e94db534fad1fa50925ff69ee4
@@ -183,6 +191,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 71dfb6592b72c950751b066efbb2a7ebeab4d166
+PODFILE CHECKSUM: 00981273bf8bb83d07c9e5e445bb2015bd8cada0
 
 COCOAPODS: 1.11.2

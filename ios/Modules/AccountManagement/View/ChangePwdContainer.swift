@@ -58,14 +58,27 @@ class ChangePwdContainer: UIView,UITextFieldDelegate {
   func textFieldDidEndEditing(_ textField: UITextField) {
     let text = textField.text ?? ""
     
-    if textField == pwd1Tf && !isPasswordRuler(password: text){
-      Toast.showError(withStatus: "Password does not meet the rules")
+    if (textField == pwd1Tf || textField == pwd2Tf) && !isPasswordRuler(password: text){
+      var errorMessage = ""
+      if text.count < 6 {
+        /// ・Passwords need to be at least 6 characters ・At least one lowercase character ・At lease one uppercase character ・Must have numerical number
+        errorMessage += "Passwords need to be at least 6 characters\n"
+      }
+      if !text.isHasLowercaseCharacter() {
+        errorMessage += "At least one lowercase character \n"
+      }
+      if !text.isHasUppercaseCharacter() {
+        errorMessage += "At lease one uppercase character \n"
+      }
+      if !text.hasNumbers {
+        errorMessage += "Must have numerical number\n"
+      }
+      if text.isHasSpecialSymbol() {
+        errorMessage += "Password cannot contain special characters such as \"#@!~%^&*\"\n"
+      }
+      Toast.showError(withStatus: errorMessage)
     }
     if textField == pwd2Tf {
-      if !isPasswordRuler(password: text) {
-        Toast.showError(withStatus: "Password does not meet the rules")
-        return
-      }
       if pwd2Tf.text != pwd1Tf.text {
         Toast.showError(withStatus: "The password and confirmation password should be consistent")
         confirmButton.isEnabled = false

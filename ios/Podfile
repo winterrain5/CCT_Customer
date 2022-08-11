@@ -20,7 +20,7 @@ target 'CCTIOS' do
   pod 'mob_pushsdk'
   pod 'JXSegmentedView'
   pod 'JXPagingView/Paging'
-  pod 'HandyJSON', '~> 5.0.2'
+  pod 'HandyJSON',git: 'https://github.com/alibaba/handyjson'
   pod "Haptica"
   pod 'SideMenuSwift'
   pod 'SwipeCellKit'

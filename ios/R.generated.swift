@@ -1616,7 +1616,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 131 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 133 nibs.
   struct nib {
     /// Nib `AccountEditSheetContentView`.
     static let accountEditSheetContentView = _R.nib._AccountEditSheetContentView()
@@ -1864,6 +1864,10 @@ struct R: Rswift.Validatable {
     static let walletDetailCardUserOrOwenrCell = _R.nib._WalletDetailCardUserOrOwenrCell()
     /// Nib `WalletDetailHeadView`.
     static let walletDetailHeadView = _R.nib._WalletDetailHeadView()
+    /// Nib `WalletPackageItemCell`.
+    static let walletPackageItemCell = _R.nib._WalletPackageItemCell()
+    /// Nib `WalletPackagesCell`.
+    static let walletPackagesCell = _R.nib._WalletPackagesCell()
     /// Nib `WalletPaymentMethodCell`.
     static let walletPaymentMethodCell = _R.nib._WalletPaymentMethodCell()
     /// Nib `WalletTopUpContainer`.
@@ -2866,6 +2870,22 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "WalletPackageItemCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.walletPackageItemCell) instead")
+    static func walletPackageItemCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.walletPackageItemCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "WalletPackagesCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.walletPackagesCell) instead")
+    static func walletPackagesCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.walletPackagesCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "WalletPaymentMethodCell", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.walletPaymentMethodCell) instead")
     static func walletPaymentMethodCell(_: Void = ()) -> UIKit.UINib {
@@ -3419,6 +3439,14 @@ struct R: Rswift.Validatable {
 
     static func walletDetailHeadView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletDetailHeadView? {
       return R.nib.walletDetailHeadView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletDetailHeadView
+    }
+
+    static func walletPackageItemCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletPackageItemCell? {
+      return R.nib.walletPackageItemCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletPackageItemCell
+    }
+
+    static func walletPackagesCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletPackagesCell? {
+      return R.nib.walletPackagesCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletPackagesCell
     }
 
     static func walletPaymentMethodCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletPaymentMethodCell? {
@@ -5508,6 +5536,28 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletDetailHeadView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletDetailHeadView
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _WalletPackageItemCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "WalletPackageItemCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletPackageItemCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletPackageItemCell
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _WalletPackagesCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "WalletPackagesCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletPackagesCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletPackagesCell
       }
 
       fileprivate init() {}

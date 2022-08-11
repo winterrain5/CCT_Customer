@@ -21,8 +21,5 @@ class WalletVouchersModel:BaseModel, Codable {
   var nominal_value: String?
   var name: String?
   var isSelected = false
-  func mapping(mapper: HelpingMapper) {
-    mapper <<<
-      self.desc <-- "description"
-  }
+
 }

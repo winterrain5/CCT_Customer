@@ -21,6 +21,7 @@ class WalletPackagesModel :BaseModel {
   var create_date: String = ""
   var thumbnail_img: String = ""
   var desc: String = ""
+  var type: String = ""
   var item: [Item] = []
   var sale_order_line_id: String = ""
   func mapping(mapper: HelpingMapper) {

@@ -66,11 +66,34 @@ class OrderLineInfo :BaseModel,Codable {
       return (product_category == "2" || product_category == "1" || product_category == "5" || product_category == "7") && (has_leaved_review == 0)
     }
   }
+  var totalDiscount:Float {
+    return (discount_amount1?.float() ?? 0) + (discount_amount2?.float() ?? 0)
+  }
+  
+  var discountName:String {
+    var discountNameStr:[String] = []
+    if !(discount?.trim().isEmpty ?? false) {
+      discountNameStr.append(discount ?? "")
+    }
+    if !(discount2?.trim().isEmpty ?? false) {
+      discountNameStr.append(discount2 ?? "")
+    }
+    
+    if totalDiscount > 0 {
+      if discountNameStr.isEmpty {
+        return "Discount"
+      }else {
+        return "Discount(" + discountNameStr.joined(separator: ",").removingSuffix(", ") + ")"
+      }
+    }
+    return ""
+  }
+  
   var transactionDetailCellHeight:CGFloat? {
     get {
-      let discount = (discount_amount1?.float() ?? 0) + (discount_amount2?.float() ?? 0)
+      let discountH = discountName.heightWithConstrainedWidth(width: kScreenWidth - 134, font: UIFont(name:.AvenirNextRegular,size:14))
       let nameHeight = name?.heightWithConstrainedWidth(width: kScreenWidth - 80 - 48, font: UIFont(name: .AvenirNextDemiBold, size:14)) ?? 0
-      return discount > 0 ? (nameHeight + 64) : (nameHeight + 32)
+      return totalDiscount > 0 ? (nameHeight + discountH + 48) : (nameHeight + 32)
     }
   }
   

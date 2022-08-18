@@ -69,6 +69,8 @@ class TransactionDetailController: BaseTableController {
       self?.footerView.height = height
       self?.tableView?.tableFooterView = self?.footerView
     }
+    tableView?.rowHeight = UITableView.automaticDimension
+    tableView?.estimatedRowHeight = 80
     
     tableView?.register(cellWithClass: TransactionDetailCell.self)
   }
@@ -148,6 +150,7 @@ class TransactionDetailCell: UITableViewCell {
     label.textColor = R.color.black333()
     label.font = UIFont(name: .AvenirNextDemiBold, size:14)
     label.numberOfLines = 0
+    label.lineBreakMode = .byCharWrapping
     label.text = "Wellness Massage (60 min)"
   }
   var priceLabel = UILabel().then { label in
@@ -160,11 +163,14 @@ class TransactionDetailCell: UITableViewCell {
     label.textColor = R.color.black333()
     label.font = UIFont(name:.AvenirNextRegular,size:14)
     label.text = "Discount"
+    label.numberOfLines = 0
+    label.lineBreakMode = .byCharWrapping
   }
   var discountLabel = UILabel().then { label in
     label.textColor = R.color.black333()
     label.font = UIFont(name:.AvenirNextRegular,size:14)
     label.text = "-$180.00"
+    label.textAlignment = .right
   }
   
   var model:OrderLineInfo? {
@@ -180,28 +186,10 @@ class TransactionDetailCell: UITableViewCell {
       }
       
       
-      let discount = (model.discount_amount1?.float() ?? 0) + (model.discount_amount2?.float() ?? 0)
-      
-      var discountName = ""
-      if !(model.discount?.isEmpty ?? false) {
-        discountName.append(model.discount ?? "")
-      }
-      if !(model.discount2?.isEmpty ?? false) {
-        if discountName.isEmpty {
-          discountName.append(model.discount2 ?? "")
-        }else {
-          discountName.append(",")
-          discountName.append(model.discount ?? "")
-        }
-      }
-      
-      if discount > 0 {
-        discountLabel.text = "-" + discount.string.formatMoney().dolar
-        if discountName.isEmpty {
-          discountHeadLabel.text = "Discount"
-        }else {
-          discountHeadLabel.text = "Discount(" + discountName + ")"
-        }
+
+      if model.totalDiscount > 0 {
+        discountLabel.text = "-" + model.totalDiscount.string.formatMoney().dolar
+        discountHeadLabel.text = model.discountName
         discountLabel.isHidden = false
         discountHeadLabel.isHidden = false
       }else {
@@ -239,11 +227,14 @@ class TransactionDetailCell: UITableViewCell {
   
     discountHeadLabel.snp.makeConstraints { make in
       make.left.equalToSuperview().offset(24)
-      make.bottom.equalToSuperview().offset(-16)
+      make.right.equalToSuperview().offset(-110)
+      make.top.equalTo(productNameLabel.snp.bottom).offset(12)
+      
     }
     discountLabel.snp.makeConstraints { make in
       make.right.equalToSuperview().inset(24)
-      make.centerY.equalTo(discountHeadLabel.snp.centerY)
+      make.width.equalTo(80)
+      make.top.equalTo(discountHeadLabel)
     }
   }
 }

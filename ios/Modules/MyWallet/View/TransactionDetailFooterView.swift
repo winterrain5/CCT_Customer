@@ -31,14 +31,21 @@ class TransactionDetailFooterView: UIView {
         
         discount += (item.reward_discount?.float() ?? 0)
         
-        gst += item.tax?.cgFloat()?.float ?? 0
+        let paid_amount = item.paid_amount?.float() ?? 0
+        let rate = item.rate?.float() ?? 0
+        
+        gst += paid_amount / (1 + (rate / 100))*(rate / 100);
         
       })
       
       if gst == 0 {
         gstLabel.text = ""
       } else {
-        gstLabel.text = "(Inclusive of GST \(gst.string.formatMoney().dolar))"
+        if model?.Order_Info?.paid_amount?.float() ?? 0 > 0 { // 现金支付 显示扣税
+          gstLabel.text = "(Inclusive of GST \(gst.string.formatMoney().dolar))"
+        }else {
+          gstLabel.text = ""
+        }
       }
       
       let subTotal = model?.Order_Info?.subtotal
@@ -205,7 +212,7 @@ class TransactionDetailFooterPaymentMethodView: UIView {
   }
   var model:(title:String,money:String)? {
     didSet {
-      button.imageForNormal = R.image.transaction_payment_master()
+      button.imageForNormal = R.image.transaction_payment_other()
       button.titleForNormal = "\(model?.title ?? "") \(model?.money ?? "")"
     }
   }

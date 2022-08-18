@@ -314,7 +314,11 @@ class ShopCheckOutFooterView: UIView {
     totalLabel.text = total_pay.string.formatMoney().dolar
     totalItemLabel.text = orderDetail?.Order_Line_Info?.reduce(0, { $0 + ($1.qty?.cgFloat() ?? 0) }).string
     let gst = orderDetail?.Order_Line_Info?.reduce(0, { $0 + ($1.tax?.float() ?? 0) }) ?? 0
-    totalHeadLabel.text = gst > 0 ? "Total(Inclusive of GST \(gst.string.formatMoney().dolar))" : "Total"
+    if methodType != 2 {
+      totalHeadLabel.text = "Total"
+    }else {
+      totalHeadLabel.text = gst > 0 ? "Total(Inclusive of GST \(gst.string.formatMoney().dolar))" : "Total"
+    }
     
     self.setNeedsUpdateConstraints()
     self.layoutIfNeeded()

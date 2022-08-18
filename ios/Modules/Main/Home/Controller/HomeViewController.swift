@@ -135,6 +135,7 @@ class HomeViewController: BaseViewController {
     Promise.init { resolver in
       
       if let user = Defaults.shared.get(for: .userModel) {
+        self.contentView.userModel = user
         NotificationCenter.default.post(name: .menuInfoShouldChange, object: user)
         resolver.fulfill_()
         return

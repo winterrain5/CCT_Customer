@@ -47,7 +47,10 @@ class MyOrderDetailFooterView: UIView {
         
         discount += (item.reward_discount?.float() ?? 0)
         
-        gst += item.tax?.float() ?? 0
+        let paid_amount = item.paid_amount?.float() ?? 0
+        let rate = item.rate?.float() ?? 0
+        
+        gst += paid_amount / (1 + (rate / 100))*(rate / 100);
         
       })
       
@@ -97,9 +100,18 @@ class MyOrderDetailFooterView: UIView {
       totalPriceLabel.text = show_total.string.formatMoney().dolar
       pointsLabel.text = "(Points earned \(model.Order_Info?.present_points ?? ""))"
       if statust == 1 {
-        totalHeaderLabel.text = gst > 0 ? "Total(Inclusive of GST \(gst.string.formatMoney().dolar))" : "Total"
+        if gst > 0 {
+          if model?.Order_Info?.paid_amount?.float() ?? 0 > 0 { // 现金支付 显示扣税
+            totalHeaderLabel.text = "Total(Inclusive of GST \(gst.string.formatMoney().dolar))"
+          }else {
+            totalHeaderLabel.text = "Total"
+          }
+        }else {
+          totalHeaderLabel.text = "Total"
+        }
+        
       }else {
-        totalHeaderLabel.text = "Total(Inclusive of GST)"
+        totalHeaderLabel.text = "Total"
       }
       
       self.setNeedsLayout()

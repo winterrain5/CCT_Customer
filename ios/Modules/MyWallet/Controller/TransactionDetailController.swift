@@ -178,10 +178,10 @@ class TransactionDetailCell: UITableViewCell {
       
       guard let model = model else { return }
       if let qty = model.qty?.float(),qty > 1 {
-        productNameLabel.text = model.name?.appending(" x").appending(qty.int.string)
+        productNameLabel.text = model.alias?.appending(" x").appending(qty.int.string)
         priceLabel.text = ((model.retail_price?.float() ?? 0) * qty).string.formatMoney().dolar
       }else {
-        productNameLabel.text = model.name
+        productNameLabel.text = model.alias
         priceLabel.text = model.price?.formatMoney().dolar
       }
       

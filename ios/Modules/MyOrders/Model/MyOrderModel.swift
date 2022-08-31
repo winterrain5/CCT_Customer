@@ -10,7 +10,7 @@ import UIKit
 class OrderLines :Codable {
   var qty: String?
   var name: String?
-  
+  var alias: String?
 }
 
 class MyOrderModel: Codable {

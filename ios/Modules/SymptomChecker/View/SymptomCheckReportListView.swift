@@ -114,7 +114,7 @@ class SymptomCheckReportListView: UIView ,UITableViewDelegate,UITableViewDataSou
       cell.model = datas[indexPath.row]
     }
     cell.deleteHandler = { [weak self] model in
-      UIViewController.getTopVc()?.showAlert(title: "Are you sure you want to delete this report", message: "You won’t be able to retrieve it", buttonTitles: ["Cancle","Confirm"], highlightedButtonIndex: 0, completion: { id in
+      UIViewController.getTopVc()?.showAlert(title: "Are you sure you want to delete this report", message: "You won’t be able to retrieve it", buttonTitles: ["Cancel","Confirm"], highlightedButtonIndex: 0, completion: { id in
         if id == 1 {
           Toast.showLoading()
           let params = SOAPParams(action: .SymptomCheck, path: .deleteSymptomReportById)

@@ -27,6 +27,7 @@ class WalletTranscationModel: Codable  {
   var payments: [Payments]?
   var balance: String?
   var first_product_name: String?
+  var first_product_alias_name: String?
   var type: String?
   var product_name: String?
   var id: String?

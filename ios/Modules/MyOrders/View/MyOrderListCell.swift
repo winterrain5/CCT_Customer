@@ -15,7 +15,7 @@ class MyOrderListCell: UITableViewCell {
     didSet {
       let attr = NSMutableAttributedString()
       model.order_lines?.forEach({ product in
-        attr.append(self.createProductInfo(product.qty?.removingSuffix(".00") ?? "", product.name ?? ""))
+        attr.append(self.createProductInfo(product.qty?.removingSuffix(".00") ?? "", product.alias ?? ""))
       })
       productsLabel.attributedText = attr
       

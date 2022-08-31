@@ -35,6 +35,7 @@ class OrderLineInfo :BaseModel,Codable {
   var doctor_first_name: String?
   var discount_amount2: String?
   var name: String?
+  var alias: String?
   var product_category: String?
   var cooperator_first_name: String?
   var tax_rate_type: String?

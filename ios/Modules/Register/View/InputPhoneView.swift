@@ -142,7 +142,7 @@ class InputPhoneView: UIView,UITextFieldDelegate {
       confirm = "Call now";
     }
     
-    AlertView.show(title: title, message: info, leftButtonTitle: "Cancle", rightButtonTitle: confirm, messageAlignment: .center) {
+    AlertView.show(title: title, message: info, leftButtonTitle: "Cancel", rightButtonTitle: confirm, messageAlignment: .center) {
       
     } rightHandler: {
       

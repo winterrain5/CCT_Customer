@@ -20,7 +20,7 @@ class WalletTransactionCell: UITableViewCell {
       invoiceNoLabel.text = "#" + (model.invoice_no ?? "")
       
       if model.product_category != "9" {
-        productNameLabel.text = model.first_product_name
+        productNameLabel.text = model.first_product_alias_name
       }else {
         productNameLabel.text = "Top Up"
       }

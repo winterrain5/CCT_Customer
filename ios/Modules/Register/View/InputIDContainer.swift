@@ -99,7 +99,7 @@ class InputIDContainer: UIView ,UITextFieldDelegate{
     let title = "You seem to have a  duplicate Identification No."
     let info = "Unable to proceed with registration, please approach our counter staff or call 62933933"
     let confirm = "Call now"
-    AlertView.show(title: title, message: info, leftButtonTitle: "Cancle", rightButtonTitle: confirm, messageAlignment: .center) {
+    AlertView.show(title: title, message: info, leftButtonTitle: "Cancel", rightButtonTitle: confirm, messageAlignment: .center) {
       
     } rightHandler: {
       CallUtil.call(with: "62933933")

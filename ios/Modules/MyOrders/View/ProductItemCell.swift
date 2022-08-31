@@ -28,7 +28,7 @@ class ProductItemCell: UITableViewCell {
       
       numLabel.text = (model.qty?.removingSuffix(".00") ?? "") + " x"
       productImageView.yy_setImage(with: model.picture?.asURL, options: .setImageWithFadeAnimation)
-      nameLabel.text = model.name
+      nameLabel.text = model.alias
 
       priceWCons.constant = priceLabel.sizeThatFits(CGSize(width: CGFloat.infinity, height: 20)).width
       layoutIfNeeded()

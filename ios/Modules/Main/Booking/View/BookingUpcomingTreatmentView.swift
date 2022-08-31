@@ -42,6 +42,7 @@ class BookingUpcomingTreatmentView: UIView {
         dateLabel.text = date.string(withFormat: "dd MMM yyyy,EEE - ").appending(date.timeString(ofStyle: .short))
         isCanCheckIn = date.isInToday
       }
+      locationLabel.text = upcoming.location_name
       self.updateCheckinButtonStatus()
       self.updateRemarkData(upcoming.remark)
       layoutIfNeeded()
@@ -58,6 +59,7 @@ class BookingUpcomingTreatmentView: UIView {
         dateLabel.text = date.string(withFormat: "dd MMM yyyy,EEE - ").appending(date.timeString(ofStyle: .short))
         isCanCheckIn = date.isInToday
       }
+      locationLabel.text = today.location_name
       self.updateCheckinButtonStatus()
       self.updateRemarkData(today.remark)
       layoutIfNeeded()
@@ -104,7 +106,7 @@ class BookingUpcomingTreatmentView: UIView {
     super.layoutSubviews()
     corner(byRoundingCorners: [.topRight,.topLeft], radii: 16)
     shadowV3TopCons.constant = shadowView4.height + 16
-    updateHeightHandler?(checkinButton.frame.maxY + 40 + kBottomsafeAreaMargin)
+    updateHeightHandler?(checkinButton.frame.maxY + 80 + kBottomsafeAreaMargin)
   }
   
   func updateRemarkData(_ remark:String) {

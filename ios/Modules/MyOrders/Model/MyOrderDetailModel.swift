@@ -52,6 +52,7 @@ class OrderLineInfo :BaseModel,Codable {
   var doctor_last_name: String?
   var responsible_doctor: String?
   var delivery_location_name: String?
+  var location_alias_name: String?
   var return_qty: String?
   var employee_first_name: String?
   var discount2: String?
@@ -92,9 +93,16 @@ class OrderLineInfo :BaseModel,Codable {
   
   var transactionDetailCellHeight:CGFloat? {
     get {
-      let discountH = discountName.heightWithConstrainedWidth(width: kScreenWidth - 134, font: UIFont(name:.AvenirNextRegular,size:14))
-      let nameHeight = name?.heightWithConstrainedWidth(width: kScreenWidth - 80 - 48, font: UIFont(name: .AvenirNextDemiBold, size:14)) ?? 0
-      return totalDiscount > 0 ? (nameHeight + discountH + 48) : (nameHeight + 32)
+      var discountH:CGFloat = 0
+      if !discountName.isEmpty {
+        discountH = discountName.heightWithConstrainedWidth(width: kScreenWidth - 134, font: UIFont(name:.AvenirNextRegular,size:14))
+      }
+      var subOrderH:CGFloat = 0
+      if subOrderInfo.count > 0 {
+        subOrderH = subOrderInfo.reduce(5, { $0 + ("    ".appending($1.alias ?? "").heightWithConstrainedWidth(width: kScreenWidth - 134, font: UIFont(name:.AvenirNextRegular,size:14))) })
+      }
+      let nameHeight = alias?.heightWithConstrainedWidth(width: kScreenWidth - 80 - 48, font: UIFont(name: .AvenirNextDemiBold, size:14)) ?? 0
+      return totalDiscount > 0 ? CGFloat((nameHeight + discountH + 48)) : ( subOrderH + nameHeight + 32)
     }
   }
   
@@ -108,7 +116,9 @@ class OrderLineInfo :BaseModel,Codable {
   var voucher_pay_code: String?
   var product_category_tag: String?
   
-
+  var combo_name: String?
+  
+  var subOrderInfo: [OrderLineInfo] = []
 }
 
 class PayVoucherInfo :BaseModel {

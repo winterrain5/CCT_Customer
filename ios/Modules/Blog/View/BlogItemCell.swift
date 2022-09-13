@@ -25,6 +25,7 @@ class BlogItemCell: UITableViewCell {
   
   var model:BlogModel! {
     didSet {
+    
       blogImageView.yy_setImage(with: model.thumbnail_img?.asURL, options: .setImageWithFadeAnimation)
       blogTitleLabel.text = model.title
       if model.has_booked {

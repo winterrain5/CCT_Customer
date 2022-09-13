@@ -13,7 +13,7 @@ class TransactionDetailController: BaseTableController {
   var footerView = TransactionDetailFooterView.loadViewFromNib()
   var transactionModel:WalletTranscationModel!
   var detailModel:MyOrderDetailModel?
-  
+  var transactions: [OrderLineInfo] = []
   convenience init(transactionModel:WalletTranscationModel) {
     self.init()
     self.transactionModel = transactionModel
@@ -40,7 +40,24 @@ class TransactionDetailController: BaseTableController {
     
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(MyOrderDetailModel.self, from: data) {
-        self.detailModel = model
+        
+        model.Order_Line_Info?.forEach({ item in
+          if(item.product_category != "12" && item.product_category  != "13") {
+            self.transactions.append(item)
+          }
+        })
+    
+        let packageOrderInfo = OrderLineInfo()
+        let subOrders = model.Order_Line_Info?.filter({ $0.product_category == "13" || $0.product_category == "12" }) ?? []
+        packageOrderInfo.subOrderInfo = subOrders
+        if subOrders.count > 0 {
+          packageOrderInfo.alias = subOrders[0].combo_name
+          packageOrderInfo.retail_price = packageOrderInfo.subOrderInfo.reduce(0, { $0 + ($1.retail_price?.float() ?? 0) * ($1.qty?.float() ?? 0) }).string
+          
+          self.transactions.append(packageOrderInfo)
+        }
+       
+        
         self.headerView.model = model
         self.footerView.model = model
         self.tableView?.reloadData()
@@ -54,7 +71,7 @@ class TransactionDetailController: BaseTableController {
   }
   
   override func createListView() {
-    super.createListView()
+    configTableview(.grouped)
     
     tableView?.separatorStyle = .singleLine
     tableView?.separatorColor = R.color.grayf2()
@@ -69,19 +86,16 @@ class TransactionDetailController: BaseTableController {
       self?.footerView.height = height
       self?.tableView?.tableFooterView = self?.footerView
     }
-    tableView?.rowHeight = UITableView.automaticDimension
-    tableView?.estimatedRowHeight = 80
-    
     tableView?.register(cellWithClass: TransactionDetailCell.self)
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.detailModel?.Order_Line_Info?.count ?? 0
+    return self.transactions.count
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    if self.detailModel?.Order_Line_Info?.count ?? 0 > 0 {
-      return self.detailModel?.Order_Line_Info?[indexPath.row].transactionDetailCellHeight ?? 0
+    if self.transactions.count > 0 {
+      return self.transactions[indexPath.row].transactionDetailCellHeight ?? 0
     }
     
     return 0
@@ -89,8 +103,8 @@ class TransactionDetailController: BaseTableController {
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withClass: TransactionDetailCell.self)
-    if self.detailModel?.Order_Line_Info?.count ?? 0 > 0 {
-      cell.model = self.detailModel?.Order_Line_Info?[indexPath.row]
+    if self.transactions.count > 0 {
+      cell.model = self.transactions[indexPath.row]
     }
     return cell
   }
@@ -182,9 +196,8 @@ class TransactionDetailCell: UITableViewCell {
         priceLabel.text = ((model.retail_price?.float() ?? 0) * qty).string.formatMoney().dolar
       }else {
         productNameLabel.text = model.alias
-        priceLabel.text = model.price?.formatMoney().dolar
+        priceLabel.text = model.retail_price?.formatMoney().dolar
       }
-      
       
 
       if model.totalDiscount > 0 {
@@ -193,8 +206,15 @@ class TransactionDetailCell: UITableViewCell {
         discountLabel.isHidden = false
         discountHeadLabel.isHidden = false
       }else {
-        discountLabel.isHidden = true
-        discountHeadLabel.isHidden = true
+        if model.subOrderInfo.count > 0 {
+          discountHeadLabel.text = model.subOrderInfo.reduce("", { $0 + "    ".appending($1.alias?.appending("\n") ?? "")}).removingSuffix("\n")
+          discountLabel.isHidden = true
+          discountHeadLabel.isHidden = false
+        }else {
+          discountLabel.isHidden = true
+          discountHeadLabel.isHidden = true
+        }
+       
       }
       
     }

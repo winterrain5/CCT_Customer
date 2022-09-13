@@ -246,6 +246,8 @@ enum API:String {
   // 非指定预约检查是否可以预约
   case  checkRandomBookService = "checkRandomBookService"
   
+  case checkSubmitService = "checkSubmitService"
+  
   // 非指定预约保存
   case  saveAppRandonData = "saveAppRandonData"
   

@@ -179,7 +179,6 @@ class VerificationCodeController: BaseViewController {
       data.set(key: "client_id", value: clientId)
     }
     
-    
     params.set(key: "params", value: data.result, type: .map(1))
     
     NetworkManager().request(params: params) { data in

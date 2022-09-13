@@ -23,7 +23,7 @@ class UpcomingSessionCell: UICollectionViewCell {
       let date = model.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
       timeLabel.text = date?.timeString(ofStyle: .short)
       dateLabel.text = date?.string(withFormat: "dd MMM yyyy,EEE")
-      locationLabel.text = model.location_name
+      locationLabel.text = model.location_alias_name.isEmpty ? model.location_name : model.location_alias_name
       nameLabel.text = model.alias_name
       employeeNameLabel.text = model.employee_first_name + " " + model.employee_last_name
       employeeView.isHidden = model.staff_is_random == "1"

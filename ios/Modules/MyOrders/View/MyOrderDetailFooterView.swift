@@ -70,9 +70,10 @@ class MyOrderDetailFooterView: UIView {
       if (freight == 0) {
 
         if (model.Order_Line_Info?.count ?? 0 > 0) {
-
-          local_title = "Self Collection @" + (model.Order_Line_Info?[0].delivery_location_name ?? "");
-          address = (model.Order_Line_Info?[0].delivery_location_address ?? "");
+          let orderInfo = model.Order_Line_Info?[0]
+          let locationName = (orderInfo?.location_alias_name?.isEmpty ?? false) ? orderInfo?.delivery_location_name : orderInfo?.location_alias_name
+          local_title = "Self Collection @" + (locationName ?? "")
+          address = orderInfo?.delivery_location_address ?? ""
           
         }else {
 

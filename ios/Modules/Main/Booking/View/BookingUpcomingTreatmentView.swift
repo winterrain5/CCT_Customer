@@ -42,7 +42,7 @@ class BookingUpcomingTreatmentView: UIView {
         dateLabel.text = date.string(withFormat: "dd MMM yyyy,EEE - ").appending(date.timeString(ofStyle: .short))
         isCanCheckIn = date.isInToday
       }
-      locationLabel.text = upcoming.location_name
+      locationLabel.text = upcoming.location_alias_name.isEmpty ? upcoming.location_name : upcoming.location_alias_name
       self.updateCheckinButtonStatus()
       self.updateRemarkData(upcoming.remark)
       layoutIfNeeded()
@@ -59,7 +59,7 @@ class BookingUpcomingTreatmentView: UIView {
         dateLabel.text = date.string(withFormat: "dd MMM yyyy,EEE - ").appending(date.timeString(ofStyle: .short))
         isCanCheckIn = date.isInToday
       }
-      locationLabel.text = today.location_name
+      locationLabel.text = today.location_alias_name.isEmpty ? today.location_name : today.location_alias_name
       self.updateCheckinButtonStatus()
       self.updateRemarkData(today.remark)
       layoutIfNeeded()

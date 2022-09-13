@@ -14,6 +14,7 @@ class BookingUpComingModel: BaseModel{
   var total: String = ""
   var therapy_start_date: String = ""
   var location_name: String = ""
+  var location_alias_name: String = ""
   var duration: String = ""
   var service_name: String = ""
   var wellness_treatment_type: String = ""

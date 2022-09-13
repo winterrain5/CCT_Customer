@@ -29,7 +29,7 @@ class BookingUpComingCell: UITableViewCell {
         weeklabel.text = dateformates[3].uppercased()
         timeLabel.text = date?.timeString(ofStyle: .short)
       }
-      locationLabel.text = model.location_name
+      locationLabel.text = model.location_alias_name.isEmpty ? model.location_name : model.location_alias_name
       nameLabel.text = model.alias_name
       if model.staff_is_random == "2" {
         staffView.isHidden = false

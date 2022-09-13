@@ -19,6 +19,7 @@ class BlogModel :BaseModel,Codable {
   var filter_keys: String?
   var thumbnail_img: String?
   var location_name: String?
+  var location_alias_name: String?
   var filters: [BlogFilterLabel]?
   var company_id: String?
   var release_location: String?

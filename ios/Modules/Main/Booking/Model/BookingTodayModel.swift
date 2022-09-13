@@ -17,6 +17,7 @@ class BookingTodayModel: BaseModel {
   var duration_mins = ""
   var queue_count: String = ""
   var location_name: String = ""
+  var location_alias_name: String = ""
   var booking_staff_id: String = ""
   var location_id: String = ""
   var therapy_start_date: String = ""

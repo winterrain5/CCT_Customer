@@ -111,7 +111,7 @@ class ConfirmSessionContainer: UIView {
       
       
       dateLabel.text = date?.string(withFormat: "dd MMM yyyy,EEE")
-      locationLabel.text = todayModel.location_name
+      locationLabel.text = todayModel.location_alias_name.isEmpty ? todayModel.location_name : todayModel.location_alias_name
       employeeNameLabel.text = todayModel.staff_name
       
       if let user = Defaults.shared.get(for: .userModel) {

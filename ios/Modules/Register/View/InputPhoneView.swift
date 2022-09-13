@@ -94,7 +94,8 @@ class InputPhoneView: UIView,UITextFieldDelegate {
     let mapParams = SOAPParams(action: .Sms, path: .sendSmsForMobile)
     
     let params = SOAPDictionary()
-    params.set(key: "title", value: "Sign in")
+    params.set(key: "title", value: "Sign up")
+    
     params.set(key: "mobile", value: mobile)
     
     self.otpCode = Int.random(in: 1001...9999).string
@@ -125,6 +126,9 @@ class InputPhoneView: UIView,UITextFieldDelegate {
   
   /// 0: 多个用户 1：手机端已注册
   func showErrorAlert(errorType:Int) {
+    
+    self.sendOTPButton.stopAnimation()
+    
     var title = ""
     var info = ""
     var confirm = ""

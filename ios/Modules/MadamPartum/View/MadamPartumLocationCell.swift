@@ -18,7 +18,7 @@ class MadamPartumLocationCell: UITableViewCell {
   var model:MadamPartumLocationModel! {
     didSet {
       nameLabel.text = model.name
-      locationLabel.text = model.address
+      locationLabel.text = (model.alias_name?.isEmpty ?? false) ? model.address : model.alias_name
       
       let mTf = "Mon to Fri - \(model.mon_fri_start ?? "")am to \(model.mon_fri_end ?? "")pm"
       let ssp = "Sat,Sun,PH - \(model.sat_sun_start ?? "")am to \(model.sat_sun_end ?? "")"

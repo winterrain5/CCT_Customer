@@ -646,7 +646,7 @@ extension BookingAppointmentController {
       sender.stopAnimation()
       let flag = String(data: data, encoding: .utf8)?.int ?? 1
       if flag == 0 {
-        self.confirm()
+        self.checkSubmitService(sender: sender)
       }else {
         AlertView.show(message: "Another appointment with a similar time slot has been created. Please select another day or time.")
       }
@@ -679,7 +679,7 @@ extension BookingAppointmentController {
       sender.stopAnimation()
       let flag = String(data: data, encoding: .utf8)?.int ?? 1
       if flag == 0 {
-        self.confirm()
+        self.checkSubmitService(sender: sender)
       }else {
         AlertView.show(message: "Unable to make an appointment in the current time period. Please select another day or time.")
       }
@@ -712,6 +712,42 @@ extension BookingAppointmentController {
       AlertView.show(message: "Another appointment with a similar time slot has been created. Please select another day or time.")
     }
     
+  }
+  
+  func checkSubmitService(sender:LoadingButton) {
+    let params = SOAPParams(action: .BookingOrder, path: .checkSubmitService)
+    if self.type ==  .Therapist {
+      params.set(key: "staffId", value: self.selectedEmployee?.employee_id ?? "")
+    }else {
+      params.set(key: "staffId", value: 0)
+    }
+    
+    let startTime = self.selectedDate?.appending(" ").appending(self.selectedTime ?? "").appending(":00") ?? ""
+    params.set(key: "start", value: self.selectedDate?.appending(" ").appending(self.selectedTime ?? "").appending(":00") ?? "")
+    
+    let duration = selectedService?.duration.int ?? 0
+    let endTime = startTime.dateTime?.addingTimeInterval(TimeInterval(duration * 60)).string(withFormat: "yyyy-MM-dd HH:mm:ss") ?? ""
+    params.set(key: "end", value: endTime)
+    
+    params.set(key: "locationId", value: selectCompany?.id ?? "")
+    
+    params.set(key: "bookDate", value: self.selectedDate ?? "")
+    params.set(key: "bookServiceId", value: selectedService?.id ?? "")
+    params.set(key: "gender", value: Defaults.shared.get(for: .userModel)?.gender ?? "")
+    
+    NetworkManager().request(params: params) { data in
+      sender.stopAnimation()
+      let flag = String(data: data, encoding: .utf8)?.int ?? 0
+      if flag == 1 {
+        self.confirm()
+      }else {
+        AlertView.show(message: "Unable to make an appointment in the current time period. Please select another day or time.")
+      }
+      
+    } errorHandler: { e in
+      sender.stopAnimation()
+      AlertView.show(message: "Unable to make an appointment in the current time period. Please select another day or time.")
+    }
   }
   
   func getLastSymptomCheckReport() {

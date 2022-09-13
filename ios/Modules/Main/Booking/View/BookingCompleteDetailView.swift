@@ -45,7 +45,7 @@ class BookingCompleteDetailView: UIView,UITableViewDelegate,UITableViewDataSourc
         dateLabel.text = date.string(withFormat: "dd MMM yyyy,EEE - ").appending(date.timeString(ofStyle: .short))
       }
       
-      locationLabel.text = complete.location_name
+      locationLabel.text = complete.location_alias_name.isEmpty ? complete.location_name : complete.location_alias_name
       layoutIfNeeded()
     }
   }

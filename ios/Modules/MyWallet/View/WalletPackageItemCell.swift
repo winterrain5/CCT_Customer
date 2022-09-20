@@ -16,7 +16,7 @@ class WalletPackageItemCell: UICollectionViewCell {
   var package:WalletPackagesModel! {
     didSet {
       titleLabel.text = package.type
-      descLabel.text = package.name
+      descLabel.text = package.alias
       imageView.yy_setImage(with: package.thumbnail_img.asURL, options: .setImageWithFadeAnimation)
       expiresDateLabel.text = "(Expires \(package.expiry_period_date.date(withFormat: "yyyy-MM-dd")?.string(withFormat: "dd MMM yyyy") ?? ""))"
       let str = "Sessions Remaining: \(package.item.count)"

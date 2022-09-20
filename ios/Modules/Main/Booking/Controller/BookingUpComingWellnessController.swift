@@ -53,8 +53,13 @@ class BookingUpComingWellnessController: BaseViewController {
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(CompanyModel.self, from: data) {
         self.contentView.company = model
-        self.contentView.upcoming = self.upcoming
-        self.contentView.today = self.today
+        if let upcoming = self.upcoming {
+          self.contentView.upcoming = upcoming
+        }
+        if let today = self.today {
+          self.contentView.today = today
+        }
+        
       }
       self.view.hideSkeleton()
     } errorHandler: { e in

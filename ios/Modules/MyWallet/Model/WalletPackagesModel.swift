@@ -17,6 +17,7 @@ class Item :BaseModel {
 
 class WalletPackagesModel :BaseModel {
   var name: String = ""
+  var alias: String = ""
   var expiry_period_date: String = ""
   var create_date: String = ""
   var thumbnail_img: String = ""

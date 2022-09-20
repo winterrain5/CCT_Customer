@@ -818,9 +818,11 @@ extension BookingAppointmentController {
   func confirm() {
     let params = ConfirmSessionModel()
     
+    guard let company = self.selectCompany else { return }
+    
     params.time = self.models.filter({ $0.type == .timeSlot }).first?.title ?? ""
     params.date = self.models.filter({ $0.type == .date }).first?.title ?? ""
-    params.location = self.selectCompany?.name ?? ""
+    params.location = company.alias_name.isEmpty ? company.name : company.alias_name
     
     if let user = Defaults.shared.get(for: .userModel) {
       params.user_name = user.first_name + " " + user.last_name
@@ -829,8 +831,8 @@ extension BookingAppointmentController {
       params.user_passport = user.card_number
     }
     
-    params.outlet_id = selectCompany?.id.string ?? ""
-    params.outlet_address = selectCompany?.address ?? ""
+    params.outlet_id = company.id.string
+    params.outlet_address = company.address
     params.remark = self.models.filter({ $0.type == .note }).first?.title ?? ""
     params.service_type = self.type
     params.business_id = selectedEmployee?.employee_id ?? ""

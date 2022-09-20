@@ -30,6 +30,9 @@ class ShopCheckOutController: BaseTableController {
         if vc is ShopViewController {
           self.navigationController?.popToViewController(vc, animated: true)
         }
+        if vc is MadamPartumController {
+          self.navigationController?.popToViewController(vc, animated: true)
+        }
       })
     }
     

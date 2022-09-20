@@ -61,6 +61,7 @@ class BookingUpComingWellnessView: UIView {
       }
       employeeView.isHidden = today.staff_is_random == "1"
       employeeNameLabel.text = today.staff_name
+      locationLabel.text = today.location_alias_name.isEmpty ? today.location_name : today.location_alias_name
       shaowV1HCons.constant = today.staff_is_random == "1" ? 80 : 108
       self.updateCheckinButtonStatus()
       self.updateRemarkData(today.remark)

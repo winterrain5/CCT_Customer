@@ -71,7 +71,7 @@ class TransactionDetailController: BaseTableController {
   }
   
   override func createListView() {
-    configTableview(.grouped)
+    super.createListView()
     
     tableView?.separatorStyle = .singleLine
     tableView?.separatorColor = R.color.grayf2()
@@ -108,6 +108,9 @@ class TransactionDetailController: BaseTableController {
     }
     return cell
   }
+  
+  
+  
   
 }
 

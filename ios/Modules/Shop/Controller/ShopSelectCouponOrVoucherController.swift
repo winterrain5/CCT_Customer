@@ -23,7 +23,7 @@ class ShopSelectCouponOrVoucherController: BaseTableController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.navigation.item.title = selectType == 0 ? "Coupon" : "Voucher"
+    self.navigation.item.title = selectType == 0 ? "Voucher" : "Coupon"
     refreshData()
   }
   

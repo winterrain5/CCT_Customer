@@ -239,7 +239,7 @@
                 <outlet property="totalItemsLabel" destination="05j-VL-FC4" id="EDD-Ub-DgS"/>
                 <outlet property="totalPriceLabel" destination="3YG-RF-irH" id="RAJ-4m-IeA"/>
             </connections>
-            <point key="canvasLocation" x="-283" y="-107"/>
+            <point key="canvasLocation" x="-94" y="-107"/>
         </view>
     </objects>
     <resources>

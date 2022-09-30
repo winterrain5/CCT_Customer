@@ -111,6 +111,8 @@
 		45DBB9072859D9C50063EF4E /* DeclarationFormFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45DBB9062859D9C50063EF4E /* DeclarationFormFootView.xib */; };
 		45DF033C28A3A6280060A224 /* WalletPackageItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DF033A28A3A6280060A224 /* WalletPackageItemCell.swift */; };
 		45DF033D28A3A6280060A224 /* WalletPackageItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45DF033B28A3A6280060A224 /* WalletPackageItemCell.xib */; };
+		45E36BCB28E534E2009C78C7 /* HomeServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E36BCA28E534E2009C78C7 /* HomeServiceViewController.swift */; };
+		45E36BCD28E544E6009C78C7 /* HomeServiceFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E36BCC28E544E5009C78C7 /* HomeServiceFooterView.swift */; };
 		45F0D81D28A23C71006B4124 /* WalletPackagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F0D81C28A23C71006B4124 /* WalletPackagesModel.swift */; };
 		45F0D82028A23EAA006B4124 /* WalletPackagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F0D81E28A23EAA006B4124 /* WalletPackagesCell.swift */; };
 		45F0D82128A23EAA006B4124 /* WalletPackagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45F0D81F28A23EAA006B4124 /* WalletPackagesCell.xib */; };
@@ -863,6 +865,8 @@
 		45DBB9062859D9C50063EF4E /* DeclarationFormFootView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeclarationFormFootView.xib; sourceTree = "<group>"; };
 		45DF033A28A3A6280060A224 /* WalletPackageItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPackageItemCell.swift; sourceTree = "<group>"; };
 		45DF033B28A3A6280060A224 /* WalletPackageItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletPackageItemCell.xib; sourceTree = "<group>"; };
+		45E36BCA28E534E2009C78C7 /* HomeServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServiceViewController.swift; sourceTree = "<group>"; };
+		45E36BCC28E544E5009C78C7 /* HomeServiceFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServiceFooterView.swift; sourceTree = "<group>"; };
 		45F0D81C28A23C71006B4124 /* WalletPackagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPackagesModel.swift; sourceTree = "<group>"; };
 		45F0D81E28A23EAA006B4124 /* WalletPackagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPackagesCell.swift; sourceTree = "<group>"; };
 		45F0D81F28A23EAA006B4124 /* WalletPackagesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletPackagesCell.xib; sourceTree = "<group>"; };
@@ -3236,6 +3240,7 @@
 				455E9EA2285C5C86004471C4 /* BookingUpcomingTreatmentController.swift */,
 				457CBA87283615FE00AE26D8 /* BookingCompleteDetailController.swift */,
 				45DA0E69285C4EDF00056132 /* BookingInProgressController.swift */,
+				45E36BCA28E534E2009C78C7 /* HomeServiceViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3256,6 +3261,7 @@
 				457CBA8B2836163E00AE26D8 /* BookingCompleteDetailView.xib */,
 				45DA0E6B285C4EF100056132 /* BookingInProgressView.swift */,
 				45DA0E6D285C4F0000056132 /* BookingInProgressView.xib */,
+				45E36BCC28E544E5009C78C7 /* HomeServiceFooterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4018,6 +4024,7 @@
 				4998C0E42784427F00A881D5 /* ConstraintConstantTarget.swift in Sources */,
 				49781BDE27BE2F33006F93DF /* ProductItemCell.swift in Sources */,
 				4998C09C2783F86500A881D5 /* UIView_Extension.swift in Sources */,
+				45E36BCD28E544E6009C78C7 /* HomeServiceFooterView.swift in Sources */,
 				4998C013277EF51200A881D5 /* UIViewExtensions.swift in Sources */,
 				49FC8EBF27914BE900157292 /* SymptomCheckReportCell.swift in Sources */,
 				495649D9281935BF00091533 /* SwiftFitSize.swift in Sources */,
@@ -4091,6 +4098,7 @@
 				49BB3C59278C2C2C00AC34A0 /* BlogBookmarkRemoveSheetView.swift in Sources */,
 				49F17C6528080DF200FCBC87 /* ShopCartFooterView.swift in Sources */,
 				4998C027277EF51200A881D5 /* SCNMaterialExtensions.swift in Sources */,
+				45E36BCB28E534E2009C78C7 /* HomeServiceViewController.swift in Sources */,
 				45792076284EF80E008CD008 /* InputAccountContainer.swift in Sources */,
 				4998BF48277ED43500A881D5 /* DKEmptyDataView+Extension.swift in Sources */,
 				4904C3DE2806BCE2008FE5A5 /* ShopDetailHeadContainer.swift in Sources */,
@@ -4466,7 +4474,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-webview\"",
 					/usr/lib/swift,
 				);
-				MARKETING_VERSION = 1.0.8;
+				MARKETING_VERSION = 1.0.9;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -4503,7 +4511,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.8;
+				MARKETING_VERSION = 1.0.9;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

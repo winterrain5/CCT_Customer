@@ -282,7 +282,7 @@ enum API:String {
   /// 验证推荐码是否存在
   case checkReferralCodeExists = "checkReferralCodeExists"
   /// 获取折扣用于注册时赠送顾客
-  case getDiscountForRegister = "getDiscountForRegister"
+  case getSpecForRegister = "getSpecForRegister"
   
   //获取客户产前问卷信息
   case getPrePartumItems = "getPrePartumItems"
@@ -294,6 +294,8 @@ enum API:String {
   case getTAllItems = "getTAllItems"
   /// 修改某次服务的状态并给看诊服务排队号
   case changeTStatus = "changeTStatus"
+  case saveQuestionStatus = "saveQuestionStatus"
+  case getAppOrderDetail = "getAppOrderDetail"
   
   /// 获取app 版本信息
   case getAll = "getAll"

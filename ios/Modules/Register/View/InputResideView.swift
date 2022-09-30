@@ -83,19 +83,12 @@ class InputResideView: UIView,UITextFieldDelegate {
   
   func getFreeDiscountsForClient() {
     self.nextButon.startAnimation()
-    let params = SOAPParams(action: .RewardDiscounts, path: .getDiscountForRegister)
-    params.set(key: "name", value: "New Client")
-    params.set(key: "value", value: "0.1")
+    let params = SOAPParams(action: .RewardDiscounts, path: .getSpecForRegister)
+
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(DiscountModel.self, from: data) {
         self.registInfo?.present_reward_discount_id = model.id
-        if self.registInfo?.referralCode.isEmpty ?? false {
-          self.save()
-        }else {
-          self.getFreeGiftByValue()
-        }
-      }else {
-        self.getFreeGiftByValue()
+        self.save()
       }
     } errorHandler: { e in
       self.nextButon.stopAnimation()
@@ -103,21 +96,7 @@ class InputResideView: UIView,UITextFieldDelegate {
 
   }
   
-  func getFreeGiftByValue() {
-    let params = SOAPParams(action: .RewardDiscounts, path: .getFixedDiscount)
-    params.set(key: "value", value: "5")
-    NetworkManager().request(params: params) { data in
-      if let model = DecodeManager.decodeObjectByHandJSON(FreeGiftModel.self, from: data) {
-        self.registInfo?.present_cash_voucher = model.id
-        self.registInfo?.present_invite_cash_voucher = model.id
-        self.save()
-      }else {
-        self.save()
-      }
-    } errorHandler: { e in
-      self.nextButon.stopAnimation()
-    }
-  }
+
   
   func save() {
     let mapParams = SOAPParams(action: .Client, path: .saveTClient)
@@ -144,8 +123,8 @@ class InputResideView: UIView,UITextFieldDelegate {
     client_info.set(key: "is_vip", value: "1")
     client_info.set(key: "city", value: registInfo.city)
     client_info.set(key: "country_id", value: registInfo.country_id)
-    client_info.set(key: "present_cash_voucher", value: registInfo.present_cash_voucher)
-    client_info.set(key: "present_invite_cash_voucher", value: registInfo.present_invite_cash_voucher)
+    client_info.set(key: "present_cash_voucher", value: "")
+    client_info.set(key: "present_invite_cash_voucher", value: "")
     client_info.set(key: "invite_code", value: registInfo.referralCode)
     client_info.set(key: "present_reward_discount", value: registInfo.present_reward_discount_id)
     client_info.set(key: "cct_or_mp", value: registInfo.isCustomer)

@@ -256,12 +256,26 @@ class PostPartumDeclarationController: BaseTableController {
     
     sender.startAnimation()
     NetworkManager().request(params: mapParams) { data in
-      self.chanageTStatus(sender)
+      self.saveQuestionStatus(sender)
     } errorHandler: { e in
       sender.stopAnimation()
     }
 
   }
+  
+  func saveQuestionStatus(_ sender: LoadingButton) {
+    let params = SOAPParams(action: .BookingOrder, path: .saveQuestionStatus)
+    params.set(key: "bookingId", value: bookedService.id)
+    params.set(key: "status", value: 2)
+    NetworkManager().request(params: params) { data in
+      if let result = JSON.init(from: data)?.stringValue, result == "1" {
+        self.chanageTStatus(sender)
+      }
+    } errorHandler: { e in
+      
+    }
+  }
+  
   
   func chanageTStatus(_ sender:LoadingButton) {
     let mapParams = SOAPParams(action: .BookingOrder, path: .changeTStatus)

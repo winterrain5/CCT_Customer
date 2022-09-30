@@ -183,13 +183,13 @@ class HomeViewController: BaseViewController {
         }else if(array2.count == 2){
           lastesVersion = array2[0]!*100 + array2[1]!*10
         }
-       
+        
         if lastesVersion == 0 { // first version
           Defaults.shared.set(true, for: .isReview)
           self.contentView.updateKingKongData(true)
           return
         }
-       
+        
         if lastesVersion < currentVersion { // 后台版本小于当前版本 则为在审核中
           Defaults.shared.set(true, for: .isReview)
           self.contentView.updateKingKongData(true)
@@ -296,21 +296,67 @@ extension HomeViewController: QRScannerCodeDelegate {
     print("error:\(error.localizedDescription)")
   }
   
+  /**
+   # 二维码类型
+   BOOKING_DETAIL = 1 # 订单详情二维码，供CustomerApp扫码填写问卷（用于BookingViewSet.getBookingDetailQrCodeBytesStrById()接口）
+   PAY_ORDER = 2 # 订单支付二维码，供CustomerApp扫码进行支付（用于SaleOrderViewSet.generateOrder()接口）
+   **/
   func qrScanner(_ controller: UIViewController, scanDidComplete result: String) {
     print("result:\(result)")
     let json = JSON(parseJSON: result)
+    
+    if json["type"].stringValue == "1" { // 问卷二维码
+      let content = json["content"]
+      if content["client_id"].stringValue != Defaults.shared.get(for: .clientId) {
+        AlertView.show(message: "Sorry, this is not your questionnaire QR code, please contact the staff", messageAlignment: .left) {
+          controller.navigationController?.popViewController()
+        }
+        
+        return
+      }
+      
+      let params = ConfirmSessionModel()
+      
+      let date = content["therapy_start_date"].stringValue.date(withFormat: "yyyy-MM-dd HH:mm:ss")
+      params.time = date?.timeString(ofStyle: .short) ?? ""
+      params.date = date?.string(withFormat: "dd MMM yyyy,EEE") ?? ""
+      params.location = content["location"].stringValue
+      params.outlet_id = content["location_id"].stringValue
+      params.remark = content["remark"].stringValue
+      params.business_name = content["employee_name"].stringValue
+      params.service_type = .Therapist
+      params.service_name = content["alias_name"].stringValue
+      params.service_id = content["service_durations_id"].stringValue
+      params.duration = content["time_minutes"].stringValue
+      params.booking_id = content["booking_order_times_id"].stringValue
+      params.health_declaration_form_type = content["health_declaration_form_type"].intValue
+      params.isSyncCalendar = true
+      params.isScanQRCode = true
+      
+      let vc = ConfirmSessionController(params: params)
+      self.navigationController?.pushViewController(vc)
+      
+      return
+    }
+    
+    if json["type"].stringValue == "2" { // 订单支付二维码
+      let content = json["content"]
+      let orderId = content["sale_order_id"].stringValue
+      let sessionId = content["session_id"].stringValue
+      let vc = HomeServiceViewController(orderId: orderId, sessionId: sessionId)
+      self.navigationController?.pushViewController(vc)
+      return
+    }
+    
     let locationName = json["name"].stringValue
     let id = json["id"].stringValue
-    //    let type = json["type"].stringValue
     if scanType == .Home {
       let vc = CheckInTodaySessionController(outlet: (id:id,name:locationName))
       self.navigationController?.pushViewController(vc, completion: nil)
     }
     if scanType == .CheckIn {
-      
       let vc = ConfirmSessionController(todayModel: self.checkInSessionModel)
       self.navigationController?.pushViewController(vc, completion: nil)
-      
     }
     
     

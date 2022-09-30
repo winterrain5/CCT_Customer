@@ -28,7 +28,10 @@ class ConfirmSessionModel {
   var service_id = ""
   var duration = ""
   
+  var health_declaration_form_type = 0
+  var booking_id = ""
   var isSyncCalendar = true
+  var isScanQRCode = false
   
 }
 
@@ -129,20 +132,25 @@ class ConfirmSessionContainer: UIView {
   
   @IBAction func confirmAction(_ sender: LoadingButton) {
     if todayModel != nil {
-      changeTStatus()
+      // 1.保健 2.治疗 3.产前，4.产后
+      let formType = todayModel?.health_declaration_form_type.int ?? 0
+      
+      guard let todayModel = todayModel else {
+        return
+      }
+      changeTStatus(todayModel: todayModel, formType: formType)
     }else {
-      saveTOnlineBookingData()
+      if self.model?.isScanQRCode ?? false {
+        saveQuestionStatus()
+      } else {
+        saveTOnlineBookingData()
+      }
+      
     }
   }
   
-  func changeTStatus() {
-    // 1.保健 2.治疗 3.产前，4.产后
-    let formType = todayModel?.health_declaration_form_type.int ?? 0
-    
-    guard let todayModel = todayModel else {
-      return
-    }
-    
+  func changeTStatus(todayModel: BookingTodayModel, formType: Int) {
+   
     if formType == 1 {
       let vc = HealthCareDeclarationController(bookedService: todayModel)
       UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
@@ -163,7 +171,21 @@ class ConfirmSessionContainer: UIView {
       UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
     }
   }
-  
+  func saveQuestionStatus() {
+    let params = SOAPParams(action: .BookingOrder, path: .saveQuestionStatus)
+    params.set(key: "bookingId", value: self.model?.booking_id ?? "")
+    params.set(key: "status", value: 1)
+    NetworkManager().request(params: params) { data in
+      if let result = JSON.init(from: data)?.stringValue, result == "1" {
+        let todayModel = BookingTodayModel()
+        todayModel.location_id = self.model?.outlet_id ?? ""
+        todayModel.id = self.model?.booking_id ?? ""
+        self.changeTStatus(todayModel: todayModel, formType: self.model?.health_declaration_form_type ?? 0)
+      }
+    } errorHandler: { e in
+      
+    }
+  }
   func saveTOnlineBookingData() {
     
     var url:API!

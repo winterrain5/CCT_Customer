@@ -100,21 +100,38 @@ class TransactionDetailFooterView: UIView {
       }
       
       if model?.PayVoucher_Info?.count ?? 0 > 0 {
-        var voucherDict:[String:Float] = [:]
-        model?.PayVoucher_Info?.forEach({ info in
-          let name = info.bought_voucher_id ?? ""
+        var voucherArray: [[String:Float]] = []
+        model?.PayVoucher_Info?.enumerated().forEach({ i,info in
+          let name = info.name ?? ""
           let paid_amount = info.paid_amount?.float() ?? 0
-          if voucherDict.keys.contains(name) {
-            let new = (voucherDict[name] ?? 0) + paid_amount
-            voucherDict[name] = new
+          if voucherArray.count >= 1 {
+            guard var last = voucherArray.last else { return }
+            let preName = last.keys.first ?? ""
+            let preValue = last.values.first ?? 0
+            if name == preName {
+              last[name] = paid_amount + preValue
+              voucherArray.removeLast()
+              voucherArray.append(last)
+            }else {
+              var voucherDict:[String:Float] = [:]
+              voucherDict[name] = paid_amount
+              voucherArray.append(voucherDict)
+            }
           }else {
+            var voucherDict:[String:Float] = [:]
             voucherDict[name] = paid_amount
+            voucherArray.append(voucherDict)
           }
+         
         })
-        let view = TransactionDetailFooterPaymentMethodView()
-        let model = (title:model?.PayVoucher_Info?.first?.name ?? "",money:"-" + (voucherDict.values.first?.string.formatMoney().dolar ?? ""))
-        view.model = model
-        paymentMethodContentVIew.addSubview(view)
+        
+        voucherArray.enumerated().forEach { i,dict in
+          let view = TransactionDetailFooterPaymentMethodView()
+          let model = (title:dict.keys.first ?? "", money:"-" + (dict.values.first?.string.formatMoney().dolar ?? ""))
+          view.model = model
+          paymentMethodContentVIew.addSubview(view)
+        }
+       
       }
       
       let otherInfoH = (otherInfoContentView.subviews.count - 1) * 30 + 20

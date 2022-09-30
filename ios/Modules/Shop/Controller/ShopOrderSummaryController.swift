@@ -26,12 +26,12 @@ class ShopOrderSummaryController: BaseViewController {
     btn.titleLabel?.font = UIFont(name: .AvenirNextDemiBold, size:14)
     btn.titleForNormal = "Return to Shop"
   }
-  private var id = ""
-  // 1 myorder 2 shop
+  private var orderId = ""
+  // 1 myorder 2 shop 3 QRCode
   private var status:Int = 1
-  convenience init(id:String,status:Int = 1) {
+  convenience init(orderId:String,status:Int = 1) {
     self.init()
-    self.id = id
+    self.orderId = orderId
     self.status = status
   }
   override func viewDidLoad() {
@@ -123,7 +123,7 @@ class ShopOrderSummaryController: BaseViewController {
     Promise.init { resolver in
      
       let params = SOAPParams(action: .Sale, path: .getHistoryOrderDetails)
-      params.set(key: "orderId", value: id)
+      params.set(key: "orderId", value: orderId)
       
       NetworkManager().request(params: params) { data in
         if let model = DecodeManager.decodeObjectByHandJSON(MyOrderDetailModel.self, from: data) {

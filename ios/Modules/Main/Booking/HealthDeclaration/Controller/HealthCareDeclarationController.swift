@@ -219,11 +219,24 @@ class HealthCareDeclarationController: BaseTableController {
     
     sender.startAnimation()
     NetworkManager().request(params: mapParams) { data in
-      self.chanageTStatus(sender)
+      self.saveQuestionStatus(sender: sender)
     } errorHandler: { e in
       sender.stopAnimation()
     }
 
+  }
+  
+  func saveQuestionStatus(sender: LoadingButton) {
+    let params = SOAPParams(action: .BookingOrder, path: .saveQuestionStatus)
+    params.set(key: "bookingId", value: bookedService.id)
+    params.set(key: "status", value: 2)
+    NetworkManager().request(params: params) { data in
+      if let result = JSON.init(from: data)?.stringValue, result == "1" {
+        self.chanageTStatus(sender)
+      }
+    } errorHandler: { e in
+      
+    }
   }
   
   func chanageTStatus(_ sender:LoadingButton) {
@@ -246,4 +259,6 @@ class HealthCareDeclarationController: BaseTableController {
     }
 
   }
+  
+  
 }

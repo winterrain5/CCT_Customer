@@ -24,7 +24,7 @@ class LoginViewController: BaseViewController {
   
   func getCompanyId() {
     let params = SOAPParams(action: .SystemConfig, path: .getTConfig)
-
+    
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(SystemConfigModel.self, from: data) {
         Defaults.shared.set(model.company_id?.string ?? "97", for: .companyId)
@@ -34,7 +34,7 @@ class LoginViewController: BaseViewController {
     } errorHandler: { e in
       
     }
-
+    
   }
   
   func showScanVc() {
@@ -56,25 +56,34 @@ class LoginViewController: BaseViewController {
 }
 
 extension LoginViewController: QRScannerCodeDelegate {
-    func qrScannerDidFail(_ controller: UIViewController, error: QRCodeError) {
-        print("error:\(error.localizedDescription)")
+  func qrScannerDidFail(_ controller: UIViewController, error: QRCodeError) {
+    print("error:\(error.localizedDescription)")
+  }
+  
+  func qrScanner(_ controller: UIViewController, scanDidComplete result: String) {
+    print("result:\(result)")
+    let json = JSON(parseJSON: result)
+    
+    let type = json["type"].stringValue
+    if type == "1" || type == "2" { // 问卷
+      Toast.showMessage("Please log in and scan the code！")
+      return
     }
     
-    func qrScanner(_ controller: UIViewController, scanDidComplete result: String) {
-        print("result:\(result)")
-      
-      let json = JSON(parseJSON: result)
-      let locationName = json["name"].stringValue
-      let id = json["id"].stringValue
-//      let type = json["type"].stringValue
-//
-      let vc = EnterAccountController(isFromScanQRCode: true,outlet: (id:id,name:locationName))
-      self.navigationController?.pushViewController(vc, completion: nil)
-      Defaults.shared.set(true, for: .isLoginByScanQRCode)
-    }
     
-    func qrScannerDidCancel(_ controller: UIViewController) {
-        print("SwiftQRScanner did cancel")
-    }
+    let locationName = json["name"].stringValue
+    let id = json["id"].stringValue
+    let vc = EnterAccountController(isFromScanQRCode: true,outlet: (id:id,name:locationName))
+    self.navigationController?.pushViewController(vc, completion: nil)
+    Defaults.shared.set(true, for: .isLoginByScanQRCode)
+    
+    
+    
+    
+  }
+  
+  func qrScannerDidCancel(_ controller: UIViewController) {
+    print("SwiftQRScanner did cancel")
+  }
 }
 

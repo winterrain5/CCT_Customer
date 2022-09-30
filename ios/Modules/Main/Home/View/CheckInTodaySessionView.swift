@@ -23,7 +23,9 @@ class CheckInTodaySessionView: UIView,UICollectionViewDataSource,UICollectionVie
   var itemWidth:CGFloat = 0
   var outlet:(id:String,name:String)? {
     didSet {
-      titleLabel.text = "Registering for today at \(outlet?.name ?? "")"
+      let location = "Registering for today at \(outlet?.name ?? "")"
+      titleLabel.text = location
+      titleLabel2.text = location
     }
   }
   var models:[BookingTodayModel] = [] {
@@ -79,7 +81,9 @@ class CheckInTodaySessionView: UIView,UICollectionViewDataSource,UICollectionVie
     collectionView.register(nibWithCellClass: CheckInTodayCell.self)
     addSubview(pageControl)
     
-    timeLabel.text = Date().string(withFormat: "dd MMMM yyyy,EEE")
+    let date = Date().string(withFormat: "dd MMMM yyyy,EEE")
+    timeLabel.text = date
+    timeLabel2.text = date
     
     self.showSkeleton()
   }

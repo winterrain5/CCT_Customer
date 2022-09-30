@@ -132,6 +132,11 @@ class PayVoucherInfo :BaseModel {
   var name: String?
   var paid_amount: String?
   
+  var client_voucher_type:  String?
+  var client_gift_id: String?
+  var client_voucher_id: String?
+  var pay_method_type: String?
+  
 }
 
 class PayGiftInfo :BaseModel {
@@ -238,6 +243,7 @@ class VoucherInfo: BaseModel {
 class MyOrderDetailModel: BaseModel {
   var Order_Line_Info: [OrderLineInfo]?
   var PayVoucher_Info: [PayVoucherInfo]?
+  var pay_voucher: [PayVoucherInfo] = []
   var PayGift_Info: [PayGiftInfo]?
   var Paymethod_Info: [PaymethodInfo]?
   var Voucher_Info:[VoucherInfo]?

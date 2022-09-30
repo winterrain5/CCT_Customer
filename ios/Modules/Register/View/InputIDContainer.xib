@@ -73,7 +73,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MoY-OA-1gn">
-                            <rect key="frame" x="12" y="22" width="378" height="36"/>
+                            <rect key="frame" x="24" y="22" width="366" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="NxU-0a-SQQ">
                                     <userDefinedRuntimeAttributes>
@@ -217,7 +217,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </constraint>
-                        <constraint firstItem="MoY-OA-1gn" firstAttribute="leading" secondItem="TbB-uq-rZ8" secondAttribute="leading" constant="12" id="8mU-4o-e1P"/>
+                        <constraint firstItem="MoY-OA-1gn" firstAttribute="leading" secondItem="TbB-uq-rZ8" secondAttribute="leading" constant="24" id="8mU-4o-e1P"/>
                         <constraint firstItem="Kt9-p2-SlC" firstAttribute="leading" secondItem="TbB-uq-rZ8" secondAttribute="leading" constant="24" id="CiZ-AJ-See"/>
                         <constraint firstItem="cnd-7G-Tcp" firstAttribute="centerY" secondItem="MoY-OA-1gn" secondAttribute="centerY" id="DLk-Ef-mFV"/>
                         <constraint firstAttribute="trailing" secondItem="VAw-3N-AmA" secondAttribute="trailing" constant="24" id="GDu-Kd-cPe"/>
@@ -309,7 +309,7 @@
                 <outlet property="isCheckButton" destination="Kbq-RN-NW3" id="dBc-Wt-dhn"/>
                 <outlet property="nextButon" destination="VAw-3N-AmA" id="65l-wi-UAp"/>
             </connections>
-            <point key="canvasLocation" x="-52.173913043478265" y="7.3660714285714279"/>
+            <point key="canvasLocation" x="-654" y="23"/>
         </view>
     </objects>
     <designables>

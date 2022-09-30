@@ -11,7 +11,12 @@ class WalletTransactionSectionView: UIView {
   var model:WalletTranscationModel! {
     didSet {
       
-      let date = model.due_date?.date(withFormat: "yyyy-MM-dd")
+      var date:Date?
+      if let dueDate = model.due_date {
+        date = dueDate.date(withFormat: "yyyy-MM-dd")
+      } else if let invoceDate = model.invoice_date {
+        date = invoceDate.date(withFormat: "yyyy-MM-dd")
+      }
       if date?.isInToday ?? false {
         label.text = "Today"
       }else {

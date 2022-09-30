@@ -38,5 +38,4 @@ class WalletTranscationModel: Codable  {
   var first_name: String?
   var remark: String?
   var product_category: String?
-  
 }

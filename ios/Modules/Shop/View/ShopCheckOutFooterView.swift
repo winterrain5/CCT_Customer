@@ -1054,7 +1054,7 @@ class ShopCheckOutFooterView: UIView {
   
   func toNextVc() {
     Toast.dismiss()
-    let vc = ShopOrderSummaryController(id: orderDetail?.Order_Info?.id ?? "",status: 2)
+    let vc = ShopOrderSummaryController(orderId: orderDetail?.Order_Info?.id ?? "",status: 2)
     UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
 }

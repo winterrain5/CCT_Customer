@@ -89,6 +89,8 @@ class InputResideView: UIView,UITextFieldDelegate {
       if let model = DecodeManager.decodeObjectByHandJSON(DiscountModel.self, from: data) {
         self.registInfo?.present_reward_discount_id = model.id
         self.save()
+      } else {
+        self.save()
       }
     } errorHandler: { e in
       self.nextButon.stopAnimation()

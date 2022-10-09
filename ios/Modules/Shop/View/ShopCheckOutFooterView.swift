@@ -253,7 +253,7 @@ class ShopCheckOutFooterView: UIView {
       }else {
         coupon_discount_total = selectCoupon?.nominal_value?.cgFloat() ?? 0
       }
-      couponTitleLabel.text = "Coupon"
+      couponTitleLabel.text = "Voucher"
     }
     
     if coupon_discount_total == 0 {

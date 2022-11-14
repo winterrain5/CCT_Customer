@@ -355,6 +355,11 @@ extension HomeViewController: QRScannerCodeDelegate {
       self.navigationController?.pushViewController(vc, completion: nil)
     }
     if scanType == .CheckIn {
+      if self.checkInSessionModel.location_id != id {
+        AlertView.show(message: "The branch you scanned does not match the branch you served!")
+        controller.navigationController?.popViewController()
+        return
+      }
       let vc = ConfirmSessionController(todayModel: self.checkInSessionModel)
       self.navigationController?.pushViewController(vc, completion: nil)
     }

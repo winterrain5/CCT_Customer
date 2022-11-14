@@ -23,7 +23,7 @@ class PreConceptionDeclarationController: BaseTableController {
     self.view.backgroundColor = R.color.theamBlue()
     self.barAppearance(tintColor: .white, barBackgroundColor: R.color.theamBlue()!, image: R.image.return_left(), backButtonTitle: " Back")
     
-    footView.healthDeclarationType = 3
+    footView.healthDeclarationType = bookedService.health_declaration_form_type
     footView.confirmHander = { [weak self] sender in
       self?.savePatientResults(sender)
     }
@@ -64,7 +64,7 @@ class PreConceptionDeclarationController: BaseTableController {
       temp.append(weekNo)
       
       let dateModel = HealthDeclarationModel()
-      dateModel.formType = .Date
+      dateModel.formType = .DeliveryDate
       dateModel.description_en = "Estimated Due Date (EDD)"
       dateModel.delivery_date = a1.prePartumFields?.delivery_estimated_date ?? ""
       temp.append(dateModel)
@@ -221,7 +221,7 @@ class PreConceptionDeclarationController: BaseTableController {
     tableView?.register(nibWithCellClass: DeclarationFormFocusAreaCell.self)
     tableView?.register(nibWithCellClass: DeclarationFormInputWithOptionsCell.self)
     tableView?.register(nibWithCellClass: DeclarationRemarkCell.self)
-    tableView?.register(nibWithCellClass: DeclarationFormDateOfDeliverCell.self)
+    tableView?.register(nibWithCellClass: DeclarationFormDateCell.self)
     tableView?.estimatedRowHeight = 100
     tableView?.rowHeight = UITableView.automaticDimension
     
@@ -241,8 +241,8 @@ class PreConceptionDeclarationController: BaseTableController {
       
       if let type = model?.formType {
         switch type {
-          case .Date:
-            let cell = tableView.dequeueReusableCell(withClass: DeclarationFormDateOfDeliverCell.self)
+          case .DeliveryDate:
+            let cell = tableView.dequeueReusableCell(withClass: DeclarationFormDateCell.self)
             cell.model = model
             cell.selectionStyle = .none
             return cell
@@ -334,7 +334,7 @@ class PreConceptionDeclarationController: BaseTableController {
     base_info.set(key: "name_phone_gynecologist", value:  gynecologist_name + "/" + gynecologist_phone)
     base_info.set(key: "physician_aware_you", value: temp.filter({$0.id == "-1"}).first?.result ?? "3")
     base_info.set(key: "pregnancy_weeks", value: temp.filter({ $0.inputType == .PregnancyWeeks }).first?.text ?? "")
-    base_info.set(key: "delivery_estimated_date", value: temp.filter({ $0.formType == .Date }).first?.delivery_date ?? "")
+    base_info.set(key: "delivery_estimated_date", value: temp.filter({ $0.formType == .DeliveryDate }).first?.delivery_date ?? "")
     base_info.set(key: "is_first_massage", value: temp.filter({ $0.id == "-2" }).first?.result ?? "3")
     base_info.set(key: "has_high_risk", value: temp.filter({ $0.inputType == .HighRiskReason}).first?.result ?? "3")
     base_info.set(key: "high_risk_reasons", value: temp.filter({ $0.inputType == .HighRiskReason}).first?.text ?? "")
@@ -354,7 +354,7 @@ class PreConceptionDeclarationController: BaseTableController {
     
     sender.startAnimation()
     NetworkManager().request(params: mapParams) { data in
-      self.saveQuestionStatus(sender)
+      self.chanageTStatus(sender)
     } errorHandler: { e in
       sender.stopAnimation()
     }
@@ -363,36 +363,51 @@ class PreConceptionDeclarationController: BaseTableController {
   
   func saveQuestionStatus(_ sender: LoadingButton) {
     let params = SOAPParams(action: .BookingOrder, path: .saveQuestionStatus)
-    params.set(key: "bookingId", value: bookedService.id)
+    params.set(key: "bookingId", value: bookedService.booking_order_time_id)
     params.set(key: "status", value: 2)
     NetworkManager().request(params: params) { data in
       if let result = JSON.init(from: data)?.stringValue, result == "1" {
-        self.chanageTStatus(sender)
+        self.setRootViewController()
+      }else{
+        AlertView.show(message: "Save Question Status Failed")
+        sender.stopAnimation()
       }
     } errorHandler: { e in
-      
+      sender.stopAnimation()
     }
   }
   
+  
   func chanageTStatus(_ sender:LoadingButton) {
     let mapParams = SOAPParams(action: .BookingOrder, path: .changeTStatus)
-    mapParams.set(key: "timeId", value: bookedService.id)
+    let timeID = bookedService.booking_order_time_id.isEmpty ? bookedService.id : bookedService.booking_order_time_id
+    mapParams.set(key: "timeId", value: timeID)
     let data = SOAPDictionary()
     data.set(key: "status", value: 4)
     mapParams.set(key: "data", value: data.result,type: .map(1))
     
     NetworkManager().request(params: mapParams) { data in
       sender.stopAnimation()
-      if Defaults.shared.get(for: .isLoginByScanQRCode) == true {
-        ApplicationUtil.setRootViewController()
-      }else {
-        NotificationCenter.default.post(name: NSNotification.Name.bookingDataChanged, object: nil)
-        self.navigationController?.popToRootViewController(animated: true)
+      
+      if self.bookedService.booking_order_time_id.isEmpty {
+        self.setRootViewController()
+      } else {
+        self.saveQuestionStatus(sender)
       }
+      
+     
     } errorHandler: { e in
       sender.stopAnimation()
     }
-    
+
+  }
+  func setRootViewController() {
+    if Defaults.shared.get(for: .isLoginByScanQRCode) == true {
+      ApplicationUtil.setRootViewController()
+    }else {
+      NotificationCenter.default.post(name: NSNotification.Name.bookingDataChanged, object: nil)
+      self.navigationController?.popToRootViewController(animated: true)
+    }
   }
   
 }

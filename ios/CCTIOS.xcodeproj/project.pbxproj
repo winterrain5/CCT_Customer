@@ -13,13 +13,14 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* CCTIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CCTIOSTests.m */; };
+		45208FD028FD3BEC003084FE /* libswiftCoreGraphics.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 45208FCF28FD3BEC003084FE /* libswiftCoreGraphics.tbd */; };
 		453CD50F28598626005FEEE1 /* DeclarationFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CD50D28598626005FEEE1 /* DeclarationFormCell.swift */; };
 		453CD51028598626005FEEE1 /* DeclarationFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 453CD50E28598626005FEEE1 /* DeclarationFormCell.xib */; };
 		453CD5122859885F005FEEE1 /* DeclarationFormHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CD5112859885F005FEEE1 /* DeclarationFormHeadView.swift */; };
 		453CD51428598867005FEEE1 /* DeclarationFormHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 453CD51328598867005FEEE1 /* DeclarationFormHeadView.xib */; };
 		453CD5172859B017005FEEE1 /* PostPartumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CD5162859B017005FEEE1 /* PostPartumModel.swift */; };
-		453CD51A2859D063005FEEE1 /* DeclarationFormDateOfDeliverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CD5182859D063005FEEE1 /* DeclarationFormDateOfDeliverCell.swift */; };
-		453CD51B2859D063005FEEE1 /* DeclarationFormDateOfDeliverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 453CD5192859D063005FEEE1 /* DeclarationFormDateOfDeliverCell.xib */; };
+		453CD51A2859D063005FEEE1 /* DeclarationFormDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CD5182859D063005FEEE1 /* DeclarationFormDateCell.swift */; };
+		453CD51B2859D063005FEEE1 /* DeclarationFormDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 453CD5192859D063005FEEE1 /* DeclarationFormDateCell.xib */; };
 		454576B22845C17B007410E9 /* TellUsCondiitonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454576B12845C17B007410E9 /* TellUsCondiitonController.swift */; };
 		454C5B37283B312D001D787C /* BookingServiceFormSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454C5B36283B312D001D787C /* BookingServiceFormSheetView.swift */; };
 		454C5B3C283B77AD001D787C /* BookingServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454C5B3B283B77AD001D787C /* BookingServiceModel.swift */; };
@@ -60,6 +61,14 @@
 		458612102852E4EA00C699A8 /* FreeGiftModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586120F2852E4EA00C699A8 /* FreeGiftModel.swift */; };
 		458612122852E57400C699A8 /* SaveClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458612112852E57400C699A8 /* SaveClientModel.swift */; };
 		458612142852ECBE00C699A8 /* InputPhoneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458612132852ECBE00C699A8 /* InputPhoneController.swift */; };
+		45A02BF228F260BB00796056 /* ChildDeclarationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A02BF128F260BB00796056 /* ChildDeclarationController.swift */; };
+		45A02BF428F2751300796056 /* ChildDeclarationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A02BF328F2751300796056 /* ChildDeclarationModel.swift */; };
+		45A02BF728F2A99D00796056 /* DeclarationFormGenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A02BF528F2A99D00796056 /* DeclarationFormGenderCell.swift */; };
+		45A02BF828F2A99D00796056 /* DeclarationFormGenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45A02BF628F2A99D00796056 /* DeclarationFormGenderCell.xib */; };
+		45A02BFB28F2BBD600796056 /* DeclarationFormRaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A02BF928F2BBD600796056 /* DeclarationFormRaceCell.swift */; };
+		45A02BFC28F2BBD600796056 /* DeclarationFormRaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45A02BFA28F2BBD600796056 /* DeclarationFormRaceCell.xib */; };
+		45A02BFF28F2C04600796056 /* DeclarationFormPurposeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A02BFD28F2C04600796056 /* DeclarationFormPurposeCell.swift */; };
+		45A02C0028F2C04600796056 /* DeclarationFormPurposeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45A02BFE28F2C04600796056 /* DeclarationFormPurposeCell.xib */; };
 		45A505832848997300779B4C /* HomeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A505822848997300779B4C /* HomeContainer.swift */; };
 		45A505852848998000779B4C /* HomeContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45A505842848998000779B4C /* HomeContainer.xib */; };
 		45A505872848B80800779B4C /* HomeKingKongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A505862848B80800779B4C /* HomeKingKongView.swift */; };
@@ -767,13 +776,14 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CCTIOS/main.m; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* CCTIOS-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCTIOS-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* CCTIOS-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CCTIOS-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		45208FCF28FD3BEC003084FE /* libswiftCoreGraphics.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCoreGraphics.tbd; path = usr/lib/swift/libswiftCoreGraphics.tbd; sourceTree = SDKROOT; };
 		453CD50D28598626005FEEE1 /* DeclarationFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarationFormCell.swift; sourceTree = "<group>"; };
 		453CD50E28598626005FEEE1 /* DeclarationFormCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeclarationFormCell.xib; sourceTree = "<group>"; };
 		453CD5112859885F005FEEE1 /* DeclarationFormHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarationFormHeadView.swift; sourceTree = "<group>"; };
 		453CD51328598867005FEEE1 /* DeclarationFormHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeclarationFormHeadView.xib; sourceTree = "<group>"; };
 		453CD5162859B017005FEEE1 /* PostPartumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPartumModel.swift; sourceTree = "<group>"; };
-		453CD5182859D063005FEEE1 /* DeclarationFormDateOfDeliverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarationFormDateOfDeliverCell.swift; sourceTree = "<group>"; };
-		453CD5192859D063005FEEE1 /* DeclarationFormDateOfDeliverCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeclarationFormDateOfDeliverCell.xib; sourceTree = "<group>"; };
+		453CD5182859D063005FEEE1 /* DeclarationFormDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarationFormDateCell.swift; sourceTree = "<group>"; };
+		453CD5192859D063005FEEE1 /* DeclarationFormDateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeclarationFormDateCell.xib; sourceTree = "<group>"; };
 		454576B12845C17B007410E9 /* TellUsCondiitonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellUsCondiitonController.swift; sourceTree = "<group>"; };
 		454C5B36283B312D001D787C /* BookingServiceFormSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingServiceFormSheetView.swift; sourceTree = "<group>"; };
 		454C5B3B283B77AD001D787C /* BookingServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingServiceModel.swift; sourceTree = "<group>"; };
@@ -814,6 +824,14 @@
 		4586120F2852E4EA00C699A8 /* FreeGiftModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeGiftModel.swift; sourceTree = "<group>"; };
 		458612112852E57400C699A8 /* SaveClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveClientModel.swift; sourceTree = "<group>"; };
 		458612132852ECBE00C699A8 /* InputPhoneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPhoneController.swift; sourceTree = "<group>"; };
+		45A02BF128F260BB00796056 /* ChildDeclarationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildDeclarationController.swift; sourceTree = "<group>"; };
+		45A02BF328F2751300796056 /* ChildDeclarationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildDeclarationModel.swift; sourceTree = "<group>"; };
+		45A02BF528F2A99D00796056 /* DeclarationFormGenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarationFormGenderCell.swift; sourceTree = "<group>"; };
+		45A02BF628F2A99D00796056 /* DeclarationFormGenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeclarationFormGenderCell.xib; sourceTree = "<group>"; };
+		45A02BF928F2BBD600796056 /* DeclarationFormRaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarationFormRaceCell.swift; sourceTree = "<group>"; };
+		45A02BFA28F2BBD600796056 /* DeclarationFormRaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeclarationFormRaceCell.xib; sourceTree = "<group>"; };
+		45A02BFD28F2C04600796056 /* DeclarationFormPurposeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarationFormPurposeCell.swift; sourceTree = "<group>"; };
+		45A02BFE28F2C04600796056 /* DeclarationFormPurposeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeclarationFormPurposeCell.xib; sourceTree = "<group>"; };
 		45A505822848997300779B4C /* HomeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainer.swift; sourceTree = "<group>"; };
 		45A505842848998000779B4C /* HomeContainer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContainer.xib; sourceTree = "<group>"; };
 		45A505862848B80800779B4C /* HomeKingKongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeKingKongView.swift; sourceTree = "<group>"; };
@@ -1487,6 +1505,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45208FD028FD3BEC003084FE /* libswiftCoreGraphics.tbd in Frameworks */,
 				4932AB9D27C71D230029F000 /* libz.1.2.5.tbd in Frameworks */,
 				4932AB9B27C71D190029F000 /* libc++.tbd in Frameworks */,
 				498D85C5279934B20044F34F /* Stripe.xcframework in Frameworks */,
@@ -1570,6 +1589,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				45208FCF28FD3BEC003084FE /* libswiftCoreGraphics.tbd */,
 				4932AB9C27C71D230029F000 /* libz.1.2.5.tbd */,
 				4932AB9A27C71D190029F000 /* libc++.tbd */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
@@ -1596,6 +1616,7 @@
 				45DA0E53285B1FAF00056132 /* PreConceptionDeclarationController.swift */,
 				45DA0E63285C151000056132 /* TreatmentDeclarationController.swift */,
 				455E9EA8285C74BC004471C4 /* HealthCareDeclarationController.swift */,
+				45A02BF128F260BB00796056 /* ChildDeclarationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1609,8 +1630,8 @@
 				453CD51328598867005FEEE1 /* DeclarationFormHeadView.xib */,
 				45DBB9042859D9BD0063EF4E /* DeclarationFormFootView.swift */,
 				45DBB9062859D9C50063EF4E /* DeclarationFormFootView.xib */,
-				453CD5182859D063005FEEE1 /* DeclarationFormDateOfDeliverCell.swift */,
-				453CD5192859D063005FEEE1 /* DeclarationFormDateOfDeliverCell.xib */,
+				453CD5182859D063005FEEE1 /* DeclarationFormDateCell.swift */,
+				453CD5192859D063005FEEE1 /* DeclarationFormDateCell.xib */,
 				45DBB8FC2859D2FF0063EF4E /* DeclarationFormMethodOfDeiveryCell.swift */,
 				45DBB8FD2859D2FF0063EF4E /* DeclarationFormMethodOfDeiveryCell.xib */,
 				45DBB9002859D3E40063EF4E /* DeclarationRemarkCell.swift */,
@@ -1621,6 +1642,12 @@
 				45DA0E5C285B28E400056132 /* DeclarationFormInputWithOptionsCell.xib */,
 				45DA0E5F285B29E100056132 /* DeclarationFormFocusAreaCell.swift */,
 				45DA0E60285B29E100056132 /* DeclarationFormFocusAreaCell.xib */,
+				45A02BF528F2A99D00796056 /* DeclarationFormGenderCell.swift */,
+				45A02BF628F2A99D00796056 /* DeclarationFormGenderCell.xib */,
+				45A02BF928F2BBD600796056 /* DeclarationFormRaceCell.swift */,
+				45A02BFA28F2BBD600796056 /* DeclarationFormRaceCell.xib */,
+				45A02BFD28F2C04600796056 /* DeclarationFormPurposeCell.swift */,
+				45A02BFE28F2C04600796056 /* DeclarationFormPurposeCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1630,6 +1657,7 @@
 			children = (
 				453CD5162859B017005FEEE1 /* PostPartumModel.swift */,
 				45DA0E55285B22FC00056132 /* PrePartumModel.swift */,
+				45A02BF328F2751300796056 /* ChildDeclarationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3522,6 +3550,7 @@
 				454C5B4E283DBEAE001D787C /* ConfirmSessionContainer.xib in Resources */,
 				453CD51428598867005FEEE1 /* DeclarationFormHeadView.xib in Resources */,
 				49F6977B282DF7E7009813EA /* BookingCompletedCell.xib in Resources */,
+				45A02C0028F2C04600796056 /* DeclarationFormPurposeCell.xib in Resources */,
 				49BA629827880CFD00B898D5 /* BlogBoardListCell.xib in Resources */,
 				496501D6279FE94E004FF3AF /* ServiceDetailHelpCell.xib in Resources */,
 				49781BE327BE34B8006F93DF /* ProductCompleteItemCell.xib in Resources */,
@@ -3559,7 +3588,7 @@
 				49E2C23527D7545700F667B7 /* TierPrivilegesCell.xib in Resources */,
 				495649DF281A2CC100091533 /* LoginContainer.xib in Resources */,
 				49E79F99278E83BB00F304B2 /* SymptomCheckNextContainer.xib in Resources */,
-				453CD51B2859D063005FEEE1 /* DeclarationFormDateOfDeliverCell.xib in Resources */,
+				453CD51B2859D063005FEEE1 /* DeclarationFormDateCell.xib in Resources */,
 				45DA0E6E285C4F0000056132 /* BookingInProgressView.xib in Resources */,
 				4902B727279F9DC000CEE28B /* ServiceDetailHelpView.xib in Resources */,
 				49727C7727C4CE0700943156 /* AccountEditSheetContentView.xib in Resources */,
@@ -3577,6 +3606,7 @@
 				4904C3D428067BDD008FE5A5 /* ShopProductItemCell.xib in Resources */,
 				45C6B7992858282C00546CC8 /* CheckInTodayCell.xib in Resources */,
 				45CE32FB28349CAF00201726 /* TodayCheckInCell.xib in Resources */,
+				45A02BFC28F2BBD600796056 /* DeclarationFormRaceCell.xib in Resources */,
 				49056AFD2795581D00FBA1AC /* SymptomCheckPlanCell.xib in Resources */,
 				49781BCF27BE2024006F93DF /* MyOrderListCell.xib in Resources */,
 				49781BDF27BE2F33006F93DF /* ProductItemCell.xib in Resources */,
@@ -3610,6 +3640,7 @@
 				4998C09A2783F07C00A881D5 /* ServicesFooterView.xib in Resources */,
 				49981EDF27CC6C5500D4F7BF /* SettingCell.xib in Resources */,
 				4971A7FE2806C7E700253F68 /* ShopDetailAboutHeadView.xib in Resources */,
+				45A02BF828F2A99D00796056 /* DeclarationFormGenderCell.xib in Resources */,
 				45DF033D28A3A6280060A224 /* WalletPackageItemCell.xib in Resources */,
 				49E2C22B27D5EA9D00F667B7 /* WalletDetailCardUserOrOwenrCell.xib in Resources */,
 				4902B71F279F9D7C00CEE28B /* ServiceDetailHeaderView.xib in Resources */,
@@ -3760,6 +3791,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45A02BF728F2A99D00796056 /* DeclarationFormGenderCell.swift in Sources */,
 				494743072809774600A8D59C /* ShopPaymentMethodController.swift in Sources */,
 				49E79F83278D654B00F304B2 /* BlogBookmarkedCell.swift in Sources */,
 				4998C055277EF51200A881D5 /* CLVisitExtensions.swift in Sources */,
@@ -3899,6 +3931,7 @@
 				497503422828F2930004A42C /* ClientCategoryModel.swift in Sources */,
 				4998C008277EF51200A881D5 /* UITextViewExtensions.swift in Sources */,
 				496F73EC27DF395F00E3325D /* TaxesModel.swift in Sources */,
+				45A02BF228F260BB00796056 /* ChildDeclarationController.swift in Sources */,
 				4902B72E279FA12D00CEE28B /* ServiceDetailApproachCell.swift in Sources */,
 				49F69777282DF75B009813EA /* BookingCompletedController.swift in Sources */,
 				49E385A0279EA927003160FA /* FillInEnquiryFromSelectSubjectSheetView.swift in Sources */,
@@ -4016,6 +4049,7 @@
 				4933AC6B27D848A5005E9FB1 /* WalletTermsConditionsSheetView.swift in Sources */,
 				4998C0992783F07C00A881D5 /* ServicesFooterView.swift in Sources */,
 				49F6977A282DF7E7009813EA /* BookingCompletedCell.swift in Sources */,
+				45A02BF428F2751300796056 /* ChildDeclarationModel.swift in Sources */,
 				4998C01C277EF51200A881D5 /* UIAlertControllerExtensions.swift in Sources */,
 				49D5AAB3281BCDFD00440112 /* CheckUserLogin.swift in Sources */,
 				4998C033277EF51200A881D5 /* LocaleExtensions.swift in Sources */,
@@ -4078,6 +4112,7 @@
 				4998BF4A277ED43500A881D5 /* DKEmptyDataView.swift in Sources */,
 				4998C018277EF51200A881D5 /* UIButtonExtensions.swift in Sources */,
 				4998BF43277ED35300A881D5 /* EmptyDataType.swift in Sources */,
+				45A02BFB28F2BBD600796056 /* DeclarationFormRaceCell.swift in Sources */,
 				4998C023277EF51200A881D5 /* SCNBoxExtensions.swift in Sources */,
 				4902023B27D8A85400E74415 /* WalletInviteUserModel.swift in Sources */,
 				45F0D82028A23EAA006B4124 /* WalletPackagesCell.swift in Sources */,
@@ -4089,6 +4124,7 @@
 				4996D7A427D59BC000437265 /* WalletCouponsModel.swift in Sources */,
 				49FC8EB727910B4E00157292 /* UserModel.swift in Sources */,
 				4998BF49277ED43500A881D5 /* DKEmptyDataSet.swift in Sources */,
+				45A02BFF28F2C04600796056 /* DeclarationFormPurposeCell.swift in Sources */,
 				4906C234279E496F00F7B67F /* QuestionFlexibleCell.swift in Sources */,
 				4998C021277EF51200A881D5 /* SCNShapeExtensions.swift in Sources */,
 				4998C059277EF51200A881D5 /* NSImageExtensions.swift in Sources */,
@@ -4170,7 +4206,7 @@
 				49727C7127C4C8F800943156 /* AccountVerifyPwdSheetContentView.swift in Sources */,
 				4998C0A827843CB500A881D5 /* Int_Extension.swift in Sources */,
 				4998BFFB277EF51200A881D5 /* CGSizeExtensions.swift in Sources */,
-				453CD51A2859D063005FEEE1 /* DeclarationFormDateOfDeliverCell.swift in Sources */,
+				453CD51A2859D063005FEEE1 /* DeclarationFormDateCell.swift in Sources */,
 				45A505832848997300779B4C /* HomeContainer.swift in Sources */,
 				45F894B228534384008BC7CC /* QRScannerConfiguration.swift in Sources */,
 				45DA0E51285AC73400056132 /* TodayWellnessCheckSessionCell.swift in Sources */,
@@ -4415,7 +4451,7 @@
 				DEVELOPMENT_TEAM = 7BVP6AS26M;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CCTIOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4473,6 +4509,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-safe-area-context\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-webview\"",
 					/usr/lib/swift,
+					"$(SDKROOT)/usr/lib/swift",
 				);
 				MARKETING_VERSION = 1.0.9;
 				ONLY_ACTIVE_ARCH = YES;
@@ -4506,10 +4543,14 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7BVP6AS26M;
 				INFOPLIST_FILE = CCTIOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
 				);
 				MARKETING_VERSION = 1.0.9;
 				OTHER_LDFLAGS = (
@@ -4696,7 +4737,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -4754,7 +4795,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",

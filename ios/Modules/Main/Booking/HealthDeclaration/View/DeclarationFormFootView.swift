@@ -13,9 +13,12 @@ class DeclarationFormFootView: UIView {
   @IBOutlet weak var nextButon: LoadingButton!
   var confirmHander:((LoadingButton)->())?
   // 1.保健 2.治疗 3.产前，4.产后
-  var healthDeclarationType = 0 {
+  var healthDeclarationType:String? {
     didSet {
       var terms:String = ""
+      guard let healthDeclarationType = healthDeclarationType?.int else {
+        return
+      }
       
       if healthDeclarationType == 1 {
         terms = "I verify I have stated all my known medical conditions. I understand that I will be receiving massage therapy for stress reduction, muscle relief, or improving circulation and energy flow. I understand that the massage therapist does not diagnose illnesses. As such, she also does not prescribe medical treatment or medications. I also understand that she does not perform spinal manipulations. I am aware that this massage is not a substitute for medical examination or diagnosis,and that it is recommended that I see a physician for any ailment that I might have I understand and agree that I am receiving massage therapy entirely at my own risk.In the event that I become injured either directly or indirectly as a result, in whole or in part, of the aforesaid message therapy.I HEREBY INDEMNIFY the therapist, her principles, and company from all claims and liability whatsoever.\nI acknowledge that the above information given by me is compete and accurate to the best of my knowledge and that no fact that is likely to influence the safety of the treatment(s) that I have signup up for have been withheld."
@@ -31,6 +34,9 @@ class DeclarationFormFootView: UIView {
       
       if healthDeclarationType ==   4 {
         terms = "I verify I have stated all my known medical conditions. I understand that I will be receiving massage therapy for stress reduction, muscle relief, or improving circulation and energy flow. I understand that the massage therapist does not diagnose illnesses. As such, she also does not prescribe medical treatment or medications. I also understand that she does not perform spinal manipulations. I am aware that this massage is not a substitute for medical examination or diagnosis, and that it is recommended that I see a physician for any ailment that I might have. I understand and agree that I am receiving massage therapy entirely at my own risk. In the event that I become injured either directly or indirectly as a result, in whole or in part, of the aforesaid message therapy. I HEREBY INDEMNIFY the therapist, her principles, and company from all claims and liability whatsoever.\nI acknowledge that the above information given by me is compete and accurate to the best of my knowledge and that no fact that is likely to influence the safety of the treatment(s) that I have signup up for have been withheld."
+      }
+      if healthDeclarationType == 5 {
+        terms = "I acknowledge that the above child's information given by me is complete and accurate to the best of my knowledge and that no fact that is likely to influence the safety of the treatments) that I have signed up for my child has been withheld. \nConfidentiality Note: The information provided in the health questionnaire is for the sole purpose of carrying out safe and effective treatments) and will be kept strictly confidential. \nI declared that my child's health condition had remained unchanged, as stated in this health questionnaire."
       }
       termsLabel.text = terms
     }

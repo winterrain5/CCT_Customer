@@ -9,6 +9,7 @@ import UIKit
 
 class BookingTodayModel: BaseModel {
   var id: String = ""
+  var booking_order_time_id = ""
   var room_id: String = ""
   var caption: String = ""
   var filled_health_form: Bool = false

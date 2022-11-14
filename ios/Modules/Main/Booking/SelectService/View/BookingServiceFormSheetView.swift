@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SwiftEntryKit
 class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSource {
   enum SheetType {
     case Outlet
@@ -117,7 +117,7 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
     selectComplete?(indexPath.row)
-    EntryKit.dismiss()
+    SwiftEntryKit.dismiss()
   }
   
   static func show(dataArray:[String],type:SheetType,selectComplete:@escaping (Int)->()) {
@@ -128,6 +128,6 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
     
     let height = (dataArray.count * 50 + 92) > (kScreenHeight * 0.7).int ? Int(kScreenHeight * 0.7) : (dataArray.count * 50 + 92)
     let size = CGSize(width: kScreenWidth, height: height.cgFloat + kBottomsafeAreaMargin + 40)
-    EntryKit.display(view: view, size: size, style: .sheet)
+    SwiftEntryKit.displayView(asSheet: view, size: size)
   }
 }

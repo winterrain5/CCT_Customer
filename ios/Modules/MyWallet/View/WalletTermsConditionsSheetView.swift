@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SwiftEntryKit
 class WalletTermsConditionsSheetView: UIView {
 
   private var scrollView = UIScrollView()
@@ -58,7 +58,7 @@ class WalletTermsConditionsSheetView: UIView {
   static func show() {
     let view = WalletTermsConditionsSheetView()
     let size = CGSize(width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
-    EntryKit.display(view: view, size: size, style: .sheet)
+    SwiftEntryKit.displayView(asSheet: view, size: size)
   }
 
 }

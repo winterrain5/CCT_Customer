@@ -16,6 +16,7 @@
 				18F88B427187A9160E1DD08433D822AF /* PBXTargetDependency */,
 			);
 			name = mob_pushsdk;
+			productName = mob_pushsdk;
 		};
 		230984053C6652DFF510F450F21C5CF7 /* R.swift */ = {
 			isa = PBXAggregateTarget;
@@ -26,6 +27,7 @@
 				FBD19F96FFB6EB02D051DA5D5647D0F7 /* PBXTargetDependency */,
 			);
 			name = R.swift;
+			productName = R.swift;
 		};
 		38986664EBE0043A3614949E53335639 /* MOBFoundation */ = {
 			isa = PBXAggregateTarget;
@@ -35,6 +37,7 @@
 			dependencies = (
 			);
 			name = MOBFoundation;
+			productName = MOBFoundation;
 		};
 /* End PBXAggregateTarget section */
 
@@ -1795,7 +1798,7 @@
 		43486D90C95CFFFB2EF119A2632235B4 /* SingleAsync.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SingleAsync.swift; path = RxSwift/Observables/SingleAsync.swift; sourceTree = "<group>"; };
 		434E354DEBD39A04482AA26C4ED69EC6 /* Map.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Map.swift; path = RxSwift/Observables/Map.swift; sourceTree = "<group>"; };
 		4353F9F227936A087FF9E3EECDFD2F66 /* RxScrollViewDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxScrollViewDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxScrollViewDelegateProxy.swift; sourceTree = "<group>"; };
-		437AAE99247C3DED076A8095EC3AE328 /* EachNavigationBar-EachNavigationBar */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "EachNavigationBar-EachNavigationBar"; path = EachNavigationBar.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		437AAE99247C3DED076A8095EC3AE328 /* EachNavigationBar.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EachNavigationBar.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		437E438A23A05C895278D4B4DBF03D2D /* JXPagingMainTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXPagingMainTableView.swift; path = Sources/JXPagingView/JXPagingMainTableView.swift; sourceTree = "<group>"; };
 		43857E2C0DAC95E69285DE215DABCFE3 /* UIImage+ImageResource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+ImageResource.swift"; path = "Library/UIKit/UIImage+ImageResource.swift"; sourceTree = "<group>"; };
 		43D4DC3F1CCAE74DABA2236717C98D80 /* First.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = First.swift; path = RxSwift/Observables/First.swift; sourceTree = "<group>"; };
@@ -2247,7 +2250,7 @@
 		9D35C7AE80444258E22428C339F7D997 /* UIViewController+StoryboardSegueIdentifierProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+StoryboardSegueIdentifierProtocol.swift"; path = "Library/UIKit/UIViewController+StoryboardSegueIdentifierProtocol.swift"; sourceTree = "<group>"; };
 		9D443E759FE97A6C0CA5A3B5E4142EBA /* SwipeCellKit */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = SwipeCellKit; path = libSwipeCellKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D6DED533D3BFB07E53C039A033DADAA /* CRBoxInputCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CRBoxInputCell.m; path = PodCode/Classes/CRBoxInputCell.m; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DC822DFCB8FA63FA1911F45D09CE555 /* LKS_ExportManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LKS_ExportManager.m; path = Src/Server/Others/LKS_ExportManager.m; sourceTree = "<group>"; };
 		9DE4D844C1C1A82D548F702F423CF1B3 /* EKImageNoteMessageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EKImageNoteMessageView.swift; path = Source/MessageViews/Notes/EKImageNoteMessageView.swift; sourceTree = "<group>"; };
 		9E5C8E417F08E0FE6B6790A3CF016576 /* FSCalendar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar-dummy.m"; sourceTree = "<group>"; };
@@ -3006,7 +3009,6 @@
 				58891D07EDFA0241A4EA427250A80F80 /* DKLogger.swift */,
 				F56DB4C770F41F5692B1E820B73C816F /* Support Files */,
 			);
-			name = DKLogger;
 			path = DKLogger;
 			sourceTree = "<group>";
 		};
@@ -3167,7 +3169,6 @@
 				1B4F25F8C81D53795226A0AFE89BF260 /* WKWebView+Rx.swift */,
 				5FBDB272998917196B61E59FF900C384 /* Support Files */,
 			);
-			name = RxCocoa;
 			path = RxCocoa;
 			sourceTree = "<group>";
 		};
@@ -3267,7 +3268,6 @@
 				223DFFA4F33F131039F6C2D07F5A159D /* URLTransform.swift */,
 				501125A7E0D72BCB8F7BEE6345F6795F /* Support Files */,
 			);
-			name = HandyJSON;
 			path = HandyJSON;
 			sourceTree = "<group>";
 		};
@@ -3309,7 +3309,6 @@
 				31DC532769CFC35741A932C2F4202B68 /* UIViewController+SideMenu.swift */,
 				E8FE83AFC9CA0DB3537D3A7646BCEEFB /* Support Files */,
 			);
-			name = SideMenuSwift;
 			path = SideMenuSwift;
 			sourceTree = "<group>";
 		};
@@ -3331,7 +3330,6 @@
 				59932BCD24E83DFFAD6990F513B80B8B /* Core */,
 				BFC604D10067FD8BFED44F101ACDC48F /* Support Files */,
 			);
-			name = YYImage;
 			path = YYImage;
 			sourceTree = "<group>";
 		};
@@ -3401,7 +3399,6 @@
 				71E8C33AD6E13937D9668C7055EFC3A9 /* UIView+Transitions.swift */,
 				D0238C9E42E3125D0C88D872B86DFC59 /* Support Files */,
 			);
-			name = SkeletonView;
 			path = SkeletonView;
 			sourceTree = "<group>";
 		};
@@ -3560,7 +3557,6 @@
 				FE5715D1A80C5D37B83D9747002BE773 /* Zip+Collection.swift */,
 				2ACFD65B87B4FF360B3829F6E3A3A910 /* Support Files */,
 			);
-			name = RxSwift;
 			path = RxSwift;
 			sourceTree = "<group>";
 		};
@@ -3606,7 +3602,6 @@
 				0773A480B69EFF80E1E649834A89D55B /* Frameworks */,
 				F9A7844422F4A038A651F252C44405E3 /* Support Files */,
 			);
-			name = MOBFoundation;
 			path = MOBFoundation;
 			sourceTree = "<group>";
 		};
@@ -3678,7 +3673,6 @@
 				B8E9483E1F88651195CFA0BA8BEA5B15 /* SwipeTransitionLayout.swift */,
 				D2EEC6661C482BEA6DFFE31B9763C659 /* Support Files */,
 			);
-			name = SwipeCellKit;
 			path = SwipeCellKit;
 			sourceTree = "<group>";
 		};
@@ -3702,7 +3696,6 @@
 				C503DD2619DF299E315C1E6CD952C791 /* TTGTextTagStyle.m */,
 				9BC2D26B507731235C163C68A3626AC1 /* Support Files */,
 			);
-			name = TTGTagCollectionView;
 			path = TTGTagCollectionView;
 			sourceTree = "<group>";
 		};
@@ -3871,7 +3864,6 @@
 				F64C51090D1BFF594A22A2916F80A1C7 /* UIVisualEffectView+LookinServer.m */,
 				77331D80DD4931C46F2F03A86C35BB4B /* Support Files */,
 			);
-			name = LookinServer;
 			path = LookinServer;
 			sourceTree = "<group>";
 		};
@@ -3921,7 +3913,6 @@
 				51DFCC84A1BA1FB0B94BFCD01E4F3B03 /* Validatable.swift */,
 				4A70EA3D75A3C6243D71C98F23A19B00 /* Support Files */,
 			);
-			name = R.swift.Library;
 			path = R.swift.Library;
 			sourceTree = "<group>";
 		};
@@ -3979,7 +3970,6 @@
 				B478D7CC84EC8FA345D37EF2B9D1981C /* View+RxGesture.swift */,
 				FB5E2C9B962AC54F3B875B848721B466 /* Support Files */,
 			);
-			name = RxGesture;
 			path = RxGesture;
 			sourceTree = "<group>";
 		};
@@ -4003,7 +3993,6 @@
 				7A5B69D77DB8E91A707941D105880976 /* Paging */,
 				40DE985EFBA6AA9792468A37F5F8A590 /* Support Files */,
 			);
-			name = JXPagingView;
 			path = JXPagingView;
 			sourceTree = "<group>";
 		};
@@ -4062,7 +4051,6 @@
 				A36D154DFCAA72F545AED1F2744C25BF /* JXSegmentedViewTool.swift */,
 				0F81FEB13990DF0086A54F4B4DB64F9C /* Support Files */,
 			);
-			name = JXSegmentedView;
 			path = JXSegmentedView;
 			sourceTree = "<group>";
 		};
@@ -4133,7 +4121,6 @@
 				0A37619DB02910A4A20707BD94F1D932 /* CRSecrectImageView.m */,
 				22DF067467691095B9239276EF6AF3BE /* Support Files */,
 			);
-			name = CRBoxInputView;
 			path = CRBoxInputView;
 			sourceTree = "<group>";
 		};
@@ -4167,7 +4154,6 @@
 				33D456DE096926AE16EA9A654B7DB285 /* ViewController+MASAdditions.m */,
 				78CF9AED28BB784B589447926FC866A9 /* Support Files */,
 			);
-			name = Masonry;
 			path = Masonry;
 			sourceTree = "<group>";
 		};
@@ -4180,7 +4166,6 @@
 				DCCCA4BC1438ABCFF45354B16D33529A /* Utils.swift */,
 				9DEF5AC0CB6262BF11922F2425054936 /* Support Files */,
 			);
-			name = RxRelay;
 			path = RxRelay;
 			sourceTree = "<group>";
 		};
@@ -4200,7 +4185,6 @@
 				6FB7EF89FD79FF6C4D2D63D136252869 /* WKWebView+DDGShot.swift */,
 				90919634F26CA09A700A879643C708AD /* Support Files */,
 			);
-			name = DDGScreenShot;
 			path = DDGScreenShot;
 			sourceTree = "<group>";
 		};
@@ -4218,7 +4202,6 @@
 				2072CA89A0925B133F10AB76F56B2D71 /* Resources */,
 				B5AEA3DF68D77A965CC61358C0FC8B6C /* Support Files */,
 			);
-			name = SVProgressHUD;
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
@@ -4232,7 +4215,6 @@
 				20D55309C7C82A7EED11E8A19C69C51E /* Pattern.swift */,
 				21404BCA40AE94F521281FE23009A569 /* Support Files */,
 			);
-			name = Haptica;
 			path = Haptica;
 			sourceTree = "<group>";
 		};
@@ -4251,7 +4233,6 @@
 				CFC90723EB69B4A19E6E449B5B7B29A7 /* YoshikoTextField.swift */,
 				86F132458300DFA3DA1F3DC56A655B66 /* Support Files */,
 			);
-			name = TextFieldEffects;
 			path = TextFieldEffects;
 			sourceTree = "<group>";
 		};
@@ -4291,7 +4272,6 @@
 				215618154A3456F20E03D491CF20FC71 /* FSCalendarWeekdayView.m */,
 				E952CCB722C1DACE3163CDA775F5B13C /* Support Files */,
 			);
-			name = FSCalendar;
 			path = FSCalendar;
 			sourceTree = "<group>";
 		};
@@ -4364,7 +4344,6 @@
 				E1F314952A6919E1ED6352D9929F8403 /* Resources */,
 				CDE1BEEC80D485EF29B506AAE1140B74 /* Support Files */,
 			);
-			name = EachNavigationBar;
 			path = EachNavigationBar;
 			sourceTree = "<group>";
 		};
@@ -4413,7 +4392,6 @@
 				385012178CA2FEEF7493B8D6A68C6BD6 /* Puya */,
 				08E08FD5491390A04B0690E4AAA5977C /* Support Files */,
 			);
-			name = CHIPageControl;
 			path = CHIPageControl;
 			sourceTree = "<group>";
 		};
@@ -4425,7 +4403,7 @@
 				F7E0406B8240DAA6F3C0917F9D7CC5AA /* DDGScreenShot */,
 				8D8B8B6B591AE9F4D37049CA708D0B3B /* DKLogger */,
 				AF5515268E20A172D84755491B08E1CB /* EachNavigationBar */,
-				437AAE99247C3DED076A8095EC3AE328 /* EachNavigationBar-EachNavigationBar */,
+				437AAE99247C3DED076A8095EC3AE328 /* EachNavigationBar.bundle */,
 				95209B8BB966524BC76543F99C75F5FE /* FSCalendar */,
 				CD54121DDA84872534168702B5F92950 /* HandyJSON */,
 				35722857CB203F06A3B640F120B4BF60 /* Haptica */,
@@ -4512,7 +4490,6 @@
 				44A1304571AE0A06D0C48DC64CC64D7B /* KMPlaceholderTextView.swift */,
 				463218C7C15A53889433E124E3DB517F /* Support Files */,
 			);
-			name = KMPlaceholderTextView;
 			path = KMPlaceholderTextView;
 			sourceTree = "<group>";
 		};
@@ -4522,7 +4499,6 @@
 				4859CAA8EE2414C01C7A10C421E3A360 /* MobPush */,
 				3051B173B1B25EB441F7191BE3A64A96 /* Support Files */,
 			);
-			name = mob_pushsdk;
 			path = mob_pushsdk;
 			sourceTree = "<group>";
 		};
@@ -4554,7 +4530,6 @@
 				64E2A9C1B051FD4D16F6B7077523A725 /* IQUIViewController+Additions.swift */,
 				C3755D551DAA41A89E9CA527011526C6 /* Support Files */,
 			);
-			name = IQKeyboardManagerSwift;
 			path = IQKeyboardManagerSwift;
 			sourceTree = "<group>";
 		};
@@ -4565,7 +4540,6 @@
 				67EDF84CF8AEAE1490D1B0A0FDDF882A /* NTMonthYearPicker.m */,
 				484CDEB5B54B1E09364D8A83D3F691D7 /* Support Files */,
 			);
-			name = NTMonthYearPicker;
 			path = NTMonthYearPicker;
 			sourceTree = "<group>";
 		};
@@ -4574,7 +4548,6 @@
 			children = (
 				5E08063FF40780E200F778B9ADBB5B88 /* Support Files */,
 			);
-			name = R.swift;
 			path = R.swift;
 			sourceTree = "<group>";
 		};
@@ -4624,7 +4597,6 @@
 				01DB417080B79B7361E254E946275E5C /* RxCocoa */,
 				F9C5A221B1C8E0173879C4AE254FF09A /* Support Files */,
 			);
-			name = RxSwiftExt;
 			path = RxSwiftExt;
 			sourceTree = "<group>";
 		};
@@ -4725,7 +4697,6 @@
 				61320517DC92589758741F227AAE9180 /* UIViewArray+QuickLayout.swift */,
 				2C4E853F351841A046C4E3DF0177DF76 /* Support Files */,
 			);
-			name = SwiftEntryKit;
 			path = SwiftEntryKit;
 			sourceTree = "<group>";
 		};
@@ -4747,7 +4718,6 @@
 				153DC6D937D577CC7212D0A53ADFAF20 /* CorePromise */,
 				E7C15266E9D6392D08B2B0F076FA500B /* Support Files */,
 			);
-			name = PromiseKit;
 			path = PromiseKit;
 			sourceTree = "<group>";
 		};
@@ -4902,7 +4872,6 @@
 				368647C66B5F9523F64E591C47B36947 /* YYWebImageOperation.m */,
 				7795A8AA336B57893C8F822994CAE7CF /* Support Files */,
 			);
-			name = YYWebImage;
 			path = YYWebImage;
 			sourceTree = "<group>";
 		};
@@ -5035,7 +5004,6 @@
 				29A70F25EB332EE3DB452CD8080A0F2C /* Resources */,
 				B1FA5BD7660F013B0EF82E28A4DFEA8F /* Support Files */,
 			);
-			name = MJRefresh;
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
@@ -5090,7 +5058,6 @@
 				ABA92348B17E5A536377AF2DEC01A4FD /* YYMemoryCache.m */,
 				F30EA27F020571A1002063B5F2ADC331 /* Support Files */,
 			);
-			name = YYCache;
 			path = YYCache;
 			sourceTree = "<group>";
 		};
@@ -6005,7 +5972,7 @@
 			);
 			name = "EachNavigationBar-EachNavigationBar";
 			productName = EachNavigationBar;
-			productReference = 437AAE99247C3DED076A8095EC3AE328 /* EachNavigationBar-EachNavigationBar */;
+			productReference = 437AAE99247C3DED076A8095EC3AE328 /* EachNavigationBar.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		D3ACB363BC5ACF1B59E4FA2B88999817 /* DKLogger */ = {
@@ -8918,6 +8885,7 @@
 			baseConfigurationReference = 2D868E4F0DC61BA7F2FDC19CB26BAF54 /* EachNavigationBar.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/EachNavigationBar";
+				DEVELOPMENT_TEAM = 7BVP6AS26M;
 				IBSC_MODULE = EachNavigationBar;
 				INFOPLIST_FILE = "Target Support Files/EachNavigationBar/ResourceBundle-EachNavigationBar-EachNavigationBar-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -9905,6 +9873,7 @@
 			baseConfigurationReference = 445C85DDF54FCBEFE25D18331CDB48A4 /* EachNavigationBar.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/EachNavigationBar";
+				DEVELOPMENT_TEAM = 7BVP6AS26M;
 				IBSC_MODULE = EachNavigationBar;
 				INFOPLIST_FILE = "Target Support Files/EachNavigationBar/ResourceBundle-EachNavigationBar-EachNavigationBar-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

@@ -8,12 +8,16 @@
 import UIKit
 import HandyJSON
 enum DeclarationFormType:String,HandyJSONEnum {
-  case Date
+  case DeliveryDate
   case DeliveryMethod
   case Remark
   case Input
   case InputWithOptions
   case FocusArea
+  case ChildGender
+  case ChildBirthDate
+  case ChildRace
+  case PurposeOfDeclaration
 }
 enum InputContentType:String,HandyJSONEnum {
   case PregnancyWeeks
@@ -21,6 +25,11 @@ enum InputContentType:String,HandyJSONEnum {
   case GynecologistPhone
   case HighRiskReason
   case ComplicationsProblems
+  case ChildName
+  case ChildAge
+  case ChildCertNo
+  case ChildWeight
+  case Specify
 }
 class HealthDeclarationModel :BaseModel {
   var category: String = ""
@@ -39,6 +48,7 @@ class HealthDeclarationModel :BaseModel {
   
   /// 以下为自定义字段
   var delivery_date = ""
+  var child_birth_date = ""
   var mehtod_of_delivery = ""
   var remark = ""
   var text = ""

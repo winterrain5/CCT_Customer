@@ -132,7 +132,7 @@ class ConfirmSessionContainer: UIView {
   
   @IBAction func confirmAction(_ sender: LoadingButton) {
     if todayModel != nil {
-      // 1.保健 2.治疗 3.产前，4.产后
+      // 1.保健 2.治疗 3.产前，4.产后 5.小儿
       let formType = todayModel?.health_declaration_form_type.int ?? 0
       
       guard let todayModel = todayModel else {
@@ -170,6 +170,11 @@ class ConfirmSessionContainer: UIView {
       let vc = PostPartumDeclarationController(bookedService: todayModel)
       UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
     }
+    
+    if formType ==   5 {
+      let vc = ChildDeclarationController(bookedService: todayModel)
+      UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
+    }
   }
   func saveQuestionStatus() {
     let params = SOAPParams(action: .BookingOrder, path: .saveQuestionStatus)
@@ -180,6 +185,7 @@ class ConfirmSessionContainer: UIView {
         let todayModel = BookingTodayModel()
         todayModel.location_id = self.model?.outlet_id ?? ""
         todayModel.id = self.model?.booking_id ?? ""
+        todayModel.booking_order_time_id = self.model?.booking_id ?? ""
         self.changeTStatus(todayModel: todayModel, formType: self.model?.health_declaration_form_type ?? 0)
       }
     } errorHandler: { e in

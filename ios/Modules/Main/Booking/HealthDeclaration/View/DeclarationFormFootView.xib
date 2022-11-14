@@ -20,8 +20,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="635"/>
                     <subviews>
                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ae7-ca-gre" customClass="TapLabel" customModule="CCTIOS" customModuleProvider="target">
-                            <rect key="frame" x="57" y="51.5" width="333" height="459"/>
-                            <mutableString key="text">lam willing to provide my practitioner with the information necessary for them to fully understand my medical history,presenting symptoms and the health goals I wish to achieve. I thereby consent to a thorough case history and Traditional Chinese Medicine diagnosis. I understand the methods of treatment may include but are not limited to: acupuncture, moxibustion,cupping, electrical stimulation, Tui Na(massage), and Chinese herbal medicine.I understand that it is my responsibility to inform the practitioner of all current medications, herbs and supplements that I take, as they may affect the treatment plan.I understand and agree that I am treatment and/or massage entirely at my own risk.In the event that I become injured either directly or indirectly as a result, in whole or in part, of the aforesaid. I HEREBY INDEMNIFY the Physican, therapist, her principles,and company from all claims and liability whatsoever.I acknowledge that the above information given by me is compete and accurate to the best of my knowledge and that no fact that is likely to influence the safety of the treatment(s) that | have signup up for have been withheld.</mutableString>
+                            <rect key="frame" x="57" y="52" width="333" height="459"/>
+                            <string key="text">lam willing to provide my practitioner with the information necessary for them to fully understand my medical history,presenting symptoms and the health goals I wish to achieve. I thereby consent to a thorough case history and Traditional Chinese Medicine diagnosis. I understand the methods of treatment may include but are not limited to: acupuncture, moxibustion,cupping, electrical stimulation, Tui Na(massage), and Chinese herbal medicine.I understand that it is my responsibility to inform the practitioner of all current medications, herbs and supplements that I take, as they may affect the treatment plan.I understand and agree that I am treatment and/or massage entirely at my own risk.In the event that I become injured either directly or indirectly as a result, in whole or in part, of the aforesaid. I HEREBY INDEMNIFY the Physican, therapist, her principles,and company from all claims and liability whatsoever.I acknowledge that the above information given by me is compete and accurate to the best of my knowledge and that no fact that is likely to influence the safety of the treatment(s) that | have signup up for have been withheld.</string>
                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -32,7 +32,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSM-89-gYn" customClass="LoadingButton" customModule="CCTIOS" customModuleProvider="target">
-                            <rect key="frame" x="24" y="540.5" width="366" height="44"/>
+                            <rect key="frame" x="24" y="541" width="366" height="44"/>
                             <color key="backgroundColor" name="TheamRed"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="Ahr-86-NsI"/>
@@ -51,7 +51,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRB-Ks-Alo">
-                            <rect key="frame" x="24" y="55.5" width="18" height="18"/>
+                            <rect key="frame" x="24" y="56" width="18" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="18" id="14t-9w-PjV"/>
                                 <constraint firstAttribute="height" constant="18" id="WAt-16-KA0"/>
@@ -73,8 +73,8 @@
                                 <action selector="isCheckAction:" destination="4WY-So-1yD" eventType="touchUpInside" id="qJs-Sr-8N8"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please read and acknowledge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKj-8O-cgY">
-                            <rect key="frame" x="24" y="16" width="194.5" height="19.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please read and acknowledge at the end of the form" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKj-8O-cgY">
+                            <rect key="frame" x="24" y="16" width="339" height="20"/>
                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>

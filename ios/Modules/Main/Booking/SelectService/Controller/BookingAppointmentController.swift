@@ -477,7 +477,7 @@ extension BookingAppointmentController {
         self.showDateSheetView()
       }
     } errorHandler: { e in
-      Toast.showMessage("There is no right date")
+      
     }
     
   }
@@ -495,7 +495,7 @@ extension BookingAppointmentController {
         self.showDateSheetView()
       }
     } errorHandler: { e in
-      Toast.showMessage("There is no right date")
+      
     }
   }
   
@@ -511,16 +511,15 @@ extension BookingAppointmentController {
         self.showDateSheetView()
       }
     } errorHandler: { e in
-      Toast.showMessage("There is no right date")
+      
     }
   }
   
   func showDateSheetView() {
+    Toast.dismiss()
     if self.dutyDateModels.count == 0 {
-      Toast.showMessage("There is no right date")
       return
     }
-    Toast.dismiss()
     let strs = self.dutyDateModels.map({ $0.w_date })
     BookingDateSheetView.show(dataArray: strs) { date in
       
@@ -567,7 +566,7 @@ extension BookingAppointmentController {
       self.bookigTimeModels = times ?? []
       self.showTimeSheetView()
     } errorHandler: { e in
-      Toast.showMessage("There is no right time")
+      
     }
   }
   
@@ -585,16 +584,15 @@ extension BookingAppointmentController {
       self.bookigTimeModels = times ?? []
       self.showTimeSheetView()
     } errorHandler: { e in
-      Toast.showMessage("There is no right time")
+      
     }
   }
   
   func showTimeSheetView() {
+    Toast.dismiss()
     if self.bookigTimeModels.count == 0 {
-      Toast.showMessage("There is no right time")
       return
     }
-    Toast.dismiss()
     let strs = self.bookigTimeModels.map({  e -> String in
       let sbs = e.split(separator: ":").first ?? ""
       if String(sbs).int ?? 0 >= 12 {
@@ -746,7 +744,6 @@ extension BookingAppointmentController {
       
     } errorHandler: { e in
       sender.stopAnimation()
-      AlertView.show(message: "Unable to make an appointment in the current time period. Please select another day or time.")
     }
   }
   
@@ -843,6 +840,7 @@ extension BookingAppointmentController {
     params.duration = selectedService?.duration ?? ""
     
     params.isSyncCalendar = isSyncCalendar
+    params.isScanQRCode = false
     
     let vc = ConfirmSessionController(params: params)
     self.navigationController?.pushViewController(vc, animated: true)

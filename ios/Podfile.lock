@@ -20,7 +20,7 @@ PODS:
     - Masonry
   - DDGScreenShot (1.1.6)
   - DKLogger (0.4.0)
-  - EachNavigationBar (1.16.0)
+  - EachNavigationBar (1.16.1)
   - FSCalendar (2.8.4)
   - HandyJSON (5.0.4-beta)
   - Haptica (3.0.3)
@@ -158,7 +158,7 @@ SPEC CHECKSUMS:
   CRBoxInputView: 2380c292aabbf786fe923776f111ba3053438fba
   DDGScreenShot: b1f6e0c1e2a121a19b75f1fbac56e64e5765e06b
   DKLogger: 4db2407d09a97241fbb81ea2f2b7f3190f032769
-  EachNavigationBar: e1b9f5c824b2bd7aa18d91767bbc54801ea5dd8e
+  EachNavigationBar: c72c02b22bcc84ae999f0c86ae7cd83dc88c0ee4
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   HandyJSON: a9c67202df97805a0ba4a00e30b50e9a30ac28f3
   Haptica: 23497230b2d7476621f7860263ae0667279a0a89

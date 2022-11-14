@@ -100,37 +100,27 @@ class TransactionDetailFooterView: UIView {
       }
       
       if model?.PayVoucher_Info?.count ?? 0 > 0 {
-        var voucherArray: [[String:Float]] = []
+        var voucherDict: [String:CGFloat] = [:]
         model?.PayVoucher_Info?.enumerated().forEach({ i,info in
-          let name = info.name ?? ""
-          let paid_amount = info.paid_amount?.float() ?? 0
-          if voucherArray.count >= 1 {
-            guard var last = voucherArray.last else { return }
-            let preName = last.keys.first ?? ""
-            let preValue = last.values.first ?? 0
-            if name == preName {
-              last[name] = paid_amount + preValue
-              voucherArray.removeLast()
-              voucherArray.append(last)
-            }else {
-              var voucherDict:[String:Float] = [:]
-              voucherDict[name] = paid_amount
-              voucherArray.append(voucherDict)
-            }
-          }else {
-            var voucherDict:[String:Float] = [:]
-            voucherDict[name] = paid_amount
-            voucherArray.append(voucherDict)
+          let keys = voucherDict.keys
+          if keys.contains(where: { $0 == info.name }), let name = info.name,let newPaid = info.paid_amount?.cgFloat() {
+            var oldPaid = voucherDict[name] ?? 0
+            oldPaid += newPaid
+            voucherDict[name] = oldPaid
+            return
           }
+          
+          guard let name = info.name,let paid = info.paid_amount?.cgFloat() else { return }
+          voucherDict[name] = paid
          
         })
-        
-        voucherArray.enumerated().forEach { i,dict in
+        voucherDict.keys.forEach { key in
           let view = TransactionDetailFooterPaymentMethodView()
-          let model = (title:dict.keys.first ?? "", money:"-" + (dict.values.first?.string.formatMoney().dolar ?? ""))
+          let model = (title:key , money:"-" + (voucherDict[key]?.string.formatMoney().dolar ?? ""))
           view.model = model
           paymentMethodContentVIew.addSubview(view)
         }
+       
        
       }
       

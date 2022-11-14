@@ -295,6 +295,7 @@ enum API:String {
   /// 修改某次服务的状态并给看诊服务排队号
   case changeTStatus = "changeTStatus"
   case saveQuestionStatus = "saveQuestionStatus"
+  case getKidsMassageItems = "getKidsMassageItems"
   case getAppOrderDetail = "getAppOrderDetail"
   
   /// 获取app 版本信息

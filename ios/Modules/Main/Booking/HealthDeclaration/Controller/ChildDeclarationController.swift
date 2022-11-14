@@ -1,5 +1,6 @@
+
 //
-//  PostPartumDeclarationController.swift
+//  ChildDeclarationController.swift
 //  CCTIOS
 //
 //  Created by chengquan zhou on 2022/6/15.
@@ -7,7 +8,8 @@
 
 import UIKit
 import PromiseKit
-class PostPartumDeclarationController: BaseTableController {
+import RxSwift
+class ChildDeclarationController: BaseTableController {
   
   var headView = DeclarationFormHeadView.loadViewFromNib()
   var footView = DeclarationFormFootView.loadViewFromNib()
@@ -32,41 +34,85 @@ class PostPartumDeclarationController: BaseTableController {
   }
   
   override func refreshData() {
-
+    
     if isFirstLoad { Toast.showLoading() }
-    when(fulfilled: getPostPartumItems(), getTAllItemsForCategory1(), getTAllItemsForCategory2()).done { a1,a2,a3 in
-      
-      Toast.dismiss()
+    when(fulfilled: getUserTAllItems(), getTAllItemsForCategory7()).done { childModel,allModel in
       
       var temp:[HealthDeclarationModel] = []
-      var commonElements:[HealthDeclarationModel] = []
-      a3.forEach { e1 in
-        a1.xgQuestions.forEach { e2 in
-          if e1.id == e2.id { // 相等则移除e1 留下e2
-            commonElements.append(e2)
+      allModel.forEach { e1 in
+        childModel.kidsQuestions.forEach { e2 in
+          if e1.id == e2.id { 
+            e1.result = e2.result
           }
         }
       }
-      temp.append(contentsOf: commonElements)
-      temp.append(contentsOf: a2)
+      temp.append(contentsOf: allModel)
       temp.removeDuplicates(keyPath: \.id)
       
-      temp.removeFirst(where: { $0.description_en == "Are you pregnant?" })
-      temp.removeFirst(where: { $0.description_en == "Do you have irregular periods?" })
+      let name = HealthDeclarationModel()
+      name.description_en = "Child's Full Name"
+      name.placeholder = "Enter name"
+      name.text = childModel.kidsMassageFields?.name ?? ""
+      name.formType = .Input
+      name.inputType = .ChildName
+      temp.append(name)
       
-      let dateModel = HealthDeclarationModel()
-      dateModel.formType = .DeliveryDate
-      dateModel.description_en = "Date of Delivery"
-      dateModel.delivery_date = a1.postPartumFields?.delivery_estimated_date ?? ""
-      let methodModel = HealthDeclarationModel()
-      methodModel.formType = .DeliveryMethod
-      methodModel.mehtod_of_delivery = a1.postPartumFields?.delivery_method.string ?? "2"
-      let remarkModel = HealthDeclarationModel()
-      remarkModel.formType = .Remark
+      let gender = HealthDeclarationModel()
+      gender.description_en = "Child's Gender"
+      gender.result = childModel.kidsMassageFields?.gender.string ?? "1"
+      gender.formType = .ChildGender
+      temp.append(gender)
       
-      temp.append(dateModel)
-      temp.append(methodModel)
-      temp.append(remarkModel)
+      let date = HealthDeclarationModel()
+      date.description_en = "Child's Date of Birth"
+      date.child_birth_date = String(childModel.kidsMassageFields?.birthday.split(separator: " ").first ?? "")
+      date.formType = .ChildBirthDate
+      temp.append(date)
+      
+      let age = HealthDeclarationModel()
+      age.description_en = "Child's Age"
+      age.placeholder = "Enter age"
+      age.text = childModel.kidsMassageFields?.age.string ?? ""
+      age.formType = .Input
+      age.inputType = .ChildAge
+      temp.append(age)
+      
+      let certNo = HealthDeclarationModel()
+      certNo.description_en = "Child's Birth Certificate No"
+      certNo.placeholder = "Enter Birth Certificate No"
+      certNo.text = childModel.kidsMassageFields?.birth_no ?? ""
+      certNo.formType = .Input
+      certNo.inputType = .ChildCertNo
+      temp.append(certNo)
+      
+      let weight = HealthDeclarationModel()
+      weight.description_en = "Child's Weight Percentile(%)"
+      weight.placeholder = "Enter Weight Percentile"
+      weight.text = childModel.kidsMassageFields?.weight ?? ""
+      weight.formType = .Input
+      weight.inputType = .ChildWeight
+      temp.append(weight)
+      
+      let race = HealthDeclarationModel()
+      race.description_en = "Race"
+      race.result = childModel.kidsMassageFields?.race.string ?? ""
+      race.text = childModel.kidsMassageFields?.race_other ?? ""
+      race.formType = .ChildRace
+      temp.append(race)
+      
+      let purpose = HealthDeclarationModel()
+      purpose.description_en = "Purpose of declaration"
+      purpose.result = childModel.kidsMassageFields?.purpose.string ?? ""
+      purpose.formType = .PurposeOfDeclaration
+      temp.append(purpose)
+      
+      
+      let remark = HealthDeclarationModel()
+      remark.description_en = "If any of the answers above is yes,please specify:"
+      remark.text = childModel.kidsMassageFields?.specify ?? ""
+      remark.formType = .Input
+      remark.inputType = .Specify
+      temp.append(remark)
       
       self.dataArray = temp
       
@@ -76,43 +122,44 @@ class PostPartumDeclarationController: BaseTableController {
         self.headView.size = CGSize(width: kScreenWidth, height: 184)
         
         self.tableView?.tableFooterView = self.footView
-        self.footView.size = CGSize(width: kScreenWidth, height: 680)
+        self.footView.size = CGSize(width: kScreenWidth, height: 500)
         
       }
+      Toast.dismiss()
       self.endRefresh()
       self.hideSkeleton()
-      
-    }.catch { e in
+    }.catch { error in
       Toast.dismiss()
-      self.endRefresh(e.asAPIError.emptyDatatype)
+      self.endRefresh(error.asAPIError.emptyDatatype)
       self.hideSkeleton()
     }
 
   }
   
-  /// 用户已经填写的
-  func getPostPartumItems() -> Promise<PostPartumModel> {
+  func getUserTAllItems() -> Promise<ChildDeclarationModel> {
     Promise.init { resolver in
-      let params = SOAPParams(action: .questionnaireSurvey, path: .getPostPartumItems)
+      let params = SOAPParams(action: .questionnaireSurvey, path: .getKidsMassageItems)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
-      params.set(key: "category", value: 5)
+      params.set(key: "category", value: "7")
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decodeObjectByHandJSON(PostPartumModel.self, from: data) {
+        if let model = DecodeManager.decodeObjectByHandJSON(ChildDeclarationModel.self, from: data) {
           resolver.fulfill(model)
           return
         }
-        resolver.reject(APIError.requestError(code: -1, message: "Decode PostPartumModel Failed"))
-      } errorHandler: { e in
-        resolver.reject(e)
+        resolver.reject(APIError.requestError(code: -1, message: "Decode ChildDeclarationModel Failed"))
+      } errorHandler: { error in
+        resolver.reject(error)
       }
+
     }
   }
+
   
-  func getTAllItemsForCategory1() -> Promise<[HealthDeclarationModel]> {
+  func getTAllItemsForCategory7() -> Promise<[HealthDeclarationModel]> {
     Promise.init { resolver in
       let params = SOAPParams(action: .questionnaireSurvey, path: .getTAllItems)
       params.set(key: "clientId", value: 0)
-      params.set(key: "category", value: 1)
+      params.set(key: "category", value: 7)
       params.set(key: "gender", value: Defaults.shared.get(for: .userModel)?.gender ?? "")
       NetworkManager().request(params: params) { data in
         if let models = DecodeManager.decodeArrayByHandJSON(HealthDeclarationModel.self, from: data) {
@@ -126,29 +173,17 @@ class PostPartumDeclarationController: BaseTableController {
     }
   }
   
-  func getTAllItemsForCategory2() -> Promise<[HealthDeclarationModel]> {
-    Promise.init { resolver in
-      let params = SOAPParams(action: .questionnaireSurvey, path: .getTAllItems)
-      params.set(key: "clientId", value: 0)
-      params.set(key: "category", value: 2)
-      params.set(key: "gender", value: Defaults.shared.get(for: .userModel)?.gender ?? "")
-      NetworkManager().request(params: params) { data in
-        if let models = DecodeManager.decodeArrayByHandJSON(HealthDeclarationModel.self, from: data) {
-          resolver.fulfill(models)
-          return
-        }
-        resolver.reject(APIError.requestError(code: -1, message: "Decode HealthDeclarationModel Failed"))
-      } errorHandler: { e in
-        resolver.reject(e)
-      }
-    }
-  }
+
 
   override func createListView() {
     super.createListView()
     
     
     tableView?.register(nibWithCellClass: DeclarationFormCell.self)
+    tableView?.register(nibWithCellClass: DeclarationFormInputCell.self)
+    tableView?.register(nibWithCellClass: DeclarationFormGenderCell.self)
+    tableView?.register(nibWithCellClass: DeclarationFormRaceCell.self)
+    tableView?.register(nibWithCellClass: DeclarationFormPurposeCell.self)
     tableView?.register(nibWithCellClass: DeclarationRemarkCell.self)
     tableView?.register(nibWithCellClass: DeclarationFormDateCell.self)
     tableView?.register(nibWithCellClass: DeclarationFormMethodOfDeiveryCell.self)
@@ -170,7 +205,7 @@ class PostPartumDeclarationController: BaseTableController {
       model?.index = indexPath.row + 1
       
       if let type = model?.formType {
-        if type == .DeliveryDate {
+        if type == .DeliveryDate || type == .ChildBirthDate {
           let cell = tableView.dequeueReusableCell(withClass: DeclarationFormDateCell.self)
           cell.model = model
           cell.selectionStyle = .none
@@ -193,6 +228,36 @@ class PostPartumDeclarationController: BaseTableController {
           }
           return cell
         }
+        
+        if type == .Input {
+          let cell = tableView.dequeueReusableCell(withClass: DeclarationFormInputCell.self)
+          cell.model = model
+          cell.selectionStyle = .none
+          return cell
+        }
+        
+        
+        if type == .ChildGender {
+          let cell = tableView.dequeueReusableCell(withClass: DeclarationFormGenderCell.self)
+          cell.model = model
+          cell.selectionStyle = .none
+          return cell
+        }
+        
+        if type == .ChildRace {
+          let cell = tableView.dequeueReusableCell(withClass: DeclarationFormRaceCell.self)
+          cell.model = model
+          cell.selectionStyle = .none
+          return cell
+        }
+        
+        if type == .PurposeOfDeclaration {
+          let cell = tableView.dequeueReusableCell(withClass: DeclarationFormPurposeCell.self)
+          cell.model = model
+          cell.selectionStyle = .none
+          return cell
+        }
+        
       }else {
         let cell = tableView.dequeueReusableCell(withClass: DeclarationFormCell.self)
         cell.model = model
@@ -212,30 +277,20 @@ class PostPartumDeclarationController: BaseTableController {
     let mapParams = SOAPParams(action: .questionnaireSurvey, path: .savePatientResults)
     
     let data = SOAPDictionary()
-    let summary_data = SOAPDictionary()
     
     let temp = self.dataArray as! [HealthDeclarationModel]
     
+    let summary_data = SOAPDictionary()
     summary_data.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "0")
     summary_data.set(key: "registration_id", value: 0)
     summary_data.set(key: "create_time", value: Date().string(withFormat: "yyyy-MM-dd HH:mm:ss"))
     summary_data.set(key: "create_uid", value: 1)
-    summary_data.set(key: "remarks", value: temp.filter({ $0.formType == .Remark }).first?.remark ?? "")
-    summary_data.set(key: "category", value: 5)
+    summary_data.set(key: "remarks", value: "")
+    summary_data.set(key: "category", value: 7)
     summary_data.set(key: "location_id", value: bookedService.location_id)
-    
     data.set(key: "Summary_Data", value: summary_data.result, keyType: .string, valueType: .map(1))
     
-    let post_massage_record = SOAPDictionary()
     let xg_qa_lines_data = SOAPDictionary()
-    let base_info = SOAPDictionary()
-    
-    base_info.set(key: "address", value: "")
-    base_info.set(key: "delivery_estimated_date", value: temp.filter({ $0.formType == .DeliveryDate }).first?.delivery_date ?? "")
-    base_info.set(key: "is_need_corset", value: 0)
-    base_info.set(key: "is_need_slimming_oil", value: 0)
-    base_info.set(key: "delivery_method", value: temp.filter({ $0.formType == .DeliveryMethod }).first?.mehtod_of_delivery ?? "")
-    
     for (i,e) in temp.enumerated() {
       if e.type == "remark" || e.type == "date" || e.type == "method" {
         continue
@@ -246,11 +301,23 @@ class PostPartumDeclarationController: BaseTableController {
       
       xg_qa_lines_data.set(key: i.string, value: lines.result, keyType: .string, valueType: .map(1))
     }
-   
-    post_massage_record.set(key: "xg_qa_lines_data", value: xg_qa_lines_data.result,keyType: .string,valueType: .map(1))
-    post_massage_record.set(key: "base_info", value: base_info.result,keyType: .string,valueType: .map(1))
+    data.set(key: "health_lines_data", value: xg_qa_lines_data.result,keyType: .string,valueType: .map(1))
     
-    data.set(key: "post_massage_record", value: post_massage_record.result, keyType: .string, valueType: .map(1))
+    
+    let paediatric_massage_record = SOAPDictionary()
+    let base_info = SOAPDictionary()
+    base_info.set(key: "name", value: temp.filter({ $0.inputType == .ChildName}).first?.text ?? "")
+    base_info.set(key: "age", value: temp.filter({ $0.inputType == .ChildAge}).first?.text ?? "")
+    base_info.set(key: "weight", value: temp.filter({ $0.inputType == .ChildWeight}).first?.text ?? "")
+    base_info.set(key: "birthday", value: temp.filter({ $0.formType == .ChildBirthDate}).first?.child_birth_date ?? "")
+    base_info.set(key: "birth_no", value: temp.filter({ $0.inputType == .ChildCertNo}).first?.text ?? "")
+    base_info.set(key: "race", value: temp.filter({ $0.formType == .ChildRace}).first?.result ?? "")
+    base_info.set(key: "race_other", value: temp.filter({ $0.formType == .ChildRace}).first?.text ?? "")
+    base_info.set(key: "purpose", value: temp.filter({ $0.formType == .PurposeOfDeclaration}).first?.result ?? "")
+    base_info.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "0")
+    paediatric_massage_record.set(key: "base_info", value: base_info.result, keyType: .string, valueType: .map(1))
+    
+    data.set(key: "paediatric_massage_record", value: paediatric_massage_record.result, keyType: .string, valueType: .map(1))
     
     mapParams.set(key: "data", value: data.result,type: .map(1))
     
@@ -311,4 +378,5 @@ class PostPartumDeclarationController: BaseTableController {
       self.navigationController?.popToRootViewController(animated: true)
     }
   }
+  
 }

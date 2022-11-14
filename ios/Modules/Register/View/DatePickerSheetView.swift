@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SwiftEntryKit
 class DatePickerSheetView: UIView {
 
   @IBOutlet weak var datePicker: UIDatePicker!
@@ -42,12 +42,12 @@ class DatePickerSheetView: UIView {
   }
 
   @IBAction func confirmAction(_ sender: Any) {
-    EntryKit.dismiss()
+    SwiftEntryKit.dismiss()
     selectCompleteHalder?(datePicker.date)
   }
   
   @IBAction func cancelAction(_ sender: Any) {
-    EntryKit.dismiss()
+    SwiftEntryKit.dismiss()
   }
   @IBAction func dateValueChangedAction(_ sender: UIDatePicker) {
     print(sender.date.dateString())
@@ -59,6 +59,6 @@ class DatePickerSheetView: UIView {
     view.minDate = minimumDate
     view.selectCompleteHalder = complete
     let size = CGSize(width: kScreenWidth, height: 400)
-    EntryKit.display(view: view, size: size, style: .sheet)
+    SwiftEntryKit.displayView(asSheet: view, size: size)
   }
 }

@@ -1616,7 +1616,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 133 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 136 nibs.
   struct nib {
     /// Nib `AccountEditSheetContentView`.
     static let accountEditSheetContentView = _R.nib._AccountEditSheetContentView()
@@ -1686,12 +1686,14 @@ struct R: Rswift.Validatable {
     static let datePickerView = _R.nib._DatePickerView()
     /// Nib `DeclarationFormCell`.
     static let declarationFormCell = _R.nib._DeclarationFormCell()
-    /// Nib `DeclarationFormDateOfDeliverCell`.
-    static let declarationFormDateOfDeliverCell = _R.nib._DeclarationFormDateOfDeliverCell()
+    /// Nib `DeclarationFormDateCell`.
+    static let declarationFormDateCell = _R.nib._DeclarationFormDateCell()
     /// Nib `DeclarationFormFocusAreaCell`.
     static let declarationFormFocusAreaCell = _R.nib._DeclarationFormFocusAreaCell()
     /// Nib `DeclarationFormFootView`.
     static let declarationFormFootView = _R.nib._DeclarationFormFootView()
+    /// Nib `DeclarationFormGenderCell`.
+    static let declarationFormGenderCell = _R.nib._DeclarationFormGenderCell()
     /// Nib `DeclarationFormHeadView`.
     static let declarationFormHeadView = _R.nib._DeclarationFormHeadView()
     /// Nib `DeclarationFormInputCell`.
@@ -1700,6 +1702,10 @@ struct R: Rswift.Validatable {
     static let declarationFormInputWithOptionsCell = _R.nib._DeclarationFormInputWithOptionsCell()
     /// Nib `DeclarationFormMethodOfDeiveryCell`.
     static let declarationFormMethodOfDeiveryCell = _R.nib._DeclarationFormMethodOfDeiveryCell()
+    /// Nib `DeclarationFormPurposeCell`.
+    static let declarationFormPurposeCell = _R.nib._DeclarationFormPurposeCell()
+    /// Nib `DeclarationFormRaceCell`.
+    static let declarationFormRaceCell = _R.nib._DeclarationFormRaceCell()
     /// Nib `DeclarationRemarkCell`.
     static let declarationRemarkCell = _R.nib._DeclarationRemarkCell()
     /// Nib `EditProfileContainer`.
@@ -2158,10 +2164,10 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UINib(name: "DeclarationFormDateOfDeliverCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.declarationFormDateOfDeliverCell) instead")
-    static func declarationFormDateOfDeliverCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.declarationFormDateOfDeliverCell)
+    /// `UINib(name: "DeclarationFormDateCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.declarationFormDateCell) instead")
+    static func declarationFormDateCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.declarationFormDateCell)
     }
     #endif
 
@@ -2178,6 +2184,14 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.declarationFormFootView) instead")
     static func declarationFormFootView(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.declarationFormFootView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "DeclarationFormGenderCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.declarationFormGenderCell) instead")
+    static func declarationFormGenderCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.declarationFormGenderCell)
     }
     #endif
 
@@ -2210,6 +2224,22 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.declarationFormMethodOfDeiveryCell) instead")
     static func declarationFormMethodOfDeiveryCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.declarationFormMethodOfDeiveryCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "DeclarationFormPurposeCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.declarationFormPurposeCell) instead")
+    static func declarationFormPurposeCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.declarationFormPurposeCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "DeclarationFormRaceCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.declarationFormRaceCell) instead")
+    static func declarationFormRaceCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.declarationFormRaceCell)
     }
     #endif
 
@@ -3085,8 +3115,8 @@ struct R: Rswift.Validatable {
       return R.nib.declarationFormCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DeclarationFormCell
     }
 
-    static func declarationFormDateOfDeliverCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DeclarationFormDateOfDeliverCell? {
-      return R.nib.declarationFormDateOfDeliverCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DeclarationFormDateOfDeliverCell
+    static func declarationFormDateCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DeclarationFormDateCell? {
+      return R.nib.declarationFormDateCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DeclarationFormDateCell
     }
 
     static func declarationFormFocusAreaCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DeclarationFormFocusAreaCell? {
@@ -3095,6 +3125,10 @@ struct R: Rswift.Validatable {
 
     static func declarationFormFootView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DeclarationFormFootView? {
       return R.nib.declarationFormFootView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DeclarationFormFootView
+    }
+
+    static func declarationFormGenderCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DeclarationFormGenderCell? {
+      return R.nib.declarationFormGenderCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DeclarationFormGenderCell
     }
 
     static func declarationFormHeadView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DeclarationFormHeadView? {
@@ -3111,6 +3145,14 @@ struct R: Rswift.Validatable {
 
     static func declarationFormMethodOfDeiveryCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DeclarationFormMethodOfDeiveryCell? {
       return R.nib.declarationFormMethodOfDeiveryCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DeclarationFormMethodOfDeiveryCell
+    }
+
+    static func declarationFormPurposeCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DeclarationFormPurposeCell? {
+      return R.nib.declarationFormPurposeCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DeclarationFormPurposeCell
+    }
+
+    static func declarationFormRaceCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DeclarationFormRaceCell? {
+      return R.nib.declarationFormRaceCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DeclarationFormRaceCell
     }
 
     static func declarationRemarkCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DeclarationRemarkCell? {
@@ -3529,7 +3571,7 @@ struct _R: Rswift.Validatable {
       try _ConfirmSessionContainer.validate()
       try _ContactUsListCell.validate()
       try _DataProtectionHeadView.validate()
-      try _DeclarationFormDateOfDeliverCell.validate()
+      try _DeclarationFormDateCell.validate()
       try _DeclarationFormFootView.validate()
       try _EditProfileContainer.validate()
       try _FillInEnquiryFormContentView.validate()
@@ -4160,20 +4202,20 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    struct _DeclarationFormDateOfDeliverCell: Rswift.NibResourceType, Rswift.Validatable {
+    struct _DeclarationFormDateCell: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
-      let name = "DeclarationFormDateOfDeliverCell"
+      let name = "DeclarationFormDateCell"
 
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DeclarationFormDateOfDeliverCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DeclarationFormDateOfDeliverCell
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DeclarationFormDateCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DeclarationFormDateCell
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "booking_form_calendar", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_form_calendar' is used in nib 'DeclarationFormDateOfDeliverCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "booking_form_calendar", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'booking_form_calendar' is used in nib 'DeclarationFormDateCell', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
-          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'DeclarationFormDateOfDeliverCell', but couldn't be loaded.") }
-          if UIKit.UIColor(named: "gray82", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'gray82' is used in nib 'DeclarationFormDateOfDeliverCell', but couldn't be loaded.") }
-          if UIKit.UIColor(named: "grayE0", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'grayE0' is used in nib 'DeclarationFormDateOfDeliverCell', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'DeclarationFormDateCell', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "gray82", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'gray82' is used in nib 'DeclarationFormDateCell', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "grayE0", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'grayE0' is used in nib 'DeclarationFormDateCell', but couldn't be loaded.") }
         }
       }
 
@@ -4206,6 +4248,17 @@ struct _R: Rswift.Validatable {
           if UIKit.UIColor(named: "TheamRed", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamRed' is used in nib 'DeclarationFormFootView', but couldn't be loaded.") }
           if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'DeclarationFormFootView', but couldn't be loaded.") }
         }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _DeclarationFormGenderCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "DeclarationFormGenderCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DeclarationFormGenderCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DeclarationFormGenderCell
       }
 
       fileprivate init() {}
@@ -4250,6 +4303,28 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DeclarationFormMethodOfDeiveryCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DeclarationFormMethodOfDeiveryCell
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _DeclarationFormPurposeCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "DeclarationFormPurposeCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DeclarationFormPurposeCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DeclarationFormPurposeCell
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _DeclarationFormRaceCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "DeclarationFormRaceCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DeclarationFormRaceCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DeclarationFormRaceCell
       }
 
       fileprivate init() {}

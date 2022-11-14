@@ -23,7 +23,7 @@ class HealthCareDeclarationController: BaseTableController {
     self.view.backgroundColor = R.color.theamBlue()
     self.barAppearance(tintColor: .white, barBackgroundColor: R.color.theamBlue()!, image: R.image.return_left(), backButtonTitle: " Back")
     
-    footView.healthDeclarationType = 1
+    footView.healthDeclarationType = bookedService.health_declaration_form_type
     footView.confirmHander = { [weak self] sender in
       self?.savePatientResults(sender)
     }
@@ -219,45 +219,60 @@ class HealthCareDeclarationController: BaseTableController {
     
     sender.startAnimation()
     NetworkManager().request(params: mapParams) { data in
-      self.saveQuestionStatus(sender: sender)
+      self.chanageTStatus(sender)
     } errorHandler: { e in
       sender.stopAnimation()
     }
 
   }
   
-  func saveQuestionStatus(sender: LoadingButton) {
+  func saveQuestionStatus(_ sender: LoadingButton) {
     let params = SOAPParams(action: .BookingOrder, path: .saveQuestionStatus)
-    params.set(key: "bookingId", value: bookedService.id)
+    params.set(key: "bookingId", value: bookedService.booking_order_time_id)
     params.set(key: "status", value: 2)
     NetworkManager().request(params: params) { data in
       if let result = JSON.init(from: data)?.stringValue, result == "1" {
-        self.chanageTStatus(sender)
+        self.setRootViewController()
+      }else{
+        AlertView.show(message: "Save Question Status Failed")
+        sender.stopAnimation()
       }
     } errorHandler: { e in
-      
+      sender.stopAnimation()
     }
   }
   
+  
   func chanageTStatus(_ sender:LoadingButton) {
     let mapParams = SOAPParams(action: .BookingOrder, path: .changeTStatus)
-    mapParams.set(key: "timeId", value: bookedService.id)
+    let timeID = bookedService.booking_order_time_id.isEmpty ? bookedService.id : bookedService.booking_order_time_id
+    mapParams.set(key: "timeId", value: timeID)
     let data = SOAPDictionary()
     data.set(key: "status", value: 4)
     mapParams.set(key: "data", value: data.result,type: .map(1))
     
     NetworkManager().request(params: mapParams) { data in
       sender.stopAnimation()
-      if Defaults.shared.get(for: .isLoginByScanQRCode) == true {
-        ApplicationUtil.setRootViewController()
-      }else {
-        NotificationCenter.default.post(name: NSNotification.Name.bookingDataChanged, object: nil)
-        self.navigationController?.popToRootViewController(animated: true)
+      
+      if self.bookedService.booking_order_time_id.isEmpty {
+        self.setRootViewController()
+      } else {
+        self.saveQuestionStatus(sender)
       }
+      
+     
     } errorHandler: { e in
       sender.stopAnimation()
     }
 
+  }
+  func setRootViewController() {
+    if Defaults.shared.get(for: .isLoginByScanQRCode) == true {
+      ApplicationUtil.setRootViewController()
+    }else {
+      NotificationCenter.default.post(name: NSNotification.Name.bookingDataChanged, object: nil)
+      self.navigationController?.popToRootViewController(animated: true)
+    }
   }
   
   

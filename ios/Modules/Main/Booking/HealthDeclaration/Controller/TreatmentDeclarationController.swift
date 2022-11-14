@@ -23,7 +23,7 @@ class TreatmentDeclarationController: BaseTableController {
     self.view.backgroundColor = R.color.theamBlue()
     self.barAppearance(tintColor: .white, barBackgroundColor: R.color.theamBlue()!, image: R.image.return_left(), backButtonTitle: " Back")
     
-    footView.healthDeclarationType = 2
+    footView.healthDeclarationType = bookedService.health_declaration_form_type
     footView.confirmHander = { [weak self] sender in
       self?.savePatientResults(sender)
     }

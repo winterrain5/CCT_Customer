@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DeclarationFormDateOfDeliverCell: UITableViewCell {
+class DeclarationFormDateCell: UITableViewCell {
   @IBOutlet weak var numLabel: UILabel!
   @IBOutlet weak var shadowView: UIView!
 
@@ -20,10 +20,14 @@ class DeclarationFormDateOfDeliverCell: UITableViewCell {
       }
       numLabel.text = model.index < 10 ? "Question 0\(model.index)" : "Question \(model.index)"
       descLabel.text = model.description_en
-      if model.delivery_date.isEmpty {
-        return
+      
+      if model.formType == .DeliveryDate {
+        dateBtn.titleForNormal = model.delivery_date
       }
-      dateBtn.titleForNormal = model.delivery_date
+      if model.formType == .ChildBirthDate {
+        dateBtn.titleForNormal = model.child_birth_date
+      }
+      
     }
   }
   override func awakeFromNib() {
@@ -36,7 +40,13 @@ class DeclarationFormDateOfDeliverCell: UITableViewCell {
     DatePickerSheetView.show(minimumDate:Date()){ date in
       let dateStr = date.string(withFormat: "yyyy-MM-dd")
       self.dateBtn.titleForNormal = dateStr
-      self.model?.delivery_date = dateStr
+      if self.model?.formType == .ChildBirthDate {
+        self.model?.child_birth_date = dateStr
+      }
+      if self.model?.formType == .DeliveryDate {
+        self.model?.delivery_date = dateStr
+      }
+      
     }
   }
   

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SwiftEntryKit
 class BookingServiceHelpSheetView: UIView {
   
   override func awakeFromNib() {
@@ -23,12 +23,12 @@ class BookingServiceHelpSheetView: UIView {
     let vc = ContactUsViewController()
     UIViewController.getTopVc()?.navigationController?.pushViewController(vc, animated: true)
     
-    EntryKit.dismiss()
+    SwiftEntryKit.dismiss()
   }
   
   static func show() {
     let view = BookingServiceHelpSheetView.loadViewFromNib()
     let size = CGSize(width: kScreenWidth, height: 382 + kBottomsafeAreaMargin)
-    EntryKit.display(view: view, size: size, style: .sheet)
+    SwiftEntryKit.displayView(asSheet: view, size: size)
   }
 }

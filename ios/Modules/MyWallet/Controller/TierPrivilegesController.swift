@@ -53,15 +53,15 @@ class TierPrivilegesController: BaseTableController {
         let cellHeight:CGFloat = boundingBox.height + 344
         
         if level == 2 {
-          let model = TierListModel(tierLevel: "Silver Tier", tierDesc: "Spend or Top up an accumulated amount of $500 to attained this member tier", level: "Silver", amount: "500", privileges: privileges, id: level,cellHeight: cellHeight)
+          let model = TierListModel(tierLevel: "Silver Tier", tierDesc: "Spend or Top Up $500 to attained this member tier", level: "Silver", amount: "500", privileges: privileges, id: level,cellHeight: cellHeight)
           self.dataArray.append(model)
         }
         if level == 3 {
-          let model = TierListModel(tierLevel: "Gold Tier", tierDesc: "Spend or Top up an accumulated amount of $1000 to attained this member tier", level: "Gold", amount: "1000", privileges: privileges, id: level,cellHeight: cellHeight)
+          let model = TierListModel(tierLevel: "Gold Tier", tierDesc: "Spend or Top Up $1,000 to attained this member tier", level: "Gold", amount: "1000", privileges: privileges, id: level,cellHeight: cellHeight)
           self.dataArray.append(model)
         }
         if level == 4 {
-          let model = TierListModel(tierLevel: "Platinum Tier", tierDesc: "Spend or Top up an accumulated amount of $2000 to attained this member tier", level: "Platinum", amount: "2000", privileges: privileges, id: level,cellHeight: cellHeight)
+          let model = TierListModel(tierLevel: "Platinum Tier", tierDesc: "Spend or Top Up $2,000 to attained this member tier", level: "Platinum", amount: "2000", privileges: privileges, id: level,cellHeight: cellHeight)
           self.dataArray.append(model)
         }
         self.dataArray = (self.dataArray as! [TierListModel]).sorted(by: { $0.id < $1.id })

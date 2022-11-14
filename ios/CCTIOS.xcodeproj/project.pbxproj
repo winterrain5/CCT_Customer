@@ -4462,7 +4462,6 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/CRBoxInputView\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/DDGScreenShot\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/DKLogger\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/DoubleConversion\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/HandyJSON\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManagerSwift\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/LookinServer\"",
@@ -4521,6 +4520,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 				);
 				MARKETING_VERSION = 1.1.0;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

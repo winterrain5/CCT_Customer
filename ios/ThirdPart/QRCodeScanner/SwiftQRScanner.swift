@@ -9,7 +9,7 @@ import UIKit
 import CoreGraphics
 import AVFoundation
 import Haptica
-import SwiftEntryKit
+
 
 /**
  QRCodeScannerController is ViewController which calls up method which presents view with AVCaptureSession and previewLayer
@@ -157,7 +157,7 @@ class QRCodeScannerController: BaseViewController,
   @objc func helpAction() {
     let view = WhereQRCodeSheetView.loadViewFromNib()
     let size = CGSize(width: kScreenWidth, height: 656~)
-    SwiftEntryKit.displayView(asSheet: view, size: size)
+    EntryKit.displayView(asSheet: view, size: size)
   
   }
   

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SwiftEntryKit
+
 
 class WellnessAppointmentTypeSelectShetView: UIView {
 
@@ -16,7 +16,7 @@ class WellnessAppointmentTypeSelectShetView: UIView {
   }
   
   @IBAction func selectDateTimeButtonAction(_ sender: Any) {
-    SwiftEntryKit.dismiss {
+    EntryKit.dismiss {
       let vc = BookingAppointmentController(type: .DateTime)
       UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
     }
@@ -24,7 +24,7 @@ class WellnessAppointmentTypeSelectShetView: UIView {
   
 
   @IBAction func selectATherapistButtonAction(_ sender: Any) {
-    SwiftEntryKit.dismiss {
+    EntryKit.dismiss {
       let vc = BookingAppointmentController(type: .Therapist)
       UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
     }
@@ -34,6 +34,6 @@ class WellnessAppointmentTypeSelectShetView: UIView {
   static func show() {
     let view = WellnessAppointmentTypeSelectShetView.loadViewFromNib()
     let size = CGSize(width: kScreenWidth, height: 432)
-    SwiftEntryKit.displayView(asSheet: view, size: size)
+    EntryKit.displayView(asSheet: view, size: size)
   }
 }

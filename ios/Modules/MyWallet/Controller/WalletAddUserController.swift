@@ -51,46 +51,49 @@ class WalletAddUserController: BaseTableController {
     
     
     //遍历所有联系人
-    do {
-      try store.enumerateContacts(with: request, usingBlock: {
-        (contact : CNContact, stop : UnsafeMutablePointer<ObjCBool>) -> Void in
-        
-        //获取姓名
-        let lastName = contact.familyName
-        let firstName = contact.givenName
-        let name = lastName + firstName
-        print("姓名：\(lastName)\(firstName)")
-        
-        //获取昵称
-        let nikeName = contact.nickname
-        print("昵称：\(nikeName)")
-       
-        //获取电话号码
-        print("电话：")
-        
-        var models:[UserContactModel] = []
-        for phone in contact.phoneNumbers {
-          //获得标签名（转为能看得懂的本地标签名，比如work、home）
-          var label = "未知标签"
-          if phone.label != nil {
-            label = CNLabeledValue<NSString>.localizedString(forLabel:
-                                                              phone.label!)
+    DispatchQueue.global().async {
+      do {
+        try store.enumerateContacts(with: request, usingBlock: {
+          (contact : CNContact, stop : UnsafeMutablePointer<ObjCBool>) -> Void in
+          
+          //获取姓名
+          let lastName = contact.familyName
+          let firstName = contact.givenName
+          let name = lastName + firstName
+          print("姓名：\(lastName)\(firstName)")
+          
+          //获取昵称
+          let nikeName = contact.nickname
+          print("昵称：\(nikeName)")
+         
+          //获取电话号码
+          print("电话：")
+          
+          var models:[UserContactModel] = []
+          for phone in contact.phoneNumbers {
+            //获得标签名（转为能看得懂的本地标签名，比如work、home）
+            var label = "未知标签"
+            if phone.label != nil {
+              label = CNLabeledValue<NSString>.localizedString(forLabel:
+                                                                phone.label!)
+            }
+            
+            //获取号码
+            let value = phone.value.stringValue.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "+65", with: "").replacingOccurrences(of: "-", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
+            let model = UserContactModel(name:name,phone: value)
+            models.append(model)
+            self.result.append(model)
+            print("\t\(label)：\(value)")
           }
           
-          //获取号码
-          let value = phone.value.stringValue.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "+65", with: "").replacingOccurrences(of: "-", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
-          let model = UserContactModel(name:name,phone: value)
-          models.append(model)
-          self.result.append(model)
-          print("\t\(label)：\(value)")
-        }
-        
-        print("----------------")
-        
-      })
-    } catch {
-      print(error)
+          print("----------------")
+          
+        })
+      } catch {
+        print(error)
+      }
     }
+    
   }
   
   func matchPhone() {

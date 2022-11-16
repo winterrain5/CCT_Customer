@@ -14,6 +14,7 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* CCTIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CCTIOSTests.m */; };
 		45208FD028FD3BEC003084FE /* libswiftCoreGraphics.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 45208FCF28FD3BEC003084FE /* libswiftCoreGraphics.tbd */; };
+		4530DEE3292223AA00CDAFD8 /* EntryKit_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4530DEE2292223AA00CDAFD8 /* EntryKit_Extension.swift */; };
 		453CD50F28598626005FEEE1 /* DeclarationFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CD50D28598626005FEEE1 /* DeclarationFormCell.swift */; };
 		453CD51028598626005FEEE1 /* DeclarationFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 453CD50E28598626005FEEE1 /* DeclarationFormCell.xib */; };
 		453CD5122859885F005FEEE1 /* DeclarationFormHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CD5112859885F005FEEE1 /* DeclarationFormHeadView.swift */; };
@@ -75,7 +76,6 @@
 		45A5C44328604A9E006B6D4C /* UIView+Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A5C44228604A9E006B6D4C /* UIView+Badge.swift */; };
 		45A5C4452860552C006B6D4C /* ShopCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A5C4442860552C006B6D4C /* ShopCartModel.swift */; };
 		45B680B228597CDC00F2E430 /* PostPartumDeclarationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B680B128597CDB00F2E430 /* PostPartumDeclarationController.swift */; };
-		45C0651F287BBD4C008F8085 /* SwiftEntryKit_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C0651E287BBD4C008F8085 /* SwiftEntryKit_Extension.swift */; };
 		45C6B78D285732BD00546CC8 /* WellcomBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6B78C285732BD00546CC8 /* WellcomBackView.swift */; };
 		45C6B78F2857335900546CC8 /* WellcomBackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C6B78E2857335900546CC8 /* WellcomBackView.xib */; };
 		45C6B7912858251400546CC8 /* CheckInTodaySessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6B7902858251400546CC8 /* CheckInTodaySessionController.swift */; };
@@ -777,6 +777,8 @@
 		2D02E47B1E0B4A5D006451C7 /* CCTIOS-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCTIOS-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* CCTIOS-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CCTIOS-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45208FCF28FD3BEC003084FE /* libswiftCoreGraphics.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCoreGraphics.tbd; path = usr/lib/swift/libswiftCoreGraphics.tbd; sourceTree = SDKROOT; };
+		4530DEE2292223AA00CDAFD8 /* EntryKit_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryKit_Extension.swift; sourceTree = "<group>"; };
+		4530DEE4292229E000CDAFD8 /* libSwiftEntryKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSwiftEntryKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		453CD50D28598626005FEEE1 /* DeclarationFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarationFormCell.swift; sourceTree = "<group>"; };
 		453CD50E28598626005FEEE1 /* DeclarationFormCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeclarationFormCell.xib; sourceTree = "<group>"; };
 		453CD5112859885F005FEEE1 /* DeclarationFormHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarationFormHeadView.swift; sourceTree = "<group>"; };
@@ -838,7 +840,6 @@
 		45A5C44228604A9E006B6D4C /* UIView+Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Badge.swift"; sourceTree = "<group>"; };
 		45A5C4442860552C006B6D4C /* ShopCartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCartModel.swift; sourceTree = "<group>"; };
 		45B680B128597CDB00F2E430 /* PostPartumDeclarationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPartumDeclarationController.swift; sourceTree = "<group>"; };
-		45C0651E287BBD4C008F8085 /* SwiftEntryKit_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftEntryKit_Extension.swift; sourceTree = "<group>"; };
 		45C6B78C285732BD00546CC8 /* WellcomBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellcomBackView.swift; sourceTree = "<group>"; };
 		45C6B78E2857335900546CC8 /* WellcomBackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WellcomBackView.xib; sourceTree = "<group>"; };
 		45C6B7902858251400546CC8 /* CheckInTodaySessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInTodaySessionController.swift; sourceTree = "<group>"; };
@@ -1589,6 +1590,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4530DEE4292229E000CDAFD8 /* libSwiftEntryKit.a */,
 				45208FCF28FD3BEC003084FE /* libswiftCoreGraphics.tbd */,
 				4932AB9C27C71D230029F000 /* libz.1.2.5.tbd */,
 				4932AB9A27C71D190029F000 /* libc++.tbd */,
@@ -3337,7 +3339,7 @@
 				49E79F7B278D284F00F304B2 /* UIViewController_Extension.swift */,
 				49FC8EBA279112E800157292 /* UITableView_Extension.swift */,
 				45A5C44228604A9E006B6D4C /* UIView+Badge.swift */,
-				45C0651E287BBD4C008F8085 /* SwiftEntryKit_Extension.swift */,
+				4530DEE2292223AA00CDAFD8 /* EntryKit_Extension.swift */,
 			);
 			name = Extension;
 			path = CCTIOS/Extension;
@@ -3876,6 +3878,7 @@
 				4998C026277EF51200A881D5 /* SCNCylinderExtensions.swift in Sources */,
 				4998C0EC2784427F00A881D5 /* Constraint.swift in Sources */,
 				45DBB9052859D9BD0063EF4E /* DeclarationFormFootView.swift in Sources */,
+				4530DEE3292223AA00CDAFD8 /* EntryKit_Extension.swift in Sources */,
 				4906C237279E4AC100F7B67F /* QuestionAnswerModel.swift in Sources */,
 				4902023D27D9EAE900E74415 /* WalletTopUpController.swift in Sources */,
 				45FC54E7285072F600D3C0FF /* InputGeneralInfoController.swift in Sources */,
@@ -4253,7 +4256,6 @@
 				4998C031277EF51200A881D5 /* NotificationCenterExtensions.swift in Sources */,
 				4904C3C6280677C6008FE5A5 /* ShopSearchView.swift in Sources */,
 				4998C004277EF51200A881D5 /* UILayoutPriorityExtensions.swift in Sources */,
-				45C0651F287BBD4C008F8085 /* SwiftEntryKit_Extension.swift in Sources */,
 				4998C03D277EF51200A881D5 /* BidirectionalCollectionExtensions.swift in Sources */,
 				490E2AA427DB3E2700370512 /* DatePickerView.swift in Sources */,
 				49781BD527BE2B5D006F93DF /* MyOrderDetailFooterView.swift in Sources */,
@@ -4446,7 +4448,7 @@
 				CODE_SIGN_ENTITLEMENTS = CCTIOS/CCTIOSDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 7BVP6AS26M;
 				ENABLE_BITCODE = NO;
@@ -4506,7 +4508,7 @@
 				CODE_SIGN_ENTITLEMENTS = CCTIOS/CCTIOSRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7BVP6AS26M;
 				INFOPLIST_FILE = CCTIOS/Info.plist;

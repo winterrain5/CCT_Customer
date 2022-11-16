@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SwiftEntryKit
+
 class BookingDateSheetView: UIView{
   
   var titleLabel = UILabel().then { label in
@@ -138,7 +138,7 @@ class BookingDateSheetView: UIView{
     view.selectComplete = selectComplete
     
     let size = CGSize(width: kScreenWidth, height: 405)
-    SwiftEntryKit.displayView(asSheet: view, size: size)
+    EntryKit.displayView(asSheet: view, size: size)
   }
   
 }
@@ -171,7 +171,7 @@ extension BookingDateSheetView:FSCalendarDataSource,FSCalendarDelegate,FSCalenda
   }
   
   func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-    SwiftEntryKit.dismiss()
+    EntryKit.dismiss()
     selectComplete?(date)
   }
   

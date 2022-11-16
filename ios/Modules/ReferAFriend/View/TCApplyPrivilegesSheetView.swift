@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SwiftEntryKit
+
 @objcMembers
 class TCApplyPrivilegesSheetView: UIView {
 
@@ -59,6 +59,6 @@ class TCApplyPrivilegesSheetView: UIView {
   static func show() {
     let view = TCApplyPrivilegesSheetView()
     let size = CGSize(width: kScreenWidth, height: kScreenHeight - kNavBarHeight * 1.5)
-    SwiftEntryKit.displayView(asSheet: view, size: size)
+    EntryKit.displayView(asSheet: view, size: size)
   }
 }

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SwiftEntryKit
+
 
 class SelectTypeOfServiceSheetView: UIView {
   override func awakeFromNib() {
@@ -19,7 +19,8 @@ class SelectTypeOfServiceSheetView: UIView {
   }
 
   @IBAction func treamentButtonAction(_ sender: Any) {
-    SwiftEntryKit.dismiss(.all) {
+    
+    EntryKit.dismiss {
       AlertView.show(title: "Share more about your condition?", message: "", leftButtonTitle: "Skip", rightButtonTitle: "Yes") {
         
         let vc = BookingAppointmentController(type: .Treatment,showReport: false)
@@ -32,12 +33,11 @@ class SelectTypeOfServiceSheetView: UIView {
 
       }
     }
-   
   }
   
 
   @IBAction func wellnessButtonAction(_ sender: Any) {
-    SwiftEntryKit.dismiss(.all) {
+    EntryKit.dismiss{
       WellnessAppointmentTypeSelectShetView.show()
     }
   }
@@ -45,6 +45,6 @@ class SelectTypeOfServiceSheetView: UIView {
   static func show() {
     let view = SelectTypeOfServiceSheetView.loadViewFromNib()
     let size = CGSize(width: kScreenWidth, height: 432)
-    SwiftEntryKit.displayView(asSheet: view, size: size)
+    EntryKit.displayView(asSheet: view, size: size)
   }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 import PromiseKit
-import SwiftEntryKit
+
 class SettingViewController: BaseTableController {
   
   private var headerView = UIView().then { view in

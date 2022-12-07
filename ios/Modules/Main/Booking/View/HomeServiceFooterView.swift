@@ -52,7 +52,7 @@ class HomeServiceFooterView: UIView {
             coupon += e.paid_amount?.cgFloat() ?? 0
           } else  {
             let client_voucher_type = e.client_voucher_type ?? ""
-            if !client_voucher_type.isEmpty && client_voucher_type == "3" {
+            if !client_voucher_type.isEmpty && (client_voucher_type == "3" ||  client_voucher_type == "4") {
               package +=  e.paid_amount?.cgFloat() ?? 0
             }
           }

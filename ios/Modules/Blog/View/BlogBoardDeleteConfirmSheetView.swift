@@ -21,7 +21,7 @@ class BlogBoardDeleteConfirmSheetView: UIView {
     let view = BlogBoardDeleteConfirmSheetView.loadViewFromNib()
     view.confirmHandler = confirmHandler
     let size = CGSize(width: kScreenWidth, height: 276 + kBottomsafeAreaMargin)
-    EntryKit.display(view: view, size: size, style: .sheet, backgroundColor: R.color.blackAlpha8()!, touchDismiss: true)
+    EntryKit.displayView(asSheet: view, size: size)
   }
   @IBAction func cancelButtonAction(_ sender: Any) {
     EntryKit.dismiss()

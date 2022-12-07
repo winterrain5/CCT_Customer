@@ -142,6 +142,6 @@ class SymptomCheckReportListView: UIView ,UITableViewDelegate,UITableViewDataSou
   static func show() {
     let view = SymptomCheckReportListView()
     let size = CGSize(width: kScreenWidth, height: kScreenHeight - 150)
-    EntryKit.display(view: view, size: size, style: .sheet)
+    EntryKit.displayView(asSheet: view, size: size)
   }
 }

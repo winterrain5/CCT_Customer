@@ -26,7 +26,7 @@ class DeclarationFormGenderCell: UITableViewCell {
       }
 
       descLabel.text = model.description_en
-      numLabel.text = model.index < 10 ? "Question 0\(model.index)" : "Question \(model.index)"
+      numLabel.text = model.questionNum
       
       if model.result == "1" {
         updateSelectStatus(maleBtn,result: "1")

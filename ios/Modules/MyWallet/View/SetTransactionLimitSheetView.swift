@@ -140,6 +140,6 @@ class SetTransactionLimitSheetView: UIView {
     view.cardUserModel = cardUserModel
     view.updateCompleteHandler = complete
     let size = CGSize(width: kScreenWidth, height: 483 + kBottomsafeAreaMargin)
-    EntryKit.display(view: view, size: size, style: .sheet)
+    EntryKit.displayView(asSheet: view, size: size)
   }
 }

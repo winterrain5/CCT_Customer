@@ -18,7 +18,9 @@ class MyOrderDetailHeaderView: UIView,UITableViewDelegate,UITableViewDataSource 
       guard let model = model else {
         return
       }
-      let dateStr = "Date of Order ".appending(model.Order_Info?.invoice_date?.date(withFormat: "yyyy-MM-dd")?.string(withFormat: "dd MMM yyyy,EEE") ?? "")
+      let createDate = model.Order_Info?.create_time?.date(withFormat: "yyyy-MM-dd")?.string(withFormat: "dd MMM yyyy,EEE") ?? ""
+      let date = model.Order_Info?.invoice_date?.date(withFormat: "yyyy-MM-dd")?.string(withFormat: "dd MMM yyyy,EEE") ?? createDate
+      let dateStr = "Date of Order ".appending(date)
       dateLabel.text = dateStr
       tableView.reloadData()
       var shouldLeaveReview:Bool = false

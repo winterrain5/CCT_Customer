@@ -66,7 +66,7 @@ class ShopFilterView: UIView {
     view.selectCompleteHandler = complete
     view.contentView.result = lastSelect
     let size = CGSize(width: kScreenWidth, height: kScreenHeight * 0.8)
-    EntryKit.display(view: view, size: size, style: .sheet)
+    EntryKit.displayView(asSheet: view, size: size)
 
   }
 

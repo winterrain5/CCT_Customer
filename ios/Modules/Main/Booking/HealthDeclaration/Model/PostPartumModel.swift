@@ -30,6 +30,7 @@ enum InputContentType:String,HandyJSONEnum {
   case ChildCertNo
   case ChildWeight
   case Specify
+  case Pregnancies   
 }
 class HealthDeclarationModel :BaseModel {
   var category: String = ""
@@ -66,6 +67,11 @@ class HealthDeclarationModel :BaseModel {
   var formType:DeclarationFormType?
   
   var index = 1
+  var questionNum: String {
+    get {
+      index < 10 ? "Question 0\(index)" : "Question \(index)"
+    }
+  }
 }
 
 class Client :BaseModel {

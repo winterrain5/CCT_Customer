@@ -89,7 +89,7 @@ class BookingCompleteDetailView: UIView,UITableViewDelegate,UITableViewDataSourc
       if model?.Paymethod_Info?.count ?? 0 > 0 {
         model?.Paymethod_Info?.forEach({ info in
           let view = BookingPaymentMethodView()
-          let model = (title:info.name ?? "",money:"-" + (info.paid_amount?.formatMoney().dolar ?? ""))
+          let model = (title:info.name ?? "",money:"-" + (info.real_paid_amount?.formatMoney().dolar ?? ""))
           view.model = model
           paymentMethodView.addSubview(view)
         })
@@ -105,21 +105,28 @@ class BookingCompleteDetailView: UIView,UITableViewDelegate,UITableViewDataSourc
       }
       
       if model?.PayVoucher_Info?.count ?? 0 > 0 {
-        var voucherDict:[String:Float] = [:]
-        model?.PayVoucher_Info?.forEach({ info in
-          let name = info.bought_voucher_id ?? ""
-          let paid_amount = info.paid_amount?.float() ?? 0
-          if voucherDict.keys.contains(name) {
-            let new = (voucherDict[name] ?? 0) + paid_amount
-            voucherDict[name] = new
-          }else {
-            voucherDict[name] = paid_amount
+        
+        var voucherDict: [String:CGFloat] = [:]
+        model?.PayVoucher_Info?.enumerated().forEach({ i,info in
+          let keys = voucherDict.keys
+          if keys.contains(where: { $0 == info.name }), let name = info.name,let newPaid = info.paid_amount?.cgFloat() {
+            var oldPaid = voucherDict[name] ?? 0
+            oldPaid += newPaid
+            voucherDict[name] = oldPaid
+            return
           }
+          
+          guard let name = info.name,let paid = info.paid_amount?.cgFloat() else { return }
+          voucherDict[name] = paid
+         
         })
-        let view = BookingPaymentMethodView()
-        let model = (title:model?.PayVoucher_Info?.first?.name ?? "",money:"-" + (voucherDict.values.first?.string.formatMoney().dolar ?? ""))
-        view.model = model
-        paymentMethodView.addSubview(view)
+        voucherDict.keys.forEach { key in
+          let view = BookingPaymentMethodView()
+          let model = (title:key,money:"-" + (voucherDict[key]?.string.formatMoney().dolar ?? ""))
+          view.model = model
+          paymentMethodView.addSubview(view)
+        }
+       
       }
       
       let priceH = discount > 0 ? 144 : 120
@@ -282,6 +289,7 @@ class BookingPaymentMethodView: UIView {
     super.layoutSubviews()
     typeLabel.snp.makeConstraints { make in
       make.left.equalToSuperview().offset(16)
+      make.right.equalToSuperview().offset(-60)
       make.centerY.equalToSuperview()
     }
     moneyLabel.snp.makeConstraints { make in

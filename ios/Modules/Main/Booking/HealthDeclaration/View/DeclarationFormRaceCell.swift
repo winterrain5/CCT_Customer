@@ -29,7 +29,7 @@ class DeclarationFormRaceCell: UITableViewCell ,UITextViewDelegate {
       }
 
       descLabel.text = model.description_en
-      numLabel.text = model.index < 10 ? "Question 0\(model.index)" : "Question \(model.index)"
+      numLabel.text = model.questionNum
       textView.placeholder = model.placeholder
       if !model.text.isEmpty {
         textView.text = model.text

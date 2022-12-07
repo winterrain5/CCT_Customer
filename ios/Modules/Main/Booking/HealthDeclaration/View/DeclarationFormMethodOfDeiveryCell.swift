@@ -22,7 +22,7 @@ class DeclarationFormMethodOfDeiveryCell: UITableViewCell {
       guard let model = model else {
         return
       }
-      numLabel.text = model.index < 10 ? "Question 0\(model.index)" : "Question \(model.index)"
+      numLabel.text = model.questionNum
       
       if model.mehtod_of_delivery == "1" {
         updateSelectStatus(naturalBirthBtn, result: "1")

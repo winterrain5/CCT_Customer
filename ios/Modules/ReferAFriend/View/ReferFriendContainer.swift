@@ -55,7 +55,7 @@ class ReferFriendContainer: UIView {
   @IBAction func tcApplyButtonAction(_ sender: Any) {
     let view = TCApplyPrivilegesSheetView()
     let size = CGSize(width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
-    EntryKit.display(view: view, size: size, style: .sheet)
+    EntryKit.displayView(asSheet: view, size: size)
   }
   
   @IBAction func whatsappButtonAction(_ sender: Any) {

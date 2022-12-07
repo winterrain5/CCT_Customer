@@ -31,7 +31,7 @@ class DatePickerView: UIView {
     let view = DatePickerView.loadViewFromNib()
     view.completeHandler = completeHandler
     let size = CGSize(width: kScreenWidth, height: 420)
-    EntryKit.display(view: view, size: size, style: .sheet)
+    EntryKit.displayView(asSheet: view, size: size)
   }
   
   @IBAction func cancelAction(_ sender: Any) {

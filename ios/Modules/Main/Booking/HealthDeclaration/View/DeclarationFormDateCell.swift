@@ -18,7 +18,7 @@ class DeclarationFormDateCell: UITableViewCell {
       guard let model = model else {
         return
       }
-      numLabel.text = model.index < 10 ? "Question 0\(model.index)" : "Question \(model.index)"
+      numLabel.text = model.questionNum
       descLabel.text = model.description_en
       
       if model.formType == .DeliveryDate {

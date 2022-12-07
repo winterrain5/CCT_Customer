@@ -84,7 +84,7 @@ class TransactionDetailFooterView: UIView {
       if model?.Paymethod_Info?.count ?? 0 > 0 {
         model?.Paymethod_Info?.forEach({ info in
           let view = TransactionDetailFooterPaymentMethodView()
-          let model = (title:info.name ?? "",money:"-" + (info.paid_amount?.formatMoney().dolar ?? ""))
+          let model = (title:info.name ?? "",money:"-" + (info.real_paid_amount?.formatMoney().dolar ?? ""))
           view.model = model
           paymentMethodContentVIew.addSubview(view)
         })
@@ -150,14 +150,14 @@ class TransactionDetailFooterView: UIView {
     if otherInfoContentView.subviews.count > 0 {
       for i in 0...(otherInfoContentView.subviews.count - 1) {
         let view = otherInfoContentView.subviews[i]
-        view.frame = CGRect(x: 0, y: 10 + (i - 1) * 30 , width: Int(kScreenWidth) - 48, height: 30)
+        view.frame = CGRect(x: 0, y: 10 + (i - 1) * 30 , width: Int(kScreenWidth), height: 30)
       }
     }
     
     if paymentMethodContentVIew.subviews.count > 0 {
       for i in 0...(paymentMethodContentVIew.subviews.count - 1) {
         let view = paymentMethodContentVIew.subviews[i]
-        view.frame = CGRect(x: 0, y: 53 + (i - 1) * 38 , width: Int(kScreenWidth) - 48, height: 38)
+        view.frame = CGRect(x: 0, y: 53 + (i - 1) * 38 , width: Int(kScreenWidth), height: 38)
       }
     }
    
@@ -196,7 +196,7 @@ class TransactionDetailFooterOtherInfoView:UIView {
   override func layoutSubviews() {
     super.layoutSubviews()
     moneyLabel.snp.makeConstraints { make in
-      make.right.equalToSuperview().offset(24)
+      make.right.equalToSuperview().offset(-24)
       make.centerY.equalToSuperview()
       make.width.equalTo(80)
       
@@ -211,21 +211,24 @@ class TransactionDetailFooterOtherInfoView:UIView {
 }
 
 class TransactionDetailFooterPaymentMethodView: UIView {
-  var button = UIButton().then { button in
-    button.titleForNormal = "MasterCard 1234 - $48.00"
-    button.titleLabel?.font = UIFont(name:.AvenirNextRegular,size:16)
-    button.titleColorForNormal = R.color.black333()
-    button.imageForNormal = R.image.transaction_payment_master()
+  var label = UILabel().then { label in
+    label.font = UIFont(name:.AvenirNextRegular,size:16)
+    label.textColor = R.color.black333()
+    label.lineBreakMode = .byTruncatingMiddle
+  }
+  var imageView = UIImageView().then { imgView in
+    imgView.contentMode = .scaleAspectFit
   }
   var model:(title:String,money:String)? {
     didSet {
-      button.imageForNormal = R.image.transaction_payment_other()
-      button.titleForNormal = "\(model?.title ?? "") \(model?.money ?? "")"
+      imageView.image = R.image.transaction_payment_other()
+      label.text = "\(model?.title ?? "") \(model?.money ?? "")"
     }
   }
   override init(frame: CGRect) {
     super.init(frame: frame)
-    addSubview(button)
+    addSubview(label)
+    addSubview(imageView)
   }
   
   required init?(coder: NSCoder) {
@@ -235,8 +238,14 @@ class TransactionDetailFooterPaymentMethodView: UIView {
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    button.snp.makeConstraints { make in
+    imageView.snp.makeConstraints { make in
       make.left.equalToSuperview().offset(24)
+      make.width.height.equalTo(24)
+      make.centerY.equalToSuperview()
+    }
+    label.snp.makeConstraints { make in
+      make.left.equalTo(imageView.snp.right).offset(8)
+      make.right.equalToSuperview().offset(-24)
       make.centerY.equalToSuperview()
     }
   }

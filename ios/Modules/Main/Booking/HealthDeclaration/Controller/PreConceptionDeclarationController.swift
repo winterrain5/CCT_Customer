@@ -97,6 +97,16 @@ class PreConceptionDeclarationController: BaseTableController {
       firstmassage.id = "-2"
       temp.append(firstmassage)
       
+      let firstpregancy = HealthDeclarationModel()
+      firstpregancy.placeholder = "Please elaborate"
+      firstpregancy.description_en = "Is this your first pregnancy?\nIf no,how many other pregnancies including this one?"
+      firstpregancy.result = a1.prePartumFields?.is_first_pregnancy.string ?? "3"
+      firstpregancy.id = "-3"
+      firstpregancy.text = a1.prePartumFields?.pregnancies ?? ""
+      firstpregancy.inputType = .Pregnancies
+      firstpregancy.formType = .InputWithOptions
+      temp.append(firstpregancy)
+      
       let elaborate1 = HealthDeclarationModel()
       elaborate1.placeholder = "Please elaborate"
       elaborate1.description_en = "Is your preganancy considered to be high risk?"
@@ -336,16 +346,23 @@ class PreConceptionDeclarationController: BaseTableController {
     base_info.set(key: "pregnancy_weeks", value: temp.filter({ $0.inputType == .PregnancyWeeks }).first?.text ?? "")
     base_info.set(key: "delivery_estimated_date", value: temp.filter({ $0.formType == .DeliveryDate }).first?.delivery_date ?? "")
     base_info.set(key: "is_first_massage", value: temp.filter({ $0.id == "-2" }).first?.result ?? "3")
+    
+    base_info.set(key: "is_first_pregnancy", value: temp.filter({ $0.id == "-3" }).first?.result ?? "3")
+    base_info.set(key: "pregnancies", value: temp.filter({ $0.inputType == .Pregnancies }).first?.text ?? "")
+
     base_info.set(key: "has_high_risk", value: temp.filter({ $0.inputType == .HighRiskReason}).first?.result ?? "3")
     base_info.set(key: "high_risk_reasons", value: temp.filter({ $0.inputType == .HighRiskReason}).first?.text ?? "")
+    
     base_info.set(key: "has_any_complications", value: temp.filter({ $0.inputType == .ComplicationsProblems}).first?.result ?? "3")
-    base_info.set(key: "complications_problems", value: temp.filter({ $0.inputType == .ComplicationsProblems}).first?.text ?? "3")
+    base_info.set(key: "complications_problems", value: temp.filter({ $0.inputType == .ComplicationsProblems}).first?.text ?? "")
+   
     base_info.set(key: "focus_on_neck", value: temp.filter({ $0.formType == .FocusArea}).first?.focus_on_neck ?? 0)
     base_info.set(key: "focus_on_arms", value: temp.filter({ $0.formType == .FocusArea}).first?.focus_on_arms ?? 0)
     base_info.set(key: "focus_on_shoulders", value: temp.filter({ $0.formType == .FocusArea}).first?.focus_on_shoulders ?? 0)
     base_info.set(key: "focus_on_legs", value: temp.filter({ $0.formType == .FocusArea}).first?.focus_on_legs ?? 0)
     base_info.set(key: "focus_on_head", value: temp.filter({ $0.formType == .FocusArea}).first?.focus_on_head ?? 0)
     base_info.set(key: "focus_on_back", value: temp.filter({ $0.formType == .FocusArea}).first?.focus_on_back ?? 0)
+    
     pre_partum_record.set(key: "base_info", value: base_info.result,keyType: .string,valueType: .map(1))
     
     data.set(key: "pre_partum_record", value: pre_partum_record.result, keyType: .string, valueType: .map(1))

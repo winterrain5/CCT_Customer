@@ -22,7 +22,7 @@ class DeclarationFormFocusAreaCell: UITableViewCell {
       }
 
       descLabel.text = model.description_en
-      numLabel.text = model.index < 10 ? "Question 0\(model.index)" : "Question \(model.index)"
+      numLabel.text = model.questionNum
       
       updateSelectStatus(0, result: model.focus_on_head)
       updateSelectStatus(1, result: model.focus_on_neck)

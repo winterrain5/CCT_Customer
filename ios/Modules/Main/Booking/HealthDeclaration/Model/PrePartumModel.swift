@@ -11,7 +11,7 @@ class PrePartumFields :BaseModel {
   var physician_aware_you: String?
   var pregnancy_weeks: String?
   var has_any_complications: Int = 0
-  var is_first_pregnancy: String?
+  var is_first_pregnancy: Int = 0
   var focus_on_abdomen: String?
   var focus_on_head: Int = 0
   var high_risk_reasons: String?

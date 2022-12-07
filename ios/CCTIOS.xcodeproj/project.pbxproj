@@ -13,6 +13,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* CCTIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CCTIOSTests.m */; };
+		450F9BD42940322600101888 /* SwiftyEntryKit_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F9BD32940322600101888 /* SwiftyEntryKit_Extension.swift */; };
 		45208FD028FD3BEC003084FE /* libswiftCoreGraphics.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 45208FCF28FD3BEC003084FE /* libswiftCoreGraphics.tbd */; };
 		4530DEE3292223AA00CDAFD8 /* EntryKit_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4530DEE2292223AA00CDAFD8 /* EntryKit_Extension.swift */; };
 		453CD50F28598626005FEEE1 /* DeclarationFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CD50D28598626005FEEE1 /* DeclarationFormCell.swift */; };
@@ -776,6 +777,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CCTIOS/main.m; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* CCTIOS-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCTIOS-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* CCTIOS-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CCTIOS-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		450F9BD32940322600101888 /* SwiftyEntryKit_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyEntryKit_Extension.swift; sourceTree = "<group>"; };
 		45208FCF28FD3BEC003084FE /* libswiftCoreGraphics.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCoreGraphics.tbd; path = usr/lib/swift/libswiftCoreGraphics.tbd; sourceTree = SDKROOT; };
 		4530DEE2292223AA00CDAFD8 /* EntryKit_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryKit_Extension.swift; sourceTree = "<group>"; };
 		4530DEE4292229E000CDAFD8 /* libSwiftEntryKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSwiftEntryKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3340,6 +3342,7 @@
 				49FC8EBA279112E800157292 /* UITableView_Extension.swift */,
 				45A5C44228604A9E006B6D4C /* UIView+Badge.swift */,
 				4530DEE2292223AA00CDAFD8 /* EntryKit_Extension.swift */,
+				450F9BD32940322600101888 /* SwiftyEntryKit_Extension.swift */,
 			);
 			name = Extension;
 			path = CCTIOS/Extension;
@@ -3809,6 +3812,7 @@
 				49E61D2A278EDA3700B1C136 /* SymptomCheckDetailHeaderView.swift in Sources */,
 				492D3AF9281B7E060022198A /* BaseTabBarController.swift in Sources */,
 				49E2C23427D7545700F667B7 /* TierPrivilegesCell.swift in Sources */,
+				450F9BD42940322600101888 /* SwiftyEntryKit_Extension.swift in Sources */,
 				49056B1B27979B4400FBA1AC /* WellnessAppointmentTypeSelectShetView.swift in Sources */,
 				495649DB281A2A2300091533 /* LoginContainer.swift in Sources */,
 				49056B1227968E7B00FBA1AC /* WebBrowser+MessageHandler.swift in Sources */,

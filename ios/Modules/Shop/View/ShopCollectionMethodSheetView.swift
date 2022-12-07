@@ -105,7 +105,8 @@ class ShopCollectionMethodSheetView: UIView,UITableViewDelegate,UITableViewDataS
   }
   func show(selecteComplete:@escaping (ShopCollectionModel)->()) {
     selectCompleteHandler = selecteComplete
-    EntryKit.display(view: self, size: CGSize(width: kScreenWidth, height: 418), style: .sheet)
+    let size = CGSize(width: kScreenWidth, height: 418)
+    EntryKit.displayView(asSheet: self, size: size)
   }
 }
 

@@ -110,7 +110,7 @@ class FillInEnquiryFromSelectSubjectSheetView: UIView,UITableViewDataSource,UITa
     let view = FillInEnquiryFromSelectSubjectSheetView()
     view.selectComplete = complete
     let size = CGSize(width: kScreenWidth, height: kScreenHeight * 0.75)
-    EntryKit.display(view: view, size: size, style: .sheet)
+    EntryKit.displayView(asSheet: view, size: size)
     
   }
 }

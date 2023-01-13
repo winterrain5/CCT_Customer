@@ -67,8 +67,7 @@ class InputPhoneView: UIView,UITextFieldDelegate {
       if let models = DecodeManager.decodeArrayByHandJSON(UserModel.self, from: data) {
         if models.count == 0 { // 未注册
           self.sendSMSForMobile(nil)
-        }
-        if models.count == 1,let user = models.first { // 已注册
+        } else if models.count == 1,let user = models.first { // 已注册
           // 判断是app 注册还是电脑端注册  电脑端注册 补全信息;手机端注册显示已经注册
           if user.source == "0" { // 电脑端
             Defaults.shared.set(user, for: .userModel)
@@ -76,8 +75,7 @@ class InputPhoneView: UIView,UITextFieldDelegate {
           }else{
             self.showErrorAlert(errorType: 1)
           }
-        }
-        if models.count >= 2 {
+        } else if models.count >= 2 {
           self.showErrorAlert(errorType: 0)
         }
         
@@ -90,6 +88,10 @@ class InputPhoneView: UIView,UITextFieldDelegate {
   }
   
   func sendSMSForMobile(_ model:UserModel?) {
+    guard let model = model else {
+      
+      return
+    }
     let mobile = phoneTf.text?.trim() ?? ""
     let mapParams = SOAPParams(action: .Sms, path: .sendSmsForMobile)
     
@@ -101,9 +103,7 @@ class InputPhoneView: UIView,UITextFieldDelegate {
     self.otpCode = Int.random(in: 1001...9999).string
     params.set(key: "message", value: "Your OTP is \(self.otpCode). Please enter the OTP within 2 minutes")
     params.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
-    if let id = model?.id {
-      params.set(key: "client_id", value: id)
-    }
+    params.set(key: "client_id", value: model.id)
     
     
     mapParams.set(key: "params", value: params.result, type: .map(1))
@@ -144,6 +144,10 @@ class InputPhoneView: UIView,UITextFieldDelegate {
       title = "You seem to have a wrong Identification No."
       info = "Unable to proceed with registration, please approach our counter staff or call 62933933"
       confirm = "Call now";
+    }else if (errorType == 3) {
+      title = "Your mobile/email has not been registered"
+      info = "Your mobile/email has not been registered,please complete the registration first"
+      confirm = "Confirm"
     }
     
     AlertView.show(title: title, message: info, leftButtonTitle: "Cancel", rightButtonTitle: confirm, messageAlignment: .center) {
@@ -152,7 +156,7 @@ class InputPhoneView: UIView,UITextFieldDelegate {
       
       if errorType == 0 || errorType == 2 {
         CallUtil.call(with: "62933933")
-      }else {
+      } else {
         let vc = EnterAccountController()
         UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
       }

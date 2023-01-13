@@ -34,6 +34,7 @@ class DeclarationFormInputWithOptionsCell: UITableViewCell,UITextViewDelegate {
         textView.text = model.text
       }
  
+      textView.keyboardType = model.keyboardType == .Number ? .asciiCapableNumberPad : .default
       
       if model.result == "1" {
         updateSelectStatus(noBtn,result: "1")

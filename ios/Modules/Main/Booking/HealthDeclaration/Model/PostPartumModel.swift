@@ -32,6 +32,10 @@ enum InputContentType:String,HandyJSONEnum {
   case Specify
   case Pregnancies   
 }
+enum KeyboardType:String,HandyJSONEnum {
+  case Number
+  case Alphabet
+}
 class HealthDeclarationModel :BaseModel {
   var category: String = ""
   var result: String = "3"
@@ -65,6 +69,8 @@ class HealthDeclarationModel :BaseModel {
   var focus_on_back:Int = 0
  
   var formType:DeclarationFormType?
+  
+  var keyboardType: KeyboardType = .Alphabet
   
   var index = 1
   var questionNum: String {

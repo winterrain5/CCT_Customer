@@ -247,7 +247,7 @@
 		49133E4328167BDE0086E518 /* ValidNewVoucherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49133E4228167BDE0086E518 /* ValidNewVoucherModel.swift */; };
 		4915ABBF282A3E9F00BBB3E7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4915ABBE282A3E9F00BBB3E7 /* MenuViewController.swift */; };
 		4915ABC1282A3FE900BBB3E7 /* ApplicationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4915ABC0282A3FE900BBB3E7 /* ApplicationUtil.swift */; };
-		491EB3E227DF435B0019D5B9 /* NetGiftVoucherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491EB3E127DF435B0019D5B9 /* NetGiftVoucherModel.swift */; };
+		491EB3E227DF435B0019D5B9 /* NewGiftVoucherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491EB3E127DF435B0019D5B9 /* NewGiftVoucherModel.swift */; };
 		491EB3E427E023030019D5B9 /* ClientVipLevelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491EB3E327E023030019D5B9 /* ClientVipLevelModel.swift */; };
 		491EB3E827E06E170019D5B9 /* CardDiscountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491EB3E727E06E170019D5B9 /* CardDiscountModel.swift */; };
 		492D3AF9281B7E060022198A /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D3AF8281B7E060022198A /* BaseTabBarController.swift */; };
@@ -1012,7 +1012,7 @@
 		49133E4228167BDE0086E518 /* ValidNewVoucherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidNewVoucherModel.swift; sourceTree = "<group>"; };
 		4915ABBE282A3E9F00BBB3E7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		4915ABC0282A3FE900BBB3E7 /* ApplicationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUtil.swift; sourceTree = "<group>"; };
-		491EB3E127DF435B0019D5B9 /* NetGiftVoucherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetGiftVoucherModel.swift; sourceTree = "<group>"; };
+		491EB3E127DF435B0019D5B9 /* NewGiftVoucherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGiftVoucherModel.swift; sourceTree = "<group>"; };
 		491EB3E327E023030019D5B9 /* ClientVipLevelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientVipLevelModel.swift; sourceTree = "<group>"; };
 		491EB3E727E06E170019D5B9 /* CardDiscountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDiscountModel.swift; sourceTree = "<group>"; };
 		492D3AF8281B7E060022198A /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
@@ -2255,7 +2255,7 @@
 				4902024F27DB2DB300E74415 /* WalletPaymentMethodModel.swift */,
 				496F73E927DF390600E3325D /* BusinessManModel.swift */,
 				496F73EB27DF395F00E3325D /* TaxesModel.swift */,
-				491EB3E127DF435B0019D5B9 /* NetGiftVoucherModel.swift */,
+				491EB3E127DF435B0019D5B9 /* NewGiftVoucherModel.swift */,
 				491EB3E327E023030019D5B9 /* ClientVipLevelModel.swift */,
 				491EB3E727E06E170019D5B9 /* CardDiscountModel.swift */,
 			);
@@ -3915,7 +3915,7 @@
 				4998C017277EF51200A881D5 /* UISwitchExtensions.swift in Sources */,
 				4998C0F22784427F00A881D5 /* ConstraintLayoutSupportDSL.swift in Sources */,
 				4998C0952783E9CB00A881D5 /* ServiceListCell.swift in Sources */,
-				491EB3E227DF435B0019D5B9 /* NetGiftVoucherModel.swift in Sources */,
+				491EB3E227DF435B0019D5B9 /* NewGiftVoucherModel.swift in Sources */,
 				4933AC6927D75D73005E9FB1 /* TierListModel.swift in Sources */,
 				49BA62702785431400B898D5 /* BolgItemHorizontalLayoutCell.swift in Sources */,
 				49981EDE27CC6C5500D4F7BF /* SettingCell.swift in Sources */,
@@ -4457,6 +4457,7 @@
 				DEVELOPMENT_TEAM = 7BVP6AS26M;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CCTIOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Chien Chi Tow";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4484,7 +4485,7 @@
 					/usr/lib/swift,
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.2;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -4494,10 +4495,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.chienchitow.health;
 				PRODUCT_NAME = CCTIOS;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "CCTIOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -4516,6 +4521,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7BVP6AS26M;
 				INFOPLIST_FILE = CCTIOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Chien Chi Tow";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4525,7 +4531,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.2;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -4535,9 +4541,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.chienchitow.health;
 				PRODUCT_NAME = CCTIOS;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RELEASE;
 				SWIFT_OBJC_BRIDGING_HEADER = "CCTIOS-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

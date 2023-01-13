@@ -22,7 +22,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
   @IBOutlet weak var paymentMethodButton: UIButton!
   var taxModel:TaxesModel?
   var staffModel:BusinessManModel?
-  var voucherModel:NetGiftVoucherModel?
+  var voucherModel:NewGiftVoucherModel?
   var orderID:String?
   var orderDetailModel:TopUpOrderDetailModel?
   var clientSecret:String?
@@ -179,11 +179,11 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
 #endif
       
       NetworkManager().request(params: mapParams) { data in
-        if let model = DecodeManager.decodeByCodable(NetGiftVoucherModel.self, from: data) {
+        if let model = DecodeManager.decodeByCodable(NewGiftVoucherModel.self, from: data) {
           self.voucherModel = model
           resolver.fulfill_()
         }else {
-          resolver.reject(APIError.requestError(code: -1, message: "Decode NetGiftVoucherModel Failed"))
+          resolver.reject(APIError.requestError(code: -1, message: "Decode NewGiftVoucherModel Failed"))
         }
       } errorHandler: { e in
         resolver.reject(APIError.requestError(code: -1, message: e.localizedDescription))
@@ -325,11 +325,11 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       Toast.showLoading(withStatus: params.path)
 #endif
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decodeByCodable(TopUpOrderDetailModel.self, from: data) {
+        if let model = DecodeManager.decodeObjectByHandJSON(TopUpOrderDetailModel.self, from: data) {
           self.orderDetailModel = model
           resolver.fulfill_()
         }else {
-          resolver.reject(APIError.requestError(code: -1, message: "Decode MyOrderDetailModel Failed"))
+          resolver.reject(APIError.requestError(code: -1, message: "Decode TopUpOrderDetailModel Failed"))
         }
       } errorHandler: { e in
         resolver.reject(APIError.requestError(code: -1, message: e.localizedDescription))

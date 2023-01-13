@@ -60,6 +60,7 @@ class PreConceptionDeclarationController: BaseTableController {
       weekNo.placeholder = "Enter no. of weeks"
       weekNo.formType = .Input
       weekNo.inputType = .PregnancyWeeks
+      weekNo.keyboardType = .Number
       weekNo.text = a1.prePartumFields?.pregnancy_weeks ?? ""
       temp.append(weekNo)
       
@@ -80,6 +81,7 @@ class PreConceptionDeclarationController: BaseTableController {
       let contactNo = HealthDeclarationModel()
       contactNo.description_en = "Gynecologist Contact Number"
       contactNo.placeholder = "Enter Contact No."
+      contactNo.keyboardType = .Number
       contactNo.text = String(a1.prePartumFields?.name_phone_gynecologist?.split(separator: "/").last ?? "")
       contactNo.inputType = .GynecologistPhone
       contactNo.formType = .Input
@@ -104,6 +106,7 @@ class PreConceptionDeclarationController: BaseTableController {
       firstpregancy.id = "-3"
       firstpregancy.text = a1.prePartumFields?.pregnancies ?? ""
       firstpregancy.inputType = .Pregnancies
+      firstpregancy.keyboardType = .Number
       firstpregancy.formType = .InputWithOptions
       temp.append(firstpregancy)
       

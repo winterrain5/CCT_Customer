@@ -11,7 +11,7 @@ class MyOrderDetailHeaderView: UIView,UITableViewDelegate,UITableViewDataSource 
 
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var tableView: UITableView!
-  var cellHeight:CGFloat = 0
+ 
   var updateHeightHandler:((CGFloat)->())?
   var model:MyOrderDetailModel? {
     didSet {
@@ -24,15 +24,18 @@ class MyOrderDetailHeaderView: UIView,UITableViewDelegate,UITableViewDataSource 
       dateLabel.text = dateStr
       tableView.reloadData()
       var shouldLeaveReview:Bool = false
+      var total:CGFloat = 125.cgFloat
+      var cellHeight:CGFloat = 0
       model.Order_Line_Info?.forEach({ info in
         shouldLeaveReview = info.should_leavea_review ?? false
+        if status == 1 {
+          cellHeight = shouldLeaveReview ? 150 : 92
+        }else {
+          cellHeight = 92
+        }
+        total += cellHeight
       })
-      if status == 1 {
-        cellHeight = shouldLeaveReview ? 150 : 92
-      }else {
-        cellHeight = 92
-      }
-      let total:CGFloat = 125.cgFloat + (model.Order_Line_Info?.count ?? 0).cgFloat * cellHeight
+     
       updateHeightHandler?(total)
     }
   }

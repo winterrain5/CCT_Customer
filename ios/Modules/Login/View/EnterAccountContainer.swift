@@ -65,12 +65,33 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
     
     loginBtn.startAnimation()
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decodeArrayByHandJSON(UserPasswordModel.self, from: data),models.count > 0 ,let password = models.first,password.password == (self.pwdTf.text?.md5 ?? "") {
+      self.loginBtn.stopAnimation()
+      
+      guard let models = DecodeManager.decodeArrayByHandJSON(UserPasswordModel.self, from: data) else {
+        return
+      }
+      
+      if models.count > 0 ,let password = models.first,password.password == (self.pwdTf.text?.md5 ?? "") {
         self.getTClientByuserId(userID: password.id)
       }else {
-        self.loginBtn.stopAnimation()
         AlertView.show(message: "The mobile / email / password is invalid. Please try again.")
       }
+      
+      if models.count == 0 {
+        let title = "Your mobile/email has not been registered"
+        let info = "Your mobile/email has not been registered,please complete the registration first"
+        let confirm = "Confirm"
+        
+        AlertView.show(title: title, message: info, leftButtonTitle: "Cancel", rightButtonTitle: confirm, messageAlignment: .center) {
+          
+        } rightHandler: {
+          let vc = InputPhoneController()
+          UIViewController.getTopVC()?.navigationController?.pushViewController(vc, animated: true)
+        } dismissHandler: {
+          
+        }
+      }
+      
     } errorHandler: { e in
       self.loginBtn.stopAnimation()
     }

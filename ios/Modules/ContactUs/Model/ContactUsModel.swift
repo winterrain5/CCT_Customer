@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactUsModel: Codable {
+class ContactUsModel: BaseModel {
   var is_delete: String?
   var online_booking: String?
   var uen_number: String?
@@ -21,13 +21,18 @@ class ContactUsModel: Codable {
   var show_sort: String?
   var text: String?
   var country_id: String?
-  var mon_fri_start: String?
+  
+  var app_work_start: String?
+  var app_work_end: String?
+  var app_rest_end: String?
+  var app_rest_start: String?
+  
   var business_type_id: String?
   var gst_de_reg_date: String?
   var type: String?
   var website: String?
   var whatapp: String?
-  var sat_sun_start: String?
+ 
   var email: String?
   var create_time: String?
   var cct_or_mp: String?
@@ -44,7 +49,7 @@ class ContactUsModel: Codable {
   var area_id: String?
   var gst_number: String?
   var currency_id: String?
-  var sat_sun_end: String?
+  
   var img_data: String?
   var img_url: String?
   var financial_independent: String?
@@ -52,7 +57,7 @@ class ContactUsModel: Codable {
   var financial_company_id: String?
   var phone: String?
   var time_format: String?
-  var mon_fri_end: String?
+  
   var pid: String?
   var cellHeight:CGFloat?
   var isExpend:Bool?

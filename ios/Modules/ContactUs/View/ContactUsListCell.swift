@@ -26,12 +26,12 @@ class ContactUsListCell: UITableViewCell {
       addressLabel.text = model.address
       
       
-      let mfs = (model.mon_fri_start?.removingSuffix(":00") ?? "") + "AM"
-      let mfe = (model.mon_fri_end?.removingSuffix(":00") ?? "") + "PM"
+      let mfs = (model.app_work_start?.removingSuffix(":00") ?? "") + "AM"
+      let mfe = (model.app_work_end?.removingSuffix(":00") ?? "") + "PM"
       mfTimeLabel.text = " / " + mfs + " - " + mfe
       
-      let ssps = (model.sat_sun_start?.removingSuffix(":00") ?? "") + "AM"
-      let sspe = (model.sat_sun_end?.removingSuffix(":00") ?? "") + "PM"
+      let ssps = (model.app_rest_start?.removingSuffix(":00") ?? "") + "AM"
+      let sspe = (model.app_rest_end?.removingSuffix(":00") ?? "") + "PM"
       sspTimeLabel.text = " / " + ssps + " - " + sspe
       
       phoneButton.titleForNormal = " " + (model.phone ?? "")

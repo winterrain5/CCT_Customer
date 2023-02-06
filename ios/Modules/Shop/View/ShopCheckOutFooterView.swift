@@ -1008,7 +1008,9 @@ class ShopCheckOutFooterView: UIView {
       self.deleteAllCart {
         if self.methodType == 2 {
           self.deductionCreditsNote()
-        }else { // to next vc
+        }else if self.methodType == 1{  // 朋友的卡支付的
+//          self.friendCardPayNotification()
+        } else {
           self.toNextVc()
         }
       }
@@ -1050,6 +1052,20 @@ class ShopCheckOutFooterView: UIView {
       self.toNextVc()
     }
     
+  }
+  
+//  用朋友的卡支付时发送推送
+  func friendCardPayNotification() {
+    let params = SOAPParams(action: .Notifications, path: .friendUseD)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "friendId", value: selectPayMethod?.card_owner_id ?? "")
+    params.set(key: "orderId", value: orderId)
+    NetworkManager().request(params: params) { data in
+      self.toNextVc()
+    } errorHandler: { e in
+      self.toNextVc()
+    }
+
   }
   
   func toNextVc() {

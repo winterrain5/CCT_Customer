@@ -53,7 +53,7 @@ class ContactUsViewController: BaseTableController {
     params.set(key: "pId", value: Defaults.shared.get(for: .companyId) ?? "97")
     
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decodeByCodable([ContactUsModel].self, from: data) {
+      if let models = DecodeManager.decodeArrayByHandJSON(ContactUsModel.self, from: data) {
         models.forEach({ $0.isExpend = false })
         self.dataArray = models.filter({ self.showIds.contains($0.id ?? "")})
       }

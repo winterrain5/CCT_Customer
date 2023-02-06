@@ -322,6 +322,7 @@ enum API:String {
   case welcomeNote = "welcomeNote";
   //预约推送
   case newCreateAppointment = "newCreateAppointment";
+  case friendUseD = "friendUseD"
 }
 
 enum Action:String {

@@ -8,7 +8,7 @@
 import UIKit
 
 class EnterAccountContainer: UIView,UITextFieldDelegate {
-
+  
   @IBOutlet weak var registerBtn: LoadingButton!
   @IBOutlet weak var loginBtn: LoadingButton!
   @IBOutlet weak var pwdTf: UITextField!
@@ -73,11 +73,8 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
       
       if models.count > 0 ,let password = models.first,password.password == (self.pwdTf.text?.md5 ?? "") {
         self.getTClientByuserId(userID: password.id)
-      }else {
-        AlertView.show(message: "The mobile / email / password is invalid. Please try again.")
-      }
-      
-      if models.count == 0 {
+      }else if models.count == 0{
+        
         let title = "Your mobile/email has not been registered"
         let info = "Your mobile/email has not been registered,please complete the registration first"
         let confirm = "Confirm"
@@ -90,12 +87,17 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
         } dismissHandler: {
           
         }
+        
+      } else {
+        AlertView.show(message: "The mobile / email / password is invalid. Please try again.")
       }
+      
+      
       
     } errorHandler: { e in
       self.loginBtn.stopAnimation()
     }
-  
+    
   }
   
   func getTClientByuserId(userID:String) {
@@ -125,7 +127,7 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
       self.loginBtn.stopAnimation()
       AlertView.show(message: "The mobile / email / password is invalid. Please try again.")
     }
-
+    
   }
   
   func sendSMSForMobile(userID:String,clientID:String) {
@@ -150,7 +152,7 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
     } errorHandler: { e in
       self.loginBtn.stopAnimation()
     }
-
+    
   }
   
   func sendSmsForEmail(userID:String,clientID:String) {
@@ -176,10 +178,10 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
     } errorHandler: { e in
       self.loginBtn.stopAnimation()
     }
-
+    
   }
   
-
+  
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     if textField == accountTf {
@@ -187,7 +189,7 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
     }else {
       self.endEditing(true)
     }
-
+    
     return true
   }
   

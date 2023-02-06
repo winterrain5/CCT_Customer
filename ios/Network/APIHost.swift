@@ -13,6 +13,7 @@ let URL_TREAMENT_PLAN = "http://info.chienchitow.com/our-treatment-plan/"
 let URL_Conditions_We_Treat = "http://info.chienchitow.com/condition-we-treat/"
 var URL_API_END_HOST = "/ws&ws=1";
 
+let URL_App_Store = "itms-apps://itunes.apple.com/cn/app/qq/id1621220175?mt=8"
 enum DomainType {
   case Live
   case UAT

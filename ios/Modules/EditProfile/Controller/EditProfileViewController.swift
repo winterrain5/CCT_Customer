@@ -58,11 +58,6 @@ class EditProfileViewController: BaseViewController {
       return
     }
     
-    if model.lastName.isEmpty {
-      Toast.showMessage("Please input Last Name")
-      return
-    }
-    
     if model.postCode.isEmpty {
       Toast.showMessage("Please fill in the Postal Code")
       return
@@ -83,7 +78,7 @@ class EditProfileViewController: BaseViewController {
     let data = SOAPDictionary()
     data.set(key: "id", value: Defaults.shared.get(for: .clientId) ?? "")
     data.set(key: "first_name", value: model.firstName)
-    data.set(key: "last_name", value: model.lastName)
+    data.set(key: "last_name", value: "")
     data.set(key: "gender", value: model.gender)
     data.set(key: "birthday", value: model.birthday)
     data.set(key: "post_code", value: model.postCode)

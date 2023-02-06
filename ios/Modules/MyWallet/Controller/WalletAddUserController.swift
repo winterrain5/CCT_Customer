@@ -11,6 +11,7 @@ import Contacts
 class WalletAddUserController: BaseTableController {
   
   var headView = WalletAddUserHeadView.loadViewFromNib()
+  var totalUser:[UserContactModel] = []
   var result:[UserContactModel] = []
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -80,9 +81,9 @@ class WalletAddUserController: BaseTableController {
             
             //获取号码
             let value = phone.value.stringValue.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "+65", with: "").replacingOccurrences(of: "-", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
-            let model = UserContactModel(name:name,phone: value)
+            let model = UserContactModel(name:name,mobile: value)
             models.append(model)
-            self.result.append(model)
+            self.totalUser.append(model)
             print("\t\(label)：\(value)")
           }
           
@@ -101,7 +102,7 @@ class WalletAddUserController: BaseTableController {
     
     let data = SOAPDictionary()
     self.result.enumerated().forEach({ i,e in
-      data.set(key: i.string, value: e.phone)
+      data.set(key: i.string, value: e.mobile)
     })
     
     params.set(key: "data", value: data.result, type: .map(1))
@@ -112,7 +113,7 @@ class WalletAddUserController: BaseTableController {
         
         self.result.forEach { e in
           models.forEach { me in
-            e.isAdd = me.phone == e.phone
+            e.isAdd = me.mobile == e.mobile
             e.id = me.id ?? ""
           }
         }
@@ -137,8 +138,8 @@ class WalletAddUserController: BaseTableController {
     headView.size = CGSize(width: kScreenWidth, height: kNavBarHeight + 270)
     headView.endEditHandler = { [weak self] text in
       guard let `self` = self else { return }
-      self.result = self.result.filter({
-        ($0.name == text) || ($0.phone == text)
+      self.result = self.totalUser.filter({
+        ($0.name == text) || ($0.mobile == text)
       })
       self.matchPhone()
     }
@@ -244,7 +245,7 @@ class WalletInviteUserCell:UITableViewCell {
   var model:UserContactModel? {
     didSet {
       nameLabel.text = model?.name
-      phoneLabel.text = model?.phone
+      phoneLabel.text = model?.mobile
       inviteLabel.text = (model?.isAdd ?? false) ? "Add" : "Invite"
     }
   }

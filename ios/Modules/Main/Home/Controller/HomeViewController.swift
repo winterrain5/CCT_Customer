@@ -62,14 +62,13 @@ class HomeViewController: BaseViewController {
       self?.scrolView.contentSize = CGSize(width: kScreenWidth, height: height)
     }
     
-    
+    getAppVersion()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     refreshData()
   }
-  
   
   func refreshData() {
     firstly {
@@ -80,7 +79,6 @@ class HomeViewController: BaseViewController {
       self.scrolView.mj_header?.endRefreshing()
       print(e.asAPIError.errorInfo().message)
     }
-    getAppVersion()
   }
   
   func getBookedService() {
@@ -133,13 +131,6 @@ class HomeViewController: BaseViewController {
   
   func getTClientPartInfo() -> Promise<Void> {
     Promise.init { resolver in
-      
-      if let user = Defaults.shared.get(for: .userModel) {
-        self.contentView.userModel = user
-        NotificationCenter.default.post(name: .menuInfoShouldChange, object: user)
-        resolver.fulfill_()
-        return
-      }
       
       let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
@@ -199,6 +190,20 @@ class HomeViewController: BaseViewController {
         }else { // 后台版本大于当前版本 提示更新
           Defaults.shared.set(false, for: .isReview)
           self.contentView.updateKingKongData(false)
+        }
+        
+        if model.is_force == 1 { // 弹窗提示更新
+          let alertVc = UIAlertController(title: "New Version", message: model.update_content, preferredStyle: .alert)
+          let action1 = UIAlertAction(title: "Confirm", style: .default) { _ in
+            let url = URL(string: URL_App_Store)
+            if let url = url, UIApplication.shared.canOpenURL(url) {
+              UIApplication.shared.open(url)
+            }
+          }
+          
+          alertVc.addAction(action1)
+          
+          self.present(alertVc, animated: true)
         }
         
       }

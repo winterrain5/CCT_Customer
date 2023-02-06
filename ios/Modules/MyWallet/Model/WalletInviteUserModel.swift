@@ -10,10 +10,10 @@ import UIKit
 class UserContactModel {
   var id:String = ""
   var name:String
-  var phone:String
+  var mobile:String
   var isAdd:Bool = false
-  init(name:String,phone:String){
+  init(name:String,mobile:String){
     self.name = name
-    self.phone = phone
+    self.mobile = mobile
   }
 }

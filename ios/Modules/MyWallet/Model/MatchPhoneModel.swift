@@ -10,4 +10,5 @@ import UIKit
 class MatchPhoneModel:BaseModel {
   var id:String?
   var phone:String?
+  var mobile:String?
 }

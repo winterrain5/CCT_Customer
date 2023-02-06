@@ -88,10 +88,7 @@ class InputPhoneView: UIView,UITextFieldDelegate {
   }
   
   func sendSMSForMobile(_ model:UserModel?) {
-    guard let model = model else {
-      
-      return
-    }
+  
     let mobile = phoneTf.text?.trim() ?? ""
     let mapParams = SOAPParams(action: .Sms, path: .sendSmsForMobile)
     
@@ -103,7 +100,9 @@ class InputPhoneView: UIView,UITextFieldDelegate {
     self.otpCode = Int.random(in: 1001...9999).string
     params.set(key: "message", value: "Your OTP is \(self.otpCode). Please enter the OTP within 2 minutes")
     params.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
-    params.set(key: "client_id", value: model.id)
+    if let id = model?.id {
+      params.set(key: "client_id", value: id)
+    }
     
     
     mapParams.set(key: "params", value: params.result, type: .map(1))

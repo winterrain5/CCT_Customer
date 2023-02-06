@@ -46,9 +46,7 @@ class InputGeneralInfoView: UIView, UITextFieldDelegate {
     isCheckButton.borderColor = .clear
     
     if let user = Defaults.shared.get(for: .userModel) {
-      firstNameTf.text = user.first_name
-      lastNameTf.text = user.last_name
-    
+
       if !user.gender.isEmpty {
         if user.gender == "1" {
           genderButtonAction(maleButton)

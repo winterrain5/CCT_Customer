@@ -27,7 +27,7 @@ class HomeWellcomeView: UIView {
       }
       let firstname = user.first_name
       let lastname = user.last_name
-      nameLabel.text = "Wellcome," + firstname + " " + lastname
+      nameLabel.text = "Welcome," + firstname + " " + lastname
     }
   }
   override init(frame: CGRect) {

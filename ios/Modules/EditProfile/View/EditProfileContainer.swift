@@ -10,7 +10,6 @@ import UIKit
 class EditProfileContainer: UIView,UITextFieldDelegate {
 
   @IBOutlet weak var firstNameTf: UITextField!
-  @IBOutlet weak var lastNameTf: UITextField!
   
   @IBOutlet weak var maleButton: UIButton!
   @IBOutlet weak var femaleButton: UIButton!
@@ -33,7 +32,6 @@ class EditProfileContainer: UIView,UITextFieldDelegate {
     didSet {
       guard let model = userModel else { return }
       firstNameTf.text = model.first_name
-      lastNameTf.text = model.last_name
       
       genderButtonAction(model.gender == "1" ? maleButton : femaleButton)
       madamPartumButtonAction(model.cct_or_mp == "2" ? yesButton : noButton)
@@ -45,8 +43,7 @@ class EditProfileContainer: UIView,UITextFieldDelegate {
       unitNumTf.text = model.unit_num
       cityTf.text = model.unit_num
       
-      editModel.firstName = model.first_name
-      editModel.lastName = model.last_name
+      editModel.firstName = model.first_name + model.last_name
       editModel.gender = model.gender
       editModel.postCode = model.post_code
       editModel.streetName = model.street_name
@@ -62,7 +59,6 @@ class EditProfileContainer: UIView,UITextFieldDelegate {
     super.awakeFromNib()
     
     firstNameTf.delegate = self
-    lastNameTf.delegate = self
     postCodeTf.delegate = self
     streetNameTf.delegate = self
     buildNumTf.delegate = self
@@ -123,9 +119,6 @@ class EditProfileContainer: UIView,UITextFieldDelegate {
     let text = textField.text ?? ""
     if textField == firstNameTf {
       editModel.firstName = text
-    }
-    if textField == lastNameTf {
-      editModel.lastName = text
     }
     if textField == postCodeTf {
       editModel.postCode = text

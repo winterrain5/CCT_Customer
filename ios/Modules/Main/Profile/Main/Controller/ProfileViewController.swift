@@ -165,6 +165,7 @@ extension ProfileViewController {
   @objc func logout() {
     AlertView.show(title: "Are you sure you want to logout from your account", message: "", leftButtonTitle: "Cancel", rightButtonTitle: "Confirm", messageAlignment: .center, leftHandler: nil) {
       Defaults.shared.removeAll()
+      Defaults.shared.set(UserModel(), for: .userModel)
       Defaults.shared.set(false, for: .isFirstInstallApp)
       Defaults.shared.set(false, for: .isFirstLogin)
       let vc = LoginViewController()

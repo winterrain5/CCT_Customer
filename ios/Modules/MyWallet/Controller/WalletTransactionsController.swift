@@ -31,7 +31,7 @@ class WalletTransactionsController: BasePagingTableController {
     params.set(key: "length", value: kPageSize)
     
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decodeByCodable([WalletTranscationModel].self, from: data)  {
+      if let models = DecodeManager.decodeArrayByHandJSON(WalletTranscationModel.self, from: data)  {
         self.dataArray.append(contentsOf: models)
         self.endRefresh(models.count,emptyString: "Your have no Transactions")
       } else {

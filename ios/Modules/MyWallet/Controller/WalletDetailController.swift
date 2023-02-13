@@ -12,7 +12,7 @@ class WalletDetailController: BaseTableController {
   var footerView = WalletDetailFooterView()
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.navigation.item.title = "Wallet Details"
+    self.navigation.item.title = "Card Details"
   }
   
   override func viewWillAppear(_ animated: Bool) {

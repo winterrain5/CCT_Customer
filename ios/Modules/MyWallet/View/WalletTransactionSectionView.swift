@@ -25,17 +25,6 @@ class WalletTransactionSectionView: UIView {
     }
   }
   
-  var transcation:FriendUseCardModel! {
-    didSet {
-      
-      let date = transcation.date?.date(withFormat: "yyyy-MM-dd")
-      if date?.isInToday ?? false {
-        label.text = "Today"
-      }else {
-        label.text = date?.string(withFormat: "dd MMM yyyy")
-      }
-    }
-  }
   var label = UILabel().then { label in
     label.text = "8 Dec 2020"
     label.textColor = .black

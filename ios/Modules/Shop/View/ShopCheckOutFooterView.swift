@@ -485,7 +485,7 @@ class ShopCheckOutFooterView: UIView {
         Toast.showMessage("The current user has not set a payment password. Please confirm and pay！")
       }
     } errorHandler: { _ in
-      
+      Toast.showMessage("The current user has not set a payment password. Please confirm and pay！")
     }
     
   }
@@ -515,6 +515,8 @@ class ShopCheckOutFooterView: UIView {
     let params = SOAPParams(action: .Employee, path: .getBusiness)
 #if DEBUG
     Toast.showLoading(withStatus: params.path)
+#else
+    Toast.showLoading()
 #endif
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(BusinessManModel.self, from: data) {
@@ -543,6 +545,8 @@ class ShopCheckOutFooterView: UIView {
     }
 #if DEBUG
     Toast.showLoading(withStatus: params.path)
+#else
+    Toast.showLoading()
 #endif
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeArrayByHandJSON(ValidNewVoucherModel.self, from: data) {
@@ -560,6 +564,8 @@ class ShopCheckOutFooterView: UIView {
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
 #if DEBUG
     Toast.showLoading(withStatus: params.path)
+#else
+    Toast.showLoading()
 #endif
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(ClientVipLevelModel.self, from: data) {
@@ -584,6 +590,8 @@ class ShopCheckOutFooterView: UIView {
     params.set(key: "data", value: data.result,type: .map(1))
 #if DEBUG
     Toast.showLoading(withStatus: params.path)
+#else
+    Toast.showLoading()
 #endif
     NetworkManager().request(params: params) { data in
       if let secret = JSON.init(from: data)?["clientSecret"].stringValue,!secret.isEmpty {
@@ -611,6 +619,8 @@ class ShopCheckOutFooterView: UIView {
     
 #if DEBUG
     Toast.showLoading(withStatus: "Stripe SDK ConfirmPayment")
+#else
+    Toast.showLoading()
 #endif
     STPAPIClient().confirmPaymentIntent(with: intent) { result, e in
       if e != nil {
@@ -1003,13 +1013,15 @@ class ShopCheckOutFooterView: UIView {
     mapParams.set(key: "data", value: data.result,type: .map(1))
 #if DEBUG
     Toast.showLoading(withStatus: mapParams.path)
+#else
+    Toast.showLoading()
 #endif
     NetworkManager().request(params: mapParams) { data in
       self.deleteAllCart {
         if self.methodType == 2 {
           self.deductionCreditsNote()
         }else if self.methodType == 1{  // 朋友的卡支付的
-//          self.friendCardPayNotification()
+          self.friendCardPayNotification()
         } else {
           self.toNextVc()
         }
@@ -1032,6 +1044,8 @@ class ShopCheckOutFooterView: UIView {
     params.set(key: "goodsArr", value: goodsArr.result,type: .map(1))
 #if DEBUG
     Toast.showLoading(withStatus: params.path)
+#else
+    Toast.showLoading()
 #endif
     NetworkManager().request(params: params) { data in
       complete()
@@ -1056,6 +1070,7 @@ class ShopCheckOutFooterView: UIView {
   
 //  用朋友的卡支付时发送推送
   func friendCardPayNotification() {
+
     let params = SOAPParams(action: .Notifications, path: .friendUseD)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "friendId", value: selectPayMethod?.card_owner_id ?? "")

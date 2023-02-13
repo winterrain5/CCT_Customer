@@ -278,12 +278,13 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       vouchers_0.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
       let uuid = UUID(uuidString: Date().second.string)?.uuidString ?? ""
       vouchers_0.set(key: "voucher_code", value: "1" + uuid.md5)
-      vouchers_0.set(key: "voucher_manual_code", value: uuid)
+      vouchers_0.set(key: "voucher_manual_code", value: "")
       vouchers_0.set(key: "create_date", value: dateHMS)
       vouchers_0.set(key: "voucher_type", value: 5)
       vouchers_0.set(key: "voucher_id", value: voucherModel?.id ?? "")
       vouchers_0.set(key: "present_value", value: 0)
       vouchers_0.set(key: "present_balance", value: 0)
+      vouchers_0.set(key: "type", value: "1")
       
       vouchers.set(key: "0", value: vouchers_0.result, keyType: .string, valueType: .map(1))
       
@@ -406,6 +407,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
 #endif
       STPAPIClient().confirmPaymentIntent(with: intent) { result, e in
         if e != nil {
+          print(e)
           resolver.reject(APIError.requestError(code: -1, message: "Credit card payment failed"))
           return
         }else {

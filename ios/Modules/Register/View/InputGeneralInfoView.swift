@@ -199,7 +199,7 @@ class InputGeneralInfoView: UIView, UITextFieldDelegate {
     NetworkManager().request(params: params) { data in
       let data = String(data: data, encoding: .utf8)
       if data != "1" {
-        AlertView.show(message: "The current invitation code is incorrect, please check !")
+        AlertView.show(message: "The current invitation code is incorrect, please check!")
       }
     } errorHandler: { e in
       

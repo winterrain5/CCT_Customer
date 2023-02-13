@@ -31,17 +31,7 @@ class WalletTransactionCell: UITableViewCell {
     }
   }
   
-  var transcation:FriendUseTransActions! {
-    didSet {
-      
-      invoiceNoLabel.text = transcation.name
-      priceLabel.text = transcation.paid_amount?.formatMoney().dolar
-      
-      pointsLabel.isHidden = true
-      productNameLabel.isHidden  = true
-      
-    }
-  }
+
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

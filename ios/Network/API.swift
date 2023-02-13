@@ -169,7 +169,7 @@ enum API:String {
   /// 朋友的卡
   case getFriendsCard = "getFriendsCard"
   /// 获取朋友使用充值卡消费的记录
-  case getFriendUsedCard = "getFriendUsedCard"
+  case getFriendUsedCard = "getOrdersByFriendUsedCard"
   /// 删除充值卡可使用的朋友
   case deleteCardFriend = "deleteCardFriend"
   /// 设置充值好友的限额

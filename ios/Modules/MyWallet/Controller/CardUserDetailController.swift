@@ -25,11 +25,15 @@ class CardUserDetailController: BaseTableController {
   override func refreshData() {
     let params = SOAPParams(action: .SalesReport, path: .getFriendUsedCard)
     params.set(key: "friendId", value: cardUserModel?.friend_id ?? "")
+    params.set(key: "start", value: page)
+    params.set(key: "length", value: pageSize)
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decodeByCodable([FriendUseCardModel].self, from: data) {
-        self.dataArray = models
+      guard let models = DecodeManager.decodeArrayByHandJSON(WalletTranscationModel.self, from: data) else {
+        self.endRefresh()
+        return
       }
-      self.endRefresh(self.dataArray.count, emptyString: "No Transactions")
+      self.dataArray.append(contentsOf: models)
+      self.endRefresh(models.count, emptyString: "No Transactions")
     } errorHandler: { e in
       self.endRefresh(e.emptyDatatype)
     }
@@ -39,13 +43,14 @@ class CardUserDetailController: BaseTableController {
     super.createListView()
     
     tableView?.tableHeaderView = headView
-    headView.size = CGSize(width: kScreenWidth, height: 260)
+    headView.size = CGSize(width: kScreenWidth, height: 255)
     tableView?.register(nibWithCellClass: WalletTransactionCell.self)
     
     
     tableView?.separatorStyle = .singleLine
     tableView?.separatorColor = R.color.line()
     tableView?.separatorInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
+    registRefreshHeader(colorStyle: .gray)
     registRefreshFooter()
   }
   
@@ -63,18 +68,18 @@ class CardUserDetailController: BaseTableController {
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if self.dataArray.count > 0 {
-      let model = self.dataArray[section] as? FriendUseCardModel
-      return model?.transActions?.count ?? 0
-    }
-    return 0
+    return 1
+  }
+
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return 24
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withClass: WalletTransactionCell.self)
     if dataArray.count > 0 {
-      if let transcations = (self.dataArray[indexPath.section] as? FriendUseCardModel)?.transActions, transcations.count > 0 {
-        cell.transcation = transcations[indexPath.row]
+      if let model = (self.dataArray[indexPath.section] as? WalletTranscationModel) {
+        cell.model = model
       }
       
     }
@@ -84,18 +89,23 @@ class CardUserDetailController: BaseTableController {
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let view = WalletTransactionSectionView()
     if dataArray.count > 0 {
-      view.transcation = self.dataArray[section] as? FriendUseCardModel
+      view.model = self.dataArray[section] as? WalletTranscationModel
     }
     return view
   }
   
-  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 24
+
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+    let model = dataArray[indexPath.section] as! WalletTranscationModel
+    let vc = TransactionDetailController(transactionModel: model)
+    self.navigationController?.pushViewController(vc)
   }
   
   
   func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
-    return -260 * 0.5
+    return 255 * 0.5
   }
   
   

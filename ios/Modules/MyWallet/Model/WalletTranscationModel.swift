@@ -7,13 +7,13 @@
 
 import UIKit
 
-class Payments :Codable {
+class Payments :BaseModel {
   var payment_method: String?
   var paid_amount: String?
   
 }
 
-class WalletTranscationModel: Codable  {
+class WalletTranscationModel: BaseModel  {
   var due_date: String?
   var alias_name: String?
   var status: String?

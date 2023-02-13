@@ -31,7 +31,7 @@ class EditProfileContainer: UIView,UITextFieldDelegate {
   var userModel:UserModel? {
     didSet {
       guard let model = userModel else { return }
-      firstNameTf.text = model.first_name
+      firstNameTf.text = model.first_name + " " + model.last_name
       
       genderButtonAction(model.gender == "1" ? maleButton : femaleButton)
       madamPartumButtonAction(model.cct_or_mp == "2" ? yesButton : noButton)

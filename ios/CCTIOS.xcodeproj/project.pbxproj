@@ -199,7 +199,6 @@
 		4904C3C9280677C6008FE5A5 /* CCTShopFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C3BA280677C6008FE5A5 /* CCTShopFooterView.swift */; };
 		4904C3CC280677D6008FE5A5 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C3CB280677D6008FE5A5 /* BaseModel.swift */; };
 		4904C3D028067865008FE5A5 /* MatchPhoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C3CD28067865008FE5A5 /* MatchPhoneModel.swift */; };
-		4904C3D128067865008FE5A5 /* FriendUseCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C3CE28067865008FE5A5 /* FriendUseCardModel.swift */; };
 		4904C3D228067865008FE5A5 /* TopUpOrderDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C3CF28067865008FE5A5 /* TopUpOrderDetailModel.swift */; };
 		4904C3D428067BDD008FE5A5 /* ShopProductItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4904C3D328067BDD008FE5A5 /* ShopProductItemCell.xib */; };
 		4904C3D62806B52F008FE5A5 /* ShopDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C3D52806B52F008FE5A5 /* ShopDetailController.swift */; };
@@ -964,7 +963,6 @@
 		4904C3BA280677C6008FE5A5 /* CCTShopFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCTShopFooterView.swift; sourceTree = "<group>"; };
 		4904C3CB280677D6008FE5A5 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		4904C3CD28067865008FE5A5 /* MatchPhoneModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchPhoneModel.swift; sourceTree = "<group>"; };
-		4904C3CE28067865008FE5A5 /* FriendUseCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendUseCardModel.swift; sourceTree = "<group>"; };
 		4904C3CF28067865008FE5A5 /* TopUpOrderDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopUpOrderDetailModel.swift; sourceTree = "<group>"; };
 		4904C3D328067BDD008FE5A5 /* ShopProductItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopProductItemCell.xib; sourceTree = "<group>"; };
 		4904C3D52806B52F008FE5A5 /* ShopDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailController.swift; sourceTree = "<group>"; };
@@ -2241,7 +2239,6 @@
 		4996D78C27D0B6F000437265 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4904C3CE28067865008FE5A5 /* FriendUseCardModel.swift */,
 				4904C3CD28067865008FE5A5 /* MatchPhoneModel.swift */,
 				4904C3CF28067865008FE5A5 /* TopUpOrderDetailModel.swift */,
 				4996D78D27D0B70000437265 /* WalletTranscationModel.swift */,
@@ -4014,7 +4011,6 @@
 				457CBA8A2836163200AE26D8 /* BookingCompleteDetailView.swift in Sources */,
 				45F894B028534384008BC7CC /* QRScannerFrame.swift in Sources */,
 				45DA0E54285B1FAF00056132 /* PreConceptionDeclarationController.swift in Sources */,
-				4904C3D128067865008FE5A5 /* FriendUseCardModel.swift in Sources */,
 				454C5B4A283CDAB4001D787C /* ConfirmSessionController.swift in Sources */,
 				4998C002277EF51200A881D5 /* UIScrollViewExtensions.swift in Sources */,
 				49FC8EAC278FFA5B00157292 /* SymptomCheckWhatNextController.swift in Sources */,
@@ -4452,7 +4448,7 @@
 				CODE_SIGN_ENTITLEMENTS = CCTIOS/CCTIOSDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 7BVP6AS26M;
 				ENABLE_BITCODE = NO;
@@ -4485,7 +4481,7 @@
 					/usr/lib/swift,
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.1.4;
+				MARKETING_VERSION = 1.1.5;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -4517,7 +4513,7 @@
 				CODE_SIGN_ENTITLEMENTS = CCTIOS/CCTIOSRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7BVP6AS26M;
 				INFOPLIST_FILE = CCTIOS/Info.plist;
@@ -4531,7 +4527,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.1.4;
+				MARKETING_VERSION = 1.1.5;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",

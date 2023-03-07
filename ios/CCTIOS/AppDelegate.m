@@ -18,7 +18,7 @@
   
   [ApplicationUtil configRootViewController];
   
-
+  
   [self.window makeKeyAndVisible];
   
   [self setupNotification];
@@ -41,7 +41,12 @@
   [MobPush setupNotification:configuration];
   
   [MobPush setRegionID:0];
+#if DEBUG
+  [MobSDK registerAppKey:@"377d12d0a74c4" appSecret:@"c55b8afb9de78321f527ec28676bb665"];
+#else
   [MobSDK registerAppKey:@"335ba928dd6e8" appSecret:@"d610c4befc4595f3c913a733f7a94769"];
+#endif
+  
   [MobPush getRegistrationID:^(NSString *registrationID, NSError *error) {
     NSLog(@"registrationID = %@--error = %@", registrationID, error);
   }];
@@ -49,6 +54,20 @@
     NSLog(@"-------------->上传结果：%d",success);
   }];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMessage:) name:MobPushDidReceiveMessageNotification object:nil];
+  
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  if (@available(iOS 13.0, *)) {
+    NSString *token = [self getHexStringForData:deviceToken];
+    NSLog(@"iOS 13之后的deviceToken的获取方式:%@",token);
+  } else {
+    NSString *deviceTokenString = [[[[deviceToken description]
+                                     stringByReplacingOccurrencesOfString:@"<" withString:@""]
+                                    stringByReplacingOccurrencesOfString:@">" withString:@""]
+                                   stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"iOS 13之前的deviceToken的获取方式:%@",deviceTokenString);
+  }
   
 }
 
@@ -82,7 +101,7 @@
       break;
     case MPushMessageTypeClicked:
     {// 点击通知回调
-      
+      [ApplicationUtil navgateToMessageController];
     }
     default:
       break;
@@ -97,7 +116,16 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
   
+  
 }
-
+- (NSString *)getHexStringForData:(NSData *)data {
+  NSUInteger len = [data length];
+  char *chars = (char *)[data bytes];
+  NSMutableString *hexString = [[NSMutableString alloc] init];
+  for (NSUInteger i = 0; i < len; i ++) {
+    [hexString appendString:[NSString stringWithFormat:@"%0.2hhx", chars[i]]];
+  }
+  return hexString;
+}
 
 @end

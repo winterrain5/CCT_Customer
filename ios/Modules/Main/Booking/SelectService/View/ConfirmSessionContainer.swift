@@ -288,14 +288,17 @@ class ConfirmSessionContainer: UIView {
    
     confirmButton.startAnimation()
     NetworkManager().request(params: mapParams) { data in
-      self.newCreateAppointment()
+      if let bookingId = String(data: data, encoding: .utf8) {
+        self.newCreateAppointment(bookingId)
+      }
+      
     } errorHandler: { e in
       self.confirmButton.stopAnimation()
     }
 
   }
   
-  func newCreateAppointment() {
+  func newCreateAppointment(_ bookingId:String) {
     guard let model = model else {
       return
     }
@@ -303,7 +306,7 @@ class ConfirmSessionContainer: UIView {
     let params = SOAPParams(action: .Notifications, path: .newCreateAppointment)
     params.set(key: "service", value: model.service_name)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
-    
+    params.set(key: "bookingId", value: bookingId)
     NetworkManager().request(params: params) { data in
      
     } errorHandler: { e in

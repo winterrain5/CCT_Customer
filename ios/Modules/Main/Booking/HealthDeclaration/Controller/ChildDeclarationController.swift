@@ -288,6 +288,8 @@ class ChildDeclarationController: BaseTableController {
     summary_data.set(key: "remarks", value: "")
     summary_data.set(key: "category", value: 7)
     summary_data.set(key: "location_id", value: bookedService.location_id)
+    summary_data.set(key: "is_app", value: "1")
+    
     data.set(key: "Summary_Data", value: summary_data.result, keyType: .string, valueType: .map(1))
     
     let xg_qa_lines_data = SOAPDictionary()

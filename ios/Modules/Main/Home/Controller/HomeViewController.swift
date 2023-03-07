@@ -163,28 +163,28 @@ class HomeViewController: BaseViewController {
         var currentVersion:Int = 0
         if (array1.count == 3){
           currentVersion = array1[0]!*100 + array1[1]!*10 + array1[2]!
-        }else {
+        }else if(array1.count == 2){
           currentVersion = array1[0]!*100 + array1[1]!*10
         }
         
-        let array2 = model.version.split(separator: ".").map({ String($0).int })
-        var lastesVersion:Int = 0
-        if (array2.count == 3) {
-          lastesVersion = array2[0]!*100 + array2[1]!*10 + array2[2]!
-        }else if(array2.count == 2){
-          lastesVersion = array2[0]!*100 + array2[1]!*10
+        let array2 = model.version.split(separator: ".").map({ String($0).int }) // 1.0.1 => [1,0,1]
+        var newVersion:Int = 0
+        if (array2.count == 3) { // 1.0.1
+          newVersion = array2[0]!*100 + array2[1]!*10 + array2[2]!
+        }else if(array2.count == 2){ // 1.0
+          newVersion = array2[0]!*100 + array2[1]!*10
         }
         
-        if lastesVersion == 0 { // first version
+        if currentVersion == 100 { // first version
           Defaults.shared.set(true, for: .isReview)
           self.contentView.updateKingKongData(true)
           return
         }
         
-        if lastesVersion < currentVersion { // 后台版本小于当前版本 则为在审核中
+        if newVersion < currentVersion { // 后台版本小于当前版本 则为在审核中
           Defaults.shared.set(true, for: .isReview)
           self.contentView.updateKingKongData(true)
-        }else if lastesVersion == currentVersion{ // 相等则为最新版本
+        }else if newVersion == currentVersion{ // 相等则为最新版本
           Defaults.shared.set(false, for: .isReview)
           self.contentView.updateKingKongData(false)
         }else { // 后台版本大于当前版本 提示更新
@@ -192,7 +192,7 @@ class HomeViewController: BaseViewController {
           self.contentView.updateKingKongData(false)
         }
         
-        if model.is_force == 1 { // 弹窗提示更新
+        if model.is_force == 1 && newVersion > currentVersion{ // 弹窗提示更新
           let alertVc = UIAlertController(title: "New Version", message: model.update_content, preferredStyle: .alert)
           let action1 = UIAlertAction(title: "Confirm", style: .default) { _ in
             let url = URL(string: URL_App_Store)
@@ -202,7 +202,6 @@ class HomeViewController: BaseViewController {
           }
           
           alertVc.addAction(action1)
-          
           self.present(alertVc, animated: true)
         }
         

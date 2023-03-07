@@ -297,6 +297,8 @@ enum API:String {
   case saveQuestionStatus = "saveQuestionStatus"
   case getKidsMassageItems = "getKidsMassageItems"
   case getAppOrderDetail = "getAppOrderDetail"
+  // 获取某次appointment数据
+  case getClientBookedInfo = "getClientBookedInfo "
   
   /// 获取app 版本信息
   case getAll = "getAll"

@@ -78,8 +78,8 @@ class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
         walletLevelLabel.text = "Platinum Tier"
       }
       
-      pointsLabel.text = userModel.points.int.string
-      
+      let cardExpireDate = userModel.new_recharge_card_period.date(withFormat: "yyyy-MM-dd")?.string(withFormat: "dd MMM yyyy") ?? ""
+      pointsLabel.text = cardExpireDate.isEmpty ? "" : "Valid Till: \(cardExpireDate)"
       wellcomeView.user = userModel
     }
   }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserModel: BaseModel,Codable {
+class UserModel: BaseModel, Codable {
   var currency_id: String = ""
   var expiry_date: String = ""
   var client_number: String = ""
@@ -37,6 +37,7 @@ class UserModel: BaseModel,Codable {
   var unit_num: String = ""
   var create_uid: String = ""
   var new_recharge_card_level_text: String = ""
+  var new_recharge_card_period: String = ""
   var remark: String = ""
   var income_account_id: String = ""
   var active_amount: String = ""
@@ -66,7 +67,6 @@ class UserModel: BaseModel,Codable {
   var privy_remarks: String = ""
   var email: String = ""
   var payment_type: String = ""
-  var new_recharge_card_period: String = ""
   var upgrade: Int = 0
   var estimated_due_date: String = ""
   var country_id: String = ""

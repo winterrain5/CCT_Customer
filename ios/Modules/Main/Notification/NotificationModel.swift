@@ -8,6 +8,8 @@
 import UIKit
 
 class NotificationModel: BaseModel {
+  var friend_id = ""
+  var booking_id = ""
   var category = ""
   var content = ""
   var id = ""

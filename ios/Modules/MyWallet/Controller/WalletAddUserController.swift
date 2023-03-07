@@ -113,7 +113,9 @@ class WalletAddUserController: BaseTableController {
         
         self.result.forEach { e in
           models.forEach { me in
-            e.isAdd = me.mobile == e.mobile
+            let isAdd = me.mobile == e.mobile || me.phone == e.mobile
+            print("is Add:\(isAdd)")
+            e.isAdd = isAdd
             e.id = me.id ?? ""
           }
         }

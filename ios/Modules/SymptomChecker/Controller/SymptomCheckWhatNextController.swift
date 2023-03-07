@@ -105,6 +105,7 @@ class SymptomCheckWhatNextController: BaseViewController {
     summaryData.set(key: "remarks", value: "")
     summaryData.set(key: "category", value: 6)
     summaryData.set(key: "location_id", value: Defaults.shared.get(for: .companyId) ?? "97")
+    summaryData.set(key: "is_app", value: "1")
     
     let data = SOAPDictionary()
     data.set(key: "Summary_Data", value: summaryData.result, keyType: .string, valueType: .map(1))

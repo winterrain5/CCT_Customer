@@ -318,6 +318,7 @@ class PreConceptionDeclarationController: BaseTableController {
     summary_data.set(key: "location_id", value: bookedService.location_id)
     summary_data.set(key: "remarks", value: temp.filter({ $0.type == "remark"}).first?.remark ?? "")
     summary_data.set(key: "category", value: 4)
+    summary_data.set(key: "is_app", value: "1")
     
     data.set(key: "Summary_Data", value: summary_data.result, keyType: .string, valueType: .map(1))
     

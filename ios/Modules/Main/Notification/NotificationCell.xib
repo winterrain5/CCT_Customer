@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,15 +12,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="131" id="KGk-i7-Jjw" customClass="NotificationCell" customModule="CCTIOS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="486" height="131"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="273" id="KGk-i7-Jjw" customClass="NotificationCell" customModule="CCTIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="486" height="273"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="486" height="131"/>
+                <rect key="frame" x="0.0" y="0.0" width="486" height="273"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ix0-Nd-TQK">
-                        <rect key="frame" x="14" y="6" width="458" height="119"/>
+                        <rect key="frame" x="14" y="6" width="458" height="261"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -29,7 +29,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EOG-c7-a9D">
-                        <rect key="frame" x="16" y="8" width="454" height="115"/>
+                        <rect key="frame" x="16" y="8" width="454" height="257"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We are going for a rebrand!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pG7-4A-VMn">
                                 <rect key="frame" x="16" y="16" width="359" height="24"/>
@@ -71,11 +71,35 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tlN-tq-hNm" customClass="LoadingButton" customModule="CCTIOS" customModuleProvider="target">
+                                <rect key="frame" x="16" y="201" width="422" height="40"/>
+                                <color key="backgroundColor" red="0.76862745099999996" green="0.2784313725" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="h2k-qT-9pt"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isUserInteractionDisabledWhenSkeletonIsActive" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2Zp-UN-acc" secondAttribute="bottom" constant="16" id="F7X-In-Wsh"/>
+                            <constraint firstItem="tlN-tq-hNm" firstAttribute="leading" secondItem="EOG-c7-a9D" secondAttribute="leading" constant="16" id="2Gd-qX-FVf"/>
+                            <constraint firstItem="tlN-tq-hNm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2Zp-UN-acc" secondAttribute="bottom" constant="16" id="7m2-0z-PbA"/>
                             <constraint firstItem="pG7-4A-VMn" firstAttribute="leading" secondItem="EOG-c7-a9D" secondAttribute="leading" constant="16" id="IvU-zh-rzW"/>
+                            <constraint firstAttribute="trailing" secondItem="tlN-tq-hNm" secondAttribute="trailing" constant="16" id="PNP-5E-NDk"/>
                             <constraint firstItem="mP1-Re-gUQ" firstAttribute="centerY" secondItem="pG7-4A-VMn" secondAttribute="centerY" id="T1Y-MK-ZNL"/>
                             <constraint firstItem="2Zp-UN-acc" firstAttribute="leading" secondItem="EOG-c7-a9D" secondAttribute="leading" constant="16" id="Vkj-rY-EAo"/>
                             <constraint firstItem="mP1-Re-gUQ" firstAttribute="leading" secondItem="pG7-4A-VMn" secondAttribute="trailing" constant="8" id="Wc0-IM-SKG"/>
@@ -83,6 +107,7 @@
                             <constraint firstAttribute="trailing" secondItem="2Zp-UN-acc" secondAttribute="trailing" constant="16" id="hpE-lu-jYg"/>
                             <constraint firstItem="pG7-4A-VMn" firstAttribute="top" secondItem="EOG-c7-a9D" secondAttribute="top" constant="16" id="pqR-nU-ghV"/>
                             <constraint firstAttribute="trailing" secondItem="mP1-Re-gUQ" secondAttribute="trailing" constant="16" id="sh9-AG-Q4U"/>
+                            <constraint firstAttribute="bottom" secondItem="tlN-tq-hNm" secondAttribute="bottom" constant="16" id="ul3-pe-tcx"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -109,12 +134,15 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="borderView" destination="Ix0-Nd-TQK" id="zYR-1m-NSe"/>
+                <outlet property="button" destination="tlN-tq-hNm" id="GSW-Pm-P72"/>
+                <outlet property="buttonBottomCons" destination="ul3-pe-tcx" id="dCr-96-x7P"/>
+                <outlet property="buttonHCons" destination="h2k-qT-9pt" id="iiF-nE-ouX"/>
                 <outlet property="contentLabel" destination="2Zp-UN-acc" id="OR8-Pc-5mg"/>
                 <outlet property="shadowView" destination="EOG-c7-a9D" id="SV1-os-ieC"/>
                 <outlet property="timeLabel" destination="mP1-Re-gUQ" id="rbH-ha-ps3"/>
                 <outlet property="titleLabel" destination="pG7-4A-VMn" id="Jdq-TV-XxW"/>
             </connections>
-            <point key="canvasLocation" x="257.97101449275362" y="128.90625"/>
+            <point key="canvasLocation" x="-249.27536231884059" y="169.75446428571428"/>
         </tableViewCell>
     </objects>
     <resources>

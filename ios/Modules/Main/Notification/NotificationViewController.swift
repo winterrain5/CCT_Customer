@@ -43,7 +43,7 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
   func getClientCategory() {
     let params = SOAPParams(action: .Notifications, path: .getClientCategory)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
-
+    
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(ClientCategoryModel.self, from: data) {
         if model.status == 0 {
@@ -56,7 +56,7 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
     } errorHandler: { e in
       self.hideSkeleton()
     }
-
+    
   }
   
   /// 获取所有分类
@@ -89,7 +89,7 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
     } errorHandler: { e in
       self.hideSkeleton()
     }
-
+    
   }
   
   func saveClientCategories() {
@@ -102,14 +102,14 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
     
     params.set(key: "cateIds", value: ids.result, type: .map(1))
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
-
+    
     NetworkManager().request(params: params) { data in
       
     } errorHandler: { e in
       
     }
-
-
+    
+    
   }
   
   func deleteNotification() {
@@ -177,7 +177,7 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
         if e2.count > 0 {
           self.dataArray.append(e2)
         }
-       
+        
         self.endRefresh(models.count,emptyString: "You have no notifications")
         self.hideSkeleton()
         return
@@ -189,7 +189,7 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
       self.hideSkeleton()
       Toast.dismiss()
     }
-
+    
   }
   
   override func refreshData() {
@@ -222,7 +222,7 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
     
   }
   
-
+  
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return UITableView.automaticDimension
   }
@@ -244,6 +244,15 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
       }
     }
     cell.delegate = self
+    cell.notificationAciton = { [weak self] type,model,button in
+      guard let `self` = self else { return }
+      switch type {
+      case .CheckWallet:
+        self.checkWallet(model,button)
+      case .CheckAppointment:
+        self.checkAppointment(model,button)
+      }
+    }
     cell.selectionStyle = .none
     return cell
   }
@@ -278,10 +287,8 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
       } else {
         Haptic.impact(.light).generate()
       }
-     
+      processDataArray(indexPath)
     }
-    processDataArray(indexPath)
-    
   }
   
   
@@ -360,7 +367,48 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
       }
     }
   }
-
+  
+ func checkAppointment(_ model:NotificationModel,_ button:LoadingButton) {
+   let params = SOAPParams(action: .BookingOrder, path: .getClientBookedInfo)
+   params.set(key: "booking_id", value: model.booking_id)
+   button.startAnimation()
+   NetworkManager().request(params: params) { data in
+     button.stopAnimation()
+     if let model = DecodeManager.decodeObjectByHandJSON(BookingTodayModel.self, from: data) {
+       if model.status == 4 { // inProgress 已经checkin
+         let vc = BookingInProgressController(today: model)
+         self.navigationController?.pushViewController(vc, animated: true)
+       }else {
+         if model.wellness_treatment_type == "2" {
+           let vc = BookingUpcomingTreatmentController(today: model)
+           self.navigationController?.pushViewController(vc, animated: true)
+         }else {
+           let vc = BookingUpComingWellnessController(today: model)
+           self.navigationController?.pushViewController(vc, animated: true)
+         }
+         
+       }
+     }
+   } errorHandler: { e in
+     button.stopAnimation()
+   }
+  }
+  func checkWallet(_ model:NotificationModel,_ button:LoadingButton) {
+    let params = SOAPParams(action: .Voucher, path: .getCardFriends)
+    params.set(key: "ownerId", value: Defaults.shared.get(for: .clientId) ?? "")
+    button.startAnimation()
+    NetworkManager().request(params: params) { data in
+      button.stopAnimation()
+      if let models = DecodeManager.decodeArrayByHandJSON(CardOwnerModel.self, from: data) {
+        models.forEach({ $0.isFriendCard = false })
+        guard let cardUseModel = models.filter({ $0.friend_id == model.friend_id }).first else { return }
+        let vc = CardUserDetailController(cardUserModel: cardUseModel)
+        self.navigationController?.pushViewController(vc, animated: true)
+      }
+    } errorHandler: { e in
+      button.stopAnimation()
+    }
+  }
 }
 
 extension NotificationViewController:SwipeTableViewCellDelegate {
@@ -376,7 +424,7 @@ extension NotificationViewController:SwipeTableViewCellDelegate {
       
       return [delete]
     }
-   return nil
+    return nil
   }
   
   func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {

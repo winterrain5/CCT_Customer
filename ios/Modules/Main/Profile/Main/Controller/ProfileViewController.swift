@@ -29,7 +29,7 @@ class ProfileViewController: BaseTableController {
      ProfileActionModel(image: R.image.profile_transaction_history(), title: "Transaction History", sel: "transactionHistory"),
      ProfileActionModel(image: R.image.profile_my_orders(), title: "My Orders", sel: "myOrders"),
      ProfileActionModel(image: R.image.profile_refer_to_friend(), title: "Refer To a Friend", sel: "referToFriend")],
-    [ProfileActionModel(image: R.image.profile_account_manager(), title: "Acount Management", sel: "acountManagement"),
+    [ProfileActionModel(image: R.image.profile_account_manager(), title: "Account Management", sel: "acountManagement"),
      ProfileActionModel(image: R.image.profile_contact_us(), title: "Contact Us", sel: "contactUs"),
      ProfileActionModel(image: R.image.profile_settings(), title: "Settings", sel: "settings"),
      ProfileActionModel(image: R.image.profile_questions(), title: "Frequently Asked Questions", sel: "frequentlyAskedQuestions")],

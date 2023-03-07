@@ -58,4 +58,10 @@ import IQKeyboardManagerSwift
     manager.enableAutoToolbar = false
   }
   
+  static func navgateToMessageController() {
+    let window = (UIApplication.shared.delegate as! AppDelegate).window
+    let tab = (window?.rootViewController as? SideMenuController)?.contentViewController as! BaseTabBarController
+    tab.selectedIndex = 2
+  }
+  
 }

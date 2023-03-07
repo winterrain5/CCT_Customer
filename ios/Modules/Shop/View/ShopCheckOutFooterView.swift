@@ -1075,6 +1075,7 @@ class ShopCheckOutFooterView: UIView {
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "friendId", value: selectPayMethod?.card_owner_id ?? "")
     params.set(key: "orderId", value: orderId)
+    params.set(key: "consume", value: total_pay)
     NetworkManager().request(params: params) { data in
       self.toNextVc()
     } errorHandler: { e in

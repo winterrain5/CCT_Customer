@@ -4441,7 +4441,6 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "home_arrow_right", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'home_arrow_right' is used in nib 'HomeContainer', but couldn't be loaded.") }
         if UIKit.UIImage(named: "home_info", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'home_info' is used in nib 'HomeContainer', but couldn't be loaded.") }
         if UIKit.UIImage(named: "profile_head_amount", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'profile_head_amount' is used in nib 'HomeContainer', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "profile_head_points", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'profile_head_points' is used in nib 'HomeContainer', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'HomeContainer', but couldn't be loaded.") }
           if UIKit.UIColor(named: "TheamRed", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamRed' is used in nib 'HomeContainer', but couldn't be loaded.") }

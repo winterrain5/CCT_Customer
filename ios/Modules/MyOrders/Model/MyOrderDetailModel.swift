@@ -69,7 +69,9 @@ class OrderLineInfo :BaseModel,Codable {
     }
   }
   var totalDiscount:Float {
-    return (discount_amount1?.float() ?? 0) + (discount_amount2?.float() ?? 0)
+    let discout1 = (discount_amount1?.float() ?? 0) * (qty?.float() ?? 0)
+    let discount2 = (discount_amount2?.float() ?? 0)  * (qty?.float() ?? 0)
+    return discout1 + discount2
   }
   
   var discountName:String {

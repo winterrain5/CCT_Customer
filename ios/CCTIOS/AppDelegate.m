@@ -3,6 +3,7 @@
 #import <MobPush/MobPush.h>
 #import <MOBFoundation/MobSDK.h>
 #import <MOBFoundation/MobSDK+Privacy.h>
+#import <MOBFoundation/MOBFoundation.h>
 #import "CCTIOS-Swift.h"
 
 @implementation AppDelegate
@@ -41,15 +42,8 @@
   [MobPush setupNotification:configuration];
   
   [MobPush setRegionID:0];
-#if DEBUG
-  [MobSDK registerAppKey:@"377d12d0a74c4" appSecret:@"c55b8afb9de78321f527ec28676bb665"];
-#else
   [MobSDK registerAppKey:@"335ba928dd6e8" appSecret:@"d610c4befc4595f3c913a733f7a94769"];
-#endif
-  
-  [MobPush getRegistrationID:^(NSString *registrationID, NSError *error) {
-    NSLog(@"registrationID = %@--error = %@", registrationID, error);
-  }];
+
   [MobSDK uploadPrivacyPermissionStatus:YES onResult:^(BOOL success) {
     NSLog(@"-------------->上传结果：%d",success);
   }];
@@ -58,17 +52,20 @@
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  NSString *token = @"";
   if (@available(iOS 13.0, *)) {
-    NSString *token = [self getHexStringForData:deviceToken];
+    token = [MOBFData hexStringByData:deviceToken];
     NSLog(@"iOS 13之后的deviceToken的获取方式:%@",token);
   } else {
-    NSString *deviceTokenString = [[[[deviceToken description]
+    token = [[[[deviceToken description]
                                      stringByReplacingOccurrencesOfString:@"<" withString:@""]
                                     stringByReplacingOccurrencesOfString:@">" withString:@""]
                                    stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSLog(@"iOS 13之前的deviceToken的获取方式:%@",deviceTokenString);
+    NSLog(@"iOS 13之前的deviceToken的获取方式:%@",token);
   }
-  
+  [MobPush getRegistrationID:^(NSString *registrationID, NSError *error) {
+    NSLog(@"registrationID = %@--error = %@", registrationID, error);
+  }];
 }
 
 // 收到通知回调
@@ -82,8 +79,8 @@
   NSString *subtitle = message.notification.subTitle;
   NSInteger badge = message.notification.badge;
   NSString *sound = message.notification.sound;
-  NSLog(@"收到通知:{\nbody:%@，\ntitle:%@,\nsubtitle:%@,\nbadge:%ld,\nsound:%@,\n}",body, title, subtitle, (long)badge, sound);
-  
+  NSString *formateMessage =[NSString stringWithFormat:@"收到通知:{\nbody:%@，\ntitle:%@,\nsubtitle:%@,\nbadge:%ld,\nsound:%@,\n}",body, title, subtitle, (long)badge, sound];
+  NSLog(@"收到通知:%@",formateMessage);
   switch (message.messageType)
   {
     case MPushMessageTypeCustom:

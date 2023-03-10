@@ -113,6 +113,11 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
           let vc = CheckInTodaySessionController(outlet: self.outlet)
           UIViewController.getTopVc()?.navigationController?.pushViewController(vc, completion: nil)
         }else {
+          MobPush.setAlias("client_\(model.id)") { e in
+            if e != nil {
+              print("成功设置别名：client_\(model.id)")
+            }
+          }
           if self.isLoginByMobile {
             self.sendSMSForMobile(userID: userID, clientID: model.id)
           }else {

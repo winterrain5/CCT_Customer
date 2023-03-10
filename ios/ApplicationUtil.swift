@@ -60,8 +60,16 @@ import IQKeyboardManagerSwift
   
   static func navgateToMessageController() {
     let window = (UIApplication.shared.delegate as! AppDelegate).window
-    let tab = (window?.rootViewController as? SideMenuController)?.contentViewController as! BaseTabBarController
+    guard let tab = (window?.rootViewController as? SideMenuController)?.contentViewController as? BaseTabBarController else {
+      return
+    }
     tab.selectedIndex = 2
   }
   
+  static func alertMessage(_ message:String) {
+    AlertView.show(message: message)
+  }
+  
 }
+
+

@@ -25,7 +25,11 @@ class BookingCompletedCell: UITableViewCell {
         dayLabel.text = String(dateformates[2])
         weeklabel.text = dateformates[3].uppercased()
       }
-      locationLabel.text = model.location_alias_name.isEmpty ? model.location_name : model.location_alias_name
+      if model.work_status == "2" { // 外出
+        locationLabel.text = model.address
+      }else {
+        locationLabel.text = model.location_alias_name.isEmpty ? model.location_name : model.location_alias_name
+      }
       itemsLabel.text = model.items.reduce("", { $0 + $1.appending("\n")})
     }
   }

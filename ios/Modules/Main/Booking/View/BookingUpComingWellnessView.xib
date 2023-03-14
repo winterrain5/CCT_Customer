@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -407,6 +407,7 @@
                 <outlet property="dateLabel" destination="FQY-LO-slI" id="JZ3-jf-DMe"/>
                 <outlet property="employeeNameLabel" destination="OUX-Ar-Y4a" id="pFv-Ue-LDo"/>
                 <outlet property="employeeView" destination="wvc-3m-bWn" id="LED-ZW-jwQ"/>
+                <outlet property="genderImageView" destination="sfg-eP-bwZ" id="W7p-EY-MIX"/>
                 <outlet property="locationLabel" destination="wP2-S7-WYf" id="ABU-is-rXN"/>
                 <outlet property="nameLabel" destination="Nh3-BE-XUZ" id="9WL-0U-V2h"/>
                 <outlet property="phoneLabel" destination="rSz-FP-QcR" id="wcB-FC-aIh"/>

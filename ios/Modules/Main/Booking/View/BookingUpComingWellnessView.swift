@@ -27,6 +27,7 @@ class BookingUpComingWellnessView: UIView {
   @IBOutlet weak var shadowView3: UIView!
   @IBOutlet weak var whatsappLabel: UILabel!
   @IBOutlet weak var shadowView2: UIView!
+  @IBOutlet weak var genderImageView: UIImageView!
   var isCanCheckIn:Bool = false
   var checkInHandler:((BookingTodayModel)->())?
   var upcoming:BookingUpComingModel? {
@@ -61,8 +62,20 @@ class BookingUpComingWellnessView: UIView {
       }
       employeeView.isHidden = today.staff_is_random == "1"
       employeeNameLabel.text = today.staff_name
-      locationLabel.text = today.location_alias_name.isEmpty ? today.location_name : today.location_alias_name
       shaowV1HCons.constant = today.staff_is_random == "1" ? 80 : 108
+      
+      if today.work_status == "2" { // 外出
+        locationLabel.text = today.address
+      }else {
+        locationLabel.text = today.location_alias_name.isEmpty ? today.location_name : today.location_alias_name
+      }
+      
+      let genderImage = today.gender == "1" ? R.image.booking_user() : R.image.woman()
+      let genderColor = today.gender == "1" ? kManFontColor : kWomanFontColor
+      genderImageView.image = genderImage
+      employeeNameLabel.textColor = genderColor
+      
+      
       self.updateCheckinButtonStatus()
       self.updateRemarkData(today.remark)
       layoutIfNeeded()

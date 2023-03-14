@@ -23,7 +23,7 @@ enum DomainType {
 @objcMembers
 class APIHost:NSObject {
   
-  var domainType:DomainType = .Live
+  var domainType:DomainType = .UAT
   
   var STRIPE_PK_LIVE:String {
     switch domainType {

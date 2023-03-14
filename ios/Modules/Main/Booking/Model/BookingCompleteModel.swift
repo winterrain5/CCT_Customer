@@ -18,4 +18,8 @@ class BookingCompleteModel: BaseModel {
   var source_id: String = ""
   var name: String = ""
   var items: [String] = []
+  
+  var address: String = ""
+  var work_status = ""
+  var gender = ""
 }

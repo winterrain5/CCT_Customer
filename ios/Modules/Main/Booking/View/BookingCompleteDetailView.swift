@@ -44,8 +44,11 @@ class BookingCompleteDetailView: UIView,UITableViewDelegate,UITableViewDataSourc
       if let date = complete.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss") {
         dateLabel.text = date.string(withFormat: "dd MMM yyyy,EEE - ").appending(date.timeString(ofStyle: .short))
       }
-      
-      locationLabel.text = complete.location_alias_name.isEmpty ? complete.location_name : complete.location_alias_name
+      if complete.work_status == "2" {
+        locationLabel.text = complete.address 
+      } else {
+        locationLabel.text = complete.location_alias_name.isEmpty ? complete.location_name : complete.location_alias_name
+      }
       layoutIfNeeded()
     }
   }

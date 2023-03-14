@@ -109,6 +109,9 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
       cell.textLabel?.text = str
       cell.textLabel?.textColor = R.color.black333()
       cell.textLabel?.numberOfLines = 0
+      if self.type == .Therapist {
+        cell.imageView?.image
+      }
     }
     
     return cell

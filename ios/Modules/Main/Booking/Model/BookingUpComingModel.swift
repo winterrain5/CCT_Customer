@@ -35,7 +35,9 @@ class BookingUpComingModel: BaseModel{
   var employee_last_name: String = ""
   var rate: String = ""
   var remark: String = ""
-  
+  var address: String = ""
+  var work_status = ""
+  var gender = ""
   var cellHeight:CGFloat {
     if staff_is_random == "2" {
       return 186

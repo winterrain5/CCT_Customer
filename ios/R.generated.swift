@@ -417,12 +417,12 @@ struct R: Rswift.Validatable {
 
   /// This `R.entitlements` struct is generated, and contains static references to 1 properties.
   struct entitlements {
-    static let apsEnvironment = infoPlistString(path: [], key: "aps-environment") ?? "production"
+    static let apsEnvironment = infoPlistString(path: [], key: "aps-environment") ?? "development"
 
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 132 images.
+  /// This `R.image` struct is generated, and contains static references to 133 images.
   struct image {
     /// Image `account_arrow_right`.
     static let account_arrow_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "account_arrow_right")
@@ -688,6 +688,8 @@ struct R: Rswift.Validatable {
     static let wellness_type_icon1 = Rswift.ImageResource(bundle: R.hostingBundle, name: "wellness_type_icon1")
     /// Image `wellness_type_icon2`.
     static let wellness_type_icon2 = Rswift.ImageResource(bundle: R.hostingBundle, name: "wellness_type_icon2")
+    /// Image `woman`.
+    static let woman = Rswift.ImageResource(bundle: R.hostingBundle, name: "woman")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "account_arrow_right", bundle: ..., traitCollection: ...)`
@@ -1610,6 +1612,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "wellness_type_icon2", bundle: ..., traitCollection: ...)`
     static func wellness_type_icon2(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.wellness_type_icon2, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "woman", bundle: ..., traitCollection: ...)`
+    static func woman(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.woman, compatibleWith: traitCollection)
     }
     #endif
 

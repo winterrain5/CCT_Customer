@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -224,13 +224,14 @@
                 <outlet property="dateLabel" destination="LcE-6H-S9E" id="UR7-bB-pSt"/>
                 <outlet property="employeeNameLabel" destination="niJ-er-Xq7" id="Dqv-rw-bNS"/>
                 <outlet property="employeeView" destination="I3U-F3-k0M" id="KaW-cE-sK0"/>
+                <outlet property="genderImageView" destination="7qG-hK-YE6" id="fAz-ra-VsV"/>
                 <outlet property="infoContentView" destination="iyM-tl-JBZ" id="3y5-JD-V7z"/>
                 <outlet property="locationLabel" destination="MFj-Ld-wfQ" id="Wec-hi-cEz"/>
                 <outlet property="locationView" destination="hg9-QY-azF" id="jb4-Ae-Wl2"/>
                 <outlet property="nameLabel" destination="RW6-Lf-f0G" id="Ua6-en-eyR"/>
                 <outlet property="timeLabel" destination="SaZ-CC-bZ5" id="YMp-Zc-AvU"/>
             </connections>
-            <point key="canvasLocation" x="-536" y="-54"/>
+            <point key="canvasLocation" x="-238" y="-46"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -1774,7 +1774,6 @@
 		45A505812848993500779B4C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				45D65108284DD2B100C7BD39 /* UpcomingSesiong */,
 				45A505822848997300779B4C /* HomeContainer.swift */,
 				45A505842848998000779B4C /* HomeContainer.xib */,
 				45A505862848B80800779B4C /* HomeKingKongView.swift */,
@@ -1822,14 +1821,14 @@
 			path = TodaySession;
 			sourceTree = "<group>";
 		};
-		45D65108284DD2B100C7BD39 /* UpcomingSesiong */ = {
+		45D65108284DD2B100C7BD39 /* UpcomingSession */ = {
 			isa = PBXGroup;
 			children = (
 				45D65109284DD2C100C7BD39 /* UpcomingSessionView.swift */,
 				45FC54F52850964B00D3C0FF /* UpcomingSessionCell.swift */,
 				45FC54F62850964B00D3C0FF /* UpcomingSessionCell.xib */,
 			);
-			path = UpcomingSesiong;
+			path = UpcomingSession;
 			sourceTree = "<group>";
 		};
 		45F894A32853433F008BC7CC /* QRCodeScanner */ = {
@@ -3277,6 +3276,7 @@
 		49F69770282DF33A009813EA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				45D65108284DD2B100C7BD39 /* UpcomingSession */,
 				45CE32F728349C8600201726 /* TodaySession */,
 				49F69778282DF7E6009813EA /* BookingCompletedCell.swift */,
 				49F69779282DF7E7009813EA /* BookingCompletedCell.xib */,

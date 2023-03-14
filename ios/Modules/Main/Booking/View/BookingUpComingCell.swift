@@ -20,6 +20,7 @@ class BookingUpComingCell: UITableViewCell {
   @IBOutlet weak var timeLabel: UILabel!
   @IBOutlet weak var staffView: UIView!
   @IBOutlet weak var staffNameLabel: UILabel!
+  @IBOutlet weak var genderImageView: UIImageView!
   var model:BookingUpComingModel! {
     didSet {
       let date = model.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
@@ -29,7 +30,7 @@ class BookingUpComingCell: UITableViewCell {
         weeklabel.text = dateformates[3].uppercased()
         timeLabel.text = date?.timeString(ofStyle: .short)
       }
-      locationLabel.text = model.location_alias_name.isEmpty ? model.location_name : model.location_alias_name
+   
       nameLabel.text = model.alias_name
       if model.staff_is_random == "2" {
         staffView.isHidden = false
@@ -37,6 +38,17 @@ class BookingUpComingCell: UITableViewCell {
       }else {
         staffView.isHidden = true
       }
+      
+      if model.work_status == "2" { // 外出
+        locationLabel.text = model.address
+      }else {
+        locationLabel.text = model.location_alias_name.isEmpty ? model.location_name : model.location_alias_name
+      }
+      
+      let genderImage = model.gender == "1" ? R.image.booking_user() : R.image.woman()
+      let genderColor = model.gender == "1" ? kManFontColor : kWomanFontColor
+      genderImageView.image = genderImage
+      staffNameLabel.textColor = genderColor
     }
   }
   override func awakeFromNib() {

@@ -30,6 +30,9 @@ class BookingTodayModel: BaseModel {
   var wellness_treatment_type: String = ""
   var status: Int = 0
   var wellness_or_treatment: String = ""
+  var address: String = ""
+  var work_status = ""
+  var gender = ""
   var cellHeight:CGFloat {
     if status == 4 && wellness_or_treatment == "2" {
       return 250

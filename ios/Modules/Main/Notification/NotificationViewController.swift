@@ -198,6 +198,23 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
       return
     }
     getNotices()
+    getUnreadMessageCount()
+  }
+  
+  func getUnreadMessageCount() {
+    let params = SOAPParams(action: .Notifications, path: .getUnreadCount)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    NetworkManager().request(params: params) { data in
+      if let count = String(data: data, encoding: .utf8)?.int {
+        Defaults.shared.set(count, for: .unReadMessageCount)
+        ApplicationUtil.setTabBarItemBadgeValue(value: count)
+        
+      }
+      
+    } errorHandler: { e in
+      
+    }
+
   }
   
   override func listViewFrame() -> CGRect {
@@ -244,13 +261,23 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
       }
     }
     cell.delegate = self
-    cell.notificationAciton = { [weak self] type,model,button in
+    cell.indexPath = indexPath
+    cell.notificationAciton = { [weak self] type,model,button,idx in
       guard let `self` = self else { return }
+      
       switch type {
       case .CheckWallet:
-        self.checkWallet(model,button)
+        button.startAnimation()
+        self.setMessageReadStatus(idx) { [weak self] in
+          guard let `self` = self else { return }
+          self.checkWallet(model,button)
+        }
       case .CheckAppointment:
-        self.checkAppointment(model,button)
+        button.startAnimation()
+        self.setMessageReadStatus(idx) { [weak self] in
+          guard let `self` = self else { return }
+          self.checkAppointment(model,button)
+        }
       }
     }
     cell.selectionStyle = .none
@@ -411,9 +438,12 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
       button.stopAnimation()
     }
   }
-  func setMessageReadStatus(_ indexPath:IndexPath) {
+  func setMessageReadStatus(_ indexPath:IndexPath, complete:(()->())? = nil) {
     let model = (self.dataArray as! [[NotificationModel]])[indexPath.section][indexPath.row]
-    if model.is_read == "1" { return }
+    if model.is_read == "1" {
+      complete?()
+      return
+    }
     let params = SOAPParams(action: .Notifications, path: .setReadStatus)
     let ids = SOAPDictionary()
     [model].enumerated().forEach { i,e in
@@ -422,18 +452,18 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
     params.set(key: "ids", value: ids.result, type: .map(1))
     NetworkManager().request(params: params) { data in
       guard let isSuccess = String.init(data: data, encoding: .utf8),isSuccess == "1" else {
+        complete?()
         return
       }
       let totalUnreadCount = Defaults.shared.get(for: .unReadMessageCount) ?? 0
       let badge = totalUnreadCount - 1
-      MobPush.setBadge(badge)
       ApplicationUtil.setTabBarItemBadgeValue(value: badge)
       model.is_read = "1"
       self.tableView?.reloadRows(at: [indexPath], with: .none)
       Defaults.shared.set(badge, for: .unReadMessageCount)
-      
+      complete?()
     } errorHandler: { e in
-      
+      complete?()
     }
 
   }

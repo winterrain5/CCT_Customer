@@ -67,12 +67,20 @@ import IQKeyboardManagerSwift
   }
   
   static func setTabBarItemBadgeValue(value:Int) {
-    UIApplication.shared.applicationIconBadgeNumber = value
     let window = (UIApplication.shared.delegate as! AppDelegate).window
     guard let tab = (window?.rootViewController as? SideMenuController)?.contentViewController as? BaseTabBarController else {
       return
     }
     let vc = tab.viewControllers?[2]
+    if value == 0 {
+      MobPush.clearBadge()
+      UIApplication.shared.applicationIconBadgeNumber = 0
+      vc?.tabBarItem.badgeValue = nil
+      return
+    }
+    UIApplication.shared.applicationIconBadgeNumber = value
+    
+    MobPush.setBadge(value)
     vc?.tabBarItem.badgeValue = "\(value)"
   }
   

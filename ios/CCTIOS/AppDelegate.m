@@ -112,7 +112,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-  [MobPush clearBadge];
+  
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

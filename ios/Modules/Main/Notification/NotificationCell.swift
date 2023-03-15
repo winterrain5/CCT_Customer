@@ -24,7 +24,8 @@ class NotificationCell: SwipeTableViewCell {
   @IBOutlet weak var readStatusView: UIView!
   @IBOutlet weak var buttonHCons: NSLayoutConstraint!
   @IBOutlet weak var button: LoadingButton!
-  var notificationAciton:((NotificationAcitonType,NotificationModel,LoadingButton)->())?
+  var indexPath: IndexPath!
+  var notificationAciton:((NotificationAcitonType,NotificationModel,LoadingButton,IndexPath)->())?
   var model:NotificationModel! {
     didSet {
       titleLabel.text = model.title
@@ -82,9 +83,9 @@ class NotificationCell: SwipeTableViewCell {
       let bookingId = self.model.booking_id.double() ?? 0
       print(self.model.description)
       if bookingId > 0 {
-        self.notificationAciton?(.CheckAppointment,self.model,self.button)
+        self.notificationAciton?(.CheckAppointment,self.model,self.button,self.indexPath)
       } else {
-        self.notificationAciton?(.CheckWallet,self.model,self.button)
+        self.notificationAciton?(.CheckWallet,self.model,self.button,self.indexPath)
       }
     }).disposed(by: rx.disposeBag)
   

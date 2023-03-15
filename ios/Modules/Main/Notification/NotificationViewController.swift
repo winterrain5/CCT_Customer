@@ -427,9 +427,11 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
       let totalUnreadCount = Defaults.shared.get(for: .unReadMessageCount) ?? 0
       let badge = totalUnreadCount - 1
       MobPush.setBadge(badge)
+      ApplicationUtil.setTabBarItemBadgeValue(value: badge)
       model.is_read = "1"
       self.tableView?.reloadRows(at: [indexPath], with: .none)
       Defaults.shared.set(badge, for: .unReadMessageCount)
+      
     } errorHandler: { e in
       
     }

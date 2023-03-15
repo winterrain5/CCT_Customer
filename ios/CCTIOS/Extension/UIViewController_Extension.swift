@@ -67,7 +67,7 @@ extension UIViewController {
     }
   }
   
-  
+  /// 本项目中获取顶层控制器
   static func getTopVc() -> UIViewController? {
     let VC = (self.getTopVC() as? SideMenuController)?.contentViewController
     if VC == nil {

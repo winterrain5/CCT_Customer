@@ -66,6 +66,16 @@ import IQKeyboardManagerSwift
     tab.selectedIndex = 2
   }
   
+  static func setTabBarItemBadgeValue(value:Int) {
+    UIApplication.shared.applicationIconBadgeNumber = value
+    let window = (UIApplication.shared.delegate as! AppDelegate).window
+    guard let tab = (window?.rootViewController as? SideMenuController)?.contentViewController as? BaseTabBarController else {
+      return
+    }
+    let vc = tab.viewControllers?[2]
+    vc?.tabBarItem.badgeValue = "\(value)"
+  }
+  
   static func alertMessage(_ message:String) {
     AlertView.show(message: message)
   }

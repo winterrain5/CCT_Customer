@@ -232,6 +232,8 @@ class HomeViewController: BaseViewController {
       if let count = String(data: data, encoding: .utf8)?.int {
         Defaults.shared.set(count, for: .unReadMessageCount)
         MobPush.setBadge(count)
+        ApplicationUtil.setTabBarItemBadgeValue(value: count)
+        
       }
       
     } errorHandler: { e in

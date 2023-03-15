@@ -93,16 +93,33 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isUserInteractionDisabledWhenSkeletonIsActive" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ab-OP-w0u">
+                                <rect key="frame" x="430" y="8" width="8" height="8"/>
+                                <color key="backgroundColor" name="TheamRed"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="8" id="SiC-C0-a3K"/>
+                                    <constraint firstAttribute="width" constant="8" id="Tot-S5-0kC"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tlN-tq-hNm" firstAttribute="leading" secondItem="EOG-c7-a9D" secondAttribute="leading" constant="16" id="2Gd-qX-FVf"/>
                             <constraint firstItem="tlN-tq-hNm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2Zp-UN-acc" secondAttribute="bottom" constant="16" id="7m2-0z-PbA"/>
+                            <constraint firstItem="0ab-OP-w0u" firstAttribute="trailing" secondItem="mP1-Re-gUQ" secondAttribute="trailing" id="9xL-3M-qJE"/>
                             <constraint firstItem="pG7-4A-VMn" firstAttribute="leading" secondItem="EOG-c7-a9D" secondAttribute="leading" constant="16" id="IvU-zh-rzW"/>
                             <constraint firstAttribute="trailing" secondItem="tlN-tq-hNm" secondAttribute="trailing" constant="16" id="PNP-5E-NDk"/>
                             <constraint firstItem="mP1-Re-gUQ" firstAttribute="centerY" secondItem="pG7-4A-VMn" secondAttribute="centerY" id="T1Y-MK-ZNL"/>
                             <constraint firstItem="2Zp-UN-acc" firstAttribute="leading" secondItem="EOG-c7-a9D" secondAttribute="leading" constant="16" id="Vkj-rY-EAo"/>
                             <constraint firstItem="mP1-Re-gUQ" firstAttribute="leading" secondItem="pG7-4A-VMn" secondAttribute="trailing" constant="8" id="Wc0-IM-SKG"/>
+                            <constraint firstItem="mP1-Re-gUQ" firstAttribute="top" secondItem="0ab-OP-w0u" secondAttribute="bottom" id="ZLK-AF-Liq"/>
                             <constraint firstItem="2Zp-UN-acc" firstAttribute="top" secondItem="pG7-4A-VMn" secondAttribute="bottom" constant="8" id="hfm-0u-4Wx"/>
                             <constraint firstAttribute="trailing" secondItem="2Zp-UN-acc" secondAttribute="trailing" constant="16" id="hpE-lu-jYg"/>
                             <constraint firstItem="pG7-4A-VMn" firstAttribute="top" secondItem="EOG-c7-a9D" secondAttribute="top" constant="16" id="pqR-nU-ghV"/>
@@ -138,11 +155,12 @@
                 <outlet property="buttonBottomCons" destination="ul3-pe-tcx" id="dCr-96-x7P"/>
                 <outlet property="buttonHCons" destination="h2k-qT-9pt" id="iiF-nE-ouX"/>
                 <outlet property="contentLabel" destination="2Zp-UN-acc" id="OR8-Pc-5mg"/>
+                <outlet property="readStatusView" destination="0ab-OP-w0u" id="jkA-bg-vvO"/>
                 <outlet property="shadowView" destination="EOG-c7-a9D" id="SV1-os-ieC"/>
                 <outlet property="timeLabel" destination="mP1-Re-gUQ" id="rbH-ha-ps3"/>
                 <outlet property="titleLabel" destination="pG7-4A-VMn" id="Jdq-TV-XxW"/>
             </connections>
-            <point key="canvasLocation" x="-249.27536231884059" y="169.75446428571428"/>
+            <point key="canvasLocation" x="-565" y="168"/>
         </tableViewCell>
     </objects>
     <resources>
@@ -151,6 +169,9 @@
         </namedColor>
         <namedColor name="TheamBlue">
             <color red="0.078000001609325409" green="0.3529999852180481" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TheamRed">
+            <color red="0.76899999380111694" green="0.27799999713897705" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

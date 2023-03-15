@@ -209,7 +209,6 @@
 		4904C3E02806BCEC008FE5A5 /* ShopDetailHeadContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4904C3DF2806BCEC008FE5A5 /* ShopDetailHeadContainer.xib */; };
 		49056AE72794FC8100FBA1AC /* SelectTypeOfServiceSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49056AE62794FC8000FBA1AC /* SelectTypeOfServiceSheetView.swift */; };
 		49056AE92794FC9000FBA1AC /* SelectTypeOfServiceSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49056AE82794FC9000FBA1AC /* SelectTypeOfServiceSheetView.xib */; };
-		49056AF12795043800FBA1AC /* RNBridgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49056AF02795043800FBA1AC /* RNBridgeViewController.swift */; };
 		49056AF32795427B00FBA1AC /* SymptomCheckTreatmentPlanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49056AF22795427B00FBA1AC /* SymptomCheckTreatmentPlanController.swift */; };
 		49056AF527954C9A00FBA1AC /* SymptomCheckPlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49056AF427954C9A00FBA1AC /* SymptomCheckPlanModel.swift */; };
 		49056AF727954D1600FBA1AC /* SymptomCheckPlanHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49056AF627954D1600FBA1AC /* SymptomCheckPlanHeaderView.swift */; };
@@ -973,7 +972,6 @@
 		4904C3DF2806BCEC008FE5A5 /* ShopDetailHeadContainer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopDetailHeadContainer.xib; sourceTree = "<group>"; };
 		49056AE62794FC8000FBA1AC /* SelectTypeOfServiceSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTypeOfServiceSheetView.swift; sourceTree = "<group>"; };
 		49056AE82794FC9000FBA1AC /* SelectTypeOfServiceSheetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectTypeOfServiceSheetView.xib; sourceTree = "<group>"; };
-		49056AF02795043800FBA1AC /* RNBridgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNBridgeViewController.swift; sourceTree = "<group>"; };
 		49056AF22795427B00FBA1AC /* SymptomCheckTreatmentPlanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomCheckTreatmentPlanController.swift; sourceTree = "<group>"; };
 		49056AF427954C9A00FBA1AC /* SymptomCheckPlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomCheckPlanModel.swift; sourceTree = "<group>"; };
 		49056AF627954D1600FBA1AC /* SymptomCheckPlanHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomCheckPlanHeaderView.swift; sourceTree = "<group>"; };
@@ -2390,7 +2388,6 @@
 				4998BF30277ED25100A881D5 /* BaseNavigationController.swift */,
 				4998BF31277ED25100A881D5 /* BaseTableController.swift */,
 				4998BF32277ED25200A881D5 /* BaseViewController.swift */,
-				49056AF02795043800FBA1AC /* RNBridgeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4292,7 +4289,6 @@
 				4998C03F277EF51200A881D5 /* ArrayExtensions.swift in Sources */,
 				4932AB9427C637770029F000 /* ChangePwdController.swift in Sources */,
 				4998C0D12784427F00A881D5 /* LayoutConstraintItem.swift in Sources */,
-				49056AF12795043800FBA1AC /* RNBridgeViewController.swift in Sources */,
 				4998C049277EF51200A881D5 /* DecodableExtensions.swift in Sources */,
 				49C05B5C281A403D00F5B9D5 /* EnterAccountContainer.swift in Sources */,
 				4998C0A02784247500A881D5 /* API.swift in Sources */,

@@ -288,6 +288,8 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
         Haptic.impact(.light).generate()
       }
       processDataArray(indexPath)
+    }else{
+      setMessageReadStatus(indexPath)
     }
   }
   
@@ -408,6 +410,30 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
     } errorHandler: { e in
       button.stopAnimation()
     }
+  }
+  func setMessageReadStatus(_ indexPath:IndexPath) {
+    let model = (self.dataArray as! [[NotificationModel]])[indexPath.section][indexPath.row]
+    if model.is_read == "1" { return }
+    let params = SOAPParams(action: .Notifications, path: .setReadStatus)
+    let ids = SOAPDictionary()
+    [model].enumerated().forEach { i,e in
+      ids.set(key: i.string, value: e.id)
+    }
+    params.set(key: "ids", value: ids.result, type: .map(1))
+    NetworkManager().request(params: params) { data in
+      guard let isSuccess = String.init(data: data, encoding: .utf8),isSuccess == "1" else {
+        return
+      }
+      let totalUnreadCount = Defaults.shared.get(for: .unReadMessageCount) ?? 0
+      let badge = totalUnreadCount - 1
+      MobPush.setBadge(badge)
+      model.is_read = "1"
+      self.tableView?.reloadRows(at: [indexPath], with: .none)
+      Defaults.shared.set(badge, for: .unReadMessageCount)
+    } errorHandler: { e in
+      
+    }
+
   }
 }
 

@@ -42,7 +42,17 @@ class BookingUpComingWellnessView: UIView {
       }
       employeeView.isHidden = upcoming.staff_is_random == "1"
       employeeNameLabel.text = upcoming.employee_first_name + " " + upcoming.employee_last_name
-      locationLabel.text = upcoming.location_alias_name.isEmpty ? upcoming.location_name : upcoming.location_alias_name
+      if upcoming.work_status == "2" { // 外出
+        locationLabel.text = upcoming.address
+      }else {
+        locationLabel.text = upcoming.location_alias_name.isEmpty ? upcoming.location_name : upcoming.location_alias_name
+      }
+      
+      let genderImage = upcoming.gender == "1" ? R.image.booking_user() : R.image.woman()
+      let genderColor = upcoming.gender == "1" ? kManFontColor : kWomanFontColor
+      genderImageView.image = genderImage
+      employeeNameLabel.textColor = genderColor
+      
       shaowV1HCons.constant = upcoming.staff_is_random == "1" ? 80 : 108
       self.updateCheckinButtonStatus()
       self.updateRemarkData(upcoming.remark)

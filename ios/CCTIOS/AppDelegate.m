@@ -42,7 +42,12 @@
   [MobPush setupNotification:configuration];
   
   [MobPush setRegionID:0];
+#ifdef DEBUG
+  [MobSDK registerAppKey:@"377d12d0a74c4" appSecret:@"c55b8afb9de78321f527ec28676bb665"];
+#else
   [MobSDK registerAppKey:@"335ba928dd6e8" appSecret:@"d610c4befc4595f3c913a733f7a94769"];
+#endif
+  
 
   [MobSDK uploadPrivacyPermissionStatus:YES onResult:^(BOOL success) {
     NSLog(@"-------------->上传结果：%d",success);
@@ -80,7 +85,7 @@
   NSInteger badge = message.notification.badge;
   NSString *sound = message.notification.sound;
   NSString *formateMessage =[NSString stringWithFormat:@"收到通知:{\nbody:%@，\ntitle:%@,\nsubtitle:%@,\nbadge:%ld,\nsound:%@,\n}",body, title, subtitle, (long)badge, sound];
-  NSLog(@"收到通知:%@",formateMessage);
+  NSLog(@"%@",formateMessage);
   switch (message.messageType)
   {
     case MPushMessageTypeCustom:

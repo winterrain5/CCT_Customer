@@ -79,6 +79,7 @@ class HomeViewController: BaseViewController {
       self.scrolView.mj_header?.endRefreshing()
       print(e.asAPIError.errorInfo().message)
     }
+    getUnreadMessageCount()
   }
   
   func getBookedService() {
@@ -222,6 +223,21 @@ class HomeViewController: BaseViewController {
     } errorHandler: { e in
       
     }
+  }
+  
+  func getUnreadMessageCount() {
+    let params = SOAPParams(action: .Notifications, path: .getUnreadCount)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    NetworkManager().request(params: params) { data in
+      if let count = String(data: data, encoding: .utf8)?.int {
+        Defaults.shared.set(count, for: .unReadMessageCount)
+        MobPush.setBadge(count)
+      }
+      
+    } errorHandler: { e in
+      
+    }
+
   }
   
   func getTodaySession() -> Promise<[BookingTodayModel]>{

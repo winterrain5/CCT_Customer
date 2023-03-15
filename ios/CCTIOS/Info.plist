@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>MOBAppSecret</key>
+	<string>d610c4befc4595f3c913a733f7a94769</string>
 	<key>CFBundleDisplayName</key>
 	<string>Chien Chi Tow</string>
 	<key>CFBundleExecutable</key>

@@ -21,6 +21,7 @@ class NotificationCell: SwipeTableViewCell {
   
   @IBOutlet weak var buttonBottomCons: NSLayoutConstraint!
   
+  @IBOutlet weak var readStatusView: UIView!
   @IBOutlet weak var buttonHCons: NSLayoutConstraint!
   @IBOutlet weak var button: LoadingButton!
   var notificationAciton:((NotificationAcitonType,NotificationModel,LoadingButton)->())?
@@ -41,6 +42,8 @@ class NotificationCell: SwipeTableViewCell {
       }else {
         borderView.borderWidth = 0
       }
+      
+      readStatusView.isHidden = model.is_read == "1"
       
       let bookingId = model.booking_id.double() ?? 0
       let friendId = model.friend_id.double() ?? 0

@@ -29,4 +29,6 @@ extension DefaultsKey {
   static let isFirstInstallApp = Key<Bool>("isFirstInstallApp")
   static let isLoginByScanQRCode = Key<Bool>("isLoginByScanQRCode")
   
+  static let unReadMessageCount = Key<Int>("unReadMessageCount")
+  
 }

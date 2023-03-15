@@ -15,6 +15,8 @@ class NotificationModel: BaseModel {
   var id = ""
   var send_date = ""
   var title = ""
+  // 1为已读 
+  var is_read = ""
   var isSelected = false
   var isToDay:Bool {
     let date = send_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")

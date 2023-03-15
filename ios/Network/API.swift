@@ -298,7 +298,7 @@ enum API:String {
   case getKidsMassageItems = "getKidsMassageItems"
   case getAppOrderDetail = "getAppOrderDetail"
   // 获取某次appointment数据
-  case getClientBookedInfo = "getClientBookedInfo "
+  case getClientBookedInfo = "getClientBookedInfo"
   
   /// 获取app 版本信息
   case getAll = "getAll"
@@ -324,7 +324,12 @@ enum API:String {
   case welcomeNote = "welcomeNote";
   //预约推送
   case newCreateAppointment = "newCreateAppointment";
+  // 使用朋友的卡推送
   case friendUseD = "friendUseD"
+  // 消息列表获取未读消息数量
+  case getUnreadCount = "getUnReadCount"
+  // 设置消息状态
+  case setReadStatus = "setReadStatus"
 }
 
 enum Action:String {

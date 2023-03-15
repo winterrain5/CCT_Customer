@@ -376,15 +376,15 @@ extension BookingAppointmentController {
     
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeArrayByHandJSON(BookingServiceModel.self, from: data) {
+        if models.count == 0 {
+          Toast.showMessage("No siutable service")
+          return
+        }
         if self.type == .Treatment {
           if models.count == 1 {
             self.selectedService = models.first
           }
         }else {
-          if models.count == 0 {
-            Toast.showMessage("No siutable service")
-            return
-          }
           self.serviceModels = models
           self.showServiceSheetView()
         }

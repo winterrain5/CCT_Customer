@@ -321,6 +321,7 @@ class ConfirmSessionContainer: UIView {
   func getTSystemConfig() {
     let params = SOAPParams(action: .SystemConfig, path: .getTSystemConfig,isNeedToast: false)
     params.set(key: "cmpanyId", value: Defaults.shared.get(for: .companyId) ?? "97")
+    params.set(key: "columns", value: "send_specific_email")
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(SystemConfigModel.self, from: data) {
         self.sendSmsForEmail(model)

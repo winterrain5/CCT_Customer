@@ -115,6 +115,7 @@ class ForgetPwdSheetView: UIView {
     Promise.init { resolver in
       let params = SOAPParams(action: .SystemConfig, path: .getTSystemConfig)
       params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
+      params.set(key: "columns", value: "send_specific_email")
       NetworkManager().request(params: params) { data in
         if let model = DecodeManager.decodeByCodable(SystemConfigModel.self, from: data) {
           resolver.fulfill(model.send_specific_email ?? "")

@@ -23,7 +23,7 @@ class BookingUpComingCell: UITableViewCell {
   @IBOutlet weak var genderImageView: UIImageView!
   var model:BookingUpComingModel! {
     didSet {
-      let date = model.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
+      let date = model.start_time.date(withFormat: "yyyy-MM-dd HH:mm:ss")
       if let dateformates = date?.string(withFormat: "MMM yyyy dd EEE").split(separator: " ") {
         yearMonthLabel.text = dateformates[0] + " " + dateformates[1]
         dayLabel.text = String(dateformates[2])

@@ -29,8 +29,8 @@ let kScreenHeight:CGFloat = UIScreen.main.bounds.size.height
 /// 屏幕宽度
 let kScreenWidth:CGFloat = UIScreen.main.bounds.size.width
 
-let kWomanFontColor = Color.init(hexString: "CC827F")
-let kManFontColor = R.color.theamBlue()
+let kWomanFontColor = Color.init(hexString: "C14729")
+let kManFontColor = Color.init(hexString: "185A7D")
 
 let kPageSize:Int = 20
 

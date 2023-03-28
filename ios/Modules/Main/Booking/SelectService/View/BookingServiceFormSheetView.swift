@@ -6,16 +6,35 @@
 //
 
 import UIKit
-
-class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSource {
-  enum SheetType {
-    case Outlet
-    case Service
-    case TimeSlot
-    case Therapist
-    case SelectID
-    case SelectCountry
+enum SheetType {
+  case Outlet
+  case Service
+  case TimeSlot
+  case Therapist
+  case SelectID
+  case SelectCountry
+}
+extension SheetType {
+  var title:String {
+    switch self {
+    case .Outlet:
+      return "Select Outlet"
+    case .Service:
+      return "Select Service"
+    case .TimeSlot:
+      return "Select Time Slot"
+    case .Therapist:
+      return "Select Therapist"
+    case .SelectID:
+      return "Select ID Type"
+    case .SelectCountry:
+      return "Select Country"
+    }
   }
+}
+class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSource {
+ 
+  
   var titleLabel = UILabel().then { label in
     label.textColor = R.color.theamBlue()
     label.font = UIFont(name: .AvenirNextDemiBold, size: 18)
@@ -23,27 +42,14 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
   var lineLayer = CAShapeLayer().then { layer in
     layer.backgroundColor = R.color.grayf2()?.cgColor
   }
-  var dataArray:[String] = [] {
+  var dataArray:[Any] = [] {
     didSet {
       tableView.reloadData()
     }
   }
   var type:SheetType = .Outlet {
     didSet {
-      switch type {
-      case .Outlet:
-        titleLabel.text = "Select Outlet"
-      case .Service:
-        titleLabel.text = "Select Service"
-      case .TimeSlot:
-        titleLabel.text = "Select Time Slot"
-      case .Therapist:
-        titleLabel.text = "Select Therapist"
-      case .SelectID:
-        titleLabel.text = "Select ID Type"
-      case .SelectCountry:
-        titleLabel.text = "Select Country"
-      }
+      titleLabel.text = type.title
     }
   }
   var selectComplete:((Int)->())?
@@ -104,14 +110,25 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
     let cell = tableView.dequeueReusableCell(withClass: UITableViewCell.self)
     
     if dataArray.count > 0 {
-      let str = dataArray[indexPath.row]
+      let data = dataArray[indexPath.row]
       cell.textLabel?.font = UIFont(name: .AvenirNextRegular, size: 14)
-      cell.textLabel?.text = str
-      cell.textLabel?.textColor = R.color.black333()
-      cell.textLabel?.numberOfLines = 0
-      if self.type == .Therapist {
-        cell.imageView?.image
+      if data is String {
+        cell.textLabel?.text = data as? String
+        cell.textLabel?.textColor = R.color.black333()
       }
+      if data is EmployeeForServiceModel {
+        let model =  (data as? EmployeeForServiceModel)
+        cell.textLabel?.text = model?.employee_name
+        if model?.gender == 1 {
+          cell.imageView?.image = R.image.booking_user()
+          cell.textLabel?.textColor = kManFontColor
+        }else {
+          cell.imageView?.image = R.image.woman()
+          cell.textLabel?.textColor = kWomanFontColor
+        }
+      }
+      
+      cell.textLabel?.numberOfLines = 0
     }
     
     return cell
@@ -123,7 +140,7 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
     EntryKit.dismiss()
   }
   
-  static func show(dataArray:[String],type:SheetType,selectComplete:@escaping (Int)->()) {
+  private static func show(dataArray:[Any],type:SheetType,selectComplete:@escaping (Int)->()) {
     let view = BookingServiceFormSheetView()
     view.dataArray = dataArray
     view.type = type
@@ -133,4 +150,12 @@ class BookingServiceFormSheetView: UIView,UITableViewDelegate,UITableViewDataSou
     let size = CGSize(width: kScreenWidth, height: height.cgFloat + kBottomsafeAreaMargin + 40)
     EntryKit.displayView(asSheet: view, size: size)
   }
+  static func show(dataArray:[EmployeeForServiceModel],type:SheetType,selectComplete:@escaping (Int)->()) {
+    self.show(dataArray: dataArray as [Any], type: type, selectComplete: selectComplete)
+  }
+  static func show(dataArray:[String],type:SheetType,selectComplete:@escaping (Int)->()) {
+    self.show(dataArray: dataArray as [Any], type: type, selectComplete: selectComplete)
+  }
 }
+
+

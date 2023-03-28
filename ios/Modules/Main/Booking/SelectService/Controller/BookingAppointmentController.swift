@@ -451,8 +451,7 @@ extension BookingAppointmentController {
       return
     }
     
-    let strs = self.employeeModels.map({ $0.employee_name })
-    BookingServiceFormSheetView.show(dataArray: strs, type: .Therapist) { index in
+    BookingServiceFormSheetView.show(dataArray: self.employeeModels, type: .Therapist) { index in
       
       self.models.filter({ $0.type == .date }).first?.title = ""
       self.models.filter({ $0.type == .timeSlot }).first?.title = ""
@@ -518,6 +517,7 @@ extension BookingAppointmentController {
   func showDateSheetView() {
     Toast.dismiss()
     if self.dutyDateModels.count == 0 {
+      Toast.showMessage("There is no suitable date at present")
       return
     }
     let strs = self.dutyDateModels.map({ $0.w_date })
@@ -591,6 +591,7 @@ extension BookingAppointmentController {
   func showTimeSheetView() {
     Toast.dismiss()
     if self.bookigTimeModels.count == 0 {
+      Toast.showMessage("There is no suitable time slot at present")
       return
     }
     let strs = self.bookigTimeModels.map({  e -> String in

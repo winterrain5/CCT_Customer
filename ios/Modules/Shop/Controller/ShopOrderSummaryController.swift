@@ -105,7 +105,7 @@ class ShopOrderSummaryController: BaseViewController {
     Promise.init { resolver in
       let params = SOAPParams(action: .SystemConfig, path: .getTSystemConfig)
       params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
-      
+      params.set(key: "columns", value: "leave_review_points")
       NetworkManager().request(params: params) { data in
         if let model = DecodeManager.decodeByCodable(SystemConfigModel.self, from: data) {
           resolver.fulfill(model.leave_review_points?.string ?? "")

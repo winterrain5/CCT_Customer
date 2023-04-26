@@ -36,9 +36,10 @@ class CheckInTodaySessionController: BaseViewController {
   }
   
   func getTodaySession() {
-    let params = SOAPParams(action: .BookingOrder, path: .getClientBookedServices)
+    let params = SOAPParams(action: .BookingOrder, path: .getClientUnServices)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "date", value: Date().string(withFormat: "yyyy-MM-dd"))
+    params.set(key: "locationId", value: outlet?.id ?? "")
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeArrayByHandJSON(BookingTodayModel.self, from: data) {
         self.contentView.models = models

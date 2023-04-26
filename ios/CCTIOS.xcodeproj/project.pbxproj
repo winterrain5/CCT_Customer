@@ -89,6 +89,7 @@
 		45C983082861B65000887CAE /* OnBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C983072861B65000887CAE /* OnBoardViewController.swift */; };
 		45C9830B2861B66A00887CAE /* OnBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C983092861B66A00887CAE /* OnBoardCell.swift */; };
 		45C9830C2861B66A00887CAE /* OnBoardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C9830A2861B66A00887CAE /* OnBoardCell.xib */; };
+		45CBE27829D2B7B300285446 /* BookingBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CBE27729D2B7B300285446 /* BookingBaseModel.swift */; };
 		45CE32F42834948E00201726 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F32834948E00201726 /* CompanyModel.swift */; };
 		45CE32F628349C4500201726 /* TodaySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F528349C4500201726 /* TodaySessionView.swift */; };
 		45CE32FA28349CAF00201726 /* TodayCheckInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE32F828349CAF00201726 /* TodayCheckInCell.swift */; };
@@ -852,6 +853,7 @@
 		45C983072861B65000887CAE /* OnBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardViewController.swift; sourceTree = "<group>"; };
 		45C983092861B66A00887CAE /* OnBoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardCell.swift; sourceTree = "<group>"; };
 		45C9830A2861B66A00887CAE /* OnBoardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnBoardCell.xib; sourceTree = "<group>"; };
+		45CBE27729D2B7B300285446 /* BookingBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingBaseModel.swift; sourceTree = "<group>"; };
 		45CE32F32834948E00201726 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
 		45CE32F528349C4500201726 /* TodaySessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionView.swift; sourceTree = "<group>"; };
 		45CE32F828349CAF00201726 /* TodayCheckInCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCheckInCell.swift; sourceTree = "<group>"; };
@@ -3299,6 +3301,7 @@
 				4936C21E28334ACD009125A1 /* BookingUpComingModel.swift */,
 				45CE32F32834948E00201726 /* CompanyModel.swift */,
 				45CE32FC2834CAF500201726 /* BookingTodayModel.swift */,
+				45CBE27729D2B7B300285446 /* BookingBaseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3828,6 +3831,7 @@
 				4998C04B277EF51200A881D5 /* DoubleExtensions.swift in Sources */,
 				4998C0F12784427F00A881D5 /* ConstraintDirectionalInsets.swift in Sources */,
 				4998C009277EF51200A881D5 /* UIBarButtonItemExtensions.swift in Sources */,
+				45CBE27829D2B7B300285446 /* BookingBaseModel.swift in Sources */,
 				45B680B228597CDC00F2E430 /* PostPartumDeclarationController.swift in Sources */,
 				49DED22727C479B40027F476 /* FeedbackFormController.swift in Sources */,
 				4998C003277EF51200A881D5 /* UITextFieldExtensions.swift in Sources */,
@@ -4444,7 +4448,7 @@
 				CODE_SIGN_ENTITLEMENTS = CCTIOS/CCTIOSDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 7BVP6AS26M;
 				ENABLE_BITCODE = NO;
@@ -4477,7 +4481,7 @@
 					/usr/lib/swift,
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.1.8;
+				MARKETING_VERSION = 1.2.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -4509,7 +4513,7 @@
 				CODE_SIGN_ENTITLEMENTS = CCTIOS/CCTIOSRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7BVP6AS26M;
 				INFOPLIST_FILE = CCTIOS/Info.plist;
@@ -4523,7 +4527,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.1.8;
+				MARKETING_VERSION = 1.2.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",

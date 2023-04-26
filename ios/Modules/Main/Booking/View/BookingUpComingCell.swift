@@ -39,16 +39,10 @@ class BookingUpComingCell: UITableViewCell {
         staffView.isHidden = true
       }
       
-      if model.work_status == "2" { // 外出
-        locationLabel.text = model.address
-      }else {
-        locationLabel.text = model.location_alias_name.isEmpty ? model.location_name : model.location_alias_name
-      }
+      locationLabel.text = model.final_address
       
-      let genderImage = model.gender == "1" ? R.image.booking_user() : R.image.woman()
-      let genderColor = model.gender == "1" ? kManFontColor : kWomanFontColor
-      genderImageView.image = genderImage
-      staffNameLabel.textColor = genderColor
+      genderImageView.image = model.genderImage
+      staffNameLabel.textColor = model.genderColor
     }
   }
   override func awakeFromNib() {

@@ -42,16 +42,11 @@ class BookingUpComingWellnessView: UIView {
       }
       employeeView.isHidden = upcoming.staff_is_random == "1"
       employeeNameLabel.text = upcoming.employee_first_name + " " + upcoming.employee_last_name
-      if upcoming.work_status == "2" { // 外出
-        locationLabel.text = upcoming.address
-      }else {
-        locationLabel.text = upcoming.location_alias_name.isEmpty ? upcoming.location_name : upcoming.location_alias_name
-      }
       
-      let genderImage = upcoming.gender == "1" ? R.image.booking_user() : R.image.woman()
-      let genderColor = upcoming.gender == "1" ? kManFontColor : kWomanFontColor
-      genderImageView.image = genderImage
-      employeeNameLabel.textColor = genderColor
+      locationLabel.text = upcoming.final_address
+      
+      genderImageView.image = upcoming.genderImage
+      employeeNameLabel.textColor = upcoming.genderColor
       
       shaowV1HCons.constant = upcoming.staff_is_random == "1" ? 80 : 108
       self.updateCheckinButtonStatus()
@@ -74,16 +69,10 @@ class BookingUpComingWellnessView: UIView {
       employeeNameLabel.text = today.staff_name
       shaowV1HCons.constant = today.staff_is_random == "1" ? 80 : 108
       
-      if today.work_status == "2" { // 外出
-        locationLabel.text = today.address
-      }else {
-        locationLabel.text = today.location_alias_name.isEmpty ? today.location_name : today.location_alias_name
-      }
+      locationLabel.text = today.final_address
       
-      let genderImage = today.gender == "1" ? R.image.booking_user() : R.image.woman()
-      let genderColor = today.gender == "1" ? kManFontColor : kWomanFontColor
-      genderImageView.image = genderImage
-      employeeNameLabel.textColor = genderColor
+      genderImageView.image = today.genderImage
+      employeeNameLabel.textColor = today.genderColor
       
       
       self.updateCheckinButtonStatus()

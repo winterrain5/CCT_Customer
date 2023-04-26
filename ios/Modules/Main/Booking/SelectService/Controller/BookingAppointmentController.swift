@@ -835,6 +835,7 @@ extension BookingAppointmentController {
     params.service_type = self.type
     params.business_id = selectedEmployee?.employee_id ?? ""
     params.business_name = selectedEmployee?.employee_name ?? ""
+    params.business_gender = selectedEmployee?.gender ?? 1
     
     params.service_name = selectedService?.alias_name ?? ""
     params.service_id = selectedService?.id ?? ""

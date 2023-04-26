@@ -23,6 +23,14 @@ class ConfirmSessionModel {
   var service_type:ServiceType = .Treatment
   var business_id = ""
   var business_name = ""
+  var business_gender = 1
+  
+  var genderImage:UIImage? {
+    return business_gender == 1 ? R.image.booking_user() : R.image.woman()
+  }
+  var genderColor:UIColor? {
+    return business_gender == 1 ? kManFontColor : kWomanFontColor
+  }
   
   var service_name = ""
   var service_id = ""
@@ -44,6 +52,7 @@ class ConfirmSessionContainer: UIView {
   
   @IBOutlet weak var dateLabel: UILabel!
   
+  @IBOutlet weak var genderImage: UIImageView!
   @IBOutlet weak var employeeNameLabel: UILabel!
   @IBOutlet weak var locationLabel: UILabel!
   @IBOutlet weak var userNameLabel: UILabel!
@@ -64,6 +73,8 @@ class ConfirmSessionContainer: UIView {
       dateLabel.text = model.date
       locationLabel.text = model.location
       employeeNameLabel.text = model.business_name
+      employeeNameLabel.textColor = model.genderColor
+      genderImage.image = model.genderImage
       
       userNameLabel.text = model.user_name
       guard let rang = Range(NSRange(location: 0, length: 5), in: model.user_passport) else { return }
@@ -116,6 +127,8 @@ class ConfirmSessionContainer: UIView {
       dateLabel.text = date?.string(withFormat: "dd MMM yyyy,EEE")
       locationLabel.text = todayModel.location_alias_name.isEmpty ? todayModel.location_name : todayModel.location_alias_name
       employeeNameLabel.text = todayModel.staff_name
+      genderImage.image = todayModel.genderImage
+      employeeNameLabel.textColor = todayModel.genderColor
       
       if let user = Defaults.shared.get(for: .userModel) {
         userNameLabel.text = user.first_name + " " + user.last_name

@@ -171,7 +171,7 @@
                             <color key="textColor" name="Black333"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PostCode*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D8A-oa-l4N">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PostCode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D8A-oa-l4N">
                             <rect key="frame" x="0.0" y="23" width="366" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="34" id="lx0-UE-V4D"/>
@@ -204,7 +204,7 @@
                                 <constraint firstAttribute="height" constant="1" id="CZa-Bx-ZzY"/>
                             </constraints>
                         </view>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Street Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ChU-e1-YuQ">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Street Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ChU-e1-YuQ">
                             <rect key="frame" x="0.0" y="22" width="366" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="34" id="Xxv-uE-cU6"/>
@@ -235,7 +235,7 @@
                                 <constraint firstAttribute="height" constant="1" id="COs-jy-SvO"/>
                             </constraints>
                         </view>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Building/Block Number*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WoJ-7l-09L">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Building/Block Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WoJ-7l-09L">
                             <rect key="frame" x="0.0" y="22" width="366" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="34" id="B1F-vN-g8Y"/>

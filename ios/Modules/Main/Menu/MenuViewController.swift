@@ -9,7 +9,6 @@ import UIKit
 import SideMenuSwift
 class MenuViewController: BaseTableController {
   let menuWidth = SideMenuController.preferences.basic.menuWidth
-  let navVc =  UIViewController.getTopVc()?.navigationController
   private var headView = MenuHeadView()
   private let sc = ProfileActionModel(title: "Symptom Checker", sel: "symptomChecker")
   private var actions:[ProfileActionModel] = [

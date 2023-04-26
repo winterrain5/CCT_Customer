@@ -219,6 +219,8 @@ enum API:String {
   case getTSlotHistoryForApp = "getTSlotHistoryForApp"
   case getTUpcomingAppointments = "getTUpcomingAppointments"
   case getClientBookedServices = "getClientBookedServices"
+  case getClientUnServices = "getClientUnServices"
+  case getClientLocationBookedServices = "getClientLocationBookedServices"
   case cancelAppointments = "cancelAppointments"
   case getCanOnlineBookingLocations = "getCanOnlineBookingLocations"
   case getServicesByLocation = "getServicesByLocation"

@@ -100,7 +100,7 @@ class ConfirmSessionController: BaseViewController {
     Promise.init { resolver in
       
       
-      if let _ = Defaults.shared.get(for: .userModel) {
+      if let user = Defaults.shared.get(for: .userModel),!user.user_id.isEmpty {
         resolver.fulfill_()
         return
       }

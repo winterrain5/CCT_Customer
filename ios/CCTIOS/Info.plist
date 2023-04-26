@@ -97,5 +97,10 @@
 	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+  <key>UIApplicationSceneManifest</key>
+      <dict>
+          <key>UISceneConfigurations</key>
+          <dict/>
+      </dict>
 </dict>
 </plist>

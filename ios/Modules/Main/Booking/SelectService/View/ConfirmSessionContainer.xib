@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ConfirmSessionContainer" customModule="CCTIOS" customModuleProvider="target">
+        <view tag="100" contentMode="scaleToFill" id="iN0-l3-epB" customClass="ConfirmSessionContainer" customModule="CCTIOS" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -432,6 +432,7 @@
                 <outlet property="dateLabel" destination="CPX-aw-fUD" id="YY2-ae-KMP"/>
                 <outlet property="employeeNameLabel" destination="LpC-EH-D0t" id="fZn-Hp-KNK"/>
                 <outlet property="employeeView" destination="u0w-Hr-o9S" id="GFf-3N-GO9"/>
+                <outlet property="genderImage" destination="mXM-mr-XEG" id="dGp-Ik-pql"/>
                 <outlet property="infoHCons" destination="7fd-Do-jKY" id="gku-hF-Wes"/>
                 <outlet property="locationLabel" destination="u8W-sc-jGL" id="C7u-50-5Wg"/>
                 <outlet property="timeLabel" destination="BTI-wj-XHR" id="dxp-VV-D9o"/>
@@ -441,7 +442,7 @@
                 <outlet property="userNameLabel" destination="eI0-hw-Rh3" id="Mws-wV-ZnQ"/>
                 <outlet property="userPassportLabel" destination="ITG-pZ-hvr" id="39m-Rh-15D"/>
             </connections>
-            <point key="canvasLocation" x="-612" y="70"/>
+            <point key="canvasLocation" x="-1536" y="-23"/>
         </view>
     </objects>
     <resources>

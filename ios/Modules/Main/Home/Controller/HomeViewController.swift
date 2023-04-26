@@ -345,6 +345,7 @@ extension HomeViewController: QRScannerCodeDelegate {
       params.outlet_id = content["location_id"].stringValue
       params.remark = content["remark"].stringValue
       params.business_name = content["employee_name"].stringValue
+      params.business_gender = content["employee_gender"].intValue
       params.service_type = .Therapist
       params.service_name = content["alias_name"].stringValue
       params.service_id = content["service_durations_id"].stringValue
@@ -384,8 +385,6 @@ extension HomeViewController: QRScannerCodeDelegate {
       let vc = ConfirmSessionController(todayModel: self.checkInSessionModel)
       self.navigationController?.pushViewController(vc, completion: nil)
     }
-    
-    
   }
   
   func qrScannerDidCancel(_ controller: UIViewController) {

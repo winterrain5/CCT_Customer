@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -63,7 +63,7 @@
                                 <action selector="nextAction:" destination="gHW-W4-x9N" eventType="touchUpInside" id="jbU-Xa-NyZ"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Postal Code*" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RRj-eJ-mMs" customClass="HoshiTextField" customModule="TextFieldEffects">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Postal Code" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RRj-eJ-mMs" customClass="HoshiTextField" customModule="TextFieldEffects">
                             <rect key="frame" x="24" y="34" width="383" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="34" id="e6g-od-l9f"/>
@@ -89,7 +89,7 @@
                                 <outlet property="delegate" destination="gHW-W4-x9N" id="SI9-xU-47y"/>
                             </connections>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Building/Block Number*" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="930-gE-6df" customClass="HoshiTextField" customModule="TextFieldEffects">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Building/Block Number" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="930-gE-6df" customClass="HoshiTextField" customModule="TextFieldEffects">
                             <rect key="frame" x="24" y="98" width="383" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="34" id="Izb-A3-MgW"/>
@@ -122,7 +122,7 @@
                                 <constraint firstAttribute="height" constant="1" id="O6O-FC-3gn"/>
                             </constraints>
                         </view>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Street Name*" textAlignment="natural" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cns-cE-JoD" customClass="HoshiTextField" customModule="TextFieldEffects">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Street Name" textAlignment="natural" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cns-cE-JoD" customClass="HoshiTextField" customModule="TextFieldEffects">
                             <rect key="frame" x="24" y="162" width="383" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="34" id="FX1-gc-l2r"/>
@@ -332,16 +332,16 @@
     </objects>
     <designables>
         <designable name="930-gE-6df">
-            <size key="intrinsicContentSize" width="179.5" height="23.5"/>
+            <size key="intrinsicContentSize" width="172" height="23.5"/>
         </designable>
         <designable name="BgD-yB-zTQ">
             <size key="intrinsicContentSize" width="126" height="23.5"/>
         </designable>
         <designable name="Cns-cE-JoD">
-            <size key="intrinsicContentSize" width="98" height="23.5"/>
+            <size key="intrinsicContentSize" width="91" height="23.5"/>
         </designable>
         <designable name="RRj-eJ-mMs">
-            <size key="intrinsicContentSize" width="94.5" height="23.5"/>
+            <size key="intrinsicContentSize" width="87.5" height="23.5"/>
         </designable>
         <designable name="ru6-bd-ngW">
             <size key="intrinsicContentSize" width="28.5" height="23.5"/>

@@ -7,11 +7,9 @@
 
 import UIKit
 
-class BookingCompleteModel: BaseModel {
+class BookingCompleteModel: BookingBaseModel {
   var alias_name: String = ""
   var therapy_start_date: String = ""
-  var location_name: String = ""
-  var location_alias_name: String = ""
   
   var id: String = ""
   var duration: String = ""
@@ -19,7 +17,4 @@ class BookingCompleteModel: BaseModel {
   var name: String = ""
   var items: [String] = []
   
-  var address: String = ""
-  var work_status = ""
-  var gender = ""
 }

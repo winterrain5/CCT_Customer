@@ -7,14 +7,12 @@
 
 import UIKit
 
-class BookingUpComingModel: BaseModel{
+class BookingUpComingModel: BookingBaseModel{
   
   var alias_name: String = ""
   var status: String = ""
   var total: String = ""
   var therapy_start_date: String = ""
-  var location_name: String = ""
-  var location_alias_name: String = ""
   var duration: String = ""
   var service_name: String = ""
   var wellness_treatment_type: String = ""
@@ -35,9 +33,7 @@ class BookingUpComingModel: BaseModel{
   var employee_last_name: String = ""
   var rate: String = ""
   var remark: String = ""
-  var address: String = ""
-  var work_status = ""
-  var gender = ""
+ 
   var cellHeight:CGFloat {
     if staff_is_random == "2" {
       return 186

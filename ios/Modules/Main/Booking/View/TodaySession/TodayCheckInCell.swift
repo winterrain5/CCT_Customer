@@ -26,16 +26,10 @@ class TodayCheckInCell: UICollectionViewCell {
       nameLabel.text = model.alias_name
       employeeView.isHidden = model.staff_is_random == "1"
       
-      if model.work_status == "2" { // 外出
-        locationLabel.text = model.address
-      }else {
-        locationLabel.text = model.location_alias_name.isEmpty ? model.location_name : model.location_alias_name
-      }
+      locationLabel.text = model.final_address
       
-      let genderImage = model.gender == "1" ? R.image.booking_user() : R.image.woman()
-      let genderColor = model.gender == "1" ? kManFontColor : kWomanFontColor
-      genderImageView.image = genderImage
-      employeeNameLabel.textColor = genderColor
+      genderImageView.image = model.genderImage
+      employeeNameLabel.textColor = model.genderColor
       
     }
   }

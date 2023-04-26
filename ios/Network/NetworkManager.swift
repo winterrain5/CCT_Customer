@@ -18,7 +18,7 @@ class NetworkManager:NSObject, XMLParserDelegate {
   var successHandler:(Data)->() = {_ in }
   var errorHandler:(APIError)->() = {_ in }
   var params:SOAPParams!
-  
+  var task:URLSessionTask!
   override init() {
     super.init()
     session = URLSession(configuration: .default)
@@ -41,7 +41,7 @@ class NetworkManager:NSObject, XMLParserDelegate {
    
     
     let urlRequest: URLRequest = getURLRequest(url: url, soapMsg: soapMsg)
-    var task:URLSessionTask!
+    
     task = session.dataTask(with: urlRequest) { data, response, error in
       if error == nil,data != nil {
         let parser = XMLParser(data: data!)
@@ -56,7 +56,7 @@ class NetworkManager:NSObject, XMLParserDelegate {
             AlertView.show(message: message)
           }
         }
-        task.cancel()
+        self.task.cancel()
       }
     }
     

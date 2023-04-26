@@ -64,7 +64,7 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
     params.set(key: "where", value: dict.result, type: .map(1))
     
     loginBtn.startAnimation()
-    NetworkManager().request(params: params) { data in
+    NetworkManager.init().request(params: params) { data in
       self.loginBtn.stopAnimation()
       
       guard let models = DecodeManager.decodeArrayByHandJSON(UserPasswordModel.self, from: data) else {

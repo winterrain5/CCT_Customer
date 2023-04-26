@@ -257,16 +257,20 @@ class InputResideView: UIView,UITextFieldDelegate {
   }
   
   func setNextButonState() {
-    let postalCode = registInfo?.postalCode ?? ""
-    let blockNum = registInfo?.blockNum ?? ""
-    let streetName = registInfo?.streetName ?? ""
-    let isEnable = !postalCode.isEmpty && !blockNum.isEmpty && !streetName.isEmpty
-    if isEnable {
-      nextButon.isEnabled = true
-      nextButon.backgroundColor = R.color.theamRed()
-    }else {
-      nextButon.isEnabled = false
-      nextButon.backgroundColor = R.color.grayE0()
-    }
+//    let postalCode = registInfo?.postalCode ?? ""
+//    let blockNum = registInfo?.blockNum ?? ""
+//    let streetName = registInfo?.streetName ?? ""
+//    let isEnable = !postalCode.isEmpty && !blockNum.isEmpty && !streetName.isEmpty
+    
+    nextButon.isEnabled = true
+    nextButon.backgroundColor = R.color.theamRed()
+    
+//    if isEnable {
+//      nextButon.isEnabled = true
+//      nextButon.backgroundColor = R.color.theamRed()
+//    }else {
+//      nextButon.isEnabled = false
+//      nextButon.backgroundColor = R.color.grayE0()
+//    }
   }
 }

@@ -20,7 +20,7 @@ PODS:
     - Masonry
   - DDGScreenShot (1.1.6)
   - DKLogger (0.4.0)
-  - EachNavigationBar (1.16.1)
+  - EachNavigationBar (1.17.0)
   - FSCalendar (2.8.4)
   - HandyJSON (5.0.4-beta)
   - Haptica (3.0.3)
@@ -28,7 +28,9 @@ PODS:
   - JXPagingView/Paging (2.1.2)
   - JXSegmentedView (1.3.0)
   - KMPlaceholderTextView (1.4.0)
-  - LookinServer (1.0.4)
+  - LookinServer (1.1.5):
+    - LookinServer/Core (= 1.1.5)
+  - LookinServer/Core (1.1.5)
   - Masonry (1.1.0)
   - MJRefresh (3.7.5)
   - mob_pushsdk (3.0.3):
@@ -155,7 +157,7 @@ SPEC CHECKSUMS:
   CRBoxInputView: 2380c292aabbf786fe923776f111ba3053438fba
   DDGScreenShot: b1f6e0c1e2a121a19b75f1fbac56e64e5765e06b
   DKLogger: 4db2407d09a97241fbb81ea2f2b7f3190f032769
-  EachNavigationBar: c72c02b22bcc84ae999f0c86ae7cd83dc88c0ee4
+  EachNavigationBar: 87430187ca1f898e6d9d8bb95c35e49749e5a0a2
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   HandyJSON: a9c67202df97805a0ba4a00e30b50e9a30ac28f3
   Haptica: 23497230b2d7476621f7860263ae0667279a0a89
@@ -163,7 +165,7 @@ SPEC CHECKSUMS:
   JXPagingView: 90924b364a2ff7e94db534fad1fa50925ff69ee4
   JXSegmentedView: fec0d335355b6e019c494fe2e030bde8a36d2df6
   KMPlaceholderTextView: 2206c3df39979e9396e2d96fa9f427a8951121b0
-  LookinServer: 743c1681771d0a8dcc38825325a080c3186404a5
+  LookinServer: 2893f2bae53cbf3fd49bbe1a8ea1745582ef1317
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   mob_pushsdk: da91cf00e2bc3ac01b5cbd58a204e0a0d1b4c145

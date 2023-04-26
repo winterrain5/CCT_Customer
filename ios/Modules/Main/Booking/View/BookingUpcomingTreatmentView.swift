@@ -42,11 +42,8 @@ class BookingUpcomingTreatmentView: UIView {
         dateLabel.text = date.string(withFormat: "dd MMM yyyy,EEE - ").appending(date.timeString(ofStyle: .short))
         isCanCheckIn = date.isInToday
       }
-      if upcoming.work_status == "2" { // 外出
-        locationLabel.text = upcoming.address
-      }else {
-        locationLabel.text = upcoming.location_alias_name.isEmpty ? upcoming.location_name : upcoming.location_alias_name
-      }
+      
+      locationLabel.text = upcoming.final_address
       
       self.updateCheckinButtonStatus()
       self.updateRemarkData(upcoming.remark)

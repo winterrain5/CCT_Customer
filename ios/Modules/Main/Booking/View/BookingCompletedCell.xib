@@ -27,6 +27,9 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="booking_location" translatesAutoresizingMaskIntoConstraints="NO" id="Nhn-a6-BdO">
                                         <rect key="frame" x="12" y="14" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="YWT-oG-cMH"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                         </userDefinedRuntimeAttributes>
@@ -44,6 +47,7 @@
                                 <color key="backgroundColor" name="TheamYellow"/>
                                 <constraints>
                                     <constraint firstItem="7aV-0g-m6v" firstAttribute="leading" secondItem="Nhn-a6-BdO" secondAttribute="trailing" constant="4" id="2y6-Ed-K2U"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7aV-0g-m6v" secondAttribute="trailing" constant="4" id="A0X-WE-Lxp"/>
                                     <constraint firstItem="Nhn-a6-BdO" firstAttribute="centerY" secondItem="g1m-cg-YRz" secondAttribute="centerY" id="Mkr-ga-S5C"/>
                                     <constraint firstItem="Nhn-a6-BdO" firstAttribute="leading" secondItem="g1m-cg-YRz" secondAttribute="leading" constant="12" id="aS7-YY-kno"/>
                                     <constraint firstAttribute="height" constant="44" id="l5G-qk-nX4"/>
@@ -142,7 +146,7 @@ Bamboo Tapping 15 min</string>
                 <outlet property="weeklabel" destination="qQJ-Ux-dnD" id="Pfv-J1-Q8M"/>
                 <outlet property="yearMonthLabel" destination="fkU-Oq-wdI" id="SyD-ri-FMs"/>
             </connections>
-            <point key="canvasLocation" x="-933" y="23"/>
+            <point key="canvasLocation" x="-934.05797101449286" y="22.433035714285712"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -50,6 +50,8 @@ class InputResideView: UIView,UITextFieldDelegate {
 
       setNextButonState()
     }
+    
+    setNextButonState()
   }
   
   func getCounties(_ isGetBySelf:Bool) {

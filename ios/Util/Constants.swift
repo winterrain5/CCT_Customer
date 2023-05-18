@@ -32,7 +32,7 @@ let kScreenWidth:CGFloat = UIScreen.main.bounds.size.width
 let kWomanFontColor = Color.init(hexString: "C14729")
 let kManFontColor = Color.init(hexString: "185A7D")
 
-let kPageSize:Int = 20
+let kPageSize:Int = 10
 
 /// 判断是否是iPhone
 func iPhoneX() -> Bool {

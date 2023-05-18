@@ -8,12 +8,20 @@
 import UIKit
 
 class BookingCompletedController: BasePagingTableController {
+  
+  var todayH:CGFloat = 0
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    NotificationCenter.default.addObserver(forName: .bookingDataChanged, object: nil, queue: .main) { noti  in
+    
+    NotificationCenter.default.addObserver(forName: .bookingTodayLoaded, object: nil, queue: .main) { noti  in
+      let todayH = noti.object as? CGFloat ?? 0
+      self.todayH = todayH
       self.loadNewData()
     }
-
+    
+    NotificationCenter.default.addObserver(forName:.bookingDataChanged, object: nil, queue: .main) { _ in
+      self.loadNewData()
+    }
   }
   
   required init?(coder: NSCoder) {
@@ -32,16 +40,13 @@ class BookingCompletedController: BasePagingTableController {
     params.set(key: "start", value: page)
     params.set(key: "length", value: kPageSize)
     NetworkManager().request(params: params) { data in
-      
+      // 这里是因为接口返回的数据是以数字为key 对象为value的结构 无法直接解析
       let dict = try? JSON.init(data: data).dictionaryValue
-      if let items = dict?.values.map({ ($0.rawString() ?? "").data(using: .utf8) ?? Data() }).map({
+      if var items = dict?.values.map({ ($0.rawString() ?? "").data(using: .utf8) ?? Data() }).map({
         DecodeManager.decodeObjectByHandJSON(BookingCompleteModel.self, from: $0)
       }) {
+        items.sort(by: {( $0?.therapy_start_date.dateTime?.unixTimestamp ?? 0) > ($1?.therapy_start_date.dateTime?.unixTimestamp ?? 0) })
         self.dataArray.append(contentsOf: items as [Any])
-        var temp = self.dataArray as! [BookingCompleteModel]
-        temp.removeDuplicates(keyPath: \.id)
-        temp.sort(by: {( $0.therapy_start_date.dateTime?.unixTimestamp ?? 0) > ($1.therapy_start_date.dateTime?.unixTimestamp ?? 0) })
-        self.dataArray = temp
         self.endRefresh(items.count,emptyString: "You have no completed appointments")
       }else {
         self.endRefresh(.NoData, emptyString: "You have no completed appointments")
@@ -97,4 +102,10 @@ class BookingCompletedController: BasePagingTableController {
     self.navigationController?.pushViewController(vc, animated: true)
   }
   
+  func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
+    if self.todayH == 0 {
+      return 0
+    }
+    return -120
+  }
 }

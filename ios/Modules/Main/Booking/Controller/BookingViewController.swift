@@ -135,6 +135,7 @@ class BookingViewController: BaseViewController {
       }
       NotificationCenter.default.post(name: NSNotification.Name.bookingTodayLoaded, object: self.tableHeaderViewHeight)
       
+      
       self.paggingView.reloadData()
       self.paggingView.mainTableView.mj_header?.endRefreshing()
     } errorHandler: { e in

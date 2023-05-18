@@ -43,19 +43,17 @@ class BookingUpcomingController: BasePagingTableController {
   override func refreshData() {
     if isFirstLoad { self.view.showSkeleton() }
     let params = SOAPParams(action: .ClientProfile, path: .getTUpcomingAppointments)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+//    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: 162043)
     params.set(key: "startDateTime", value: Date().tomorrow.string(withFormat: "yyyy-MM-dd").appending(" 00:00:00"))
     params.set(key: "wellnessType", value: "")
     params.set(key: "start", value: page)
     params.set(key: "length", value: kPageSize)
     NetworkManager().request(params: params) { data in
      
-      if let models = DecodeManager.decodeArrayByHandJSON(BookingUpComingModel.self, from: data),models.count > 0 {
+      if var models = DecodeManager.decodeArrayByHandJSON(BookingUpComingModel.self, from: data),models.count > 0 {
+        models.sort(by: {( $0.therapy_start_date.dateTime?.unixTimestamp ?? 0) < ($1.therapy_start_date.dateTime?.unixTimestamp ?? 0) })
         self.dataArray.append(contentsOf: models)
-        var temp = self.dataArray as! [BookingUpComingModel]
-        temp.removeDuplicates(keyPath: \.id)
-        temp.sort(by: {( $0.therapy_start_date.dateTime?.unixTimestamp ?? 0) < ($1.therapy_start_date.dateTime?.unixTimestamp ?? 0) })
-        self.dataArray = temp
         self.endRefresh(models.count,emptyString: "You have no upcoming appointments")
         self.view.hideSkeleton()
         return
@@ -77,6 +75,8 @@ class BookingUpcomingController: BasePagingTableController {
     self.view.isSkeletonable = true
     
     self.tableView?.register(nibWithCellClass: BookingUpComingCell.self)
+    
+    self.registRefreshFooter()
     
     self.tableView?.separatorStyle = .singleLine
     self.tableView?.separatorColor = R.color.line()

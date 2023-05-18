@@ -19,10 +19,10 @@ class InputGeneralInfoController: BaseViewController {
     
     self.view.addSubview(scrollView)
     scrollView.frame = CGRect(x: 0, y: kNavBarHeight, width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
-    scrollView.contentSize = CGSize(width: kScreenWidth, height: 740)
+    scrollView.contentSize = CGSize(width: kScreenWidth, height: 780)
   
     scrollView.addSubview(contentView)
-    contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 740)
+    contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 780)
     
     titleView.size = CGSize(width: 200, height: 4)
     self.navigation.item.titleView = titleView

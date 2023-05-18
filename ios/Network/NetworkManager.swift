@@ -26,9 +26,8 @@ class NetworkManager:NSObject, XMLParserDelegate {
   /// post请求
   /// - Parameters:
   ///   - action: 接口控制器
-  ///   - path: 接口地址
-  ///   - response: 返回体对应的key
-  ///   - paramValues: 参数
+  ///   - successHandler: 成功回调
+  ///   - errorHandler: 失败回调
   public func request(params:SOAPParams,
                       successHandler:@escaping (Data)->(),
                       errorHandler:@escaping (APIError)->()){
@@ -70,7 +69,7 @@ class NetworkManager:NSObject, XMLParserDelegate {
   
   private func getURLRequest(url:Foundation.URL,soapMsg:String)->URLRequest{
     
-    var request:URLRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 8)
+    var request:URLRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: REQUEST_TIME_OUT)
     request.setValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
     request.setValue("urn:QueryControllerwsdl", forHTTPHeaderField: "SOAPAction")
     request.setValue("\(soapMsg.count)", forHTTPHeaderField: "Content-Length")

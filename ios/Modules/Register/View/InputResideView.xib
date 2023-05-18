@@ -51,7 +51,7 @@
                                 <constraint firstAttribute="height" constant="44" id="3fX-xG-R6Z"/>
                             </constraints>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Next">
+                            <buttonConfiguration key="configuration" style="plain" title="Done">
                                 <color key="baseForegroundColor" name="White"/>
                             </buttonConfiguration>
                             <userDefinedRuntimeAttributes>

@@ -43,8 +43,7 @@ class BookingUpcomingController: BasePagingTableController {
   override func refreshData() {
     if isFirstLoad { self.view.showSkeleton() }
     let params = SOAPParams(action: .ClientProfile, path: .getTUpcomingAppointments)
-//    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
-    params.set(key: "clientId", value: 162043)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "startDateTime", value: Date().tomorrow.string(withFormat: "yyyy-MM-dd").appending(" 00:00:00"))
     params.set(key: "wellnessType", value: "")
     params.set(key: "start", value: page)

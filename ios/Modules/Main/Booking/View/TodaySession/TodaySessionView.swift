@@ -15,15 +15,14 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     didSet {
       todayHeight = 0
       let itemHeight = models.sorted(by: { $0.cellHeight > $1.cellHeight }).first?.cellHeight ?? 0
-      let clvH = itemHeight
       let controlH:CGFloat = models.count > 1 ? 24 : 0
-      todayHeight = clvH + controlH
+      todayHeight = itemHeight + controlH
       collectionView.snp.updateConstraints { make in
         make.left.right.top.equalToSuperview()
-        make.height.equalTo(clvH)
+        make.height.equalTo(itemHeight)
       }
       pageControl.snp.updateConstraints { make in
-        make.centerX.equalToSuperview()
+        make.left.right.equalToSuperview().inset(16)
         make.top.equalTo(collectionView.snp.bottom).offset(8)
       }
       itemWidth = models.count > 1 ? kScreenWidth * 0.8 : (kScreenWidth - 32).int.cgFloat
@@ -58,6 +57,7 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     pageControl.elementWidth = 24
     pageControl.elementHeight = 4
     pageControl.hidesForSinglePage = true
+    pageControl.clipsToBounds = true
   }
   
   override init(frame: CGRect) {
@@ -67,6 +67,7 @@ class TodaySessionView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     collectionView.register(nibWithCellClass: TodayWellnessCheckSessionCell.self)
     collectionView.register(nibWithCellClass: TodayTreatmentQueueCell.self)
     addSubview(pageControl)
+    
   }
   
   required init?(coder: NSCoder) {

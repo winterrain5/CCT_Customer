@@ -544,9 +544,9 @@ extension BookingAppointmentController {
     Toast.showLoading()
     
     var url:API!
-    if type == .Treatment {
+    if type == .Treatment { // 看诊
       url = .getDocTimeSlots
-    }else {
+    }else { // 指定医师
       url = .getBookingTimeSlots
     }
     

@@ -241,7 +241,7 @@ enum API:String {
   // 非指定预约获取日期
   case  getRandomDutyDates = "getRandomDutyDates"
   ///  .Date：获取日期，这个日期不是连续的 ScheduleController
-  case getEmployeeDutyDates = "getEmployeeDutyDates"
+  case getEmployeeDutyDates = "getEmployeeFilterDates"
   // 非指定预约获取时间
   case  getRandomTimeSlots = "getRandomTimeSlots"
   

@@ -52,11 +52,11 @@ class ReferFriendContainer: UIView {
     Toast.showSuccess(withStatus: "Copy Success")
   }
  
-  @IBAction func tcApplyButtonAction(_ sender: Any) {
-    let view = TCApplyPrivilegesSheetView()
-    let size = CGSize(width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
-    EntryKit.displayView(asSheet: view, size: size)
-  }
+//  @IBAction func tcApplyButtonAction(_ sender: Any) {
+//    let view = TCApplyPrivilegesSheetView()
+//    let size = CGSize(width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
+//    EntryKit.displayView(asSheet: view, size: size)
+//  }
   
   @IBAction func whatsappButtonAction(_ sender: Any) {
     ShareTool.share(to: .WHATSAPP,  shareMessage())

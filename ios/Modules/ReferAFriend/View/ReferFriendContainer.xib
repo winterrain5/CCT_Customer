@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -67,30 +67,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4b6-KN-hTz">
-                    <rect key="frame" x="24" y="233" width="366" height="34"/>
-                    <state key="normal">
-                        <attributedString key="attributedTitle">
-                            <fragment content="Receive CCT $10 each when they create an account with your code. ">
-                                <attributes>
-                                    <color key="NSColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <font key="NSFont" size="16" name="AvenirNext-DemiBold"/>
-                                </attributes>
-                            </fragment>
-                            <fragment content="T&amp;C apply">
-                                <attributes>
-                                    <color key="NSColor" red="1" green="1" blue="1" alpha="0.79603211063666635" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <font key="NSFont" size="16" name="AvenirNext-Bold"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
-                    </state>
-                    <connections>
-                        <action selector="tcApplyButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="eCH-gr-AV1"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RFw-tm-koR">
-                    <rect key="frame" x="0.0" y="299" width="414" height="597"/>
+                    <rect key="frame" x="0.0" y="257" width="414" height="639"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mf6-Rd-jPq">
                             <rect key="frame" x="24" y="32" width="366" height="80"/>
@@ -155,13 +133,10 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" name="TheamBlue"/>
             <constraints>
-                <constraint firstItem="4b6-KN-hTz" firstAttribute="top" secondItem="zrR-Uh-dIN" secondAttribute="bottom" constant="8" id="4KN-yX-Zbq"/>
                 <constraint firstItem="kz9-Lo-xFG" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CC4-IO-0JD"/>
-                <constraint firstItem="4b6-KN-hTz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="E0r-JA-Y4F"/>
                 <constraint firstItem="RFw-tm-koR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="F5E-8Z-OZm"/>
                 <constraint firstItem="zrR-Uh-dIN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="JTh-0P-4D4"/>
-                <constraint firstItem="RFw-tm-koR" firstAttribute="top" secondItem="4b6-KN-hTz" secondAttribute="bottom" constant="32" id="LvH-fN-gZQ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4b6-KN-hTz" secondAttribute="trailing" constant="24" id="NdH-Wi-xbz"/>
+                <constraint firstItem="RFw-tm-koR" firstAttribute="top" secondItem="zrR-Uh-dIN" secondAttribute="bottom" constant="32" id="KhT-U3-lxE"/>
                 <constraint firstAttribute="bottom" secondItem="RFw-tm-koR" secondAttribute="bottom" id="QEA-Kv-9gJ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="RFw-tm-koR" secondAttribute="trailing" id="W9g-iH-rIC"/>
                 <constraint firstItem="zrR-Uh-dIN" firstAttribute="top" secondItem="kz9-Lo-xFG" secondAttribute="bottom" constant="15" id="dBM-sY-iTT"/>

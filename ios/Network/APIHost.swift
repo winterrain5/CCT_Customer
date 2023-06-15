@@ -25,7 +25,7 @@ enum DomainType {
 @objcMembers
 class APIHost:NSObject {
   
-  var domainType:DomainType = .UAT
+  var domainType:DomainType = .Live
   
   var STRIPE_PK_LIVE:String {
     switch domainType {
@@ -42,7 +42,7 @@ class APIHost:NSObject {
     get {
       switch domainType {
       case .Live:
-        return "http://tispcctapp.performsoftware.biz/index.php?r="
+        return "https://tispcctapp.performsoftware.biz/index.php?r="
       case .UAT:
         return "http://tispcctuat.performsoftware.biz/index.php?r="
       case .DEBUG:
@@ -54,7 +54,7 @@ class APIHost:NSObject {
     get {
       switch domainType {
       case .Live:
-        return "http://cct.performsoftware.biz"
+        return "https://cct.performsoftware.biz"
       case .UAT:
         return "http://cctuat.performsoftware.biz"
       case .DEBUG:
@@ -66,7 +66,7 @@ class APIHost:NSObject {
     get {
       switch domainType {
       case .Live:
-        return "http://cct.performsoftware.biz/index.php?r=blog-view/index&id="
+        return "https://cct.performsoftware.biz/index.php?r=blog-view/index&id="
       case .UAT:
         return "http://cctuat.performsoftware.biz/index.php?r=blog-view/index&id="
       case .DEBUG:
@@ -78,7 +78,7 @@ class APIHost:NSObject {
     get {
       switch domainType {
       case .Live:
-        return "http://cct.performsoftware.biz/index.php?r=user-manager/change-find-pwd-status&uuid="
+        return "https://cct.performsoftware.biz/index.php?r=user-manager/change-find-pwd-status&uuid="
       case .UAT:
         return "http://cctuat.performsoftware.biz/index.php?r=user-manager/change-find-pwd-status&amp;uuid="
       case .DEBUG:

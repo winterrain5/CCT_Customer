@@ -38,7 +38,7 @@ class BookingUpcomingTreatmentView: UIView {
         return
       }
       nameLabel.text = upcoming.alias_name
-      if let date = upcoming.start_time.date(withFormat: "yyyy-MM-dd HH:mm:ss") {
+      if let date = upcoming.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss") {
         dateLabel.text = date.string(withFormat: "dd MMM yyyy,EEE - ").appending(date.timeString(ofStyle: .short))
         isCanCheckIn = date.isInToday
       }

@@ -142,9 +142,13 @@ class CCTShopController: BaseCollectionController,UICollectionViewDelegateFlowLa
     super.createListView()
     
     collectionView?.register(nibWithCellClass: ShopProductItemCell.self)
+    
     collectionView?.register(UINib(nibName: "CCTShopHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier:CCTShopHeaderView.className)
+    
     collectionView?.register(UINib(nibName: "CCTShopFooterView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier:CCTShopFooterView.className)
+    
     collectionView?.register(CCTShopNoneView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CCTShopNoneView.className)
+   
     collectionView?.register(CCTShopNoneView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CCTShopNoneView.className)
     registRefreshHeader()
     registRefreshFooter()

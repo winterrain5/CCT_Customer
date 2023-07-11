@@ -13,6 +13,10 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* CCTIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CCTIOSTests.m */; };
+		45005C692A5BF67F00560E21 /* WalletAddUserSheetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45005C682A5BF67F00560E21 /* WalletAddUserSheetContentView.swift */; };
+		45005C6B2A5BF83100560E21 /* WalletAddUserSheetContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45005C6A2A5BF83100560E21 /* WalletAddUserSheetContentView.xib */; };
+		45005C6E2A5CED6800560E21 /* NotificationApproveWalletCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45005C6C2A5CED6700560E21 /* NotificationApproveWalletCell.swift */; };
+		45005C6F2A5CED6800560E21 /* NotificationApproveWalletCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45005C6D2A5CED6700560E21 /* NotificationApproveWalletCell.xib */; };
 		450F9BD42940322600101888 /* SwiftyEntryKit_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F9BD32940322600101888 /* SwiftyEntryKit_Extension.swift */; };
 		45208FD028FD3BEC003084FE /* libswiftCoreGraphics.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 45208FCF28FD3BEC003084FE /* libswiftCoreGraphics.tbd */; };
 		4530DEE3292223AA00CDAFD8 /* EntryKit_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4530DEE2292223AA00CDAFD8 /* EntryKit_Extension.swift */; };
@@ -776,6 +780,10 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CCTIOS/main.m; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* CCTIOS-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCTIOS-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* CCTIOS-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CCTIOS-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		45005C682A5BF67F00560E21 /* WalletAddUserSheetContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAddUserSheetContentView.swift; sourceTree = "<group>"; };
+		45005C6A2A5BF83100560E21 /* WalletAddUserSheetContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletAddUserSheetContentView.xib; sourceTree = "<group>"; };
+		45005C6C2A5CED6700560E21 /* NotificationApproveWalletCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationApproveWalletCell.swift; sourceTree = "<group>"; };
+		45005C6D2A5CED6700560E21 /* NotificationApproveWalletCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationApproveWalletCell.xib; sourceTree = "<group>"; };
 		450F9BD32940322600101888 /* SwiftyEntryKit_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyEntryKit_Extension.swift; sourceTree = "<group>"; };
 		45208FCF28FD3BEC003084FE /* libswiftCoreGraphics.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCoreGraphics.tbd; path = usr/lib/swift/libswiftCoreGraphics.tbd; sourceTree = SDKROOT; };
 		4530DEE2292223AA00CDAFD8 /* EntryKit_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryKit_Extension.swift; sourceTree = "<group>"; };
@@ -2934,6 +2942,8 @@
 				4902024C27DB256E00E74415 /* WalletPaymentMethodCell.xib */,
 				4902025127DB349600E74415 /* WalletAddCardSheetContentView.swift */,
 				4902025327DB34A000E74415 /* WalletAddCardSheetContentView.xib */,
+				45005C682A5BF67F00560E21 /* WalletAddUserSheetContentView.swift */,
+				45005C6A2A5BF83100560E21 /* WalletAddUserSheetContentView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3156,6 +3166,8 @@
 				497503412828F2930004A42C /* ClientCategoryModel.swift */,
 				49E1DF0E282CA9DE002CA549 /* NotificationUndoView.swift */,
 				49E1DF10282CDF84002CA549 /* RemainigCountIndicator.swift */,
+				45005C6C2A5CED6700560E21 /* NotificationApproveWalletCell.swift */,
+				45005C6D2A5CED6700560E21 /* NotificationApproveWalletCell.xib */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -3548,6 +3560,7 @@
 				45FC54F12850852A00D3C0FF /* DatePickerSheetView.xib in Resources */,
 				4904C3C3280677C6008FE5A5 /* ShopLikeProductCell.xib in Resources */,
 				45FC54ED285078D100D3C0FF /* InputResideView.xib in Resources */,
+				45005C6B2A5BF83100560E21 /* WalletAddUserSheetContentView.xib in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				454C5B4E283DBEAE001D787C /* ConfirmSessionContainer.xib in Resources */,
 				453CD51428598867005FEEE1 /* DeclarationFormHeadView.xib in Resources */,
@@ -3567,6 +3580,7 @@
 				497C629327BE38E600127F3F /* MyOrderDetailHeaderView.xib in Resources */,
 				496501E027A0E7E3004FF3AF /* MadamPartumLocationCell.xib in Resources */,
 				45DA0E5E285B28E400056132 /* DeclarationFormInputWithOptionsCell.xib in Resources */,
+				45005C6F2A5CED6800560E21 /* NotificationApproveWalletCell.xib in Resources */,
 				498D85A72798F1630044F34F /* MadamPartumHeaderView.xib in Resources */,
 				457CBA9A283779E900AE26D8 /* BookingServiceFormFooterView.xib in Resources */,
 				4902025427DB34A000E74415 /* WalletAddCardSheetContentView.xib in Resources */,
@@ -4042,6 +4056,7 @@
 				4998C0D62784427F00A881D5 /* ConstraintPriorityTarget.swift in Sources */,
 				4998BFFA277EF51200A881D5 /* CGVectorExtensions.swift in Sources */,
 				4998C043277EF51200A881D5 /* KeyedDecodingContainerExtensions.swift in Sources */,
+				45005C6E2A5CED6800560E21 /* NotificationApproveWalletCell.swift in Sources */,
 				4998C050277EF51200A881D5 /* RangeReplaceableCollectionExtensions.swift in Sources */,
 				45DA0E6A285C4EE000056132 /* BookingInProgressController.swift in Sources */,
 				4998C042277EF51200A881D5 /* FloatExtensions.swift in Sources */,
@@ -4125,6 +4140,7 @@
 				4998C052277EF51200A881D5 /* CollectionExtensions.swift in Sources */,
 				4998C045277EF51200A881D5 /* MutableCollectionExtensions.swift in Sources */,
 				4998C0DD2784427F00A881D5 /* ConstraintDirectionalInsetTarget.swift in Sources */,
+				45005C692A5BF67F00560E21 /* WalletAddUserSheetContentView.swift in Sources */,
 				4996D7A427D59BC000437265 /* WalletCouponsModel.swift in Sources */,
 				49FC8EB727910B4E00157292 /* UserModel.swift in Sources */,
 				4998BF49277ED43500A881D5 /* DKEmptyDataSet.swift in Sources */,

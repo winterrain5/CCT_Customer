@@ -13,7 +13,11 @@ class CardUserDetailHeadView: UIView {
   @IBOutlet weak var transactionLimitLabel: UILabel!
   var cardUserModel:CardOwnerModel? {
     didSet {
-      nameLabel.text = (cardUserModel?.first_name ?? "") + (cardUserModel?.last_name ?? "")
+      if cardUserModel?.status == "0" {
+        nameLabel.text = cardUserModel?.owner_remark
+      } else {
+        nameLabel.text = (cardUserModel?.first_name ?? "") + " " + (cardUserModel?.last_name ?? "")
+      }
       phoneLabel.text = cardUserModel?.mobile
       if (cardUserModel?.trans_limit?.float() ?? 0) < 0 {
         transactionLimitLabel.text = "no limit limit per transaction"

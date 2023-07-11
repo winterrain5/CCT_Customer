@@ -160,7 +160,7 @@
                 <outlet property="timeLabel" destination="mP1-Re-gUQ" id="rbH-ha-ps3"/>
                 <outlet property="titleLabel" destination="pG7-4A-VMn" id="Jdq-TV-XxW"/>
             </connections>
-            <point key="canvasLocation" x="-565" y="168"/>
+            <point key="canvasLocation" x="-81" y="118"/>
         </tableViewCell>
     </objects>
     <resources>

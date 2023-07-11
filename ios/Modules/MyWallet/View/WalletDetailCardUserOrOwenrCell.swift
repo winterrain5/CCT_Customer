@@ -32,8 +32,17 @@ class WalletDetailCardUserOrOwenrCell: UITableViewCell {
   }
   var model:CardOwnerModel? {
     didSet {
-      nameLabel.text = (model?.first_name ?? "") + " " + (model?.last_name ?? "")
       phoneLabel.text = model?.mobile ?? ""
+      if type == .User {
+        if model?.status == "0" || model?.status == "2"{
+          nameLabel.text = model?.owner_remark
+        } else {
+          nameLabel.text = (model?.first_name ?? "") + " " + (model?.last_name ?? "")
+        }
+        
+      } else {
+        nameLabel.text = (model?.first_name ?? "") + " " + (model?.last_name ?? "")
+      }
     }
   }
   @IBAction func removeAction(_ sender: Any) {

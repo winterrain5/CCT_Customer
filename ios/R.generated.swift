@@ -1642,7 +1642,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 136 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 138 nibs.
   struct nib {
     /// Nib `AccountEditSheetContentView`.
     static let accountEditSheetContentView = _R.nib._AccountEditSheetContentView()
@@ -1782,6 +1782,8 @@ struct R: Rswift.Validatable {
     static let myOrderDetailHeaderView = _R.nib._MyOrderDetailHeaderView()
     /// Nib `MyOrderListCell`.
     static let myOrderListCell = _R.nib._MyOrderListCell()
+    /// Nib `NotificationApproveWalletCell`.
+    static let notificationApproveWalletCell = _R.nib._NotificationApproveWalletCell()
     /// Nib `NotificationCell`.
     static let notificationCell = _R.nib._NotificationCell()
     /// Nib `OnBoardCell`.
@@ -1886,6 +1888,8 @@ struct R: Rswift.Validatable {
     static let walletAddCardSheetContentView = _R.nib._WalletAddCardSheetContentView()
     /// Nib `WalletAddUserHeadView`.
     static let walletAddUserHeadView = _R.nib._WalletAddUserHeadView()
+    /// Nib `WalletAddUserSheetContentView`.
+    static let walletAddUserSheetContentView = _R.nib._WalletAddUserSheetContentView()
     /// Nib `WalletCardContainer`.
     static let walletCardContainer = _R.nib._WalletCardContainer()
     /// Nib `WalletCardView`.
@@ -2470,6 +2474,14 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "NotificationApproveWalletCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.notificationApproveWalletCell) instead")
+    static func notificationApproveWalletCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.notificationApproveWalletCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "NotificationCell", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.notificationCell) instead")
     static func notificationCell(_: Void = ()) -> UIKit.UINib {
@@ -2886,6 +2898,14 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "WalletAddUserSheetContentView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.walletAddUserSheetContentView) instead")
+    static func walletAddUserSheetContentView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.walletAddUserSheetContentView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "WalletCardContainer", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.walletCardContainer) instead")
     static func walletCardContainer(_: Void = ()) -> UIKit.UINib {
@@ -3281,6 +3301,10 @@ struct R: Rswift.Validatable {
       return R.nib.myOrderListCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MyOrderListCell
     }
 
+    static func notificationApproveWalletCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NotificationApproveWalletCell? {
+      return R.nib.notificationApproveWalletCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NotificationApproveWalletCell
+    }
+
     static func notificationCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NotificationCell? {
       return R.nib.notificationCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NotificationCell
     }
@@ -3487,6 +3511,10 @@ struct R: Rswift.Validatable {
 
     static func walletAddUserHeadView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletAddUserHeadView? {
       return R.nib.walletAddUserHeadView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletAddUserHeadView
+    }
+
+    static func walletAddUserSheetContentView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletAddUserSheetContentView? {
+      return R.nib.walletAddUserSheetContentView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletAddUserSheetContentView
     }
 
     static func walletCardContainer(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletCardContainer? {
@@ -4773,6 +4801,17 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
+    struct _NotificationApproveWalletCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "NotificationApproveWalletCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NotificationApproveWalletCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NotificationApproveWalletCell
+      }
+
+      fileprivate init() {}
+    }
+
     struct _NotificationCell: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "NotificationCell"
@@ -5564,6 +5603,17 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletAddUserHeadView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletAddUserHeadView
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _WalletAddUserSheetContentView: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "WalletAddUserSheetContentView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletAddUserSheetContentView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletAddUserSheetContentView
       }
 
       fileprivate init() {}

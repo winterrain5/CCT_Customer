@@ -38,7 +38,6 @@ class NetworkManager:NSObject, XMLParserDelegate {
     
     let soapMsg:String = createSoapMessage(path:params.path, pams: params.result)
    
-    
     let urlRequest: URLRequest = getURLRequest(url: url, soapMsg: soapMsg)
     
     task = session.dataTask(with: urlRequest) { data, response, error in
@@ -114,12 +113,12 @@ extension NetworkManager {
   func parserDidEndDocument(_ parser: XMLParser) {
     if currentNodeName == "faultstring" {
       
-      print("soapMsg:\(createSoapMessage(path:self.params.path, pams: self.params.result))")
+      Logger.debug("\(createSoapMessage(path:self.params.path, pams: self.params.result))",label: "soapMsg")
     
       DispatchQueue.main.async {
-#if DEBUG
-        Toast.showError(withStatus: self.result)
-#endif
+        if self.params.isNeedToast && !self.result.isEmpty{
+          AlertView.show(message: self.result)
+        }
         self.errorHandler(APIError.requestError(code: -1, message: self.result))
       }
    
@@ -140,28 +139,29 @@ extension NetworkManager {
        
         DispatchQueue.main.async {
           guard let code = json["success"].int,let message = json["message"].string else {
+            if self.params.isNeedToast{
+              AlertView.show(message: "unable parse json")
+            }
             self.errorHandler(APIError.serviceError(.unableParse))
             return
           }
           
           if code != 1 {
-            #if DEBUG
-            if self.params.isNeedToast && !message.isEmpty{
-              Toast.showError(withStatus: message)
-            }
-            #else
             if self.params.isNeedToast && !message.isEmpty{
               AlertView.show(message: message)
             }
-            #endif
             self.errorHandler(APIError.requestError(code: code, message: message))
             return
           }
           
           guard let data = json["data"].rawString()?.data(using: .utf8) else {
+            if self.params.isNeedToast{
+              AlertView.show(message: "convert json['data'] to data failed")
+            }
             self.errorHandler(APIError.requestError(code: -1, message: "convert json['data'] to data failed"))
             return
           }
+          Toast.dismiss()
           self.successHandler(data)
         }
       }

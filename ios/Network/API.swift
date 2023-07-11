@@ -316,6 +316,8 @@ enum API:String {
   case deductionAuthorisedNote = "deductionAuthorisedNote";
   //加人进钱包推送
   case addUserInWallet = "addUserInWallet";
+  //加人进钱包推送
+  case cardNotice = "cardNotice";
   //从钱包删除人推送
   case deleteUserFromWallet = "deleteUserFromWallet";
   //升级推送
@@ -332,6 +334,8 @@ enum API:String {
   case getUnreadCount = "getUnReadCount"
   // 设置消息状态
   case setReadStatus = "setReadStatus"
+  
+  case saveCardInfo = "saveCardInfo"
 }
 
 enum Action:String {

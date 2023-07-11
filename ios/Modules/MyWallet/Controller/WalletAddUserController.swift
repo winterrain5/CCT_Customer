@@ -11,119 +11,28 @@ import Contacts
 class WalletAddUserController: BaseTableController {
   
   var headView = WalletAddUserHeadView.loadViewFromNib()
-  var totalUser:[UserContactModel] = []
-  var result:[UserContactModel] = []
   override func viewDidLoad() {
     super.viewDidLoad()
     
     self.navigation.bar.alpha = 0
-    
-    CNContactStore().requestAccess(for: .contacts) { (isRight, error) in
-      if isRight {
-        //授权成功加载数据。
-        self.loadContactsData()
-      }else {
-        AlertView.show(message: "You need to get permission for your mobile phone address book")
-      }
-    }
+ 
   }
   
   
-  func loadContactsData() {
-    //获取授权状态
-    let status = CNContactStore.authorizationStatus(for: .contacts)
-    //判断当前授权状态
-    guard status == .authorized else { return }
-    
-    //创建通讯录对象
-    let store = CNContactStore()
-    
-    //获取Fetch,并且指定要获取联系人中的什么属性
-    let keys = [CNContactFamilyNameKey,
-                CNContactGivenNameKey,
-                CNContactNicknameKey,
-                CNContactPhoneNumbersKey,
-                CNContactEmailAddressesKey
-    ]
-    
-    //创建请求对象
-    //需要传入一个(keysToFetch: [CNKeyDescriptor]) 包含CNKeyDescriptor类型的数组
-    let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
-    
-    
-    //遍历所有联系人
-    DispatchQueue.global().async {
-      do {
-        try store.enumerateContacts(with: request, usingBlock: {
-          (contact : CNContact, stop : UnsafeMutablePointer<ObjCBool>) -> Void in
-          
-          //获取姓名
-          let lastName = contact.familyName
-          let firstName = contact.givenName
-          let name = lastName + firstName
-          print("姓名：\(lastName)\(firstName)")
-          
-          //获取昵称
-          let nikeName = contact.nickname
-          print("昵称：\(nikeName)")
-         
-          //获取电话号码
-          print("电话：")
-          
-          var models:[UserContactModel] = []
-          for phone in contact.phoneNumbers {
-            //获得标签名（转为能看得懂的本地标签名，比如work、home）
-            var label = "未知标签"
-            if phone.label != nil {
-              label = CNLabeledValue<NSString>.localizedString(forLabel:
-                                                                phone.label!)
-            }
-            
-            //获取号码
-            let value = phone.value.stringValue.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "+65", with: "").replacingOccurrences(of: "-", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
-            let model = UserContactModel(name:name,mobile: value)
-            models.append(model)
-            self.totalUser.append(model)
-            print("\t\(label)：\(value)")
-          }
-          
-          print("----------------")
-          
-        })
-      } catch {
-        print(error)
-      }
-    }
-    
-  }
   
-  func matchPhone() {
-    let params = SOAPParams(action: .Client, path: .matchPhone)
+  func getClientByPhone(_ phone:String) {
+    let params = SOAPParams(action: .Client, path: .getClientsByPhone)
     
-    let data = SOAPDictionary()
-    self.result.enumerated().forEach({ i,e in
-      data.set(key: i.string, value: e.mobile)
-    })
-    
-    params.set(key: "data", value: data.result, type: .map(1))
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
-    
+    params.set(key: "phone", value: phone)
+    Toast.showLoading()
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeArrayByHandJSON(MatchPhoneModel.self, from: data) {
-        
-        self.result.forEach { e in
-          models.forEach { me in
-            let isAdd = me.mobile == e.mobile || me.phone == e.mobile
-            print("is Add:\(isAdd)")
-            e.isAdd = isAdd
-            e.id = me.id ?? ""
-          }
-        }
-        self.dataArray = self.result
+        self.dataArray = models
         self.endRefresh(self.dataArray.count,emptyString: "Contact not found")
       }
+      Toast.dismiss()
     } errorHandler: { e in
-      
+      Toast.dismiss()
     }
 
   }
@@ -140,10 +49,7 @@ class WalletAddUserController: BaseTableController {
     headView.size = CGSize(width: kScreenWidth, height: kNavBarHeight + 270)
     headView.endEditHandler = { [weak self] text in
       guard let `self` = self else { return }
-      self.result = self.totalUser.filter({
-        ($0.name == text) || ($0.mobile == text)
-      })
-      self.matchPhone()
+      self.getClientByPhone(text)
     }
     
     tableView?.register(cellWithClass: WalletInviteUserCell.self)
@@ -163,35 +69,27 @@ class WalletAddUserController: BaseTableController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withClass: WalletInviteUserCell.self)
     if self.dataArray.count > 0 {
-      cell.model = self.dataArray[indexPath.row] as? UserContactModel
+      cell.model = self.dataArray[indexPath.row] as? MatchPhoneModel
     }
     return cell
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    let model = self.dataArray[indexPath.row] as! UserContactModel
-    if model.isAdd {
-      AlertView.show(title: "Are you sure you want to add this user?", message: "", leftButtonTitle: "Cancel", rightButtonTitle: "Yes") {
-        
-      } rightHandler: {
-        self.addUserToWallet(model)
-      } dismissHandler: {
-        
-      }
-    }else {
-      let vc = ReferFriendController()
-      self.navigationController?.pushViewController(vc)
-    }
+    let model = self.dataArray[indexPath.row] as! MatchPhoneModel
     
+    WalletAddUserSheetView.show(fromView: self.view) { text in
+      self.addUserToWallet(model,text)
+    }
   }
   
-  func addUserToWallet(_ model:UserContactModel) {
+  func addUserToWallet(_ model:MatchPhoneModel,_ remark:String) {
     let params = SOAPParams(action: .Voucher, path: .saveCardFriend)
     
     let data = SOAPDictionary()
     data.set(key: "card_owner_id", value: Defaults.shared.get(for: .clientId) ?? "")
-    data.set(key: "friend_id", value: model.id)
+    data.set(key: "owner_remark", value: remark)
+    data.set(key: "friend_id", value: model.id ?? "")
     data.set(key: "trans_limit", value: -1)
     
     params.set(key: "data", value: data.result,type: .map(1))
@@ -211,11 +109,11 @@ class WalletAddUserController: BaseTableController {
 
   }
   
-  func addUserNotification(_ model:UserContactModel) {
-    let params = SOAPParams(action: .Notifications, path: .addUserInWallet)
+  func addUserNotification(_ model:MatchPhoneModel) {
+    let params = SOAPParams(action: .Notifications, path: .cardNotice)
     
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
-    params.set(key: "friendId", value: model.id)
+    params.set(key: "ownerId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "gainerId", value: model.id ?? "")
     
     NetworkManager().request(params: params) { data in
       self.navigationController?.popViewController()
@@ -225,6 +123,9 @@ class WalletAddUserController: BaseTableController {
 
   }
   
+  func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
+    return -(kNavBarHeight + 270) * 0.5
+  }
   
 }
 
@@ -244,11 +145,11 @@ class WalletInviteUserCell:UITableViewCell {
     label.text = "Invite"
   }
   
-  var model:UserContactModel? {
+  var model:MatchPhoneModel? {
     didSet {
-      nameLabel.text = model?.name
+      nameLabel.text = "New E-Wallet User"
       phoneLabel.text = model?.mobile
-      inviteLabel.text = (model?.isAdd ?? false) ? "Add" : "Invite"
+      inviteLabel.text = "Add"
     }
   }
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

@@ -1,17 +1,14 @@
 //
-//  NotificationCell.swift
+//  NotificationApproveWalletCell.swift
 //  CCTIOS
 //
-//  Created by Derrick on 2022/5/9.
+//  Created by Derrick on 2023/7/11.
 //
 
 import UIKit
+
 import SwipeCellKit
-enum NotificationAcitonType {
-  case CheckWallet
-  case CheckAppointment
-}
-class NotificationCell: SwipeTableViewCell {
+class NotificationApproveWalletCell: SwipeTableViewCell {
   
   @IBOutlet weak var borderView: UIView!
   @IBOutlet weak var titleLabel: UILabel!
@@ -19,15 +16,17 @@ class NotificationCell: SwipeTableViewCell {
   @IBOutlet weak var shadowView: UIView!
   @IBOutlet weak var timeLabel: UILabel!
   
-  @IBOutlet weak var buttonBottomCons: NSLayoutConstraint!
-  @IBOutlet weak var buttonHCons: NSLayoutConstraint!
-  
+  @IBOutlet weak var approveContainer: UIView!
+  @IBOutlet weak var rejectButton: UIButton!
+  @IBOutlet weak var approveButton: UIButton!
+ 
+  @IBOutlet weak var approveHCons: NSLayoutConstraint!
+  @IBOutlet weak var approveBottomCons: NSLayoutConstraint!
   
   @IBOutlet weak var readStatusView: UIView!
-  
-  @IBOutlet weak var button: LoadingButton!
+  var approveHandler:((NotificationModel,IndexPath)->())?
+  var rejectHandler:((NotificationModel,IndexPath)->())?
   var indexPath: IndexPath!
-  var notificationAciton:((NotificationAcitonType,NotificationModel,LoadingButton,IndexPath)->())?
   var model:NotificationModel! {
     didSet {
       titleLabel.text = model.title
@@ -46,30 +45,20 @@ class NotificationCell: SwipeTableViewCell {
         borderView.borderWidth = 0
       }
       
-      
       readStatusView.isHidden = model.is_read == "1"
       
-      let bookingId = model.booking_id.double() ?? 0
-      let friendId = model.friend_id.double() ?? 0
-      var buttonHidden = false
-      var buttonBottom:CGFloat = 16
-      var buttonH:CGFloat = 40
-      var buttonText = ""
-      if bookingId > 0 {
-        buttonText = "Check Appointment"
-      }else if friendId > 0 {
-        buttonText = "Check Wallet"
+      var approveBottom:CGFloat = 16
+      var approveH:CGFloat = 40
+      if model.auth_status == "0" && model.owner_id != "0" {
+        approveContainer.isHidden = false
       } else {
-        buttonHidden = true
-        buttonBottom = 0
-        buttonH = 0
-        buttonText = ""
+        approveContainer.isHidden = true
+        approveBottom = 0
+        approveH = 0
       }
       
-      buttonBottomCons.constant = buttonBottom
-      buttonHCons.constant = buttonH
-      button.isHidden = buttonHidden
-      button.titleForNormal = buttonText
+      approveHCons.constant = approveH
+      approveBottomCons.constant = approveBottom
       
       setNeedsLayout()
       layoutIfNeeded()
@@ -83,18 +72,15 @@ class NotificationCell: SwipeTableViewCell {
     shadowView.shadow(cornerRadius: 16, color: light, offset: CGSize(width: 0, height: 2), radius: 8, opacity: 1)
     shadowView.isUserInteractionEnabled = true
    
-    button.rx.tap.subscribe(onNext:{ [weak self] in
+    approveButton.rx.tap.subscribe(onNext:{ [weak self] in
       guard let `self` = self else { return }
-      let bookingId = self.model.booking_id.double() ?? 0
-      print(self.model.description)
-      if bookingId > 0 {
-        self.notificationAciton?(.CheckAppointment,self.model,self.button,self.indexPath)
-      } else {
-        self.notificationAciton?(.CheckWallet,self.model,self.button,self.indexPath)
-      }
+      self.approveHandler?(self.model,self.indexPath)
     }).disposed(by: rx.disposeBag)
-  
     
+    rejectButton.rx.tap.subscribe(onNext:{ [weak self] in
+      guard let `self` = self else { return }
+      self.rejectHandler?(self.model,self.indexPath)
+    }).disposed(by: rx.disposeBag)
   }
   
 

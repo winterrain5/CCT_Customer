@@ -230,6 +230,7 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
     cellIdentifier = NotificationCell.className
     
     tableView?.register(nibWithCellClass: NotificationCell.self)
+    tableView?.register(nibWithCellClass: NotificationApproveWalletCell.self)
     tableView?.estimatedRowHeight = 120
     tableView?.rowHeight = UITableView.automaticDimension
     
@@ -249,39 +250,63 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return (self.dataArray[section] as? [NotificationModel])?.count ?? 0
+    if self.dataArray.count > 0,  section < self.dataArray.count {
+      return (self.dataArray[section] as? [NotificationModel])?.count ?? 0
+    }
+    return 0
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withClass: NotificationCell.self)
-    if self.dataArray.count > 0 {
+   
+    if self.dataArray.count > 0,  indexPath.section < self.dataArray.count {
       let sectionModel = self.dataArray[indexPath.section] as? [NotificationModel]
       if sectionModel?.count ?? 0 > 0 {
-        cell.model = sectionModel?[indexPath.row]
+        let model =  sectionModel?[indexPath.row]
+        if model?.owner_id != "0" && model?.auth_status == "0"{
+          let cell = tableView.dequeueReusableCell(withClass: NotificationApproveWalletCell.self)
+          cell.model = model
+          cell.delegate = self
+          cell.indexPath = indexPath
+          cell.selectionStyle = .none
+          cell.approveHandler = { [weak self] model, idx  in
+            self?.approveWalletAuthStatus(1, model, idx)
+          }
+          
+          cell.rejectHandler = { [weak self] model, idx  in
+            self?.approveWalletAuthStatus(2, model, idx)
+          }
+          return cell
+        } else {
+          let cell = tableView.dequeueReusableCell(withClass: NotificationCell.self)
+          
+          cell.model = model
+          cell.delegate = self
+          cell.indexPath = indexPath
+          cell.notificationAciton = { [weak self] type,model,button,idx in
+            guard let `self` = self else { return }
+            
+            switch type {
+            case .CheckWallet:
+              button.startAnimation()
+              self.setMessageReadStatus(idx) { [weak self] in
+                guard let `self` = self else { return }
+                self.checkWallet(model,button)
+              }
+            case .CheckAppointment:
+              button.startAnimation()
+              self.setMessageReadStatus(idx) { [weak self] in
+                guard let `self` = self else { return }
+                self.checkAppointment(model,button)
+              }
+            }
+          }
+          cell.selectionStyle = .none
+          return cell
+        }
+        
       }
     }
-    cell.delegate = self
-    cell.indexPath = indexPath
-    cell.notificationAciton = { [weak self] type,model,button,idx in
-      guard let `self` = self else { return }
-      
-      switch type {
-      case .CheckWallet:
-        button.startAnimation()
-        self.setMessageReadStatus(idx) { [weak self] in
-          guard let `self` = self else { return }
-          self.checkWallet(model,button)
-        }
-      case .CheckAppointment:
-        button.startAnimation()
-        self.setMessageReadStatus(idx) { [weak self] in
-          guard let `self` = self else { return }
-          self.checkAppointment(model,button)
-        }
-      }
-    }
-    cell.selectionStyle = .none
-    return cell
+    return UITableViewCell()
   }
   
   
@@ -464,6 +489,29 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
       complete?()
     } errorHandler: { e in
       complete?()
+    }
+
+  }
+  
+  func approveWalletAuthStatus(_ authStatus:Int,_ model:NotificationModel,_ indexPath:IndexPath) {
+    let params = SOAPParams(action: .Voucher, path: .saveCardInfo)
+    
+    let data = SOAPDictionary()
+    data.set(key: "owner_id", value: model.owner_id)
+    data.set(key: "gainer_id", value: Defaults.shared.get(for: .clientId) ?? "")
+    data.set(key: "status", value: authStatus.string)
+    data.set(key: "owner_remark", value: "")
+    
+    params.set(key: "data", value: data.result,type: .map(1))
+    
+    model.auth_status = authStatus.string
+    
+    Toast.showLoading()
+    NetworkManager().request(params: params) { data in
+      Toast.dismiss()
+      self.tableView?.reloadRows(at: [indexPath], with: .none)
+    } errorHandler: { e in
+      Toast.dismiss()
     }
 
   }

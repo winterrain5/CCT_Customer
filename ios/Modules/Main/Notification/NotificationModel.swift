@@ -15,6 +15,10 @@ class NotificationModel: BaseModel {
   var id = ""
   var send_date = ""
   var title = ""
+  var owner_id = ""
+  /// 0：未审核 1：同意 2：拒绝
+  /// owner_id不为 0 且 auth_status 为0  展示操作按钮
+  var auth_status = ""
   // 1为已读 
   var is_read = ""
   var isSelected = false

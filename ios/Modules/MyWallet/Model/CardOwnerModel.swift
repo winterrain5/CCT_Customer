@@ -16,6 +16,8 @@ class CardOwnerModel: BaseModel,Codable {
   var last_name: String?
   var trans_limit: String?
   var first_name: String?
+  var status:String?
+  var owner_remark:String?
   
   var new_recharge_card_period = ""
   var new_recharge_card_level_text = ""

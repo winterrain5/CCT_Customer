@@ -25,6 +25,8 @@ class RegistUserInfoModel: BaseModel,Codable {
   var city = ""
   var country_id = ""
   
+  var is_new_register = false
+  
   var present_reward_discount_id = ""
   var present_invite_cash_voucher = ""
   var present_cash_voucher = ""

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CardDiscountModel: Codable {
+class CardDiscountModel: BaseModel, Codable {
   var discount_percent:String?
   var id:String?
   var recharge_card_level:String?

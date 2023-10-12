@@ -111,12 +111,12 @@ class SymptomCheckReportAnalysisController: BaseTableController {
       params.set(key: "id", value: id)
       NetworkManager().request(params: params) { data in
         guard let model = DecodeManager.decodeByCodable(SymptomCheckQ1ResultModel.self, from: data) else {
-          resolver.reject(PKError.some(message: "Decode Failed"))
+          resolver.reject(PKError.some( "Decode Failed"))
           return
         }
         resolver.fulfill(model)
       } errorHandler: { e in
-        resolver.reject(PKError.some(message: e.asAPIError.errorInfo().message))
+        resolver.reject(PKError.some( e.asAPIError.errorInfo().message))
       }
     }
     
@@ -137,12 +137,12 @@ class SymptomCheckReportAnalysisController: BaseTableController {
       
       NetworkManager().request(params: params) { data in
         guard let models = DecodeManager.decodeByCodable([SymptomCheckQ23ResultModel].self, from: data) else {
-          resolver.reject(PKError.some(message: "Decode Failed"))
+          resolver.reject(PKError.some( "Decode Failed"))
           return
         }
         resolver.fulfill(models)
       } errorHandler: { e in
-        resolver.reject(PKError.some(message: e.asAPIError.errorInfo().message))
+        resolver.reject(PKError.some( e.asAPIError.errorInfo().message))
       }
       
     }

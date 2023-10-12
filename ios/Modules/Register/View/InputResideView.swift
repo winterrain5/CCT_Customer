@@ -137,9 +137,12 @@ class InputResideView: UIView,UITextFieldDelegate {
     client_info.set(key: "unit_num", value: registInfo.unitNum)
     client_info.set(key: "post_code", value: registInfo.postalCode)
     client_info.set(key: "sync_phone_calendar", value: "1")
-    client_info.set(key: "create_time", value: Date().string(withFormat: "yyyy-MM-dd HH:mm:ss"))
     client_info.set(key: "is_delete", value: "0")
     client_info.set(key: "source", value: "2")
+    
+    if registInfo.is_new_register {
+      client_info.set(key: "create_time", value: Date().string(withFormat: "yyyy-MM-dd HH:mm:ss"))
+    }
     
     data.set(key: "Client_Info", value: client_info.result, keyType: .string, valueType: .map(1))
     

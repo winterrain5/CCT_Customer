@@ -25,14 +25,14 @@ enum DomainType {
 @objcMembers
 class APIHost:NSObject {
   
-  var domainType:DomainType = .UAT
+  var domainType:DomainType = .Live
   
   var STRIPE_PK_LIVE:String {
     switch domainType {
     case .Live:
       return "pk_live_51HeuTsLmFtI0ErhWJcFdd49fESvMq2PCKXJWE5V6S3O1d8uXCeU9JKZPNLQrnBRa9DND2e8t74GirQaGWXwc0p7H00TWoGgRvm"
     case .UAT:
-      return "pk_live_51HeuTsLmFtI0ErhWJcFdd49fESvMq2PCKXJWE5V6S3O1d8uXCeU9JKZPNLQrnBRa9DND2e8t74GirQaGWXwc0p7H00TWoGgRvm"
+      return "pk_test_51J2RALDOZGW531kA4P9Hed5lkH5ldQ7dfZipqVbKUSTNRP4iu5ch2DQyvekxmOFyiLWlPiybjtuxfHxvWvTZXo2f00Kl6UhnVd"
     case .DEBUG:
       return "pk_test_51J2RALDOZGW531kA4P9Hed5lkH5ldQ7dfZipqVbKUSTNRP4iu5ch2DQyvekxmOFyiLWlPiybjtuxfHxvWvTZXo2f00Kl6UhnVd"
     }

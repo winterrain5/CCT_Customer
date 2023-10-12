@@ -213,6 +213,9 @@ class WalletDetailController: BaseTableController {
   
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let view = WalletDetailSectionView()
+    if self.dataArray.count == 0 {
+      return nil
+    }
     let models = self.dataArray[section] as? [CardOwnerModel]
     if section == 0 {
       view.type = .User

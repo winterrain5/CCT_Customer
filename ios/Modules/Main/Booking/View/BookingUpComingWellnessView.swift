@@ -172,7 +172,7 @@ class BookingUpComingWellnessView: UIView {
       attrStr.addAttributes([.font:UIFont(name: .AvenirNextDemiBold,size: 16)], range: NSRange(location: 171, length: 1))
 
     
-      AlertView.show(title: "Are you sure you want to cancel?", message: attrStr, leftButtonTitle: "Back", rightButtonTitle: "Confirm", messageAlignment: .left, leftHandler: nil, rightHandler: {
+      AlertView.show(title: "Are you sure you want to cancel?", attrbutedMessage: attrStr, leftButtonTitle: "Back", rightButtonTitle: "Confirm", messageAlignment: .left, leftHandler: nil, rightHandler: {
         self.cancelRequest(1)
       }, dismissHandler: nil)
       

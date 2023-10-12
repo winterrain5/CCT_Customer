@@ -7,7 +7,7 @@
 
 import Foundation
 enum PKError:Error {
-    case some(message:String = "")
+    case some(_ message:String)
     
     var message:String {
         switch self {

@@ -159,7 +159,7 @@ class AlertView: UIView {
     
     let extraHeight = 170.cgFloat + kBottomsafeAreaMargin
     let totalHeight = titleHeight + messageHeight + extraHeight
-    let size = CGSize(width: kScreenWidth, height: totalHeight)
+    let size = CGSize(width: kScreenWidth, height: totalHeight > kScreenHeight ? kScreenHeight - kNavBarHeight : totalHeight)
     EntryKit.display(view: view, size: size, style: .sheet, backgroundColor: R.color.blackAlpha8()!, touchDismiss: true)
   }
   
@@ -173,7 +173,7 @@ class AlertView: UIView {
      
     let extraHeight = kBottomsafeAreaMargin + 80
     let totalHeight = titleHeight + messageHeight + extraHeight
-    let size = CGSize(width: kScreenWidth, height: totalHeight)
+    let size = CGSize(width: kScreenWidth, height: totalHeight > kScreenHeight ? kScreenHeight - kNavBarHeight : totalHeight)
     EntryKit.display(view: view, size: size, style: .sheet, backgroundColor: R.color.blackAlpha8()!, touchDismiss: true)
   }
   
@@ -185,12 +185,12 @@ class AlertView: UIView {
     let messageHeight = view.messageLabel.sizeThatFits(CGSize(width: kScreenWidth - 48, height: .infinity)).height
     let extraHeight = kBottomsafeAreaMargin + 80
     let totalHeight = messageHeight + extraHeight
-    let size = CGSize(width: kScreenWidth, height: totalHeight)
+    let size = CGSize(width: kScreenWidth, height: totalHeight > kScreenHeight ? kScreenHeight - kNavBarHeight : totalHeight)
     EntryKit.display(view: view, size: size, style: .sheet, backgroundColor: R.color.blackAlpha8()!, touchDismiss: true)
   }
   
   static func show(title:String,
-                   message:NSMutableAttributedString ,
+                   attrbutedMessage:NSMutableAttributedString,
                    leftButtonTitle:String,
                    rightButtonTitle:String,
                    messageAlignment:NSTextAlignment,
@@ -198,7 +198,7 @@ class AlertView: UIView {
                    rightHandler:(()->())? = nil,
                    dismissHandler:(()->())? = nil) {
     let view = AlertView()
-    view.config(with: title, message: message,leftButtonTitle: leftButtonTitle,rightButtonTitle: rightButtonTitle)
+    view.config(with: title, message: attrbutedMessage,leftButtonTitle: leftButtonTitle,rightButtonTitle: rightButtonTitle)
     view.leftHandler = leftHandler
     view.rightHandler = rightHandler
     view.dismissHandler = dismissHandler

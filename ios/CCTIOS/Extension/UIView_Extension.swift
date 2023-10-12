@@ -55,3 +55,15 @@ extension UIView {
 }
 
 
+extension UILabel  {
+  // MARK: 3.4、设置特定文字的字体颜色
+  /// 设置特定文字的字体颜色
+  /// - Parameters:
+  ///   - text: 特定文字
+  ///   - color: 字体颜色
+  func setSpecificTextColor(_ text: String, color: UIColor) {
+      let attributedString = self.attributedText?.setSpecificTextColor(text, color: color)
+      self.attributedText = attributedString
+  }
+  
+}

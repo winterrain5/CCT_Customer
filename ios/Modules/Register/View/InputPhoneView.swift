@@ -112,6 +112,7 @@ class InputPhoneView: UIView,UITextFieldDelegate {
       
       let registInfo = RegistUserInfoModel()
       registInfo.mobile = mobile
+      registInfo.is_new_register = model == nil
       Defaults.shared.set(registInfo, for: .registModel)
       
       let vc = VerificationCodeController(type: .SignUp, source: mobile,otpCode:self.otpCode)

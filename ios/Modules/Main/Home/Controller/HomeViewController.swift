@@ -63,6 +63,7 @@ class HomeViewController: BaseViewController {
     }
     
     getAppVersion()
+    editClientRecharge()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +81,16 @@ class HomeViewController: BaseViewController {
       print(e.asAPIError.errorInfo().message)
     }
     getUnreadMessageCount()
+  }
+  
+  func editClientRecharge() {
+    let param = SOAPParams(action: .Client, path: .editClientRecharge)
+    param.set(key: "clientId", value: Defaults.shared.get(for: .clientId))
+    NetworkManager().request(params: param) { data in
+      
+    } errorHandler: { e in
+      
+    }
   }
   
   func getBookedService() {

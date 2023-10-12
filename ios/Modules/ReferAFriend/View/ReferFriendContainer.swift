@@ -77,10 +77,7 @@ class ReferFriendContainer: UIView {
   func shareMessage() -> String {
     let userModel = Defaults.shared.get(for: .userModel)
     let name = (userModel?.first_name ?? "") + " " + (userModel?.last_name ?? "")
-    var string = ""
-    string += name
-    string += " invites you to download the Chien Chi Tow App. Use the unique invitation code during sign up to receive $10 CCT eWallet credits!\n"
-    string += "Invite Code: \(referCode) "
+    var string = "\(name) invites you to download the Chien Chi Tow App, your personal integrated health and wellness solution. Manage your own bookings anytime, and enjoy exclusive mobile deals,Invite Code: \(referCode)\n"
     return string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
   }
   

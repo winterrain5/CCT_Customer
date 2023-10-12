@@ -31,8 +31,8 @@ class WalletCardView: UIView {
 //      let consumption = userModel.consumption ?? ""
       
       let active_amount = userModel.active_amount.float() ?? 0
-      let keep = userModel.keep.string.formatMoney().dolar // 保级金额
-      let upgrade = userModel.upgrade.string.formatMoney().dolar// 下一级金额
+      let keep = userModel.keep.asLocaleCurrency ?? "" // 保级金额
+      let upgrade = userModel.upgrade.asLocaleCurrency ?? "" // 下一级金额
       let level = userModel.new_recharge_card_level.int ?? 0
       let cardExpireDate = userModel.new_recharge_card_period.date(withFormat: "yyyy-MM-dd")?.string(withFormat: "dd MMM yyyy")
       levelLabel.text = userModel.new_recharge_card_level_text
@@ -156,7 +156,7 @@ class WalletCardView: UIView {
   
   @IBAction func topUpButtonAction(_ sender: Any) {
     
-    let vc = WalletTopUpController()
+    let vc = TopupOrPurchaseController()
     UIViewController.getTopVc()?.navigationController?.pushViewController(vc)
   }
 }

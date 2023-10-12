@@ -88,6 +88,11 @@
 		45C6B7952858253C00546CC8 /* CheckInTodaySessionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C6B7942858253C00546CC8 /* CheckInTodaySessionView.xib */; };
 		45C6B7982858282C00546CC8 /* CheckInTodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6B7962858282C00546CC8 /* CheckInTodayCell.swift */; };
 		45C6B7992858282C00546CC8 /* CheckInTodayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C6B7972858282C00546CC8 /* CheckInTodayCell.xib */; };
+		45C781E52A93237900D4E721 /* TopupOrPurchaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C781E42A93237900D4E721 /* TopupOrPurchaseController.swift */; };
+		45C781E72A93503000D4E721 /* PurchaseNewCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C781E62A93503000D4E721 /* PurchaseNewCardController.swift */; };
+		45C781E92A94687700D4E721 /* WalletTopupAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C781E82A94687700D4E721 /* WalletTopupAmountView.swift */; };
+		45C781EB2A94688A00D4E721 /* WalletTopupAmountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C781EA2A94688A00D4E721 /* WalletTopupAmountView.xib */; };
+		45C781ED2A94726200D4E721 /* TopUpCurrentCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C781EC2A94726200D4E721 /* TopUpCurrentCardController.swift */; };
 		45C983032861AF4900887CAE /* AppVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C983022861AF4900887CAE /* AppVersionModel.swift */; };
 		45C983052861B02F00887CAE /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C983042861B02F00887CAE /* Device.swift */; };
 		45C983082861B65000887CAE /* OnBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C983072861B65000887CAE /* OnBoardViewController.swift */; };
@@ -158,8 +163,8 @@
 		4902023927D893A800E74415 /* WalletAddUserHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4902023827D893A800E74415 /* WalletAddUserHeadView.xib */; };
 		4902023B27D8A85400E74415 /* WalletInviteUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902023A27D8A85400E74415 /* WalletInviteUserModel.swift */; };
 		4902023D27D9EAE900E74415 /* WalletTopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902023C27D9EAE800E74415 /* WalletTopUpController.swift */; };
-		4902023F27D9EAF700E74415 /* WalletTopUpContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902023E27D9EAF700E74415 /* WalletTopUpContainer.swift */; };
-		4902024127D9EB0100E74415 /* WalletTopUpContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4902024027D9EB0100E74415 /* WalletTopUpContainer.xib */; };
+		4902023F27D9EAF700E74415 /* WalletPurchaseNewcardAmounttContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902023E27D9EAF700E74415 /* WalletPurchaseNewcardAmounttContainer.swift */; };
+		4902024127D9EB0100E74415 /* WalletPurchaseNewcardAmounttContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4902024027D9EB0100E74415 /* WalletPurchaseNewcardAmounttContainer.xib */; };
 		4902024327D9F81F00E74415 /* APIHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902024227D9F81F00E74415 /* APIHost.swift */; };
 		4902024727D9FEF900E74415 /* SwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902024527D9FEF900E74415 /* SwitchController.swift */; };
 		4902024827D9FEF900E74415 /* SwitchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902024627D9FEF900E74415 /* SwitchManager.swift */; };
@@ -856,6 +861,11 @@
 		45C6B7942858253C00546CC8 /* CheckInTodaySessionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckInTodaySessionView.xib; sourceTree = "<group>"; };
 		45C6B7962858282C00546CC8 /* CheckInTodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInTodayCell.swift; sourceTree = "<group>"; };
 		45C6B7972858282C00546CC8 /* CheckInTodayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckInTodayCell.xib; sourceTree = "<group>"; };
+		45C781E42A93237900D4E721 /* TopupOrPurchaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopupOrPurchaseController.swift; sourceTree = "<group>"; };
+		45C781E62A93503000D4E721 /* PurchaseNewCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseNewCardController.swift; sourceTree = "<group>"; };
+		45C781E82A94687700D4E721 /* WalletTopupAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTopupAmountView.swift; sourceTree = "<group>"; };
+		45C781EA2A94688A00D4E721 /* WalletTopupAmountView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletTopupAmountView.xib; sourceTree = "<group>"; };
+		45C781EC2A94726200D4E721 /* TopUpCurrentCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUpCurrentCardController.swift; sourceTree = "<group>"; };
 		45C983022861AF4900887CAE /* AppVersionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionModel.swift; sourceTree = "<group>"; };
 		45C983042861B02F00887CAE /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		45C983072861B65000887CAE /* OnBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardViewController.swift; sourceTree = "<group>"; };
@@ -926,8 +936,8 @@
 		4902023827D893A800E74415 /* WalletAddUserHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletAddUserHeadView.xib; sourceTree = "<group>"; };
 		4902023A27D8A85400E74415 /* WalletInviteUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletInviteUserModel.swift; sourceTree = "<group>"; };
 		4902023C27D9EAE800E74415 /* WalletTopUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTopUpController.swift; sourceTree = "<group>"; };
-		4902023E27D9EAF700E74415 /* WalletTopUpContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTopUpContainer.swift; sourceTree = "<group>"; };
-		4902024027D9EB0100E74415 /* WalletTopUpContainer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletTopUpContainer.xib; sourceTree = "<group>"; };
+		4902023E27D9EAF700E74415 /* WalletPurchaseNewcardAmounttContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPurchaseNewcardAmounttContainer.swift; sourceTree = "<group>"; };
+		4902024027D9EB0100E74415 /* WalletPurchaseNewcardAmounttContainer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletPurchaseNewcardAmounttContainer.xib; sourceTree = "<group>"; };
 		4902024227D9F81F00E74415 /* APIHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHost.swift; sourceTree = "<group>"; };
 		4902024527D9FEF900E74415 /* SwitchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchController.swift; sourceTree = "<group>"; };
 		4902024627D9FEF900E74415 /* SwitchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchManager.swift; sourceTree = "<group>"; };
@@ -2316,6 +2326,9 @@
 				4902023427D8934800E74415 /* WalletAddUserController.swift */,
 				4902023C27D9EAE800E74415 /* WalletTopUpController.swift */,
 				4902024927DB23FB00E74415 /* WalletPaymentMethodController.swift */,
+				45C781E42A93237900D4E721 /* TopupOrPurchaseController.swift */,
+				45C781E62A93503000D4E721 /* PurchaseNewCardController.swift */,
+				45C781EC2A94726200D4E721 /* TopUpCurrentCardController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2936,14 +2949,16 @@
 				4933AC7427D87913005E9FB1 /* SetTransactionLimitSheetView.xib */,
 				4902023627D8939E00E74415 /* WalletAddUserHeadView.swift */,
 				4902023827D893A800E74415 /* WalletAddUserHeadView.xib */,
-				4902023E27D9EAF700E74415 /* WalletTopUpContainer.swift */,
-				4902024027D9EB0100E74415 /* WalletTopUpContainer.xib */,
+				4902023E27D9EAF700E74415 /* WalletPurchaseNewcardAmounttContainer.swift */,
+				4902024027D9EB0100E74415 /* WalletPurchaseNewcardAmounttContainer.xib */,
 				4902024B27DB256E00E74415 /* WalletPaymentMethodCell.swift */,
 				4902024C27DB256E00E74415 /* WalletPaymentMethodCell.xib */,
 				4902025127DB349600E74415 /* WalletAddCardSheetContentView.swift */,
 				4902025327DB34A000E74415 /* WalletAddCardSheetContentView.xib */,
 				45005C682A5BF67F00560E21 /* WalletAddUserSheetContentView.swift */,
 				45005C6A2A5BF83100560E21 /* WalletAddUserSheetContentView.xib */,
+				45C781E82A94687700D4E721 /* WalletTopupAmountView.swift */,
+				45C781EA2A94688A00D4E721 /* WalletTopupAmountView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3637,6 +3652,7 @@
 				49BCF76C27B34F0F00B623CE /* ShopFilterContentView.xib in Resources */,
 				49BB3C5F278C335200AC34A0 /* BlogBoardEditSheetView.xib in Resources */,
 				45792072284EE1D8008CD008 /* InputIDContainer.xib in Resources */,
+				45C781EB2A94688A00D4E721 /* WalletTopupAmountView.xib in Resources */,
 				4996D79427D1A54200437265 /* TransactionDetailFooterView.xib in Resources */,
 				49F17C612807F0E200FCBC87 /* ShopProductReviewCell.xib in Resources */,
 				4996D7A227D5986500437265 /* WalletCouponsCell.xib in Resources */,
@@ -3645,7 +3661,7 @@
 				4906C227279A8EA000F7B67F /* MadamPartumAwardsCell.xib in Resources */,
 				4902024E27DB256E00E74415 /* WalletPaymentMethodCell.xib in Resources */,
 				454C5B48283CBB3C001D787C /* BookingServiceHelpSheetView.xib in Resources */,
-				4902024127D9EB0100E74415 /* WalletTopUpContainer.xib in Resources */,
+				4902024127D9EB0100E74415 /* WalletPurchaseNewcardAmounttContainer.xib in Resources */,
 				49BA62A52788267F00B898D5 /* BlogDetailContainer.xib in Resources */,
 				45A505852848998000779B4C /* HomeContainer.xib in Resources */,
 				49981EFB27CE1F3500D4F7BF /* EditProfileContainer.xib in Resources */,
@@ -3827,7 +3843,7 @@
 				49056B1B27979B4400FBA1AC /* WellnessAppointmentTypeSelectShetView.swift in Sources */,
 				495649DB281A2A2300091533 /* LoginContainer.swift in Sources */,
 				49056B1227968E7B00FBA1AC /* WebBrowser+MessageHandler.swift in Sources */,
-				4902023F27D9EAF700E74415 /* WalletTopUpContainer.swift in Sources */,
+				4902023F27D9EAF700E74415 /* WalletPurchaseNewcardAmounttContainer.swift in Sources */,
 				4902B71D279F9D3000CEE28B /* ServiceDetailHeaderView.swift in Sources */,
 				495649D12817E5C800091533 /* ShopOrderSummaryController.swift in Sources */,
 				4996D7B027D5DFCD00437265 /* WalletCardView.swift in Sources */,
@@ -3923,6 +3939,7 @@
 				4996D7AA27D5A03F00437265 /* RewardsDetailContainer.swift in Sources */,
 				49BA627427856F9000B898D5 /* R.generated.swift in Sources */,
 				4998C056277EF51200A881D5 /* CLLocationExtensions.swift in Sources */,
+				45C781E52A93237900D4E721 /* TopupOrPurchaseController.swift in Sources */,
 				49BA62762785704E00B898D5 /* BlogSegmentSectionView.swift in Sources */,
 				4998C017277EF51200A881D5 /* UISwitchExtensions.swift in Sources */,
 				4998C0F22784427F00A881D5 /* ConstraintLayoutSupportDSL.swift in Sources */,
@@ -4113,6 +4130,7 @@
 				45DA0E67285C1E5500056132 /* TodayTreatmentQueueCell.swift in Sources */,
 				496501D5279FE94E004FF3AF /* ServiceDetailHelpCell.swift in Sources */,
 				4998BF52277ED52700A881D5 /* RefreshAnimationFooter.swift in Sources */,
+				45C781ED2A94726200D4E721 /* TopUpCurrentCardController.swift in Sources */,
 				49E3859C279E9BDF003160FA /* FillInEnquiryFormContentView.swift in Sources */,
 				49781BCB27BDE8D6006F93DF /* ContactUsModel.swift in Sources */,
 				45FC54FA285180B700D3C0FF /* RegistStepView.swift in Sources */,
@@ -4231,6 +4249,7 @@
 				45F894B228534384008BC7CC /* QRScannerConfiguration.swift in Sources */,
 				45DA0E51285AC73400056132 /* TodayWellnessCheckSessionCell.swift in Sources */,
 				45792074284EF7F4008CD008 /* InputAccountController.swift in Sources */,
+				45C781E72A93503000D4E721 /* PurchaseNewCardController.swift in Sources */,
 				4902B721279F9D9100CEE28B /* ServiceDetailPriceView.swift in Sources */,
 				4998C0F02784427F00A881D5 /* ConstraintLayoutGuide+Extensions.swift in Sources */,
 				4906C239279E4B5300F7B67F /* QuestionSubjectModel.swift in Sources */,
@@ -4251,6 +4270,7 @@
 				4998C0872783DBF900A881D5 /* OurServicesViewController.swift in Sources */,
 				45C6B7912858251400546CC8 /* CheckInTodaySessionController.swift in Sources */,
 				49FC8EB22791080E00157292 /* SymptomCheckEmailMeController.swift in Sources */,
+				45C781E92A94687700D4E721 /* WalletTopupAmountView.swift in Sources */,
 				45F894AF28534384008BC7CC /* SwiftQRScanner.swift in Sources */,
 				45D6510A284DD2C100C7BD39 /* UpcomingSessionView.swift in Sources */,
 				49BA628D2785938F00B898D5 /* BlogCategoryModel.swift in Sources */,
@@ -4497,7 +4517,7 @@
 					/usr/lib/swift,
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.2.6;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -4543,7 +4563,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.2.6;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",

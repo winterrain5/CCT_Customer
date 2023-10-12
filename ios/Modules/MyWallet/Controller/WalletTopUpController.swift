@@ -8,7 +8,7 @@
 import UIKit
 
 class WalletTopUpController: BaseViewController {
-  var contentView = WalletTopUpContainer.loadViewFromNib()
+  var contentView = WalletPurchaseNewcardAmounttContainer.loadViewFromNib()
     override func viewDidLoad() {
         super.viewDidLoad()
 

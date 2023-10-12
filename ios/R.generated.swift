@@ -417,12 +417,12 @@ struct R: Rswift.Validatable {
 
   /// This `R.entitlements` struct is generated, and contains static references to 1 properties.
   struct entitlements {
-    static let apsEnvironment = infoPlistString(path: [], key: "aps-environment") ?? "development"
+    static let apsEnvironment = infoPlistString(path: [], key: "aps-environment") ?? "production"
 
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 133 images.
+  /// This `R.image` struct is generated, and contains static references to 137 images.
   struct image {
     /// Image `account_arrow_right`.
     static let account_arrow_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "account_arrow_right")
@@ -492,6 +492,8 @@ struct R: Rswift.Validatable {
     static let edit_profile_radio_fill = Rswift.ImageResource(bundle: R.hostingBundle, name: "edit_profile_radio_fill")
     /// Image `edit_profile_radio_not_fill`.
     static let edit_profile_radio_not_fill = Rswift.ImageResource(bundle: R.hostingBundle, name: "edit_profile_radio_not_fill")
+    /// Image `gold`.
+    static let gold = Rswift.ImageResource(bundle: R.hostingBundle, name: "gold")
     /// Image `home_arrow_right`.
     static let home_arrow_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "home_arrow_right")
     /// Image `home_info`.
@@ -568,6 +570,8 @@ struct R: Rswift.Validatable {
     static let onboardingvoucher = Rswift.ImageResource(bundle: R.hostingBundle, name: "onboardingvoucher")
     /// Image `payment_card`.
     static let payment_card = Rswift.ImageResource(bundle: R.hostingBundle, name: "payment_card")
+    /// Image `platinum`.
+    static let platinum = Rswift.ImageResource(bundle: R.hostingBundle, name: "platinum")
     /// Image `profile_account_manager`.
     static let profile_account_manager = Rswift.ImageResource(bundle: R.hostingBundle, name: "profile_account_manager")
     /// Image `profile_contact_us`.
@@ -640,6 +644,8 @@ struct R: Rswift.Validatable {
     static let shop_nav_basket = Rswift.ImageResource(bundle: R.hostingBundle, name: "shop_nav_basket")
     /// Image `shop_nav_heart`.
     static let shop_nav_heart = Rswift.ImageResource(bundle: R.hostingBundle, name: "shop_nav_heart")
+    /// Image `silver`.
+    static let silver = Rswift.ImageResource(bundle: R.hostingBundle, name: "silver")
     /// Image `symptom_check_box_select`.
     static let symptom_check_box_select = Rswift.ImageResource(bundle: R.hostingBundle, name: "symptom_check_box_select")
     /// Image `symptom_check_box_unselect`.
@@ -670,6 +676,8 @@ struct R: Rswift.Validatable {
     static let tab_profile_normal = Rswift.ImageResource(bundle: R.hostingBundle, name: "tab_profile_normal")
     /// Image `tab_profile_select`.
     static let tab_profile_select = Rswift.ImageResource(bundle: R.hostingBundle, name: "tab_profile_select")
+    /// Image `topup_chianchitow`.
+    static let topup_chianchitow = Rswift.ImageResource(bundle: R.hostingBundle, name: "topup_chianchitow")
     /// Image `transaction_payment_master`.
     static let transaction_payment_master = Rswift.ImageResource(bundle: R.hostingBundle, name: "transaction_payment_master")
     /// Image `transaction_payment_other`.
@@ -926,6 +934,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "edit_profile_radio_not_fill", bundle: ..., traitCollection: ...)`
     static func edit_profile_radio_not_fill(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.edit_profile_radio_not_fill, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gold", bundle: ..., traitCollection: ...)`
+    static func gold(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gold, compatibleWith: traitCollection)
     }
     #endif
 
@@ -1196,6 +1211,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "platinum", bundle: ..., traitCollection: ...)`
+    static func platinum(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.platinum, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "profile_account_manager", bundle: ..., traitCollection: ...)`
     static func profile_account_manager(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.profile_account_manager, compatibleWith: traitCollection)
@@ -1448,6 +1470,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "silver", bundle: ..., traitCollection: ...)`
+    static func silver(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.silver, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "symptom_check_box_select", bundle: ..., traitCollection: ...)`
     static func symptom_check_box_select(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.symptom_check_box_select, compatibleWith: traitCollection)
@@ -1553,6 +1582,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "topup_chianchitow", bundle: ..., traitCollection: ...)`
+    static func topup_chianchitow(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.topup_chianchitow, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "transaction_payment_master", bundle: ..., traitCollection: ...)`
     static func transaction_payment_master(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.transaction_payment_master, compatibleWith: traitCollection)
@@ -1642,7 +1678,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 138 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 139 nibs.
   struct nib {
     /// Nib `AccountEditSheetContentView`.
     static let accountEditSheetContentView = _R.nib._AccountEditSheetContentView()
@@ -1906,8 +1942,10 @@ struct R: Rswift.Validatable {
     static let walletPackagesCell = _R.nib._WalletPackagesCell()
     /// Nib `WalletPaymentMethodCell`.
     static let walletPaymentMethodCell = _R.nib._WalletPaymentMethodCell()
-    /// Nib `WalletTopUpContainer`.
-    static let walletTopUpContainer = _R.nib._WalletTopUpContainer()
+    /// Nib `WalletPurchaseNewcardAmounttContainer`.
+    static let walletPurchaseNewcardAmounttContainer = _R.nib._WalletPurchaseNewcardAmounttContainer()
+    /// Nib `WalletTopupAmountView`.
+    static let walletTopupAmountView = _R.nib._WalletTopupAmountView()
     /// Nib `WalletTransactionCell`.
     static let walletTransactionCell = _R.nib._WalletTransactionCell()
     /// Nib `WalletVoucherCouponsCell`.
@@ -2970,10 +3008,18 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UINib(name: "WalletTopUpContainer", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.walletTopUpContainer) instead")
-    static func walletTopUpContainer(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.walletTopUpContainer)
+    /// `UINib(name: "WalletPurchaseNewcardAmounttContainer", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.walletPurchaseNewcardAmounttContainer) instead")
+    static func walletPurchaseNewcardAmounttContainer(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.walletPurchaseNewcardAmounttContainer)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "WalletTopupAmountView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.walletTopupAmountView) instead")
+    static func walletTopupAmountView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.walletTopupAmountView)
     }
     #endif
 
@@ -3549,8 +3595,12 @@ struct R: Rswift.Validatable {
       return R.nib.walletPaymentMethodCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletPaymentMethodCell
     }
 
-    static func walletTopUpContainer(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletTopUpContainer? {
-      return R.nib.walletTopUpContainer.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletTopUpContainer
+    static func walletPurchaseNewcardAmounttContainer(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletPurchaseNewcardAmounttContainer? {
+      return R.nib.walletPurchaseNewcardAmounttContainer.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletPurchaseNewcardAmounttContainer
+    }
+
+    static func walletTopupAmountView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletTopupAmountView? {
+      return R.nib.walletTopupAmountView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletTopupAmountView
     }
 
     static func walletTransactionCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletTransactionCell? {
@@ -3664,7 +3714,8 @@ struct _R: Rswift.Validatable {
       try _WalletCardView.validate()
       try _WalletDetailCardUserOrOwenrCell.validate()
       try _WalletPaymentMethodCell.validate()
-      try _WalletTopUpContainer.validate()
+      try _WalletPurchaseNewcardAmounttContainer.validate()
+      try _WalletTopupAmountView.validate()
       try _WellcomBackView.validate()
       try _WellnessAppointmentTypeSelectShetView.validate()
       try _WhereQRCodeSheetView.validate()
@@ -5734,23 +5785,45 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    struct _WalletTopUpContainer: Rswift.NibResourceType, Rswift.Validatable {
+    struct _WalletPurchaseNewcardAmounttContainer: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
-      let name = "WalletTopUpContainer"
+      let name = "WalletPurchaseNewcardAmounttContainer"
 
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletTopUpContainer? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletTopUpContainer
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletPurchaseNewcardAmounttContainer? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletPurchaseNewcardAmounttContainer
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "account_arrow_right", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'account_arrow_right' is used in nib 'WalletTopUpContainer', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "account_arrow_right", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'account_arrow_right' is used in nib 'WalletPurchaseNewcardAmounttContainer', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
-          if UIKit.UIColor(named: "Black", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black' is used in nib 'WalletTopUpContainer', but couldn't be loaded.") }
-          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'WalletTopUpContainer', but couldn't be loaded.") }
-          if UIKit.UIColor(named: "Line", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Line' is used in nib 'WalletTopUpContainer', but couldn't be loaded.") }
-          if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'WalletTopUpContainer', but couldn't be loaded.") }
-          if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'WalletTopUpContainer', but couldn't be loaded.") }
-          if UIKit.UIColor(named: "grayf2", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'grayf2' is used in nib 'WalletTopUpContainer', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "Black", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black' is used in nib 'WalletPurchaseNewcardAmounttContainer', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'WalletPurchaseNewcardAmounttContainer', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "Line", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Line' is used in nib 'WalletPurchaseNewcardAmounttContainer', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'WalletPurchaseNewcardAmounttContainer', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'WalletPurchaseNewcardAmounttContainer', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _WalletTopupAmountView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "WalletTopupAmountView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WalletTopupAmountView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WalletTopupAmountView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "account_arrow_right", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'account_arrow_right' is used in nib 'WalletTopupAmountView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "Black333", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Black333' is used in nib 'WalletTopupAmountView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "Line", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Line' is used in nib 'WalletTopupAmountView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamBlue' is used in nib 'WalletTopupAmountView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "TheamRed", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'TheamRed' is used in nib 'WalletTopupAmountView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "White", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'White' is used in nib 'WalletTopupAmountView', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "grayf2", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'grayf2' is used in nib 'WalletTopupAmountView', but couldn't be loaded.") }
         }
       }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewGiftVoucherModel: Codable {
+class NewGiftVoucherModel: BaseModel, Codable {
   var service_type: String?
   var default_count_in_pos: String?
   var id: Int?

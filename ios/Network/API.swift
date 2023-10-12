@@ -95,7 +95,8 @@ enum API:String {
   case getCartCount = "getCartCount"
   /// 批量删除
   case delAllCart = "delAllCart"
-  
+  case getClientVoucherCount = "getClientVoucherCount"
+  case editClientRecharge = "editClientRecharge"
   
   //// 获取所有分店地址
   case getAllMp = "getAllMp"

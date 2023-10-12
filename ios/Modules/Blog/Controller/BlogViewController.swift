@@ -132,7 +132,7 @@ class BlogViewController: BaseTableController {
         }
         resolver.fulfill(models)
       } errorHandler: { error in
-        resolver.reject(PKError.some(message: error.localizedDescription))
+        resolver.reject(PKError.some( error.localizedDescription))
       }
     }
     
@@ -154,7 +154,7 @@ class BlogViewController: BaseTableController {
           resolver.fulfill([])
         }
       } errorHandler: { e in
-        resolver.reject(PKError.some(message: e.localizedDescription))
+        resolver.reject(PKError.some(e.localizedDescription))
       }
 
     }

@@ -8,18 +8,17 @@
 import UIKit
 import Stripe
 import PromiseKit
-class WalletTopUpContainer: UIView,UITextFieldDelegate {
-  @IBOutlet weak var amountTf: UITextField!
+class WalletPurchaseNewcardAmounttContainer: UIView,UITextFieldDelegate {
   var limitAmoutSelectButton:UIButton?
-  @IBOutlet weak var limitAmountLabel: UILabel!
+  @IBOutlet weak var newTierLabel: UILabel!
+  @IBOutlet weak var newBalanceLabel: UILabel!
+  @IBOutlet weak var newDateLabel: UILabel!
   @IBOutlet weak var limit1Button: UIButton!
   @IBOutlet weak var limit2Button: UIButton!
   @IBOutlet weak var limit5Button: UIButton!
-  @IBOutlet weak var limit10Button: UIButton!
-  @IBOutlet weak var limit20Button: UIButton!
-  @IBOutlet weak var limit25Button: UIButton!
   @IBOutlet weak var doneButton: LoadingButton!
   @IBOutlet weak var paymentMethodButton: UIButton!
+  var topUpAmount:String = ""
   var taxModel:TaxesModel?
   var staffModel:BusinessManModel?
   var voucherModel:NewGiftVoucherModel?
@@ -27,26 +26,38 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
   var orderDetailModel:TopUpOrderDetailModel?
   var clientSecret:String?
   var pointPresentMultiple:String = "1"
-  var amount:[String] = ["100.00","200.00","500.00","1000.00","2000.00","2500.00"]
+  let amount:[CGFloat] = [2000,1000,500]
+  let memberships = ["Platinum","Gold","Silver"]
+  let membershipLevel = [3,2,1]
   let dateHMS = Date().string(withFormat: "yyyy-MM-dd HH:mm:ss")
   let dateYMD = Date().string(withFormat: "yyyy-MM-dd")
-  var payPd = ""
-  var topUpAmount:String {
-    get {
-      (amountTf.text?.trimmed ?? "").removingPrefix("$")
+  
+  var currentBalance:CGFloat = 0 {
+    didSet {
+      let newBalance = (currentBalance + 2000).asLocaleCurrency ?? ""
+      let dateAttr = NSMutableAttributedString(string: "Credit balance after top up: \(newBalance)")
+      dateAttr.addAttribute(.font, value: UIFont.systemFont(ofSize: 18, weight: .semibold), range: NSRange(location: 29, length: newBalance.count))
+      newBalanceLabel.attributedText = dateAttr
     }
   }
+  
+  var payPd = ""
+
   override func awakeFromNib() {
     super.awakeFromNib()
-    amountTf.delegate = self
-    amountTf.keyboardType = .numberPad
-    
+ 
     if  Defaults.shared.get(for: .payMethodLine)  != nil {
-      doneButton.backgroundColor = R.color.theamRed()
+      doneButton.backgroundColor = R.color.theamBlue()
       doneButton.isEnabled = true
     }
     
+    let newExpiryDate = Date().adding(.year, value: 1).string(withFormat: "dd MMM yyyy")
+    let dateAttr = NSMutableAttributedString(string: "New Expiry Date: \(newExpiryDate)")
+    dateAttr.addAttribute(.font, value: UIFont.systemFont(ofSize: 18, weight: .semibold), range: NSRange(location: 17, length: newExpiryDate.count))
+    newDateLabel.attributedText = dateAttr
     
+    limitAmoutButtonAction(limit1Button)
+    topUpAmount = "2000"
     getAllTax()
     getBusiness()
   }
@@ -58,7 +69,6 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
   
   @IBAction func limitAmoutButtonAction(_ sender: UIButton) {
     
-    
     if let sel = limitAmoutSelectButton {
       sel.isSelected = false
     }
@@ -66,58 +76,92 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
     sender.isSelected.toggle()
     
     if sender.isSelected {
-      sender.backgroundColor = R.color.theamBlue()
-      sender.titleColorForNormal = .white
+      sender.borderColor = R.color.theamBlue()
+      sender.borderWidth = 2
       
       if let sel = limitAmoutSelectButton,sel != sender {
-        sel.backgroundColor = R.color.grayf2()
-        sel.titleColorForNormal = .black
+        sel.borderWidth = 0
+        
       }
+      topUpAmount = amount[sender.tag].string
+      let membership = memberships[sender.tag]
+      let attr = NSMutableAttributedString(string: "New Membership Tier: \(membership)")
+      attr.addAttribute(.font, value: UIFont.systemFont(ofSize: 18, weight: .semibold), range: NSRange(location: 21, length: membership.count))
+      newTierLabel.attributedText = attr
       
-      doneButton.backgroundColor = R.color.theamRed()
+      let newBalance = (currentBalance + amount[sender.tag]).string.dolar
+      let dateAttr = NSMutableAttributedString(string: "Credit balance after top up: \(newBalance)")
+      dateAttr.addAttribute(.font, value: UIFont.systemFont(ofSize: 18, weight: .semibold), range: NSRange(location: 29, length: newBalance.count))
+      newBalanceLabel.attributedText = dateAttr
+      doneButton.backgroundColor = R.color.theamBlue()
       doneButton.isEnabled = true
       
-    }else {
-      sender.backgroundColor = R.color.grayf2()
-      sender.titleColorForNormal = .black
-      
-      doneButton.backgroundColor = R.color.line()
-      doneButton.isEnabled = false
     }
-    
-    amountTf.text = "$" + amount[sender.tag]
     
     limitAmoutSelectButton = sender
   }
   
   @IBAction func topUpAction(_ sender: LoadingButton) {
-    if Defaults.shared.get(for: .payMethodLine) == nil {
-      Toast.showError(withStatus: "Please choose a recharge card")
+    guard let user = Defaults.shared.get(for: .userModel) else {
       return
     }
-    let pin = Defaults.shared.get(for: .userModel)?.pay_password ?? ""
-    CardDigitPinView.showView(pin: pin) { newPin in
-      self.payPd = newPin
-      firstly {
-        self.saveNewGiftVoucher()
-      }.then {
-        self.checkoutTOrder()
-      }.then {
-        self.getCheckoutDetails()
-      }.then {
-        self.getClientVipLevel()
-      }.then {
-        self.createInstance()
-      }.then {
-        self.startPay()
-      }.then {
-        self.payOrder()
-      }.done {
-        self.topupNotification()
-      }.catch { e in
-        Toast.showError(withStatus: e.asAPIError.errorInfo().message)
+    
+    func sureAction() {
+      if Defaults.shared.get(for: .payMethodLine) == nil {
+        Toast.showError(withStatus: "Please choose a recharge card")
+        return
+      }
+      let pin = Defaults.shared.get(for: .userModel)?.pay_password ?? ""
+      CardDigitPinView.showView(pin: pin) { newPin in
+        self.payPd = newPin
+        Toast.showError(withStatus: "Purchasing...")
+        firstly {
+          self.saveNewGiftVoucher()
+        }.then {
+          self.checkoutTOrder()
+        }.then {
+          self.getCheckoutDetails()
+        }.then {
+          self.getClientVipLevel()
+        }.then {
+          self.createInstance()
+        }.then {
+          self.startPay()
+        }.then {
+          self.payOrder()
+        }.done {
+          self.topupNotification()
+        }.catch { e in
+          Toast.showError(withStatus: e.asAPIError.errorInfo().message)
+        }
       }
     }
+    
+    let currentLevel = user.new_recharge_card_level.int ?? 0
+    let currentMembership = user.new_recharge_card_level_text.split(separator: " ").first ?? ""
+    
+    let selectLevel = membershipLevel[limitAmoutSelectButton?.tag ?? 0]
+    let selectLevelText = memberships[limitAmoutSelectButton?.tag ?? 0]
+    
+    if selectLevel < currentLevel {
+      let message = "Your current membership tier is \(currentMembership), by selecting \(selectLevelText), your exisitng credit will extend for 12 months but your membership will be downgraded. To enjoy the existing membership privellege, please purchase \(currentMembership). If you have any queries, please contact us via WhatsApp at 6293 3933."
+      let label = UILabel()
+      label.text = message
+      let attr = NSMutableAttributedString(string: message)
+      attr.addAttribute(.font, value: UIFont.systemFont(ofSize: 18, weight: .semibold), range: NSRange(location: "Your current membership tier is ".count, length: currentMembership.count))
+      attr.addAttribute(.font, value: UIFont.systemFont(ofSize: 18, weight: .semibold), range: NSRange(location: "Your current membership tier is \(currentMembership), by selecting ".count, length: selectLevelText.count))
+      attr.addAttribute(.font, value: UIFont.systemFont(ofSize: 18, weight: .semibold), range: NSRange(location: "Your current membership tier is \(currentMembership), by selecting \(selectLevelText), your exisitng credit will extend for ".count, length: 2))
+      attr.addAttribute(.font, value: UIFont.systemFont(ofSize: 18, weight: .semibold), range: NSRange(location: "Your current membership tier is \(currentMembership), by selecting \(selectLevelText), your exisitng credit will extend for 12 months but your membership will be downgraded. To enjoy the existing membership privellege, please purchase ".count, length: currentMembership.count))
+      attr.addAttribute(.font, value: UIFont.systemFont(ofSize: 18, weight: .semibold), range: NSRange(location: "Your current membership tier is \(currentMembership), by selecting \(selectLevelText), your exisitng credit will extend for 12 months but your membership will be downgraded. To enjoy the existing membership privellege, please purchase \(currentMembership). If you have any queries, please contact us via ".count, length: "WhatsApp at 6293 3933".count))
+      AlertView.show(title: "Purchase",attrbutedMessage: attr,leftButtonTitle: "Cancel", rightButtonTitle: "Sure",messageAlignment: .left,rightHandler: {
+        sureAction()
+      }, dismissHandler:  {
+        
+      })
+      return
+    }
+    
+    sureAction()
   }
   
   /// 获取所有税率
@@ -155,7 +199,6 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
   func saveNewGiftVoucher() -> Promise<Void> {
     Promise.init { resolver in
       let mapParams = SOAPParams(action: .Voucher, path: .saveNewGiftVoucher)
-      
       let data = SOAPDictionary()
       data.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
       data.set(key: "name", value: "New Recharge Card")
@@ -164,8 +207,8 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       data.set(key: "voucher_pay_code", value: "")
       data.set(key: "cct_mp_type", value: "1")
       data.set(key: "recharge_level", value: "")
-      data.set(key: "recharge_type", value: "1")
-      data.set(key: "service_type", value: "3")
+      data.set(key: "recharge_type", value: "1") // 新建卡
+      data.set(key: "service_type", value: "2")
       data.set(key: "expiry_period_date", value: "12")
       data.set(key: "enable_sales", value: "0")
       data.set(key: "default_count_in_pos", value: "1")
@@ -179,7 +222,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
 #endif
       
       NetworkManager().request(params: mapParams) { data in
-        if let model = DecodeManager.decodeByCodable(NewGiftVoucherModel.self, from: data) {
+        if let model = DecodeManager.decodeObjectByHandJSON(NewGiftVoucherModel.self, from: data) {
           self.voucherModel = model
           resolver.fulfill_()
         }else {
@@ -238,7 +281,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       
       orderLineItem.set(key: "product_category", value: "9")
       orderLineItem.set(key: "product_id", value: self.voucherModel?.id ?? 0)
-      orderLineItem.set(key: "name", value: "Top Up:\(topUpAmount)")
+      orderLineItem.set(key: "name", value: "Purchase New Card:\(topUpAmount)")
       orderLineItem.set(key: "location_id", value: Defaults.shared.get(for: .companyId) ?? "97")
       orderLineItem.set(key: "price", value: topUpAmount)
       orderLineItem.set(key: "qty", value: 1)
@@ -346,7 +389,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       Toast.showLoading(withStatus: params.path)
 #endif
       NetworkManager().request(params: params) { data in
-        if let model = DecodeManager.decodeByCodable(ClientVipLevelModel.self, from: data) {
+        if let model = DecodeManager.decodeObjectByHandJSON(ClientVipLevelModel.self, from: data) {
           self.pointPresentMultiple = model.point_present_multiple ?? "1"
           resolver.fulfill_()
         }else {
@@ -477,7 +520,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       let payMethods = SOAPDictionary()
       let payMethods0 = SOAPDictionary()
       
-      payMethods.set(key: "pay_method_line_id", value: Defaults.shared.get(for: .payMethodId) ?? "")
+      payMethods0.set(key: "pay_method_line_id", value: Defaults.shared.get(for: .payMethodId) ?? "")
       payMethods0.set(key: "pay_method_card_id", value: Defaults.shared.get(for: .payMethodLine)?.id ?? "")
       payMethods0.set(key: "paid_amount", value: topUpAmount)
       payMethods0.set(key: "real_paid_amount", value: topUpAmount)
@@ -501,7 +544,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       NetworkManager().request(params: mapParams) { data in
         resolver.fulfill_()
       } errorHandler: { e in
-        resolver.reject(APIError.requestError(code: -1, message: "Top Up Failed"))
+        resolver.reject(APIError.requestError(code: -1, message: "Failed Purchase"))
       }
       
       
@@ -553,7 +596,7 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
     params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
     params.set(key: "cardLevel", value: model.new_recharge_card_level)
     NetworkManager().request(params: params) { data in
-      if let models = DecodeManager.decodeByCodable([CardDiscountModel].self, from: data) {
+      if let models = DecodeManager.decodeArrayByHandJSON(CardDiscountModel.self, from: data) {
         self.upgradedTierLevel(user: model, discount: models.first?.discount_percent ?? "")
       }
     } errorHandler: { e in
@@ -576,8 +619,12 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
   }
   
   func popBack() {
-    Toast.showSuccess(withStatus: "Top Up Success")
-    UIViewController.getTopVc()?.navigationController?.popViewController()
+    Toast.showSuccess(withStatus: "Successful Purchase")
+    let item = DispatchWorkItem {
+      UIViewController.getTopVc()?.navigationController?.popViewController()
+    }
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: item)
+    
   }
   
   @IBAction func selectPaymethodAction(_ sender: Any) {
@@ -593,10 +640,16 @@ class WalletTopUpContainer: UIView,UITextFieldDelegate {
       paymentMethodButton.titleForNormal = "Add Payment Method"
       paymentMethodButton.imageForNormal = nil
     }
+    updateDoneButtonStatus()
   }
   
-  func textFieldDidEndEditing(_ textField: UITextField) {
-    doneButton.backgroundColor = R.color.theamRed()
-    doneButton.isEnabled = true
+  func updateDoneButtonStatus() {
+    if (Defaults.shared.get(for: .payMethodLine) != nil) && topUpAmount.isEmpty == false && (topUpAmount.cgFloat() ?? 0) >= 100 {
+      self.doneButton.backgroundColor = R.color.theamBlue()
+      self.doneButton.isEnabled = true
+    } else {
+      self.doneButton.backgroundColor = R.color.line()
+      self.doneButton.isEnabled = false
+    }
   }
 }

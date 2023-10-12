@@ -28,12 +28,13 @@ target 'CCTIOS' do
   pod 'TextFieldEffects'
   pod 'EachNavigationBar'
   pod 'NTMonthYearPicker'
-#  pod 'SwiftEntryKit'
+  
 
   pod 'RxSwift','5.1.2'
   pod 'RxGesture'
   pod 'RxSwiftExt'
   pod 'RxCocoa'
+  
   
 end
 

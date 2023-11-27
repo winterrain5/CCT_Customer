@@ -43,15 +43,15 @@ class BookingUpcomingController: BasePagingTableController {
   override func refreshData() {
     if isFirstLoad { self.view.showSkeleton() }
     let params = SOAPParams(action: .ClientProfile, path: .getTUpcomingAppointments)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    // CLIENT_ID
+    params.set(key: "clientId", value: CLIENT_ID)
     params.set(key: "startDateTime", value: Date().tomorrow.string(withFormat: "yyyy-MM-dd").appending(" 00:00:00"))
     params.set(key: "wellnessType", value: "")
     params.set(key: "start", value: page)
     params.set(key: "length", value: kPageSize)
     NetworkManager().request(params: params) { data in
      
-      if var models = DecodeManager.decodeArrayByHandJSON(BookingUpComingModel.self, from: data),models.count > 0 {
-        models.sort(by: {( $0.therapy_start_date.dateTime?.unixTimestamp ?? 0) < ($1.therapy_start_date.dateTime?.unixTimestamp ?? 0) })
+      if let models = DecodeManager.decodeArrayByHandJSON(BookingUpComingModel.self, from: data),models.count > 0 {
         self.dataArray.append(contentsOf: models)
         self.endRefresh(models.count,emptyString: "You have no upcoming appointments")
         self.view.hideSkeleton()
@@ -132,7 +132,7 @@ class BookingUpcomingController: BasePagingTableController {
   
   func getClientCancelCount() {
     let params = SOAPParams(action: .Client, path: .getClientCancelCount)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     
     Toast.showLoading()
     NetworkManager().request(params: params) { data in

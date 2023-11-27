@@ -181,7 +181,7 @@ class ShopDetailController: BaseViewController {
   
   func getCartCount() {
     let params = SOAPParams(action: .Cart, path: .getCartCount)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     NetworkManager().request(params: params) { data in
       self.basketButton.badgeValue = String(data: data, encoding: .utf8) ?? "0"
     } errorHandler: { e in
@@ -193,7 +193,7 @@ class ShopDetailController: BaseViewController {
   func saveRecentViewedProduct() {
     let params = SOAPParams(action: .Product, path: .saveRecentViewedProduct)
     params.set(key: "productId", value: productId)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     
     NetworkManager().request(params: params) { data in
       self.getCartCount()

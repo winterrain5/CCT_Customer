@@ -76,7 +76,7 @@ class EditProfileViewController: BaseViewController {
     
     let params = SOAPParams(action: .Client, path: .changeClientInfo)
     let data = SOAPDictionary()
-    data.set(key: "id", value: Defaults.shared.get(for: .clientId) ?? "")
+    data.set(key: "id", value: CLIENT_ID)
     data.set(key: "first_name", value: model.firstName)
     data.set(key: "last_name", value: "")
     data.set(key: "gender", value: model.gender)

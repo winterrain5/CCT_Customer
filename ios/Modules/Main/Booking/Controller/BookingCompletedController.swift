@@ -30,28 +30,23 @@ class BookingCompletedController: BasePagingTableController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    refreshData()
   }
   
   override func refreshData() {
-    self.view.showSkeleton()
+    self.showSkeleton()
     let params = SOAPParams(action: .ClientProfile, path: .getTSlotHistoryForApp)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+  
+    params.set(key: "clientId", value: CLIENT_ID)
     params.set(key: "start", value: page)
     params.set(key: "length", value: kPageSize)
     NetworkManager().request(params: params) { data in
-      // 这里是因为接口返回的数据是以数字为key 对象为value的结构 无法直接解析
-      let dict = try? JSON.init(data: data).dictionaryValue
-      if var items = dict?.values.map({ ($0.rawString() ?? "").data(using: .utf8) ?? Data() }).map({
-        DecodeManager.decodeObjectByHandJSON(BookingCompleteModel.self, from: $0)
-      }) {
-        items.sort(by: {( $0?.therapy_start_date.dateTime?.unixTimestamp ?? 0) > ($1?.therapy_start_date.dateTime?.unixTimestamp ?? 0) })
-        self.dataArray.append(contentsOf: items as [Any])
-        self.endRefresh(items.count,emptyString: "You have no completed appointments")
-      }else {
-        self.endRefresh(.NoData, emptyString: "You have no completed appointments")
+      if let models = DecodeManager.decodeArrayByHandJSON(BookingCompleteModel.self, from: data),models.count > 0 {
+        self.dataArray.append(contentsOf: models)
+        self.endRefresh(models.count,emptyString: "You have no completed appointments")
+        self.view.hideSkeleton()
+        return
       }
-      
+      self.endRefresh(.NoData, emptyString: "You have no completed appointments")
       self.view.hideSkeleton()
     } errorHandler: { e in
       self.endRefresh(e.asAPIError.emptyDatatype)
@@ -74,6 +69,7 @@ class BookingCompletedController: BasePagingTableController {
     self.tableView?.separatorStyle = .singleLine
     self.tableView?.separatorColor = R.color.line()
     self.tableView?.separatorInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
+    self.registRefreshFooter()
   }
   
   override func listViewFrame() -> CGRect {

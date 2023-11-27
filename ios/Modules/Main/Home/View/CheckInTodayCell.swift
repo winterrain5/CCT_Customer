@@ -17,7 +17,7 @@ class CheckInTodayCell: UICollectionViewCell {
   var model:BookingTodayModel! {
     didSet {
       
-      let date = model.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
+      let date = model.date
       timeLabel.text = date?.timeString(ofStyle: .short)
       titleLabel.text = model.alias_name
       checkInButton.isHidden = model.status == 4

@@ -91,7 +91,7 @@ class BookingUpcomingTreatmentController: BaseViewController {
   func getLastSymptomCheckReport() -> Promise<Void>{
     Promise.init { resolver in
       let params = SOAPParams(action: .SymptomCheck, path: .getLastSymptomCheckReport)
-      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+      params.set(key: "clientId", value: CLIENT_ID)
       params.set(key: "date", value: Date().string(withFormat: "yyyy-MM-dd"))
       
       NetworkManager().request(params: params) { data in

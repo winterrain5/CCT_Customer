@@ -36,7 +36,7 @@ class BookingUpComingWellnessView: UIView {
         return
       }
       nameLabel.text = upcoming.alias_name
-      if let date = upcoming.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss") {
+      if let date = upcoming.date {
         dateLabel.text = date.string(withFormat: "dd MMM yyyy,EEE - ").appending(date.timeString(ofStyle: .short))
         isCanCheckIn = date.isInToday
       }
@@ -61,7 +61,7 @@ class BookingUpComingWellnessView: UIView {
         return
       }
       nameLabel.text = today.alias_name
-      if let date = today.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss") {
+      if let date = today.date {
         dateLabel.text = date.string(withFormat: "dd MMM yyyy,EEE - ").appending(date.timeString(ofStyle: .short))
         isCanCheckIn = date.isInToday
       }
@@ -155,7 +155,7 @@ class BookingUpComingWellnessView: UIView {
   
   func getClientCancelCount() {
     let params = SOAPParams(action: .Client, path: .getClientCancelCount)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     
     Toast.showLoading()
     NetworkManager().request(params: params) { data in
@@ -195,7 +195,7 @@ class BookingUpComingWellnessView: UIView {
     let data = SOAPDictionary()
     data.set(key: "cancel_reason_id", value: 0)
     data.set(key: "cancel_date", value: Date().string(withFormat: "yyyy-MM-dd HH:mm:ss"))
-    data.set(key: "cancel_uid", value: Defaults.shared.get(for: .clientId) ?? "")
+    data.set(key: "cancel_uid", value: CLIENT_ID)
     data.set(key: "isReach", value: isReach)
     data.set(key: "remarks", value: "在手机端取消")
     

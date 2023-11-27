@@ -94,7 +94,7 @@ class PostPartumDeclarationController: BaseTableController {
   func getPostPartumItems() -> Promise<PostPartumModel> {
     Promise.init { resolver in
       let params = SOAPParams(action: .questionnaireSurvey, path: .getPostPartumItems)
-      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+      params.set(key: "clientId", value: CLIENT_ID)
       params.set(key: "category", value: 5)
       NetworkManager().request(params: params) { data in
         if let model = DecodeManager.decodeObjectByHandJSON(PostPartumModel.self, from: data) {

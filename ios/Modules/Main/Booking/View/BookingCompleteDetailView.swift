@@ -41,7 +41,7 @@ class BookingCompleteDetailView: UIView,UITableViewDelegate,UITableViewDataSourc
       guard let complete = complete else {
         return
       }
-      if let date = complete.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss") {
+      if let date = complete.date {
         dateLabel.text = date.string(withFormat: "dd MMM yyyy,EEE - ").appending(date.timeString(ofStyle: .short))
       }
       locationLabel.text = complete.final_address

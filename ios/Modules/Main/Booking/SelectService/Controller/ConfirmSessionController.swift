@@ -106,7 +106,7 @@ class ConfirmSessionController: BaseViewController {
       }
       
       let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
-      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+      params.set(key: "clientId", value: CLIENT_ID)
       
       NetworkManager().request(params: params) { data in
         if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {

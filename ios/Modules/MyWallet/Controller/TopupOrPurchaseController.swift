@@ -152,7 +152,7 @@ class TopupOrPurchaseController: BaseViewController {
   
   func getClientVoucherCount() {
     let params = SOAPParams(action: .Client, path: .getClientVoucherCount)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     NetworkManager().request(params: params) { data in
       if let count = String.init(data: data, encoding: .utf8)?.int {
         
@@ -169,7 +169,7 @@ class TopupOrPurchaseController: BaseViewController {
   func getClientPartInfo() {
     
     let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
         
@@ -197,7 +197,7 @@ class TopupOrPurchaseController: BaseViewController {
   func getNewReCardAmount() {
     
     let params = SOAPParams(action: .Voucher, path: .getNewReCardAmountByClientId)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     NetworkManager().request(params: params) { data in
       self.cardView.money = String(data: data, encoding: .utf8)?.cgFloat()?.asLocaleCurrency ?? ""
     } errorHandler: { e in

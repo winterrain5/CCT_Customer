@@ -63,7 +63,7 @@ class ForgetPwdController: BaseViewController {
     Promise.init { resolver in
       let params = SOAPParams(action: .User, path: .saveFindPasswordUUID)
       let data = SOAPDictionary()
-      data.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
+      data.set(key: "client_id", value: CLIENT_ID)
       data.set(key: "uuid", value: uuid)
       data.set(key: "status", value: "1")
       

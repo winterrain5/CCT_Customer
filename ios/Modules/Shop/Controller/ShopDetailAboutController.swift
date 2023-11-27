@@ -20,7 +20,7 @@ class ShopDetailAboutController: BasePagingTableController {
     let params = SOAPParams(action: .Product, path: .getRecommendProducts)
     params.set(key: "productId", value: productId)
     params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     params.set(key: "limit", value: 5)
     params.set(key: "isOnline", value: 1)
     

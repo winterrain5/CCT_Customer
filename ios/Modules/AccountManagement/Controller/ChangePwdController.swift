@@ -43,7 +43,7 @@ class ChangePwdController: BaseViewController {
   
   func getClientInfo() {
     let parmas = SOAPParams(action: .Client, path: .getTClientPartInfo)
-    parmas.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    parmas.set(key: "clientId", value: CLIENT_ID)
     NetworkManager().request(params: parmas) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
         self.receiveEmail = model.email
@@ -101,7 +101,7 @@ class ChangePwdController: BaseViewController {
       let params = SOAPParams(action: .Client, path: .changeClientUserInfo)
       
       let data = SOAPDictionary()
-      data.set(key: "id", value: Defaults.shared.get(for: .clientId) ?? "")
+      data.set(key: "id", value: CLIENT_ID)
       data.set(key: "password", value: pwd.md5)
       
       params.set(key: "data", value: data.result,type: .map(1))
@@ -141,7 +141,7 @@ class ChangePwdController: BaseViewController {
   func getFindPasswordUUID() -> Promise<Void> {
     Promise.init { resolver in
       let params = SOAPParams(action: .User, path: .getFindPasswordUUID)
-      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+      params.set(key: "clientId", value: CLIENT_ID)
       params.set(key: "uuid", value: self.uuid)
       NetworkManager().request(params: params) { data in
         if let model = DecodeManager.decodeByCodable(FindPwdStatusModel.self, from: data) {
@@ -198,7 +198,7 @@ class ChangePwdController: BaseViewController {
       
       data.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
       data.set(key: "from_email", value: email)
-      data.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+      data.set(key: "clientId", value: CLIENT_ID)
       
       params.set(key: "params", value: data.result, type: .map(1))
       

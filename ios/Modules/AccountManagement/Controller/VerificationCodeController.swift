@@ -72,7 +72,7 @@ class VerificationCodeController: BaseViewController {
     Toast.showLoading()
     
     let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
@@ -94,7 +94,7 @@ class VerificationCodeController: BaseViewController {
   
   func updateSource() {
     let params = SOAPParams(action: .Client, path: .updateSource)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     params.set(key: "source", value: "1")
     
     NetworkManager().request(params: params) { data in
@@ -134,7 +134,7 @@ class VerificationCodeController: BaseViewController {
     params.set(key: "message", value: message)
     params.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "")
     params.set(key: "from_email", value: Defaults.shared.get(for: .sendEmail) ?? "")
-    params.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "client_id", value: CLIENT_ID)
     
     mapParams.set(key: "params", value: params.result,type:.map(1))
     
@@ -207,7 +207,7 @@ class VerificationCodeController: BaseViewController {
     data.set(key: "message", value: "Your OTP is \(self.otpCode). Please enter the OTP within 2 minutes")
     data.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
     data.set(key: "from_email", value: Defaults.shared.get(for: .sendEmail) ?? "")
-    data.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    data.set(key: "clientId", value: CLIENT_ID)
     
     params.set(key: "params", value: data.result, type: .map(1))
     
@@ -227,7 +227,7 @@ class VerificationCodeController: BaseViewController {
     let params = SOAPParams(action: .Client, path: .changeClientUserInfo)
     
     let data = SOAPDictionary()
-    data.set(key: "id", value: Defaults.shared.get(for: .clientId) ?? "")
+    data.set(key: "id", value: CLIENT_ID)
     data.set(key: "mobile", value: source)
     
     params.set(key: "data", value: data.result, type: .map(1))
@@ -247,7 +247,7 @@ class VerificationCodeController: BaseViewController {
     let params = SOAPParams(action: .Client, path: .changeClientUserInfo)
     
     let data = SOAPDictionary()
-    data.set(key: "id", value: Defaults.shared.get(for: .clientId) ?? "")
+    data.set(key: "id", value: CLIENT_ID)
     data.set(key: "email", value: source)
     
     params.set(key: "data", value: data.result, type: .map(1))

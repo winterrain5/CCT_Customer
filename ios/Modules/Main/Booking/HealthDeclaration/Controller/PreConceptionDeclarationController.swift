@@ -175,7 +175,7 @@ class PreConceptionDeclarationController: BaseTableController {
   func getPrePartumItems() -> Promise<PrePartumModel> {
     Promise.init { resolver in
       let params = SOAPParams(action: .questionnaireSurvey, path: .getPrePartumItems)
-      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+      params.set(key: "clientId", value: CLIENT_ID)
       params.set(key: "category", value: 4)
       NetworkManager().request(params: params) { data in
         if let model = DecodeManager.decodeObjectByHandJSON(PrePartumModel.self, from: data) {

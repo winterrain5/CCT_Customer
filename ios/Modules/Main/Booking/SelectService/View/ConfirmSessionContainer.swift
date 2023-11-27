@@ -100,7 +100,7 @@ class ConfirmSessionContainer: UIView {
       guard let todayModel = todayModel else {
         return
       }
-      let date = todayModel.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
+      let date = todayModel.date
       titleLabel.text = todayModel.alias_name
       
       if todayModel.wellness_treatment_type == "2" { // treatment
@@ -200,9 +200,11 @@ class ConfirmSessionContainer: UIView {
         todayModel.id = self.model?.booking_id ?? ""
         todayModel.booking_order_time_id = self.model?.booking_id ?? ""
         self.changeTStatus(todayModel: todayModel, formType: self.model?.health_declaration_form_type ?? 0)
+      }else {
+        Toast.showError(withStatus: "Save Failed")
       }
     } errorHandler: { e in
-      
+      Toast.showError(withStatus: "Save Failed")
     }
   }
   func saveTOnlineBookingData() {
@@ -227,7 +229,7 @@ class ConfirmSessionContainer: UIView {
     let data = SOAPDictionary()
     
     let user = Defaults.shared.get(for: .userModel) ?? UserModel()
-    let clientId = Defaults.shared.get(for: .clientId) ?? ""
+    let clientId = CLIENT_ID
     let client_data = SOAPDictionary()
     client_data.set(key: "client_id", value: clientId)
     client_data.set(key: "first_name", value: user.first_name)
@@ -318,7 +320,7 @@ class ConfirmSessionContainer: UIView {
 
     let params = SOAPParams(action: .Notifications, path: .newCreateAppointment)
     params.set(key: "service", value: model.service_name)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     params.set(key: "bookingId", value: bookingId)
     NetworkManager().request(params: params) { data in
      

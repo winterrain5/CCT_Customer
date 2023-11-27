@@ -32,7 +32,7 @@ class BookingInProgressView: UIView {
         return
       }
       nameLabel.text = today.alias_name
-      if let date = today.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss") {
+      if let date = today.date {
         dateLabel.text = date.string(withFormat: "dd MMM yyyy,EEE - ").appending(date.timeString(ofStyle: .short))
       }
       if today.wellness_or_treatment == "2" {

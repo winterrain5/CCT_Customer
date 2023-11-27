@@ -139,7 +139,7 @@ class ChildDeclarationController: BaseTableController {
   func getUserTAllItems() -> Promise<ChildDeclarationModel> {
     Promise.init { resolver in
       let params = SOAPParams(action: .questionnaireSurvey, path: .getKidsMassageItems)
-      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+      params.set(key: "clientId", value: CLIENT_ID)
       params.set(key: "category", value: "7")
       NetworkManager().request(params: params) { data in
         if let model = DecodeManager.decodeObjectByHandJSON(ChildDeclarationModel.self, from: data) {

@@ -33,6 +33,17 @@ class BookingUpComingModel: BookingBaseModel{
   var employee_last_name: String = ""
   var rate: String = ""
   var remark: String = ""
+  
+  var date:Date? {
+    var date:Date?
+    if let start_time = start_time.date(withFormat: "yyyy-MM-dd HH:mm:ss") {
+     date = start_time
+    } else {
+     date = therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
+    }
+    return date
+  }
+
  
   var cellHeight:CGFloat {
     if staff_is_random == "2" {

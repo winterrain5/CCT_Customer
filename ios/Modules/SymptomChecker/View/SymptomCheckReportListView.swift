@@ -47,7 +47,7 @@ class SymptomCheckReportListView: UIView ,UITableViewDelegate,UITableViewDataSou
   func loadData() {
     Toast.showLoading()
     let params = SOAPParams(action: .SymptomCheck, path: .getSymptomCheckReports)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     params.set(key: "start", value: 1)
     params.set(key: "length", value: 1000)
     NetworkManager().request(params: params) { data in

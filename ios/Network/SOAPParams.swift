@@ -7,6 +7,9 @@
 
 import UIKit
 
+let CLIENT_ID = Defaults.shared.get(for: .clientId) ?? ""
+//let CLIENT_ID = 70627
+
 enum SOAPParamsType {
   case map(Int = 0)
   case string

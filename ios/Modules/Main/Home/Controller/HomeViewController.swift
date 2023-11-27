@@ -85,7 +85,7 @@ class HomeViewController: BaseViewController {
   
   func editClientRecharge() {
     let param = SOAPParams(action: .Client, path: .editClientRecharge)
-    param.set(key: "clientId", value: Defaults.shared.get(for: .clientId))
+    param.set(key: "clientId", value: CLIENT_ID)
     NetworkManager().request(params: param) { data in
       
     } errorHandler: { e in
@@ -125,7 +125,7 @@ class HomeViewController: BaseViewController {
     params.set(key: "categoryId", value: 0)
     params.set(key: "limit", value: 4)
     params.set(key: "filterKeys", value: 0)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     let search = SOAPDictionary()
     params.set(key: "searchData", value: search.result, type: .map(1))
     
@@ -145,7 +145,7 @@ class HomeViewController: BaseViewController {
     Promise.init { resolver in
       
       let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
-      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+      params.set(key: "clientId", value: CLIENT_ID)
       
       NetworkManager().request(params: params) { data in
         if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
@@ -228,7 +228,7 @@ class HomeViewController: BaseViewController {
   func getNewReCardAmount() {
     
     let params = SOAPParams(action: .Voucher, path: .getNewReCardAmountByClientId)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     NetworkManager().request(params: params) { data in
       self.contentView.money = String(data: data, encoding: .utf8)?.formatMoney().dolar ?? ""
     } errorHandler: { e in
@@ -238,7 +238,7 @@ class HomeViewController: BaseViewController {
   
   func getUnreadMessageCount() {
     let params = SOAPParams(action: .Notifications, path: .getUnreadCount)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     NetworkManager().request(params: params) { data in
       if let count = String(data: data, encoding: .utf8)?.int {
         Defaults.shared.set(count, for: .unReadMessageCount)
@@ -255,7 +255,7 @@ class HomeViewController: BaseViewController {
   func getTodaySession() -> Promise<[BookingTodayModel]>{
     Promise.init { resolver in
       let params = SOAPParams(action: .BookingOrder, path: .getClientBookedServices)
-      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+      params.set(key: "clientId", value: CLIENT_ID)
       params.set(key: "date", value: Date().string(withFormat: "yyyy-MM-dd"))
       NetworkManager().request(params: params) { data in
         if let models = DecodeManager.decodeArrayByHandJSON(BookingTodayModel.self, from: data) {
@@ -272,7 +272,7 @@ class HomeViewController: BaseViewController {
   func getUpComingSession() -> Promise<[BookingUpComingModel]>{
     Promise.init { resolver in
       let params = SOAPParams(action: .ClientProfile, path: .getTUpcomingAppointments)
-      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+      params.set(key: "clientId", value: CLIENT_ID)
       params.set(key: "startDateTime", value: Date().tomorrow.string(withFormat: "yyyy-MM-dd").appending(" 00:00:00"))
       params.set(key: "wellnessType", value: "")
       params.set(key: "start", value: 1)

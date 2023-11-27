@@ -19,7 +19,7 @@ class BookingCompletedCell: UITableViewCell {
   @IBOutlet weak var itemsLabel: UILabel!
   var model:BookingCompleteModel! {
     didSet {
-      let date = model.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
+      let date = model.date
       if let dateformates = date?.string(withFormat: "MMM yyyy dd EEE").split(separator: " ") {
         yearMonthLabel.text = dateformates[0] + " " + dateformates[1]
         dayLabel.text = String(dateformates[2])

@@ -35,7 +35,7 @@ class BlogBoardsController: BaseCollectionController,UICollectionViewDelegateFlo
   
   override func refreshData() {
     let params = SOAPParams(action: .Blog, path: API.getClientBoards)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     NetworkManager().request(params: params) { data in
       guard let models = DecodeManager.decodeByCodable([BlogBoardModel].self, from: data) else {
         return
@@ -53,7 +53,7 @@ class BlogBoardsController: BaseCollectionController,UICollectionViewDelegateFlo
     let data = SOAPDictionary()
     data.set(key: "id", value: 0)
     data.set(key: "name", value: name)
-    data.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
+    data.set(key: "client_id", value: CLIENT_ID)
     params.set(key: "data", value: data.result,type: .map(1))
     NetworkManager().request(params: params) { data in
       self.createBoardView.dismiss()

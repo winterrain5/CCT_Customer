@@ -21,16 +21,10 @@ class UpcomingSessionCell: UICollectionViewCell {
   @IBOutlet weak var genderImageView: UIImageView!
   var model:BookingUpComingModel! {
     didSet {
+
       
-      var date:Date?
-      if let start_time = model.start_time.date(withFormat: "yyyy-MM-dd HH:mm:ss") {
-       date = start_time
-      } else {
-       date = model.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
-      }
-      
-      timeLabel.text = date?.timeString(ofStyle: .short)
-      dateLabel.text = date?.string(withFormat: "dd MMM yyyy,EEE")
+      timeLabel.text = model.date?.timeString(ofStyle: .short)
+      dateLabel.text = model.date?.string(withFormat: "dd MMM yyyy,EEE")
       
       nameLabel.text = model.alias_name
       employeeNameLabel.text = model.employee_first_name + " " + model.employee_last_name

@@ -9,7 +9,7 @@ import UIKit
 
 class BookingTodayModel: BookingBaseModel {
   var id: String = ""
-  
+  var start_time: String = ""
   var booking_order_time_id = ""
   var room_id: String = ""
   var caption: String = ""
@@ -33,6 +33,16 @@ class BookingTodayModel: BookingBaseModel {
   
   var employee_first_name:String = ""
   var employee_last_name:String = ""
+  
+  var date:Date? {
+    var date:Date?
+    if let start_time = start_time.date(withFormat: "yyyy-MM-dd HH:mm:ss") {
+     date = start_time
+    } else {
+     date = therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
+    }
+    return date
+  }
 
   
   var cellHeight:CGFloat {

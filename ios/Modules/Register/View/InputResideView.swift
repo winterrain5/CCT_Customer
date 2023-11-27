@@ -176,7 +176,7 @@ class InputResideView: UIView,UITextFieldDelegate {
     params.set(key: "message", value: message)
     params.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "")
     params.set(key: "from_email", value: Defaults.shared.get(for: .sendEmail) ?? "")
-    params.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "client_id", value: CLIENT_ID)
     
     mapParams.set(key: "params", value: params.result, type: .map(1))
     

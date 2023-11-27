@@ -75,7 +75,7 @@ class ShopViewController: BaseTableController {
     Promise.init { resolver in
       let params = SOAPParams(action: .Product, path: .getNewFeaturedProducts)
       params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
-      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+      params.set(key: "clientId", value: CLIENT_ID)
       params.set(key: "isFeatured", value: 0)
       params.set(key: "isNew", value: 1)
       params.set(key: "isOnline", value: 1)
@@ -96,7 +96,7 @@ class ShopViewController: BaseTableController {
   func getRecentViewedProducts() -> Promise<Void> {
     Promise.init { resolver in
       let params = SOAPParams(action: .Product, path: .getRecentViewedProduct)
-      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+      params.set(key: "clientId", value: CLIENT_ID)
       params.set(key: "isOnline", value: 1)
       params.set(key: "limit", value: 4)
       NetworkManager().request(params: params) { data in
@@ -116,7 +116,7 @@ class ShopViewController: BaseTableController {
     Promise.init { resolver in
       let params = SOAPParams(action: .Product, path: .getNewFeaturedProducts)
       params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
-      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+      params.set(key: "clientId", value: CLIENT_ID)
       params.set(key: "isFeatured", value: 1)
       params.set(key: "isNew", value: "false")
       params.set(key: "isOnline", value: 1)
@@ -137,7 +137,7 @@ class ShopViewController: BaseTableController {
 
   func getCartCount() {
     let params = SOAPParams(action: .Cart, path: .getCartCount)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     NetworkManager().request(params: params) { data in
       self.basketButton.badgeValue = String(data: data, encoding: .utf8) ?? "0"
     } errorHandler: { e in

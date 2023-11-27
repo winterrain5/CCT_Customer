@@ -116,7 +116,7 @@ class FeedbackFormContainer: UIView,UITextFieldDelegate,TTGTextTagCollectionView
   @IBAction func submitButtonAction(_ sender: LoadingButton) {
     let params = SOAPParams(action: .Sale, path: .saveServiceReview)
     params.set(key: "bookingTimeId", value: bookingTimeId)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     
     let data = SOAPDictionary()
     data.set(key: "store_experience_rating", value: q1Index ?? 0 + 1)

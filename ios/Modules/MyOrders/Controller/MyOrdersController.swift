@@ -41,7 +41,7 @@ class MyOrdersController: BaseTableController {
       emptyStr = "You have no cancelled order recently"
     }
     let params = SOAPParams(action: .ClientProfile, path: path)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeByCodable([MyOrderModel].self, from: data) {

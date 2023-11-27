@@ -21,8 +21,8 @@ class TodayWellnessCheckSessionCell: UICollectionViewCell {
   @IBOutlet weak var bottomLabelTopCons: NSLayoutConstraint!
   var model:BookingTodayModel! {
     didSet {
-      let date = model.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
-      timeLabel.text = date?.timeString(ofStyle: .short)
+   
+      timeLabel.text = model.date?.timeString(ofStyle: .short)
       locationLabel.text = model.location_alias_name.isEmpty ? model.location_name : model.location_alias_name
       nameLabel.text = model.alias_name
       employeeNameLabel.text = model.staff_name

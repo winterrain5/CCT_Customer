@@ -90,7 +90,7 @@ class BlogFilterView: UIView,UITableViewDelegate,UITableViewDataSource {
     for (i,item) in updatefilter.enumerated() {
       data.set(key: i.string, value: item.id ?? "")
     }
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     params.set(key: "data", value: data.result,type: .map(1))
     NetworkManager().request(params: params) { data in
      

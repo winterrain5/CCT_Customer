@@ -181,7 +181,7 @@ class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
   func checkHasDefaultBoards() {
     Toast.showLoading()
     let params = SOAPParams(action: .Blog, path: API.checkHasDefaultBoards)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     NetworkManager().request(params: params) { data in
       self.getBoardsForAddBlog()
     } errorHandler: { e in
@@ -192,7 +192,7 @@ class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
   
   func getBoardsForAddBlog() {
     let params = SOAPParams(action: .Blog, path: API.getBoardsForAddBlog)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     NetworkManager().request(params: params) { data in
       Toast.dismiss()
       guard let boards = DecodeManager.decodeByCodable([BlogBoardModel].self, from: data) else {
@@ -237,7 +237,7 @@ class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
     let data = SOAPDictionary()
     data.set(key: "id", value: 0)
     data.set(key: "name", value: name)
-    data.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
+    data.set(key: "client_id", value: CLIENT_ID)
     params.set(key: "data", value: data.result,type: .map(1))
     NetworkManager().request(params: params) { data in
       EntryKit.dismiss {
@@ -301,7 +301,7 @@ class HomeContainer: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
   }
   @IBAction func bookAppointmentAction(_ sender: Any) {
     let params = SOAPParams(action: .Client, path: .getClientCancelCount)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     
     Toast.showLoading()
     NetworkManager().request(params: params) { data in

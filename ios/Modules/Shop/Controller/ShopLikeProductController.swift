@@ -17,7 +17,7 @@ class ShopLikeProductController: BaseTableController {
   
   override func refreshData() {
     let params = SOAPParams(action: .Product, path: .getLikeProduct)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     showSkeleton()
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeArrayByHandJSON(ShopProductModel.self, from: data) {

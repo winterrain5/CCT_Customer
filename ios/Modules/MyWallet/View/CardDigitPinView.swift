@@ -254,7 +254,7 @@ class CardDigitPinContentView: UIView {
     
     confirmButton.startAnimation()
     let params = SOAPParams(action: .Client, path: .saveTpd)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     params.set(key: "pd", value: self.pin)
     NetworkManager().request(params: params) { data in
       self.confirmHandler?(self.pin)

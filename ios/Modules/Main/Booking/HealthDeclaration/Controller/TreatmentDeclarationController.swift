@@ -86,7 +86,7 @@ class TreatmentDeclarationController: BaseTableController {
   func getUsertems() -> Promise<[HealthDeclarationModel]> {
     Promise.init { resolver in
       let params = SOAPParams(action: .questionnaireSurvey, path: .getTAllItems)
-      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+      params.set(key: "clientId", value: CLIENT_ID)
       params.set(key: "category", value: 3)
       params.set(key: "gender", value: Defaults.shared.get(for: .userModel)?.gender ?? "")
       NetworkManager().request(params: params) { data in

@@ -45,7 +45,7 @@ class ConditionWeTreatController: BaseViewController,WKNavigationDelegate {
   
   @objc func bookAppointmentAction() {
     let params = SOAPParams(action: .Client, path: .getClientCancelCount)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     
     Toast.showLoading()
     NetworkManager().request(params: params) { data in

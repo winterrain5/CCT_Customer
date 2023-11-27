@@ -36,7 +36,7 @@ class WalletCardController: BaseViewController {
   func getClientPartInfo() {
     
     let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
         
@@ -52,7 +52,7 @@ class WalletCardController: BaseViewController {
   func getNewReCardAmount() {
     
     let params = SOAPParams(action: .Voucher, path: .getNewReCardAmountByClientId)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     NetworkManager().request(params: params) { data in
       self.container.money = String(data: data, encoding: .utf8)?.formatMoney().dolar ?? ""
     } errorHandler: { e in

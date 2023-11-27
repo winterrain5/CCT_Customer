@@ -253,7 +253,7 @@ class WalletPurchaseNewcardAmounttContainer: UIView,UITextFieldDelegate {
       let data = SOAPDictionary()
       
       let clientInfo = SOAPDictionary()
-      clientInfo.set(key: "id", value: Defaults.shared.get(for: .clientId) ?? "")
+      clientInfo.set(key: "id", value: CLIENT_ID)
       clientInfo.set(key: "pay_password", value: self.payPd)
       clientInfo.set(key: "create_uid", value: Defaults.shared.get(for: .userModel)?.user_id ?? "")
       data.set(key: "Client_Info", value: clientInfo.result, keyType: .string, valueType: .map(1))
@@ -261,7 +261,7 @@ class WalletPurchaseNewcardAmounttContainer: UIView,UITextFieldDelegate {
       let orderInfo = SOAPDictionary()
       orderInfo.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
       orderInfo.set(key: "location_id", value: Defaults.shared.get(for: .companyId) ?? "97")
-      orderInfo.set(key: "customer_id", value: Defaults.shared.get(for: .clientId) ?? "")
+      orderInfo.set(key: "customer_id", value: CLIENT_ID)
       orderInfo.set(key: "subtotal", value: topUpAmount)
       orderInfo.set(key: "total", value: topUpAmount)
       orderInfo.set(key: "category", value: 2)
@@ -318,7 +318,7 @@ class WalletPurchaseNewcardAmounttContainer: UIView,UITextFieldDelegate {
       let vouchers = SOAPDictionary()
       let vouchers_0 = SOAPDictionary()
       
-      vouchers_0.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
+      vouchers_0.set(key: "client_id", value: CLIENT_ID)
       let uuid = UUID(uuidString: Date().second.string)?.uuidString ?? ""
       vouchers_0.set(key: "voucher_code", value: "1" + uuid.md5)
       vouchers_0.set(key: "voucher_manual_code", value: "")
@@ -384,7 +384,7 @@ class WalletPurchaseNewcardAmounttContainer: UIView,UITextFieldDelegate {
   func getClientVipLevel() -> Promise<Void> {
     Promise.init { resolver in
       let params = SOAPParams(action: .Sale, path: .getClientVipLevel)
-      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+      params.set(key: "clientId", value: CLIENT_ID)
 #if DEBUG
       Toast.showLoading(withStatus: params.path)
 #endif
@@ -554,7 +554,7 @@ class WalletPurchaseNewcardAmounttContainer: UIView,UITextFieldDelegate {
   /// 以下是通知
   func topupNotification()  {
     let params = SOAPParams(action: .Notifications, path: .topupNote,isNeedToast: false)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     params.set(key: "amount", value: topUpAmount)
     NetworkManager().request(params: params) { data in
       self.deductionCreditsNotification()
@@ -565,7 +565,7 @@ class WalletPurchaseNewcardAmounttContainer: UIView,UITextFieldDelegate {
   
   func deductionCreditsNotification()  {
     let params = SOAPParams(action: .Notifications, path: .deductionCreditsNote,isNeedToast: false)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     params.set(key: "amount", value: topUpAmount)
     params.set(key: "orderNo", value: orderDetailModel?.Order_Info?.invoice_no ?? "")
     NetworkManager().request(params: params) { data in
@@ -578,7 +578,7 @@ class WalletPurchaseNewcardAmounttContainer: UIView,UITextFieldDelegate {
   
   func getLeveUp()  {
     let params = SOAPParams(action: .Client, path: .getTClientPartInfo,isNeedToast: false)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     
     NetworkManager().request(params: params) { data in
       if let newModel = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data),let oldModel = Defaults.shared.get(for: .userModel),newModel.new_recharge_card_level != oldModel.new_recharge_card_level {
@@ -607,7 +607,7 @@ class WalletPurchaseNewcardAmounttContainer: UIView,UITextFieldDelegate {
   
   func upgradedTierLevel(user:UserModel,discount:String) {
     let params = SOAPParams(action: .Notifications, path: .upgradedTierLevel)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
+    params.set(key: "clientId", value: CLIENT_ID)
     params.set(key: "level", value: user.new_recharge_card_level)
     params.set(key: "discount", value: discount)
     NetworkManager().request(params: params) { data in

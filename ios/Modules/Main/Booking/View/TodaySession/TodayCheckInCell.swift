@@ -20,8 +20,8 @@ class TodayCheckInCell: UICollectionViewCell {
   @IBOutlet weak var employeeView: UIView!
   var model:BookingTodayModel! {
     didSet {
-      let date = model.therapy_start_date.date(withFormat: "yyyy-MM-dd HH:mm:ss")
-      timeLabel.text = date?.timeString(ofStyle: .short)
+     
+      timeLabel.text = model.date?.timeString(ofStyle: .short)
       employeeNameLabel.text = model.staff_name
       nameLabel.text = model.alias_name
       employeeView.isHidden = model.staff_is_random == "1"

@@ -135,7 +135,7 @@ class ShopCheckOutFooterView: UIView {
   
   func getClientInfo(_ isPayUser:Bool = true) {
     let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
         Defaults.shared.set(model, for: .userModel)
@@ -157,7 +157,7 @@ class ShopCheckOutFooterView: UIView {
   /// 获取余额
   func getUserAmount() {
     let params = SOAPParams(action: .Voucher, path: .getNewReCardAmountByClientId)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     NetworkManager().request(params: params) { data in
       let banlance = (String(data: data, encoding: .utf8) ?? "")
@@ -539,7 +539,7 @@ class ShopCheckOutFooterView: UIView {
   func getValidNewVouchers() {
     let params = SOAPParams(action: .ClientProfile, path: .getValidNewVouchers)
     if methodType == 0 {
-      params.set(key: "clientId", value: CLIENT_ID)
+      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     }else {
       params.set(key: "clientId", value: selectPayMethod?.card_owner_id ?? "")
     }
@@ -561,7 +561,7 @@ class ShopCheckOutFooterView: UIView {
   
   func getClientVipLevel() {
     let params = SOAPParams(action: .Sale, path: .getClientVipLevel)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
 #if DEBUG
     Toast.showLoading(withStatus: params.path)
 #else
@@ -1035,7 +1035,7 @@ class ShopCheckOutFooterView: UIView {
   /// 清空购物车
   func deleteAllCart(complete:@escaping ()->()) {
     let params = SOAPParams(action: .Cart, path: .delAllCart)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     let goodsArr = SOAPDictionary()
     orderDetail?.Order_Line_Info?.enumerated().forEach({ i,e in
@@ -1057,7 +1057,7 @@ class ShopCheckOutFooterView: UIView {
   
   func deductionCreditsNote() {
     let params = SOAPParams(action: .Notifications, path: .deductionCreditsNote)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "amount", value: total_pay)
     params.set(key: "orderNo", value: orderDetail?.Order_Info?.invoice_no ?? "")
     NetworkManager().request(params: params) { data in
@@ -1072,7 +1072,7 @@ class ShopCheckOutFooterView: UIView {
   func friendCardPayNotification() {
 
     let params = SOAPParams(action: .Notifications, path: .friendUseD)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "friendId", value: selectPayMethod?.card_owner_id ?? "")
     params.set(key: "orderId", value: orderId)
     params.set(key: "consume", value: total_pay)

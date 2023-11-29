@@ -161,7 +161,7 @@ class ProductLeaveReviewSheetContentView: UIView,UITableViewDelegate,UITableView
     if models.count == 0 { return }
     guard let model = models.first else { return }
     params.set(key: "productId", value: model.product_id ?? "")
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     let data = SOAPDictionary()
     data.set(key: "rating", value: starCount)

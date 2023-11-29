@@ -24,7 +24,7 @@ class WalletTransactionsController: BasePagingTableController {
   
   override func refreshData() {
     let params = SOAPParams(action: .ClientProfile, path: .getTInvoicesForApp)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "isHistory", value: "1")
     params.set(key: "orderType", value: "0")
     params.set(key: "start", value: page)

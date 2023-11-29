@@ -96,7 +96,7 @@ class ForgetPwdSheetView: UIView {
     Promise.init { resolver in
       let params = SOAPParams(action: .User, path: .saveFindPasswordUUID)
       let data = SOAPDictionary()
-      data.set(key: "client_id", value: CLIENT_ID)
+      data.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
       data.set(key: "uuid", value: uuid)
       data.set(key: "status", value: "1")
       
@@ -150,7 +150,7 @@ class ForgetPwdSheetView: UIView {
       
       data.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
       data.set(key: "from_email", value: email)
-      data.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "0")
+      data.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       
       params.set(key: "params", value: data.result, type: .map(1))
       

@@ -39,7 +39,7 @@ class ShopViewAllController: BaseTableController {
   func getNewFeaturedProducts()  {
     let params = SOAPParams(action: .Product, path: .getNewFeaturedProducts)
     params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "isFeatured", value: 0)
     params.set(key: "isNew", value: 1)
     params.set(key: "isOnline", value: 1)
@@ -58,7 +58,7 @@ class ShopViewAllController: BaseTableController {
   
   func getRecentViewedProducts() {
     let params = SOAPParams(action: .Product, path: .getRecentViewedProduct)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "isOnline", value: 1)
     params.set(key: "limit", value: 1000)
     NetworkManager().request(params: params) { data in

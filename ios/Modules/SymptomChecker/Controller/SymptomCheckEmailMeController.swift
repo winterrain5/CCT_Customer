@@ -56,7 +56,7 @@ class SymptomCheckEmailMeController: BaseTableController {
   
   func getUserInfo() {
     let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
         self.userModel = model
@@ -170,7 +170,7 @@ class SymptomCheckEmailMeController: BaseTableController {
   
       content.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
       content.set(key: "from_email", value: email)
-      content.set(key: "client_id", value: CLIENT_ID)
+      content.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
       
       params.set(key: "params", value: content.result, type: .map(1))
       

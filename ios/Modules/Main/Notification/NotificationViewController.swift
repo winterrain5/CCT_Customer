@@ -42,7 +42,7 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
   
   func getClientCategory() {
     let params = SOAPParams(action: .Notifications, path: .getClientCategory)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(ClientCategoryModel.self, from: data) {
@@ -101,7 +101,7 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
     }
     
     params.set(key: "cateIds", value: ids.result, type: .map(1))
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     NetworkManager().request(params: params) { data in
       
@@ -155,7 +155,7 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
   
   func getNotices() {
     let params = SOAPParams(action: .Notifications, path: .getNotices)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     let filters = SOAPDictionary()
     filterIds.enumerated().forEach { i,e in
@@ -203,7 +203,7 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
   
   func getUnreadMessageCount() {
     let params = SOAPParams(action: .Notifications, path: .getUnreadCount)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
       if let count = String(data: data, encoding: .utf8)?.int {
         Defaults.shared.set(count, for: .unReadMessageCount)
@@ -449,7 +449,7 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
   }
   func checkWallet(_ model:NotificationModel,_ button:LoadingButton) {
     let params = SOAPParams(action: .Voucher, path: .getCardFriends)
-    params.set(key: "ownerId", value: CLIENT_ID)
+    params.set(key: "ownerId", value: Defaults.shared.get(for: .clientId) ?? "")
     button.startAnimation()
     NetworkManager().request(params: params) { data in
       button.stopAnimation()
@@ -498,7 +498,7 @@ class NotificationViewController: BaseTableController,UIGestureRecognizerDelegat
     
     let data = SOAPDictionary()
     data.set(key: "owner_id", value: model.owner_id)
-    data.set(key: "gainer_id", value: CLIENT_ID)
+    data.set(key: "gainer_id", value: Defaults.shared.get(for: .clientId) ?? "")
     data.set(key: "status", value: authStatus.string)
     data.set(key: "owner_remark", value: "")
     

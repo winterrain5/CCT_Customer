@@ -55,7 +55,7 @@ class MadamPartumProductCell: MadamPartumCell {
   
   func saveLikeProduct(_ model:ShopProductModel) {
     let params = SOAPParams(action: .Product, path: .saveLikeProduct)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "productId", value: model.id)
     
     NetworkManager().request(params: params) { data in
@@ -68,7 +68,7 @@ class MadamPartumProductCell: MadamPartumCell {
   
   func deleteLikeProduct(_ model:ShopProductModel) {
     let params = SOAPParams(action: .Product, path: .deleteLikeProduct)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "productId", value: model.id)
     
     NetworkManager().request(params: params) { data in

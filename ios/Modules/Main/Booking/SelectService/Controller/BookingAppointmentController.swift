@@ -632,7 +632,7 @@ extension BookingAppointmentController {
   func checkCanBookService(sender:LoadingButton) {
     
     let params = SOAPParams(action: .BookingOrder, path: .checkCanBookService)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     let startTime = self.selectedDate?.appending(" ").appending(self.selectedTime ?? "").appending(":00") ?? ""
     params.set(key: "startTime", value: self.selectedDate?.appending(" ").appending(self.selectedTime ?? "").appending(":00") ?? "")
     
@@ -660,7 +660,7 @@ extension BookingAppointmentController {
   /// 非指定预约检查是否可以预约
   func checkRandomBookService(sender:LoadingButton) {
     let params = SOAPParams(action: .BookingOrder, path: .checkRandomBookService)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     let startTime = self.selectedDate?.appending(" ").appending(self.selectedTime ?? "").appending(":00") ?? ""
     params.set(key: "startTime", value: self.selectedDate?.appending(" ").appending(self.selectedTime ?? "").appending(":00") ?? "")
     
@@ -692,7 +692,7 @@ extension BookingAppointmentController {
   
   func checkHasConsultation(sender:LoadingButton) {
     let params = SOAPParams(action: .BookingOrder, path: .checkConsulted)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "locationId", value: selectCompany?.id ?? "")
     params.set(key: "date", value: self.selectedDate ?? "")
     
@@ -750,7 +750,7 @@ extension BookingAppointmentController {
   
   func getLastSymptomCheckReport() {
     let params = SOAPParams(action: .SymptomCheck, path: .getLastSymptomCheckReport)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "date", value: Date().string(withFormat: "yyyy-MM-dd"))
     
     NetworkManager().request(params: params) { data in

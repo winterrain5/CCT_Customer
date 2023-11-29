@@ -87,7 +87,7 @@ class WalletAddUserController: BaseTableController {
     let params = SOAPParams(action: .Voucher, path: .saveCardFriend)
     
     let data = SOAPDictionary()
-    data.set(key: "card_owner_id", value: CLIENT_ID)
+    data.set(key: "card_owner_id", value: Defaults.shared.get(for: .clientId) ?? "")
     data.set(key: "owner_remark", value: remark)
     data.set(key: "friend_id", value: model.id ?? "")
     data.set(key: "trans_limit", value: -1)
@@ -112,7 +112,7 @@ class WalletAddUserController: BaseTableController {
   func addUserNotification(_ model:MatchPhoneModel) {
     let params = SOAPParams(action: .Notifications, path: .cardNotice)
     
-    params.set(key: "ownerId", value: CLIENT_ID)
+    params.set(key: "ownerId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "gainerId", value: model.id ?? "")
     
     NetworkManager().request(params: params) { data in

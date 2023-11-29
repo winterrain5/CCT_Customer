@@ -73,7 +73,7 @@ class ShopCartController: BaseTableController {
       return
     }
     let params = SOAPParams(action: .Cart, path: .getTCart)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeArrayByHandJSON(ShopCartModel.self, from: data) {
         self.dataArray = models
@@ -173,7 +173,7 @@ class ShopCartController: BaseTableController {
 
   func updateGoodCount(_ model:ShopCartModel) {
     let params = SOAPParams(action: .Cart, path: .saveClientCart)
-    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "0")
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "goodsId", value: model.goods_id)
     params.set(key: "goodsNum", value: model.goods_num)
     NetworkManager().request(params: params) { data in
@@ -185,7 +185,7 @@ class ShopCartController: BaseTableController {
   
   func deleteProduct(_ model:ShopCartModel) {
     let params = SOAPParams(action: .Cart, path: .delClientCart)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "goodsId", value: model.goods_id)
     Toast.showLoading()
     NetworkManager().request(params: params) { data in
@@ -275,7 +275,7 @@ class ShopCartController: BaseTableController {
       let orderInfo = SOAPDictionary()
       orderInfo.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
       orderInfo.set(key: "location_id", value: Defaults.shared.get(for: .companyId) ?? "97")
-      orderInfo.set(key: "customer_id", value: CLIENT_ID)
+      orderInfo.set(key: "customer_id", value: Defaults.shared.get(for: .clientId) ?? "")
       orderInfo.set(key: "subtotal", value: updateFooterViewData())
       orderInfo.set(key: "total", value: updateFooterViewData())
       orderInfo.set(key: "category", value: 2)

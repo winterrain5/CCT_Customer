@@ -115,7 +115,7 @@ class BookingViewController: BaseViewController {
   
   func getClientBookedService() {
     let params = SOAPParams(action: .BookingOrder, path: .getClientBookedServices)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "date", value: Date().string(withFormat: "yyyy-MM-dd"))
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeArrayByHandJSON(BookingTodayModel.self, from: data) {
@@ -160,7 +160,7 @@ class BookingViewController: BaseViewController {
   
   func getClientCancelCount() {
     let params = SOAPParams(action: .Client, path: .getClientCancelCount)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     Toast.showLoading()
     NetworkManager().request(params: params) { data in

@@ -40,7 +40,7 @@ class WalletDetailController: BaseTableController {
   func getClientPartInfo() {
     
     let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
         
@@ -57,7 +57,7 @@ class WalletDetailController: BaseTableController {
   func getNewReCardAmount() {
     
     let params = SOAPParams(action: .Voucher, path: .getNewReCardAmountByClientId)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
       self.headerView.card.money = String(data: data, encoding: .utf8)?.formatMoney().dolar ?? ""
     } errorHandler: { e in
@@ -86,7 +86,7 @@ class WalletDetailController: BaseTableController {
   func getFriendCard() -> Promise<[CardOwnerModel]>{
     Promise.init { resolver in
       let params = SOAPParams(action: .Voucher, path: .getFriendsCard)
-      params.set(key: "clientId", value: CLIENT_ID)
+      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       NetworkManager().request(params: params) { data in
         if let models = DecodeManager.decodeArrayByHandJSON(CardOwnerModel.self, from: data) {
           models.forEach({ $0.isFriendCard = true })
@@ -104,7 +104,7 @@ class WalletDetailController: BaseTableController {
   func getCardFriends() -> Promise<[CardOwnerModel]>{
     Promise.init { resolver in
       let params = SOAPParams(action: .Voucher, path: .getCardFriends)
-      params.set(key: "ownerId", value: CLIENT_ID)
+      params.set(key: "ownerId", value: Defaults.shared.get(for: .clientId) ?? "")
       NetworkManager().request(params: params) { data in
         if let models = DecodeManager.decodeArrayByHandJSON(CardOwnerModel.self, from: data) {
           models.forEach({ $0.isFriendCard = false })
@@ -199,7 +199,7 @@ class WalletDetailController: BaseTableController {
   
   func deleteUserFromWallet(_ friendId:String) {
     let params = SOAPParams(action: .Notifications, path: .deleteUserFromWallet)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "friendId", value: friendId)
     
     NetworkManager().request(params: params) { data in

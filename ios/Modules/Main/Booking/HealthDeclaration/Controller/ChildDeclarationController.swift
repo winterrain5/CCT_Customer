@@ -139,7 +139,7 @@ class ChildDeclarationController: BaseTableController {
   func getUserTAllItems() -> Promise<ChildDeclarationModel> {
     Promise.init { resolver in
       let params = SOAPParams(action: .questionnaireSurvey, path: .getKidsMassageItems)
-      params.set(key: "clientId", value: CLIENT_ID)
+      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       params.set(key: "category", value: "7")
       NetworkManager().request(params: params) { data in
         if let model = DecodeManager.decodeObjectByHandJSON(ChildDeclarationModel.self, from: data) {
@@ -281,7 +281,7 @@ class ChildDeclarationController: BaseTableController {
     let temp = self.dataArray as! [HealthDeclarationModel]
     
     let summary_data = SOAPDictionary()
-    summary_data.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "0")
+    summary_data.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
     summary_data.set(key: "registration_id", value: 0)
     summary_data.set(key: "create_time", value: Date().string(withFormat: "yyyy-MM-dd HH:mm:ss"))
     summary_data.set(key: "create_uid", value: 1)
@@ -316,7 +316,7 @@ class ChildDeclarationController: BaseTableController {
     base_info.set(key: "race", value: temp.filter({ $0.formType == .ChildRace}).first?.result ?? "")
     base_info.set(key: "race_other", value: temp.filter({ $0.formType == .ChildRace}).first?.text ?? "")
     base_info.set(key: "purpose", value: temp.filter({ $0.formType == .PurposeOfDeclaration}).first?.result ?? "")
-    base_info.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "0")
+    base_info.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
     paediatric_massage_record.set(key: "base_info", value: base_info.result, keyType: .string, valueType: .map(1))
     
     data.set(key: "paediatric_massage_record", value: paediatric_massage_record.result, keyType: .string, valueType: .map(1))

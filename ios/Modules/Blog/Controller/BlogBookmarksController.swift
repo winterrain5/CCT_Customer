@@ -88,7 +88,7 @@ class BlogBookmarksController: BaseTableController {
     let data = SOAPDictionary()
     data.set(key: "id", value: boardModel?.id ?? "")
     data.set(key: "name", value: name)
-    data.set(key: "client_id", value: CLIENT_ID)
+    data.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "data", value: data.result,type: .map(1))
     NetworkManager().request(params: params) { data in
       EntryKit.dismiss()

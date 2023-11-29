@@ -36,7 +36,7 @@ class BookingCompletedController: BasePagingTableController {
     self.showSkeleton()
     let params = SOAPParams(action: .ClientProfile, path: .getTSlotHistoryForApp)
   
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "start", value: page)
     params.set(key: "length", value: kPageSize)
     NetworkManager().request(params: params) { data in

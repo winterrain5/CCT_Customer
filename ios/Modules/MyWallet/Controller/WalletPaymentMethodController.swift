@@ -55,7 +55,7 @@ class WalletPaymentMethodController: BaseTableController {
   override func refreshData() {
     let params = SOAPParams(action: .PaymentMethod, path: .getMethodsForApp)
     params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeArrayByHandJSON(WalletPaymentMethodModel.self, from: data),let methods = models.first?.method_lines {
@@ -176,7 +176,7 @@ class WalletPaymentMethodController: BaseTableController {
       data.set(key: "card_number", value: result.number)
       data.set(key: "expiry_date", value: result.date)
       data.set(key: "authorisation_code", value: result.cvv)
-      data.set(key: "client_id", value: CLIENT_ID)
+      data.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
                         
       params.set(key: "data", value: data.result,type: .map(1))
       

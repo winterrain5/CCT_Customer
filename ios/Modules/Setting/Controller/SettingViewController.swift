@@ -126,7 +126,7 @@ class SettingViewController: BaseTableController {
   func getSettings() -> Promise<SettingContentModel>{
     Promise.init { resolver in
       let params = SOAPParams(action: .Client, path: .getClientSettings)
-      params.set(key: "clientId", value: CLIENT_ID)
+      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       
       NetworkManager().request(params: params) { data in
         guard let model = DecodeManager.decodeByCodable(SettingContentModel.self, from: data) else {
@@ -172,7 +172,7 @@ class SettingViewController: BaseTableController {
     
     params.set(key: "logData", value: log.result,type: .map(2))
     
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     NetworkManager().request(params: params) { data in
       self.loadNewData()

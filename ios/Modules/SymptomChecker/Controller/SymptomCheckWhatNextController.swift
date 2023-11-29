@@ -38,7 +38,7 @@ class SymptomCheckWhatNextController: BaseViewController {
     
     container.bookAppointmentHandler = {
       let params = SOAPParams(action: .Client, path: .getClientCancelCount)
-      params.set(key: "clientId", value: CLIENT_ID)
+      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       
       Toast.showLoading()
       NetworkManager().request(params: params) { data in
@@ -97,7 +97,7 @@ class SymptomCheckWhatNextController: BaseViewController {
     summaryData.set(key: "symptoms_qa_id", value: getQAID(by: 1))
     summaryData.set(key: "best_describes_qa_id", value: getQAID(by: 2,isArrayString: false))
     summaryData.set(key: "pain_areas_qa_ids", value: getQAID(by: 3))
-    summaryData.set(key: "client_id", value: CLIENT_ID)
+    summaryData.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
     summaryData.set(key: "registration_id", value: 0)
     summaryData.set(key: "sign_img", value: "")
     summaryData.set(key: "create_time", value: Date().string(withFormat: "yyyy-MM-dd HH:mm:ss"))

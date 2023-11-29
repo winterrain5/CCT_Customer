@@ -44,7 +44,7 @@ class BookingUpcomingController: BasePagingTableController {
     if isFirstLoad { self.view.showSkeleton() }
     let params = SOAPParams(action: .ClientProfile, path: .getTUpcomingAppointments)
     // CLIENT_ID
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "startDateTime", value: Date().tomorrow.string(withFormat: "yyyy-MM-dd").appending(" 00:00:00"))
     params.set(key: "wellnessType", value: "")
     params.set(key: "start", value: page)
@@ -132,7 +132,7 @@ class BookingUpcomingController: BasePagingTableController {
   
   func getClientCancelCount() {
     let params = SOAPParams(action: .Client, path: .getClientCancelCount)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     Toast.showLoading()
     NetworkManager().request(params: params) { data in

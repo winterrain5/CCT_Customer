@@ -66,7 +66,7 @@ class AccountVerifyPwdSheetView: UIView {
       
       let logData = SOAPDictionary()
       logData.set(key: "ip", value: "")
-      logData.set(key: "create_uid", value: CLIENT_ID)
+      logData.set(key: "create_uid", value: Defaults.shared.get(for: .clientId) ?? "")
       
       params.set(key: "logData", value: logData.result, type: .map(2))
       

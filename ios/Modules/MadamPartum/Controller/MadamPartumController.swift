@@ -47,7 +47,7 @@ class MadamPartumController: BaseTableController {
       params.set(key: "categoryId", value: 0)
       params.set(key: "limit", value: 4)
       params.set(key: "filterKeys", value: 0)
-      params.set(key: "clientId", value: CLIENT_ID)
+      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       let search = SOAPDictionary()
       search.set(key: "cct_or_mp", value: 2)
       params.set(key: "searchData", value: search.result, type: .map(1))
@@ -68,7 +68,7 @@ class MadamPartumController: BaseTableController {
     Promise.init { resolver in
       let params = SOAPParams(action: .Product, path: API.getNewFeaturedProducts)
       params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
-      params.set(key: "clientId", value: CLIENT_ID)
+      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       params.set(key: "isFeatured", value: 1)
       params.set(key: "limit", value: 4)
       params.set(key:"isNew",value:"0");

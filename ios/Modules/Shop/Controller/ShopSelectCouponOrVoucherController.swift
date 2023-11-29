@@ -37,7 +37,7 @@ class ShopSelectCouponOrVoucherController: BaseTableController {
   /// coupons
   func getClientValidRewards() {
     let params = SOAPParams(action: .RewardDiscounts, path: .getClientValidRewards)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "isDiscount", value: "1")
     params.set(key: "exceed", value: "0")
     NetworkManager().request(params: params) { data in
@@ -58,7 +58,7 @@ class ShopSelectCouponOrVoucherController: BaseTableController {
   /// voucher
   func getClienGifts() {
     let params = SOAPParams(action: .GiftCertificate, path: .getClientGifts)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "isValid", value: "1")
     NetworkManager().request(params: params) { data in
       if let models = DecodeManager.decodeArrayByHandJSON(WalletVouchersModel.self, from: data) {

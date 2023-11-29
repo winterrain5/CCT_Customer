@@ -59,7 +59,7 @@ class CardUserDetailHeadView: UIView {
   func deleteUserFromWalletNotification() {
 
     let params = SOAPParams(action: .Notifications, path: .deleteUserFromWallet)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "friendId", value: cardUserModel?.friend_id ?? "")
     
 

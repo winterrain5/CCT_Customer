@@ -76,7 +76,7 @@ class ProfileViewController: BaseTableController {
   func getNewReCardAmount() {
     
     let params = SOAPParams(action: .Voucher, path: .getNewReCardAmountByClientId)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     NetworkManager().request(params: params) { data in
       self.headView.money = String(data: data, encoding: .utf8)?.formatMoney().dolar ?? ""
     } errorHandler: { e in

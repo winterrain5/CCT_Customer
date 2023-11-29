@@ -161,7 +161,7 @@ class CheckInTodaySessionView: UIView,UICollectionViewDataSource,UICollectionVie
   
   func getCancelCount(_ wellnessTreatment:Int) {
     let params = SOAPParams(action: .Client, path: .getClientCancelCount)
-    params.set(key: "clientId", value: CLIENT_ID)
+    params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     
     Toast.showLoading()
     NetworkManager().request(params: params) { data in

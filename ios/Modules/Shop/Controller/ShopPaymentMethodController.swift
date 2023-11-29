@@ -78,7 +78,7 @@ class ShopPaymentMethodController: BaseTableController {
         return
       }
       let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
-      params.set(key: "clientId", value: CLIENT_ID)
+      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       NetworkManager().request(params: params) { data in
         if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
           Defaults.shared.set(model, for: .userModel)
@@ -99,7 +99,7 @@ class ShopPaymentMethodController: BaseTableController {
       let model = MethodLines()
       
       let params = SOAPParams(action: .Voucher, path: .getNewReCardAmountByClientId)
-      params.set(key: "clientId", value: CLIENT_ID)
+      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       
       var level = ""
       if user.new_recharge_card_level == "0" || user.new_recharge_card_level == "1" {
@@ -134,7 +134,7 @@ class ShopPaymentMethodController: BaseTableController {
   func getFriendCard() -> Promise<Void>{
     Promise.init { resolver in
       let params = SOAPParams(action: .Voucher, path: .getFriendsCard)
-      params.set(key: "clientId", value: CLIENT_ID)
+      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       
       NetworkManager().request(params: params) { data in
         if let models = DecodeManager.decodeArrayByHandJSON(CardOwnerModel.self, from: data) {
@@ -163,7 +163,7 @@ class ShopPaymentMethodController: BaseTableController {
     Promise.init { resolver in
       let params = SOAPParams(action: .PaymentMethod, path: .getMethodsForApp)
       params.set(key: "companyId", value: Defaults.shared.get(for: .companyId) ?? "97")
-      params.set(key: "clientId", value: CLIENT_ID)
+      params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       
       NetworkManager().request(params: params) { data in
         if let models = DecodeManager.decodeArrayByHandJSON(WalletPaymentMethodModel.self, from: data),let methods = models.first?.method_lines {
@@ -271,7 +271,7 @@ class ShopPaymentMethodController: BaseTableController {
       data.set(key: "card_number", value: result.number)
       data.set(key: "expiry_date", value: result.date)
       data.set(key: "authorisation_code", value: result.cvv)
-      data.set(key: "client_id", value: CLIENT_ID)
+      data.set(key: "client_id", value: Defaults.shared.get(for: .clientId) ?? "")
                         
       params.set(key: "data", value: data.result,type: .map(1))
       

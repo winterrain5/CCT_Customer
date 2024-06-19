@@ -1,4 +1,4 @@
-module Pods_CCTIOS {
+framework module Pods_CCTIOS {
   umbrella header "Pods-CCTIOS-umbrella.h"
 
   export *

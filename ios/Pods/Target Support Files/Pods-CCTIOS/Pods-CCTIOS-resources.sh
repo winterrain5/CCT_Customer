@@ -98,13 +98,23 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/EachNavigationBar/EachNavigationBar.bundle"
+  install_resource "${PODS_ROOT}/IQKeyboardManagerSwift/IQKeyboardManagerSwift/PrivacyInfo.xcprivacy"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/JXPagingView/JXPagingView.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/JXSegmentedView/JXSegmentedView.bundle"
   install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/MJRefresh/MJRefresh.Privacy.bundle"
   install_resource "${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
+  install_resource "${PODS_ROOT}/SVProgressHUD/SVProgressHUD/PrivacyInfo.xcprivacy"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/EachNavigationBar/EachNavigationBar.bundle"
+  install_resource "${PODS_ROOT}/IQKeyboardManagerSwift/IQKeyboardManagerSwift/PrivacyInfo.xcprivacy"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/JXPagingView/JXPagingView.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/JXSegmentedView/JXSegmentedView.bundle"
   install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/MJRefresh/MJRefresh.Privacy.bundle"
   install_resource "${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
+  install_resource "${PODS_ROOT}/SVProgressHUD/SVProgressHUD/PrivacyInfo.xcprivacy"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

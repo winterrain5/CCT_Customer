@@ -1,4 +1,4 @@
-module TextFieldEffects {
+framework module TextFieldEffects {
   umbrella header "TextFieldEffects-umbrella.h"
 
   export *

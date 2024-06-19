@@ -1,0 +1,9 @@
+${PODS_ROOT}/Target Support Files/Pods-CCTIOS/Pods-CCTIOS-resources.sh
+${PODS_CONFIGURATION_BUILD_DIR}/EachNavigationBar/EachNavigationBar.bundle
+${PODS_ROOT}/IQKeyboardManagerSwift/IQKeyboardManagerSwift/PrivacyInfo.xcprivacy
+${PODS_CONFIGURATION_BUILD_DIR}/JXPagingView/JXPagingView.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/JXSegmentedView/JXSegmentedView.bundle
+${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/MJRefresh/MJRefresh.Privacy.bundle
+${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle
+${PODS_ROOT}/SVProgressHUD/SVProgressHUD/PrivacyInfo.xcprivacy

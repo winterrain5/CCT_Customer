@@ -8,7 +8,7 @@
 import UIKit
 import PromiseKit
 class MadamPartumController: BaseTableController {
-  var rowHeight:[CGFloat] = [554,288,296]
+  var rowHeight:[CGFloat] = [404,288,296]
   var headerView = MadamPartumHeaderView.loadViewFromNib()
   var footerView = MadamPartumFooterView.loadViewFromNib()
   var blogs:[BlogModel] = []

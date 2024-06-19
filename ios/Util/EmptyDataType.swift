@@ -31,21 +31,7 @@ public enum EmptyDataType:Equatable {
     case Success
     
     static func emptyImage(for type:EmptyDataType, noDataImage:String) -> UIImage {
-      UIImage(color: .white, size: .zero)
-//        var imageName:String = EmptyStatus.Image.NoData.rawValue
-//        switch type {
-//        case .NoData:
-//            imageName = noDataImage.isEmpty ? imageName : noDataImage
-//        case .Network:
-//            imageName = EmptyStatus.Image.Network.rawValue
-//        case .TimeOut:
-//            imageName = EmptyStatus.Image.Network.rawValue
-//        case .Service:
-//            imageName = EmptyStatus.Image.Service.rawValue
-//        default:
-//            imageName = EmptyStatus.Image.NoData.rawValue
-//        }
-//        return UIImage(named: imageName) ?? UIImage(color: .white, size: .zero)
+      UIImage.init(named: "topup_chianchitow")!
     }
     
     static func emptyString(for type:EmptyDataType,noDataString: String) -> NSAttributedString {

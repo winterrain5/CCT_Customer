@@ -97,6 +97,7 @@ class ServiceDetailController: BaseViewController {
       params.set(key: "serviceId", value: serviceId)
       NetworkManager().request(params: params) { data in
         if let model = DecodeManager.decodeByCodable(ServiceDetailBrifeModel.self, from: data) {
+          
           self.headView.model = model
           self.priceView.durations = model.durations
           self.helpView.helps = model.briefHelpItems ?? []

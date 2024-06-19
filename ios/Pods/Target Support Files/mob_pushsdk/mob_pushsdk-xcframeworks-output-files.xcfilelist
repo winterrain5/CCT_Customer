@@ -1,0 +1,2 @@
+${PODS_XCFRAMEWORKS_BUILD_DIR}/mob_pushsdk/MobPush/MobPush.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/mob_pushsdk/MobPush/MobPushServiceExtension.framework

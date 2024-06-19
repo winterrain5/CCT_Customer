@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/mob_pushsdk/mob_pushsdk-xcframeworks.sh
+${PODS_ROOT}/mob_pushsdk/MobPush/MobPush.xcframework
+${PODS_ROOT}/mob_pushsdk/MobPush/MobPushServiceExtension.xcframework

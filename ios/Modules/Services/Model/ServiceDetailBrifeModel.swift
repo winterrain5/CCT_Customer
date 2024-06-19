@@ -6,11 +6,13 @@
 //
 
 import UIKit
-
-struct BriefHelpItems :Codable {
+import HandyJSON
+class BriefHelpItems :Codable {
   var title: String?
   var thumbnail_img: String?
-  var description: String?
+  var description: String = ""
+  
+
 }
 
 class ServiceBriefData :Codable {
@@ -31,10 +33,12 @@ class ServiceBriefData :Codable {
   
 }
 
-struct ServiceApproaches :Codable {
+class ServiceApproaches :Codable {
   var title: String?
   var thumbnail_img: String?
-  var description: String?
+  var description: String = ""
+
+  
 }
 
 class ServiceDurations :Codable {

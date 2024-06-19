@@ -15,7 +15,9 @@ class SymptomCheckWhatNextController: BaseViewController {
     view.bounces = false
   }
   private var isSaveReport:Bool = true
+  
   private var result:[Int:[SymptomCheckStepModel]] = [:]
+  
   init(result:[Int:[SymptomCheckStepModel]] = [:]) {
     super.init(nibName: nil, bundle: nil)
     self.result = result
@@ -85,14 +87,7 @@ class SymptomCheckWhatNextController: BaseViewController {
     
     let params = SOAPParams(action: .questionnaireSurvey, path: .savePatientResults)
     let summaryData = SOAPDictionary()
-    func getQAID(by key:Int,isArrayString:Bool = true) -> String{
-      if isArrayString {
-        return JSON.init(result.filter({ $0.key == key }).first?.value.map({ $0.id?.int ?? 0 }) ?? []).rawString()?.replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\\\"", with: "") ?? ""
-      }else {
-        return result.filter({ $0.key == key }).first?.value.map({ $0.id ?? "" }).first ?? ""
-      }
-      
-    }
+    
     
     summaryData.set(key: "symptoms_qa_id", value: getQAID(by: 1))
     summaryData.set(key: "best_describes_qa_id", value: getQAID(by: 2,isArrayString: false))
@@ -132,6 +127,16 @@ class SymptomCheckWhatNextController: BaseViewController {
     
     
   }
+  
+  func getQAID(by key:Int,isArrayString:Bool = true) -> String{
+    if isArrayString {
+      return JSON.init(result.filter({ $0.key == key }).first?.value.map({ $0.id?.int ?? 0 }) ?? []).rawString()?.replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\\\"", with: "") ?? ""
+    }else {
+      return result.filter({ $0.key == key }).first?.value.map({ $0.id ?? "" }).first ?? ""
+    }
+    
+  }
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     self.updateStatusBarStyle(true)

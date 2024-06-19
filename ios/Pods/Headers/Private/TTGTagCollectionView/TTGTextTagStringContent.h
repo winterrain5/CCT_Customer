@@ -1,1 +1,0 @@
-../../../TTGTagCollectionView/Sources/TTGTextTagStringContent.h

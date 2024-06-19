@@ -12,10 +12,11 @@
 #import "LookinTuple.h"
 #import "LookinEventHandler.h"
 #import "LookinObject.h"
-#import "UIGestureRecognizer+LookinServer.h"
 #import "LookinWeakContainer.h"
 #import "LookinIvarTrace.h"
 #import "LookinServerDefines.h"
+#import "LKS_GestureTargetActionsSearcher.h"
+#import "LKS_MultiplatformAdapter.h"
 
 @implementation LKS_EventHandlerMaker
 
@@ -54,8 +55,10 @@
     NSArray<LookinEventHandler *> *handlers = [view.gestureRecognizers lookin_map:^id(NSUInteger idx, __kindof UIGestureRecognizer *recognizer) {
         LookinEventHandler *handler = [LookinEventHandler new];
         handler.handlerType = LookinEventHandlerTypeGesture;
-        handler.eventName = [recognizer lks_shortClassName];
-        handler.targetActions = [[recognizer lks_targetActions] lookin_map:^id(NSUInteger idx, LookinTwoTuple *rawTuple) {
+        handler.eventName = NSStringFromClass([recognizer class]);
+        
+        NSArray<LookinTwoTuple *> *targetActionInfos = [LKS_GestureTargetActionsSearcher getTargetActionsFromRecognizer:recognizer];
+        handler.targetActions = [targetActionInfos lookin_map:^id(NSUInteger idx, LookinTwoTuple *rawTuple) {
             NSObject *target = ((LookinWeakContainer *)rawTuple.first).object;
             if (!target) {
                 // 该 target 已被释放
@@ -95,6 +98,13 @@
         baseRecognizers = @[[UILongPressGestureRecognizer class],
                             [UIPanGestureRecognizer class],
                             [UISwipeGestureRecognizer class],
+                            [UITapGestureRecognizer class]];
+#elif TARGET_OS_VISION
+        baseRecognizers = @[[UILongPressGestureRecognizer class],
+                            [UIPanGestureRecognizer class],
+                            [UISwipeGestureRecognizer class],
+                            [UIRotationGestureRecognizer class],
+                            [UIPinchGestureRecognizer class],
                             [UITapGestureRecognizer class]];
 #else
         baseRecognizers = @[[UILongPressGestureRecognizer class],

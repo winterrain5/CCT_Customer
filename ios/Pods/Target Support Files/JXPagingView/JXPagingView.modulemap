@@ -1,4 +1,4 @@
-module JXPagingView {
+framework module JXPagingView {
   umbrella header "JXPagingView-umbrella.h"
 
   export *

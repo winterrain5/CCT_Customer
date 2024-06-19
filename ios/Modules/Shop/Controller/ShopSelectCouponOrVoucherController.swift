@@ -48,7 +48,7 @@ class ShopSelectCouponOrVoucherController: BaseTableController {
           }
         })
         self.dataArray = models
-        self.endRefresh(models.count,emptyString: "No Coupons")
+        self.endRefresh(models.count,emptyString: "No Vouchers")
       }
     } errorHandler: { e in
       
@@ -68,7 +68,7 @@ class ShopSelectCouponOrVoucherController: BaseTableController {
           }
         })
         self.dataArray = models
-        self.endRefresh(models.count,emptyString: "No Vouchers")
+        self.endRefresh(models.count,emptyString: "No Coupons")
       }
     } errorHandler: { e in
       

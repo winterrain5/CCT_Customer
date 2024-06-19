@@ -1,4 +1,4 @@
-module DKLogger {
+framework module DKLogger {
   umbrella header "DKLogger-umbrella.h"
 
   export *

@@ -1,4 +1,4 @@
-module Haptica {
+framework module Haptica {
   umbrella header "Haptica-umbrella.h"
 
   export *

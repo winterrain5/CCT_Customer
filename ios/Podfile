@@ -1,7 +1,9 @@
 
-platform :ios, '11.0'
+inhibit_all_warnings!
 
 target 'CCTIOS' do
+  
+  use_frameworks!
   
   pod 'LookinServer', :configurations => ['Debug']
   pod "MJRefresh"
@@ -11,7 +13,7 @@ target 'CCTIOS' do
   pod 'SVProgressHUD'
   pod 'IQKeyboardManagerSwift'
   pod 'SkeletonView'
-  pod "PromiseKit/CorePromise", "~> 6.8"
+  pod "PromiseKit"
   pod 'DDGScreenShot', '~> 1.1.6'
   pod 'DKLogger'
   pod 'CHIPageControl', '~> 0.1.3'
@@ -39,9 +41,25 @@ target 'CCTIOS' do
 end
 
 post_install do |installer|
-  installer.pods_project.build_configurations.each do |config|
-    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
-    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+  installer.pods_project.targets.each do |target|
+   
+    shell_script_path = "Pods/Target Support Files/#{target.name}/#{target.name}-frameworks.sh"
+    if File::exists?(shell_script_path)
+      shell_script_input_lines = File.readlines(shell_script_path)
+      shell_script_output_lines = shell_script_input_lines.map { |line| line.sub("source=\"$(readlink \"${source}\")\"", "source=\"$(readlink -f \"${source}\")\"") }
+      File.open(shell_script_path, 'w') do |f|
+        shell_script_output_lines.each do |line|
+          f.write line
+        end
+      end
+    end
+    target.build_configurations.each do |config|
+      config.build_settings["DEVELOPMENT_TEAM"] = "7BVP6AS26M"
+      if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f <= 12.0
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+      end
+      config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+    end
   end
 end
 

@@ -1,4 +1,4 @@
-module DDGScreenShot {
+framework module DDGScreenShot {
   umbrella header "DDGScreenShot-umbrella.h"
 
   export *

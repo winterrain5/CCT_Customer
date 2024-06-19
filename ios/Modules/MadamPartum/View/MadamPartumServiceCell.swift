@@ -15,7 +15,7 @@ class MadamPartumServiceCell: MadamPartumCell {
     }
   }
   override func configSubViews() {
-    self.clvH = 454
+    self.clvH = 304
     self.layout.itemSize = CGSize(width: 210, height: self.clvH)
     self.layout.numberOfItemsPerPage = 1
     self.layout.minimumLineSpacing = 0

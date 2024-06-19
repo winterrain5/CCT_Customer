@@ -1,4 +1,4 @@
-module JXSegmentedView {
+framework module JXSegmentedView {
   umbrella header "JXSegmentedView-umbrella.h"
 
   export *

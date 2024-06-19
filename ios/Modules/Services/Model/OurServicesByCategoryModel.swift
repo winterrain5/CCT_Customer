@@ -15,7 +15,7 @@ class ServiceDuration :Codable {
   var max_price: String?
 }
 
-class OurServicesByCategoryModel :Codable {
+class OurServicesByCategoryModel : Codable {
   var approaches: [ServiceApproaches]?
   var approach_types: String?
   var id: String?

@@ -167,7 +167,7 @@ extension BookingDateSheetView:FSCalendarDataSource,FSCalendarDelegate,FSCalenda
     if dataArray.map({ $0.date ?? Date() }).contains(date) {
       return R.color.black333()
     }
-    return R.color.gray82()
+    return .red
   }
   
   func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {

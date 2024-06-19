@@ -26,10 +26,11 @@
 * Support Autolayout `intrinsicContentSize` to auto determine height based on content size.
 * Support pull to refresh, like `SVPullToRefresh`.
 * Use `preferredMaxLayoutWidth` to set available width like UIlabel.
+* Support `CocoaPods` and `Swift Package Manager`
 
 ## Demo
 
-You can find demos in the `Example->TTGTagCollectionView.xcworkspace` project.
+You can find demos in the `Example->TTGTagCollectionView.xcworkspace` or `ExampleSwift->TTGTagSwiftExample.xcworkspace` project.
 Run `pod update` before try it.
 
 ![Example project](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/demo_example.jpeg)
@@ -45,20 +46,18 @@ iOS 9 and later.
 ## Installation
 
 ### CocoaPods for Objective-C
-
-TTGTagCollectionView is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
 ```ruby
 pod "TTGTagCollectionView"
 ```
 
 ### CocoaPods for Swift
-
 ```ruby
 use_frameworks!
 pod "TTGTagCollectionView"
 ```
+
+### Swift Package Manager
+Add by `git@github.com:zekunyan/TTGTagCollectionView.git`
 
 ## Usage
 
@@ -68,7 +67,27 @@ Use `TTGTextTagCollectionView` to show text tags.
 
 #### Basic usage
 
+##### Swift
+
+```swift
+// import
+import TTGTags
+// Create TTGTextTagCollectionView view
+let tagView = TTGTextTagCollectionView.init(frame: CGRect(x: 20, y: 100, width: 200, height: 200))
+self.view .addSubview(tagView)
+// Create TTGTextTag object
+let textTag = TTGTextTag(content: TTGTextTagStringContent(text: "tutuge"), style: TTGTextTagStyle())
+// Add tag
+tagView.addTag(textTag)
+// !!! Never forget this !!!
+tagView.reload()
+```
+
+##### Objective-C
+
 ```Objective-C
+// import
+#import <TTGTags/TTGTextTagCollectionView.h>
 // Create TTGTextTagCollectionView view
 TTGTextTagCollectionView *tagCollectionView = [[TTGTextTagCollectionView alloc] initWithFrame:CGRectMake(20, 20, 200, 200)];
 [self.view addSubview:tagCollectionView];
@@ -76,6 +95,22 @@ TTGTextTagCollectionView *tagCollectionView = [[TTGTextTagCollectionView alloc] 
 TTGTextTag *textTag = [TTGTextTag tagWithContent:[TTGTextTagStringContent contentWithText:@"Some text"] style:[TTGTextTagStyle new]];
 // Add tag
 [tagCollectionView addTag:textTag];
+// !!! Never forget this !!!
+[tagCollectionView reload];
+```
+
+##### Accessibility
+
+```Objective-C
+// Auto set accessibilityLabel value
+tag.enableAutoDetectAccessibility = YES;
+
+// Manual
+tag.isAccessibilityElement = YES;
+tag.accessibilityLabel = text;
+tag.accessibilityIdentifier = [NSString stringWithFormat:@"identifier: %@", text];
+tag.accessibilityHint = [NSString stringWithFormat:@"hint: %@", text];
+tag.accessibilityValue = [NSString stringWithFormat:@"value: %@", text];
 ```
 
 #### Delegate
@@ -121,8 +156,25 @@ Each tag can be configured.
 
 /// Selection state
 @property (nonatomic, assign) BOOL selected;
+@property (nonatomic, copy) OnSelectStateChanged _Nullable onSelectStateChanged; // State changed callback
 
-///...Other things...
+/// Accessibility
+@property (nonatomic, assign) BOOL isAccessibilityElement; // Default = NO
+@property (nonatomic, copy) NSString * _Nullable accessibilityIdentifier; // Default = nil
+@property (nonatomic, copy) NSString * _Nullable accessibilityLabel; // Default = nil
+@property (nonatomic, copy) NSString * _Nullable accessibilityHint; // Default = nil
+@property (nonatomic, copy) NSString * _Nullable accessibilityValue; // Default = nil
+@property (nonatomic, assign) UIAccessibilityTraits accessibilityTraits; // Default = UIAccessibilityTraitNone
+
+/// Auto detect accessibility
+/// When enableAutoDetectAccessibility = YES, the property below will be set automatically
+/// ----------------------------
+/// isAccessibilityElement = YES
+/// accessibilityLabel = (selected ? selectedContent : content).getContentAttributedString.string
+/// accessibilityTraits = selected ? UIAccessibilityTraitSelected : UIAccessibilityTraitButton
+/// ----------------------------
+/// But: accessibilityHint and accessibilityValue still keep your custom value;
+@property (nonatomic, assign) BOOL enableAutoDetectAccessibility; // Default = NO
 
 @end
 ```

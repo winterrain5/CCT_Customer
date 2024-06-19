@@ -1,1 +1,0 @@
-../../../Target Support Files/DDGScreenShot/DDGScreenShot-umbrella.h

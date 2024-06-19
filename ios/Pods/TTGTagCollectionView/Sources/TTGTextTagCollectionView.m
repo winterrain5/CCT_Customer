@@ -47,6 +47,7 @@
     _label = [[TTGTextTagGradientLabel alloc] initWithFrame:self.bounds];
     _label.textAlignment = NSTextAlignmentCenter;
     _label.userInteractionEnabled = YES;
+    _label.isAccessibilityElement = NO;
     [self addSubview:_label];
 }
 
@@ -83,7 +84,7 @@
 
 - (void)updateContentStyle {
     // Normal background
-    _label.backgroundColor = _config.getRightfulStyle.backgroundColor;
+    _label.backgroundColor = _config.getRightfulStyle.backgroundColor ?: UIColor.clearColor;
     
     // Text alignment
     _label.textAlignment = _config.getRightfulStyle.textAlignment;
@@ -91,6 +92,7 @@
     // Gradient background
     if (_config.getRightfulStyle.enableGradientBackground) {
         _label.backgroundColor = [UIColor clearColor];
+        ((CAGradientLayer *)_label.layer).backgroundColor = UIColor.clearColor.CGColor;
         ((CAGradientLayer *)_label.layer).colors = @[(id)_config.getRightfulStyle.gradientBackgroundStartColor.CGColor,
                                                      (id)_config.getRightfulStyle.gradientBackgroundEndColor.CGColor];
         ((CAGradientLayer *)_label.layer).startPoint = _config.getRightfulStyle.gradientBackgroundStartPoint;
@@ -156,13 +158,22 @@
     [_borderLayer removeFromSuperlayer];
     _borderLayer.frame = self.bounds;
     _borderLayer.path = path.CGPath;
-    _borderLayer.fillColor = nil;
+    _borderLayer.fillColor = UIColor.clearColor.CGColor;
     _borderLayer.opacity = 1;
     _borderLayer.lineWidth = _config.getRightfulStyle.borderWidth;
     _borderLayer.strokeColor = _config.getRightfulStyle.borderColor.CGColor;
     _borderLayer.lineCap = kCALineCapRound;
     _borderLayer.lineJoin = kCALineJoinRound;
     [self.layer addSublayer:_borderLayer];
+}
+
+- (void)updateAccessibility {
+    self.isAccessibilityElement = _config.isAccessibilityElement;
+    self.accessibilityIdentifier = _config.accessibilityIdentifier;
+    self.accessibilityLabel = _config.accessibilityLabel;
+    self.accessibilityHint = _config.accessibilityHint;
+    self.accessibilityValue = _config.accessibilityValue;
+    self.accessibilityTraits = _config.accessibilityTraits;
 }
 
 - (UIBezierPath *)getNewPath {
@@ -245,7 +256,6 @@
     if (self) {
         [self commonInit];
     }
-
     return self;
 }
 
@@ -254,7 +264,6 @@
     if (self) {
         [self commonInit];
     }
-
     return self;
 }
 
@@ -330,7 +339,6 @@
         }
     }
     [_tagLabels insertObjects:newTagLabels atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(index, newTagLabels.count)]];
-    [self reload];
 }
 
 - (void)removeTag:(TTGTextTag *)tag {
@@ -348,7 +356,6 @@
     }
     if (labelToRemove) {
         [_tagLabels removeObject:labelToRemove];
-        [self reload];
     }
 }
 
@@ -356,22 +363,16 @@
     if (index >= _tagLabels.count) {
         return;
     }
-
     [_tagLabels removeObjectAtIndex:index];
-    [self reload];
 }
 
 - (void)removeAllTags {
     [_tagLabels removeAllObjects];
-    [self reload];
 }
 
 - (void)updateTagAtIndex:(NSUInteger)index selected:(BOOL)selected {
     TTGTextTag *tag = [self getTagAtIndex:index];
     tag.selected = selected;
-    if (tag) {
-        [self reload];
-    }
 }
 
 - (void)updateTagAtIndex:(NSUInteger)index withNewTag:(TTGTextTag *)tag {
@@ -379,7 +380,6 @@
         TTGTextTagComponentView *label = _tagLabels[index];
         label.config = tag;
         [label updateContent];
-        [self reload];
     }
 }
 
@@ -628,6 +628,8 @@
     [label updateContent];
     // Update content style
     [label updateContentStyle];
+    // Update accessibility
+    [label updateAccessibility];
     // Width limit for vertical scroll direction
     CGSize maxSize = CGSizeZero;
     if (self.scrollDirection == TTGTagCollectionScrollDirectionVertical &&

@@ -35,7 +35,7 @@ class ShopViewController: BaseTableController {
     
     heartButton.addTarget(self, action: #selector(shopHertBarItemAction), for: .touchUpInside)
     let heartItem = UIBarButtonItem(customView: heartButton)
- 
+    
     basketButton.addTarget(self, action: #selector(shopBasketBarItemAction), for: .touchUpInside)
     let basketItem = UIBarButtonItem(customView: basketButton)
     self.navigation.item.rightBarButtonItems = [basketItem,heartItem]
@@ -59,15 +59,17 @@ class ShopViewController: BaseTableController {
     refreshData()
   }
   
- 
+  
   override func refreshData() {
-    when(fulfilled: getNewFeaturedProducts(),getRecentViewedProducts(),getBannerProducts()).done { _ in
+    
+    when(fulfilled: [getNewFeaturedProducts(),getRecentViewedProducts(),getBannerProducts()]).done { _ in
       self.headerView.datas = self.bannerProducts
       self.endRefresh()
-      
-    }.catch { e in
+    }
+    .catch { e in
       Toast.showError(withStatus: e.asAPIError.errorInfo().message)
     }
+    
     getCartCount()
   }
   
@@ -131,10 +133,10 @@ class ShopViewController: BaseTableController {
       } errorHandler: { e in
         resolver.reject(APIError.requestError(code: -1, message: e.localizedDescription))
       }
-
+      
     }
   }
-
+  
   func getCartCount() {
     let params = SOAPParams(action: .Cart, path: .getCartCount)
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
@@ -143,7 +145,7 @@ class ShopViewController: BaseTableController {
     } errorHandler: { e in
       
     }
-
+    
   }
   
   override func createListView() {

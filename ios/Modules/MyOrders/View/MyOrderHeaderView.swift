@@ -7,26 +7,23 @@
 
 import UIKit
 
-class MyOrderHeaderView: UIView,TTGTextTagCollectionViewDelegate {
+class MyOrderHeaderView: UIView {
 
-  private lazy var tagView = TTGTextTagCollectionView().then { view in
-    view.delegate = self
-    view.scrollDirection = .horizontal
-    view.showsHorizontalScrollIndicator = false
-  }
-  private var selectedIndex:UInt = 0
+  var buttons:[UIButton] = []
+  var selectButton:UIButton?
+  
   var statusDidClickHandler:((Int)->())?
 
 
   override init(frame: CGRect) {
     super.init(frame: frame)
     backgroundColor = .white
-    addSubview(tagView)
-    addTags("In Progress")
-    addTags("Completed")
-    addTags("Cancelled")
     
-    tagView.updateTag(at: 0, selected: true)
+    addTags("In Progress",tag: 0)
+    addTags("Completed",tag: 1)
+    addTags("Cancelled",tag: 2)
+    
+    buttonAction(buttons[0])
   }
   
   required init?(coder: NSCoder) {
@@ -35,39 +32,57 @@ class MyOrderHeaderView: UIView,TTGTextTagCollectionViewDelegate {
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    tagView.snp.makeConstraints { make in
-      make.left.right.equalToSuperview().inset(16)
-      make.top.equalToSuperview().offset(24)
-      make.height.equalTo(40)
+  
+    let padding = 20
+    let margin = 16
+    let width = 90
+    buttons.enumerated().forEach { i,e in
+      let x = (margin + width) * i + margin
+      
+      e.frame = CGRect(x: x.cgFloat, y: 20, width: width.cgFloat, height: 36)
     }
   }
   
-  func addTags(_ text:String) {
-    let content = TTGTextTagStringContent(text: text, textFont: UIFont(name:.AvenirNextRegular,size:14), textColor: R.color.black333())
-    let style = TTGTextTagStyle()
-    style.backgroundColor = R.color.placeholder()!
-    style.cornerRadius = 13
-    style.exactHeight = 36
-    style.minWidth = 60
-    style.extraSpace = CGSize(width: 20, height: 0)
-    style.borderWidth = 0
-    style.shadowColor = .clear
+  func addTags(_ text:String,tag:Int) {
     
-    let selectContent = TTGTextTagStringContent(text: text, textFont: UIFont(name: .AvenirNextDemiBold, size:14), textColor: .white)
-    let selectedStyle = style.copy() as! TTGTextTagStyle
-    selectedStyle.backgroundColor = R.color.theamBlue()!
+    let button = UIButton()
+    button.tag = tag
+    button.backgroundColor = R.color.placeholder()!
+    button.titleForNormal  = text
+    button.titleColorForNormal = .black
+    button.titleColorForSelected = .white
+    button.cornerRadius = 18
+    button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+    button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+    buttons.append(button)
     
-    let tag = TTGTextTag(content: content, style: style, selectedContent: selectContent, selectedStyle: selectedStyle)
-    tagView.addTag(tag)
+    addSubview(button)
+  }
+  
+  @objc func buttonAction(_ sender:UIButton)  {
+    
+    selectButton?.isSelected.toggle()
+    
+    if selectButton?.isSelected ?? false{
+      selectButton?.backgroundColor = R.color.theamRed()!
+    } else {
+      selectButton?.backgroundColor = R.color.placeholder()!
+    }
+    
+    sender.isSelected.toggle()
+    
+    if sender.isSelected {
+      sender.backgroundColor = R.color.theamRed()!
+    } else {
+      sender.backgroundColor = R.color.placeholder()!
+    }
+    
+    selectButton = sender
+    
+  
+    
+    statusDidClickHandler?(sender.tag)
   }
  
-  
-  func textTagCollectionView(_ textTagCollectionView: TTGTextTagCollectionView!, didTap tag: TTGTextTag!, at index: UInt) {
-    tagView.updateTag(at: selectedIndex, selected: false)
-    tagView.updateTag(at: index, selected: true)
-    selectedIndex = index
-    
-    statusDidClickHandler?(Int(index))
-  }
 
 }

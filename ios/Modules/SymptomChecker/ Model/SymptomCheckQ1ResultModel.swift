@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SymptomCheckQ1ResultModel: Codable {
+class SymptomCheckQ1ResultModel: BaseModel {
   var id: String?
   var title: String?
   var overview_describe: String?

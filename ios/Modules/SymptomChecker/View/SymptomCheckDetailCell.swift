@@ -14,8 +14,9 @@ class SymptomCheckDetailCell: UITableViewCell {
   @IBOutlet weak var reasonLabel: UILabel!
   @IBOutlet weak var exampleImageView: UIImageView!
   
-  var model:SymptomCheckQ23ResultModel! {
+  var model:SymptomCheckQ23ResultModel? {
     didSet {
+      guard let model = model else { return }
       titleLabel.text = model.title
       exampleImageView.yy_setImage(with: model.thumbnail_img?.asURL, options: .setImageWithFadeAnimation)
       descLabel.text = model.overview_describe

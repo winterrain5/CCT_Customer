@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import PromiseKit
 import SkeletonView
 class SymptomCheckDetailController: BaseTableController {
   private var headerView = SymptomCheckDetailHeaderView.loadViewFromNib()
@@ -73,61 +72,64 @@ class SymptomCheckDetailController: BaseTableController {
   
   override func refreshData() {
     
-    when(fulfilled: getHeaderOverview(),getlist()).done { q2result,q23result in
+    getHeaderOverview()
+    
+    getlist()
+    
+
+  }
+  
+  func getHeaderOverview() {
+    let params = SOAPParams(action: .SymptomCheck, path: .getQuestionDetails)
+    
+//    let ids = result.filter({ $0.key == 2 }).first?.value.first?.id ?? ""
+    
+    let id = result[2]?.first?.id ?? ""
+    
+    params.set(key: "id", value: id)
+    NetworkManager().request(params: params) { data in
+      guard let model = DecodeManager.decodeObjectByHandJSON(SymptomCheckQ1ResultModel.self, from: data) else {
+       
+        return
+      }
+    
       var result:[[SymptomCheckStepModel]] = []
       self.result.sorted(by: { $0.key < $01.key}).forEach { key,value in
         result.append(value)
       }
-      self.headerView.configData(q2result, result)
-      self.dataArray = q23result
-      self.endRefresh()
+      self.headerView.configData(model, result)
       
-    }.catch { e in
+    } errorHandler: { e in
       Toast.showError(withStatus: e.localizedDescription)
-    }
-  }
-  
-  func getHeaderOverview() -> Promise<SymptomCheckQ1ResultModel>{
-    return Promise.init { resolver in
-      let params = SOAPParams(action: .SymptomCheck, path: .getQuestionDetails)
-      let id = result.filter({ $0.key == 2 }).first?.value.first?.id ?? ""
-      params.set(key: "id", value: id)
-      NetworkManager().request(params: params) { data in
-        guard let model = DecodeManager.decodeByCodable(SymptomCheckQ1ResultModel.self, from: data) else {
-          resolver.reject(PKError.some( "Decode Failed"))
-          return
-        }
-        resolver.fulfill(model)
-      } errorHandler: { e in
-        resolver.reject(PKError.some( e.localizedDescription))
-      }
     }
     
   }
   
-  func getlist() -> Promise<[SymptomCheckQ23ResultModel]> {
-    return Promise.init { resolver in
-      let params = SOAPParams(action: .SymptomCheck, path: .getQuestionContentByQA23)
+  func getlist()  {
+    let params = SOAPParams(action: .SymptomCheck, path: .getQuestionContentByQA23)
 
-      let qaId2 = result.filter({ $0.key == 2 }).first?.value.first?.id ?? ""
-      let qaIds3 = SOAPDictionary()
-      let result3 = result.filter({ $0.key == 3 }).first?.value ?? []
-      for (i,e) in result3.enumerated() {
-        qaIds3.set(key: i.string, value: e.id ?? "")
+//    let qaId2 = result.filter({ $0.key == 2 }).first?.value.first?.id ?? ""
+    let qaId2 = result[2]?.first?.id ?? ""
+    
+    let qaIds3 = SOAPDictionary()
+//    let result3 = result.filter({ $0.key == 3 }).first?.value ?? []
+    let result3 = result[3] ?? []
+    
+    for (i,e) in result3.enumerated() {
+      qaIds3.set(key: i.string, value: e.id ?? "")
+    }
+    params.set(key: "qaId2", value: qaId2)
+    params.set(key: "qaIds3", value: qaIds3.result, type: .map(1))
+    
+    NetworkManager().request(params: params) { data in
+      guard let models = DecodeManager.decodeArrayByHandJSON(SymptomCheckQ23ResultModel.self, from: data) else {
+       
+        return
       }
-      params.set(key: "qaId2", value: qaId2)
-      params.set(key: "qaIds3", value: qaIds3.result, type: .map(1))
-      
-      NetworkManager().request(params: params) { data in
-        guard let models = DecodeManager.decodeByCodable([SymptomCheckQ23ResultModel].self, from: data) else {
-          resolver.reject(PKError.some( "Decode Failed"))
-          return
-        }
-        resolver.fulfill(models)
-      } errorHandler: { e in
-        resolver.reject(PKError.some( e.localizedDescription))
-      }
-
+      self.dataArray = models
+      self.endRefresh()
+    } errorHandler: { e in
+      Toast.showError(withStatus: e.localizedDescription)
     }
   }
   

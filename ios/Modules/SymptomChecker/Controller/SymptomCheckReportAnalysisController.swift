@@ -110,7 +110,7 @@ class SymptomCheckReportAnalysisController: BaseTableController {
       let id = self.listModel.best_describes_qa_id ?? ""
       params.set(key: "id", value: id)
       NetworkManager().request(params: params) { data in
-        guard let model = DecodeManager.decodeByCodable(SymptomCheckQ1ResultModel.self, from: data) else {
+        guard let model = DecodeManager.decodeObjectByHandJSON(SymptomCheckQ1ResultModel.self, from: data) else {
           resolver.reject(PKError.some( "Decode Failed"))
           return
         }
@@ -136,7 +136,7 @@ class SymptomCheckReportAnalysisController: BaseTableController {
       params.set(key: "qaIds3", value: qaIds3.result, type: .map(1))
       
       NetworkManager().request(params: params) { data in
-        guard let models = DecodeManager.decodeByCodable([SymptomCheckQ23ResultModel].self, from: data) else {
+        guard let models = DecodeManager.decodeArrayByHandJSON(SymptomCheckQ23ResultModel.self, from: data) else {
           resolver.reject(PKError.some( "Decode Failed"))
           return
         }

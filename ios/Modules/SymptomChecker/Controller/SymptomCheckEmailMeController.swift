@@ -85,10 +85,11 @@ class SymptomCheckEmailMeController: BaseTableController {
   func getHeaderOverview() -> Promise<SymptomCheckQ1ResultModel>{
     return Promise.init { resolver in
       let params = SOAPParams(action: .SymptomCheck, path: .getQuestionDetails)
-      let id = result.filter({ $0.key == 2 }).first?.value.first?.id ?? ""
+//      let id = result?.filter({ $0.key == 2 }).first?.value.first?.id ?? ""
+      let id = result[2]?.first?.id ?? ""
       params.set(key: "id", value: id)
       NetworkManager().request(params: params) { data in
-        guard let model = DecodeManager.decodeByCodable(SymptomCheckQ1ResultModel.self, from: data) else {
+        guard let model = DecodeManager.decodeObjectByHandJSON(SymptomCheckQ1ResultModel.self, from: data) else {
           resolver.reject(APIError.requestError(code: -1, message: "Decode Failed"))
           return
         }
@@ -104,9 +105,14 @@ class SymptomCheckEmailMeController: BaseTableController {
     return Promise.init { resolver in
       let params = SOAPParams(action: .SymptomCheck, path: .getQuestionContentByQA23)
       
-      let qaId2 = result.filter({ $0.key == 2 }).first?.value.first?.id ?? ""
+//      let qaId2 = result.filter({ $0.key == 2 }).first?.value.first?.id ?? ""
+      let qaId2 = result[2]?.first?.id ?? ""
+      
       let qaIds3 = SOAPDictionary()
-      let result3 = result.filter({ $0.key == 3 }).first?.value ?? []
+      
+//      let result3 = result.filter({ $0.key == 3 }).first?.value ?? []
+      let result3 = result[3] ?? []
+      
       for (i,e) in result3.enumerated() {
         qaIds3.set(key: i.string, value: e.id ?? "")
       }
@@ -114,7 +120,7 @@ class SymptomCheckEmailMeController: BaseTableController {
       params.set(key: "qaIds3", value: qaIds3.result, type: .map(1))
       
       NetworkManager().request(params: params) { data in
-        guard let models = DecodeManager.decodeByCodable([SymptomCheckQ23ResultModel].self, from: data) else {
+        guard let models = DecodeManager.decodeArrayByHandJSON(SymptomCheckQ23ResultModel.self, from: data) else {
           resolver.reject(APIError.requestError(code: -1, message: "Decode Failed"))
           return
         }

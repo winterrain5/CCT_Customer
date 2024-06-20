@@ -130,9 +130,15 @@ class SymptomCheckWhatNextController: BaseViewController {
   
   func getQAID(by key:Int,isArrayString:Bool = true) -> String{
     if isArrayString {
-      return JSON.init(result.filter({ $0.key == key }).first?.value.map({ $0.id?.int ?? 0 }) ?? []).rawString()?.replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\\\"", with: "") ?? ""
+      return JSON.init(
+        
+        result[key]?.map({ $0.id?.int ?? 0 }) ?? []
+//        result.filter({ $0.key == key }).first?.value.map({ $0.id?.int ?? 0 }) ?? []
+      
+        ).rawString()?.replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\\\"", with: "") ?? ""
     }else {
-      return result.filter({ $0.key == key }).first?.value.map({ $0.id ?? "" }).first ?? ""
+      return result[key]?.map({ $0.id ?? "" }).first ?? ""
+//      return result.filter({ $0.key == key }).first?.value.map({ $0.id ?? "" }).first ?? ""
     }
     
   }

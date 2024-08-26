@@ -97,4 +97,6 @@ class UserModel: BaseModel, Codable {
   var payment_notes: String = ""
   var is_display_on_all_booking: String = ""
   var wellness_treatment_type: String = ""
+  
+  var is_admin = true
 }

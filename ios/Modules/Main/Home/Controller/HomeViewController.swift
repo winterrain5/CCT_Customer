@@ -62,7 +62,6 @@ class HomeViewController: BaseViewController {
       self?.scrolView.contentSize = CGSize(width: kScreenWidth, height: height)
     }
     
-    getAppVersion()
     editClientRecharge()
   }
   
@@ -81,6 +80,7 @@ class HomeViewController: BaseViewController {
       print(e.asAPIError.errorInfo().message)
     }
     getUnreadMessageCount()
+    getAppVersion()
   }
   
   func editClientRecharge() {

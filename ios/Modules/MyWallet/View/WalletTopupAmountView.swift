@@ -147,6 +147,9 @@ class WalletTopupAmountView: UIView,UITextFieldDelegate {
         amounts = [m1,m2,m3,m5,m6]
       }
       
+//      let m0 = AmountModel(value: 1, backgroundColor: R.color.theamPink()!, level: 0)
+//      amounts.insert(m0, at: 0)
+//      
       collectionView.reloadData()
     }
   }

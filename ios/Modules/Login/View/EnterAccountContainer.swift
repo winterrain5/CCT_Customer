@@ -136,27 +136,32 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
   }
   
   func sendSMSForMobile(userID:String,clientID:String) {
+  
     let mobile = accountTf.text?.trim() ?? ""
-    let mapParams = SOAPParams(action: .Sms, path: .sendSmsForMobile)
+    let vc = VerificationCodeController(type: .LoginByMobile, source: mobile,otpCode:self.otpCode)
+    UIViewController.getTopVC()?.navigationController?.pushViewController(vc,animated: false)
     
-    let params = SOAPDictionary()
-    params.set(key: "title", value: "Sign in")
-    params.set(key: "mobile", value: mobile)
-    
-    self.otpCode = Int.random(in: 1001...9999).string
-    params.set(key: "message", value: "Your OTP is \(self.otpCode). Please enter the OTP within 2 minutes")
-    params.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
-    params.set(key: "client_id", value: clientID)
-    
-    mapParams.set(key: "params", value: params.result, type: .map(1))
-    
-    NetworkManager().request(params: mapParams) { data in
-      self.loginBtn.stopAnimation()
-      let vc = VerificationCodeController(type: .LoginByMobile, source: mobile,otpCode:self.otpCode)
-      UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
-    } errorHandler: { e in
-      self.loginBtn.stopAnimation()
-    }
+//    let mobile = accountTf.text?.trim() ?? ""
+//    let mapParams = SOAPParams(action: .Sms, path: .sendSmsForMobile)
+//    
+//    let params = SOAPDictionary()
+//    params.set(key: "title", value: "Sign in")
+//    params.set(key: "mobile", value: mobile)
+//    
+//    self.otpCode = Int.random(in: 1001...9999).string
+//    params.set(key: "message", value: "Your OTP is \(self.otpCode). Please enter the OTP within 2 minutes")
+//    params.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
+//    params.set(key: "client_id", value: clientID)
+//    
+//    mapParams.set(key: "params", value: params.result, type: .map(1))
+//    
+//    NetworkManager().request(params: mapParams) { data in
+//      self.loginBtn.stopAnimation()
+//      let vc = VerificationCodeController(type: .LoginByMobile, source: mobile,otpCode:self.otpCode)
+//      UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+//    } errorHandler: { e in
+//      self.loginBtn.stopAnimation()
+//    }
     
   }
   

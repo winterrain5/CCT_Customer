@@ -31,18 +31,11 @@ enum TabConstants {
 }
 
 class BaseTabBarController: UITabBarController {
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setupChildController()
-  }
-  
-  internal required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
+
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupChildController()
   }
   
   func setupChildController() {

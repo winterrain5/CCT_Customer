@@ -10,12 +10,13 @@ import IQKeyboardManagerSwift
 
 class AccountEditSheetView: UIView {
   var contentView = AccountEditSheetContentView.loadViewFromNib()
-  let contentHeight:CGFloat = 280
+  let contentHeight:CGFloat = 580
   var scrolview = UIScrollView()
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    IQKeyboardManager.shared.keyboardDistanceFromTextField = 20
+    IQKeyboardManager.shared.enable = true
+    IQKeyboardManager.shared.keyboardDistanceFromTextField = 30
     
     addSubview(scrolview)
     
@@ -166,7 +167,7 @@ class AccountEditSheetContentView: UIView,UITextFieldDelegate {
   override func awakeFromNib() {
     super.awakeFromNib()
     tf.delegate = self
-    
+    tf.becomeFirstResponder()
   }
     
   

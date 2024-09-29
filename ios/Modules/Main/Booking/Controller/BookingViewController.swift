@@ -86,7 +86,7 @@ class BookingViewController: BaseViewController {
     self.barAppearance(tintColor: .white, barBackgroundColor: R.color.theamBlue()!, image: nil, backButtonTitle: nil)
     self.navigation.item.leftBarButtonItem = UIBarButtonItem(image: R.image.notification_menu(), style: .plain, target: self, action: #selector(leftItemAction))
     self.navigation.item.rightBarButtonItem = UIBarButtonItem(image: R.image.booking_add(), style: .plain, target: self, action: #selector(rightItemAction))
-    self.navigation.item.title = "Appointment"
+    self.navigation.item.title = "Booking"
     self.addChild(headerVc)
     
     

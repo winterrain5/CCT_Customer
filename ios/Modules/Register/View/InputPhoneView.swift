@@ -88,39 +88,49 @@ class InputPhoneView: UIView,UITextFieldDelegate {
   }
   
   func sendSMSForMobile(_ model:UserModel?) {
-  
     let mobile = phoneTf.text?.trim() ?? ""
-    let mapParams = SOAPParams(action: .Sms, path: .sendSmsForMobile)
     
-    let params = SOAPDictionary()
-    params.set(key: "title", value: "Sign up")
+    let registInfo = RegistUserInfoModel()
+    registInfo.mobile = mobile
+    registInfo.is_new_register = model == nil
+    Defaults.shared.set(registInfo, for: .registModel)
     
-    params.set(key: "mobile", value: mobile)
-    
-    self.otpCode = Int.random(in: 1001...9999).string
-    params.set(key: "message", value: "Your OTP is \(self.otpCode). Please enter the OTP within 2 minutes")
-    params.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
-    if let id = model?.id {
-      params.set(key: "client_id", value: id)
-    }
-    
-    
-    mapParams.set(key: "params", value: params.result, type: .map(1))
-    
-    NetworkManager().request(params: mapParams) { data in
-      self.sendOTPButton.stopAnimation()
-      
-      let registInfo = RegistUserInfoModel()
-      registInfo.mobile = mobile
-      registInfo.is_new_register = model == nil
-      Defaults.shared.set(registInfo, for: .registModel)
-      
-      let vc = VerificationCodeController(type: .SignUp, source: mobile,otpCode:self.otpCode)
-      UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
-    } errorHandler: { e in
-      self.sendOTPButton.stopAnimation()
-      AlertView.show(message: "Failed to send SMS. Please try again later!")
-    }
+    let vc = VerificationCodeController(type: .SignUp, source: mobile,otpCode:self.otpCode)
+    UIViewController.getTopVC()?.navigationController?.pushViewController(vc, animated: false)
+
+  
+//    let mobile = phoneTf.text?.trim() ?? ""
+//    let mapParams = SOAPParams(action: .Sms, path: .sendSmsForMobile)
+//    
+//    let params = SOAPDictionary()
+//    params.set(key: "title", value: "Sign up")
+//    
+//    params.set(key: "mobile", value: mobile)
+//    
+//    self.otpCode = Int.random(in: 1001...9999).string
+//    params.set(key: "message", value: "Your OTP is \(self.otpCode). Please enter the OTP within 2 minutes")
+//    params.set(key: "company_id", value: Defaults.shared.get(for: .companyId) ?? "97")
+//    if let id = model?.id {
+//      params.set(key: "client_id", value: id)
+//    }
+//    
+//    
+//    mapParams.set(key: "params", value: params.result, type: .map(1))
+//    
+//    NetworkManager().request(params: mapParams) { data in
+//      self.sendOTPButton.stopAnimation()
+//      
+//      let registInfo = RegistUserInfoModel()
+//      registInfo.mobile = mobile
+//      registInfo.is_new_register = model == nil
+//      Defaults.shared.set(registInfo, for: .registModel)
+//      
+//      let vc = VerificationCodeController(type: .SignUp, source: mobile,otpCode:self.otpCode)
+//      UIViewController.getTopVC()?.navigationController?.pushViewController(vc)
+//    } errorHandler: { e in
+//      self.sendOTPButton.stopAnimation()
+//      AlertView.show(message: "Failed to send SMS. Please try again later!")
+//    }
 
   }
   

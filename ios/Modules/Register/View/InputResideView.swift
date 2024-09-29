@@ -8,6 +8,7 @@
 import UIKit
 import TextFieldEffects
 import SideMenuSwift
+import RxSwift
 class InputResideView: UIView,UITextFieldDelegate {
 
   @IBOutlet weak var postalCodeTf: HoshiTextField!
@@ -257,6 +258,15 @@ class InputResideView: UIView,UITextFieldDelegate {
     if textField == cityTf {
       registInfo?.city = text
     }
+    
+    let postalCode = postalCodeTf.text?.isEmpty ?? false
+    let blockNum = BlockNumTf.text?.isEmpty ?? false
+    let streetName = streetNameTf.text?.isEmpty ?? false
+    let unitNum = unitNumTf.text?.isEmpty ?? false
+    let city = cityTf.text?.isEmpty ?? false
+    if !postalCode || !blockNum || !streetName || !unitNum || !city {
+      nextButon.titleForNormal = "Confirm"
+    } 
     
     setNextButonState()
   }

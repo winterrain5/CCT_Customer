@@ -22,50 +22,81 @@ class VerificationCodeController: BaseViewController {
     super.viewDidLoad()
     
     self.barAppearance(tintColor: .white, barBackgroundColor: R.color.theamBlue()!, image: R.image.return_left(), backButtonTitle: "")
-    self.view.backgroundColor = R.color.theamBlue()!
-    self.view.addSubview(contentView)
-    contentView.frame = CGRect(x: 0, y: kNavBarHeight , width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
-    contentView.source = source
-    contentView.type = type
-    contentView.startCountDown()
-    contentView.resendHandler = { [weak self] in
-      self?.sendCode()
-    }
-    contentView.confirmHandler = { [weak self] text in
-      guard let `self` = self else { return }
-      if let code = text,(self.otpCode == code || code == "1024") {
-        if self.type == .EditPhone {
-          self.saveEditPhone()
-        }
-        
-        if self.type == .EditEmail {
-          self.saveEditEmail()
-        }
-        
-        if self.type == .LoginByMobile || self.type == .LoginByEmail{
-          self.getTClientPartInfo()
-        }
-        
-        if self.type == .SignUp {
-          if Defaults.shared.get(for: .userModel) != nil {
-            let view = WellcomBackView.loadViewFromNib()
-            view.frame = self.view.bounds
-            view.alpha = 0
-            view.layer.zPosition = 100000
-            self.view.addSubview(view)
-            view.fadeIn()
-          }else {
-            let vc = InputIDController()
-            self.navigationController?.pushViewController(vc, completion: nil)
-          }
-         
-        }
-        
-      }else {
-        Toast.showError(withStatus: "verification code error")
-      }
+
+    if self.type == .EditEmail || self.type == .LoginByEmail{
+      addContentView()
     }
     
+    if self.type == .LoginByMobile{
+      self.getTClientPartInfo()
+    }
+    
+    if self.type == .SignUp {
+      if Defaults.shared.get(for: .userModel) != nil {
+        let view = WellcomBackView.loadViewFromNib()
+        view.frame = self.view.bounds
+        view.alpha = 0
+        view.layer.zPosition = 100000
+        self.view.addSubview(view)
+        view.fadeIn()
+      }else {
+        let vc = InputIDController()
+        self.navigationController?.pushViewController(vc, completion: nil)
+      }
+     
+    }
+  }
+  
+  func addContentView() {
+        self.view.backgroundColor = R.color.theamBlue()!
+        self.view.addSubview(contentView)
+        contentView.frame = CGRect(x: 0, y: kNavBarHeight , width: kScreenWidth, height: kScreenHeight - kNavBarHeight)
+        contentView.source = source
+        contentView.type = type
+        contentView.startCountDown()
+        contentView.resendHandler = { [weak self] in
+          self?.sendCode()
+        }
+        contentView.confirmHandler = { [weak self] text in
+          guard let `self` = self else { return }
+          if let code = text,(self.otpCode == code || code == "1024") {
+            
+            if self.type == .EditEmail {
+              self.saveEditEmail()
+            }
+            
+
+//            if self.type == .EditPhone {
+//              self.saveEditPhone()
+//            }
+//    
+//            if self.type == .EditEmail {
+//              self.saveEditEmail()
+//            }
+    
+            if self.type == .LoginByEmail{
+              self.getTClientPartInfo()
+            }
+//    
+//            if self.type == .SignUp {
+//              if Defaults.shared.get(for: .userModel) != nil {
+//                let view = WellcomBackView.loadViewFromNib()
+//                view.frame = self.view.bounds
+//                view.alpha = 0
+//                view.layer.zPosition = 100000
+//                self.view.addSubview(view)
+//                view.fadeIn()
+//              }else {
+//                let vc = InputIDController()
+//                self.navigationController?.pushViewController(vc, completion: nil)
+//              }
+//    
+//            }
+    
+          }else {
+            Toast.showError(withStatus: "verification code error")
+          }
+        }
   }
   
   func getTClientPartInfo()  {
@@ -238,6 +269,7 @@ class VerificationCodeController: BaseViewController {
       }
       Toast.dismiss()
     } errorHandler: { e in
+      self.navigationController?.popViewController()
       Toast.dismiss()
     }
     
@@ -259,6 +291,7 @@ class VerificationCodeController: BaseViewController {
       }
       Toast.dismiss()
     } errorHandler: { e in
+      self.navigationController?.popViewController()
       Toast.dismiss()
     }
   }

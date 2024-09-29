@@ -225,7 +225,7 @@ class BookingComplteItemCell: UITableViewCell {
   var model:OrderLineInfo? {
     didSet {
       productNameLabel.text = model?.name
-      priceLabel.text = model?.price?.formatMoney().dolar
+      priceLabel.text = model?.total?.formatMoney().dolar
       
     }
   }

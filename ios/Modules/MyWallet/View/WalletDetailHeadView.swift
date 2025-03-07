@@ -46,7 +46,7 @@ class WalletDetailHeadView: UIView {
       
       privilegesLabel.attributedText = str
       updateHeightHandler?(privilegesLabel.requiredHeight + 295)
-      hideSkeleton()
+  
     }
   }
   @IBAction func viewTiersButtonAction(_ sender: Any) {
@@ -57,8 +57,7 @@ class WalletDetailHeadView: UIView {
   override func awakeFromNib() {
     super.awakeFromNib()
     cardContainer.addSubview(card)
-    isSkeletonable = true
-    showSkeleton()
+ 
   }
   
   override func layoutSubviews() {

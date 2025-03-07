@@ -35,7 +35,6 @@ class BookingCompletedController: BasePagingTableController {
   override func refreshData() {
     self.showSkeleton()
     let params = SOAPParams(action: .ClientProfile, path: .getTSlotHistoryForApp)
-  
     params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
     params.set(key: "start", value: page)
     params.set(key: "length", value: kPageSize)

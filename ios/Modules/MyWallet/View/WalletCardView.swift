@@ -82,7 +82,6 @@ class WalletCardView: UIView {
       expireDateLabel.text = cardExpireDate
       layoutIfNeeded()
       
-      hideSkeleton()
     }
     
   }
@@ -100,7 +99,7 @@ class WalletCardView: UIView {
     shadowView.shadow(cornerRadius: 16, color: light, offset: CGSize(width: 0, height: 4), radius: 10, opacity: 1)
     gradientView.clipsToBounds = true
     gradientView.cornerRadius = 16
-    showSkeleton()
+  
   }
   
   required init?(coder: NSCoder) {

@@ -38,7 +38,6 @@ class ShopDetailReviewHeadView: UIView {
   
   var model:ShopProductDetailModel! {
     didSet {
-      hideSkeleton()
       customerNumLabel.text = "\(model.Counts?.counts ?? "") Customer Ratings"
       rateView.selectNumberOfStar = model.Product?.avg_rating.float() ?? 0
       ratingLabel.text = model.Product?.avg_rating
@@ -46,8 +45,7 @@ class ShopDetailReviewHeadView: UIView {
   }
   override init(frame: CGRect) {
     super.init(frame: frame)
-    isSkeletonable = true
-    showSkeleton()
+
     addSubview(customerNumLabel)
     addSubview(ratingLabel)
     addSubview(rateView)

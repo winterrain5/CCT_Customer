@@ -21,7 +21,6 @@ class WalletCardContainer: UIView {
       pointsLabel.text = String(point)
       card.model = model
       
-      hideSkeleton()
     }
     
   }
@@ -35,7 +34,7 @@ class WalletCardContainer: UIView {
   override func awakeFromNib() {
     super.awakeFromNib()
     shadowView.addSubview(card)
-    showSkeleton()
+   
   }
   
 

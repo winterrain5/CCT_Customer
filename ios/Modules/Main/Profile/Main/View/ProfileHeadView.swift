@@ -77,7 +77,6 @@ class ProfileHeadView: UIView {
       .disposed(by: rx.disposeBag)
 
     
-    showSkeleton()
   }
   
   override func layoutSubviews() {

@@ -33,7 +33,7 @@ class ShopDetailHeadContainer: UIView {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    showSkeleton()
+    
     starRateView.selectStarUnit = .custom
     starRateView.hightLightImage = R.image.madam_partum_star()
     starRateView.defaultImage = R.image.madam_partum_un_star()

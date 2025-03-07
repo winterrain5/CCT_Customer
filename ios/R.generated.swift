@@ -541,7 +541,7 @@ struct _R {
 
   /// This `_R.entitlements` struct is generated, and contains static references to 0 properties.
   struct entitlements {
-    let apsEnvironment: String = "development"
+    let apsEnvironment: String = "production"
   }
 
   /// This `_R.nib` struct is generated, and contains static references to 139 nibs.

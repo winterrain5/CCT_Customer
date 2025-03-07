@@ -31,7 +31,6 @@ class ServiceDetailHelpView: UIView,UITableViewDelegate,UITableViewDataSource  {
   }
   override func awakeFromNib() {
     super.awakeFromNib()
-    showSkeleton()
     configTableview(.plain)
   }
   

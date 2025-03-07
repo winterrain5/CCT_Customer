@@ -32,7 +32,7 @@ class SymptomCheckDetailHeaderView: UIView {
   var updateCompleteHandler:((CGFloat)->())?
   override func awakeFromNib() {
     super.awakeFromNib()
-    self.showSkeleton()
+   
   }
   override func layoutSubviews() {
     super.layoutSubviews()
@@ -44,7 +44,6 @@ class SymptomCheckDetailHeaderView: UIView {
     self.model = model
     self.result = result
     
-    self.hideSkeleton()
     
     self.dateLabel.text = date?.date(withFormat: "yyyy-MM-dd")?.string(withFormat: "dd MMM yyyy,EEE") ?? ""
 

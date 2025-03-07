@@ -133,7 +133,6 @@ class TransactionDetailFooterView: UIView {
       setNeedsLayout()
       layoutIfNeeded()
       
-      hideSkeleton()
     }
     
   }
@@ -141,7 +140,7 @@ class TransactionDetailFooterView: UIView {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    showSkeleton()
+  
   
   }
   

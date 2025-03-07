@@ -42,8 +42,6 @@ class ServiceDetailHeaderView: UIView,UITableViewDelegate,UITableViewDataSource 
       let totalH = self.titleLabel.requiredHeight + self.summaryDescLabel.requiredHeight + self.dowhatTitleLabel.requiredHeight + self.dowhatDescLabel.requiredHeight + tableH + 395.cgFloat
       self.updateHandler?(totalH)
       
-//      hideSkeleton()
-     
       setNeedsLayout()
       layoutIfNeeded()
       
@@ -52,7 +50,6 @@ class ServiceDetailHeaderView: UIView,UITableViewDelegate,UITableViewDataSource 
   }
   override func awakeFromNib() {
     super.awakeFromNib()
-//    showSkeleton()
     configTableview(.plain)
   }
   

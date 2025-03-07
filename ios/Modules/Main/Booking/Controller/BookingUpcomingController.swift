@@ -41,7 +41,6 @@ class BookingUpcomingController: BasePagingTableController {
   }
   
   override func refreshData() {
-    if isFirstLoad { self.view.showSkeleton() }
     let params = SOAPParams(action: .ClientProfile, path: .getTUpcomingAppointments)
     // CLIENT_ID 367285
 //    params.set(key: "clientId", value: 367285)
@@ -55,14 +54,14 @@ class BookingUpcomingController: BasePagingTableController {
       if let models = DecodeManager.decodeArrayByHandJSON(BookingUpComingModel.self, from: data),models.count > 0 {
         self.dataArray.append(contentsOf: models)
         self.endRefresh(models.count,emptyString: "You have no upcoming appointments")
-        self.view.hideSkeleton()
+    
         return
       }
       self.endRefresh(.NoData, emptyString: "You have no upcoming appointments")
       self.view.hideSkeleton()
     } errorHandler: { e in
       self.endRefresh(e.asAPIError.emptyDatatype)
-      self.view.hideSkeleton()
+     
     }
 
   }

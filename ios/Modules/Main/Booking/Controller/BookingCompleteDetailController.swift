@@ -66,7 +66,7 @@ class BookingCompleteDetailController: BaseViewController {
   func getOrderDetails() {
     let params = SOAPParams(action: .Sale, path: .getHistoryOrderDetails)
     params.set(key: "orderId", value: complete.id)
-//    self.view.showSkeleton()
+
     NetworkManager().request(params: params) { data in
       if let model = DecodeManager.decodeObjectByHandJSON(MyOrderDetailModel.self, from: data) {
         self.contentView.complete = self.complete
@@ -74,9 +74,9 @@ class BookingCompleteDetailController: BaseViewController {
       }else {
         Toast.showError(withStatus: "Decode MyOrderDetailModel Failed")
       }
-//      self.view.hideSkeleton()
+
     } errorHandler: { e in
-//      self.view.hideSkeleton()
+
     }
 
   }

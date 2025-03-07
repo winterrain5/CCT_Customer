@@ -14,7 +14,6 @@ class ShopDetailAboutHeadView: UIView {
   var updateHeightHandler:((CGFloat)->())!
   var model:ShopProductDetailModel! {
     didSet {
-      hideSkeleton()
       
       descLabel.text = model.Product?.how_help
       
@@ -27,7 +26,7 @@ class ShopDetailAboutHeadView: UIView {
   }
   override func awakeFromNib() {
     super.awakeFromNib()
-    showSkeleton()
+
   }
   
   override func layoutSubviews() {

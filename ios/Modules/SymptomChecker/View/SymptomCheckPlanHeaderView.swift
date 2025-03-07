@@ -28,8 +28,7 @@ class SymptomCheckPlanHeaderView: UIView {
       partTwoTitleLabel.text = model.part_two_title
       partTwodescLabel.text = model.part_two_description
       
-      self.hideSkeleton()
-      
+    
       // 440
       
       let totalH = overviewDescLabel.requiredHeight + partOneDescLabel.requiredHeight + partTwoTitleLabel.requiredHeight + partTwodescLabel.requiredHeight + 440.cgFloat
@@ -40,7 +39,6 @@ class SymptomCheckPlanHeaderView: UIView {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    self.showSkeleton()
     backgroundColor = R.color.theamBlue()
   }
   

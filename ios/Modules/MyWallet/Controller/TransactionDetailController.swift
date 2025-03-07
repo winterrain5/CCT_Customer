@@ -118,28 +118,24 @@ class TransactionDetailHeaderView: UIView {
   var invoiceLabel = UILabel().then { label in
     label.textColor = R.color.theamBlue()
     label.font = UIFont(name: .AvenirNextDemiBold, size:24)
-    label.text = "#INVXXXXXX1"
     label.isSkeletonable = true
   }
   var dateLabel = UILabel().then { label in
     label.textColor = R.color.black333()
     label.font = UIFont(name:.AvenirNextRegular,size:16)
-    label.text = "15 Dec 2020, Friday"
     label.isSkeletonable = true
   }
   var model:MyOrderDetailModel? {
     didSet {
       invoiceLabel.text = "#" + (model?.Order_Info?.invoice_no ?? "")
       dateLabel.text = model?.Order_Info?.date?.date(withFormat: "yyyy-MM-dd")?.string(withFormat: "dd MMM yyyy,EEEE")
-      hideSkeleton()
+      
     }
   }
   override init(frame: CGRect) {
     super.init(frame: frame)
     addSubview(invoiceLabel)
     addSubview(dateLabel)
-    isSkeletonable = true
-    showSkeleton()
   }
   
   required init?(coder: NSCoder) {

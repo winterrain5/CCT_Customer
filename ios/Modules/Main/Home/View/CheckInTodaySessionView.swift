@@ -85,7 +85,6 @@ class CheckInTodaySessionView: UIView,UICollectionViewDataSource,UICollectionVie
     timeLabel.text = date
     timeLabel2.text = date
     
-    self.showSkeleton()
   }
   
   func getWaitInfo() {
@@ -103,9 +102,7 @@ class CheckInTodaySessionView: UIView,UICollectionViewDataSource,UICollectionVie
         attr.addAttribute(.font, value: UIFont(name: .AvenirNextDemiBold, size: 14), range: NSRange(location: 0, length: model.queue_count.count))
         attr.addAttribute(.font, value: UIFont(name: .AvenirNextDemiBold, size: 14), range: NSRange(location: sub1.count, length: (model.duration_mins + " mins").count))
       }
-      self.hideSkeleton()
     } errorHandler: { e in
-      self.hideSkeleton()
     }
   }
   

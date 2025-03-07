@@ -135,7 +135,7 @@ class ShopFilterContentView: UIView,TTGTextTagCollectionViewDelegate,RangeSlider
     tagView.verticalSpacing = 8
     tagView.contentInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
     tagView.addTag(tag)
-  
+    tagView.reload()
   }
   
   

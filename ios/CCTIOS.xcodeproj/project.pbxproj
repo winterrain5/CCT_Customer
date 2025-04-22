@@ -19,6 +19,7 @@
 		45005C6F2A5CED6800560E21 /* NotificationApproveWalletCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45005C6D2A5CED6700560E21 /* NotificationApproveWalletCell.xib */; };
 		450F9BD42940322600101888 /* SwiftyEntryKit_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F9BD32940322600101888 /* SwiftyEntryKit_Extension.swift */; };
 		45208FD028FD3BEC003084FE /* libswiftCoreGraphics.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 45208FCF28FD3BEC003084FE /* libswiftCoreGraphics.tbd */; };
+		4525E7B42DB5E66F008E8C29 /* UITextField_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4525E7B32DB5E66F008E8C29 /* UITextField_extension.swift */; };
 		4530DEE3292223AA00CDAFD8 /* EntryKit_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4530DEE2292223AA00CDAFD8 /* EntryKit_Extension.swift */; };
 		453CD50F28598626005FEEE1 /* DeclarationFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CD50D28598626005FEEE1 /* DeclarationFormCell.swift */; };
 		453CD51028598626005FEEE1 /* DeclarationFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 453CD50E28598626005FEEE1 /* DeclarationFormCell.xib */; };
@@ -792,6 +793,7 @@
 		45005C6D2A5CED6700560E21 /* NotificationApproveWalletCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationApproveWalletCell.xib; sourceTree = "<group>"; };
 		450F9BD32940322600101888 /* SwiftyEntryKit_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyEntryKit_Extension.swift; sourceTree = "<group>"; };
 		45208FCF28FD3BEC003084FE /* libswiftCoreGraphics.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCoreGraphics.tbd; path = usr/lib/swift/libswiftCoreGraphics.tbd; sourceTree = SDKROOT; };
+		4525E7B32DB5E66F008E8C29 /* UITextField_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField_extension.swift; sourceTree = "<group>"; };
 		4530DEE2292223AA00CDAFD8 /* EntryKit_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryKit_Extension.swift; sourceTree = "<group>"; };
 		4530DEE4292229E000CDAFD8 /* libSwiftEntryKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSwiftEntryKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		453CD50D28598626005FEEE1 /* DeclarationFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarationFormCell.swift; sourceTree = "<group>"; };
@@ -3369,6 +3371,7 @@
 				45A5C44228604A9E006B6D4C /* UIView+Badge.swift */,
 				4530DEE2292223AA00CDAFD8 /* EntryKit_Extension.swift */,
 				450F9BD32940322600101888 /* SwiftyEntryKit_Extension.swift */,
+				4525E7B32DB5E66F008E8C29 /* UITextField_extension.swift */,
 			);
 			name = Extension;
 			path = CCTIOS/Extension;
@@ -3835,6 +3838,7 @@
 				4902023F27D9EAF700E74415 /* WalletPurchaseNewcardAmounttContainer.swift in Sources */,
 				4902B71D279F9D3000CEE28B /* ServiceDetailHeaderView.swift in Sources */,
 				495649D12817E5C800091533 /* ShopOrderSummaryController.swift in Sources */,
+				4525E7B42DB5E66F008E8C29 /* UITextField_extension.swift in Sources */,
 				4996D7B027D5DFCD00437265 /* WalletCardView.swift in Sources */,
 				4998BF34277ED25200A881D5 /* BaseNavigationController.swift in Sources */,
 				4998C058277EF51200A881D5 /* NSViewExtensions.swift in Sources */,
@@ -4506,7 +4510,7 @@
 					/usr/lib/swift,
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.3.3;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -4552,7 +4556,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.3.3;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",

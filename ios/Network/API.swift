@@ -337,6 +337,7 @@ enum API:String {
   case setReadStatus = "setReadStatus"
   
   case saveCardInfo = "saveCardInfo"
+  case loginLog = "loginLog"
 }
 
 enum Action:String {

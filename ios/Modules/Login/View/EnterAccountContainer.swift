@@ -29,6 +29,7 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
     pwdTf.isSecureTextEntry  = true
     accountTf.delegate = self
     accountTf.returnKeyType = .next
+    
   }
   
   override func layoutSubviews() {
@@ -62,6 +63,13 @@ class EnterAccountContainer: UIView,UITextFieldDelegate {
     dict.set(key: "u.is_delete", value: 0)
     
     params.set(key: "where", value: dict.result, type: .map(1))
+    
+    
+    let logData = SOAPDictionary()
+    logData.set(key: "app_version", value: Device.appVersion)
+    logData.set(key: "device_system_version", value: Device.sysVersion)
+    logData.set(key: "device_model_name", value: Device.modelName)
+    params.set(key: "logData", value: logData.result, type: .map(2))
     
     loginBtn.startAnimation()
     NetworkManager.init().request(params: params) { data in

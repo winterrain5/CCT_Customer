@@ -297,9 +297,38 @@ class VerificationCodeController: BaseViewController {
   }
   
   func setRootViewController() {
-    Toast.dismiss()
-    Defaults.shared.set(false, for: .isFirstLogin)
-    let tab = BaseTabBarController()
-    UIApplication.shared.keyWindow?.rootViewController = SideMenuController(contentViewController: tab, menuViewController: MenuViewController())
+    setLoginLog {
+      DispatchQueue.main.async {
+        Toast.dismiss()
+        Defaults.shared.set(false, for: .isFirstLogin)
+        let tab = BaseTabBarController()
+        UIApplication.shared.keyWindow?.rootViewController = SideMenuController(contentViewController: tab, menuViewController: MenuViewController())
+      }
+    }
+  
+  }
+  
+  
+  func setLoginLog(complete:@escaping ()->()) {
+    let params = SOAPParams(action: .Client, path: .loginLog)
+    
+    let data = SOAPDictionary()
+    data.set(key: "userId", value: Defaults.shared.get(for: .clientId) ?? "")
+
+    let logDict:[String:Any] = [
+      "app_version":Device.appVersion,
+      "device_system_version":Device.sysVersion,
+      "device_model_name":Device.modelName
+    ]
+    data.set(key: "data", value: logDict.jsonString() ?? "")
+    
+    params.set(key: "data", value: data.result, type: .map(1))
+    params.set(key: "userId", value: Defaults.shared.get(for: .clientId) ?? "")
+    
+    NetworkManager().request(params: params) { data in
+      complete()
+    } errorHandler: { e in
+      complete()
+    }
   }
 }

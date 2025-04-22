@@ -187,9 +187,8 @@ class InputResideView: UIView,UITextFieldDelegate {
       self.setRootViewController()
     }
     
-    
-   
   }
+  
   
   func setRootViewController() {
     Defaults.shared.set(false, for: .isFirstLogin)

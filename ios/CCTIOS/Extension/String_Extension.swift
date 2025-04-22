@@ -97,7 +97,7 @@ extension String {
   }
   
   func isNRICRuler() -> Bool {
-    let rule = "^[STFG]\\d{7}[A-Z]$"
+    let rule = "^[STFGM]\\d{7}[A-Z]$"
     let regex = NSPredicate(format: "SELF MATCHES %@",rule)
     if regex.evaluate(with: self) == true {
       return true

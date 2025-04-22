@@ -37,6 +37,9 @@ class InputAccountContainer: UIView,UITextFieldDelegate {
     pwTf.delegate = self
     pw2Tf.delegate = self
     
+    pwTf.disableAutoFill()
+    pw2Tf.disableAutoFill()
+    
     if let user = Defaults.shared.get(for: .userModel) {
       emailTf.text = user.email
       isEmaillValidate = true

@@ -623,6 +623,8 @@ class ShopCheckOutFooterView: UIView {
     Toast.showLoading()
 #endif
     STPAPIClient().confirmPaymentIntent(with: intent) { result, e in
+      
+      
       if e != nil {
         Toast.showMessage("Credit card payment failed")
       }else {

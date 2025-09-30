@@ -517,7 +517,6 @@ class WalletTopupAmountView: UIView,UITextFieldDelegate {
 #endif
       STPAPIClient().confirmPaymentIntent(with: intent) { result, e in
         if e != nil {
-          print(e)
           resolver.reject(APIError.requestError(code: -1, message: "Credit card payment failed"))
           return
         }else {

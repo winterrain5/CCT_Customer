@@ -27,6 +27,30 @@
   return YES;
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    BOOL stripeHandled = [StripeAPI handleStripeURLCallbackWithURL:url];
+     if (stripeHandled) {
+         return YES;
+     } else {
+         // This was not a Stripe url – handle the URL normally as you would
+     }
+     return NO;
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
+    if (userActivity.activityType == NSUserActivityTypeBrowsingWeb) {
+        if (userActivity.webpageURL) {
+            BOOL stripeHandled = [StripeAPI handleStripeURLCallbackWithURL:userActivity.webpageURL];
+            if (stripeHandled) {
+                return YES;
+            } else {
+                // This was not a Stripe url – handle the URL normally as you would
+            }
+            return NO;
+        }
+    }
+    return NO;
+}
 
 
 - (void)setupNotification {

@@ -147,6 +147,12 @@ class HomeViewController: BaseViewController {
       let params = SOAPParams(action: .Client, path: .getTClientPartInfo)
       params.set(key: "clientId", value: Defaults.shared.get(for: .clientId) ?? "")
       
+      let logData = SOAPDictionary()
+      logData.set(key: "app_version", value: Device.appVersion)
+      logData.set(key: "device_system_version", value: Device.sysVersion)
+      logData.set(key: "device_model_name", value: Device.modelName)
+      params.set(key: "logData", value: logData.result, type: .map(2))
+      
       NetworkManager().request(params: params) { data in
         if let model = DecodeManager.decodeObjectByHandJSON(UserModel.self, from: data) {
           self.contentView.userModel = model
